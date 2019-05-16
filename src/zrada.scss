@@ -1,0 +1,17 @@
+section.title {
+	max-height: 50%;
+	background: url("../img/zrada/zrada-logo.svg");
+	background-repeat: no-repeat;
+	background-position: center;
+	background-size: 90%;
+}
+section.promo {
+	background: url("../img/zrada/promo.jpg") no-repeat center;
+	background-size: 120%;
+	@media screen and (max-width: 900px) {
+		background-size: 200%;
+	}
+	@media screen and (max-width: 600px) {
+		background-size: 400%;
+	}
+}
