@@ -9,8 +9,20 @@
 	<link rel="stylesheet" type="text/css" href="../src/zrada.css">
     <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 	
-	<script src="../src/jquery.js"></script>
-	<script src="../src/airuJSHeight.js"></script>
+	<script
+			  src="https://code.jquery.com/jquery-3.4.1.min.js"
+			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+			  crossorigin="anonymous"></script>
+	<script>
+		var f = function(){
+			var a = $('.jsHeight').width();
+			var b = (a / 16) * 9
+			$('.jsHeight').css({'height':b+'px'});
+		}
+
+		$(document).ready(f)
+		$(window).resize(f)
+	</script>
 </head>
 <style>
 </style>
@@ -19,7 +31,9 @@
 	<header class="dark">
 		<div><a class="logo" href="../">&nbsp;<img class="logo" src="../img/logo-w.svg"></a></div>
 		<div>
-			<a href="#">SK</a>
+			<a class="rb" href="../en/treason">EN</a>
+			<a class="active" href="./">SK</a>
+			<a class="lb" href="../jp/muhon">JP</a>
 		</div>
 	</header>
 	
@@ -32,12 +46,9 @@
 	</section>
 	<section class="basic dark">
 		<div class="button-nav">
-			<a class="button" href="../dl/zrada/plagat.pdf"><i class="fa fa-image"></i>&nbsp;Plagát&nbsp;<span>PDF (7 MB)</span>
-			</a>
-			<a class="button" href="../dl/zrada/pracovny-book.pdf"><i class="fa fa-book"></i>&nbsp;Pracovný book&nbsp;<span>PDF (14,9 MB)</span>
-			</a>
-			<a class="button" href="https://www.youtube.com/watch?v=eBoPF2v_9EY"><i class="fa fa-youtube-play"></i>&nbsp;Animácia&nbsp;<span>YouTube</span>
-			</a>
+			<a class="button" href="../dl/zrada/plagat.pdf"><i class="fa fa-image"></i>&nbsp;Plagát&nbsp;<span>PDF (7 MB)</span></a>
+			<a class="button" href="../dl/zrada/pracovny-book.pdf"><i class="fa fa-book"></i>&nbsp;Pracovný book&nbsp;<span>PDF (14,9 MB)</span></a>
+			<a class="button" href="https://www.youtube.com/watch?v=eBoPF2v_9EY"><i class="fa fa-youtube-play"></i>&nbsp;Animácia&nbsp;<span>YouTube</span></a>
 		</div>
 	</section>
 	<section class="basic dark promo">
