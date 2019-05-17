@@ -49,7 +49,22 @@ header {
   -ms-flex-align: center;
   align-items: center;
   padding: 20px 35px;
-  z-index: 999; }
+  z-index: 999;
+  /*a.logo:after {
+		content: "airu";
+		color: black;
+		text-align: center;
+		display: none;
+		position: absolute;
+		margin-left: 60px;
+		width: 50px;
+		height: 15px;
+		border-radius: 5px;
+		background: rgba(255,255,255,0.5);
+	}
+	a.logo:hover:after {
+		display: block;
+	}*/ }
   header span {
     color: rgba(0, 0, 0, 0.5); }
   header a {
@@ -63,19 +78,6 @@ header {
   header a.logo > img {
     width: 40px;
     opacity: 0.5; }
-  header a.logo:after {
-    content: "airu";
-    color: black;
-    text-align: center;
-    display: none;
-    position: absolute;
-    margin-left: 60px;
-    width: 50px;
-    height: 15px;
-    border-radius: 5px;
-    background: rgba(255, 255, 255, 0.5); }
-  header a.logo:hover:after {
-    display: block; }
   @media screen and (max-width: 1700px) {
     header {
       left: 0;

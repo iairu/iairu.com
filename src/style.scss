@@ -54,7 +54,7 @@ header {
 		width: 40px;
 		opacity: 0.5;
 	}
-	a.logo:after {
+	/*a.logo:after {
 		content: "airu";
 		color: black;
 		text-align: center;
@@ -68,7 +68,7 @@ header {
 	}
 	a.logo:hover:after {
 		display: block;
-	}
+	}*/
 	@media screen and (max-width: $content-width) {
 		left: 0;
 		width: 100%;
