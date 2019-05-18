@@ -1,0 +1,91 @@
+<html>
+<head>
+	<title>iairu - branding : slniečko</title>
+	
+	<meta charset="UTF-8">
+	<meta name="viewport" content="initial-scale=1.0">
+	
+	<link rel="stylesheet" type="text/css" href="../src/style.css">
+	<link rel="stylesheet" type="text/css" href="../src/lity.css">
+    <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+   
+    <!-- favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="http://iairu.com/img/favicons/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="http://iairu.com/img/favicons/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="http://iairu.com/img/favicons/favicon-16x16.png">
+    <link rel="manifest" href="http://iairu.com/img/favicons/site.webmanifest">
+    <link rel="mask-icon" href="http://iairu.com/img/favicons/safari-pinned-tab.svg" color="#17323d">
+    <link rel="shortcut icon" href="http://iairu.com/img/favicons/favicon.ico">
+    <meta name="apple-mobile-web-app-title" content="iairu">
+    <meta name="application-name" content="iairu">
+    <meta name="msapplication-TileColor" content="#17323d">
+    <meta name="msapplication-config" content="http://iairu.com/img/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#17323d">
+	
+	<script
+			  src="https://code.jquery.com/jquery-3.4.1.min.js"
+			  integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+			  crossorigin="anonymous"></script>
+	<script>
+		var f = function(){
+			var a = $('.jsHeight').width();
+			var b = (a / 16) * 9
+			$('.jsHeight').css({'height':b+'px'});
+		}
+
+		$(document).ready(f)
+		$(window).resize(f)
+	</script>
+	<script src="http://iairu.com/src/lity-main.js"></script>
+</head>
+<style>
+    body {
+        background: url("../img/slniecko/bg.jpg");
+        background-repeat: repeat-x;
+        background-size: cover;
+        background-position: top center;
+        background-color: #dca855;
+    }
+    section.title {
+        background-image: url(../img/slniecko/logo.svg);
+        background-size: 50%;
+        opacity: 0.75;
+    }
+    @media screen and (max-width: 500px) {
+      section.title {
+        background-size: 75%; }
+    }
+    section.promo {
+		background: url("../img/slniecko/promo.jpg") no-repeat center;
+		background-size: 100%;
+    }
+</style>
+<body>
+	<!-- sticky menu -->
+	<header class="dark">
+		<div><a class="logo" href="../">&nbsp;<img class="logo" src="../img/logo-w.svg"></a></div>
+		<div>
+			<a class="active" href="./">SK</a>
+		</div>
+	</header>
+	
+	<!-- titulka -->
+	<section class="title"></section>
+	
+	<!-- podsekcie -->
+	<section class="basic">
+		<div class="button-nav">
+			<a class="button" href="../dl/slniecko/logo.pdf"><i class="fa fa-image"></i>&nbsp;Logo (varianty)&nbsp;<span>PDF</span></a>
+			<a class="button" href="../dl/slniecko/manual.pdf"><i class="fa fa-book"></i>&nbsp;Dizajn manuál&nbsp;<span>PDF</span></a>
+			<a class="button" href="../dl/slniecko/ilustracie.pdf"><i class="fa fa-image"></i>&nbsp;Ilustrácie&nbsp;<span>PDF</span></a>
+			<a class="button" href="../dl/slniecko/katalog.pdf"><i class="fa fa-book"></i>&nbsp;Vzorka katalógu&nbsp;<span>PDF</span></a>
+			<a class="button" href="../dl/slniecko/brozura.pdf"><i class="fa fa-book"></i>&nbsp;Brožúra&nbsp;<span>PDF</span></a>
+		</div>
+	</section>
+	<section class="basic dark promo jsheight"></section>
+	<section class="basic dark">
+	   <b>Koncept na logo cestovnej kancelárie Slniečko. - November 2018</b>
+	</section>
+	<footer>design &amp; code by&nbsp;<a href="http://iairu.com">iairu</a><img src="../img/logo-w.svg">2019</footer>
+</body>
+</html>
