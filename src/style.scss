@@ -148,7 +148,7 @@ a.section {
             background: rgba(255,255,255,0.05);
         }
     }*/
-    &:hover section.promo.dark:after {
+    &:hover section.promo:after {
         content: "";
         display: block;
         position: absolute;
@@ -158,6 +158,9 @@ a.section {
         bottom: 5px;
         border: 1px solid rgba(0,0,0,0.25);
         border-radius: 10px;
+        @media (pointer: coarse) {
+            display: none;
+        }
     }
     &:hover section.promo.dark:after {
         border: 1px solid rgba(255,255,255,0.25);
@@ -248,6 +251,9 @@ section {
             bottom: 5px;
             border: 1px solid rgba(0,0,0,0.45);
             border-radius: 10px;
+            @media (pointer: coarse) {
+                display: none;
+            }
         }
         &.dark:hover:after {
             border: 1px solid rgba(255,255,255,0.25);
@@ -355,4 +361,14 @@ footer {
 }
 .row {
     flex-direction: row;
+}
+
+.snslinks {
+    margin: 0 0 0 auto;
+}
+h2 a {
+    display: inline-block;
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    margin: 2px 0;
 }
