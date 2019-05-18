@@ -119,13 +119,50 @@ header {
     -ms-flex-align: center;
     align-items: center; }
 
+a.section {
+  display: block;
+  margin: 25px auto;
+  padding: 0;
+  max-width: 1700px;
+  overflow: hidden;
+  /*section.dark {
+        h2 {
+            border: 1px solid rgba(255,255,255,0);
+            padding: 0 5px;
+            border-radius: 5px;
+        }
+    }
+    &:hover section.dark {
+        h2 {
+            border: 1px solid rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.05);
+        }
+    }*/ }
+  a.section section {
+    margin: 0; }
+  a.section section.promo {
+    border: 1px solid rgba(116, 116, 116, 0.71); }
+  a.section:hover section.promo.dark:after {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 10px; }
+  a.section:hover section.promo.dark:after {
+    border: 1px solid rgba(255, 255, 255, 0.25); }
+
 section {
   width: 100%;
   max-width: 1700px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  margin: auto;
+  position: relative;
+  margin: 0 auto;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
@@ -171,7 +208,7 @@ section {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    background: white;
+    background: rgba(255, 255, 255, 0.75);
     min-height: 50px;
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
@@ -188,9 +225,16 @@ section {
     -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     padding-bottom: 30px; }
+  section a {
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 5px;
+    padding: 0 5px; }
+    section a:hover {
+      background: rgba(255, 255, 255, 0.05); }
   section a.thumb {
     display: inline-block;
     position: relative;
+    padding: 0;
     width: 250px;
     height: 150px;
     margin: 20px 20px 0px 0px;
@@ -204,6 +248,18 @@ section {
     section a.thumb img {
       width: 100%;
       height: 100%; }
+    section a.thumb:hover:after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 5px;
+      left: 5px;
+      right: 5px;
+      bottom: 5px;
+      border: 1px solid rgba(0, 0, 0, 0.25);
+      border-radius: 10px; }
+    section a.thumb.dark:hover:after {
+      border: 1px solid rgba(255, 255, 255, 0.25); }
   section a.button {
     position: relative;
     min-width: 200px;
@@ -232,15 +288,15 @@ section {
         font-size: 10px;
         margin: 20px 0 0 0; } }
     section a.button.disabled {
-      color: rgba(0, 0, 0, 0.25); }
+      color: rgba(0, 0, 0, 0.25);
+      border: 1px solid rgba(255, 255, 255, 0.25); }
     section a.button:hover {
       background: rgba(0, 0, 0, 0.04); }
   section span {
     color: rgba(0, 0, 0, 0.25); }
   section h2 {
-    width: 100%;
     padding: 0;
-    margin: 0;
+    margin: 0 auto 0 0;
     font-size: 14px;
     color: rgba(0, 0, 0, 0.5); }
     section h2 a {
@@ -257,12 +313,14 @@ section {
     section.dark a.button {
       color: white;
       background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(0, 0, 0, 0.25); }
+      border: 1px solid rgba(255, 255, 255, 0.1); }
       section.dark a.button.disabled {
-        color: rgba(255, 255, 255, 0.25); }
+        color: rgba(255, 255, 255, 0.25);
+        border: 1px solid rgba(0, 0, 0, 0.25); }
       section.dark a.button:hover {
         background: rgba(255, 255, 255, 0.1); }
   section.promo {
+    display: block;
     height: 550px;
     background: url("../img/promo.jpg") no-repeat center;
     background-size: 120%;
@@ -281,9 +339,6 @@ section {
   section.nopadding {
     padding: 0; }
 
-.tdn {
-  text-decoration: none; }
-
 footer {
   height: 40px;
   display: -webkit-box;
@@ -296,5 +351,16 @@ footer {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  color: white;
   opacity: 0.5;
   max-width: 1700px; }
+  footer img {
+    height: 15px;
+    padding: 0 10px; }
+  footer a {
+    color: white;
+    border-radius: 5px;
+    padding: 0 5px;
+    border: 1px solid rgba(255, 255, 255, 0.25); }
+    footer a:hover {
+      background: rgba(255, 255, 255, 0.15); }
