@@ -82,20 +82,20 @@ header {
     opacity: 1; }
   header.dark a.lb {
     border-left: 1px solid rgba(255, 255, 255, 0.25);
-    padding-left: 5px;
-    margin-left: 5px;
     color: rgba(255, 255, 255, 0.5); }
   header.dark a.rb {
     border-right: 1px solid rgba(255, 255, 255, 0.25);
-    padding-right: 5px;
-    margin-right: 5px;
     color: rgba(255, 255, 255, 0.5); }
   header a.lb {
     border-left: 1px solid rgba(0, 0, 0, 0.25);
-    color: rgba(0, 0, 0, 0.25); }
+    color: rgba(0, 0, 0, 0.25);
+    padding-left: 5px;
+    margin-left: 5px; }
   header a.rb {
     border-right: 1px solid rgba(0, 0, 0, 0.25);
-    color: rgba(0, 0, 0, 0.25); }
+    color: rgba(0, 0, 0, 0.25);
+    padding-right: 5px;
+    margin-right: 5px; }
   header.dark a.lb:hover, header.dark a.rb:hover {
     color: white; }
   header a.lb:hover, header a.rb:hover {
@@ -240,10 +240,16 @@ section {
     flex-wrap: wrap;
     padding-bottom: 30px; }
   section a {
-    border: 1px solid rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 5px;
     padding: 0 5px; }
     section a:hover {
+      background: rgba(0, 0, 0, 0.05); }
+  section.dark a {
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 5px;
+    padding: 0 5px; }
+    section.dark a:hover {
       background: rgba(255, 255, 255, 0.05); }
   section a.thumb {
     display: inline-block;
@@ -397,3 +403,79 @@ h2 a {
   flex-wrap: nowrap;
   white-space: nowrap;
   margin: 2px 0; }
+
+.split {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  padding: 20px 0 0 0; }
+  @media screen and (min-width: 1000px) {
+    .split {
+      height: 570px; }
+      .split .promo {
+        background-size: 200%; } }
+  @media screen and (max-width: 1000px) {
+    .split {
+      -webkit-box-orient: vertical;
+      -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+      flex-direction: column; }
+      .split > .image {
+        padding-bottom: 55px; } }
+  .split a {
+    border: none;
+    background: none; }
+    .split a:hover {
+      background: none; }
+  .split > .image {
+    margin: auto;
+    width: 50%;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    border-radius: 15px;
+    margin: 0 25px 0 auto;
+    /*img {
+            width: 100%;
+            height: 100%;
+        } - causes too much distortion */ }
+    @media screen and (max-width: 1000px) {
+      .split > .image {
+        /*display: none;*/
+        width: 100%;
+        height: 250px; } }
+    .split > .image .border-fade {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-box-shadow: inset 0px 0px 50px 70px #262626;
+      box-shadow: inset 0px 0px 50px 70px #262626; }
+  .split > .section, .split > section {
+    position: relative;
+    width: 50%;
+    margin: 0; }
+    @media screen and (max-width: 1000px) {
+      .split > .section, .split > section {
+        width: 100%; } }
