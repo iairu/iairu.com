@@ -1,6 +1,6 @@
 ## iairu.com v2
 
-A multilanguage portfolio of my *so-far-mostly-personal* dev works built on top of the lightweight [Sapper](https://sapper.svelte.dev/) framework.
+A multilanguage portfolio of my *so-far-mostly-personal* dev works built on top of the lightweight [Sapper](https://sapper.svelte.dev/) framework. 
 
 ### Directory content
 
