@@ -16,7 +16,7 @@ A multilanguage portfolio of my *so-far-mostly-personal* dev works built on top 
 - biography, some numbers and catchy text content overall
 - Maybe also:
   - TOC-style side menu for .md generated content
-  - History navigation on modals
+  - History navigation on modals 
   - Stats component with cool circles
   - A ton of other stuff written in my OneNote
 
