@@ -14,8 +14,9 @@
                 // and the language hasn't been inicalized it will default to supported[0]
                 let l = typeof anyLang === 'string' && anyLang.substring(0,2).toLowerCase();
                 update((w)=>{
-                    if (!l || !supported.includes(l) && w.current !== undefined) return;
-                    w.current = supported.includes(l) ? l : (w.current === undefined) ? supported[0] : w.current;
+                    if (l && (supported.includes(l) || w.current === undefined)) {
+                        w.current = supported.includes(l) ? l : (w.current === undefined) ? supported[0] : w.current;
+                    }
                     return w;
                 })
             }

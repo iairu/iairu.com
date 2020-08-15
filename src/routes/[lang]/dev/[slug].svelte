@@ -9,8 +9,8 @@
 </script>
 
 <script>
-    import { dark as darkstore } from "../../components/DarkStore.svelte";
-    import Tags from "../../components/Tags.svelte";
+    import { dark as darkstore } from "../../../components/DarkStore.svelte";
+    import Tags from "../../../components/Tags.svelte";
     import moment from "moment/src/moment.js";
     import "moment/src/locale/sk.js";
 

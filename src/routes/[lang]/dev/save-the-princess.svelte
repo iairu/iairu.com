@@ -1,6 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import Nav from './../../components/Nav.svelte';
+	import Nav from '../../../components/Nav.svelte';
     import Post from "./[slug].svelte";
 
     let gameWindow;

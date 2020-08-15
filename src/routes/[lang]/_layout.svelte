@@ -1,25 +1,49 @@
 <script>
-	import { lang } from './../components/LangStore.svelte';
-	import Header from '../components/Header.svelte';
-	import { href } from '../components/Modal.svelte';
-	import Modal from '../components/Modal.svelte';
+	import { lang } from '../../components/LangStore.svelte';
+	import Header from '../../components/Header.svelte';
+	import { href } from '../../components/Modal.svelte';
+	import Modal from '../../components/Modal.svelte';
 	import { onMount } from 'svelte';
-	import ToTop from '../components/ToTop.svelte';
-	import Nav from './../components/Nav.svelte';
-	import S from '../components/Section.svelte';
-	import Footer from '../components/Footer.svelte';
+	import ToTop from '../../components/ToTop.svelte';
+	import Nav from '../../components/Nav.svelte';
+	import S from '../../components/Section.svelte';
+	import Footer from '../../components/Footer.svelte';
+	import { stores } from '@sapper/app';
+	import Error from "../_error.svelte";
+	const { page } = stores();
 
-	// export let segment;
+	export let external = false; // _layout is imported externally and language error shouldn't be checked
+	let error = false;
 
-	// let _GET = {get:()=>{return false;}};
+	// Current Language and Slug from URL & lang store linkup
+	let currentSlug = "";
+	let currentURLlang = "en";
+	const unsubPage = page.subscribe(({ path, params })=>{
+		currentSlug = path;
+		currentURLlang = params.lang;
+	})
+	$: lang.changeTo(currentURLlang); // Language Initialization
+	let current;
+	let supported;
+	const unsubLang = lang.subscribe((lng)=>{
+		current = lng.current;
+		supported = lng.supported;
+	});
+	error = (!external && !supported.includes(currentURLlang)) ? true : false;
+	
+
+	// Checks relying on Window available after mounting & onDestroy
 	let isIframe = false;
 	onMount(()=>{
-		// _GET = new URLSearchParams(location.search);
 		if (window.location !== window.parent.location) { isIframe = true;}
-		lang.changeTo(window.navigator.language); // Language Initialization
+		return ()=>{
+			unsubLang();
+			unsubPage();
+		};
 	})
 </script>
 
+{#if !error}
 <!-- Site content -->
 {#if !isIframe}
 	<Header nav={[
@@ -50,7 +74,12 @@
 <!-- Floating fixed pos. stuff -->
 {#if !isIframe}<Modal />{/if}
 <ToTop {isIframe} />
-
+{:else}
+	<Error 
+		status={404}
+		error={{message: "Specified file/language doesn't exist."}}
+	/>
+{/if}
 
 <style lang="scss" global>
 	@keyframes scalein {

@@ -71,6 +71,7 @@ export default {
 		onwarn: function( message ) {
 			if (/@sapper/.test( message )) return;
 			if (/moment\\src\\lib/.test( message )) return;
+			if (/_error\.svelte.*_layout\.svelte/.test( message )) return;
 			console.log(message);
 		},
 	},
@@ -106,6 +107,7 @@ export default {
 		onwarn: function( message ) {
 			if (/@sapper/.test( message )) return;
 			if (/moment\\src\\lib/.test( message )) return;
+			if (/_error\.svelte.*_layout\.svelte/.test( message )) return;
 			console.log(message);
 		},
 	},

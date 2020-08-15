@@ -15,7 +15,6 @@
         determineIfBottom = function(trigger){
             clearTimeout(bottomTimer);
             bottomTimer = setTimeout(()=>{
-                console.log(window.innerHeight, window.pageYOffset + elm.getBoundingClientRect().bottom);
                 bottom = elm ? window.innerHeight < window.pageYOffset + elm.getBoundingClientRect().bottom : false;
             },250)
         }

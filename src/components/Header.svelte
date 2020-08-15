@@ -4,16 +4,19 @@
     const { page } = stores();
 	import { dark } from './DarkStore.svelte';
     import LangSelector from './LangSelector.svelte';
+    import { lang } from "./LangStore.svelte";
 
     export let nav;
 
     let showHomeArrow = false;
-    $: showHomeArrow = $page.path !== "/";
+    let splitPath;
+    $: splitPath = $page.path.split("/");
+    $: showHomeArrow = splitPath.length > 3 || (splitPath.length === 3 && splitPath[splitPath.length - 1] !== "");
 </script>
 
 <header class:dark={$dark}>
     <div class="content">
-        {#if showHomeArrow}<a class="home" href="/"><i class="fa fa-angle-double-left"></i></a>{/if}
+        {#if showHomeArrow}<a class="home" href={"/" + ($lang.current ? $lang.current : "")}><i class="fa fa-angle-double-left"></i></a>{/if}
         <div class="left">
             <img class="logo" src={!$dark ? "/_global/logo.svg" : "/_global/logo-w.svg"} alt="Logo">
             <LangSelector />
