@@ -308,3 +308,11 @@
 		</p>
 	</S>
 </S>
+
+{#if SK}
+<S icon="fa fa-comment-dots" name="Niečo viac..." slug="more" hrd>
+	<Nav nav={[
+		{icon: "fa fa-clipboard-list", text: "Programovací denník", href: "/dev/log", isButton: true}
+	]}/>
+</S>
+{/if}
