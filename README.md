@@ -12,11 +12,13 @@ A multilanguage portfolio of my *so-far-mostly-personal* dev works built on top 
 ### A short ToDo list of stuff to be done before release
 
 - `dev/[slug]` - 404 instead of 500
-- create `[lang]` and create some kind of a SEO-friendly language URL handling
+- ~~create `[lang]` and create some kind of a SEO-friendly language URL handling~~
 - biography, some numbers and catchy text content overall
 - Maybe also:
   - TOC-style side menu for .md generated content
+  - History navigation on modals
   - Stats component with cool circles
+  - A ton of other stuff written in my OneNote
 
 ### Best-practises not used in practise
 
