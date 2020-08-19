@@ -174,6 +174,10 @@
 		border: 1px solid rgba(0,0,0,0.2);
 		color: black;
 	}
+	table {
+		width: 100%;
+		margin-bottom: 10px;
+	}
 	.dark select {
 		border-color: rgba(255,255,255,0.2);
 		color: white;
