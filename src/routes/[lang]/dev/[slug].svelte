@@ -13,6 +13,7 @@
     import Tags from "../../../components/Tags.svelte";
     import moment from "moment/src/moment.js";
     import "moment/src/locale/sk.js";
+    import Error from "../../_error.svelte";
 
     export let post;
     export let dark = false;
@@ -29,11 +30,17 @@
 </script>
 
 <svelte:head>
+    {#if !post.error}
     <title>{post.metadata.title ? post.metadata.title : "Post"} :: iairu</title>
     <meta name="description" content={post.metadata.desc ? post.metadata.desc : ""}>
     <meta name="robots" content={post.metadata.robots ? post.metadata.robots : "index,follow"}>
+    {:else}
+    <title>{"404 Not Found"} :: iairu</title>
+    <meta name="robots" content={"noindex,nofollow"}>
+    {/if}
 </svelte:head>
 
+{#if post}
 <section class="post">
     <div class="content-wrapper">
         {#if !post.error}
@@ -56,6 +63,12 @@
         {/if}
     </div>
 </section>
+{:else}
+<Error 
+    status={404}
+    error={{message: "Specified file/language doesn't exist."}}
+/>
+{/if}
 
 <style lang="scss" global>
     section.post {
