@@ -112,7 +112,7 @@
 </S>
 
 <S row icon="fa fa-calendar-check" name={SK ? "Dokončené projekty" : "Finished projects"} slug="finished-projects" tabs={["Dev", "Gfx"]} let:tab>
-	{#if tab === "Dev"}
+	{#if tab === 0}
 	<Thumb dark
 		name="StrukShow.com"
 		icon="strukshow-w"
@@ -251,7 +251,7 @@
 			{icon: "fa fa-download", text: SK ? "Stiahnuť" : "Download", href:"https://github.com/iairu/coffeeMachine/releases"}
 		]}
 		/>
-	{:else if tab === "Gfx"}
+	{:else if tab === 1}
 	<Thumb dark
 		name={SK ? "Grafické portfolio" : "Graphic design portfolio"}
 		bg="gfxbg"
@@ -288,10 +288,10 @@
 	<Tabs names={[
 		SK ? "Osnova" : "Outline",
 		SK ? "Príbeh" : "Story"
-	]} let:active let:names>
-		{#if active === names[0]}
+	]} let:active>
+		{#if active === 0}
 			Osnova pôjde sem
-		{:else if active === names[1]}
+		{:else if active === 1}
 			Príbeh pôjde sem
 		{/if}
 	</Tabs>

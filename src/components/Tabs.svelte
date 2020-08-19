@@ -1,7 +1,7 @@
 <script>
 	import TabMenu from './TabMenu.svelte';
     export let names = [];
-    export let active = names.length ? names[0] : undefined;
+    export let active = 0;
     export let hideMenu = false;
 </script>
 
@@ -9,7 +9,7 @@
 <section class="tabs" class:frame={!hideMenu}>
     {#if !hideMenu}<TabMenu {names} bind:active={active} />{/if}
     <div class="content">
-        <slot {active} {names} />
+        <slot {active} />
     </div>
 </section>
 {/if}

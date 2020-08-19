@@ -1,12 +1,12 @@
 <script>
     export let names = [];
-    export let active = names.length ? names[0] : undefined;
+    export let active = 0;
 </script>
 
 {#if names.length}
 <div class="menu">
-    {#each names as tab}
-        <button class:active={active === tab} on:click={()=>{active = tab;}} tabindex={active === tab ? "-1" : "0"}>{tab}</button>
+    {#each names as tab, i}
+        <button class:active={active === i} on:click={()=>{active = i;}} tabindex={active === i ? "-1" : "0"}>{tab}</button>
     {/each}
 </div>
 {/if}
