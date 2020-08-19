@@ -1,7 +1,7 @@
 ---
 title: 	Zápisky mojej programovacej aktivity
 tags:	log, diary, activity
-desc: 	Takmer každodenná činnosť môjho záujmu v rôznych oblastiach programovania.
+desc: 	Každodenná činnosť môjho záujmu v rôznych oblastiach programovania od polovice Mája 2020.
 date: 	2020-08-15 11:40
 bg: 	default
 ---
@@ -12,6 +12,10 @@ bg: 	default
 
 | Dátum      | Aktivita                                                     |
 | ---------- | ------------------------------------------------------------ |
+| 2020-08-19 | - Dokončenie *iairu.com v2*                                  |
+| 2020-08-18 | - Pozeranie archívnych prednášok pre ďalšie ročníky dopredu  |
+| 2020-08-17 | - Práca na resume<br />- Pozeranie ďaľších prednášok<br />- Predpríprava na ďalší semester<br />- C++ Templates |
+| 2020-08-16 | - [Pozeranie](https://www.youtube.com/watch?v=QyJZzq0v7Z4) [množstva](https://www.youtube.com/watch?v=KVpHouVMTgY) [zaujímavých](https://www.youtube.com/watch?v=1J6Z5wBfSnQ) [videí](https://www.youtube.com/watch?v=6Y3W94_8scw) |
 | 2020-08-15 | - Práca na tomto poste<br />- Pečené buchtičky <br />- Implementácia jazykov v URL pre osobné portfolio + automatická lokalizácia v navigačných prvkoch |
 | 2020-08-14 | - Pozeranie prednášok o nepodplácaní sa<br />- Quick SEO fix (problém s User-Agent detekciou) na *strukshow.com*<br />- Nahodenie *iairu.com v2* do GitHub repozitára, zatial na separátnom dev branchi<br />- Setup Visual Studia pre gamedev na základe [Chili](https://www.youtube.com/playlist?list=PLqCJpWy5FohcehaXlCIt8sVBHBFFRVWsx) videí |
 | 2020-08-13 | - Problemsolving na Manjaro linuxe: upgrade, package konflikty, gpg error, AUR packages |
@@ -89,5 +93,4 @@ bg: 	default
 | 2020-05-21 | ZPRPR Cvičenia 8 a 9                                         |
 | 2020-05-20 | ZTIAPL Kompletné dokončenie Save The Princess hry            |
 | 2020-05-15 | Záverečný test zo Semináru z algoritmizácie a programovania [FIIT STU]<br />Bonusový test zo ZPRPR (Skúška či všetko šlape pred skúškou) |
-|            |                                                              |
 
