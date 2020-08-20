@@ -11,11 +11,11 @@ A multilanguage portfolio of my *so-far-mostly-personal* dev works built on top 
 
 ### A short ToDo list of stuff to be done before release
 
-- `dev/[slug]` - 404 instead of 500
+- ~~`dev/[slug]` - 404 instead of 500~~
 - ~~create `[lang]` and create some kind of a SEO-friendly language URL handling~~
 - biography, some numbers and catchy text content overall
 - Maybe also:
-  - TOC-style side menu for .md generated content
+  - ~~TOC-style side menu for .md generated content~~ (in progress)
   - History navigation on modals 
   - Stats component with cool circles
   - A ton of other stuff written in my OneNote
@@ -24,3 +24,7 @@ A multilanguage portfolio of my *so-far-mostly-personal* dev works built on top 
 
 - All info is currently pulled directly from either .md or a given route .svelte file (index.svelte for example), not from JSON, because I don't have a single use case that would warrant such change.
   - Maybe except the iframe stuff, that would definitely work better with a more reasonable content / front-end relationship, because currently the site gets loaded separately in each iframe, I feel though that its a can of worms to get this working and there isn't that much benefit from it.
+
+### Important for maintenance
+
+- Custom `server.mjs` mod (that removes the need for `<base>` and thus fixes `href="#some-id"` relative links outside root file) requires that the modifications from previous commits be made to the `node_modules/sapper/runtime/server.mjs` file, not the generated `src/...` file (which would get overwritten on deployment). Alternative option might be developing a custom `rollup` plugin.
