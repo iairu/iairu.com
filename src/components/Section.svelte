@@ -4,8 +4,9 @@
 	import Tags from './Tags.svelte';
     import { onMount } from "svelte";
     import { getSlug } from "./scripts/stringToSlug.js";
-    import { stores } from '@sapper/app';
     import { href } from "./Modal.svelte";
+    import permalink from "./scripts/permalink.js";
+    import { stores } from '@sapper/app';
     const { page } = stores();
     
     export let icon = "";
@@ -22,9 +23,6 @@
     export let dark = false;
     let tab;
 
-    function permalink() {
-        return "//" + $page.host + $page.path + "#" + slug;
-    }
 </script>
 
 <section class={"flex " + (row ? "row" : "col")} id={slug} class:dark={dark}>
@@ -41,7 +39,7 @@
                     {/if}
                     {#if tabs.length}<TabMenu names={tabs} bind:active={tab} />{/if}
                 </div>
-                <a class="permalink" aria-label="URL of this section" href={permalink()}><i class="fa fa-link"></i></a>
+                <a class="permalink" aria-label="URL of this section" href={permalink($page.host, $page.path, slug)}><i class="fa fa-link"></i></a>
             </div>
         {/if}
 
