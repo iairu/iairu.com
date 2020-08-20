@@ -17,3 +17,8 @@ export function getSlug(str) {
 
     return str;
 }
+
+export function IDstartsWithNumberFix(id) {
+    if (id && id.length && id.length > 0 && id[0].match(/\d/)) id = "_" + id; // IDs can't begin with a number
+    return id;
+}
