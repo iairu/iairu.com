@@ -4,6 +4,7 @@
     export let activeIsName = false; // use names instead of indexes (doesn't work well with localized words)
     export let clickHandler = (name, i)=>{}; // optional in cases where bind:active is too complex to implement
     export let attached = false; // display as if the tabs are attached to a panel below
+    export let dark = false; // only supported if not attached right now
     $: console.log(active);
     function internalClickHandler(i) {
         active = activeIsName ? names[i] : i;
@@ -15,7 +16,7 @@
 </script>
 
 {#if names.length}
-<div class="menu" class:attached={attached}>
+<div class="menu" class:attached={attached} class:dark={dark}>
     {#each names as tab, i}
         <button class:active={isActive(i, active)} on:click={()=>{internalClickHandler(i);}} tabindex={isActive(i, active) ? "-1" : "0"}>{tab}</button>
     {/each}
@@ -44,6 +45,18 @@
             }
             &:not(.active):focus {
                 background: #f8f8f8;
+            }
+        }
+        &.dark {
+            border-color: rgba(255,255,255,0.2);
+            button {
+                background: #222;
+                color: white;
+                border-color: rgba(255,255,255,0.1);
+                &.active {background: #363636;}
+                &:not(.active):focus {
+                    background: #292929;
+                }
             }
         }
         &.attached {

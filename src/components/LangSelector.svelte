@@ -6,6 +6,7 @@
     import { goto } from '@sapper/app';
     
     export let useAnchors = false; // show as nav instead of select (for crawlers & sapper export parser)
+    export let dark = false; // only supported with TabMenu (!useAnchors)
     let current;
     let supported;
     const unsubscribe = lang.subscribe((lng)=>{
@@ -35,7 +36,7 @@
 {#if current && supported}
 
     {#if !useAnchors}
-    <TabMenu names={supported} active={current} clickHandler={handleLangChange} activeIsName />
+    <TabMenu names={supported} active={current} clickHandler={handleLangChange} activeIsName {dark} />
     {:else}
     <Nav nav={supported.map(lng => {
         return {text: lng, href: "/" + lng, modal: false, hideExt: true, sameTarget: true, static: true}
