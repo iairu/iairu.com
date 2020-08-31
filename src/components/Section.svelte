@@ -18,6 +18,8 @@
     export let hrp = false; // padding
     export let hrh = false; // halved width
     export let row = false; // change flex from column to row wrap
+    export let pt = false; // extra padding top
+    export let pb = false; // extra padding bottom
     export let tags = "";
     export let tabs = [];
     export let dark = false;
@@ -25,7 +27,7 @@
 
 </script>
 
-<section class={"flex " + (row ? "row" : "col")} id={slug} class:dark={dark}>
+<section class={"flex " + (row ? "row" : "col")} id={slug} class:dark={dark} class:pt={pt} class:pb={pb}>
     <div class="content-wrapper">
         {#if hr || hrd || hrp || hrh}<hr class:hrd class:hrp class:hrh>{/if}
 
@@ -44,7 +46,7 @@
         {/if}
 
         {#if tags}
-            <Tags {tags} />
+            <Tags {tags} {dark} />
         {/if}
 
         {#if !tabs.length}
@@ -147,7 +149,6 @@
                 >* {margin: 20px 0;}
             }
         }
-        
         &.dark {
             color: white;
             background: #222222;
@@ -155,6 +156,8 @@
             border-left: none;
             border-right: none;
         }
+        &.pt {padding-top: 20px;}
+        &.pb {padding-bottom: 20px;}
     }
     section.flex.row>div.content-wrapper {
         >div.content, >section.tabs>div.content {
