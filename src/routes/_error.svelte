@@ -1,9 +1,12 @@
 <script>
+	import { dark, darkHeader } from "../components/DarkStore.svelte";
 	export let status;
 	export let error;
 	import Layout from "./[lang]/_layout.svelte";
 
 	const dev = process.env.NODE_ENV === 'development';
+	dark.set(false);
+	darkHeader.set(false);
 </script>
 
 <svelte:head>

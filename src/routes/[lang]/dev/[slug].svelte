@@ -48,10 +48,6 @@
     darkHeader.set(dark);
     onMount(()=>{
         if (content) {toc = generateTOC(content);}
-        return ()=>{
-            darkstore.set(false);
-            darkHeader.set(false);
-        }
     });
 </script>
 

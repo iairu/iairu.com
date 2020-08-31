@@ -14,10 +14,7 @@
 	const unsub = lang.subscribe((lng)=>{l = lng;});
 	darkHeader.set(true);
 	onMount(()=>{
-		return ()=>{
-			unsub();
-			darkHeader.set(false);
-		}
+		return ()=>{unsub();}
 	});
 </script>
 
