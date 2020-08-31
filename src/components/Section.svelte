@@ -20,14 +20,21 @@
     export let row = false; // change flex from column to row wrap
     export let pt = false; // extra padding top
     export let pb = false; // extra padding bottom
+    export let nbt = false; // no border top
+    export let nbb = false; // no border bottom
     export let tags = "";
     export let tabs = [];
     export let dark = false;
+    export let light = false;
     let tab;
 
 </script>
 
-<section class={"flex " + (row ? "row" : "col")} id={slug} class:dark={dark} class:pt={pt} class:pb={pb}>
+<section class={"flex " + (row ? "row" : "col")} id={slug} 
+    class:dark={dark} class:light={light} 
+    class:pt={pt} class:pb={pb}
+    class:nbt={nbt} class:nbb={nbb}
+    >
     <div class="content-wrapper">
         {#if hr || hrd || hrp || hrh}<hr class:hrd class:hrp class:hrh>{/if}
 
@@ -156,8 +163,14 @@
             border-left: none;
             border-right: none;
         }
+        &.light {
+            background: #ececec;
+            border: 1px solid #cfcfcf;
+        }
         &.pt {padding-top: 20px;}
         &.pb {padding-bottom: 20px;}
+        &.nbt {border-top: none;}
+        &.nbb {border-bottom: none;}
     }
     section.flex.row>div.content-wrapper {
         >div.content, >section.tabs>div.content {

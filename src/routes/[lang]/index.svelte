@@ -28,7 +28,7 @@
 </svelte:head>
 
 {#if SK}
-<S dark name="Ondrej Špánik" slug="about" tags="junior developer, grafický dizajnér, študent">
+<S dark name="Ondrej Špánik" slug="about" tags="junior developer, grafický dizajnér, študent" nbb>
 	<p style="max-width: 500px;">
 		<i>
 			Vždy som mal priveľa digitálnych záujmov na to aby som sa pozastavil a obzrel druhým smerom, von z okna. 
@@ -44,7 +44,7 @@
 	]} />
 </S>
 {:else}
-<S dark name="Ondrej Špánik" slug="about" tags="junior developer, graphic designer, student">
+<S dark name="Ondrej Špánik" slug="about" tags="junior developer, graphic designer, student" nbb>
 	<p style="max-width: 500px;">
 		<i>
 			I've always had too many digital interests to make me pause and think, perhaps look the other way - out the window.
@@ -61,7 +61,7 @@
 </S>
 {/if}
 
-<S pb dark row icon="fa fa-running" name={SK ? "Aktívne projekty" : "Active projects"} slug="projects">
+<S pb dark row icon="fa fa-running" name={SK ? "Aktívne projekty" : "Active projects"} slug="projects" nbt hrh>
 	<Thumb dark
 		name="Blog CMS"
 		icon="fa fa-window-restore"
@@ -262,7 +262,7 @@
 	{/if}
 </S>
 
-<S icon="fa fa-feather-alt" name={SK ? "Biografia" : "Biography"} slug="bio" hrp>
+<S light icon="fa fa-feather-alt" name={SK ? "Biografia" : "Biography"} slug="bio" pt pb>
 	<Tabs names={[
 		SK ? "Osnova" : "Outline",
 		SK ? "Príbeh" : "Story"
@@ -288,7 +288,7 @@
 </S>
 
 {#if SK}
-<S icon="fa fa-comment-dots" name="Niečo viac..." slug="more" hrd>
+<S light icon="fa fa-comment-dots" name="Niečo viac..." slug="more" pt pb nbt>
 	<Nav nav={[
 		{icon: "fa fa-clipboard-list", text: "Programovací denník", href: "/dev/log", isButton: true}
 	]}/>
