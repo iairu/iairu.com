@@ -263,27 +263,43 @@
 </S>
 
 <S light icon="fa fa-feather-alt" name={SK ? "Biografia" : "Biography"} slug="bio" pt pb>
-	<Tabs names={[
-		SK ? "Osnova" : "Outline",
-		SK ? "Príbeh" : "Story"
-	]} let:active>
-		{#if active === 0}
-			Osnova pôjde sem
-		{:else if active === 1}
-			Príbeh pôjde sem
-		{/if}
-	</Tabs>
-	<S icon="fa fa-keyboard" name="Zručnosti" importance={2} hrd>
-		<p>
-			Niečo viem<br>
-			Niečo neviem
-		</p>
+	<S row cg>
+		<i style="max-width: 50%;">
+			Narodil som sa v Piešťanoch, študoval v Trenčíne a momentálne študujem v Bratislave. Od mala ma bavilo experimentovať s čímkoľvek, 
+			z čoho sa neskôr zrodil záujem o dva polárne rozdielne smery - technický a umelecký. Deň, kedy som dostal svoj prvý počítač, bol
+			dňom, ktorý ma kompletne vtiahol do digitálneho sveta, kde sa medze kreativite naozaj nekladú.
+		</i>
+		<div class="image">Sem pôjde pekný obrázok</div>
 	</S>
-	<S icon="fa fa-graduation-cap" name="Vzdelanie" importance={2} hrd>
-		<p>
-			Niečo viem<br>
-			Niečo neviem
-		</p>
+	<S row icon="fa fa-keyboard" name={SK ? "Schopnosti" : "Skills"} importance={2} hrd cg>
+		<Tabs names={[SK ? "Programovanie" : "Programming"]}>
+			- HTML, CSS (SCSS), Git<br>
+			- JavaScript ES6 (Node.js, Svelte, základy Vue.js a Reactu), PHP<br>
+			- C, Bash, Základné zručnosti v jazykoch Java, Python<br>
+			- AutoHotkey
+		</Tabs>
+		<Tabs names={[SK ? "Grafický dizajn" : "Graphic design"]}>
+			- Expertné, každodenné skúsenosti s Adobe CC balíkom, najmä:<br>
+			Adobe Photoshop, Adobe Illustrator, Adobe Premiere Pro, Adobe InDesign<br>
+			- Širšia znalosť softvéru Figma a Blender
+		</Tabs>
+	</S>
+	<S row icon="fa fa-graduation-cap" name="Vzdelanie" importance={2} hrd cg>
+		<Tabs names={["FIIT " + (SK ? "(informatika)" : "(computer science)")]}>
+			<b>Fakulta informatiky a informačných technológií STU</b> // September 2019 – Júl 2023<br>
+			<u>Odbor BC-INFO4 Informatika (bakalár), na začiatku 2. ročníka, 4-ročné štúdium</u><br>
+			- Priemer 1.41 (najlepších 11%) za dokončené semestre<br>
+			- Nadobudnutie základov programovania v jazykoch C, JavaScript, PHP<br>
+			- Zlepšenie rešeršových a prezentačných schopností, práce s Linuxom
+		</Tabs>
+		<Tabs names={["SUPTN " + (SK ? "(grafický dizajn)" : "(graphic design)")]}>
+			<b>Škola umeleckého priemyslu Trenčín</b> // September 2015 – Jún 2019<br>
+			<u>Odbor 8261 M Propagačná grafika, 4-ročné štúdium</u><br>
+			- Ukončené úplné stredné odborné vzdelanie<br>
+			- Nadobudnutie praktických aj teoretických znalostí v oblasti grafického dizajnu<br>
+			- Navrhovanie, organizácia, realizácia a prezentácia vlastnej grafickej a umeleckej tvorby<br>
+			- Skúsenosti s typografiou, printovými médiami, Adobe CC balíkom
+		</Tabs>
 	</S>
 </S>
 
