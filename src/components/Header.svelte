@@ -2,7 +2,7 @@
     import Nav from './Nav.svelte';
 	import { stores } from '@sapper/app';
     const { page } = stores();
-	import { dark } from './DarkStore.svelte';
+	import { dark, darkHeader } from './DarkStore.svelte';
     import LangSelector from './LangSelector.svelte';
     import { lang } from "./LangStore.svelte";
 
@@ -14,11 +14,11 @@
     $: showHomeArrow = splitPath.length > 3 || (splitPath.length === 3 && splitPath[splitPath.length - 1] !== "");
 </script>
 
-<header class:dark={$dark}>
+<header class:dark={$dark || $darkHeader}>
     <div class="content">
         {#if showHomeArrow}<a class="home" href={"/" + ($lang.current ? $lang.current : "")}><i class="fa fa-angle-double-left"></i></a>{/if}
         <div class="left">
-            <img class="logo" src={!$dark ? "/_global/logo.svg" : "/_global/logo-w.svg"} alt="Logo">
+            <img class="logo" src={$dark || $darkHeader ? "/_global/logo-w.svg" : "/_global/logo.svg"} alt="Logo">
             <LangSelector />
         </div>
         <Nav {nav} />
@@ -28,9 +28,9 @@
 <style lang="scss" global>
     header {
         display: flex;
-        margin: calc(2em + 20px);
-        margin-bottom: 0;
-        border-bottom: 1px solid rgba(0,0,0,0.2);
+        padding: calc(2em + 20px);
+        // padding-bottom: 0;
+        // border-bottom: 1px solid rgba(0,0,0,0.2);
         @media (max-width: 850px) {
             border-color: transparent;
         }
@@ -69,7 +69,10 @@
             &:focus {opacity: 1;}
         }
         @media screen {
-            &.dark {border-color: rgba(255,255,255,0.2);}
+            &.dark {
+                background: black;
+                border-color: rgba(255,255,255,0.2);
+            }
         }
         @media print {
             a.home {display: none;}
