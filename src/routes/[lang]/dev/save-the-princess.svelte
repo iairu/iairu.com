@@ -17,9 +17,9 @@
     }
 
     onMount(()=>{
-        document.body.classList.add("dark");
+        // document.body.classList.add("dark");
         rescaleGameWindow();
-        return ()=>{ document.body.classList.remove("dark"); }
+        // return ()=>{ document.body.classList.remove("dark"); }
     })
 </script>
 

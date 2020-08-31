@@ -53,7 +53,7 @@
 		{icon: "fa fa-envelope", text: "E-mail: spanik11@msn.com", href: "mailto:spanik11@msn.com", hideExt: true}
 	]} />
 {/if}
-<main>
+<main class:iframe={isIframe}>
 	<slot />
 	{#if !isIframe}
 	<S dark icon="fa fa-address-card" name="Kontakt" slug="contact">
@@ -149,9 +149,11 @@
 	}
 	main {
 		position: relative;
-		padding-top: 2em;
 		margin: 0 auto;
 		box-sizing: border-box;
+		&.iframe {
+			padding-top: 2em;
+		}
 	}
 	hr {
 		border: none;
@@ -182,7 +184,7 @@
 		border-color: rgba(255,255,255,0.2);
 		color: white;
 	} 
-	@media screen {body.dark hr {border-color: rgba(255,255,255,0.2);}}
+	@media screen {.dark hr {border-color: rgba(255,255,255,0.2);}}
 	span.message {
 		padding: 5px 15px;
 		&.error {
