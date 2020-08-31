@@ -46,7 +46,6 @@
 </svelte:head>
 
 {#if post}
-<section class="post">
 <section class="post" class:dark={dark}>
     <div class="content-wrapper">
         {#if !post.error}
@@ -120,6 +119,7 @@
                     background: linear-gradient(transparent, white);
                 }
             }
+        }
         @media screen {
             &.dark {
                 color: white;
