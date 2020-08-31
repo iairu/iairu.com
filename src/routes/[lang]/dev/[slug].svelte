@@ -44,10 +44,14 @@
         return moment(date).calendar();
     }
 
-    darkstore.set(dark);
-    darkHeader.set(dark);
     onMount(()=>{
+        darkstore.set(dark);
+        darkHeader.set(dark);
         if (content) {toc = generateTOC(content);}
+        return (()=>{
+            darkstore.set(false);
+            darkHeader.set(false);
+        })
     });
 </script>
 

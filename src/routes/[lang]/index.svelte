@@ -12,9 +12,12 @@
 	let SK = false;
 	$: SK = l.current === "sk"; // basically a macro
 	const unsub = lang.subscribe((lng)=>{l = lng;});
-	darkHeader.set(true);
 	onMount(()=>{
-		return ()=>{unsub();}
+		darkHeader.set(true);
+		return ()=>{
+			unsub();
+			darkHeader.false(true);
+		}
 	});
 </script>
 
