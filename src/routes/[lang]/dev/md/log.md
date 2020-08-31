@@ -12,7 +12,15 @@ bg: 	default
 
 | Dátum      | Aktivita                                                     |
 | ---------- | ------------------------------------------------------------ |
-| 2020-08-19 | - Dokončenie *iairu.com v2*                                  |
+| 2020-08-27 | - Prvé praktické skúsenosti budovania front-endu v Reacte (*preferujem Svelte*) |
+| 2020-08-26 | - Presťahovanie na internát s cieľom nájsť si brigádu relevantnú programovaniu<br />- Kúpa a pohrávanie sa s Raspberry Pi 4B (snaha o sprevádzkovanie Access Pointu) |
+| 2020-08-25 | - Dokončené SoloLearn *React+Redux* aj *C++* kurzy           |
+| 2020-08-24 | - Pozeranie RxJS a ako funguje                               |
+| 2020-08-23 | *Day off*                                                    |
+| 2020-08-22 | - Čítanie knihy o algoritmoch, konkrétne Search algoritmy    |
+| 2020-08-21 | *Day off*                                                    |
+| 2020-08-20 | - Čítanie knihy o algoritmoch                                |
+| 2020-08-19 | - Pomalé dokončovanie *iairu.com v2*                         |
 | 2020-08-18 | - Pozeranie archívnych prednášok pre ďalšie ročníky dopredu  |
 | 2020-08-17 | - Práca na resume<br />- Pozeranie ďaľších prednášok<br />- Predpríprava na ďalší semester<br />- C++ Templates |
 | 2020-08-16 | - [Pozeranie](https://www.youtube.com/watch?v=QyJZzq0v7Z4) [množstva](https://www.youtube.com/watch?v=KVpHouVMTgY) [zaujímavých](https://www.youtube.com/watch?v=1J6Z5wBfSnQ) [videí](https://www.youtube.com/watch?v=6Y3W94_8scw) |
