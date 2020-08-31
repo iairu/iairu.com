@@ -15,8 +15,15 @@
     onDestroy(unsubscribe);
     function replaceURILang(current,_new) {
         if (typeof window !== 'undefined') {
-            let restofuri = window.location.pathname.substring(("/" + current).length);
-            goto("/" + _new + restofuri);
+            let path = window.location.pathname;
+            let urilangLen = ("/" + current).length;
+            let urilang = path.substring(1,urilangLen);
+            let trailing = path.substring(urilangLen,urilangLen + 1);
+            if (urilang === current && [undefined,""].includes(trailing)) {
+                let restofuri = path.substring(urilangLen);
+                goto("/" + _new + restofuri);
+            }
+            console.log(urilang, current, trailing);
             // window.history.pushState(null,window.title,"/" + _new + restofuri);
         }
     }
