@@ -1,5 +1,4 @@
 <script context="module">
-	import { onMount } from 'svelte';
     import { getPost } from './md.js';
     export async function preload({ params, query }) {
         // the `slug` parameter is available because
@@ -9,7 +8,9 @@
 </script>
 
 <script>
+    import { onMount } from 'svelte';
     import { dark as darkstore } from "../../../components/DarkStore.svelte";
+    import { darkHeader } from "../../../components/DarkStore.svelte";
     import Tags from "../../../components/Tags.svelte";
     import moment from "moment/src/moment.js";
     import "moment/src/locale/sk.js";
@@ -23,9 +24,13 @@
         return moment(date).calendar();
     }
 
+    darkstore.set(dark);
+    darkHeader.set(dark);
     onMount(()=>{
-        darkstore.set(dark);
-        return ()=>{darkstore.set(false);}
+        return ()=>{
+            darkstore.set(false);
+            darkHeader.set(false);
+        }
     });
 </script>
 
@@ -42,6 +47,7 @@
 
 {#if post}
 <section class="post">
+<section class="post" class:dark={dark}>
     <div class="content-wrapper">
         {#if !post.error}
             {#if post.metadata.title || post.metadata.tags || post.metadata.desc || post.metadata.date}
@@ -113,6 +119,11 @@
                     bottom: 0;
                     background: linear-gradient(transparent, white);
                 }
+            }
+        @media screen {
+            &.dark {
+                color: white;
+                background: black;
             }
         }
     }
