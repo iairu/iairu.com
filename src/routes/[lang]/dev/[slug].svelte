@@ -15,9 +15,29 @@
     import moment from "moment/src/moment.js";
     import "moment/src/locale/sk.js";
     import Error from "../../_error.svelte";
+    import Nav from '../../../components/Nav.svelte';
 
     export let post;
     export let dark = false;
+
+    let toc;
+    let content;
+
+    function generateTOC(elm) {
+        if (!elm.children) return;
+        let links = [];
+        for(var i in elm.children) {
+            if (["H1","H2","H3","H4","H5","H6"].includes(elm.children[i].tagName) && elm.children[i].hasAttribute("id")) {
+                let headingSize = parseInt(elm.children[i].tagName.substring(1,2));
+                links.push({
+                    slug: elm.children[i].getAttribute("id"),
+                    title: elm.children[i].innerText,
+                    importance: headingSize
+                });
+            }
+        }
+        return links;
+    }
 
     function processDate(date) {
         moment.locale("sk");
@@ -27,6 +47,7 @@
     darkstore.set(dark);
     darkHeader.set(dark);
     onMount(()=>{
+        if (content) {toc = generateTOC(content);}
         return ()=>{
             darkstore.set(false);
             darkHeader.set(false);
@@ -59,7 +80,18 @@
                 </div>
             {/if}
             {#if post.metadata.bg}<div class="post-bg" style={"background-image: url('/_dev/bgs/" + post.metadata.bg + ".jpg');"}></div>{/if}
-            <div class="content">
+            {#if toc && toc.length}
+            <div class="toc">
+                <Nav nav={toc.map(link => {
+                    return {
+                        href: "#" + link.slug,
+                        text: link.title,
+                        hideExt: true
+                    }
+                })} />
+            </div>
+            {/if}
+            <div class="content" bind:this={content}>
                 {#if post.html}{@html post.html}{/if}
                 <slot></slot>
             </div>
@@ -89,6 +121,7 @@
             padding: 0 calc(2em + 20px);
             padding-top: 2em;
             >.metadata,
+            >.toc,
             >.content {
                 position: relative;
                 z-index: 10;
@@ -118,6 +151,9 @@
                     bottom: 0;
                     background: linear-gradient(transparent, white);
                 }
+            }
+            >.toc {
+
             }
         }
         @media screen {
