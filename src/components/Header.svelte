@@ -54,6 +54,7 @@
             .logo {
                 width: 120px;
                 opacity: 0.8;
+                margin: 5px 10px 10px 0;
             }
         }
         a.home {
