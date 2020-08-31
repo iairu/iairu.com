@@ -22,6 +22,7 @@
     export let pb = false; // extra padding bottom
     export let nbt = false; // no border top
     export let nbb = false; // no border bottom
+    export let cg = false; // flex-grow: 1; on all direct children
     export let tags = "";
     export let tabs = [];
     export let dark = false;
@@ -34,6 +35,7 @@
     class:dark={dark} class:light={light} 
     class:pt={pt} class:pb={pb}
     class:nbt={nbt} class:nbb={nbb}
+    class:cg={cg}
     >
     <div class="content-wrapper">
         {#if hr || hrd || hrp || hrh}<hr class:hrd class:hrp class:hrh>{/if}
@@ -147,6 +149,11 @@
         &.pb {padding-bottom: 20px;}
         &.nbt {border-top: none;}
         &.nbb {border-bottom: none;}
+        &.cg {
+            >div.content-wrapper {
+                >div.content>*, >section.tabs>div.content>* {flex-grow: 1;}
+            }
+        }
     }
     section.flex.row>div.content-wrapper {
         >div.content, >section.tabs>div.content {

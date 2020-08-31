@@ -16,7 +16,12 @@
 
 <style lang="scss" global>
     section.tabs {
+        display: flex;
+        flex-flow: column;
+        align-items: flex-start;
         &.frame>div.content {
+            align-self: stretch;
+            flex-grow: 1;
             background: #f1f1f1;
             border: 1px solid rgba(0,0,0,0.2);
             padding: 5px 15px;
