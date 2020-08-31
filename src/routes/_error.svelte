@@ -2,6 +2,7 @@
 	export let status;
 	export let error;
 	import Layout from "./[lang]/_layout.svelte";
+	import S from '../components/Section.svelte';
 
 	const dev = process.env.NODE_ENV === 'development';
 </script>
@@ -11,9 +12,11 @@
 </svelte:head>
 
 <Layout external>
-	<span class="message error"><b>{status}</b> {error.message}</span>
+	<S>
+		<span class="message error"><b>{status}</b> {error.message}</span>
 
-	{#if dev && error.stack}
-		<pre>{error.stack}</pre>
-	{/if}
+		{#if dev && error.stack}
+			<pre>{error.stack}</pre>
+		{/if}
+	</S>
 </Layout>
