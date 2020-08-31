@@ -13,5 +13,5 @@
 </script>
 
 <section style="opacity: 0;">
-    <LangSelector spreadOut />
+    <LangSelector useAnchors />
 </section>

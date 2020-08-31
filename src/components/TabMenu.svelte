@@ -1,13 +1,23 @@
 <script>
     export let names = [];
-    export let active = 0;
+    export let active = 0; // index of the active name from names array
+    export let activeIsName = false; // use names instead of indexes (doesn't work well with localized words)
+    export let clickHandler = (name, i)=>{}; // optional in cases where bind:active is too complex to implement
     export let attached = false; // display as if the tabs are attached to a panel below
+    $: console.log(active);
+    function internalClickHandler(i) {
+        active = activeIsName ? names[i] : i;
+        clickHandler(names[i],i);
+    }
+    function isActive(i, active) { // active has to be passed as arg. to propagate reactivity
+        return (activeIsName && active === names[i]) || active === i;
+    }
 </script>
 
 {#if names.length}
 <div class="menu" class:attached={attached}>
     {#each names as tab, i}
-        <button class:active={active === i} on:click={()=>{active = i;}} tabindex={active === i ? "-1" : "0"}>{tab}</button>
+        <button class:active={isActive(i, active)} on:click={()=>{internalClickHandler(i);}} tabindex={isActive(i, active) ? "-1" : "0"}>{tab}</button>
     {/each}
 </div>
 {/if}

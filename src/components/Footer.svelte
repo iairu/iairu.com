@@ -27,7 +27,7 @@
 
 <footer class:bottom={bottom} bind:this={elm}>
     <span class="copyright">{copyright} &copy; {new Date().getFullYear()} All Rights Reserved</span>
-    <LangSelector spreadOut />
+    <LangSelector useAnchors />
 </footer>
 
 <style lang="scss" global>
