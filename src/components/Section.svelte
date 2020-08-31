@@ -100,30 +100,6 @@
                         margin: 5px 0;
                     }
                     &>*:not(:last-child) {margin-right: 15px;}
-                    >.menu { // TabMenu
-                        position: relative;
-                        border: 1px solid rgba(0,0,0,0.2);
-                        border-radius: 5px;
-                        overflow: hidden;
-                        margin: 5px 0;
-                        button {
-                            background: #fff;
-                            border: none;
-                            cursor: pointer;
-                            border-right: 1px solid rgba(0,0,0,0.2);
-                            color: black;
-                            padding: 5px 15px;
-                            &:last-of-type {border-right: none;}
-                            &.active {
-                                background: #f1f1f1;
-                                cursor: default;
-                                outline: none;
-                            }
-                            &:not(.active):focus {
-                                background: #f8f8f8;
-                            }
-                        }
-                    }
                 }
                 >a.permalink {
                     position: absolute;

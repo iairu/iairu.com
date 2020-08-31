@@ -7,7 +7,7 @@
 
 {#if names.length}
 <section class="tabs" class:frame={!hideMenu}>
-    {#if !hideMenu}<TabMenu {names} bind:active={active} />{/if}
+    {#if !hideMenu}<TabMenu {names} bind:active={active} attached />{/if}
     <div class="content">
         <slot {active} />
     </div>
@@ -16,36 +16,6 @@
 
 <style lang="scss" global>
     section.tabs {
-        >div.menu {
-            display: inline-flex;
-            @media print { display: none; }
-            flex-flow: row;
-            border: 1px solid rgba(0,0,0,0.2);
-            border-bottom: none;
-            border-radius: 5px 5px 0 0;
-            @media print { border-radius: 5px; }
-            overflow: hidden;
-            margin-bottom: -1px;
-            button {
-                background: #fff;
-                border: none;
-                cursor: pointer;
-                border-right: 1px solid rgba(0,0,0,0.2);
-                border-bottom: 1px solid rgba(0,0,0,0.2);
-                color: black;
-                padding: 5px 15px;
-                &:last-of-type {border-right: none;}
-                &.active {
-                    background: #f1f1f1;
-                    border-bottom: none;
-                    cursor: default;
-                    outline: none;
-                }
-                &:not(.active):focus {
-                    background: #f8f8f8;
-                }
-            }
-        }
         &.frame>div.content {
             background: #f1f1f1;
             border: 1px solid rgba(0,0,0,0.2);
