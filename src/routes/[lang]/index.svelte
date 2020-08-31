@@ -89,7 +89,7 @@
 	/>
 </S>
 
-<S pt row icon="fa fa-calendar-check" name={SK ? "Dokončené projekty" : "Finished projects"} slug="finished-projects" tabs={["Dev", "Gfx"]} let:tab>
+<S pt pb row icon="fa fa-calendar-check" name={SK ? "Dokončené projekty" : "Finished projects"} slug="finished-projects" tabs={["Dev", "Gfx"]} let:tab>
 	{#if tab === 0}
 	<Thumb dark
 		name="StrukShow.com"

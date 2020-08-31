@@ -56,7 +56,7 @@
 <main class:iframe={isIframe}>
 	<slot />
 	{#if !isIframe}
-	<S dark icon="fa fa-address-card" name="Kontakt" slug="contact">
+	<S dark icon="fa fa-address-card" name="Kontakt" slug="contact" pt pb>
 		<p>
 			Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates culpa expedita accusamus dignissimos. Natus provident nostrum nisi quisquam impedit doloremque quod nulla temporibus, voluptatibus, nemo quo culpa veniam aliquam deserunt.
 		</p>
