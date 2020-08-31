@@ -4,18 +4,21 @@
 	import { lang } from '../../components/LangStore.svelte';
 	import Tabs from '../../components/Tabs.svelte';
 	import Thumb from '../../components/Thumb.svelte';
-	import { onMount, onDestroy } from 'svelte';
+	import { onMount } from 'svelte';
+	import { darkHeader } from '../../components/DarkStore.svelte';
 
-	onMount(()=>{
-		document.body.classList.add("index-bg");
-		return ()=>{document.body.classList.remove("index-bg");}
-	})
 	
 	let l;
 	let SK = false;
 	$: SK = l.current === "sk"; // basically a macro
 	const unsub = lang.subscribe((lng)=>{l = lng;});
-	onDestroy(unsub);
+	darkHeader.set(true);
+	onMount(()=>{
+		return ()=>{
+			unsub();
+			darkHeader.set(false);
+		}
+	});
 </script>
 
 <svelte:head>
@@ -24,35 +27,8 @@
 	<meta name="robots" content="index,follow">
 </svelte:head>
 
-<style lang="scss" global>
-	body.index-bg {
-		@media (min-width: 1800px) {
-			background-image: url("/index-src/bg.jpg");
-			background-position: calc(50% + 450px) 120px;
-		}
-		@media (max-width: 1799px) {
-			background-image: url("/index-src/bg_ms.jpg");
-			background-position: calc(100% - 50px) 120px;
-		}
-		@media (max-width: 1450px) {
-			background-image: url("/index-src/bg_m.jpg");
-			background-position: calc(100% - 50px) 120px;
-		}
-		@media (max-width: 1000px) {
-			background-image: url("/index-src/bg_s.jpg");
-			background-position: calc(100% - 50px) 120px;
-		}
-		@media (max-width: 850px) {
-			background-image: url("/index-src/bg_s.jpg");
-			background-position: calc(100% - 50px) 10px;
-			background-size: 150px;
-			header>.content {flex-flow: column;}
-		}
-	}
-</style>
-
 {#if SK}
-<S name="Ondrej Špánik" slug="about" tags="junior developer, grafický dizajnér, študent">
+<S dark name="Ondrej Špánik" slug="about" tags="junior developer, grafický dizajnér, študent">
 	<p style="max-width: 500px;">
 		<i>
 			Vždy som mal priveľa digitálnych záujmov na to aby som sa pozastavil a obzrel druhým smerom, von z okna. 
@@ -68,7 +44,7 @@
 	]} />
 </S>
 {:else}
-<S name="Ondrej Špánik" slug="about" tags="junior developer, graphic designer, student">
+<S dark name="Ondrej Špánik" slug="about" tags="junior developer, graphic designer, student">
 	<p style="max-width: 500px;">
 		<i>
 			I've always had too many digital interests to make me pause and think, perhaps look the other way - out the window.
@@ -85,8 +61,8 @@
 </S>
 {/if}
 
-<S row icon="fa fa-running" name={SK ? "Aktívne projekty" : "Active projects"} slug="projects" hrh>
-	<Thumb
+<S pb dark row icon="fa fa-running" name={SK ? "Aktívne projekty" : "Active projects"} slug="projects">
+	<Thumb dark
 		name="Blog CMS"
 		icon="fa fa-window-restore"
 		tags="vue, laravel"
@@ -95,10 +71,11 @@
 				: "Management for my own blog. First Laravel project."
 		}
 		from="2020-08-06"
+		bgOpacity={0.25}
 		progress={10}
 		to=""
 	/>
-	<Thumb
+	<Thumb dark
 		name="PickPocket"
 		icon="fab fa-get-pocket"
 		tags="python"
@@ -107,11 +84,12 @@
 				: "Native Pocket tag and link management with focus on speed."
 		}
 		from="2019-09-09"
+		bgOpacity={0.25}
 		progress={35}
 	/>
 </S>
 
-<S row icon="fa fa-calendar-check" name={SK ? "Dokončené projekty" : "Finished projects"} slug="finished-projects" tabs={["Dev", "Gfx"]} let:tab>
+<S pt row icon="fa fa-calendar-check" name={SK ? "Dokončené projekty" : "Finished projects"} slug="finished-projects" tabs={["Dev", "Gfx"]} let:tab>
 	{#if tab === 0}
 	<Thumb dark
 		name="StrukShow.com"
