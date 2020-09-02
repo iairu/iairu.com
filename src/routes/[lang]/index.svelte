@@ -1,4 +1,5 @@
 <script>
+	import Quote from '../../components/Quote.svelte';
 	import Nav from '../../components/Nav.svelte';
 	import S from '../../components/Section.svelte';
 	import C from "../../components/Columns.svelte";
@@ -31,41 +32,27 @@
 <S dark wrapper>
 <C count={2} let:column eq mdel={1}>
 	{#if column === 0}
-	{#if SK}
-	<S dark name="Ondrej Špánik" slug="about" tags="junior developer, grafický dizajnér, študent" nbb nbt>
-		<p>
-			<i>
+	<S dark name="Ondrej Špánik" slug="about" tags={"junior developer, " + (SK ? "grafický dizajnér, študent" : "graphic designer, student")} nbb nbt>
+		<Quote dark>
+			{#if SK}
 				Vždy som mal priveľa digitálnych záujmov na to aby som sa pozastavil a obzrel druhým smerom, von z okna. 
 				Jedného dňa sa k tomu dostanem, predtým by som avšak rád napísal ešte pár tisícok riadkov kódu. 
 				Predstava, že si potom oddýchnem lehom v strede veľkej lúky znie nádherne, 
 				a zrovna vtedy mi zasvieti - je po oddychu, ak nejaký bol.
-			</i>
-		</p>
-		<Nav nav={[
-			{icon: "fa fa-feather-alt", 	text: "Biografia", href: "#bio"},
-			{icon: "fa fa-keyboard",		text: "Zručnosti", href: "#skills"},
-			{icon: "fa fa-graduation-cap", 	text: "Vzdelanie", href: "#edu"}
-		]} />
-	</S>
-	{:else}
-	<S dark name="Ondrej Špánik" slug="about" tags="junior developer, graphic designer, student" nbb nbt>
-		<p>
-			<i>
+			{:else}
 				I've always had too many digital interests to make me pause and think, perhaps look the other way - out the window.
 				Before I get to it one day, I plan on writing few thousand rows of code.
 				The idea, that I would chill-out beneath the blue sky sounds wonderful,
 				and that's when I get it - the rest is over, if there even was any.
-			</i>
-		</p>
+			{/if}
+		</Quote>
 		<Nav nav={[
-			{icon: "fa fa-feather-alt", 	text: "Biography", href: "#bio"},
-			{icon: "fa fa-keyboard",		text: "Skills", href: "#skills"},
-			{icon: "fa fa-graduation-cap", 	text: "Education", href: "#edu"}
+			{icon: "fa fa-feather-alt", 	text: SK ? "Biografia" : "Biography", href: "#bio"},
+			{icon: "fa fa-keyboard",		text: SK ? "Zručnosti" : "Skills", href: "#skills"},
+			{icon: "fa fa-graduation-cap", 	text: SK ? "Vzdelanie" : "Education", href: "#edu"}
 		]} />
 	</S>
-	{/if}
-
-	<S pb dark row icon="fa fa-running" name={SK ? "Aktívne projekty" : "Active projects"} slug="projects" nbb nbt hr cg>
+	<S dark row icon="fa fa-running" name={SK ? "Aktívne projekty" : "Active projects"} slug="wip" nbb nbt pb hr cg>
 		<Thumb dark
 			name="Blog CMS"
 			icon="fa fa-window-restore"
@@ -93,12 +80,12 @@
 		/>
 	</S>
 	{:else}
-		ASCII profile pic goes here
+	<S bg="url('/_index/natpic.jpg') center right/cover no-repeat" fh />
 	{/if}
 </C>
 </S>
 
-<S pt pb cg row icon="fa fa-calendar-check" name={SK ? "Dokončené projekty" : "Finished projects"} slug="finished-projects" tabs={["Dev", "Gfx"]} let:tab>
+<S row icon="fa fa-calendar-check" name={SK ? "Dokončené projekty" : "Finished projects"} slug="projects" tabs={["Dev", "Gfx"]} let:tab pt pb cg>
 	{#if tab === 0}
 	<Thumb dark
 		name="StrukShow.com"
@@ -191,7 +178,7 @@
 				: "More than 26 interesting AutoHotkey scripts for automatization of repetitive digital activities."
 		}
 		nav={[
-			{icon: "fa fa-stream", text: SK ? "Pozrieť popisky skriptov" : "View descriptions (soon)", href: SK ? "/dev/ahk/" : "#", isButton: true},
+			{icon: "fa fa-stream", text: SK ? "Pozrieť popisky skriptov" : "View descriptions (soon)", href: SK ? "/dev/ahk/" : "#", isButton: true, hide: !SK},
 			{icon: "fa fa-book", text:"Seminárna práca [PDF]", href:"/dl/seminarka.pdf", hide: !SK}
 		]}
 		/>
@@ -204,7 +191,7 @@
 				: "From Debian install inside a VM to LAMP-from-scratch server setup."
 		}
 		nav={[
-			{icon: "fa fa-th", text: SK ? "CheatSheet príkazov" : "Command CheatSheet (soon)", href: SK ? "/dl/linux-prikazy.svg" : "#", isButton: true},
+			{icon: "fa fa-th", text: SK ? "CheatSheet príkazov" : "Command CheatSheet (soon)", href: SK ? "/dl/linux-prikazy.svg" : "#", isButton: true, hide: !SK},
 			{icon: "fa fa-book", text:"1 - Inštalácia Debianu [PDF]", href:"/dl/linux-install.pdf", hide: !SK},
 			{icon: "fa fa-book", text:"2 - HTTP Server [PDF]", href:"/dl/linux-http.pdf", hide: !SK}
 		]}
@@ -238,6 +225,8 @@
 			{icon: "fa fa-download", text: SK ? "Stiahnuť" : "Download", href:"https://github.com/iairu/coffeeMachine/releases"}
 		]}
 		/>
+	<Thumb empty />
+	<Thumb empty />
 	{:else if tab === 1}
 	<Thumb dark
 		name={SK ? "Grafické portfolio" : "Graphic design portfolio"}
@@ -246,7 +235,7 @@
 		icon="dumpling-w"
 		tags="design, concepts, digital"
 		desc={
-			SK	? "Koncepty brandingu, staršie dizajny webov a maturitná projekt."
+			SK	? "Koncepty brandingu, staršie dizajny webov a maturitný projekt."
 				: "Branding concepts, older web designs and a graduation project."
 		}
 		nav={[
@@ -271,65 +260,77 @@
 	{/if}
 </S>
 
-<S light icon="fa fa-feather-alt" name={SK ? "Biografia" : "Biography"} slug="bio" pt pb>
-	<C count={2} eq mrev let:column>
+<S light icon="fa fa-feather-alt" name={SK ? "Biografia" : "Biography"} slug="bio" bg="url('/_index/beach.jpg') top repeat-x" pt pb>
+	<C count={2} let:column eq mrev>
 		{#if column === 0}
-			<i>
-				Narodil som sa v Piešťanoch, študoval v Trenčíne a momentálne študujem v Bratislave. Od mala ma bavilo experimentovať s čímkoľvek, 
-				z čoho sa neskôr zrodil záujem o dva polárne rozdielne smery - technický a umelecký. Deň, kedy som dostal svoj prvý počítač, bol
-				dňom, ktorý ma kompletne vtiahol do digitálneho sveta, kde sa medze kreativite naozaj nekladú.
-			</i>
-		{:else}
-			Sem pôjde pekný obrázok
+			<Quote>
+				{#if SK}
+					Narodil som sa v Piešťanoch, študoval v Trenčíne a momentálne študujem v Bratislave. Od mala ma bavilo experimentovať s čímkoľvek, 
+					z čoho sa neskôr zrodil záujem o dva polárne rozdielne smery - technický a umelecký. Deň, kedy som dostal svoj prvý počítač, bol
+					dňom, ktorý ma kompletne vtiahol do digitálneho sveta, kde sa medze kreativite naozaj nekladú.
+				{:else}
+					I was born in Piešťany, studied in Trenčín and currently study in Bratislava. Ever since I was little, I was intrigued by experiments,
+					from which an interest for two polar opposites - technical and artistic direction - was born. The day I got my first computer was the day,
+					which completely sucked me into the digital world, where creativity barriers truly don't exist. 
+				{/if}
+			</Quote>
+			<p style="opacity:0.5; font-size: 10px;">
+				<span>Photo by <a href="https://unsplash.com/@serjosoza">sergio souza</a> on <a href="https://unsplash.com/s/photos/scenery">Unsplash</a></span>
+			</p>
 		{/if}
 	</C>
-	<S row icon="fa fa-keyboard" name={SK ? "Schopnosti" : "Skills"} importance={2} hrd eq>
-		<Tabs names={[SK ? "Programovanie" : "Programming","Test"]} let:active>
-			{#if active === 0}
-				<C sep let:column>
-					{#if column === 0}
-						- HTML, CSS (SCSS), Git<br>
-						- JavaScript ES6 (Node.js, Svelte, základy Vue.js a Reactu), PHP<br>
-						- C, Bash, Základné zručnosti v jazykoch Java, Python<br>
-						- AutoHotkey
-					{:else}
-						Druhý
-					{/if}
-				</C>
-			{:else}
-				- HTML, CSS (SCSS), Git<br>
-				- JavaScript ES6 (Node.js, Svelte, základy Vue.js a Reactu), PHP<br>
-				- C, Bash, Základné zručnosti v jazykoch Java, Python<br>
-				- AutoHotkey
-			{/if}
+	<S row icon="fa fa-keyboard" name={SK ? "Schopnosti" : "Skills"} slug="skills" importance={2} hrd eq>
+		<Tabs names={[SK ? "Programovanie" : "Programming"]} let:active>
+			- HTML, CSS (SCSS), Git<br>
+			- JavaScript ES6 (Node.js, Svelte, {SK ? "základy Vue.js a Reactu" : "basics: Vue.js and React"}), PHP<br>
+			- C, Bash, {SK ? "Základné zručnosti v jazykoch" : "Basic knowledge of"} Java, Python<br>
+			- AutoHotkey
 		</Tabs>
 		<Tabs names={[SK ? "Grafický dizajn" : "Graphic design"]}>
-			- Expertné, každodenné skúsenosti s Adobe CC balíkom, najmä:<br>
+			{SK ? "- Expertné, každodenné skúsenosti s Adobe CC balíkom, najmä:"
+				: "- Expert, everyday experience with Adobe CC, especially:"}<br>
 			Adobe Photoshop, Adobe Illustrator, Adobe Premiere Pro, Adobe InDesign<br>
-			- Širšia znalosť softvéru Figma a Blender
+			{SK ? "- Širšia znalosť softvéru Figma a Blender"
+				: "- Knowledge of Figma and Blender"}
 		</Tabs>
 	</S>
-	<S row icon="fa fa-graduation-cap" name="Vzdelanie" importance={2} hrd eq>
+	<S row icon="fa fa-graduation-cap" name={SK ? "Vzdelanie" : "Education"} slug="edu" importance={2} hrd eq>
 		<Tabs names={["FIIT " + (SK ? "(informatika)" : "(computer science)")]}>
+			{#if SK}
 			<b>Fakulta informatiky a informačných technológií STU</b> // September 2019 – Júl 2023<br>
 			<u>Odbor BC-INFO4 Informatika (bakalár), na začiatku 2. ročníka, 4-ročné štúdium</u><br>
 			- Priemer 1.41 (najlepších 11%) za dokončené semestre<br>
 			- Nadobudnutie základov programovania v jazykoch C, JavaScript, PHP<br>
 			- Zlepšenie rešeršových a prezentačných schopností, práce s Linuxom
+			{:else}
+			<b>Faculty of Informatics and Information Technologies STU</b> // September 2019 – July 2023<br>
+			<u>BC-INFO4 Computer Science (bachelor), second year out of the 4-year study plan</u><br>
+			- Average 1.41 (not GPA) (top 11% of students) for finished semesters<br>
+			- Acquired basics of programming in C, JavaScript and PHP languages<br>
+			- Improved research and presentation skills, work with Linux
+			{/if}
 		</Tabs>
 		<Tabs names={["SUPTN " + (SK ? "(grafický dizajn)" : "(graphic design)")]}>
+			{#if SK}
 			<b>Škola umeleckého priemyslu Trenčín</b> // September 2015 – Jún 2019<br>
 			<u>Odbor 8261 M Propagačná grafika, 4-ročné štúdium</u><br>
 			- Ukončené úplné stredné odborné vzdelanie<br>
 			- Nadobudnutie praktických aj teoretických znalostí v oblasti grafického dizajnu<br>
 			- Navrhovanie, organizácia, realizácia a prezentácia vlastnej grafickej a umeleckej tvorby<br>
 			- Skúsenosti s typografiou, printovými médiami, Adobe CC balíkom
+			{:else}
+			<b>Škola umeleckého priemyslu Trenčín</b> // September 2015 – June 2019<br>
+			<u>8261 M Propagation graphics, 4-year study plan</u><br>
+			- Acquired practical and theoretical knowledge in the field of graphic design<br>
+			- Conceptualization, organizing, realization and presentation of original graphic and artistic works<br>
+			- Experience with typography, print media and Adobe CC bundle
+			{/if}
 		</Tabs>
 	</S>
 </S>
 
 {#if SK}
-<S light icon="fa fa-comment-dots" name="Niečo viac..." slug="more" pt pb nbt>
+<S light icon="fa fa-comment-dots" name="Niečo viac..." slug="more" pt pb nbt sli>
 	<Nav nav={[
 		{icon: "fa fa-clipboard-list", text: "Programovací denník", href: "/dev/log", isButton: true}
 	]}/>
