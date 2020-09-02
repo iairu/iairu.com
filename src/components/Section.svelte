@@ -80,6 +80,7 @@
         display: flex;
         justify-content: center;
         position: relative;
+        overflow: hidden;
         @media print {page-break-after: always;}
         >div.content-wrapper {
             width: 100%;
@@ -149,6 +150,8 @@
         &.light {
             background: #ececec;
             border: 1px solid #cfcfcf;
+            border-left: none;
+            border-right: none;
         }
         &.pt {padding-top: 20px;}
         &.pb {padding-bottom: 20px;}
