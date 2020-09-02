@@ -27,6 +27,7 @@
 
 <footer class:bottom={bottom} bind:this={elm}>
     <span class="copyright">{copyright} &copy; {new Date().getFullYear()} All Rights Reserved</span>
+    <span class="details"><slot /></span>
     <LangSelector useAnchors />
 </footer>
 
@@ -43,5 +44,8 @@
         background: white;
         nav {justify-content: center;}
         &.bottom {background: black;}
+        >.details {
+            font-size: 11px;
+        }
     }
 </style>

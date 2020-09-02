@@ -66,7 +66,11 @@
 	</S>
 	{/if}
 </main>
-{#if !isIframe}<Footer copyright={"iairu"} />{/if}
+{#if !isIframe}
+<Footer copyright={"iairu"}>
+	Powered by Svelte (Sapper framework), Vercel and FontAwesome
+</Footer>
+{/if}
 
 <!-- Floating fixed pos. stuff -->
 {#if !isIframe}<Modal />{/if}
