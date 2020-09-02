@@ -15,6 +15,7 @@
     export let bg = "default"; // static/_thumbs/bgs | expects jpg if no format given
     export let img = ""; // static/_thumbs/imgs | expects jpg if no format given
     export let bgOpacity = "";
+    export let empty = false; // act as a filler (to make last flex-grow elms less stretched / ugly)
     export let bgNoFilter = false;
     export let dark = false;
 
@@ -54,6 +55,7 @@
 <section 
     class="thumb"
     class:dark={dark}
+    class:empty={empty}
     >
     <div class="content">
 
@@ -215,6 +217,13 @@
             width: 100%;
             opacity: 0.2;
             object-fit: cover;
+        }
+        &.empty {
+            margin-top: 0 !important;
+            margin-bottom: 0 !important;
+            height: 0;
+            padding: 0;
+            border: none;
         }
         @media screen {
             &.dark {
