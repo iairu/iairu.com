@@ -1,6 +1,7 @@
 <script>
 	import Nav from '../../components/Nav.svelte';
 	import S from '../../components/Section.svelte';
+	import C from "../../components/Columns.svelte";
 	import { lang } from '../../components/LangStore.svelte';
 	import Tabs from '../../components/Tabs.svelte';
 	import Thumb from '../../components/Thumb.svelte';
@@ -27,69 +28,77 @@
 	<meta name="robots" content="index,follow">
 </svelte:head>
 
-{#if SK}
-<S dark name="Ondrej Špánik" slug="about" tags="junior developer, grafický dizajnér, študent" nbb>
-	<p style="max-width: 500px;">
-		<i>
-			Vždy som mal priveľa digitálnych záujmov na to aby som sa pozastavil a obzrel druhým smerom, von z okna. 
-			Jedného dňa sa k tomu dostanem, predtým by som avšak rád napísal ešte pár tisícok riadkov kódu. 
-			Predstava, že si potom oddýchnem lehom v strede veľkej lúky znie nádherne, 
-			a zrovna vtedy mi zasvieti - je po oddychu, ak nejaký bol.
-		</i>
-	</p>
-	<Nav nav={[
-		{icon: "fa fa-feather-alt", 	text: "Biografia", href: "#bio"},
-		{icon: "fa fa-keyboard",		text: "Zručnosti", href: "#skills"},
-		{icon: "fa fa-graduation-cap", 	text: "Vzdelanie", href: "#edu"}
-	]} />
-</S>
-{:else}
-<S dark name="Ondrej Špánik" slug="about" tags="junior developer, graphic designer, student" nbb>
-	<p style="max-width: 500px;">
-		<i>
-			I've always had too many digital interests to make me pause and think, perhaps look the other way - out the window.
-			Before I get to it one day, I plan on writing few thousand rows of code.
-			The idea, that I would chill-out beneath the blue sky sounds wonderful,
-			and that's when I get it - the rest is over, if there even was any.
-		</i>
-	</p>
-	<Nav nav={[
-		{icon: "fa fa-feather-alt", 	text: "Biography", href: "#bio"},
-		{icon: "fa fa-keyboard",		text: "Skills", href: "#skills"},
-		{icon: "fa fa-graduation-cap", 	text: "Education", href: "#edu"}
-	]} />
-</S>
-{/if}
+<S dark wrapper>
+<C count={2} let:column eq mdel={1}>
+	{#if column === 0}
+	{#if SK}
+	<S dark name="Ondrej Špánik" slug="about" tags="junior developer, grafický dizajnér, študent" nbb nbt>
+		<p>
+			<i>
+				Vždy som mal priveľa digitálnych záujmov na to aby som sa pozastavil a obzrel druhým smerom, von z okna. 
+				Jedného dňa sa k tomu dostanem, predtým by som avšak rád napísal ešte pár tisícok riadkov kódu. 
+				Predstava, že si potom oddýchnem lehom v strede veľkej lúky znie nádherne, 
+				a zrovna vtedy mi zasvieti - je po oddychu, ak nejaký bol.
+			</i>
+		</p>
+		<Nav nav={[
+			{icon: "fa fa-feather-alt", 	text: "Biografia", href: "#bio"},
+			{icon: "fa fa-keyboard",		text: "Zručnosti", href: "#skills"},
+			{icon: "fa fa-graduation-cap", 	text: "Vzdelanie", href: "#edu"}
+		]} />
+	</S>
+	{:else}
+	<S dark name="Ondrej Špánik" slug="about" tags="junior developer, graphic designer, student" nbb nbt>
+		<p>
+			<i>
+				I've always had too many digital interests to make me pause and think, perhaps look the other way - out the window.
+				Before I get to it one day, I plan on writing few thousand rows of code.
+				The idea, that I would chill-out beneath the blue sky sounds wonderful,
+				and that's when I get it - the rest is over, if there even was any.
+			</i>
+		</p>
+		<Nav nav={[
+			{icon: "fa fa-feather-alt", 	text: "Biography", href: "#bio"},
+			{icon: "fa fa-keyboard",		text: "Skills", href: "#skills"},
+			{icon: "fa fa-graduation-cap", 	text: "Education", href: "#edu"}
+		]} />
+	</S>
+	{/if}
 
-<S pb dark row icon="fa fa-running" name={SK ? "Aktívne projekty" : "Active projects"} slug="projects" nbt hrh>
-	<Thumb dark
-		name="Blog CMS"
-		icon="fa fa-window-restore"
-		tags="vue, laravel"
-		desc={
-			SK 	? "Manažment pre vlastný blog. Prvý Laravel projekt."
-				: "Management for my own blog. First Laravel project."
-		}
-		from="2020-08-06"
-		bgOpacity={0.25}
-		progress={10}
-		to=""
-	/>
-	<Thumb dark
-		name="PickPocket"
-		icon="fab fa-get-pocket"
-		tags="python"
-		desc={
-			SK	? "Natívny manažment Pocket tagov a odkazov s ohľadom na rýchlosť."
-				: "Native Pocket tag and link management with focus on speed."
-		}
-		from="2019-09-09"
-		bgOpacity={0.25}
-		progress={35}
-	/>
+	<S pb dark row icon="fa fa-running" name={SK ? "Aktívne projekty" : "Active projects"} slug="projects" nbb nbt hr cg>
+		<Thumb dark
+			name="Blog CMS"
+			icon="fa fa-window-restore"
+			tags="vue, laravel"
+			desc={
+				SK 	? "Manažment pre vlastný blog. Prvý Laravel projekt."
+					: "Management for my own blog. First Laravel project."
+			}
+			from="2020-08-06"
+			bgOpacity={0.25}
+			progress={10}
+			to=""
+		/>
+		<Thumb dark
+			name="PickPocket"
+			icon="fab fa-get-pocket"
+			tags="python"
+			desc={
+				SK	? "Natívny manažment Pocket tagov a odkazov s ohľadom na rýchlosť."
+					: "Native Pocket tag and link management with focus on speed."
+			}
+			from="2019-09-09"
+			bgOpacity={0.25}
+			progress={35}
+		/>
+	</S>
+	{:else}
+		ASCII profile pic goes here
+	{/if}
+</C>
 </S>
 
-<S pt pb row icon="fa fa-calendar-check" name={SK ? "Dokončené projekty" : "Finished projects"} slug="finished-projects" tabs={["Dev", "Gfx"]} let:tab>
+<S pt pb cg row icon="fa fa-calendar-check" name={SK ? "Dokončené projekty" : "Finished projects"} slug="finished-projects" tabs={["Dev", "Gfx"]} let:tab>
 	{#if tab === 0}
 	<Thumb dark
 		name="StrukShow.com"
@@ -263,20 +272,36 @@
 </S>
 
 <S light icon="fa fa-feather-alt" name={SK ? "Biografia" : "Biography"} slug="bio" pt pb>
-	<S row cg>
-		<i style="max-width: 50%;">
-			Narodil som sa v Piešťanoch, študoval v Trenčíne a momentálne študujem v Bratislave. Od mala ma bavilo experimentovať s čímkoľvek, 
-			z čoho sa neskôr zrodil záujem o dva polárne rozdielne smery - technický a umelecký. Deň, kedy som dostal svoj prvý počítač, bol
-			dňom, ktorý ma kompletne vtiahol do digitálneho sveta, kde sa medze kreativite naozaj nekladú.
-		</i>
-		<div class="image">Sem pôjde pekný obrázok</div>
-	</S>
-	<S row icon="fa fa-keyboard" name={SK ? "Schopnosti" : "Skills"} importance={2} hrd cg>
-		<Tabs names={[SK ? "Programovanie" : "Programming"]}>
-			- HTML, CSS (SCSS), Git<br>
-			- JavaScript ES6 (Node.js, Svelte, základy Vue.js a Reactu), PHP<br>
-			- C, Bash, Základné zručnosti v jazykoch Java, Python<br>
-			- AutoHotkey
+	<C count={2} eq mrev let:column>
+		{#if column === 0}
+			<i>
+				Narodil som sa v Piešťanoch, študoval v Trenčíne a momentálne študujem v Bratislave. Od mala ma bavilo experimentovať s čímkoľvek, 
+				z čoho sa neskôr zrodil záujem o dva polárne rozdielne smery - technický a umelecký. Deň, kedy som dostal svoj prvý počítač, bol
+				dňom, ktorý ma kompletne vtiahol do digitálneho sveta, kde sa medze kreativite naozaj nekladú.
+			</i>
+		{:else}
+			Sem pôjde pekný obrázok
+		{/if}
+	</C>
+	<S row icon="fa fa-keyboard" name={SK ? "Schopnosti" : "Skills"} importance={2} hrd eq>
+		<Tabs names={[SK ? "Programovanie" : "Programming","Test"]} let:active>
+			{#if active === 0}
+				<C sep let:column>
+					{#if column === 0}
+						- HTML, CSS (SCSS), Git<br>
+						- JavaScript ES6 (Node.js, Svelte, základy Vue.js a Reactu), PHP<br>
+						- C, Bash, Základné zručnosti v jazykoch Java, Python<br>
+						- AutoHotkey
+					{:else}
+						Druhý
+					{/if}
+				</C>
+			{:else}
+				- HTML, CSS (SCSS), Git<br>
+				- JavaScript ES6 (Node.js, Svelte, základy Vue.js a Reactu), PHP<br>
+				- C, Bash, Základné zručnosti v jazykoch Java, Python<br>
+				- AutoHotkey
+			{/if}
 		</Tabs>
 		<Tabs names={[SK ? "Grafický dizajn" : "Graphic design"]}>
 			- Expertné, každodenné skúsenosti s Adobe CC balíkom, najmä:<br>
@@ -284,7 +309,7 @@
 			- Širšia znalosť softvéru Figma a Blender
 		</Tabs>
 	</S>
-	<S row icon="fa fa-graduation-cap" name="Vzdelanie" importance={2} hrd cg>
+	<S row icon="fa fa-graduation-cap" name="Vzdelanie" importance={2} hrd eq>
 		<Tabs names={["FIIT " + (SK ? "(informatika)" : "(computer science)")]}>
 			<b>Fakulta informatiky a informačných technológií STU</b> // September 2019 – Júl 2023<br>
 			<u>Odbor BC-INFO4 Informatika (bakalár), na začiatku 2. ročníka, 4-ročné štúdium</u><br>
