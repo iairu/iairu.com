@@ -29,8 +29,7 @@
     header {
         display: flex;
         padding: calc(2em + 20px);
-        // padding-bottom: 0;
-        // border-bottom: 1px solid rgba(0,0,0,0.2);
+        padding-bottom: 2em;
         @media (max-width: 850px) {
             border-color: transparent;
         }
