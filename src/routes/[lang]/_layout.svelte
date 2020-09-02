@@ -56,10 +56,7 @@
 <main class:iframe={isIframe}>
 	<slot />
 	{#if !isIframe}
-	<S dark icon="fa fa-address-card" name="Kontakt" slug="contact" pt pb>
-		<p>
-			Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptates culpa expedita accusamus dignissimos. Natus provident nostrum nisi quisquam impedit doloremque quod nulla temporibus, voluptatibus, nemo quo culpa veniam aliquam deserunt.
-		</p>
+	<S dark icon="fa fa-address-card" name={current === "sk" ? "Kontakt" : "Contact"} slug="contact" pt pb sli>
 		<Nav nav={[
 			{icon: "fa fa-envelope", text: "E-mail: spanik11@msn.com", href: "mailto:spanik11@msn.com", isButton: true, modal: false, hideExt: true},
 			{icon: "fab fa-facebook-messenger", text: "Messenger", href: "https://m.me/iairu"},
