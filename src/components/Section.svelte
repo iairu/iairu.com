@@ -24,12 +24,14 @@
     export let nbb = false; // no border bottom
     export let cg = false; // flex-grow: 1; on all direct children = growth if in a row
     export let eq = false; // flex: 1; on all direct children = equivalent width if in a row
+    export let fh = false; // fill height (height: 100%) (use example: bg picture in 2 col layout)
     export let wrapper = false; // no margin/padding (use for wrapper sections)
     export let sli = false; // fit heading & content into a single line (900px+)
     export let tags = "";
     export let tabs = [];
     export let dark = false;
     export let light = false;
+    export let bg = ""; // background CSS attribute, options: "bg-color bg-image position/bg-size bg-repeat bg-origin bg-clip bg-attachment", if dark or light is true, don't set color
     let tab;
 
 </script>
@@ -39,8 +41,9 @@
     class:pt={pt} class:pb={pb}
     class:nbt={nbt} class:nbb={nbb}
     class:cg={cg} class:eq={eq}
-    class:sli={sli}
+    class:sli={sli} class:fh={fh}
     class:wrapper={wrapper}
+    style={bg ? "background: " + (dark ? "#222222 " : light ? "#ececec " : "") + bg + ";" : ""}
     >
     <div class="content-wrapper">
         {#if hr || hrd || hrp || hrh}<hr class:hrd class:hrp class:hrh>{/if}
@@ -193,6 +196,7 @@
             }
             }
         }
+        &.fh {height: 100%;}
     }
     section.flex.row>div.content-wrapper {
         >div.content, >section.tabs>div.content {
