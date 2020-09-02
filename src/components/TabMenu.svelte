@@ -5,7 +5,6 @@
     export let clickHandler = (name, i)=>{}; // optional in cases where bind:active is too complex to implement
     export let attached = false; // display as if the tabs are attached to a panel below
     export let dark = false; // only supported if not attached right now
-    $: console.log(active);
     function internalClickHandler(i) {
         active = activeIsName ? names[i] : i;
         clickHandler(names[i],i);
