@@ -14,15 +14,17 @@
     export let slug = getSlug(name);
     export let importance = 1;
     export let hr = false;
-    export let hrd = false; // dashed
-    export let hrp = false; // padding
-    export let hrh = false; // halved width
-    export let row = false; // change flex from column to row wrap
+    export let hrd = false; // hr dashed
+    export let hrp = false; // hr with padding
+    export let hrh = false; // hr with halved width
+    export let row = false; // change flex from column to row wrap (900px+)
     export let pt = false; // extra padding top
     export let pb = false; // extra padding bottom
     export let nbt = false; // no border top
     export let nbb = false; // no border bottom
-    export let cg = false; // flex-grow: 1; on all direct children
+    export let cg = false; // flex-grow: 1; on all direct children = growth if in a row
+    export let eq = false; // flex: 1; on all direct children = equivalent width if in a row
+    export let wrapper = false; // no margin/padding (use for wrapper sections)
     export let tags = "";
     export let tabs = [];
     export let dark = false;
@@ -35,7 +37,8 @@
     class:dark={dark} class:light={light} 
     class:pt={pt} class:pb={pb}
     class:nbt={nbt} class:nbb={nbb}
-    class:cg={cg}
+    class:cg={cg} class:eq={eq}
+    class:wrapper={wrapper}
     >
     <div class="content-wrapper">
         {#if hr || hrd || hrp || hrh}<hr class:hrd class:hrp class:hrh>{/if}
@@ -149,15 +152,27 @@
         &.pb {padding-bottom: 20px;}
         &.nbt {border-top: none;}
         &.nbb {border-bottom: none;}
+        &.eq {
+            >div.content-wrapper {
+                >div.content>*, >section.tabs>div.content>* {flex: 1;}
+            }
+        }
         &.cg {
             >div.content-wrapper {
                 >div.content>*, >section.tabs>div.content>* {flex-grow: 1;}
+            }
+        }
+        &.wrapper {
+            >div.content-wrapper {
+                padding: 0;
+                >div.content>* {margin: 0;}
             }
         }
     }
     section.flex.row>div.content-wrapper {
         >div.content, >section.tabs>div.content {
             flex-flow: row wrap;
+            @media (max-width: 900px) {flex-flow: column;}
             >* {
                 margin: 20px 40px 20px 0;
                 @media (max-width: 900px) {margin-right: 0;}
