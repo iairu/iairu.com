@@ -25,6 +25,7 @@
     export let cg = false; // flex-grow: 1; on all direct children = growth if in a row
     export let eq = false; // flex: 1; on all direct children = equivalent width if in a row
     export let wrapper = false; // no margin/padding (use for wrapper sections)
+    export let sli = false; // fit heading & content into a single line (900px+)
     export let tags = "";
     export let tabs = [];
     export let dark = false;
@@ -38,6 +39,7 @@
     class:pt={pt} class:pb={pb}
     class:nbt={nbt} class:nbb={nbb}
     class:cg={cg} class:eq={eq}
+    class:sli={sli}
     class:wrapper={wrapper}
     >
     <div class="content-wrapper">
@@ -166,6 +168,26 @@
             >div.content-wrapper {
                 padding: 0;
                 >div.content>* {margin: 0;}
+            }
+        }
+        &.sli {
+            @media (min-width: 901px) {
+            >div.content-wrapper {
+                display: flex;
+                flex-flow: row;
+                >div.heading-wrapper {
+                    display: inline-flex;
+                    align-items: flex-start;
+                    >* {white-space: nowrap;}
+                    >.heading {
+                        margin: 0;
+                        padding-bottom: 20px;
+                    }
+                }
+                >div.content, >section.tabs>div.content {
+                    justify-content: center;
+                }
+            }
             }
         }
     }
