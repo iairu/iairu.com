@@ -143,6 +143,7 @@
         .col {
             display: flex;
             flex-flow: column;
+            margin-right: 10px;
         }
         p {
             position: relative;
