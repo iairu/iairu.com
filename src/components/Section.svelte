@@ -93,6 +93,9 @@
             max-width: 1920px;
             box-sizing: border-box;
             padding: 0 calc(2em + 20px);
+            @media (max-width: 900px) {
+                padding: 0 1.5em;
+            }
             @media print {>hr { display: none; }}
             >div.heading-wrapper {
                 display: flex;
@@ -124,6 +127,7 @@
                     color: #8c9bb1;
                     outline: none;
                     visibility: hidden;
+                    @media (max-width: 900px) {display: none;}
                     &:hover {
                         opacity: 0.7;
                         visibility: visible;
