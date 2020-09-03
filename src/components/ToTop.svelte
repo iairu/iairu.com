@@ -1,6 +1,5 @@
 <script>
     import { onMount } from "svelte";
-    import { dark } from './DarkStore.svelte';
 
     export let isIframe = false;
     let y;
@@ -13,7 +12,7 @@
 
 <svelte:window bind:scrollY={y}/>
 
-<div class="backtotop" class:iframe={isIframe} class:visible={y > 300} class:dark={$dark}>
+<div class="backtotop" class:iframe={isIframe} class:visible={y > 300}>
     <button aria-label="Back to the Top" on:click={goToTop}><i class="fa fa-angle-double-up"></i></button>
 </div>
 
@@ -41,17 +40,11 @@
             border-radius: 50%;
             outline: none;
             cursor: pointer;
-            color: rgba(0,0,0,0.2);
-            border: 1px solid rgba(0,0,0,0.2);
-            background: white;
-            &:hover {color: rgba(0,0,0,0.5);}
+            color: rgba(136, 136, 136, 0.7);
+            border: 1px solid rgba(136, 136, 136, 0.7);
+            background: transparent;
+            &:hover {color: rgb(136, 136, 136);}
             &:focus {border-width: 2px;}
-        }
-        &.dark button {
-            background: black;
-            color: rgba(255,255,255,0.3);
-            border-color: rgba(255,255,255,0.3);
-            &:hover {color: rgba(255,255,255,0.7);}
         }
     }
 </style>

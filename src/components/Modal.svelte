@@ -197,20 +197,13 @@
                 box-sizing: border-box;
                 top: 5px;
                 right: 5px;
-                border: 1px solid rgba(0,0,0,0.2);
-                color: rgba(0,0,0,0.2);
-                background: white;
+                border: 1px solid rgba(136, 136, 136, 0.7);
+                color: rgba(136, 136, 136, 0.7);
                 outline: none;
                 z-index: 94;
-                &:hover {color: rgba(0,0,0,0.5);}
+                &:hover {color: rgb(136, 136, 136);}
                 &:focus {border-width: 2px;}
                 &.offset {right: 25px;}
-                &.dark {
-                    border-color: rgba(255,255,255,0.5);
-                    color: rgba(255,255,255,0.5);
-                    background: black;
-                    &:hover {color: rgba(255,255,255,0.8);}
-                }
             }
         }
         &.img>.content {
