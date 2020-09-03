@@ -27,6 +27,7 @@
     export let fh = false; // fill height (height: 100%) (use example: bg picture in 2 col layout)
     export let wrapper = false; // no margin/padding (use for wrapper sections)
     export let sli = false; // fit heading & content into a single line (900px+)
+    export let up = false; // move section up by 100px (if fh, height will be 100% + 100px) (900px+)
     export let tags = "";
     export let tabs = [];
     export let dark = false;
@@ -42,6 +43,7 @@
     class:nbt={nbt} class:nbb={nbb}
     class:cg={cg} class:eq={eq}
     class:sli={sli} class:fh={fh}
+    class:up={up}
     class:wrapper={wrapper}
     style={bg ? "background: " + (dark ? "#222222 " : light ? "#ececec " : "") + bg + ";" : ""}
     >
@@ -197,6 +199,12 @@
             }
         }
         &.fh {height: 100%;}
+        @media (min-width: 901px) {
+            &.up {
+                top: -100px;
+                &.fh {height: calc(100% + 100px);}
+            }
+        }
     }
     section.flex.row>div.content-wrapper {
         >div.content, >section.tabs>div.content {
