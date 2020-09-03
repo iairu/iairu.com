@@ -78,7 +78,7 @@
                 on:click={(e)=>{handleAnchor(e, processed[i].href, link.fnc, processed[i].modal, processed[i].samePage, processed[i].disabled, link.forceRefresh)}}
             >
                 <!-- This has to be a one-liner to avoid automatic addition of space characters -->
-                {#if link.icon}<i class={"icon " + link.icon}></i>{/if}<span class="link-text">{link.text}</span>{#if !processed[i].modal && !link.fnc && !link.hideExt}<i class={"icon-ext fa " + (!processed[i].samePage ? (!processed[i].disabled ? "fa-external-link-alt" : "fa-ban") : "fa-angle-double-down") }></i>{/if}
+                {#if link.icon}<i class={"icon " + link.icon}></i>{/if}<span class="link-text">{link.text}</span>{#if !processed[i].modal && !link.sameTarget && !link.fnc && !link.hideExt}<i class={"icon-ext fa " + (!processed[i].samePage ? (!processed[i].disabled ? "fa-external-link-alt" : "fa-ban") : "fa-angle-double-down") }></i>{/if}
             </a>
         {/if}
     {/each}
