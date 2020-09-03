@@ -62,7 +62,7 @@
         <!-- Heading, Tags, Icon -->
         <div class="heading">
             <div class="col">
-                <h3>{name}</h3>
+                {#if name}<h3>{name}</h3>{/if}
                 {#if tags}
                     <Tags {tags} {dark} />
                 {/if}
@@ -77,7 +77,7 @@
         </div>
 
         <!-- Description -->
-        <p>{desc}</p>
+        {#if desc}<p>{desc}</p>{/if}
 
         <!-- Image -->
         {#if img}<img class="img" src={"/_thumbs/imgs/" + (img.includes(".") ? img : img + ".jpg")} alt={name + " photo"} on:click={handleImageModal}>{/if}
