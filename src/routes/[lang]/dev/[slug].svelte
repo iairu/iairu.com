@@ -16,6 +16,7 @@
     import "moment/src/locale/sk.js";
     import Error from "../../_error.svelte";
     import Nav from '../../../components/Nav.svelte';
+    import C from "../../../components/Columns.svelte";
 
     export let post;
     export let dark = false;
@@ -28,11 +29,11 @@
         let links = [];
         for(var i in elm.children) {
             if (["H1","H2","H3","H4","H5","H6"].includes(elm.children[i].tagName) && elm.children[i].hasAttribute("id")) {
-                let headingSize = parseInt(elm.children[i].tagName.substring(1,2));
                 links.push({
-                    slug: elm.children[i].getAttribute("id"),
-                    title: elm.children[i].innerText,
-                    importance: headingSize
+                    href: "#" + elm.children[i].getAttribute("id"),
+                    text: elm.children[i].innerText,
+                    cls: elm.children[i].tagName,
+                    hideExt: true
                 });
             }
         }
@@ -80,21 +81,20 @@
                 </div>
             {/if}
             {#if post.metadata.bg}<div class="post-bg" style={"background-image: url('/_dev/bgs/" + post.metadata.bg + ".jpg');"}></div>{/if}
-            {#if toc && toc.length}
-            <div class="toc">
-                <Nav nav={toc.map(link => {
-                    return {
-                        href: "#" + link.slug,
-                        text: link.title,
-                        hideExt: true
-                    }
-                })} />
-            </div>
-            {/if}
-            <div class="content" bind:this={content}>
-                {#if post.html}{@html post.html}{/if}
-                <slot></slot>
-            </div>
+            <C count={2} let:column np>
+                {#if column === 0}
+                {#if toc && toc.length}
+                <div class="toc">
+                    <Nav nav={toc} />
+                </div>
+                {/if}
+                {:else}
+                <div class="content" bind:this={content}>
+                    {#if post.html}{@html post.html}{/if}
+                    <slot></slot>
+                </div>
+                {/if}
+            </C>
         {:else}
             <span class="message error"><b>{post.error.code}</b> {post.error.msg}</span>
         {/if}
@@ -120,17 +120,18 @@
             box-sizing: border-box;
             padding: 0 calc(2em + 20px);
             padding-top: 2em;
-            >.metadata,
-            >.toc,
-            >.content {
-                position: relative;
-                z-index: 10;
+            >.metadata {
                 h1 { margin-bottom: 0;}
                 hr { margin: 25px 0;}
                 .date {
                     font-family:'Courier New', Courier, monospace;
                     font-size: 12px;
                 }
+            }
+            >.metadata,
+            >.multi-col {
+                position: relative;
+                z-index: 10;
             }
             >.post-bg {
                 position: absolute;
@@ -152,8 +153,18 @@
                     background: linear-gradient(transparent, white);
                 }
             }
-            >.toc {
-
+            .toc {
+                position: sticky;
+                top: 0;
+                width: 250px;
+                nav {
+                    flex-flow: column;
+                    a {
+                        &.H2 {font-size: 12px; padding-left: 24px;}
+                        &.H3 {padding-left: 48px;}
+                        &.H4, &.H5, &.H6 {padding-left: 72px;}
+                    }
+                }
             }
         }
         @media screen {
