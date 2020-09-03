@@ -287,8 +287,11 @@
 				{/if}
 			</Quote>
 			<p style="opacity:0.5; font-size: 10px;">
-				<span>Photo by <a href="https://unsplash.com/@serjosoza">sergio souza</a> on <a href="https://unsplash.com/s/photos/scenery">Unsplash</a></span>
+				<span>Background photo by <a href="https://unsplash.com/@serjosoza">sergio souza</a> on <a href="https://unsplash.com/s/photos/scenery">Unsplash</a></span><br>
+				<span>Illustration by iairu</span>
 			</p>
+		{:else}
+			<S bg="url('/_index/bio.png') center center/contain no-repeat" fh up />
 		{/if}
 	</C>
 	<S row icon="fa fa-keyboard" name={SK ? "Schopnosti" : "Skills"} slug="skills" importance={2} hrd eq>
