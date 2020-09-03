@@ -343,11 +343,9 @@
 		</Tabs>
 	</S>
 </S>
-
-{#if SK}
-<S light icon="fa fa-comment-dots" name="Niečo viac..." slug="more" pt pb nbt sli>
+<S light icon="fa fa-comment-dots" name={SK ? "Niečo viac..." : "More..."} slug="more" pt pb nbt sli>
 	<Nav nav={[
-		{icon: "fa fa-clipboard-list", text: "Programovací denník", href: "/dev/log", isButton: true}
+		{icon: "fa fa-clipboard-list", text: "Programovací denník", href: "/dev/log", isButton: true, hide: !SK},
+		{icon: "far fa-file", text: "Resumé [PDF]", href: SK ? "/dl/resume-sk.pdf" : "/dl/resume-en.pdf", isButton: true}
 	]}/>
 </S>
-{/if}
