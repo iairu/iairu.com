@@ -24,7 +24,7 @@
     export let nbb = false; // no border bottom
     export let cg = false; // flex-grow: 1; on all direct children = growth if in a row
     export let eq = false; // flex: 1; on all direct children = equivalent width if in a row
-    export let fh = false; // fill height (height: 100%) (use example: bg picture in 2 col layout)
+    export let fh = false; // fill height (height: 100%) (use example: bg picture in 2 col layout), 45vw on mobile
     export let wrapper = false; // no margin/padding (use for wrapper sections)
     export let sli = false; // fit heading & content into a single line (900px+)
     export let up = false; // move section up by 100px (if fh, height will be 100% + 100px) (900px+)
@@ -198,7 +198,12 @@
             }
             }
         }
-        &.fh {height: 100%;}
+        &.fh {
+            height: 100%;
+            @media (max-width: 900px) {
+                height: 45vw;
+            }
+        }
         @media (min-width: 901px) {
             &.up {
                 top: -100px;
