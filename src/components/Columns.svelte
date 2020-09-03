@@ -4,11 +4,13 @@
     export let mrev = false; // reverse order on mobile screens (where shown as rows)
     export let mdel = -2; // number/array of numbers of the column(s) to be removed on mobile only
     export let sep = false; // add border separators on inner walls
+    export let np = false; // no padding
 </script>
 
-<div class="multi-col" class:eq={eq} class:mrev={mrev} class:sep={sep}>
+<div class="multi-col" class:eq={eq} class:mrev={mrev} class:sep={sep} class:np={np}>
     {#each Array(count) as _x, column}
         <div 
+            class={"column-" + column}
             class:mdel-before={mdel === column-1 || mdel.length && mdel.includes(column-1)}
             class:mdel={mdel === column || mdel.length && mdel.includes(column)}
             class:mdel-after={mdel === column+1 || mdel.length && mdel.includes(column+1)}
@@ -24,8 +26,8 @@
         flex-flow: row;
 
         &.eq>div {flex: 1;}
-        >div:not(:first-of-type) {padding-left: 25px;}
-        >div:not(:last-of-type) {padding-right: 25px;}
+        &:not(.np)>div:not(:first-of-type) {padding-left: 25px;}
+        &:not(.np)>div:not(:last-of-type) {padding-right: 25px;}
         &.sep>div:not(:first-of-type) {
             border-left: 1px solid rgba(0,0,0,0.2);
         }
@@ -34,11 +36,11 @@
             flex-flow: column;
 
             &.mrev {flex-flow: column-reverse;}
-            >div:not(:first-of-type) {
+            &:not(.np)>div:not(:first-of-type) {
                 padding-left: 0px;
                 padding-top: 25px;
             }
-            >div:not(:last-of-type) {
+            &:not(.np)>div:not(:last-of-type) {
                 padding-right: 0px;
                 padding-bottom: 25px;
             }
