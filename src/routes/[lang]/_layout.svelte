@@ -124,6 +124,7 @@
 		flex-flow: column;
 		padding: 10px;
 		border-radius: 5px;
+		overflow-x: auto;
 	}
 	pre>code {border: none;}
 	table {
