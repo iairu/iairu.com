@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 	import Nav from '../../../components/Nav.svelte';
     import Post from "./[slug].svelte";
+    import { lang } from '../../../components/LangStore.svelte';
 
     let gameWindow;
     let gameContainer;
@@ -16,8 +17,15 @@
         }
     }
 
+    let l;
+    let SK = false;
+    $: SK = l.current === "sk"; // basically a macro
+    const unsub = lang.subscribe((lng)=>{l = lng;});
     onMount(()=>{
         rescaleGameWindow();
+        return ()=>{
+            unsub();
+        }
     })
 </script>
 
@@ -39,12 +47,15 @@
     </div>
     <div class="stp-footer">
         <Nav nav={[
-            {icon: "fa fa-book", text:"Dokumentácia [PDF]", href:"/dl/save-the-princess.pdf"},
-            {icon: "fa fa-redo-alt", text:"Reštartovať", fnc:()=>{document.getElementsByClassName('stp-game')[0].contentWindow.location.reload();}}
+            {icon: "fa fa-book", text: SK ? "Dokumentácia [PDF]" : "Docs (Slovak only) [PDF]", href:"/dl/save-the-princess.pdf"},
+            {icon: "fa fa-redo-alt", text: SK ? "Reštartovať" : "Restart", fnc:()=>{document.getElementsByClassName('stp-game')[0].contentWindow.location.reload();}}
         ]} />
-        <p>Grafické spracovanie aj implementácia kódu &copy; Ondrej Špánik (iairu) 2020</p>
+        <p>{SK ? "Grafické spracovanie aj implementácia kódu" : "Design and code"} &copy; Ondrej Špánik (iairu) 2020</p>
     </div>
-    <p>Hlavným cieľom hry je prebojovať sa na vrch veže, ktorá je ukázaná v úvodnom videu a zachrániť princeznú.</p>
+    <p>
+        {SK ? "Hlavným cieľom hry je prebojovať sa na vrch veže, ktorá je ukázaná v úvodnom videu a zachrániť princeznú."
+            : "Main point of the game is to fight your way through to the top of the tower, which is shown in the intro video, and save the princess."}
+    </p>
 </Post>
 
 <style lang="scss" global>
