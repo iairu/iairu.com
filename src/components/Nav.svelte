@@ -6,6 +6,7 @@
         nav: []
             icon: (string) Font-awesome icon to prepend before the anchor's text
             text: (string) Text content of an anchor
+            cls: (string) Optional CSS class
             href: (string) Link of an anchor, if not specified will be "#", if not static localization will be automatically prepended
             isButton: (boolean) Anchor will be rendered as a button with .button class
             modal: (boolean) Anchor will be opened as a modal, by default true only if the link begins with a slash and is not downloadable (e.g. not ending with .exe or .pdf)
@@ -70,7 +71,8 @@
     {#each nav as link, i}
         {#if !link.hide && process(link, i)}
             <a 
-                class:button={link.isButton} 
+                class={link.cls}
+                class:button={link.isButton}
                 href={processed[i].href} 
                 target={processed[i].target} 
                 rel="noopener" 
