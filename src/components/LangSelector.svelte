@@ -20,7 +20,7 @@
             let urilangLen = ("/" + current).length;
             let urilang = path.substring(1,urilangLen);
             let trailing = path.substring(urilangLen,urilangLen + 1);
-            if (urilang === current && [undefined,""].includes(trailing)) {
+            if (urilang === current && [undefined,"","/","#"].includes(trailing)) {
                 let restofuri = path.substring(urilangLen);
                 goto("/" + _new + restofuri);
             }
