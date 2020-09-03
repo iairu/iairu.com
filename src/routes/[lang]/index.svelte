@@ -225,7 +225,19 @@
 			{icon: "fa fa-download", text: SK ? "Stiahnuť" : "Download", href:"https://github.com/iairu/coffeeMachine/releases"}
 		]}
 		/>
+	{#if !SK}
+	<Thumb 
+		name="More stuff available in Slovak language"
+		icon="fa fa-globe-europe"
+		bg=""
+		desc="Additional documentation, localized project examples, ..."
+		nav={[
+			{icon: "fa fa-share", text:"Switch languages", href:"/sk#projects", static: true, modal: false, sameTarget: true}
+		]} 
+		/>
+	{:else}
 	<Thumb empty />
+	{/if}
 	<Thumb empty />
 	{:else if tab === 1}
 	<Thumb dark
