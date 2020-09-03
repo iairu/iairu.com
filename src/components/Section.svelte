@@ -146,6 +146,7 @@
             >div.content, >section.tabs>div.content {
                 display: flex;
                 flex-flow: column;
+                width: 100%;
                 >* {margin: 20px 0;}
             }
         }

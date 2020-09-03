@@ -34,6 +34,11 @@
             right: 5px;
         }
         button {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
             width: 30px;
             height: 30px;
             box-sizing: border-box;

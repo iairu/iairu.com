@@ -187,6 +187,11 @@
                 height: 1px;
             }
             >button.btn-close-modal {
+                margin: 0;
+                padding: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
                 position: absolute;
                 cursor: pointer;
                 width: 30px;

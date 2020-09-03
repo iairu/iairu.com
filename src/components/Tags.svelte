@@ -18,6 +18,7 @@
         padding: 0 5px;
         border: 1px solid rgba(0,0,0,0.2);
         border-radius: 4px;
+        white-space: nowrap;
         &:not(:last-child) {
             margin-right: 5px;
         }
