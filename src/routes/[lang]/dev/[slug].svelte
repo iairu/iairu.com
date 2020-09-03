@@ -166,6 +166,7 @@
                     }
                 }
             }
+            >.multi-col .column-1 { width: 100%; }
         }
         @media screen {
             &.dark {
