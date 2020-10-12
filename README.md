@@ -28,3 +28,4 @@ A multi-language portfolio of my *so-far-mostly-personal* dev works built on top
 ### Important for maintenance
 
 - Custom `server.mjs` mod (that removes the need for `<base>` and thus fixes `href="#some-id"` relative links outside root file) requires that the modifications from previous commits be made to the `node_modules/sapper/runtime/server.mjs` file, not the generated `src/...` file (which would get overwritten on deployment). Alternative option might be developing a custom `rollup` plugin.
+- If svelte language server complains about `node-sass` bindings just download them [from here](https://github.com/sass/node-sass/releases) , put them into the directory svelte tells you about, don't question why the rebuild command doesn't work or what kind of an idiot invented this one of a kind system or what they're used for, no time for any of that.
