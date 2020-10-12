@@ -329,7 +329,7 @@
 	<S row icon="fa fa-keyboard" name={SK ? "Schopnosti" : "Skills"} slug="skills" importance={2} hrd eq>
 		<Tabs names={[SK ? "Programovanie" : "Programming"]} let:active>
 			- HTML, CSS (SCSS), Git<br>
-			- JavaScript ES6 (Node.js, Svelte, {SK ? "základy Vue.js a Reactu" : "basics: Vue.js and React"}), PHP<br>
+			- JavaScript ES6 (Node.js, Svelte, Electron, {SK ? "základy Vue.js a Reactu" : "basics: Vue.js and React"}), PHP<br>
 			- C, Bash, {SK ? "Základné zručnosti v jazykoch" : "Basic knowledge of"} Java, Python<br>
 			- AutoHotkey
 		</Tabs>
