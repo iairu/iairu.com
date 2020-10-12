@@ -103,6 +103,22 @@
 			{icon: "fa fa-file-alt", text: "Dev Docs", href:"/strukshow-docs/", isButton: true, hide: !SK, static: true}
 		]}
 		/>
+	<Thumb dark
+		name="AnkiScreener"
+		icon="fa fa-crop-alt"
+		bgOpacity={0.2}
+		tags="js, svelte, electron, scss"
+		desc={
+			SK	? "Bohatý nástroj pre rýchlu tvorbu Anki-kompatibilných učebných CSV kariet."
+				: "A rich utility for fast creation of Anki-compatible CSV flashcards."
+		}
+		from="2020-09-23"
+		to="2020-10-07"
+		nav={[
+			{icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/AnkiScreener", isButton: true},
+			{icon: "fa fa-video", text: SK ? "Ukážka" : "Preview", href:"https://www.youtube.com/watch?v=LO1rb8nfDX4"}
+		]}
+		/>
 	<Thumb
 		name="ProcExp"
 		icon="fa fa-paint-brush"
