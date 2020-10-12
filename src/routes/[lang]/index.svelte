@@ -296,7 +296,14 @@
 		/>
 	{/if}
 </S>
-
+<S light icon="fa fa-running" name={SK ? "Aktívne projekty..." : "Active projects..."} slug="wip" pt pb nbb sli>
+	<span>
+		{
+			SK ? 	"Momentálne najmä snaha prežiť ďaľší semester a pomoc ostatným s organizáciou učiva." : 
+					"Mainly an effort to survive the current semester including helping others with some notes."
+		}
+	</span>
+</S>
 <S light icon="fa fa-feather-alt" name={SK ? "Biografia" : "Biography"} slug="bio" bg="url('/_index/beach.jpg') top repeat-x" pt pb>
 	<C count={2} let:column eq mrev>
 		{#if column === 0}
