@@ -52,7 +52,7 @@
 			{icon: "fa fa-graduation-cap", 	text: SK ? "Vzdelanie" : "Education", href: "#edu"}
 		]} />
 	</S>
-	<S dark row icon="fa fa-running" name={SK ? "Aktívne projekty" : "Active projects"} slug="wip" nbb nbt pb hr cg>
+	<!-- <S dark row icon="fa fa-running" name={SK ? "Aktívne projekty" : "Active projects"} slug="wip" nbb nbt pb hr cg>
 		<Thumb dark
 			name="Blog CMS"
 			icon="fa fa-window-restore"
@@ -78,7 +78,7 @@
 			bgOpacity={0.25}
 			progress={35}
 		/>
-	</S>
+	</S> -->
 	{:else}
 	<S bg="url('/_index/natpic.jpg') center right/cover no-repeat" fh />
 	{/if}
