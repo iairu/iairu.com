@@ -46,6 +46,15 @@
 				and that's when I get it - the rest is over, if there even was any.
 			{/if}
 		</Quote>
+	</S>
+	<S icon="fa fa-thumbs-up" name={SK ? "Hlavné záujmy" : "Main interests"} slug="interests" importance={2} hr>
+		<p>
+			{#if SK}
+				Webové technológie, resp. čokoľvek sa dotýka Javascriptu a automatizácia repetitívnych činností. K pokroku ma najviac motivuje zlé/nedostatočné UX.
+			{:else}
+				Web technologies, especially Javascript-related stuff and automation of repetitive tasks. The greatest motivation for me is fighting against bad or incomplete UX.
+			{/if}
+		</p>
 		<Nav nav={[
 			{icon: "fa fa-feather-alt", 	text: SK ? "Biografia" : "Biography", href: "#bio"},
 			{icon: "fa fa-keyboard",		text: SK ? "Zručnosti" : "Skills", href: "#skills"},
