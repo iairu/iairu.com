@@ -5,3 +5,4 @@ yarn-error.log
 /__sapper__/
 src/node_modules/@sapper/
 /! zdroje/
+src/node_modules
