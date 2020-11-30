@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Countdown</title>
+    <style>
+        body {
+            background-color: white;
+        }
+
+        #timer {
+            color: #eeeeee;
+            text-align: center;
+            text-transform: uppercase;
+            font-family: sans-serif;
+            font-size: .7em;
+            letter-spacing: 3px;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
+        .days,
+        .hours,
+        .minutes,
+        .seconds {
+            display: block;
+            padding: 10px;
+            background: rgb(114, 114, 114);
+        }
+
+        .numbers {
+            color: #eeeeee;
+            font-size: 3em;
+            text-align: center;
+        }
+
+        .white {
+            position: absolute;
+            background: #eeeeee;
+            height: 85px;
+            width: 75px;
+            left: 30%;
+            top: 2%;
+        }
+
+        .text {
+            display: block;
+            padding: 10px;
+            background: rgba(114, 114, 114, 0.7);
+        }
+
+        em {
+            font-family: "Comic Sans", cursive;
+            animation-name: rainbowText; /* https://stackoverflow.com/a/49492759/12738991 */
+            animation-duration: 4s;
+            animation-iteration-count: infinite;
+        }
+
+        @keyframes rainbowText { /* https://stackoverflow.com/a/49492759/12738991 */
+            0% {
+                color: #ff0000
+            }
+
+            20% {
+                color: #00ff00
+            }
+
+            40% {
+                color: #ffff00
+            }
+
+            60% {
+                color: #0000ff
+            }
+
+            80% {
+                color: #00ffff
+            }
+
+            100% {
+                color: #ff0000
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="timer">
+        <div class="days">
+            <div id="days" class="numbers">?</div><span id="daysMeta">days</span>
+        </div>
+        <!-- <div class="hours">
+            <div id="hours" class="numbers"> </div>hodín
+        </div>
+        <div class="minutes">
+            <div id="minutes" class="numbers"> </div>minút
+        </div>
+        <div class="seconds">
+            <div id="seconds" class="numbers"> </div>sekúnd
+        </div> -->
+    </div>
+
+</body>
+<script>
+    // Cloned from https://github.com/ShoroukAziz/notion_widgets/blob/master/countDown.html
+    // Modified & hosted by the one and only _ - * i a i r u * - _
+
+    // url/countdown.html?date=2021-01-01&text=Happy%20New%20Year&lang=sk
+    // text supports "*" for italic rainbow comic sans (lol) and "**" for bold
+
+    // Key:Value pair object of all queries in the URL
+    const URLqueries = Object.fromEntries(window.location.search.substr(1).split("&").map(keyValuePair => keyValuePair.split("=")));
+    const date = URLqueries.date;
+    const text = URLqueries.text;
+    const lang = URLqueries.lang;
+
+    if (date !== undefined) {
+        const year = new Date().getFullYear();
+        const myDate = new Date(date);
+        console.log(myDate);
+
+        // countdown
+        // let timer = setInterval(function () {
+
+        // get today's date
+        const today = new Date().getTime();
+
+        // get the difference
+        const diff = myDate - today;
+
+        // math
+        let days = Math.floor(diff / (1000 * 60 * 60 * 24)) + 1; // + 1 because rounding needed without hours mins and secs
+        // let hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        // let minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        // let seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        // display
+        document.getElementById("days").innerHTML = days;
+        document.getElementById("daysMeta").innerHTML = lang == "sk" ? "dní" : "days";
+        // document.getElementById("hours").innerHTML = hours
+        // document.getElementById("minutes").innerHTML = minutes
+        // document.getElementById("seconds").innerHTML = seconds
+
+
+
+        // }, 1);
+    }
+
+    if (text !== undefined) {
+        const elm = document.createElement("div");
+        elm.innerText = decodeURIComponent(text);
+        elm.innerHTML = elm.innerText.replace(/\*\*(\w+)\*\*/, "<b>$1</b>");
+        elm.innerHTML = elm.innerHTML.replace(/\*(\w+)\*/, "<em>$1</em>");
+        elm.className = "text";
+        document.getElementById("timer").prepend(elm);
+    }
+</script>
+
+</html>
