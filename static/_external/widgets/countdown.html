@@ -179,10 +179,12 @@
 
     if (text !== undefined) {
         const elm = document.createElement("div");
-        elm.innerText = decodeURIComponent(text);
-        elm.innerHTML = elm.innerText.replace(/\*\*(\w+)\*\*/, "<b>$1</b>");
-        elm.innerHTML = elm.innerHTML.replace(/\*(\w+)\*/, "<em>$1</em>");
+        const span = document.createElement("span");
+        span.innerText = decodeURIComponent(text);
+        span.innerHTML = span.innerText.replace(/\*\*(\w+)\*\*/, "<b>$1</b>");
+        span.innerHTML = span.innerHTML.replace(/\*(\w+)\*/, "<em>$1</em>");
         elm.className = "text";
+        elm.appendChild(span);
         document.getElementById("timer").prepend(elm);
     }
 </script>
