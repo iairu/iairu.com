@@ -10,4 +10,6 @@
         let supportedLanguage = $lang.supported.includes(windowLanguage) ? windowLanguage : $lang.supported[0];
         goto("/" + supportedLanguage, {replaceState: true});
     })
+    
+    // todo: append #... and/or ?... to redirect
 </script>
