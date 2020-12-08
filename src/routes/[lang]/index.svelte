@@ -125,7 +125,7 @@
 		to="2020-10-07"
 		nav={[
 			{icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/AnkiScreener", isButton: true},
-			{icon: "fa fa-video", text: SK ? "Ukážka" : "Preview", href:"https://www.youtube.com/watch?v=LO1rb8nfDX4"}
+			{icon: "fab fa-youtube", text: SK ? "Ukážka" : "Preview", href:"https://www.youtube.com/watch?v=LO1rb8nfDX4"}
 		]}
 		/>
 	<Thumb
@@ -142,7 +142,24 @@
 			{icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/ProcExp", isButton: true},
 			{icon: "fa fa-download", text: SK ? "Stiahnuť" : "Download", href:"https://github.com/iairu/ProcExp/releases"}
 		]}
-		/>
+        />
+    
+	<Thumb dark
+    name="Right to Repair"
+    icon="fa fa-tools"
+    bg=""
+    tags="presentation, video"
+    desc={
+        SK	? "Anglická prezentácia, ktorá rieši právo na opravu a temnú stránku spoločnosti Apple."
+            : "Presentation covering the Right to Repair and, on a related note, The Dark Side of Apple."
+    }
+    from="2020-12-03"
+    to="2020-12-08"
+    nav={[
+        {icon: "fab fa-youtube", text: SK ? "Pozrieť" : "Watch", href:"https://youtu.be/x2ToofrDWzw", isButton: true},
+        {icon: "fa fa-file-alt", text: SK ? "Slajdy [PDF]" : "Slides [PDF]", href:"/dl/right-to-repair-prez.pdf", static: true}
+    ]}
+    />
 	<Thumb 
 		name={ SK ? "GUI pre gTTS" : "GUI for gTTS"}
 		icon="fa fa-comment-dots"
