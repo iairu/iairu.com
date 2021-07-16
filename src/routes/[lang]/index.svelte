@@ -143,23 +143,36 @@
 			{icon: "fa fa-download", text: SK ? "Stiahnuť" : "Download", href:"https://github.com/iairu/ProcExp/releases"}
 		]}
         />
-    
 	<Thumb dark
-    name="Right to Repair"
-    icon="fa fa-tools"
-    bg=""
-    tags="presentation, video"
-    desc={
-        SK	? "Anglická prezentácia, ktorá rieši právo na opravu a temnú stránku spoločnosti Apple."
-            : "Presentation covering the Right to Repair and, on a related note, The Dark Side of Apple."
-    }
-    from="2020-12-03"
-    to="2020-12-08"
-    nav={[
-        {icon: "fab fa-youtube", text: SK ? "Pozrieť" : "Watch", href:"https://youtu.be/x2ToofrDWzw", isButton: true},
-        {icon: "fa fa-file-alt", text: SK ? "Slajdy [PDF]" : "Slides [PDF]", href:"/dl/right-to-repair-prez.pdf", static: true}
-    ]}
-    />
+        name="Right to Repair"
+        icon="fa fa-tools"
+		bgOpacity={0.12}
+        tags="presentation, video"
+        desc={
+            SK	? "Anglická prezentácia, ktorá rieši právo na opravu a temnú stránku spoločnosti Apple."
+                : "Presentation covering the Right to Repair and, on a related note, The Dark Side of Apple."
+        }
+        from="2020-12-03"
+        to="2020-12-08"
+        nav={[
+            {icon: "fab fa-youtube", text: SK ? "Pozrieť" : "Watch", href:"https://youtu.be/x2ToofrDWzw", isButton: true},
+            {icon: "fa fa-file-alt", text: SK ? "Slajdy [PDF]" : "Slides [PDF]", href:"/dl/right-to-repair-prez.pdf", static: true}
+        ]}
+        />
+	<Thumb dark
+        name="IPTables port-forwarding"
+        icon="fa fa-network-wired"
+		bgOpacity={0.2}
+        tags="iptables, networking, linux, sysadmin"
+        desc={
+            SK  ? "Návod nie len pre presmerovanie portov, ale všeobecné riešenie problémov v rámci IPTables." 
+                : "A walkthrough tutorial for not just port-forwarding, but problem solving when it comes to IPTables."
+        }
+        nav={[
+			{icon: "fa fa-book", text:"Read", href:"/dev/iptables-portforward/", isButton: true, hide: SK},
+			{icon: "fa fa-book", text:"Prečítať (Anglicky)", href:"/en/dev/iptables-portforward/", isButton: true, hide: !SK, static: true}
+        ]}
+        />
 	<Thumb 
 		name={ SK ? "GUI pre gTTS" : "GUI for gTTS"}
 		icon="fa fa-comment-dots"
