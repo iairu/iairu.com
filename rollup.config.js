@@ -24,7 +24,8 @@ const legacy = !!process.env.SAPPER_LEGACY_BUILD;
 
 const onwarn = (warning, onwarn) =>
 	(warning.code === 'MISSING_EXPORT' && /'preload'/.test(warning.message)) ||
-	(warning.code === 'CIRCULAR_DEPENDENCY' && /[/\\]@sapper[/\\]/.test(warning.message)) ||
+	(warning.code === 'CIRCULAR_DEPENDENCY') || // disabled circular dep. warnings \/
+	//(warning.code === 'CIRCULAR_DEPENDENCY' && /[/\\]@sapper[/\\]/.test(warning.message)) ||
 	onwarn(warning);
     
 const _preprocess = sveltePreprocess({
