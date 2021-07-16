@@ -31,8 +31,6 @@
 	});
 	error = (!external && !supported.includes(currentURLlang)) ? true : false;
 	
-    $: console.log(currentSlug);
-
     function isHomepage(slug, lang) {
         return slug == "/" + lang || 
                slug == "/" + lang + "/";
