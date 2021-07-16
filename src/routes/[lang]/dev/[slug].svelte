@@ -9,6 +9,7 @@
 
 <script>
     import { onMount } from 'svelte';
+	import { lang } from '../../../components/LangStore.svelte';
     import { dark as darkstore } from "../../../components/DarkStore.svelte";
     import { darkHeader } from "../../../components/DarkStore.svelte";
     import Tags from "../../../components/Tags.svelte";
@@ -20,6 +21,11 @@
 
     export let post;
     export let dark = false;
+
+    let currentLang = "en";
+	const unsubLang = lang.subscribe((lng)=>{
+		currentLang = lng.current;
+	});
 
     let toc;
     let content;
@@ -41,7 +47,7 @@
     }
 
     function processDate(date) {
-        moment.locale("sk");
+        moment.locale(currentLang);
         return moment(date).calendar();
     }
 
@@ -52,6 +58,7 @@
         return (()=>{
             darkstore.set(false);
             darkHeader.set(false);
+            unsubLang();
         })
     });
 </script>
