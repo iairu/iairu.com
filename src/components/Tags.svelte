@@ -10,6 +10,12 @@
 </div>
 
 <style lang="scss" global>
+    .tags {
+        display: flex;
+        flex-flow: row;
+        flex-wrap: wrap;
+        gap: 3px;
+    }
     .tags>span {
         color: rgb(109, 109, 109);
         text-transform: uppercase;
@@ -20,7 +26,7 @@
         border-radius: 4px;
         white-space: nowrap;
         &:not(:last-child) {
-            margin-right: 5px;
+            margin-right: 3px;
         }
     }
     .dark .tags>span {

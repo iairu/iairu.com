@@ -30,6 +30,7 @@
         overflow: hidden;
         margin: 5px 0;
         button {
+            margin: 0;
             background: #fff;
             border: none;
             cursor: pointer;
@@ -47,7 +48,7 @@
             }
         }
         &.dark {
-            border-color: rgba(255,255,255,0.2);
+            border-color: transparent;
             button {
                 background: #222;
                 color: white;
