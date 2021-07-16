@@ -6,7 +6,6 @@ A multi-language portfolio of my *so-far-mostly-personal* dev works built on top
 
 - `static` - all the stuff that is not processed by Sapper and is kept as is, includes assets (images, videos, external libraries) and other parts of the site not covered by the framework (some documentations, graphic design portfolio)
 - `src` - Svelte components and route files processed by Sapper
-- `cypress` - default Sapper implementation for testing, no uses so far, probably should at least try it out
 - `__sapper__` - gitignored directory with generated dev/build/export files, content can be replicated using equivalently named commands in package.json
 
 ### A short ToDo list of stuff to be done before release

@@ -3,20 +3,34 @@ import replace from '@rollup/plugin-replace';
 import commonjs from '@rollup/plugin-commonjs';
 import svelte from 'rollup-plugin-svelte';
 import babel from '@rollup/plugin-babel';
-import markdown from "@jackfranklin/rollup-plugin-markdown";
-import glob from "rollup-plugin-glob";
 import { terser } from 'rollup-plugin-terser';
 import config from 'sapper/config/rollup.js';
 import pkg from './package.json';
-// import autoPreprocess from "svelte-preprocess";
+
 import sveltePreprocess from "svelte-preprocess";
 import autoprefixer from "autoprefixer";
+
+import markdown from "@jackfranklin/rollup-plugin-markdown";
+import glob from "rollup-plugin-glob";
+
+//import path from 'path';
+//import url from '@rollup/plugin-url';
 
 const mode = process.env.NODE_ENV;
 const dev = mode === 'development';
 const legacy = !!process.env.SAPPER_LEGACY_BUILD;
 
-const onwarn = (warning, onwarn) => (warning.code === 'CIRCULAR_DEPENDENCY' && /[/\\]@sapper[/\\]/.test(warning.message)) || onwarn(warning);
+const onwarn = (warning, onwarn) =>
+	(warning.code === 'MISSING_EXPORT' && /'preload'/.test(warning.message)) ||
+	(warning.code === 'CIRCULAR_DEPENDENCY' && /[/\\]@sapper[/\\]/.test(warning.message)) ||
+	onwarn(warning);
+    
+const _preprocess = sveltePreprocess({
+    postcss: {
+        plugins: [autoprefixer],
+    }
+});
+
 export default {
 	client: {
 		input: config.client.input(),
@@ -25,20 +39,23 @@ export default {
 			markdown(),
 			glob(),
 			replace({
-				'process.browser': true,
-				'process.env.NODE_ENV': JSON.stringify(mode)
+				preventAssignment: true,
+				values:{
+					'process.browser': true,
+					'process.env.NODE_ENV': JSON.stringify(mode)
+				},
 			}),
 			svelte({
-				dev,
-				hydratable: true,
-				emitCss: true,
-				// preprocess: autoPreprocess()
-				preprocess: sveltePreprocess({
-							postcss: {
-								plugins: [autoprefixer],
-							}
-				})
+				compilerOptions: {
+					dev,
+					hydratable: true,
+				},
+                preprocess: _preprocess
 			}),
+			// url({
+				// sourceDir: path.resolve(__dirname, 'src/node_modules/images'),
+				// publicPath: '/client/'
+			// }),
 			resolve({
 				browser: true,
 				dedupe: ['svelte']
@@ -68,12 +85,7 @@ export default {
 		],
 
 		preserveEntrySignatures: false,
-		onwarn: function( message ) {
-			if (/@sapper/.test( message )) return;
-			if (/moment\\src\\lib/.test( message )) return;
-			if (/_error\.svelte.*_layout\.svelte/.test( message )) return;
-			console.log(message);
-		},
+		onwarn,
 	},
 
 	server: {
@@ -83,49 +95,52 @@ export default {
 			markdown(),
 			glob(),
 			replace({
-				'process.browser': false,
-				'process.env.NODE_ENV': JSON.stringify(mode)
+				preventAssignment: true,
+				values:{
+					'process.browser': false,
+					'process.env.NODE_ENV': JSON.stringify(mode)
+				},
 			}),
 			svelte({
-				generate: 'ssr',
-				dev,
-				// preprocess: autoPreprocess()
-				preprocess: sveltePreprocess({
-							postcss: {
-								plugins: [autoprefixer],
-							}
-				})
+				compilerOptions: {
+					dev,
+					generate: 'ssr',
+					hydratable: true,
+				},
+                preprocess: _preprocess,
+				emitCss: false
 			}),
+			// url({
+				// sourceDir: path.resolve(__dirname, 'src/node_modules/images'),
+				// publicPath: '/client/',
+				// emitFiles: false // already emitted by client build
+			// }),
 			resolve({
 				dedupe: ['svelte']
 			}),
 			commonjs()
 		],
 		external: Object.keys(pkg.dependencies).concat(require('module').builtinModules),
-
 		preserveEntrySignatures: 'strict',
-		onwarn: function( message ) {
-			if (/@sapper/.test( message )) return;
-			if (/moment\\src\\lib/.test( message )) return;
-			if (/_error\.svelte.*_layout\.svelte/.test( message )) return;
-			console.log(message);
-		},
+		onwarn,
 	},
 
 	// serviceworker: {
-	// 	input: config.serviceworker.input(),
-	// 	output: config.serviceworker.output(),
-	// 	plugins: [
-	// 		resolve(),
-	// 		replace({
-	// 			'process.browser': true,
-	// 			'process.env.NODE_ENV': JSON.stringify(mode)
-	// 		}),
-	// 		commonjs(),
-	// 		!dev && terser()
-	// 	],
-
-	// 	preserveEntrySignatures: false,
-	// 	onwarn,
+		// input: config.serviceworker.input(),
+		// output: config.serviceworker.output(),
+		// plugins: [
+			// resolve(),
+			// replace({
+				// preventAssignment: true,
+				// values:{
+					// 'process.browser': true,
+					// 'process.env.NODE_ENV': JSON.stringify(mode)
+				// },
+			// }),
+			// commonjs(),
+			// !dev && terser()
+		// ],
+		// preserveEntrySignatures: false,
+		// onwarn,
 	// }
 };

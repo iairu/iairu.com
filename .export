@@ -1,3 +1,0 @@
-# Defines where the folder symlinked to WAMP server is located
-# used by ws (AHK Scripts/WampSwitch)
-__sapper__/export
