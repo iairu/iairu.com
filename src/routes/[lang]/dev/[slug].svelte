@@ -3,7 +3,7 @@
     export async function preload({ params, query }) {
         // the `slug` parameter is available because
         // this file is called [slug].svelte
-        return { post: getPost(params.slug) };
+        return { post: getPost(params.slug, params.lang) };
     }
 </script>
 

@@ -14,8 +14,8 @@ function fixHeadingIDs(htmlHaystack) {
     );
 }
 
-export function getPost(slug) {
-    // Find the right post in "md" and return it
-    let r = md.filter(m => m.filename === slug + ".md");
+export function getPost(slug, lang) {
+    // Find the right [lang]_slug.md post in "md" and return it
+    let r = md.filter(m => m.filename === lang + "_" + slug + ".md");
     return (r && r.length) ? r[0] : {error: {code: 404, msg: "Not Found"}}
 }
