@@ -31,6 +31,12 @@
 	});
 	error = (!external && !supported.includes(currentURLlang)) ? true : false;
 	
+    $: console.log(currentSlug);
+
+    function isHomepage(slug, lang) {
+        return slug == "/" + lang || 
+               slug == "/" + lang + "/";
+    }
 
 	// Checks relying on Window available after mounting & onDestroy
 	let isIframe = false;
@@ -51,7 +57,7 @@
 		{icon: "fab fa-linkedin", text: "LinkedIn", href: "https://www.linkedin.com/in/ondrej-%C5%A1p%C3%A1nik-750335112/"},
 		{icon: "fab fa-github", text: "GitHub", href: "https://github.com/iairu"},
 		{icon: "fa fa-envelope", text: "E-mail: spanik11@msn.com", href: "mailto:spanik11@msn.com", hideExt: true}
-	]} />
+	]} useLangSelector={isHomepage(currentSlug, currentURLlang)} />
 {/if}
 <main class:iframe={isIframe}>
 	<slot />

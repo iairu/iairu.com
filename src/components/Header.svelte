@@ -7,6 +7,7 @@
     import { lang } from "./LangStore.svelte";
 
     export let nav;
+    export let useLangSelector = true;
 
     let showHomeArrow = false;
     let splitPath;
@@ -19,7 +20,9 @@
         {#if showHomeArrow}<a class="home" href={"/" + ($lang.current ? $lang.current : "")}><i class="fa fa-angle-double-left"></i></a>{/if}
         <div class="left">
             <img class="logo" src={$dark || $darkHeader ? "/_global/logo-w.svg" : "/_global/logo.svg"} alt="Logo">
+            {#if useLangSelector}
             <LangSelector dark={$dark || $darkHeader} />
+            {/if}
         </div>
         <Nav {nav} />
     </div>
