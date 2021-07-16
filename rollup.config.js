@@ -13,6 +13,8 @@ import autoprefixer from "autoprefixer";
 import markdown from "@jackfranklin/rollup-plugin-markdown";
 import glob from "rollup-plugin-glob";
 
+import images from "@rollup/plugin-image";
+
 //import path from 'path';
 //import url from '@rollup/plugin-url';
 
@@ -36,8 +38,9 @@ export default {
 		input: config.client.input(),
 		output: config.client.output(),
 		plugins: [
-			markdown(),
+            markdown(),
 			glob(),
+            images(),
 			replace({
 				preventAssignment: true,
 				values:{
@@ -92,8 +95,9 @@ export default {
 		input: config.server.input(),
 		output: config.server.output(),
 		plugins: [
-			markdown(),
+            markdown(),
 			glob(),
+            images(),
 			replace({
 				preventAssignment: true,
 				values:{

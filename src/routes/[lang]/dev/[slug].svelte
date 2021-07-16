@@ -122,7 +122,7 @@
             padding-top: 2em;
             >.metadata {
                 h1 { margin-bottom: 0;}
-                hr { margin: 25px 0;}
+                hr { margin: 25px 0 0;}
                 .date {
                     font-family:'Courier New', Courier, monospace;
                     font-size: 12px;
@@ -160,13 +160,26 @@
                 nav {
                     flex-flow: column;
                     a {
-                        &.H2 {font-size: 12px; padding-left: 24px;}
+                        &.H2, &.H3, &.H4, &.H5, &.H6 { font-size: 12px; }
+                        &.H2 {padding-left: 24px;}
                         &.H3 {padding-left: 48px;}
                         &.H4, &.H5, &.H6 {padding-left: 72px;}
                     }
                 }
             }
-            >.multi-col .column-1 { width: 100%; }
+            .toc, .content {
+                padding-top: 25px;
+            }
+            .content {
+                h1 {
+                    font-weight: bold;
+                    margin-top: 70px;
+                }
+            }
+            >.multi-col .column-1 { 
+                width: 100%;
+                min-width: 0;
+            }
         }
         @media screen {
             &.dark {

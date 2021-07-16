@@ -103,10 +103,15 @@
 	}
 	h1, h2, h3, h4, h5, h6 {
 		margin: 0 0 0.5em 0;
-		font-weight: 400;
 		line-height: 1.2;
 	}
-	h1 {font-size: 2em;}
+    h1 {
+        font-size: 2em;
+        font-weight: 400;
+    }
+    h2, h3, h4, h5, h6 {
+		font-weight: bold;
+	}
 	a {color: inherit;}
 	code {
 		font-family: menlo, inconsolata, monospace;
@@ -118,6 +123,7 @@
 		border: 1px solid rgba(0,0,0,0.2);
 	}
 	pre {
+        max-width: 100%;
 		background: #f0f0f0;
 		border: 1px solid rgba(0,0,0,0.2);
 		display: flex;
@@ -126,6 +132,26 @@
 		border-radius: 5px;
 		overflow-x: auto;
 	}
+    blockquote {
+        margin: 0;
+        padding: 15px;
+        border-radius: 5px;
+        font-style: italic;
+        color: black;
+        background-color: rgba(0,0,0,0.05);
+        background-size: 50px;
+        background-position: calc(100% - 15px) calc(100% + 10px);
+        background-repeat: no-repeat;
+        background-image: url("/_global/quote-w.svg");
+        &.dark {
+            color: white;
+            background-color: rgba(255,255,255,0.05);
+            background-image: url("/_global/quote.svg");
+        }
+    }
+    img {
+        max-width: 100%;
+    }
 	pre>code {border: none;}
 	table {
 		box-shadow: 0 0 10px rgba(0,0,0,0.2);
