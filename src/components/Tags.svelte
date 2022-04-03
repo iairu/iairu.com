@@ -29,7 +29,7 @@
             margin-right: 3px;
         }
     }
-    .dark .tags>span {
+    .tags.dark>span {
         color: rgba(255,255,255,0.5);
     }
     @media screen {

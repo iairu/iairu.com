@@ -164,9 +164,14 @@
                 position: sticky;
                 top: 0;
                 width: 250px;
+                border-right: 1px solid rgba(0,0,0,0.2);
+                margin-right: 25px;
+                top: 25px;
+                box-sizing: border-box;
                 nav {
                     flex-flow: column;
                     a {
+                        &.H1 {font-weight: bold;}
                         &.H2, &.H3, &.H4, &.H5, &.H6 { font-size: 12px; }
                         &.H2 {padding-left: 24px;}
                         &.H3 {padding-left: 48px;}
