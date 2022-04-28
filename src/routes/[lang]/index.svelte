@@ -32,7 +32,7 @@
 <S dark wrapper>
 <C count={2} let:column eq mdel={1}>
 	{#if column === 0}
-	<S dark icon="fa fa-hand-point-right" name="Ondrej Špánik" slug="about" tags={"junior developer, " + (SK ? "grafický dizajnér, študent" : "graphic designer, student")} nbb nbt>
+	<S dark name="Ondrej Špánik (iairu)" slug="about" tags={"junior developer, " + (SK ? "grafický dizajnér, študent" : "graphic designer, student")} nbb nbt>
 		<Quote dark>
 			{#if SK}
 				Vždy som mal priveľa digitálnych záujmov na to aby som sa pozastavil a obzrel druhým smerom, von z okna. 
@@ -47,7 +47,7 @@
 			{/if}
 		</Quote>
 	</S>
-	<S icon="fa fa-thumbs-up" name={SK ? "Záujmy" : "Interests"} slug="interests" hr>
+	<S icon="fa fa-thumbs-up" name={SK ? "Záujmy" : "Interests"} slug="interests" hr importance={2}>
 		<p>
 			{#if SK}
 				Webové technológie, resp. čokoľvek sa dotýka Javascriptu a automatizácia repetitívnych činností. K pokroku ma najviac motivuje zlé/nedostatočné UX. Okrem toho poslednú dobu cestovanie :)
@@ -61,7 +61,7 @@
 			{icon: "fa fa-graduation-cap", 	text: SK ? "Vzdelanie" : "Education", href: "#edu"}
 		]} />
 	</S>
-	<S dark row icon="fa fa-running" name={SK ? "Aktívne" : "Active"} slug="wip" nbb nbt pb hr cg>
+	<S dark row icon="fa fa-running" name={SK ? "Práve pracujem na..." : "Work in progress..."} slug="wip" nbb nbt pb hr cg importance={2}>
 		<Thumb dark
 			name="FIIT STU"
 			icon="fa fa-university"
