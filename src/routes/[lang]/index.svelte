@@ -32,7 +32,7 @@
 <S dark wrapper>
 <C count={2} let:column eq mdel={1}>
 	{#if column === 0}
-	<S dark name="Ondrej Špánik (iairu)" slug="about" tags={"junior developer, " + (SK ? "grafický dizajnér, študent" : "graphic designer, student")} nbb nbt>
+	<S dark name="Ondrej Špánik (airu)" slug="about" tags={"junior developer, " + (SK ? "grafický dizajnér, študent" : "graphic designer, student")} nbb nbt>
 		<Quote dark>
 			{#if SK}
 				Vždy som mal priveľa digitálnych záujmov na to aby som sa pozastavil a obzrel druhým smerom, von z okna. 
