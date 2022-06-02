@@ -52,9 +52,9 @@
 {#if !isIframe}
 	<Header nav={[
 		{icon: "fab fa-facebook-messenger", text: "Messenger", href: "https://m.me/iairu"},
-		{icon: "fab fa-linkedin", text: "LinkedIn", href: "https://www.linkedin.com/in/ondrej-%C5%A1p%C3%A1nik-750335112/"},
+		{icon: "fab fa-linkedin", text: "LinkedIn", href: "https://www.linkedin.com/in/iairu"},
 		{icon: "fab fa-github", text: "GitHub", href: "https://github.com/iairu"},
-		{icon: "fa fa-envelope", text: "E-mail: spanik11@msn.com", href: "mailto:spanik11@msn.com", hideExt: true}
+		{icon: "fa fa-envelope", text: "E-mail: spanik11@gmail.com", href: "mailto:spanik11@gmail.com", hideExt: true}
 	]} useLangSelector={isHomepage(currentSlug, currentURLlang)} />
 {/if}
 <main class:iframe={isIframe}>
@@ -62,9 +62,9 @@
 	{#if !isIframe}
 	<S dark icon="fa fa-address-card" name={current === "sk" ? "Kontakt" : "Contact"} slug="contact" pt pb sli>
 		<Nav nav={[
-			{icon: "fa fa-envelope", text: "E-mail: spanik11@msn.com", href: "mailto:spanik11@msn.com", isButton: true, modal: false, hideExt: true},
+			{icon: "fa fa-envelope", text: "E-mail: spanik11@gmail.com", href: "mailto:spanik11@gmail.com", isButton: true, modal: false, hideExt: true},
 			{icon: "fab fa-facebook-messenger", text: "Messenger", href: "https://m.me/iairu"},
-			{icon: "fab fa-linkedin", text: "LinkedIn", href: "https://www.linkedin.com/in/ondrej-%C5%A1p%C3%A1nik-750335112/"},
+			{icon: "fab fa-linkedin", text: "LinkedIn", href: "https://www.linkedin.com/in/iairu"},
 			{icon: "fab fa-github", text: "GitHub", href: "https://github.com/iairu"}
 		]} />
 	</S>
