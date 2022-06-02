@@ -335,7 +335,16 @@
 		]} 
 		/>
 	{:else}
-	<Thumb empty />
+    <Thumb 
+        name="Programovací denník (Leto 2020)"
+        icon="fa fa-clipboard-list"
+        tags="blog"
+        showIfTag={filter}
+        desc="Osobné projekty a experimenty počas leta v roku 2020."
+        nav={[
+            {icon: "fa fa-clipboard-list", text:"Prečítať", href:"/dev/log/", isButton: true},
+        ]} 
+        />
 	{/if}
 	<Thumb empty />
 	{:else if tab === 1}
@@ -467,9 +476,9 @@
 		</Tabs>
 	</S>
 </S>
-<S light icon="fa fa-comment-dots" name={SK ? "Niečo viac..." : "More..."} slug="more" pt pb nbt sli>
+<S light icon="fa fa-comment-dots" name={SK ? "Životopis" : "Resumé"} slug="more" pt pb nbt sli>
 	<Nav nav={[
-        {icon: "far fa-file", text: "Resumé 2022 [PDF]", href: SK ? "/dl/resume-sk.pdf" : "/dl/resume-en.pdf", isButton: true},
-		{icon: "fa fa-clipboard-list", text: "Programovací denník (Leto 2020)", href: "/dev/log", hide: !SK},
+        {icon: "far fa-file", text: SK ? "Softvérový developer" : "Software developer" + " [2022-06 PDF]", href: SK ? "/dl/resume-sk-swdev.pdf" : "/dl/resume-en-swdev.pdf", isButton: true},
+        {icon: "far fa-file", text: SK ? "IT technik" : "IT technician" + " [2022-06 PDF]",                href: SK ? "/dl/resume-sk-tech.pdf" : "/dl/resume-en-tech.pdf"},
 	]}/>
 </S>
