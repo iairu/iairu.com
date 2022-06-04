@@ -476,9 +476,8 @@
 		</Tabs>
 	</S>
 </S>
-<S light icon="fa fa-comment-dots" name={SK ? "Životopis" : "Resumé"} slug="more" pt pb nbt sli>
+<S light icon="fa fa-comment-dots" name="Resume" slug="more" pt pb nbt sli>
 	<Nav nav={[
-        {icon: "far fa-file", text: (SK ? "Front-end developer" : "Front-end developer") + " [2022-06 PDF]", href: SK ? "/dl/resume-sk-web.pdf" : "/dl/resume-en-web.pdf", isButton: true},
-        {icon: "far fa-file", text: (SK ? "IT technik" : "IT technician") + " [2022-06 PDF]",                href: SK ? "/dl/resume-sk-tech.pdf" : "/dl/resume-en-tech.pdf"},
+        {icon: "far fa-file", text: (SK ? "Front-end developer / IT technik" : "Front-end developer / IT technician") + " [2022-06 PDF]", href: SK ? "/dl/resume-sk.pdf" : "/dl/resume-en.pdf", isButton: true},
 	]}/>
 </S>
