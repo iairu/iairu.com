@@ -113,6 +113,23 @@
 		]}
 		/>
 	<Thumb dark
+		name="PostgreSQL REST API"
+		icon="fa fa-file-code"
+        bgOpacity={0.2}
+		tags="postgres, django, python, json, sql"
+        showIfTag={filter}
+		desc={
+			SK	? "Django REST API pre komplexné SELECT queries nad Postgres databázou. Vypracované od základov nad existujúcou DB."
+				: "Django REST API for complex SELECT queries over a Postgres database. Created from scratch over an existing DB."
+		}
+		from="2022-02-17"
+		to="2022-05-08"
+		nav={[
+            {icon: "fa fa-file-alt", text: SK ? "Statické demo" : "Static demo", href:"/dbs/", isButton: true, static: true},
+            {icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/dbs_django_postgresql"},
+		]}
+		/>
+	<Thumb dark
 		name="TASM Counter"
 		icon="fa fa-file-code"
         bgOpacity={0.2}
