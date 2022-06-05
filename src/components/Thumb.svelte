@@ -4,8 +4,8 @@
     import { href } from './Modal.svelte';
     import { lang } from './LangStore.svelte';
     import { onDestroy } from 'svelte';
-    export let name = "Project name";
-    export let desc = "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum perspiciatis numquam vel ut quae quasi rerum ab, reprehenderit, laboriosam ipsa veniam voluptatibus sed fugiat ratione et recusandae quis eligendi officiis?";
+    export let name = "";
+    export let desc = "";
     export let from = "";
     export let progress = 0;
     export let to = "";
@@ -18,6 +18,7 @@
     export let empty = false; // act as a filler (to make last flex-grow elms less stretched / ugly)
     export let bgNoFilter = false;
     export let dark = false;
+    export let showIfTag = "";
 
     let l;
     const unsub = lang.subscribe((lng)=>{l = lng.current;});
@@ -52,54 +53,56 @@
 
 </script>
 
-<section 
-    class="thumb"
-    class:dark={dark}
-    class:empty={empty}
-    >
-    <div class="content">
+{#if !showIfTag || (showIfTag && tags.includes(showIfTag.toLowerCase()))}
+    <section 
+        class="thumb"
+        class:dark={dark}
+        class:empty={empty}
+        >
+        <div class="content">
 
-        <!-- Heading, Tags, Icon -->
-        <div class="heading">
-            <div class="col">
-                {#if name}<h3>{name}</h3>{/if}
-                {#if tags}
-                    <Tags {tags} {dark} />
+            <!-- Heading, Tags, Icon -->
+            <div class="heading">
+                <div class="col">
+                    {#if name}<h3>{name}</h3>{/if}
+                    {#if tags}
+                        <Tags {tags} {dark} />
+                    {/if}
+                </div>
+                {#if icon}
+                {#if icon.match(/^fa/)}
+                    <i class={"icon " + icon}></i>
+                {:else}
+                    <img class="icon" src={"/_thumbs/icons/" + (icon.includes(".") ? icon : icon + ".svg")} alt={name + " icon"}>
+                {/if}
                 {/if}
             </div>
-            {#if icon}
-            {#if icon.match(/^fa/)}
-                <i class={"icon " + icon}></i>
-            {:else}
-                <img class="icon" src={"/_thumbs/icons/" + (icon.includes(".") ? icon : icon + ".svg")} alt={name + " icon"}>
-            {/if}
-            {/if}
-        </div>
 
-        <!-- Description -->
-        {#if desc}<p>{desc}</p>{/if}
+            <!-- Description -->
+            {#if desc}<p>{desc}</p>{/if}
 
-        <!-- Image -->
-        {#if img}<img class="img" src={"/_thumbs/imgs/" + (img.includes(".") ? img : img + ".jpg")} alt={name + " photo"} on:click={handleImageModal}>{/if}
+            <!-- Image -->
+            {#if img}<img class="img" src={"/_thumbs/imgs/" + (img.includes(".") ? img : img + ".jpg")} alt={name + " photo"} on:click={handleImageModal}>{/if}
 
-        <!-- Navigation -->
-        <Nav {nav} />
+            <!-- Navigation -->
+            <Nav {nav} />
 
-        <!-- Timeline -->
-        {#if from}
-        <div class="details">
-            <span class="from">{from}</span>
-            <div class="arrow tags" class:dark>
-                {#if to}<span class="days">{calcDays(from,to,l)}</span>{/if}
-                {#if progress}<div class="progress" style={"width: " + progress + "%; background-image: url('" + progressBg(progress) + "');"}></div>{/if}
+            <!-- Timeline -->
+            {#if from}
+            <div class="details">
+                <span class="from">{from}</span>
+                <div class="arrow tags" class:dark>
+                    {#if to}<span class="days">{calcDays(from,to,l)}</span>{/if}
+                    {#if progress}<div class="progress" style={"width: " + progress + "%; background-image: url('" + progressBg(progress) + "');"}></div>{/if}
+                </div>
+                <span class="to">{to ? to : "TBD"}</span>
             </div>
-            <span class="to">{to ? to : "TBD"}</span>
-        </div>
-        {/if}
+            {/if}
 
-    </div>
-    {#if bg}<img class="bg" src={"/_thumbs/bgs/" + (bg.includes(".") ? bg : bg + ".jpg")} style={(bgOpacity ? "opacity: " + bgOpacity + ";" : "") + (bgNoFilter ? "filter: none;" : "")} alt="Background">{/if}
-</section>
+        </div>
+        {#if bg}<img class="bg" src={"/_thumbs/bgs/" + (bg.includes(".") ? bg : bg + ".jpg")} style={(bgOpacity ? "opacity: " + bgOpacity + ";" : "") + (bgNoFilter ? "filter: none;" : "")} alt="Background">{/if}
+    </section>
+{/if}
 
 <style lang="scss" global>
     section.thumb {

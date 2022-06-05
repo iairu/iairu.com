@@ -17,31 +17,41 @@
 {#if names.length}
 <div class="menu" class:attached={attached} class:dark={dark}>
     {#each names as tab, i}
-        <button class:active={isActive(i, active)} on:click={()=>{internalClickHandler(i);}} tabindex={isActive(i, active) ? "-1" : "0"}>{tab}</button>
+        <button class:active={isActive(i, active)} on:click={()=>{internalClickHandler(i);}} tabindex={isActive(i, active) ? "-1" : "0"}>
+            {#if tab == ""}
+                <i class="fa fa-ban"></i>
+            {:else}
+                {tab}
+            {/if}
+        </button>
     {/each}
 </div>
 {/if}
 
 <style lang="scss" global>
     .menu {
+        display: flex;
+        flex-flow: row;
+        flex-wrap: wrap;
         position: relative;
         border: 1px solid rgba(0,0,0,0.2);
         border-radius: 5px;
         overflow: hidden;
         margin: 5px 0;
         button {
+            flex-grow: 1;
             margin: 0;
             background: #fff;
             border: none;
             cursor: pointer;
-            border-right: 1px solid rgba(0,0,0,0.2);
+            outline: 1px solid rgba(0,0,0,0.2);
             color: black;
             padding: 5px 15px;
             &:last-of-type {border-right: none;}
             &.active {
                 background: #f1f1f1;
                 cursor: default;
-                outline: none;
+                //outline: none;
             }
             &:not(.active):focus {
                 background: #f8f8f8;
@@ -52,6 +62,7 @@
             button {
                 background: #222;
                 color: white;
+                outline-color: rgba(255,255,255,0.1);
                 border-color: rgba(255,255,255,0.1);
                 &.active {background: #363636;}
                 &:not(.active):focus {
@@ -71,6 +82,7 @@
                 background: #fff;
                 border: none;
                 cursor: pointer;
+                outline: none;
                 border-right: 1px solid rgba(0,0,0,0.2);
                 border-bottom: 1px solid rgba(0,0,0,0.2);
                 color: black;

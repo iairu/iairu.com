@@ -4,3 +4,5 @@
 yarn-error.log
 /__sapper__/
 /src/routes/\[lang\]/dev/md/img/
+/tmp
+*.code-workspace

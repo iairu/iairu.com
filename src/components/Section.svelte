@@ -30,10 +30,25 @@
     export let up = false; // move section up by 100px (if fh, height will be 100% + 100px) (900px+)
     export let tags = "";
     export let tabs = [];
+    export let filters = [];
     export let dark = false;
     export let light = false;
     export let bg = ""; // background CSS attribute, options: "bg-color bg-image position/bg-size bg-repeat bg-origin bg-clip bg-attachment", if dark or light is true, don't set color
     let tab;
+    let filterNum;
+    let filter;
+    $: filterNum = tab ? 0 : 0; // reset filter on tab change
+    $: filter = getFilter(filterNum);
+    function getFilter(num) { // send back the actual text of the filter for easier use
+        if (num == undefined || tab == undefined) {
+            return "";
+        } else if (tabs.length) {
+            return filters[tab][filterNum];
+        } else if (!tabs.length) {
+            return filters[filterNum];
+        }
+        return "";
+    }
 
 </script>
 
@@ -58,7 +73,21 @@
                     {:else if importance === 2}
                         <h2>{#if icon}<i class={"icon " + icon}></i>{/if}{name}</h2>
                     {/if}
-                    {#if tabs.length}<TabMenu names={tabs} bind:active={tab} />{/if}
+                    {#if tabs.length}
+                        <div class="tab-spacer">
+                            <TabMenu names={tabs} bind:active={tab} />
+                            {#if filters != undefined && filters.length == tabs.length}
+                                <TabMenu names={filters[tab]} bind:active={filterNum}/>
+                            {/if}
+                        </div>
+                    {:else}
+                        <div class="tab-spacer">
+                            <div class="placeholder"></div>
+                            {#if filters != undefined && filters.length}
+                                <TabMenu names={filters} bind:active={filterNum}/>
+                            {/if}
+                        </div>
+                    {/if}
                 </div>
                 <a class="permalink" aria-label="URL of this section" href={permalink($page.host, $page.path, slug)}><i class="fa fa-link"></i></a>
             </div>
@@ -70,11 +99,11 @@
 
         {#if !tabs.length}
         <div class="content">
-            <slot />
+            <slot {filter} />
         </div>
         {:else}
         <Tabs names={tabs} bind:active={tab} hideMenu={name ? true : false}>
-            <slot {tab} />
+            <slot {tab} {filter} />
         </Tabs>
         {/if}
     </div>
@@ -106,6 +135,7 @@
                     position: relative;
                     display: flex;
                     flex-flow: row wrap;
+                    flex-grow: 1;
                     align-items: center;
                     left: -30px; // trigger area for permalink
                     padding: 20px 30px 0;
@@ -116,6 +146,18 @@
                         margin: 5px 0;
                     }
                     &>*:not(:last-child) {margin-right: 15px;}
+                    .tab-spacer {
+                        display: flex;
+                        flex-flow: row;
+                        flex-grow: 1;
+                        justify-content: space-between;
+                        @media (max-width: 1200px) { // taking into account the largest combined tabmenu length
+                            width: 100%; // same-position hack for other tabs 
+                        }
+                        @media (max-width: 900px) {
+                            flex-flow: column;
+                        }
+                    }
                 }
                 >a.permalink {
                     position: absolute;
