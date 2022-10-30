@@ -12,3 +12,10 @@
     
     // todo: append #... and/or ?... to redirect
 </script>
+
+<noscript>
+    <p>It appears your browser doesn't have Javascript enabled.</p>
+    <p>Please select a language:</p>
+    <a href="/en">English</a>
+    <a href="/sk">Slovak</a>
+</noscript>

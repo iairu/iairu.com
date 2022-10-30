@@ -5,10 +5,10 @@
   "scripts": {
     "dev": "sapper dev",
     "build": "sapper build --legacy",
-    "built_start": "node __sapper__/build",
-    "export_og": "sapper export --legacy",
-    "export": "sapper export --legacy --entry \"/en /sk /links\"",
-    "export_start": "npx serve __sapper__/export"
+    "build_start": "node __sapper__/build",
+    "export": "sapper export --legacy --entry \"/entrypoints\" && node utility/postexport.mjs",
+    "export_start": "npx serve __sapper__/export",
+    "export_vercel": "npm run export"
   },
   "dependencies": {
     "compression": "^1.7.1",
