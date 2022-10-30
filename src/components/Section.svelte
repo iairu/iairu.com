@@ -10,14 +10,16 @@
     const { page } = stores();
     
     export let icon = "";
-    export let name = "";
+    export let name = false; // don't assign for tabmenu takeover, else assign any string (even empty)
     export let slug = getSlug(name);
     export let importance = 1;
     export let hr = false;
+    export let nhl = false; // no heading permalink
     export let hrd = false; // hr dashed
     export let hrp = false; // hr with padding
     export let hrh = false; // hr with halved width
     export let row = false; // change flex from column to row wrap (900px+)
+    export let fw = false; // full width
     export let pt = false; // extra padding top
     export let pb = false; // extra padding bottom
     export let nbt = false; // no border top
@@ -33,6 +35,7 @@
     export let filters = [];
     export let dark = false;
     export let light = false;
+    export let tp = false; // transparent background (especially relevant when dark theme is active)
     export let bg = ""; // background CSS attribute, options: "bg-color bg-image position/bg-size bg-repeat bg-origin bg-clip bg-attachment", if dark or light is true, don't set color
     let tab;
     let filterNum;
@@ -58,20 +61,21 @@
     class:nbt={nbt} class:nbb={nbb}
     class:cg={cg} class:eq={eq}
     class:sli={sli} class:fh={fh}
-    class:up={up}
+    class:up={up} class:fw={fw}
     class:wrapper={wrapper}
+    class:tp={tp}
     style={bg ? "background: " + (dark ? "#222222 " : light ? "#ececec " : "") + bg + ";" : ""}
     >
     <div class="content-wrapper">
         {#if hr || hrd || hrp || hrh}<hr class:hrd class:hrp class:hrh>{/if}
 
-        {#if name}
+        {#if name !== false}
             <div class="heading-wrapper">
                 <div class="heading" class:two={importance === 2}>
                     {#if importance === 1}
-                        <h1>{#if icon}<i class={"icon " + icon}></i>{/if}{name}</h1>
+                        <h1>{#if icon}<i class={"icon " + icon}></i>{/if}{#if typeof name === "string"}{name}{/if}</h1>
                     {:else if importance === 2}
-                        <h2>{#if icon}<i class={"icon " + icon}></i>{/if}{name}</h2>
+                        <h2>{#if icon}<i class={"icon " + icon}></i>{/if}{#if typeof name === "string"}{name}{/if}</h2>
                     {/if}
                     {#if tabs.length}
                         <div class="tab-spacer">
@@ -89,7 +93,9 @@
                         </div>
                     {/if}
                 </div>
-                <a class="permalink" aria-label="URL of this section" href={permalink($page.host, $page.path, slug)}><i class="fa fa-link"></i></a>
+                {#if !nhl}
+                    <a class="permalink" aria-label="URL of this section" href={permalink($page.host, $page.path, slug)}><i class="fa fa-link"></i></a>
+                {/if}
             </div>
         {/if}
 
@@ -102,7 +108,7 @@
             <slot {filter} />
         </div>
         {:else}
-        <Tabs names={tabs} bind:active={tab} hideMenu={name ? true : false}>
+        <Tabs names={tabs} bind:active={tab} hideMenu={name !== false ? true : false}>
             <slot {tab} {filter} />
         </Tabs>
         {/if}
@@ -257,14 +263,23 @@
                 &.fh {height: calc(100% + 100px);}
             }
         }
-    }
-    section.flex.row>div.content-wrapper {
-        >div.content, >section.tabs>div.content {
-            flex-flow: row wrap;
-            @media (max-width: 900px) {flex-flow: column;}
-            >* {
-                margin: 20px 40px 20px 0;
-                @media (max-width: 900px) {margin-right: 0;}
+        &.row>div.content-wrapper {
+            >div.content, >section.tabs>div.content {
+                flex-flow: row wrap;
+                @media (max-width: 900px) {flex-flow: column;}
+                >* {
+                    margin: 20px 40px 20px 0;
+                    @media (max-width: 900px) {margin-right: 0;}
+                }
+            }
+        }
+        &.fw {
+            width: 100%;
+        }
+        &.tp {
+            background-color: transparent;
+            &.dark {
+                border-color: rgba(255, 255, 255, 0.1);
             }
         }
     }
