@@ -1,7 +1,6 @@
 <script>
 	import { lang } from '../../components/LangStore.svelte';
 	import Header from '../../components/Header.svelte';
-	import { href } from '../../components/Modal.svelte';
 	import Modal from '../../components/Modal.svelte';
 	import { onMount } from 'svelte';
 	import ToTop from '../../components/ToTop.svelte';
@@ -17,7 +16,7 @@
 
 	// Current Language and Slug from URL & lang store linkup
 	let currentSlug = "";
-	let currentURLlang = "en";
+    let currentURLlang = "en";
 	const unsubPage = page.subscribe(({ path, params })=>{
 		currentSlug = path;
 		currentURLlang = params.lang;
@@ -30,16 +29,34 @@
 		supported = lng.supported;
 	});
 	error = (!external && !supported.includes(currentURLlang)) ? true : false;
+    let currentSlugOnly = "";
+    $: currentSlugOnly = ((slug) => {
+        let slugNoLang = ""
+        let parts = slug.split("/")
+        if (parts.length > 1) {
+            if (parts[0] == "") { parts.shift() }
+            if (supported.indexOf(parts[0]) > -1) { parts.shift() }
+        }
+        slugNoLang = parts.join("/")
+        return slugNoLang
+    })(currentSlug)
 	
     function isHomepage(slug, lang) {
         return slug == "/" + lang || 
                slug == "/" + lang + "/";
     }
 
+    // list of embedded slugs (excluding "/[lang]/"), where header and footer won't be shown (for custom layout and embedding)
+    let embedded = ["links"]
+    
 	// Checks relying on Window available after mounting & onDestroy
-	let isIframe = false;
+	let isEmbedded = false;
+    $: isEmbedded = ((slugOnly) => {
+        if (embedded.indexOf(slugOnly) > -1) { return true; }
+    })(currentSlugOnly)
+	let isIFrame = false;
 	onMount(()=>{
-		if (window.location !== window.parent.location) { isIframe = true;}
+        if (window.location !== window.parent.location) { isEmbedded = true; isIFrame = true;} // site in <iframe>
 		return ()=>{
 			unsubLang();
 			unsubPage();
@@ -49,7 +66,7 @@
 
 {#if !error}
 <!-- Site content -->
-{#if !isIframe}
+{#if !isEmbedded}
 	<Header nav={[
 		{icon: "fab fa-facebook-messenger", text: "Messenger", href: "https://m.me/iairu"},
 		{icon: "fab fa-linkedin", text: "LinkedIn", href: "https://www.linkedin.com/in/iairu"},
@@ -57,9 +74,9 @@
 		{icon: "fa fa-envelope", text: "E-mail: spanik11@gmail.com", href: "mailto:spanik11@gmail.com", hideExt: true}
 	]} useLangSelector={isHomepage(currentSlug, currentURLlang)} />
 {/if}
-<main class:iframe={isIframe}>
+<main class:iframe={isIFrame}>
 	<slot />
-	{#if !isIframe}
+	{#if !isEmbedded}
 	<S dark icon="fa fa-address-card" name={current === "sk" ? "Kontakt" : "Contact"} slug="contact" pt pb sli>
 		<Nav nav={[
 			{icon: "fa fa-envelope", text: "E-mail: spanik11@gmail.com", href: "mailto:spanik11@gmail.com", isButton: true, modal: false, hideExt: true},
@@ -70,15 +87,15 @@
 	</S>
 	{/if}
 </main>
-{#if !isIframe}
+{#if !isEmbedded}
 <Footer copyright={"iairu"}>
 	Powered by Svelte (Sapper framework), Vercel and FontAwesome
 </Footer>
 {/if}
 
 <!-- Floating fixed pos. stuff -->
-{#if !isIframe}<Modal />{/if}
-<ToTop {isIframe} />
+{#if !isIFrame}<Modal />{/if}
+<ToTop {isIFrame} />
 {:else}
 	<Error 
 		status={404}
