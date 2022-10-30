@@ -5,15 +5,18 @@
     export let mdel = -2; // number/array of numbers of the column(s) to be removed on mobile only
     export let sep = false; // add border separators on inner walls
     export let np = false; // no padding
+    export let wrap = false; // add automatic flex wrapping
+    export let styles = []; // additional styling per column
 </script>
 
-<div class="multi-col" class:eq={eq} class:mrev={mrev} class:sep={sep} class:np={np}>
+<div class="multi-col" class:eq={eq} class:mrev={mrev} class:sep={sep} class:np={np} class:wrap={wrap}>
     {#each Array(count) as _x, column}
         <div 
             class={"column-" + column}
             class:mdel-before={mdel === column-1 || mdel.length && mdel.includes(column-1)}
             class:mdel={mdel === column || mdel.length && mdel.includes(column)}
             class:mdel-after={mdel === column+1 || mdel.length && mdel.includes(column+1)}
+            style={typeof styles[column] === "string" ? styles[column] : ""}
         >
             <slot {column} />
         </div>
@@ -25,6 +28,8 @@
         display: flex;
         flex-flow: row;
 
+        &>div {display: flex; flex-flow: column;}
+        &.wrap {flex-wrap: wrap;}
         &.eq>div {flex: 1;}
         &:not(.np)>div:not(:first-of-type) {padding-left: 25px;}
         &:not(.np)>div:not(:last-of-type) {padding-right: 25px;}
