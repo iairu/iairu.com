@@ -14,11 +14,12 @@
     export let icon = ""; // static/_thumbs/icons | expects svg if no format given | if it begins with fa, fontawesome will load instead
     export let bg = "default"; // static/_thumbs/bgs | expects jpg if no format given
     export let img = ""; // static/_thumbs/imgs | expects jpg if no format given
-    export let bgOpacity = "";
+    export let bgOpacity = ""; // specify a number between <0.0;1.0>
     export let empty = false; // act as a filler (to make last flex-grow elms less stretched / ugly)
     export let bgNoFilter = false;
     export let dark = false;
     export let showIfTag = "";
+    export let tp = false; // transparent background color, ideal when mixed with bgOpacity
 
     let l;
     const unsub = lang.subscribe((lng)=>{l = lng.current;});
@@ -58,6 +59,7 @@
         class="thumb"
         class:dark={dark}
         class:empty={empty}
+        class:tp={tp}
         >
         <div class="content">
 
@@ -88,11 +90,11 @@
             <Nav {nav} />
 
             <!-- Timeline -->
-            {#if from}
+            {#if from || to}
             <div class="details">
                 <span class="from">{from}</span>
                 <div class="arrow tags" class:dark>
-                    {#if to}<span class="days">{calcDays(from,to,l)}</span>{/if}
+                    {#if to && to.split("-").length == 3}<span class="days">{calcDays(from,to,l)}</span>{/if}
                     {#if progress}<div class="progress" style={"width: " + progress + "%; background-image: url('" + progressBg(progress) + "');"}></div>{/if}
                 </div>
                 <span class="to">{to ? to : "TBD"}</span>
@@ -260,6 +262,9 @@
                 .from:before { content: "Od: ";}
                 .to:before { content: "Do: ";}
             }
+        }
+        &.tp {
+            background-color: transparent;
         }
     }
 </style>
