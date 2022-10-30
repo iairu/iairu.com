@@ -58,7 +58,7 @@
             }
         }
         &.dark {
-            border-color: transparent;
+            border: 1px solid rgba(255,255,255,0.2);
             button {
                 background: #222;
                 color: white;
