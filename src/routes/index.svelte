@@ -2,7 +2,6 @@
     import { onMount } from 'svelte';
     import { goto } from '@sapper/app';
     import { lang } from '../components/LangStore.svelte';
-	import LangSelector from './../components/LangSelector.svelte';
 
     onMount(()=>{
         // Client
