@@ -1,6 +1,8 @@
 export function getSlug(str) {
     // https://gist.github.com/codeguy/6684588
 
+    if (typeof str !== "string") return "";
+    
     str = str.replace(/^\s+|\s+$/g, ''); // trim
     str = str.toLowerCase();
   
