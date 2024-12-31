@@ -445,7 +445,7 @@
 		nav={[
 						{icon: "fab fa-youtube", text: "Ayu Animations", href:"https://youtube.com/@ayu-animations/", isButton: true},
 						{icon: "fab fa-youtube", text: "iairu99", href:"https://youtube.com/@iairu99/"},
-						{icon: "fa fa-share", text: SK ? "Viac" : "More", href: SK ? "sk/links" : "en/links", modal: true}
+						{icon: "fa fa-share", text: SK ? "Viac" : "More", href: SK ? "/sk/links" : "/en/links", modal: true}
 		]}
 		/>
 	<Thumb
@@ -458,7 +458,7 @@
 			: "Drawing and storyboard samples made in personal styles and techniques."
 		}
 		nav={[
-			{icon: "fa fa-share", text: SK ? "Prezentácia" : "Presentation", href: "en/art/comics", isButton: true, modal: true, static: true},
+			{icon: "fa fa-share", text: SK ? "Prezentácia" : "Presentation", href: SK ? "/sk/art/komixy" : "/en/art/comics", isButton: true, modal: true, static: true},
 		]}
 		/>
     <!-- <Thumb
