@@ -37,7 +37,7 @@
 		{#if SK}
 		  Narodil som sa v Piešťanoch, študoval v Trenčíne a momentálne študujem informačnú bezpečnosť v Bratislave. Od mala ma bavilo experimentovať s čímkoľvek, z čoho sa neskôr zrodil záujem o dva polárne rozdielne smery - technický a umelecký. Deň, kedy som dostal svoj prvý počítač, bol dňom, ktorý ma kompletne vtiahol do digitálneho sveta.
 		{:else}
-		  I was born in Piešťany, studied in Trenčín and currently study information security in Bratislava. Since I was little, I enjoyed experimenting with anything, which later gave birth to an interest in two polar opposite directions - technical and artistic. The day I got my first computer was the day that completely pulled me into the digital world.
+		  I was born in Piešťany, studied in Trenčín and currently study information security in Bratislava. Since I was little, I enjoyed experimenting with lots of things, which later gave birth to an interest in two polar opposite directions - technical and artistic. The day I got my first computer was the day that completely pushed me into the digital world.
 		{/if}
 		</Quote>
 		<Nav nav={[
