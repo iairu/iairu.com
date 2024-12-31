@@ -68,7 +68,7 @@
         {#if column === 0}
         <S row icon="fa fa-slash" name={SK ? "Niečo medzi" : "In-between"} importance={2} hrd cg>
             <Thumb 
-                name="Discord: iairu#6678"
+                name="Discord: iairu"
                 icon="fab fa-discord"
                 tags="special kind of chat, mostly inside"
                 desc={ SK ? "Super špeciálne miesto pre špeciálnych ľudí. Zvyšok budeš musieť objaviť sám." 
@@ -92,30 +92,43 @@
                 progress=50
                 to="uwu"
                 />
+            <Thumb 
+                name="youtube.com/@iairu99"
+                icon="fab fa-youtube"
+                tags="random videos, creative, some music playlists"
+                desc={ SK ? "Občas experimentujem s rýchlym kreatívnym nápadom, ktorý sa nehodí na moje zvyšné kanály, tak ho hodím sem."
+                        : "Occasionally I experiment with a quick creative idea that isn't suited for any of my other channels, so I drop it here."}
+                nav={[
+                    {icon: "fa fa-share", text: SK ? "Navštíviť" : "Visit", href:"https://youtube.com/@iairu99/", isButton: true},
+                ]}
+                from="65%"
+                progress=65
+                to="uwu"
+                />
         </S>
         {:else}
         <S row icon="fa fa-user" name={SK ? "Expresívne" : "Expression"} importance={2} hrd cg>
             <Thumb 
-                name="anilist.co/user/iairu"
+                name="MyAnimeList @iairu"
                 icon="fa fa-eye"
                 tags="anime tracker, stuff i'm watching"
                 desc={ SK ? "Niektorí ľudia preferujú relaxovať spôsobmi meditácie alebo prechádzky. Pre mňa je to hlavne čaj, jedlo a anime."
                         : "Some people prefer relaxing by means of meditation or going for a walk. For me it's mostly tea, food and anime."}
                 nav={[
-                    {icon: "fa fa-share", text: SK ? "Navštíviť" : "Visit", href:"https://anilist.co/user/iairu/", isButton: true},
+                    {icon: "fa fa-share", text: SK ? "Navštíviť" : "Visit", href:"http://myanimelist.net/animelist/iairu", isButton: true},
                 ]}
                 from="99%"
                 progress=99
                 to="uwu"
                 />
             <Thumb 
-                name="youtube.com/@iairu"
+                name="youtube.com/@ayu-animations"
                 icon="fab fa-youtube"
                 tags="random videos, creative, some music playlists"
                 desc={ SK ? "Občas experimentujem s rýchlym kreatívnym nápadom, ktorý sa nehodí na moje zvyšné kanály, tak ho hodím sem."
                         : "Occasionally I experiment with a quick creative idea that isn't suited for any of my other channels, so I drop it here."}
                 nav={[
-                    {icon: "fa fa-share", text: SK ? "Navštíviť" : "Visit", href:"https://youtube.com/@iairu/", isButton: true},
+                    {icon: "fa fa-share", text: SK ? "Navštíviť" : "Visit", href:"https://youtube.com/@ayu-animations/", isButton: true},
                 ]}
                 from="65%"
                 progress=65
@@ -148,13 +161,13 @@
 <S row dark icon="fa fa-quote-right"  bg="url('/_links/ms_knn_2_out.jpg') top no-repeat"  nhl pt pb cg>
     <S row icon="fa fa-stopwatch" name={SK ? "Aké žánry hudby počúvam najviac?" : "What music genres do I listen to the most?"} importance={2} hrd cg>
         <Thumb dark tp
-            name={ SK ? "Nostalgická 2000s rádio hudba" : "Nostalgic 2000s radio music"}
+            name="HexD Trance"
             progress=23
             to="23%"
             bgOpacity=0.1
             />
         <Thumb dark tp
-            name="Touhou Music Circles"
+            name="Techno, Trance, Nightcore"
             progress=19
             to="19%"
             bgOpacity=0.1
@@ -166,19 +179,19 @@
             bgOpacity=0.1
             />
         <Thumb dark tp
-            name="Techno, Trance, Nightcore"
+            name={ SK ? "Nostalgický Breakcore (Deathbrain)" : "Nostalgic Breakcore (Deathbrain)"}
+            progress=12
+            to="12%"
+            bgOpacity=0.1
+            />
+        <Thumb dark tp
+            name="Touhou Music Circles"
             progress=12
             to="12%"
             bgOpacity=0.1
             />
         <Thumb dark tp
             name={SK ? "Rock, Metal a podobné" : "Rock, Metal and similar"}
-            progress=12
-            to="12%"
-            bgOpacity=0.1
-            />
-        <Thumb dark tp
-            name="Synthwave"
             progress=10
             to="10%"
             bgOpacity=0.1
