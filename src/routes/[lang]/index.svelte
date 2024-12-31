@@ -46,8 +46,13 @@
 				and that's when I get it - the rest is over, if there even was any.
 			{/if}
 		</Quote>
+		<Nav nav={[
+			{icon: "fa fa-feather-alt", 	text: SK ? "Biografia" : "Biography", href: "#bio"},
+			{icon: "fa fa-keyboard",		text: SK ? "Schopnosti" : "Skills", href: "#skills"},
+			{icon: "fa fa-graduation-cap", 	text: SK ? "Vzdelanie" : "Education", href: "#edu"}
+		]} />
 	</S>
-	<S icon="fa fa-thumbs-up" name={SK ? "Záujmy" : "Interests"} slug="interests" hr importance={2}>
+	<!-- <S icon="fa fa-thumbs-up" name={SK ? "Záujmy" : "Interests"} slug="interests" hr importance={2}>
 		<p>
 			{#if SK}
 				Webové technológie, resp. čokoľvek sa dotýka Javascriptu a automatizácia repetitívnych činností. K pokroku ma najviac motivuje zlé/nedostatočné UX. Okrem toho poslednú dobu cestovanie :)
@@ -55,13 +60,8 @@
 				Web technologies, especially Javascript-related stuff and automation of repetitive tasks. The greatest motivation for me is fighting against bad or incomplete UX. Other than that lately travel :)
 			{/if}
 		</p>
-		<Nav nav={[
-			{icon: "fa fa-feather-alt", 	text: SK ? "Biografia" : "Biography", href: "#bio"},
-			{icon: "fa fa-keyboard",		text: SK ? "Schopnosti" : "Skills", href: "#skills"},
-			{icon: "fa fa-graduation-cap", 	text: SK ? "Vzdelanie" : "Education", href: "#edu"}
-		]} />
-	</S>
-	<S dark row icon="fa fa-running" name={SK ? "Práve pracujem na..." : "Work in progress..."} slug="wip" nbb nbt pb hr cg importance={2}>
+	</S> -->
+	<!-- <S dark row icon="fa fa-running" name={SK ? "Práve pracujem na..." : "Work in progress..."} slug="wip" nbb nbt pb hr cg importance={2}>
 		<Thumb dark
 			name="FIIT STU"
 			icon="fa fa-university"
@@ -86,9 +86,9 @@
             progress={50}
             to="2022-06-01"
             />
-	</S>
+	</S> -->
 	{:else}
-	<S bg="url('/_index/newpic2.jpg') 85% 40%/cover no-repeat" fh />
+	<S bg="url('/_index/newpic2.jpg') 85% 18%/cover no-repeat" fh />
 	{/if}
 </C>
 </S>

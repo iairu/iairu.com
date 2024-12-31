@@ -68,7 +68,7 @@
 <!-- Site content -->
 {#if !isEmbedded}
 	<Header nav={[
-		{icon: "fab fa-facebook-messenger", text: "Messenger", href: "https://m.me/iairu"},
+		// {icon: "fab fa-facebook-messenger", text: "Messenger", href: "https://m.me/iairu"},
 		{icon: "fab fa-linkedin", text: "LinkedIn", href: "https://www.linkedin.com/in/iairu"},
 		{icon: "fab fa-github", text: "GitHub", href: "https://github.com/iairu"},
 		{icon: "fa fa-envelope", text: "E-mail: spanik11@gmail.com", href: "mailto:spanik11@gmail.com", hideExt: true}
@@ -80,7 +80,7 @@
 	<S dark icon="fa fa-address-card" name={current === "sk" ? "Kontakt" : "Contact"} slug="contact" pt pb sli>
 		<Nav nav={[
 			{icon: "fa fa-envelope", text: "E-mail: spanik11@gmail.com", href: "mailto:spanik11@gmail.com", isButton: true, modal: false, hideExt: true},
-			{icon: "fab fa-facebook-messenger", text: "Messenger", href: "https://m.me/iairu"},
+			// {icon: "fab fa-facebook-messenger", text: "Messenger", href: "https://m.me/iairu"},
 			{icon: "fab fa-linkedin", text: "LinkedIn", href: "https://www.linkedin.com/in/iairu"},
 			{icon: "fab fa-github", text: "GitHub", href: "https://github.com/iairu"}
 		]} />
