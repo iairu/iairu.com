@@ -17,7 +17,8 @@
 
 <header class:dark={$dark || $darkHeader}>
     <div class="content">
-        {#if showHomeArrow}<a class="home" href={"/" + ($lang.current ? $lang.current : "")}><i class="fa fa-angle-double-left"></i></a>{/if}
+        <!-- Left arrow disabled due to window.history not propagating, won't fix -->
+        {#if false && showHomeArrow}<a class="home" href={"/" + ($lang.current ? $lang.current : "")}><i class="fa fa-angle-double-left"></i></a>{/if}
         <div class="left">
             <img class="logo" src={$dark || $darkHeader ? "/_global/logo-w.svg" : "/_global/logo.svg"} alt="Logo">
             {#if useLangSelector}
