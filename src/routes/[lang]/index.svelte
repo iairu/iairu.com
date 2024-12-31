@@ -390,7 +390,22 @@
 			{icon: "fa fa-share", text: SK ? "Prezentácia" : "Presentation", href: SK ? "/gfx/zrada/" : "/gfx/en/treason/", isButton: true, modal: false, static: true},
 		]}
 		/>
-    <Thumb
+	<Thumb dark
+		name="Brian Struk - ECHO"
+		icon="fa fa-video"
+		tags="3d, animation, blender"
+		showIfTag={filter}
+		desc={
+			SK ? "3D animovaný hudobný videoklip vytvorený v Blenderi pre rovnomennú skladbu."
+			: "3D animated music video created in Blender for this track."
+		}
+		from="2022-06-01"
+		to="2022-06-23" 
+		nav={[
+			{icon: "fab fa-youtube", text: SK ? "Pozrieť" : "Watch", href:"https://www.youtube.com/watch?v=tlIpi9zFVsc", isButton: true}
+		]}
+		/>
+    <!-- <Thumb
         name={SK ? "Tajný projekt I (Dlhodobý)" : "Secret project I (Long-term)"}
         icon="fa fa-hourglass-half"
         tags="video, animation, story"
@@ -405,7 +420,7 @@
         showIfTag={filter}
         from="2022-01-01"
         progress={30}
-        />
+        /> -->
 	{/if}
 </S>
 <S light icon="fa fa-running" name={SK ? "Najviac riešim..." : "Mostly dealing with..."} slug="quote" pt pb nbb sli>
