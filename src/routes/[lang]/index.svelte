@@ -433,6 +433,21 @@
 			{icon: "fab fa-youtube", text: SK ? "Pozrieť" : "Watch", href:"https://www.youtube.com/watch?v=tlIpi9zFVsc", isButton: true}
 		]}
 		/>
+	<Thumb
+		name={SK ? "Sociálne média" : "Socials"}
+		icon="fa fa-share-alt"
+		tags="animation, blog"
+		showIfTag={filter}
+		desc={
+						SK ? "Japonské texty piesní s prekladom, náhodné veci a ďalšie linky."
+						: "Japanese song lyrics translated, random things and more links."
+		}
+		nav={[
+						{icon: "fab fa-youtube", text: "Ayu Animations", href:"https://youtube.com/@ayu-animations/", isButton: true},
+						{icon: "fab fa-youtube", text: "iairu99", href:"https://youtube.com/@iairu99/"},
+						{icon: "fa fa-share", text: SK ? "Viac" : "More", href: SK ? "sk/links" : "en/links", modal: true}
+		]}
+		/>
     <!-- <Thumb
         name={SK ? "Tajný projekt I (Dlhodobý)" : "Secret project I (Long-term)"}
         icon="fa fa-hourglass-half"
