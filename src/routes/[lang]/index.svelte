@@ -29,10 +29,10 @@
 	<meta name="robots" content="index,follow">
 </svelte:head>
 
-<S dark wrapper>
+<S dark wrapper bg="url('/_links/ms_knn_2_out.jpg') top no-repeat">
 <C count={2} let:column eq mdel={1}>
 	{#if column === 0}
-	<S dark name="Ondrej Špánik (iairu)" slug="about" tags={"developer, " + (SK ? "UX dizajnér, InfoSec študent" : "UX designer, InfoSec student")} nbb nbt>
+	<S dark tp name="Ondrej Špánik (iairu)" slug="about" tags={"developer, " + (SK ? "UX dizajnér, InfoSec študent" : "UX designer, InfoSec student")} nbb nbt>
 		<Quote dark>
 		{#if SK}
 		  Narodil som sa v Piešťanoch, študoval v Trenčíne a momentálne študujem informačnú bezpečnosť v Bratislave. Od mala ma bavilo experimentovať s čímkoľvek, z čoho sa neskôr zrodil záujem o dva polárne rozdielne smery - technický a umelecký. Deň, kedy som dostal svoj prvý počítač, bol dňom, ktorý ma kompletne vtiahol do digitálneho sveta.
