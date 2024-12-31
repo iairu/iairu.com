@@ -448,6 +448,19 @@
 						{icon: "fa fa-share", text: SK ? "Viac" : "More", href: SK ? "sk/links" : "en/links", modal: true}
 		]}
 		/>
+	<Thumb
+		name={SK ? "Galéria ukážok komixov" : "Comic Samples Gallery"}
+		icon="fa fa-image"
+		tags="design"
+		showIfTag={filter}
+		desc={
+			SK ? "Ukážky kresieb a storyboardu vytvorené vo vlastných štýloch a technikách."
+			: "Drawing and storyboard samples made in personal styles and techniques."
+		}
+		nav={[
+			{icon: "fa fa-share", text: SK ? "Prezentácia" : "Presentation", href: "en/art/comics", isButton: true, modal: true, static: true},
+		]}
+		/>
     <!-- <Thumb
         name={SK ? "Tajný projekt I (Dlhodobý)" : "Secret project I (Long-term)"}
         icon="fa fa-hourglass-half"
