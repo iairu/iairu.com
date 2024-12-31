@@ -122,11 +122,13 @@
         color: black;
         border-radius: 10px;
         overflow: hidden;
-        transition: box-shadow 0.2s;
+        transform: scale(1.0);
+        transition: box-shadow 0.2s, transform 0.2s;
         @media (max-width: 900px) {width: 100%;}
         &:hover {
-            transition: box-shadow 0.2s;
+            transition: box-shadow 0.2s, transform 0.2s;
             box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.2);
+            transform: scale(1.02);
         }
         .content {
             display: flex;
