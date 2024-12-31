@@ -18,7 +18,7 @@
 		darkHeader.set(true);
 		return ()=>{
 			unsub();
-			darkHeader.false(true);
+			darkHeader.set(false);
 		}
 	});
 </script>
