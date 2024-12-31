@@ -55,7 +55,7 @@
 </script>
 
 {#if !showIfTag || (showIfTag && tags.includes(showIfTag.toLowerCase()))}
-    <section 
+    <section
         class="thumb"
         class:dark={dark}
         class:empty={empty}
@@ -224,6 +224,7 @@
             width: 100%;
             opacity: 0.2;
             object-fit: cover;
+            background: white;
         }
         &.empty {
             margin-top: 0 !important;
@@ -247,7 +248,7 @@
                 }
                 .heading .icon {color: white;}
                 .img {border-color: rgba(255,255,255,0.2);}
-                .bg { 
+                .bg {
                     opacity: 0.3;
                     filter: contrast(0.5) brightness(1.5);
                 }
