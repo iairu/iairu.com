@@ -200,9 +200,9 @@
 		position: relative;
 		margin: 0 auto;
 		box-sizing: border-box;
-		&.iframe {
+		/* &.iframe {
 			padding-top: 2em;
-		}
+		} */
 	}
 	hr {
 		border: none;

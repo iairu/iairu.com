@@ -33,8 +33,10 @@
 <style lang="scss" global>
     header {
         display: flex;
-        padding: calc(2em + 20px);
-        padding-bottom: 2em;
+        /* padding: 1em calc(2em + 20px) 0.6em; */
+        padding: 1em 0 0;
+        height: 60px;
+        overflow: hidden;
         @media (max-width: 850px) {
             border-color: transparent;
         }
@@ -44,7 +46,9 @@
             justify-content: space-between;
             align-items: flex-start;
             position: relative;
-            max-width: 1920px;
+            /* max-width: 1920px; */
+            max-width: 1880px;
+            padding: 0 20px 0 60px;
             margin: 0 auto;
             flex: 1;
             .left {
@@ -56,9 +60,16 @@
                 }
             }
             .logo {
-                width: 120px;
+                position: absolute;
+                width: auto;
+                top: 3px;
+                height: 60px;
                 opacity: 0.8;
-                margin: 5px 10px 10px 0;
+                margin: 0;
+                transform: scale(1.5);
+            }
+            .menu { // from LangSelector for logo offset
+                left: 90px;
             }
         }
         a.home {

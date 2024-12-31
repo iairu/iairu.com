@@ -119,7 +119,7 @@
         display: flex;
         justify-content: center;
         position: relative;
-        margin-top: -2em;
+        /* margin-top: -2em; */
         >div.content-wrapper {
             width: 100%;
             position: relative;
