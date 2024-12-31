@@ -55,6 +55,7 @@
         darkstore.set(dark);
         darkHeader.set(dark);
         if (content) {toc = generateTOC(content);}
+        
         return (()=>{
             darkstore.set(false);
             darkHeader.set(false);
@@ -72,6 +73,60 @@
     <title>{"404 Not Found"} :: iairu</title>
     <meta name="robots" content={"noindex,nofollow"}>
     {/if}
+    <script>
+        
+        // Simple gallery handler WIP
+        window.addEventListener('load', () => {
+            try {
+                let lastTimeout = null;
+                const images = document.querySelectorAll('.thumbnails img');
+                const modal = document.getElementById('imageModal');
+                const modalBackdrop = document.querySelector('.modal-backdrop');
+
+                async function showImage(img) {
+                  let featured = document.getElementById('featured');
+                  featured.src = img.dataset.full || img.src;
+                  currentIndex = Array.from(images).indexOf(img);
+                }
+
+                window.openModal = (img) => {
+                  modal.style.display = 'block';
+                  showImage(img);
+                  document.body.style.overflow = 'hidden';
+                }
+
+                window.closeModal = () => {
+                  modal.style.display = 'none';
+                  document.body.style.overflow = 'auto';
+                }
+
+                window.nextImage = () => {
+                  currentIndex = (currentIndex + 1) % images.length;
+                  showImage(images[currentIndex]);
+                }
+
+                window.prevImage = () => {
+                  currentIndex = (currentIndex - 1 + images.length) % images.length;
+                  showImage(images[currentIndex]);
+                }
+
+                modalBackdrop.addEventListener('click', closeModal);
+
+                document.addEventListener('keydown', (e) => {
+                  if (e.key === 'Escape') {
+                    window.closeModal();
+                  } else if (modal.style.display === 'block') {
+                    if (e.key === 'ArrowRight') {
+                      window.nextImage();
+                    } else if (e.key === 'ArrowLeft') {
+                      window.prevImage();
+                    }
+                  }
+                });
+            } catch (error) { // If gallery handler unused
+            }
+        });
+    </script>
 </svelte:head>
 
 {#if post}
@@ -191,6 +246,133 @@
             >.multi-col .column-1 { 
                 width: 100%;
                 min-width: 0;
+            }
+            .gallery-container {
+                max-width: 800px;
+                margin: 0 auto;
+                max-height: 100vh;
+                overflow-y: auto;
+                .modal {
+                    display: none;
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    z-index: 1000;
+                }
+                
+                .modal-backdrop {
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0,0,0,0.9);
+                    z-index: 1000;
+                }
+                
+                .modal-content {
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 100%;
+                    padding: 20px;
+                    z-index: 1001;
+                }
+                
+                #featured {
+                    max-height: 90vh;
+                    max-width: 90vw;
+                    object-fit: contain;
+                    pointer-events: none;
+                }
+                
+                .arrow {
+                    position: absolute;
+                    top: 50%;
+                    transform: translateY(-50%);
+                    background: rgba(0,0,0,0.5);
+                    color: white;
+                    border: none;
+                    padding: 15px 20px;
+                    cursor: pointer;
+                    font-size: 20px;
+                    transition: background 0.3s;
+                    z-index: 1;
+                }
+                
+                .arrow:hover {
+                    background: rgba(0,0,0,0.8);
+                }
+                
+                .close {
+                    position: absolute;
+                    top: 10px;
+                    left: 10px;
+                    background: rgba(0,0,0,0.5);
+                    color: white;
+                    border: none;
+                    width: 40px;
+                    height: 40px;
+                    border-radius: 50%;
+                    cursor: pointer;
+                    font-size: 24px;
+                    transition: background 0.3s;
+                    z-index: 1002;
+                }
+                
+                .close:hover {
+                    background: rgba(0,0,0,0.8);
+                }
+                
+                .prev {
+                    left: 10px;
+                }
+                
+                .next {
+                    right: 10px;
+                }
+                
+                .thumbnails {
+                    display: flex;
+                    gap: 10px;
+                    flex-wrap: wrap;
+                    justify-content: center;
+                    padding: 20px;
+                    margin-bottom: 10px;
+                    border: 2px solid rgba(0, 0, 0, 0.1); 
+                    border-radius: 8px; 
+                    background: #f5f5f5;
+                }
+                
+                .thumbnails img {
+                    width: 100px;
+                    height: 100px;
+                    object-fit: cover;
+                    cursor: pointer;
+                    opacity: 1;
+                    transition: opacity 0.3s;
+                    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+                    border: 1px solid #ddd;
+                }
+                
+                .thumbnails img:hover {
+                    opacity: 1;
+                }
+                
+                @media (max-width: 768px) {
+                    .thumbnails img {
+                    width: 80px;
+                    height: 80px;
+                    }
+                
+                    .arrow {
+                    padding: 10px 15px;
+                    font-size: 16px;
+                    }
+                }
             }
         }
         @media screen {
