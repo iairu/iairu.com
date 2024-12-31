@@ -89,7 +89,7 @@
 </main>
 {#if !isEmbedded}
 <Footer copyright={"iairu"}>
-	Powered by Svelte (Sapper framework), Vercel and FontAwesome
+	Powered by Svelte, Vercel and FontAwesome
 </Footer>
 {/if}
 
