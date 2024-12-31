@@ -2,6 +2,7 @@
 	import { lang } from '../../components/LangStore.svelte';
 	import Header from '../../components/Header.svelte';
 	import Modal from '../../components/Modal.svelte';
+	import { dark, darkHeader } from '../../components/DarkStore.svelte';
 	import { onMount } from 'svelte';
 	import ToTop from '../../components/ToTop.svelte';
 	import Nav from '../../components/Nav.svelte';
@@ -77,14 +78,26 @@
 <main class:iframe={isIFrame}>
 	<slot />
 	{#if !isEmbedded}
-	<S dark icon="fa fa-address-card" name={current === "sk" ? "Kontakt" : "Contact"} slug="contact" pt pb sli>
-		<Nav nav={[
-			{icon: "fa fa-envelope", text: "E-mail: spanik11@gmail.com", href: "mailto:spanik11@gmail.com", isButton: true, modal: false, hideExt: true},
-			// {icon: "fab fa-facebook-messenger", text: "Messenger", href: "https://m.me/iairu"},
-			{icon: "fab fa-linkedin", text: "LinkedIn", href: "https://www.linkedin.com/in/iairu"},
-			{icon: "fab fa-github", text: "GitHub", href: "https://github.com/iairu"}
-		]} />
-	</S>
+	   {#if isHomepage(currentSlug, currentURLlang)}
+    	<S dark={$dark || $darkHeader} icon="fa fa-address-card" name={current === "sk" ? "Kontakt" : "Contact"} slug="contact" pt pb sli>
+    		<Nav nav={[
+    			{icon: "fa fa-envelope", text: "E-mail: spanik11@gmail.com", href: "mailto:spanik11@gmail.com", isButton: isHomepage(currentSlug, currentURLlang), modal: false, hideExt: true},
+    			// {icon: "fab fa-facebook-messenger", text: "Messenger", href: "https://m.me/iairu"},
+    			{icon: "fab fa-linkedin", text: "LinkedIn", href: "https://www.linkedin.com/in/iairu"},
+    			{icon: "fab fa-github", text: "GitHub", href: "https://github.com/iairu"}
+    		]} />
+    	</S>
+    	{:else}
+    	<S dark={$dark || $darkHeader} slug="contact" pt pb sli nhl>
+    		<Nav nav={[
+        		{ icon: "fa fa-home", text: current === "sk" ? "Domov" : "Homepage", href: "/" , isButton: true, modal: false, hideExt: true, sameTarget: true, static: true },
+    			{icon: "fa fa-envelope", text: "E-mail: spanik11@gmail.com", href: "mailto:spanik11@gmail.com", isButton: isHomepage(currentSlug, currentURLlang), modal: false, hideExt: true},
+    			// {icon: "fab fa-facebook-messenger", text: "Messenger", href: "https://m.me/iairu"},
+    			{icon: "fab fa-linkedin", text: "LinkedIn", href: "https://www.linkedin.com/in/iairu"},
+    			{icon: "fab fa-github", text: "GitHub", href: "https://github.com/iairu"}
+    		]} />
+    	</S>
+    	{/if}
 	{/if}
 </main>
 {#if !isEmbedded}
