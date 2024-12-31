@@ -436,33 +436,36 @@
 	</C>
 	<S row icon="fa fa-keyboard" name={SK ? "Schopnosti" : "Skills"} slug="skills" importance={2} hrd eq>
 		<Tabs names={[SK ? "Programovanie" : "Programming"]} let:active>
-			- HTML, CSS (SCSS), Git<br>
-			- JavaScript ES6 (Node.js, Svelte, Electron, {SK ? "základy Vue.js a Reactu" : "basics: Vue.js and React"}), PHP<br>
-			- C, Bash, {SK ? "Základné zručnosti v jazykoch" : "Basic knowledge of"} Java, Python<br>
-			- AutoHotkey
+			- HTML, CSS (SCSS, Tailwind), Git, Vim, Linux<br>
+			- JavaScript ES6 (Vanilla, Svelte, Electron, {SK ? "základy Vue.js, Angularu a Reactu" : "basics: Vue.js, Angular and React"})<br>
+			- Python, Bash/Zsh (+ cat, sed, pipe, alias, ...), C<br>
+			- PHP (Laravel), AutoHotkey/Automator/Apple Shortcuts<br>
+			- Pentesting
 		</Tabs>
 		<Tabs names={[SK ? "Grafický dizajn" : "Graphic design"]}>
-			{SK ? "- Expertné, každodenné skúsenosti s Adobe CC balíkom, najmä:"
-				: "- Expert, everyday experience with Adobe CC, especially:"}<br>
+			{SK ? "- Denné skúsenosti s Blender, Affinity Designer, Davinci Resolve, "
+			: "- Daily experience with Blender, Affinity Designer, Davinci Resolve, "}
 			Adobe Photoshop, Adobe Illustrator, Adobe Premiere Pro, Adobe InDesign<br>
-			{SK ? "- Širšia znalosť softvéru Figma a Blender"
-				: "- Knowledge of Figma and Blender"}
+			{SK ? "- Pozri hore 'Creative' voľbu vedľa nadpisu 'Projekty'"
+			: "- See 'Creative' option above next to 'Projects' heading"}
 		</Tabs>
 	</S>
 	<S row icon="fa fa-graduation-cap" name={SK ? "Vzdelanie" : "Education"} slug="edu" importance={2} hrd eq>
 		<Tabs names={["FIIT " + (SK ? "(informatika)" : "(computer science)")]}>
 			{#if SK}
-			<b>Fakulta informatiky a informačných technológií STU</b> // September 2019 – Júl 2023<br>
-			<u>Odbor BC-INFO4 Informatika (bakalár), v druhej polovici 3. ročníka, 4-ročné štúdium</u><br>
+			<b>Fakulta informatiky a informačných technológií STU</b> // September 2019 – Júl 2024<br>
+			<u>Odbor BC-INFO4 Informatika (bakalár), predĺžené 4-ročné štúdium</u><br>
 			- Priemer 1.41 (najlepších 11%) za prvé dva semestre<br>
 			- Nadobudnutie základov programovania v C++, JavaScript, PHP<br>
-			- Zlepšenie rešeršových a prezentačných schopností; práce s Linuxom
+			- Zlepšenie rešeršových a prezentačných schopností; práce s Linuxom<br>
+			- Pokračovanie na inžinierskom štúdiu v odbore "Informačná bezpečnosť"
 			{:else}
-			<b>Faculty of Informatics and Information Technologies STU</b> // September 2019 – July 2023<br>
-			<u>BC-INFO4 Computer Science (bachelor), third year out of the 4-year study plan</u><br>
+			<b>Faculty of Informatics and Information Technologies STU</b> // September 2019 – July 2024<br>
+			<u>BC-INFO4 Computer Science (bachelor), prolonged 4-year study plan</u><br>
 			- Average 1.41 (not GPA) (top 11% of students) for first two semesters<br>
 			- Acquired basics of programming in C++, JavaScript and PHP languages<br>
-			- Improved research and presentation skills; work with Linux
+			- Improved research and presentation skills; work with Linux<br>
+			- Continuing by studying master's in the field of "Information Security"
 			{/if}
 		</Tabs>
 		<Tabs names={["SUPTN " + (SK ? "(grafický dizajn)" : "(graphic design)")]}>
