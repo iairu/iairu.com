@@ -84,6 +84,7 @@
             {#if desc}<p>{desc}</p>{/if}
 
             <!-- Image -->
+            <!-- svelte-ignore a11y-click-events-have-key-events -->
             {#if img}<img class="img" src={"/_thumbs/imgs/" + (img.includes(".") ? img : img + ".jpg")} alt={name + " photo"} on:click={handleImageModal}>{/if}
 
             <!-- Navigation -->

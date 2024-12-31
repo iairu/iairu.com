@@ -134,6 +134,7 @@
             ></iframe>
         {/if}
     </div>
+    <!-- svelte-ignore a11y-click-events-have-key-events -->
     <div class="bg-close-modal" on:click={close}></div>
 </section>
 {/if}
