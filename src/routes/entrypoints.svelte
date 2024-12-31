@@ -11,3 +11,8 @@
 <a href="/links">Links</a>
 <!-- Note that /links entrypoint contains links to /en/links and /sk/links in <noscript> for sapper export to crawl them -->
 <!-- If you don't want <noscript> make sure to specify the links here -->
+
+<h2>Tabbed sites</h2>
+<p>These are linked on-site, but in a tab, so crawler fails to discover them</p>
+<a href="/en/art/comics">Comics</a>
+<a href="/sk/art/komixy">Komixy</a>
