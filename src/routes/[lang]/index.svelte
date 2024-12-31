@@ -9,7 +9,7 @@
 	import { onMount } from 'svelte';
 	import { darkHeader } from '../../components/DarkStore.svelte';
 
-	
+
 	let l;
 	let SK = false;
 	$: SK = l.current === "sk"; // basically a macro
@@ -32,19 +32,13 @@
 <S dark wrapper>
 <C count={2} let:column eq mdel={1}>
 	{#if column === 0}
-	<S dark name="Ondrej Špánik (airu)" slug="about" tags={"junior developer, " + (SK ? "grafický dizajnér, študent" : "graphic designer, student")} nbb nbt>
+	<S dark name="Ondrej Špánik (iairu)" slug="about" tags={"developer, " + (SK ? "UX dizajnér, InfoSec študent" : "UX designer, InfoSec student")} nbb nbt>
 		<Quote dark>
-			{#if SK}
-				Vždy som mal priveľa digitálnych záujmov na to aby som sa pozastavil a obzrel druhým smerom, von z okna. 
-				Jedného dňa sa k tomu dostanem, predtým by som avšak rád napísal ešte pár tisícok riadkov kódu. 
-				Predstava, že si potom oddýchnem lehom v strede veľkej lúky znie nádherne, 
-				a zrovna vtedy mi zasvieti - je po oddychu, ak nejaký bol.
-			{:else}
-				I've always had too many digital interests to make me pause and think, perhaps look the other way - out the window.
-				Before I get to it one day, I plan on writing few thousand rows of code.
-				The idea, that I would chill-out beneath the blue sky sounds wonderful,
-				and that's when I get it - the rest is over, if there even was any.
-			{/if}
+		{#if SK}
+		  Narodil som sa v Piešťanoch, študoval v Trenčíne a momentálne študujem informačnú bezpečnosť v Bratislave. Od mala ma bavilo experimentovať s čímkoľvek, z čoho sa neskôr zrodil záujem o dva polárne rozdielne smery - technický a umelecký. Deň, kedy som dostal svoj prvý počítač, bol dňom, ktorý ma kompletne vtiahol do digitálneho sveta.
+		{:else}
+		  I was born in Piešťany, studied in Trenčín and currently study information security in Bratislava. Since I was little, I enjoyed experimenting with anything, which later gave birth to an interest in two polar opposite directions - technical and artistic. The day I got my first computer was the day that completely pulled me into the digital world.
+		{/if}
 		</Quote>
 		<Nav nav={[
 			{icon: "fa fa-feather-alt", 	text: SK ? "Biografia" : "Biography", href: "#bio"},
@@ -218,7 +212,7 @@
         tags="iptables, networking, linux, sysadmin, blog"
         showIfTag={filter}
         desc={
-            SK  ? "Návod nie len pre presmerovanie portov, ale všeobecné riešenie problémov v rámci IPTables." 
+            SK  ? "Návod nie len pre presmerovanie portov, ale všeobecné riešenie problémov v rámci IPTables."
                 : "A walkthrough tutorial for not just port-forwarding, but problem solving when it comes to IPTables."
         }
         nav={[
@@ -226,7 +220,7 @@
 			{icon: "fa fa-book", text:"Prečítať (Anglicky)", href:"/en/dev/iptables-portforward/", isButton: true, hide: !SK, static: true},
         ]}
         />
-    <Thumb 
+    <Thumb
         name="Right to Repair"
         icon="fa fa-tools"
         bgOpacity={0.12}
@@ -243,7 +237,7 @@
             {icon: "fa fa-file-alt", text: SK ? "Slajdy [PDF]" : "Slides [PDF]", href:"/dl/right-to-repair-prez.pdf", static: true},
         ]}
         />
-	<Thumb 
+	<Thumb
 		name={ SK ? "GUI pre gTTS" : "GUI for gTTS"}
 		icon="fa fa-comment-dots"
 		tags="python"
@@ -281,7 +275,7 @@
 		}
 		img="listky"
 		/>
-	<Thumb 
+	<Thumb
 		name={SK ? "Každodenná digitálna automatizácia" : "Everyday digital automation"}
 		icon="fa fa-file-code"
 		tags="autohotkey, blog"
@@ -295,7 +289,7 @@
 			{icon: "fa fa-book", text:"Seminárna práca [PDF]", href:"/dl/seminarka.pdf", hide: !SK},
 		]}
 		/>
-	<Thumb 
+	<Thumb
 		name={SK ? "Linux návody" : "Linux tutorials"}
 		icon="fa fa-book"
 		tags="bash, sysadmin, vm"
@@ -310,7 +304,7 @@
 			{icon: "fa fa-book", text:"2 - HTTP Server [PDF]", href:"/dl/linux-http.pdf", hide: !SK},
 		]}
 		/>
-	<Thumb 
+	<Thumb
 		name={SK ? "IPv4 kalkulačka + návod" : "IPv4 Calc"}
 		icon="fa fa-sitemap"
 		tags="c, networking, blog"
@@ -342,17 +336,17 @@
 		]}
 		/>
 	{#if !SK}
-	<Thumb 
+	<Thumb
 		name="More stuff available in Slovak language"
 		icon="fa fa-globe-europe"
 		bg=""
 		desc="Additional documentation, localized project examples, ..."
 		nav={[
 			{icon: "fa fa-share", text:"Switch languages", href:"/sk#projects", static: true, modal: false, sameTarget: true},
-		]} 
+		]}
 		/>
 	{:else}
-    <Thumb 
+    <Thumb
         name="Programovací denník (Leto 2020)"
         icon="fa fa-clipboard-list"
         tags="blog"
@@ -360,7 +354,7 @@
         desc="Osobné projekty a experimenty počas leta v roku 2020."
         nav={[
             {icon: "fa fa-clipboard-list", text:"Prečítať", href:"/dev/log/", isButton: true},
-        ]} 
+        ]}
         />
 	{/if}
 	<Thumb empty />
@@ -396,7 +390,7 @@
 			{icon: "fa fa-share", text: SK ? "Prezentácia" : "Presentation", href: SK ? "/gfx/zrada/" : "/gfx/en/treason/", isButton: true, modal: false, static: true},
 		]}
 		/>
-    <Thumb 
+    <Thumb
         name={SK ? "Tajný projekt I (Dlhodobý)" : "Secret project I (Long-term)"}
         icon="fa fa-hourglass-half"
         tags="video, animation, story"
@@ -404,7 +398,7 @@
         from="2016-06-01"
         progress={15}
         />
-    <Thumb 
+    <Thumb
         name={SK ? "Tajný projekt II (Krátkodobý)" : "Secret project II (Short-term)"}
         icon="fa fa-hourglass-half"
         tags="video, animation, story"
@@ -414,11 +408,11 @@
         />
 	{/if}
 </S>
-<S light icon="fa fa-running" name={SK ? "Najviac ma trápi..." : "Worries me the most..."} slug="quote" pt pb nbb sli>
+<S light icon="fa fa-running" name={SK ? "Najviac riešim..." : "Mostly dealing with..."} slug="quote" pt pb nbb sli>
 	<span>
 		{
-			SK ? 	"Momentálne najmä snaha prežiť ďaľší semester..." : 
-					"Mainly an effort to survive the current semester..."
+		SK ? 	"Vývoj iOS a macOS hobby projektov a kurzy informačnej bezpečnosti + diplomová práca" :
+				"iOS and macOS side-projects and information security courses + master thesis"
 		}
 	</span>
 </S>
@@ -427,13 +421,9 @@
 		{#if column === 0}
 			<Quote>
 				{#if SK}
-					Narodil som sa v Piešťanoch, študoval v Trenčíne a momentálne študujem v Bratislave. Od mala ma bavilo experimentovať s čímkoľvek, 
-					z čoho sa neskôr zrodil záujem o dva polárne rozdielne smery - technický a umelecký. Deň, kedy som dostal svoj prvý počítač, bol
-					dňom, ktorý ma kompletne vtiahol do digitálneho sveta, kde sa medze kreativite naozaj nekladú.
+				    Popri štúdiu informačnej bezpečnosti sa venujem vývoju pre macOS a iOS pomocou SwiftUI. Zameriavam sa najmä na písanie optimálnejších programov s podporou pre staršie verzie systému. Experimentujem s OpenCore na mojom Thinkpade X260. Nedávno som dokončil Find-A-Cat, program na správu rodokmeňov mačiek, ale momentálne ma viac zaujímajú user-friendly riešenia ako NocoDB - nadstavby nad existujúcimi systémami mi dávajú väčší zmysel než vývoj od nuly. Už päť rokov budujem weby pomocou Svelte a v diplomovke skúmam honeypoty v sieťovej bezpečnosti. Preferujem natívne aplikácie a Python pred Electronom. Safari je môj hlavný prehliadač pre jeho vyváženosť výkonu a výdrže, na Linuxe je to Firefox. Windows užívateľom odporúčam Edge. Na organizáciu používam Todoist a Apple Kalendár prepojený s Google Kalendárom. FSNotes cez iCloud mi vyhovuje viac než Apple Notes. Na výskumné a písomné práce volím Markdown s Pandocom namiesto LaTeXu, pre vývoj Zed Editor a rýchle úpravy vim. Mám rád skôr experimentálno-všeobecný zámer ako definitívnu oblasť.
 				{:else}
-					I was born in Piešťany, studied in Trenčín and currently study in Bratislava. Ever since I was little, I was intrigued by experiments,
-					from which an interest for two polar opposites - technical and artistic direction - was born. The day I got my first computer was the day,
-					which completely sucked me into the digital world, where creativity barriers truly don't exist. 
+					While studying information security, I develop for macOS and iOS using SwiftUI. I focus mainly on writing more optimal programs for older versions of the system. I experiment with OpenCore on my Thinkpad X260. I recently completed Find-A-Cat, a cat pedigree management program, but I'm currently more interested in user-friendly solutions like NocoDB - extensions built on existing systems make more sense to me than development from scratch. I've been building websites using Svelte for five years and in my thesis I'm researching honeypots in network security. I prefer native applications and Python over Electron. Safari is my main browser for its balance of performance and battery life, on Linux it's Firefox. I recommend Edge to Windows users. For organization, I use Todoist and Apple Calendar linked with Google Calendar. FSNotes via iCloud suits me better than Apple Notes. For research writing, I choose Markdown with Pandoc instead of LaTeX, for development Zed Editor and quick edits vim. I prefer having an experimental-general aim rather than a definitive field.
 				{/if}
 			</Quote>
 			<p style="opacity:0.5; font-size: 10px;">
