@@ -181,7 +181,7 @@
                 min-height: 5px;
                 background-image: url("/_thumbs/arrow-line.svg");
                 background-repeat: repeat-x;
-                background-size: 10px 1px;
+                background-size: 10px 2px; //2px instead of 1 for safari invisible fix
                 background-position: center;
                 &:after {
                     content: "";
