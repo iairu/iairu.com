@@ -388,7 +388,7 @@
 	<Thumb empty />
 	{:else if tab === 1}
 	<Thumb dark
-		name={SK ? "Grafické portfolio" : "Graphic design portfolio"}
+		name={SK ? "Grafické portfolio 2017-2019" : "Graphic design portfolio 2017-2019"}
 		bg="gfxbg"
 		bgOpacity={1} bgNoFilter
 		icon="dumpling-w"
@@ -403,7 +403,7 @@
 		]}
 		/>
 	<Thumb dark
-		name={SK ? "Zrada kráľa" : "Treason"}
+		name={SK ? "Zrada kráľa 2019" : "Treason 2019"}
 		bg="zrada"
 		icon="fa fa-paint-brush"
 		tags="3d, animation, blender"
@@ -419,7 +419,7 @@
 		]}
 		/>
 	<Thumb dark
-		name="Brian Struk - ECHO"
+		name="Brian Struk - ECHO 2022"
 		icon="fa fa-video"
 		tags="3d, animation, blender"
 		showIfTag={filter}
