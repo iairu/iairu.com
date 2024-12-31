@@ -90,7 +90,7 @@
 <S row icon="fa fa-calendar-check" name={SK ? "Projekty" : "Projects"} slug="projects" tabs={["Development", "Creative"]} filters={[["", "Javascript", "Autohotkey", "Python", "Blog"],["", "Animation", "Design", "Blog"]]}  let:tab let:filter pt pb cg>
     {#if tab === 0}
 	<Thumb dark
-		name="StrukShow.com"
+		name="StrukShow.com Portfolio 2020"
 		icon="strukshow-w"
 		bg="strukshow"
 		tags="svelte, javascript, scss, html, php"
@@ -107,6 +107,72 @@
 		]}
 		/>
 	<Thumb dark
+        name="Save the Princess Browser Game"
+        bg="stp"
+        icon="fa fa-gamepad"
+        tags="javascript"
+        showIfTag={filter}
+        desc={
+            SK 	? "Vanilla JavaScript hra inšpirovaná Street Fighterom. Prvý JavaScript projekt, stavané podľa MVC princípu."
+                : "Vanilla JavaScript game inspired by Street Fighter. First Javascript project, based on MVC."
+        }
+        from="2020-02-21"
+        to="2020-06-24"
+        nav={[
+            {icon: "fa fa-play", text: SK ? "Zahrať" : "Play", href:"/dev/save-the-princess/", isButton: true},
+            {icon: "fa fa-file-alt", text:"Docs [PDF]", href:"/dl/save-the-princess.pdf", hide: !SK},
+        ]}
+        />
+	<Thumb dark
+    	name="ProcExp Procreate Exporter"
+    	icon="fa fa-paint-brush"
+            bgOpacity={0.2}
+    	tags="autohotkey, ffmpeg, parsing"
+            showIfTag={filter}
+    	desc={
+    		SK	? "Skript pre masové extrahovanie, spojenie a exportovanie timelapse súborov z Procreate prác pomocou 7z a FFMPEG."
+    			: "Script for mass extraction, stitching and export of timelapse files from Procreate works using 7z and FFMPEG."
+    	}
+    	from="2019-12-17"
+    	to="2020-01-21"
+    	nav={[
+    		{icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/ProcExp", isButton: true},
+    		{icon: "fa fa-download", text: SK ? "Stiahnuť" : "Download", href:"https://github.com/iairu/ProcExp/releases"},
+    	]}
+        />
+	<Thumb dark
+    	name="AnkiScreener Flashcard Utility"
+    	icon="fa fa-crop-alt"
+    	bgOpacity={0.2}
+    	tags="javascript, svelte, electron, scss"
+        showIfTag={filter}
+    	desc={
+    		SK	? "Bohatý nástroj pre rýchlu tvorbu Anki-kompatibilných učebných CSV kariet."
+    			: "A rich utility for fast creation of Anki-compatible CSV flashcards."
+    	}
+    	from="2020-09-23"
+    	to="2020-10-07"
+    	nav={[
+    		{icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/AnkiScreener", isButton: true},
+    		{icon: "fab fa-youtube", text: SK ? "Ukážka" : "Preview", href:"https://www.youtube.com/watch?v=LO1rb8nfDX4"},
+    	]}
+        />
+	<Thumb dark
+		name="BrianStruk.com Portfolio 2022"
+		icon="strukshow-w" 
+		tags="svelte, javascript, scss, html, php"
+		showIfTag={filter}
+		from="2022-06-22"
+		to="2022-06-23"
+		desc={
+		SK  ? "Komplexné riešenie modernej webovej stránky pre hudobného umelca pomocou zdieľaného CockpitCMS (so StrukShow a LubaStrukova) a Svelte."
+			: "Complex solution of a modern website for a music artist using shared CockpitCMS (with StrukShow and LubaStrukova) and Svelte."
+		}
+		nav={[
+			{icon: "fa fa-share", text: SK ? "Navštíviť" : "Visit", href:"https://brianstruk.com", isButton: true},
+		]}
+		/>
+	<Thumb 
 		name="PostgreSQL REST API"
 		icon="fa fa-file-code"
         bgOpacity={0.2}
@@ -123,8 +189,8 @@
             {icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/dbs_django_postgresql"},
 		]}
 		/>
-	<Thumb dark
-		name="TASM Counter"
+	<Thumb 
+		name="TASM Assembly Counter"
 		icon="fa fa-file-code"
         bgOpacity={0.2}
 		tags="assembly, ms-dos"
@@ -139,59 +205,8 @@
             {icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/tasm_counter", isButton: true},
 		]}
 		/>
-	<Thumb dark
-		name="AnkiScreener"
-		icon="fa fa-crop-alt"
-		bgOpacity={0.2}
-		tags="javascript, svelte, electron, scss"
-        showIfTag={filter}
-		desc={
-			SK	? "Bohatý nástroj pre rýchlu tvorbu Anki-kompatibilných učebných CSV kariet."
-				: "A rich utility for fast creation of Anki-compatible CSV flashcards."
-		}
-		from="2020-09-23"
-		to="2020-10-07"
-		nav={[
-			{icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/AnkiScreener", isButton: true},
-			{icon: "fab fa-youtube", text: SK ? "Ukážka" : "Preview", href:"https://www.youtube.com/watch?v=LO1rb8nfDX4"},
-		]}
-		/>
-	<Thumb dark
-		name="ProcExp"
-		icon="fa fa-paint-brush"
-        bgOpacity={0.2}
-		tags="autohotkey, ffmpeg, parsing"
-        showIfTag={filter}
-		desc={
-			SK	? "Skript pre masové extrahovanie, spojenie a exportovanie timelapse súborov z Procreate prác pomocou 7z a FFMPEG."
-				: "Script for mass extraction, stitching and export of timelapse files from Procreate works using 7z and FFMPEG."
-		}
-		from="2019-12-17"
-		to="2020-01-21"
-		nav={[
-			{icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/ProcExp", isButton: true},
-			{icon: "fa fa-download", text: SK ? "Stiahnuť" : "Download", href:"https://github.com/iairu/ProcExp/releases"},
-		]}
-        />
-    <Thumb dark
-        name="Save the Princess"
-        bg="stp"
-        icon="fa fa-gamepad"
-        tags="javascript"
-        showIfTag={filter}
-        desc={
-            SK 	? "Vanilla JavaScript hra inšpirovaná Street Fighterom. Prvý JavaScript projekt, stavané podľa MVC princípu."
-                : "Vanilla JavaScript game inspired by Street Fighter. First Javascript project, based on MVC."
-        }
-        from="2020-02-21"
-        to="2020-06-24"
-        nav={[
-            {icon: "fa fa-play", text: SK ? "Zahrať" : "Play", href:"/dev/save-the-princess/", isButton: true},
-            {icon: "fa fa-file-alt", text:"Docs [PDF]", href:"/dl/save-the-princess.pdf", hide: !SK},
-        ]}
-        />
     <Thumb
-        name="PCAP Analyzer"
+        name="PCAP Analyzer CLI"
         icon="fa fa-ethernet"
         tags="python, networking"
         showIfTag={filter}
@@ -205,81 +220,23 @@
             {icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/pcap_analyzer", isButton: true},
         ]}
         />
-	<Thumb
-        name="IPTables port-forwarding"
-        icon="fa fa-network-wired"
-		bgOpacity={0.2}
-        tags="iptables, networking, linux, sysadmin, blog"
-        showIfTag={filter}
-        desc={
-            SK  ? "Návod nie len pre presmerovanie portov, ale všeobecné riešenie problémov v rámci IPTables."
-                : "A walkthrough tutorial for not just port-forwarding, but problem solving when it comes to IPTables."
-        }
-        nav={[
-			{icon: "fa fa-book", text:"Read", href:"/dev/iptables-portforward/", isButton: true, hide: SK},
-			{icon: "fa fa-book", text:"Prečítať (Anglicky)", href:"/en/dev/iptables-portforward/", isButton: true, hide: !SK, static: true},
-        ]}
-        />
     <Thumb
-        name="Right to Repair"
-        icon="fa fa-tools"
-        bgOpacity={0.12}
-        tags="presentation, video"
-        showIfTag={filter}
-        desc={
-            SK	? "Anglická prezentácia, ktorá rieši právo na opravu a temnú stránku spoločnosti Apple."
-                : "Presentation covering the Right to Repair and, on a related note, The Dark Side of Apple."
-        }
-        from="2020-12-03"
-        to="2020-12-08"
-        nav={[
-            {icon: "fab fa-youtube", text: SK ? "Pozrieť" : "Watch", href:"https://youtu.be/x2ToofrDWzw", isButton: true},
-            {icon: "fa fa-file-alt", text: SK ? "Slajdy [PDF]" : "Slides [PDF]", href:"/dl/right-to-repair-prez.pdf", static: true},
-        ]}
-        />
-	<Thumb
-		name={ SK ? "GUI pre gTTS" : "GUI for gTTS"}
-		icon="fa fa-comment-dots"
-		tags="python"
-        showIfTag={filter}
-		desc={
-			SK	? "Jednoduché grafické rozhranie pre gTTS (Google Text-to-Speech) knižnicu."
-				: "Simple interface for gTTS (Google Text-to-Speech) library."
-		}
-		from="2020-05-17"
-		to="2020-05-18"
-		nav={[
-			{icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/gTTSgui", isButton: true},
-			{icon: "fa fa-download", text: SK ? "Stiahnuť" : "Download", href:"https://github.com/iairu/gTTSgui/releases"},
-		]}
-		/>
-	<Thumb
-		name="iairu.com"
-		icon="fa fa-code"
-		tags="sapper, svelte, javascript, scss, html"
-        showIfTag={filter}
-		desc={
-			SK  ? "Riešenie osobného webového portfólia (tejto stránky) cez Sapper framework."
-				: "A personal web portfolio solution (this site) using Sapper framework."
-		}
-		img="code_thumbs"
-		/>
-	<Thumb
 		name={SK ? "Masový nákup lístkov" : "Batch ticket shopping"}
 		icon="fa fa-shopping-cart"
 		tags="autohotkey"
-        showIfTag={filter}
+           showIfTag={filter}
 		desc={
 			SK	? "Komplexná automatizácia nákupu cestovných lístkov, nakoľko UX portálu bolo a stále je mizerné. Skript nie je verejne dostupný."
 				: "Complex automatization for travel-ticket shopping. Script is not publicly available."
 		}
 		img="listky"
 		/>
-	<Thumb
+    
+    <Thumb
 		name={SK ? "Každodenná digitálna automatizácia" : "Everyday digital automation"}
 		icon="fa fa-file-code"
 		tags="autohotkey, blog"
-        showIfTag={filter}
+       showIfTag={filter}
 		desc={
 			SK 	? "Viac ako 26 zaujímavých AutoHotkey skriptov pre automatizáciu repetitívnych digitálnych činností."
 				: "More than 26 interesting AutoHotkey scripts for automatization of repetitive digital activities."
@@ -293,7 +250,7 @@
 		name={SK ? "Linux návody" : "Linux tutorials"}
 		icon="fa fa-book"
 		tags="bash, sysadmin, vm"
-        showIfTag={filter}
+       showIfTag={filter}
 		desc={
 			SK	? "Od inštalácie Debianu vo VM po sprevádzkovanie LAMP servera from scratch."
 				: "From Debian install inside a VM to LAMP-from-scratch server setup."
@@ -305,21 +262,92 @@
 		]}
 		/>
 	<Thumb
+        name="IPTables Port-Forwarding"
+        icon="fa fa-network-wired"
+		bgOpacity={0.2}
+        tags="iptables, networking, linux, blog"
+        showIfTag={filter}
+        desc={
+            SK  ? "Návod nie len pre presmerovanie portov, ale všeobecné riešenie problémov v rámci IPTables."
+                : "A walkthrough tutorial for not just port-forwarding, but problem solving when it comes to IPTables."
+        }
+        nav={[
+			{icon: "fa fa-book", text:"Read", href:"/dev/iptables-portforward/", isButton: true, hide: SK},
+			{icon: "fa fa-book", text:"Prečítať (Anglicky)", href:"/en/dev/iptables-portforward/", isButton: true, hide: !SK, static: true},
+        ]}
+        />
+    <Thumb
+        name={SK ? "Right to Repair Prezentácia" : "Right to Repair Presentation"}
+        icon="fa fa-tools"
+        bgOpacity={0.12}
+        tags="presentation, video"
+        showIfTag={filter}
+        _desc={
+            SK	? "Anglická prezentácia, ktorá rieši právo na opravu a temnú stránku spoločnosti Apple."
+                : "Presentation covering the Right to Repair and, on a related note, The Dark Side of Apple."
+        }
+        _from="2020-12-03"
+        _to="2020-12-08"
+        nav={[
+            {icon: "fab fa-youtube", text: SK ? "Pozrieť" : "Watch", href:"https://youtu.be/x2ToofrDWzw", isButton: true},
+            {icon: "fa fa-file-alt", text: SK ? "Slajdy [PDF]" : "Slides [PDF]", href:"/dl/right-to-repair-prez.pdf", static: true},
+        ]}
+        />
+	<!-- <Thumb
+		name="iairu.com"
+		icon="fa fa-code"
+		tags="sapper, svelte, javascript, scss, html"
+        showIfTag={filter}
+		desc={
+			SK  ? "Riešenie osobného webového portfólia (tejto stránky) cez Sapper framework."
+				: "A personal web portfolio solution (this site) using Sapper framework."
+		}
+		img="code_thumbs"
+		/> -->
+	<Thumb
+    	name="LubaStrukova.sk Portfolio 2023" 
+    	icon="strukshow"
+    	tags="svelte, javascript, scss, html, php"
+    	showIfTag={filter}
+    	_desc={
+    		SK  ? "Komplexné riešenie modernej osobnej webovej stránky pomocou CockpitCMS a Svelte."
+    			: "Complex solution of a modern personal website using CockpitCMS and Svelte."
+    	}
+    	nav={[
+    		{icon: "fa fa-share", text: SK ? "Navštíviť" : "Visit", href:"https://lubastrukova.sk", isButton: true},
+    	]}
+    	/>
+	<Thumb
 		name={SK ? "IPv4 kalkulačka + návod" : "IPv4 Calc"}
 		icon="fa fa-sitemap"
 		tags="c, networking, blog"
         showIfTag={filter}
-		desc={
+		_desc={
 			SK	? "Vypočíta z adresy a masky počiatočnú a koncovú adresu siete."
 				: "Calculates network and broadcast address from any IP and mask."
 		}
 		nav={[
-			{icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/ipv4calc", isButton: true},
-			{icon: "fa fa-download", text: SK ? "Stiahnuť" : "Download", href:"https://github.com/iairu/ipv4calc/releases"},
+			{icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/ipv4calc/releases", isButton: true},
 			{icon: "fa fa-book", text:"Návod na výpočet", href:"/dev/ipv4-calc/", isButton: true, hide: !SK},
 		]}
 		/>
 	<Thumb
+        name={ SK ? "GUI pre gTTS (Google Text-to-Speech)" : "GUI for gTTS (Google Text-to-Speech)"}
+        icon="fa fa-comment-dots"
+        tags="python"
+        showIfTag={filter}
+        _desc={
+        SK	? "Jednoduché grafické rozhranie pre gTTS (Google Text-to-Speech) knižnicu."
+        : "Simple interface for gTTS (Google Text-to-Speech) library."
+        }
+        _from="2020-05-17"
+        _to="2020-05-18"
+        nav={[
+        {icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/gTTSgui", isButton: true},
+        {icon: "fa fa-download", text: SK ? "Stiahnuť" : "Download", href:"https://github.com/iairu/gTTSgui/releases"},
+        ]}
+        />
+	<!-- <Thumb
 		name="Coffee Machine"
 		icon="fa fa-terminal"
 		tags="java"
@@ -334,8 +362,8 @@
 			{icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/coffeeMachine", isButton: true},
 			{icon: "fa fa-download", text: SK ? "Stiahnuť" : "Download", href:"https://github.com/iairu/coffeeMachine/releases"},
 		]}
-		/>
-	{#if !SK}
+		/> -->
+	<!-- {#if !SK}
 	<Thumb
 		name="More stuff available in Slovak language"
 		icon="fa fa-globe-europe"
@@ -356,7 +384,7 @@
             {icon: "fa fa-clipboard-list", text:"Prečítať", href:"/dev/log/", isButton: true},
         ]}
         />
-	{/if}
+	{/if} -->
 	<Thumb empty />
 	{:else if tab === 1}
 	<Thumb dark
