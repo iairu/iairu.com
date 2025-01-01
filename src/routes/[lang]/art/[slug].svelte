@@ -94,48 +94,48 @@
         // Simple gallery handler WIP
         window.addEventListener("load", () => {
             try {
-                let currentIndex = 0;
-                const images = document.querySelectorAll(".thumbnails img");
-                const modal = document.getElementById("imageModal");
-                const modalBackdrop = document.querySelector(".modal-backdrop");
+                window.currentGalleryIndex = 0;
 
-                async function showImage(img) {
-                    let featured = document.getElementById("featured");
-                    featured.src = img.dataset.full || img.src;
-                    currentIndex = Array.from(images).indexOf(img);
+                window.galleryShowImage = (img) => {
+                    window.currentGalleryFeatured = document.getElementById("featured");
+                    window.currentGalleryImages = document.querySelectorAll(".thumbnails img");
+                    window.currentGalleryFeatured.src = img.dataset.full || img.src;
+                    window.currentGalleryIndex = Array.from(window.currentGalleryImages).indexOf(img);
                 }
 
-                window.openModal = (img) => {
-                    modal.style.display = "block";
-                    showImage(img);
+                window.galleryOpenModal = (img) => {
+                    window.currentGalleryModal = document.getElementById("imageModal");
+                    window.currentGalleryModal.style.display = "block";
+                    window.galleryShowImage(img);
                     document.body.style.overflow = "hidden";
                 };
 
-                window.closeModal = () => {
-                    modal.style.display = "none";
+                window.galleryCloseModal = () => {
+                    window.currentGalleryModal = document.getElementById("imageModal");
+                    window.currentGalleryModal.style.display = "none";
                     document.body.style.overflow = "auto";
                 };
 
-                window.nextImage = () => {
-                    currentIndex = (currentIndex + 1) % images.length;
-                    showImage(images[currentIndex]);
+                window.galleryNextImage = () => {
+                    window.currentGalleryImages = document.querySelectorAll(".thumbnails img");
+                    window.currentGalleryIndex = (window.currentGalleryIndex + 1) % window.currentGalleryImages.length;
+                    window.galleryShowImage(window.currentGalleryImages[window.currentGalleryIndex]);
                 };
 
-                window.prevImage = () => {
-                    currentIndex = (currentIndex - 1 + images.length) % images.length;
-                    showImage(images[currentIndex]);
+                window.galleryPrevImage = () => {
+                    window.currentGalleryImages = document.querySelectorAll(".thumbnails img");
+                    window.currentGalleryIndex = (window.currentGalleryIndex - 1 + window.currentGalleryImages.length) % window.currentGalleryImages.length;
+                    window.galleryShowImage(window.currentGalleryImages[window.currentGalleryIndex]);
                 };
-
-                modalBackdrop.addEventListener("click", closeModal);
 
                 document.addEventListener("keydown", (e) => {
                     if (e.key === "Escape") {
-                        window.closeModal();
-                    } else if (modal.style.display === "block") {
+                        window.galleryCloseModal();
+                    } else if (window.currentGalleryModal && window.currentGalleryModal.style.display === "block") {
                         if (e.key === "ArrowRight") {
-                            window.nextImage();
+                            window.galleryNextImage();
                         } else if (e.key === "ArrowLeft") {
-                            window.prevImage();
+                            window.galleryPrevImage();
                         }
                     }
                 });
