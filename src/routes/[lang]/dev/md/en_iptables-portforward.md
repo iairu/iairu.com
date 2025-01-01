@@ -28,7 +28,7 @@ This would mean that a client on say `192.168.1.2` should be able to connect thr
 
 By default any request to your AP's address would obviously end in an error, because your AP isn't the webserver, the webserver is its client.
 
-![The missing link between AP and webserver](img/networks.svg)
+![The missing link between AP and webserver](img/networks.jpg)
 
 # The Solution 
 
@@ -46,7 +46,7 @@ First of all you need to catch the request somewhere in the `iptables` network o
 
 A great place to start is to look for the *iptables Processing Flowchart*, which will give you an idea around how your request packet travels.
 
-![iptables Processing Flowchart](img/flowchart.png)
+![iptables Processing Flowchart](img/flowchart.jpg)
 
 After you are able to imagine the possible routes you need to check individual tables for whether they allow your request packet to pass through them to the right destination. 
 
@@ -61,7 +61,7 @@ If you looked at the flowchart you would know that this is right after the first
 
 The `nat PREROUTING` table and chain seem to be the right place to put our first redirection rule, because they match all of our criteria (packets (requests) from external network need to be redirected to an internal client and not the Pi itself).
 
-![Surroundings of the table/chain in question](img/flowchart-1.png)
+![Surroundings of the table/chain in question](img/flowchart-1.jpg)
 
 The reason for why that is is because the next decision to be made is whether the packet is directed "for this host". This is definitely not true, yet by default it will be true, because Pi has no idea that you want requests to the given port redirected to another client (internal or external).
 
