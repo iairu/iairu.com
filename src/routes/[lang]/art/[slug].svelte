@@ -128,17 +128,19 @@
                     window.galleryShowImage(window.currentGalleryImages[window.currentGalleryIndex]);
                 };
 
-                document.addEventListener("keydown", (e) => {
-                    if (e.key === "Escape") {
-                        window.galleryCloseModal();
-                    } else if (window.currentGalleryModal && window.currentGalleryModal.style.display === "block") {
-                        if (e.key === "ArrowRight") {
-                            window.galleryNextImage();
-                        } else if (e.key === "ArrowLeft") {
-                            window.galleryPrevImage();
+                if (!window.galleryKeyListener) {
+                    window.galleryKeyListener = document.addEventListener("keydown", (e) => {
+                        if (e.key === "Escape") {
+                            window.galleryCloseModal();
+                        } else if (window.currentGalleryModal && window.currentGalleryModal.style.display === "block") {
+                            if (e.key === "ArrowRight") {
+                                window.galleryNextImage();
+                            } else if (e.key === "ArrowLeft") {
+                                window.galleryPrevImage();
+                            }
                         }
-                    }
-                });
+                    });
+                }
             } catch (error) {
                 // If gallery handler unused
             }
