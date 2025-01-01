@@ -93,57 +93,57 @@
     <script>
         // Simple gallery handler WIP
         window.addEventListener("load", () => {
-            try {
-                window.currentGalleryIndex = 0;
+            window.currentGalleryIndex = 0;
 
-                window.galleryShowImage = (img) => {
-                    window.currentGalleryFeatured = document.getElementById("featured");
-                    window.currentGalleryImages = document.querySelectorAll(".thumbnails img");
-                    window.currentGalleryFeatured.src = img.dataset.full || img.src;
-                    window.currentGalleryIndex = Array.from(window.currentGalleryImages).indexOf(img);
-                }
-
-                window.galleryOpenModal = (img) => {
-                    window.currentGalleryModal = document.getElementById("imageModal");
-                    window.currentGalleryModal.style.display = "block";
-                    window.galleryShowImage(img);
-                    document.body.style.overflow = "hidden";
-                };
-
-                window.galleryCloseModal = () => {
-                    window.currentGalleryModal = document.getElementById("imageModal");
-                    window.currentGalleryModal.style.display = "none";
-                    document.body.style.overflow = "auto";
-                };
-
-                window.galleryNextImage = () => {
-                    window.currentGalleryImages = document.querySelectorAll(".thumbnails img");
-                    window.currentGalleryIndex = (window.currentGalleryIndex + 1) % window.currentGalleryImages.length;
-                    window.galleryShowImage(window.currentGalleryImages[window.currentGalleryIndex]);
-                };
-
-                window.galleryPrevImage = () => {
-                    window.currentGalleryImages = document.querySelectorAll(".thumbnails img");
-                    window.currentGalleryIndex = (window.currentGalleryIndex - 1 + window.currentGalleryImages.length) % window.currentGalleryImages.length;
-                    window.galleryShowImage(window.currentGalleryImages[window.currentGalleryIndex]);
-                };
-
-                if (!window.galleryKeyListener) {
-                    window.galleryKeyListener = document.addEventListener("keydown", (e) => {
-                        if (e.key === "Escape") {
-                            window.galleryCloseModal();
-                        } else if (window.currentGalleryModal && window.currentGalleryModal.style.display === "block") {
-                            if (e.key === "ArrowRight") {
-                                window.galleryNextImage();
-                            } else if (e.key === "ArrowLeft") {
-                                window.galleryPrevImage();
-                            }
-                        }
-                    });
-                }
-            } catch (error) {
-                // If gallery handler unused
+            window.galleryShowImage = (img) => {
+                window.currentGalleryFeatured = document.getElementById("featured");
+                window.currentGalleryImages = document.querySelectorAll(".thumbnails img");
+                window.currentGalleryFeatured.src = img.dataset.full || img.src;
+                window.currentGalleryIndex = Array.from(window.currentGalleryImages).indexOf(img);
             }
+
+            window.galleryOpenModal = (img) => {
+                window.currentGalleryModal = document.getElementById("imageModal");
+                window.currentGalleryModal.style.display = "block";
+                window.galleryShowImage(img);
+                document.body.style.overflow = "hidden";
+            };
+
+            window.galleryCloseModal = () => {
+                window.currentGalleryModal = document.getElementById("imageModal");
+                window.currentGalleryModal.style.display = "none";
+                document.body.style.overflow = "auto";
+            };
+
+            window.galleryNextImage = () => {
+                window.currentGalleryImages = document.querySelectorAll(".thumbnails img");
+                window.currentGalleryIndex = (window.currentGalleryIndex + 1) % window.currentGalleryImages.length;
+                window.galleryShowImage(window.currentGalleryImages[window.currentGalleryIndex]);
+            };
+
+            window.galleryPrevImage = () => {
+                window.currentGalleryImages = document.querySelectorAll(".thumbnails img");
+                window.currentGalleryIndex = (window.currentGalleryIndex - 1 + window.currentGalleryImages.length) % window.currentGalleryImages.length;
+                window.galleryShowImage(window.currentGalleryImages[window.currentGalleryIndex]);
+            };
+
+            if (typeof window.internalGalleryKeyListener !== "function") {
+                window.internalGalleryKeyListener = (e) => {
+                    if (e.key === "Escape") {
+                        window.galleryCloseModal();
+                    } else if (window.currentGalleryModal && window.currentGalleryModal.style.display === "block") {
+                        if (e.key === "ArrowRight") {
+                            window.galleryNextImage();
+                        } else if (e.key === "ArrowLeft") {
+                            window.galleryPrevImage();
+                        }
+                    }
+                }
+            }
+            
+            document.removeEventListener("keydown", window.internalGalleryKeyListener);
+            document.removeEventListener("keydown", window.internalGalleryKeyListener);
+            document.addEventListener("keydown", window.internalGalleryKeyListener);
         });
     </script>
 </svelte:head>
