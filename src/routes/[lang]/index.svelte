@@ -82,7 +82,7 @@
             />
 	</S> -->
 	{:else}
-	<S bg="url('/_index/newpic2.jpg') 85% 18%/cover no-repeat" fh />
+	<S bg="url('/_index/newpic1.jpg') 85% 18%/cover no-repeat" fh />
 	{/if}
 </C>
 </S>
