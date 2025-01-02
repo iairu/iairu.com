@@ -35,8 +35,7 @@
 	<S dark tp name={(SK ? "Ondrej Špánik" : "Andrei Spanning") + " (iairu)"} slug="about" tags={"developer, " + (SK ? "UX dizajnér, InfoSec študent" : "UX designer, InfoSec student")} nbb nbt>
 	</S><br>
 	{:else}
-	<Nav nav={[
-		]} />
+	<img src="/_index/logos.png" alt="Preferred technologies and affiliations" style="max-width: 400px; display: flex; margin: auto 7% auto auto;"/>
 	{/if}
 </C>
 </S>
