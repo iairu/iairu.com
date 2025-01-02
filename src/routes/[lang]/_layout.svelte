@@ -68,12 +68,23 @@
 {#if !error}
 <!-- Site content -->
 {#if !isEmbedded}
+    {#if isHomepage(currentSlug, currentURLlang)}
 	<Header nav={[
-		// {icon: "fab fa-facebook-messenger", text: "Messenger", href: "https://m.me/iairu"},
+		{icon: "fa fa-feather-alt", 	text: current === "sk" ? "Biografia" : "Biography", href: "#bio"},
+		{icon: "fa fa-keyboard",		text: current === "sk" ? "Schopnosti" : "Skills", href: "#skills"},
+		{icon: "fa fa-graduation-cap", 	text: current === "sk" ? "Vzdelanie" : "Education", href: "#edu"},
 		{icon: "fab fa-linkedin", text: "LinkedIn", href: "https://www.linkedin.com/in/iairu"},
 		{icon: "fab fa-github", text: "GitHub", href: "https://github.com/iairu"},
 		{icon: "fa fa-envelope", text: "E-mail: spanik11@gmail.com", href: "mailto:spanik11@gmail.com", hideExt: true}
 	]} useLangSelector={isHomepage(currentSlug, currentURLlang)} />
+	{:else}
+   	<Header nav={[
+        {icon: "fa fa-home", text: current === "sk" ? "Domov" : "Homepage", href: "/", hideExt: true, sameTarget: true, modal: false},
+        {icon: "fab fa-linkedin", text: "LinkedIn", href: "https://www.linkedin.com/in/iairu"},
+        {icon: "fab fa-github", text: "GitHub", href: "https://github.com/iairu"},
+        {icon: "fa fa-envelope", text: "E-mail: spanik11@gmail.com", href: "mailto:spanik11@gmail.com", hideExt: true}
+        ]} useLangSelector={isHomepage(currentSlug, currentURLlang)} />
+	{/if}
 {/if}
 <main class:iframe={isIFrame}>
 	<slot />

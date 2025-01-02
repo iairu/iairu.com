@@ -32,57 +32,11 @@
 <S dark wrapper bg="url('/_links/ms_knn_2_out.jpg') top no-repeat">
 <C count={2} let:column eq mdel={1}>
 	{#if column === 0}
-	<S dark tp name="Ondrej Špánik (iairu)" slug="about" tags={"developer, " + (SK ? "UX dizajnér, InfoSec študent" : "UX designer, InfoSec student")} nbb nbt>
-		<Quote dark>
-		{#if SK}
-		  Narodil som sa v Piešťanoch, študoval v Trenčíne a momentálne študujem informačnú bezpečnosť v Bratislave. Od mala ma bavilo experimentovať s čímkoľvek, z čoho sa neskôr zrodil záujem o dva polárne rozdielne smery - technický a umelecký. Deň, kedy som dostal svoj prvý počítač, bol dňom, ktorý ma kompletne vtiahol do digitálneho sveta.
-		{:else}
-		  I was born in Piešťany, studied in Trenčín and currently study information security in Bratislava. Since I was little, I enjoyed experimenting with lots of things, which later gave birth to an interest in two polar opposite directions - technical and artistic. The day I got my first computer was the day that completely pushed me into the digital world.
-		{/if}
-		</Quote>
-		<Nav nav={[
-			{icon: "fa fa-feather-alt", 	text: SK ? "Biografia" : "Biography", href: "#bio"},
-			{icon: "fa fa-keyboard",		text: SK ? "Schopnosti" : "Skills", href: "#skills"},
-			{icon: "fa fa-graduation-cap", 	text: SK ? "Vzdelanie" : "Education", href: "#edu"}
-		]} />
-	</S>
-	<!-- <S icon="fa fa-thumbs-up" name={SK ? "Záujmy" : "Interests"} slug="interests" hr importance={2}>
-		<p>
-			{#if SK}
-				Webové technológie, resp. čokoľvek sa dotýka Javascriptu a automatizácia repetitívnych činností. K pokroku ma najviac motivuje zlé/nedostatočné UX. Okrem toho poslednú dobu cestovanie :)
-			{:else}
-				Web technologies, especially Javascript-related stuff and automation of repetitive tasks. The greatest motivation for me is fighting against bad or incomplete UX. Other than that lately travel :)
-			{/if}
-		</p>
-	</S> -->
-	<!-- <S dark row icon="fa fa-running" name={SK ? "Práve pracujem na..." : "Work in progress..."} slug="wip" nbb nbt pb hr cg importance={2}>
-		<Thumb dark
-			name="FIIT STU"
-			icon="fa fa-university"
-			tags="Bachelor's degree"
-            desc={
-                SK	? "Z každého rožka troška v IT. Pracujem na tom deň i noc... :)"
-                    : "A little bit of everything in IT. Working on it day and night... :)"
-            }
-			from="2019-09-01"
-			progress={6*100/8}
-		/>
-        <Thumb dark
-            name="Basic OpenGL Projects"
-            icon="fa fa-cube"
-            bgOpacity={0.2}
-            tags="c++, opengl"
-            desc={
-                SK	? "Jeden semester venovaný bezier. krivkám, shaderom, ... a druhý fyzike v OpenGL."
-                    : "One semester dedicated to bezier. curves, shaders, ... and second to physics in OpenGL."
-            }
-            from="2021-09-01"
-            progress={50}
-            to="2022-06-01"
-            />
-	</S> -->
+	<S dark tp name={(SK ? "Ondrej Špánik" : "Andrei Spanning") + " (iairu)"} slug="about" tags={"developer, " + (SK ? "UX dizajnér, InfoSec študent" : "UX designer, InfoSec student")} nbb nbt>
+	</S><br>
 	{:else}
-	<S bg="url('/_index/newpic1.jpg') 85% 18%/cover no-repeat" fh />
+	<Nav nav={[
+		]} />
 	{/if}
 </C>
 </S>
