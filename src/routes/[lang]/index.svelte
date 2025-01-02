@@ -417,6 +417,40 @@
 		]}
 		/>
 	<Thumb dark
+		name={SK ? "Reel 2D Animácie postáv" : "2D Character Animation Reel"} 
+		bg="2019anim"
+        bgOpacity={0.3}
+		icon="fa fa-paint-brush"
+		tags="animation, 2D character animation"
+		showIfTag={filter}
+		desc={
+			SK ? "Ukážky 2D animácie postáv, walk cycles a experimentov s rôznymi štýlmi."
+			: "2D character animation samples, walk cycles and experiments with various styles."
+		}
+		from="2018-02-01"
+		to="2019-06-30"
+		nav={[
+			{icon: "fab fa-youtube", text: SK ? "Pozrieť" : "Watch", href:"https://youtu.be/w8deVJAyRk8", isButton: true}
+		]}
+		/>
+	<Thumb dark
+		name={SK ? "Reel 2D Animácie 2017" : "2D Animation Reel 2017"} 
+		bg="2017anim"
+        bgOpacity={0.25}
+		icon="fa fa-paint-brush"
+		tags="animation, vfx"
+		showIfTag={filter}
+		desc={
+			SK ? "Ukážky 2D animácie z roku 2017, hlavne pozadia."
+			: "2D animation samples from 2017, mainly backgrounds."
+		}
+		from="2017-01-01"
+		to="2017-12-31"
+		nav={[
+			{icon: "fab fa-youtube", text: SK ? "Pozrieť" : "Watch", href:"https://youtu.be/eHjQdc94YRs", isButton: true}
+		]}
+		/>
+	<Thumb dark
 		name={SK ? "Grafické portfolio 2017-2019" : "Graphic design portfolio 2017-2019"}
 		bg="gfxbg"
 		bgOpacity={1} bgNoFilter
