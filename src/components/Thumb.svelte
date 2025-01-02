@@ -81,7 +81,7 @@
             </div>
 
             <!-- Description -->
-            {#if desc}<p>{desc}</p>{/if}
+            {#if desc}<p>{@html desc}</p>{/if}
 
             <!-- Image -->
             <!-- svelte-ignore a11y-click-events-have-key-events -->

@@ -40,48 +40,78 @@
 </C>
 </S>
 
-<S row icon="fa fa-calendar-check" name={SK ? "Projekty" : "Projects"} slug="projects" tabs={["Development", "Creative"]} filters={[["", "Javascript", "Autohotkey", "Python", "Blog"],["", "Animation", "Design", "Blog"]]}  let:tab let:filter pt pb cg>
+<S row icon="fa fa-calendar-check" name={SK ? "Projekty" : "Projects"} slug="projects" tabs={["Development", "Creative"]} filters={[["", "Linux", "Javascript", "Python", "Blog"],["", "Animation", "Design", "Blog"]]}  let:tab let:filter pt pb cg>
     {#if tab === 0}
+    <Thumb dark
+		name={SK ? "CI/CD pre tímové rental riešenie" : "CI/CD for team rental solution"}
+		icon="fa fa-code-branch"
+		bg="lines"
+		bgOpacity={0.15}
+		tags="linux, docker, nginx, bash"
+		showIfTag={filter}
+		desc={
+          		SK ? "<span style=\"font-size: 0.9em;\">CI/CD workflow (vrátane architektúry) vytvorený od základov pre dynamické nasadenie viacerých inštancií vlastného Angular+Django rental riešenia s využitím Docker, Github Actions, dvoch Nginx vrstiev (gateway+deployment), bash/sed/cat/pipe a ssh/sftp ako časť tímového projektu na FIIT STU.</span>"
+          		: "<span style=\"font-size: 0.9em;\">CI/CD workflow (including architecture) developed from scratch for dynamic deployment of multiple instances of custom Angular+Django rental solution using Docker, Github Actions, two Nginx layers (gateway+deployment), bash/sed/cat/pipe and ssh/sftp as part of team project at FIIT STU.</span>"
+		}
+		from="2024-10-20"
+		to="2024-12-10"
+		/>
+    <Thumb dark
+        name={SK ? "Microservice Integrácia 2023" : "Microservice Integration 2023"}
+        bgOpacity={0.15}
+        icon="fa fa-network-wired"
+        bg="service"
+        tags="linux, vm, nomad, bash, aws"
+        showIfTag={filter}
+        desc={
+            SK  ? "Troubleshooting, administrácia a inštalácia microservisov pomocou AWS EC2 VM, sh/sed/grep/awk, RHEL a Oracle Linux, DB, objektového úložiska, interného API/Swagger a orchestračného systému vrátane dokumentovania pre Innovatrics."
+            : "Microservice troubleshooting, administration and installation using AWS EC2 VM, sh/sed/grep/awk, RHEL a Oracle Linux, DB, object storage, internal API/Swagger and orchestration system and Docker including documentation pre Innovatrics."
+        }
+        from="2022-07-01"
+        to="2023-10-31"
+        />
 	<Thumb dark
 		name="StrukShow.com Portfolio 2020"
+		bgOpacity={0.18}
 		icon="strukshow-w"
 		bg="strukshow"
 		tags="svelte, javascript, scss, html, php"
         showIfTag={filter}
 		desc={
-			SK	? "Komplexné riešenie modernej osobnej webovej stránky pomocou CockpitCMS a Svelte."
-				: "Complex solution of a modern personal website using CockpitCMS and Svelte."
+			SK	? "Komplexné riešenie modernej osobnej webovej stránky pomocou CockpitCMS/API, JS ES6, SCSS a Svelte."
+				: "Complex solution of a modern personal website using CockpitCMS/API, JS ES6, SCSS and Svelte."
 		}
 		from="2020-06-01"
 		to="2020-08-03"
 		nav={[
 			{icon: "fa fa-share", text: SK ? "Navštíviť" : "Visit", href:"https://strukshow.com", isButton: true},
-			{icon: "fa fa-file-alt", text: "Dev Docs", href:"/strukshow-docs/", isButton: true, hide: !SK, static: true},
+			{icon: "fa fa-file-alt", text: "Dokumentácia", href:"/strukshow-docs/", isButton: true, hide: !SK, static: true},
 		]}
 		/>
 	<Thumb dark
-        name="Save the Princess Browser Game"
-        bg="stp"
-        icon="fa fa-gamepad"
-        tags="javascript"
-        showIfTag={filter}
-        desc={
-            SK 	? "Vanilla JavaScript hra inšpirovaná Street Fighterom. Prvý JavaScript projekt, stavané podľa MVC princípu."
-                : "Vanilla JavaScript game inspired by Street Fighter. First Javascript project, based on MVC."
-        }
-        from="2020-02-21"
-        to="2020-06-24"
-        nav={[
-            {icon: "fa fa-play", text: SK ? "Zahrať" : "Play", href:"/dev/save-the-princess/", isButton: true},
-            {icon: "fa fa-file-alt", text:"Docs [PDF]", href:"/dl/save-the-princess.pdf", hide: !SK},
-        ]}
-        />
+    	name={SK ? "Tréner a inferrer pre textový model" : "Text training and inferring 2024"}
+    	icon="fa fa-brain"
+        bg="bert"
+        bgOpacity={0.15}
+    	tags="machine learning, ai, tkinter, python"
+    	showIfTag={filter}
+    	desc={
+    	SK ? "<span style=\"font-size: 0.9em;\">GUI workflow pre trénovanie a inferovanie DistilBERT modelu s vlastným (GUI/JSON) labelovaním. Automatická tvorba virtuálneho prostredia, správa súborov, validácia a inferovanie s voliteľným výstupom top labelov pre každý paragraf.</span>"
+    	: "<span style=\"font-size: 0.9em;\">GUI workflow for training and inferring a DistilBERT model with custom (GUI/JSON) labeling. Automatic virtual environment creation, file management, validation and inferring with optional output of top labels for each paragraph.</span>"
+    	}
+    	from="2024-09-08"
+    	to="2024-09-12"
+    	nav={[
+    		{icon: "fa fa-code-branch", text: SK ? "GitHub Repozitár" : "GitHub Repository", href:"https://github.com/iairu/notesort", isButton: true},
+    	]}
+    	/>
 	<Thumb dark
     	name="ProcExp Procreate Exporter"
     	icon="fa fa-paint-brush"
-            bgOpacity={0.2}
+        bg="procreate"
+        bgOpacity={0.15}
     	tags="autohotkey, ffmpeg, parsing"
-            showIfTag={filter}
+        showIfTag={filter}
     	desc={
     		SK	? "Skript pre masové extrahovanie, spojenie a exportovanie timelapse súborov z Procreate prác pomocou 7z a FFMPEG."
     			: "Script for mass extraction, stitching and export of timelapse files from Procreate works using 7z and FFMPEG."
@@ -94,25 +124,9 @@
     	]}
         />
 	<Thumb dark
-    	name="AnkiScreener Flashcard Utility"
-    	icon="fa fa-crop-alt"
-    	bgOpacity={0.2}
-    	tags="javascript, svelte, electron, scss"
-        showIfTag={filter}
-    	desc={
-    		SK	? "Bohatý nástroj pre rýchlu tvorbu Anki-kompatibilných učebných CSV kariet."
-    			: "A rich utility for fast creation of Anki-compatible CSV flashcards."
-    	}
-    	from="2020-09-23"
-    	to="2020-10-07"
-    	nav={[
-    		{icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/AnkiScreener", isButton: true},
-    		{icon: "fab fa-youtube", text: SK ? "Ukážka" : "Preview", href:"https://www.youtube.com/watch?v=LO1rb8nfDX4"},
-    	]}
-        />
-	<Thumb dark
 		name="BrianStruk.com Portfolio 2022"
 		icon="strukshow-w" 
+		bg="brian"
 		tags="svelte, javascript, scss, html, php"
 		showIfTag={filter}
 		from="2022-06-22"
@@ -125,6 +139,40 @@
 			{icon: "fa fa-share", text: SK ? "Navštíviť" : "Visit", href:"https://brianstruk.com", isButton: true},
 		]}
 		/>
+	<Thumb
+        name="Save the Princess Browser Game"
+        _bgOpacity={0.18}
+        _bg="stp"
+        icon="fa fa-gamepad"
+        tags="javascript"
+        showIfTag={filter}
+        desc={
+            SK 	? "Vanilla JavaScript hra inšpirovaná Street Fighterom. Prvý JavaScript projekt, stavané podľa MVC princípu."
+                : "Vanilla JavaScript game inspired by Street Fighter. First Javascript project, based on MVC."
+        }
+        from="2020-02-21"
+        to="2020-06-24"
+        nav={[
+            {icon: "fa fa-play", text: SK ? "Zahrať" : "Play", href:"/dev/save-the-princess/", isButton: true},
+            {icon: "fa fa-file-alt", text:"Dokumentácia [PDF]", href:"/dl/save-the-princess.pdf", hide: !SK},
+        ]}
+        />
+	<Thumb
+    	name="AnkiScreener Flashcard Utility"
+    	icon="fa fa-crop-alt"
+    	tags="javascript, svelte, electron, scss"
+        showIfTag={filter}
+    	desc={
+    		SK	? "Nástroj pre rýchlu tvorbu Anki-kompatibilných učebných CSV kariet."
+    			: "Utility for fast creation of Anki-compatible CSV flashcards."
+    	}
+    	from="2020-09-23"
+    	to="2020-10-07"
+    	nav={[
+    		{icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/AnkiScreener", isButton: true},
+    		{icon: "fab fa-youtube", text: SK ? "Ukážka" : "Preview", href:"https://www.youtube.com/watch?v=LO1rb8nfDX4"},
+    	]}
+        />
 	<Thumb 
 		name="PostgreSQL REST API"
 		icon="fa fa-file-code"
@@ -202,7 +250,7 @@
 	<Thumb
 		name={SK ? "Linux návody" : "Linux tutorials"}
 		icon="fa fa-book"
-		tags="bash, sysadmin, vm"
+		tags="bash, sysadmin, vm, linux"
        showIfTag={filter}
 		desc={
 			SK	? "Od inštalácie Debianu vo VM po sprevádzkovanie LAMP servera from scratch."
@@ -233,7 +281,7 @@
         name={SK ? "Right to Repair Prezentácia" : "Right to Repair Presentation"}
         icon="fa fa-tools"
         bgOpacity={0.12}
-        tags="presentation, video"
+        tags="presentation, video, blog"
         showIfTag={filter}
         _desc={
             SK	? "Anglická prezentácia, ktorá rieši právo na opravu a temnú stránku spoločnosti Apple."
@@ -341,22 +389,23 @@
 	<Thumb empty />
 	{:else if tab === 1}
 	<Thumb dark
-		name={SK ? "Grafické portfolio 2017-2019" : "Graphic design portfolio 2017-2019"}
-		bg="gfxbg"
-		bgOpacity={1} bgNoFilter
-		icon="dumpling-w"
-		tags="design, concepts, digital"
-        showIfTag={filter}
-		desc={
-			SK	? "Koncepty brandingu, staršie dizajny webov a maturitný projekt."
-				: "Branding concepts, older web designs and a graduation project."
-		}
-		nav={[
-			{icon: "fa fa-share", text: SK ? "Navštíviť" : "Visit", href: SK ? "/gfx/" : "/gfx/en/", isButton: true, modal: false, static: true},
-		]}
-		/>
+        name={SK ? "3D Animácia: ECHO 2022" : "3D Animation: ECHO 2022"}
+    	bg="echo"
+    	icon="fa fa-video"
+    	tags="3d, animation, blender, vfx"
+    	showIfTag={filter}
+    	desc={
+    		SK ? "3D animovaný hudobný videoklip vytvorený v Blenderi pre rovnomennú skladbu."
+    		: "3D animated music video created in Blender for this track."
+    	}
+    	from="2022-06-01"
+    	to="2022-06-23" 
+    	nav={[
+    		{icon: "fab fa-youtube", text: SK ? "Pozrieť" : "Watch", href:"https://www.youtube.com/watch?v=tlIpi9zFVsc", isButton: true}
+    	]}
+    	/>
 	<Thumb dark
-		name={SK ? "Zrada kráľa 2019" : "Treason 2019"}
+		name={SK ? "3D Animácia: Zrada kráľa 2019" : "3D Animation: Treason 2019"}
 		bg="zrada"
 		icon="fa fa-paint-brush"
 		tags="3d, animation, blender"
@@ -372,18 +421,18 @@
 		]}
 		/>
 	<Thumb dark
-		name="Brian Struk - ECHO 2022"
-		icon="fa fa-video"
-		tags="3d, animation, blender"
-		showIfTag={filter}
+		name={SK ? "Grafické portfolio 2017-2019" : "Graphic design portfolio 2017-2019"}
+		bg="gfxbg"
+		bgOpacity={1} bgNoFilter
+		icon="dumpling-w"
+		tags="design, concepts, digital"
+        showIfTag={filter}
 		desc={
-			SK ? "3D animovaný hudobný videoklip vytvorený v Blenderi pre rovnomennú skladbu."
-			: "3D animated music video created in Blender for this track."
+			SK	? "Koncepty brandingu, staršie dizajny webov a maturitný projekt."
+				: "Branding concepts, older web designs and a graduation project."
 		}
-		from="2022-06-01"
-		to="2022-06-23" 
 		nav={[
-			{icon: "fab fa-youtube", text: SK ? "Pozrieť" : "Watch", href:"https://www.youtube.com/watch?v=tlIpi9zFVsc", isButton: true}
+			{icon: "fa fa-share", text: SK ? "Navštíviť" : "Visit", href: SK ? "/gfx/" : "/gfx/en/", isButton: true, modal: false, static: true},
 		]}
 		/>
 	<Thumb
