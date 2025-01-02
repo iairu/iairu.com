@@ -176,7 +176,6 @@
 	<Thumb 
 		name="PostgreSQL REST API"
 		icon="fa fa-file-code"
-        bgOpacity={0.2}
 		tags="postgres, django, python, json, sql"
         showIfTag={filter}
 		desc={
@@ -193,7 +192,6 @@
 	<Thumb 
 		name="TASM Assembly Counter"
 		icon="fa fa-file-code"
-        bgOpacity={0.2}
 		tags="assembly, ms-dos"
         showIfTag={filter}
 		desc={
@@ -265,7 +263,6 @@
 	<Thumb
         name="IPTables Port-Forwarding"
         icon="fa fa-network-wired"
-		bgOpacity={0.2}
         tags="iptables, networking, linux, blog"
         showIfTag={filter}
         desc={
@@ -280,7 +277,6 @@
     <Thumb
         name={SK ? "Right to Repair Prezentácia" : "Right to Repair Presentation"}
         icon="fa fa-tools"
-        bgOpacity={0.12}
         tags="presentation, video, blog"
         showIfTag={filter}
         _desc={
