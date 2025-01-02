@@ -130,6 +130,7 @@
             padding: 0 calc(2em + 20px);
             @media (max-width: 900px) {
                 padding: 0 1.5em;
+                section.thumb:nth-child(n+4) {display: none;}
             }
             @media print {>hr { display: none; }}
             >div.heading-wrapper {
