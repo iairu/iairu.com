@@ -93,10 +93,40 @@
         @media print {
             a.home {display: none;}
         }
-        @media (max-width: 850px) {
+        @media (max-width: 1250px) and (min-width: 951px) {
+            nav > :not(:nth-last-child(-n+3)) {
+                .link-text, .icon-ext {
+                    display: none;
+                }
+            }
+        }
+        @media (max-width: 950px) and (min-width: 801px) {
+            nav > :not(:nth-last-child(-n+1)) {
+                .link-text, .icon-ext {
+                    display: none;
+                }
+            }
+        }
+        @media (max-width: 800px) {
             nav {
-                .link-text {display: none;}
-                .icon-ext {display: none;}
+                .link-text, .icon-ext {
+                    display: none;
+                }
+            }
+        }
+        @media (max-width: 600px) and (min-width: 451px) {
+            nav > :not(:nth-last-child(-n+4)) {
+                display: none;
+            }
+        }
+        @media (max-width: 450px) and (min-width: 401px) {
+            nav > :not(:nth-last-child(-n+3)) {
+                display: none;
+            }
+        }
+        @media (max-width: 400px) {
+            nav > :not(:nth-last-child(-n+2)) {
+                display: none;
             }
         }
     }
