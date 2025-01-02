@@ -24,7 +24,7 @@ body {
   font-size: 12px;
   padding: 15px;
   margin: auto;
-  background: url("../img/bg.jpg");
+  background: url("/gfx/img/bg.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top center;
@@ -195,7 +195,7 @@ section {
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
-    background-image: url("../img/logo-w.svg");
+    background-image: url("/gfx/img/logo-w.svg");
     background-repeat: no-repeat;
     background-size: 50%;
     background-position: center; }
@@ -345,7 +345,7 @@ section {
   section.promo {
     display: block;
     height: 550px;
-    background: url("../img/promo.jpg") no-repeat center;
+    background: url("/gfx/img/promo.jpg") no-repeat center;
     background-size: 120%;
     -webkit-box-align: start;
     -ms-flex-align: start;
