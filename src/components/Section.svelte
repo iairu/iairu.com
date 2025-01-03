@@ -2,9 +2,7 @@
 	import Tabs from './Tabs.svelte';
     import TabMenu from './TabMenu.svelte';
 	import Tags from './Tags.svelte';
-    import { onMount } from "svelte";
     import { getSlug } from "./scripts/stringToSlug.js";
-    import { href } from "./Modal.svelte";
     import permalink from "./scripts/permalink.js";
     import { stores } from '@sapper/app';
     const { page } = stores();
@@ -29,6 +27,7 @@
     export let fh = false; // fill height (height: 100%) (use example: bg picture in 2 col layout), 45vw on mobile
     export let wrapper = false; // no margin/padding (use for wrapper sections)
     export let sli = false; // fit heading & content into a single line (900px+)
+    export let center = false; // center heading and content
     export let up = false; // move section up by 100px (if fh, height will be 100% + 100px) (900px+)
     export let tags = "";
     export let tabs = [];
@@ -37,18 +36,19 @@
     export let light = false;
     export let tp = false; // transparent background (especially relevant when dark theme is active)
     export let bg = ""; // background CSS attribute, options: "bg-color bg-image position/bg-size bg-repeat bg-origin bg-clip bg-attachment", if dark or light is true, don't set color
-    let tab;
-    let filterNum;
-    let filter;
-    $: filterNum = tab ? 0 : 0; // reset filter on tab change
+    export let defaultFilterNum = 0;
+    let tab = 0;
+    let filterNum = defaultFilterNum;
+    let filter = "";
+    $: filterNum = tab ? defaultFilterNum : defaultFilterNum; // reset filter on tab change
     $: filter = getFilter(filterNum);
     function getFilter(num) { // send back the actual text of the filter for easier use
-        if (num == undefined || tab == undefined) {
+        if (num == undefined) {
             return "";
         } else if (tabs.length) {
-            return filters[tab][filterNum];
+            return filters[tab][num];
         } else if (!tabs.length) {
-            return filters[filterNum];
+            return filters[num];
         }
         return "";
     }
@@ -66,7 +66,7 @@
     class:tp={tp}
     style={bg ? "background: " + (dark ? "#222222 " : light ? "#ececec " : "") + bg + ";" : ""}
     >
-    <div class="content-wrapper">
+    <div class="content-wrapper" class:center={center}>
         {#if hr || hrd || hrp || hrh}<hr class:hrd class:hrp class:hrh>{/if}
 
         {#if name !== false}
@@ -197,6 +197,18 @@
                 flex-flow: column;
                 width: 100%;
                 >* {margin: 20px 0;}
+            }
+            @media (min-width: 901px) {
+                &.center, &.center * {
+                    justify-content: center;
+                    align-items: center;
+                    .heading {
+                        left: 0 !important;
+                        .tab-spacer {
+                            display: none !important;
+                        }
+                    }
+                }
             }
         }
         &.dark {
