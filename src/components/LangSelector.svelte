@@ -39,7 +39,7 @@
     <TabMenu names={supported} active={current} clickHandler={handleLangChange} activeIsName {dark} />
     {:else}
     <Nav nav={supported.map(lng => {
-        return {text: lng, href: "/" + lng, modal: false, sameTarget: true, static: true}
+        return {text: lng === "en" ? "English" : (lng === "sk" ? "Slovensky" : lng), href: "/" + lng, modal: false, sameTarget: true, static: true}
     })} />
     {/if}
 
