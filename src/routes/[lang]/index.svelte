@@ -24,7 +24,7 @@
 </script>
 
 <svelte:head>
-	<title>Portfolio :: iairu</title>
+	<title>IT Portfolio :: iairu</title>
 	<meta name="description" content="Junior Developer &amp; Graphic Designer">
 	<meta name="robots" content="index,follow">
 </svelte:head>
@@ -40,14 +40,14 @@
 </C>
 </S>
 
-<S row icon="fa fa-calendar-check" name={SK ? "Projekty" : "Projects"} slug="projects" tabs={["Development", "Creative"]} filters={[["", "Linux", "Javascript", "Python", "Blog"],["", "Animation", "Design", "Blog"]]}  let:tab let:filter pt pb cg>
+<S row icon="fa fa-calendar-check" name={SK ? "Projekty" : "Projects"} slug="projects" tabs={["Development", "Creative"]} filters={[["", "★", "Linux", "Javascript", "Python", "Blog"],["", "★", "Animation", "Design", "Blog"]]} let:tab let:filter defaultFilterNum={1} pt pb cg>
     {#if tab === 0}
     <Thumb dark
 		name={SK ? "CI/CD pre tímové rental riešenie" : "CI/CD for team rental solution"}
 		icon="fa fa-code-branch"
 		bg="lines"
 		bgOpacity={0.15}
-		tags="linux, docker, nginx, bash"
+		tags="★, linux, docker, nginx, bash"
 		showIfTag={filter}
 		desc={
           		SK ? "<span style=\"font-size: 0.9em;\">CI/CD workflow (vrátane architektúry) vytvorený od základov pre dynamické nasadenie viacerých inštancií vlastného Angular+Django rental riešenia s využitím Docker, Github Actions, dvoch Nginx vrstiev (gateway+deployment), bash/sed/cat/pipe a ssh/sftp ako časť tímového projektu na FIIT STU.</span>"
@@ -61,7 +61,7 @@
         bgOpacity={0.15}
         icon="fa fa-network-wired"
         bg="service"
-        tags="linux, vm, nomad, bash, aws"
+        tags="★, linux, vm, nomad, bash, aws"
         showIfTag={filter}
         desc={
             SK  ? "Troubleshooting, administrácia a inštalácia microservisov pomocou AWS EC2 VM, sh/sed/grep/awk, RHEL a Oracle Linux, DB, objektového úložiska, interného API/Swagger a orchestračného systému vrátane dokumentovania pre Innovatrics."
@@ -75,7 +75,7 @@
 		bgOpacity={0.18}
 		icon="strukshow-w"
 		bg="strukshow"
-		tags="svelte, javascript, scss, html, php"
+		tags="★, svelte, javascript, scss, html, php"
         showIfTag={filter}
 		desc={
 			SK	? "Komplexné riešenie modernej osobnej webovej stránky pomocou CockpitCMS/API, JS ES6, SCSS a Svelte."
@@ -93,7 +93,7 @@
     	icon="fa fa-brain"
         bg="bert"
         bgOpacity={0.15}
-    	tags="machine learning, ai, tkinter, python"
+    	tags="★, machine learning, ai, tkinter, python"
     	showIfTag={filter}
     	desc={
     	SK ? "<span style=\"font-size: 0.9em;\">GUI workflow pre trénovanie a inferovanie DistilBERT modelu s vlastným (GUI/JSON) labelovaním. Automatická tvorba virtuálneho prostredia, správa súborov, validácia a inferovanie s voliteľným výstupom top labelov pre každý paragraf.</span>"
@@ -110,7 +110,7 @@
     	icon="fa fa-paint-brush"
         bg="procreate"
         bgOpacity={0.15}
-    	tags="autohotkey, ffmpeg, parsing"
+    	tags="★, autohotkey, ffmpeg, parsing"
         showIfTag={filter}
     	desc={
     		SK	? "Skript pre masové extrahovanie, spojenie a exportovanie timelapse súborov z Procreate prác pomocou 7z a FFMPEG."
@@ -125,9 +125,9 @@
         />
 	<Thumb dark
 		name="BrianStruk.com Portfolio 2022"
-		icon="strukshow-w" 
+		icon="strukshow-w"
 		bg="brian"
-		tags="svelte, javascript, scss, html, php"
+		tags="★, svelte, javascript, scss, html, php"
 		showIfTag={filter}
 		from="2022-06-22"
 		to="2022-06-23"
@@ -173,7 +173,7 @@
     		{icon: "fab fa-youtube", text: SK ? "Ukážka" : "Preview", href:"https://www.youtube.com/watch?v=LO1rb8nfDX4"},
     	]}
         />
-	<Thumb 
+	<Thumb
 		name="PostgreSQL REST API"
 		icon="fa fa-file-code"
 		tags="postgres, django, python, json, sql"
@@ -189,7 +189,7 @@
             {icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/dbs_django_postgresql"},
 		]}
 		/>
-	<Thumb 
+	<Thumb
 		name="TASM Assembly Counter"
 		icon="fa fa-file-code"
 		tags="assembly, ms-dos"
@@ -230,7 +230,7 @@
 		}
 		img="listky"
 		/>
-    
+
     <Thumb
 		name={SK ? "Každodenná digitálna automatizácia" : "Everyday digital automation"}
 		icon="fa fa-file-code"
@@ -302,7 +302,7 @@
 		img="code_thumbs"
 		/> -->
 	<Thumb
-    	name="LubaStrukova.sk Portfolio 2023" 
+    	name="LubaStrukova.sk Portfolio 2023"
     	icon="strukshow"
     	tags="svelte, javascript, scss, html, php"
     	showIfTag={filter}
@@ -388,14 +388,14 @@
         name={SK ? "3D Animácia: ECHO 2022" : "3D Animation: ECHO 2022"}
     	bg="echo"
     	icon="fa fa-video"
-    	tags="3d, animation, blender, vfx"
+    	tags="★, 3d, animation, blender, vfx"
     	showIfTag={filter}
     	desc={
     		SK ? "3D animovaný hudobný videoklip vytvorený v Blenderi pre rovnomennú skladbu."
     		: "3D animated music video created in Blender for this track."
     	}
     	from="2022-06-01"
-    	to="2022-06-23" 
+    	to="2022-06-23"
     	nav={[
     		{icon: "fab fa-youtube", text: SK ? "Pozrieť" : "Watch", href:"https://www.youtube.com/watch?v=tlIpi9zFVsc", isButton: true}
     	]}
@@ -404,7 +404,7 @@
 		name={SK ? "3D Animácia: Zrada kráľa 2019" : "3D Animation: Treason 2019"}
 		bg="zrada"
 		icon="fa fa-paint-brush"
-		tags="3d, animation, blender"
+		tags="★, 3d, animation, blender"
         showIfTag={filter}
 		desc={
 			SK	? "Maturitný projekt - Animovaný príbeh typografie: 3D Animácia vytvorená v Blenderi o svete písmeniek."
@@ -417,11 +417,11 @@
 		]}
 		/>
 	<Thumb dark
-		name={SK ? "Reel 2D Animácie postáv" : "2D Character Animation Reel"} 
+		name={SK ? "Reel 2D Animácie postáv" : "2D Character Animation Reel"}
 		bg="2019anim"
         bgOpacity={0.3}
 		icon="fa fa-paint-brush"
-		tags="animation, 2D character animation"
+		tags="★, animation, 2D character animation"
 		showIfTag={filter}
 		desc={
 			SK ? "Ukážky 2D animácie postáv, walk cycles a experimentov s rôznymi štýlmi."
@@ -434,11 +434,11 @@
 		]}
 		/>
 	<Thumb dark
-		name={SK ? "Reel 2D Animácie 2017" : "2D Animation Reel 2017"} 
+		name={SK ? "Reel 2D Animácie 2017" : "2D Animation Reel 2017"}
 		bg="2017anim"
         bgOpacity={0.25}
 		icon="fa fa-paint-brush"
-		tags="animation, vfx"
+		tags="★, animation, vfx"
 		showIfTag={filter}
 		desc={
 			SK ? "Ukážky 2D animácie z roku 2017, hlavne pozadia."
@@ -455,7 +455,7 @@
 		bg="gfxbg"
 		bgOpacity={1} bgNoFilter
 		icon="dumpling-w"
-		tags="design, concepts, digital"
+		tags="★, design, concepts, digital"
         showIfTag={filter}
 		desc={
 			SK	? "Koncepty brandingu, staršie dizajny webov a maturitný projekt."
@@ -511,24 +511,14 @@
         /> -->
 	{/if}
 </S>
-<S light icon="fa fa-running" name={SK ? "Najviac riešim..." : "Mostly dealing with..."} slug="quote" pt pb nbb sli>
-	<span>
-		{
-		SK ? 	"Vývoj iOS a macOS hobby projektov a kurzy informačnej bezpečnosti + diplomová práca" :
-				"iOS and macOS side-projects and information security courses + master thesis"
-		}
-	</span>
-</S>
 <S light icon="fa fa-feather-alt" name={SK ? "Biografia" : "Biography"} slug="bio" bg="url('/_index/beach.jpg') top repeat-x" pt pb>
-	<C count={2} let:column eq mrev>
+	<C count={2} let:column eq mdel={1}>
 		{#if column === 0}
-			<Quote>
-				{#if SK}
-				    Popri štúdiu informačnej bezpečnosti sa venujem vývoju pre macOS a iOS pomocou SwiftUI. Zameriavam sa najmä na písanie optimálnejších programov s podporou pre staršie verzie systému. Experimentujem s OpenCore na mojom Thinkpade X260. Nedávno som dokončil Find-A-Cat, program na správu rodokmeňov mačiek, ale momentálne ma viac zaujímajú user-friendly riešenia ako NocoDB - nadstavby nad existujúcimi systémami mi dávajú väčší zmysel než vývoj od nuly. Už päť rokov budujem weby pomocou Svelte a v diplomovke skúmam honeypoty v sieťovej bezpečnosti. Preferujem natívne aplikácie a Python pred Electronom. Safari je môj hlavný prehliadač pre jeho vyváženosť výkonu a výdrže, na Linuxe je to Firefox. Windows užívateľom odporúčam Edge. Na organizáciu používam Todoist a Apple Kalendár prepojený s Google Kalendárom. FSNotes cez iCloud mi vyhovuje viac než Apple Notes. Na výskumné a písomné práce volím Markdown s Pandocom namiesto LaTeXu, pre vývoj Zed Editor a rýchle úpravy vim. Mám rád skôr experimentálno-všeobecný zámer ako definitívnu oblasť.
-				{:else}
-					While studying information security, I develop for macOS and iOS using SwiftUI. I focus mainly on writing more optimal programs for older versions of the system. I experiment with OpenCore on my Thinkpad X260. I recently completed Find-A-Cat, a cat pedigree management program, but I'm currently more interested in user-friendly solutions like NocoDB - extensions built on existing systems make more sense to me than development from scratch. I've been building websites using Svelte for five years and in my thesis I'm researching honeypots in network security. I prefer native applications and Python over Electron. Safari is my main browser for its balance of performance and battery life, on Linux it's Firefox. I recommend Edge to Windows users. For organization, I use Todoist and Apple Calendar linked with Google Calendar. FSNotes via iCloud suits me better than Apple Notes. For research writing, I choose Markdown with Pandoc instead of LaTeX, for development Zed Editor and quick edits vim. I prefer having an experimental-general aim rather than a definitive field.
-				{/if}
-			</Quote>
+			{#if SK}
+			    Popri štúdiu informačnej bezpečnosti sa venujem vývoju pre macOS a iOS pomocou SwiftUI. Zameriavam sa najmä na písanie optimálnejších programov s podporou pre staršie verzie systému. Experimentujem s OpenCore na mojom Thinkpade X260. Nedávno som dokončil Find-A-Cat, program na správu rodokmeňov mačiek, ale momentálne ma viac zaujímajú user-friendly riešenia ako NocoDB - nadstavby nad existujúcimi systémami mi dávajú väčší zmysel než vývoj od nuly. Už päť rokov budujem weby pomocou Svelte a v diplomovke skúmam honeypoty v sieťovej bezpečnosti. Preferujem natívne aplikácie a Python pred Electronom. Safari je môj hlavný prehliadač pre jeho vyváženosť výkonu a výdrže, na Linuxe je to Firefox. Windows užívateľom odporúčam Edge. Na organizáciu používam Todoist a Apple Kalendár prepojený s Google Kalendárom. FSNotes cez iCloud mi vyhovuje viac než Apple Notes. Na výskumné a písomné práce volím Markdown s Pandocom namiesto LaTeXu, pre vývoj Zed Editor a rýchle úpravy vim.
+			{:else}
+				While studying information security, I develop for macOS and iOS using SwiftUI. I focus mainly on writing more optimal programs for older versions of the system. I experiment with OpenCore on my Thinkpad X260. I recently completed Find-A-Cat, a cat pedigree management program, but I'm currently more interested in user-friendly solutions like NocoDB - extensions built on existing systems make more sense to me than development from scratch. I've been building websites using Svelte for five years and in my thesis I'm researching honeypots in network security. I prefer native applications and Python over Electron. Safari is my main browser for its balance of performance and battery life, on Linux it's Firefox. I recommend Edge to Windows users. For organization, I use Todoist and Apple Calendar linked with Google Calendar. FSNotes via iCloud suits me better than Apple Notes. For research writing, I choose Markdown with Pandoc instead of LaTeX, for development Zed Editor and quick edits vim.
+			{/if}
 			<p style="opacity:0.5; font-size: 10px;">
 				<span>Background photo by sergio souza (@serjosoza)</span><br>
 				<span>Illustration by me (@iairu)</span>
@@ -537,60 +527,82 @@
 			<S bg="url('/_index/bio.png') center center/contain no-repeat" fh up />
 		{/if}
 	</C>
-	<S row icon="fa fa-keyboard" name={SK ? "Schopnosti" : "Skills"} slug="skills" importance={2} hrd eq>
-		<Tabs names={[SK ? "Programovanie" : "Programming"]} let:active>
-			- HTML, CSS (SCSS, Tailwind), Git, Vim, Linux<br>
-			- JavaScript ES6 (Vanilla, Svelte, Electron, {SK ? "základy Vue.js, Angularu a Reactu" : "basics: Vue.js, Angular and React"})<br>
-			- Python, Bash/Zsh (+ cat, sed, pipe, alias, ...), C<br>
-			- PHP (Laravel), AutoHotkey/Automator/Apple Shortcuts<br>
-			- Pentesting
-		</Tabs>
-		<Tabs names={[SK ? "Grafický dizajn" : "Graphic design"]}>
-			{SK ? "- Denné skúsenosti s Blender, Affinity Designer, Davinci Resolve, "
-			: "- Daily experience with Blender, Affinity Designer, Davinci Resolve, "}
-			Adobe Photoshop, Adobe Illustrator, Adobe Premiere Pro, Adobe InDesign<br>
-			{SK ? "- Pozri hore 'Creative' voľbu vedľa nadpisu 'Projekty'"
-			: "- See 'Creative' option above next to 'Projects' heading"}
-		</Tabs>
-	</S>
+	<!-- <S row icon="fa fa-keyboard" name={SK ? "Schopnosti" : "Skills"} slug="skills" importance={2} hrd eq>
+		<C count={2} let:column eq>
+            {#if column === 0}
+                <Quote>
+                <h3><i class="fa fa-laptop-code"></i> {SK ? "Informatika" : "Computer Science"}</h3>
+                - HTML, CSS (SCSS, Tailwind), Git, Vim, Linux<br>
+                - JavaScript ES6 (Vanilla, Svelte, Electron, {SK ? "základy Vue.js, Angularu a Reactu" : "basics: Vue.js, Angular and React"})<br>
+                - Python, Bash/Zsh (+ cat, sed, pipe, alias, ...), C<br>
+                - PHP (Laravel), AutoHotkey/Automator/Apple Shortcuts<br>
+                - Pentesting
+                </Quote>
+            {:else}
+                <Quote>
+                <h3><i class="fa fa-paint-brush"></i> {SK ? "Grafický dizajn" : "Graphic design"}</h3>
+                {SK ? "- Denné skúsenosti s Blender, Affinity Designer, Davinci Resolve, "
+                : "- Daily experience with Blender, Affinity Designer, Davinci Resolve, "}
+                Adobe Photoshop, Adobe Illustrator, Adobe Premiere Pro, Adobe InDesign<br>
+                {SK ? "- Pozri hore 'Creative' voľbu vedľa nadpisu 'Projekty'"
+                : "- See 'Creative' option above next to 'Projects' heading"}
+                </Quote>
+            {/if}
+		</C>
+	</S> -->
 	<S row icon="fa fa-graduation-cap" name={SK ? "Vzdelanie" : "Education"} slug="edu" importance={2} hrd eq>
-		<Tabs names={["FIIT " + (SK ? "(informatika)" : "(computer science)")]}>
-			{#if SK}
-			<b>Fakulta informatiky a informačných technológií STU</b> // September 2019 – Júl 2024<br>
-			<u>Odbor BC-INFO4 Informatika (bakalár), predĺžené 4-ročné štúdium</u><br>
-			- Priemer 1.41 (najlepších 11%) za prvé dva semestre<br>
-			- Nadobudnutie základov programovania v C++, JavaScript, PHP<br>
-			- Zlepšenie rešeršových a prezentačných schopností; práce s Linuxom<br>
-			- Pokračovanie na inžinierskom štúdiu v odbore "Informačná bezpečnosť"
-			{:else}
-			<b>Faculty of Informatics and Information Technologies STU</b> // September 2019 – July 2024<br>
-			<u>BC-INFO4 Computer Science (bachelor), prolonged 4-year study plan</u><br>
-			- Average 1.41 (not GPA) (top 11% of students) for first two semesters<br>
-			- Acquired basics of programming in C++, JavaScript and PHP languages<br>
-			- Improved research and presentation skills; work with Linux<br>
-			- Continuing by studying master's in the field of "Information Security"
-			{/if}
-		</Tabs>
-		<Tabs names={["SUPTN " + (SK ? "(grafický dizajn)" : "(graphic design)")]}>
-			{#if SK}
-			<b>Škola umeleckého priemyslu Trenčín</b> // September 2015 – Jún 2019<br>
-			<u>Odbor 8261 M Propagačná grafika, 4-ročné štúdium</u><br>
-			- Ukončené úplné stredné odborné vzdelanie<br>
-			- Nadobudnutie praktických aj teoretických znalostí v oblasti grafického dizajnu<br>
-			- Navrhovanie, organizácia, realizácia a prezentácia vlastnej grafickej a umeleckej tvorby<br>
-			- Skúsenosti s typografiou, printovými médiami, Adobe CC balíkom
-			{:else}
-			<b>Škola umeleckého priemyslu Trenčín</b> // September 2015 – June 2019<br>
-			<u>8261 M Propagation graphics, 4-year study plan</u><br>
-			- Acquired practical and theoretical knowledge in the field of graphic design<br>
-			- Conceptualization, organizing, realization and presentation of original graphic and artistic works<br>
-			- Experience with typography, print media and Adobe CC bundle
-			{/if}
-		</Tabs>
+        <C count={2} let:column eq>
+        {#if column === 0}
+            <Quote>
+            <h3><i class="fa fa-university"></i> {SK ? "Fakulta informatiky a informačných technológií STU" : "Faculty of Informatics and Information Technologies STU"}</h3>
+            {#if SK}
+            September 2019 – Júl 2024<br>
+            <u>Odbor BC-INFO4 Informatika (bakalár), predĺžené 4-ročné štúdium</u><br>
+            - Priemer 1.41 (najlepších 11%) za prvé dva semestre<br>
+            - Nadobudnutie základov programovania v C++, JavaScript, PHP<br>
+            - Zlepšenie rešeršových a prezentačných schopností; práce s Linuxom<br>
+            - Pokračovanie na inžinierskom štúdiu v odbore "Informačná bezpečnosť"
+            {:else}
+            September 2019 – July 2024<br>
+            <u>BC-INFO4 Computer Science (bachelor), prolonged 4-year study plan</u><br>
+            - Average 1.41 (not GPA) (top 11% of students) for first two semesters<br>
+            - Acquired basics of programming in C++, JavaScript and PHP languages<br>
+            - Improved research and presentation skills; work with Linux<br>
+            - Continuing by studying master's in the field of "Information Security"
+            {/if}
+            </Quote>
+        {:else}
+            <Quote>
+            <h3><i class="fa fa-palette"></i> {SK ? "Škola umeleckého priemyslu Trenčín" : "High-School of Arts Trenčín (ŠUPTN)"}</h3>
+            {#if SK}
+            September 2015 – Jún 2019<br>
+            <u>Odbor 8261 M Propagačná grafika, 4-ročné štúdium</u><br>
+            - Ukončené úplné stredné odborné vzdelanie<br>
+            - Nadobudnutie praktických aj teoretických znalostí v oblasti grafického dizajnu<br>
+            - Navrhovanie, organizácia, realizácia a prezentácia vlastnej grafickej a umeleckej tvorby<br>
+            - Skúsenosti s typografiou, printovými médiami, Adobe CC balíkom
+            {:else}
+            September 2015 – June 2019<br>
+            <u>8261 M Propagation graphics, 4-year study plan</u><br>
+            - Acquired practical and theoretical knowledge in the field of graphic design<br>
+            - Conceptualization, organizing, realization and presentation of original graphic and artistic works<br>
+            - Experience with typography, print media and Adobe CC bundle
+            {/if}
+            </Quote>
+        {/if}
+        </C>
 	</S>
 </S>
-<S light icon="fa fa-comment-dots" name="Resume" slug="more" pt pb nbt sli>
+<!-- <S light icon="fa fa-running" name={SK ? "Najviac riešim..." : "Mostly dealing with..."} slug="quote" pt pb nbb sli>
+	<span>
+		{
+		SK ? 	"Vývoj iOS a macOS hobby projektov a kurzy informačnej bezpečnosti + diplomová práca" :
+				"iOS and macOS side-projects and information security courses + master thesis"
+		}
+	</span>
+</S> -->
+<!-- <S light icon="fa fa-comment-dots" name="Resume" slug="more" pt pb nbt sli>
 	<Nav nav={[
         {icon: "far fa-file", text: (SK ? "Front-end developer / IT technik" : "Front-end developer / IT technician") + " [2022-06 PDF]", href: SK ? "/dl/resume-sk.pdf" : "/dl/resume-en.pdf", isButton: true},
 	]}/>
-</S>
+</S> -->
