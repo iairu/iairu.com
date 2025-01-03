@@ -16,3 +16,8 @@
 <p>These are linked on-site, but in a tab, so crawler fails to discover them</p>
 <a href="/en/art/comics">Comics</a>
 <a href="/sk/art/komixy">Komixy</a>
+<a href="/en/dev/save-the-princess">Save the Princess</a>
+<a href="/sk/dev/save-the-princess">Save the Princess</a>
+<a href="/sk/dev/ahk">AHK</a>
+<a href="/en/dev/iptables-portforward">iptables-portforward</a>
+<a href="/sk/dev/ipv4-calc">IPv4 Calc</a>
