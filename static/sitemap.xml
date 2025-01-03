@@ -17,11 +17,12 @@
 				<xhtml:link rel="alternate" hreflang="sk" href="https://iairu.com/strukshow-docs/"/>
 		</url>
 		<url>
-				<loc>https://iairu.com/sk/dev/save-the-princess/</loc>
+				<loc>https://iairu.com/en/dev/save-the-princess/</loc>
 				<lastmod>2024-12-30</lastmod>
 				<changefreq>monthly</changefreq>
 				<priority>0.8</priority>
 				<xhtml:link rel="alternate" hreflang="sk" href="https://iairu.com/sk/dev/save-the-princess/"/>
+				<xhtml:link rel="alternate" hreflang="en" href="https://iairu.com/en/dev/save-the-princess/"/>
 		</url>
 		<url>
 				<loc>https://iairu.com/dbs/</loc>
@@ -52,11 +53,12 @@
 				<xhtml:link rel="alternate" hreflang="sk" href="https://iairu.com/sk/links"/>
 		</url>
 		<url>
-				<loc>https://iairu.com/sk/art/komixy</loc>
+				<loc>https://iairu.com/en/art/comics</loc>
 				<lastmod>2024-12-30</lastmod>
 				<changefreq>monthly</changefreq>
 				<priority>0.7</priority>
 				<xhtml:link rel="alternate" hreflang="sk" href="https://iairu.com/sk/art/komixy"/>
+				<xhtml:link rel="alternate" hreflang="en" href="https://iairu.com/en/art/comics"/>
 		</url>
 		<url>
 				<loc>https://iairu.com/gfx/</loc>
