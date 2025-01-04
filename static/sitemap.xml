@@ -79,4 +79,11 @@
 				<priority>0.8</priority>
 				<xhtml:link rel="alternate" hreflang="sk" href="https://iairu.com/sk/dev/ipv4-calc/"/>
 		</url>
+		<url>
+				<loc>https://iairu.com/sk/dev/log</loc>
+				<lastmod>2024-12-30</lastmod>
+				<changefreq>monthly</changefreq>
+				<priority>0.3</priority>
+				<xhtml:link rel="alternate" hreflang="sk" href="https://iairu.com/sk/dev/log"/>
+		</url>
 </urlset>
