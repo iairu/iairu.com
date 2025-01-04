@@ -32,7 +32,7 @@
 <S dark wrapper bg="url('/_links/ms_knn_2_out.jpg') top no-repeat">
 <C count={2} let:column eq mdel={1}>
 	{#if column === 0}
-	<S dark tp name={(SK ? "Ondrej Špánik" : "Andrei Spanning") + " (iairu)"} slug="about" tags={"developer, " + (SK ? "UX dizajnér, InfoSec študent" : "UX designer, InfoSec student")} nbb nbt>
+	<S dark tp name={(SK ? "Ondrej Špánik" : "Andrei Spanning") + " (iairu)"} slug="about" tags={"developer, " + (SK ? "UX dizajnér, InfoSec študent" : "UX designer, InfoSec student")} nbb nbt nhl>
 	</S><br>
 	{:else}
 	<img src="/_index/logos.png" alt="Preferred technologies and affiliations" style="max-width: 400px; display: flex; margin: auto 7% auto auto;"/>
@@ -124,7 +124,7 @@
     	]}
         />
 	<Thumb dark
-		name="BrianStruk.com Portfolio 2022"
+		name="BrianStruk.com CMS Solution"
 		icon="strukshow-w"
 		bg="brian"
 		tags="★, svelte, javascript, scss, html, php"
@@ -302,7 +302,7 @@
 		img="code_thumbs"
 		/> -->
 	<Thumb
-    	name="LubaStrukova.sk Portfolio 2023"
+    	name="LubaStrukova.sk CMS Solution"
     	icon="strukshow"
     	tags="svelte, javascript, scss, html, php"
     	showIfTag={filter}
