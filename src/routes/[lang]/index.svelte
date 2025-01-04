@@ -71,7 +71,7 @@
         to="2023-10-31"
         />
 	<Thumb dark
-		name="StrukShow.com Portfolio 2020"
+		name="Full StrukShow.com Solution"
 		bgOpacity={0.18}
 		icon="strukshow-w"
 		bg="strukshow"
