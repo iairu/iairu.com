@@ -32,7 +32,7 @@
 <S dark wrapper bg="url('/_links/ms_knn_2_out.jpg') top no-repeat">
 <C count={2} let:column eq mdel={1}>
 	{#if column === 0}
-	<S dark tp name={(SK ? "Ondrej Špánik" : "Andrei Spanning") + " (iairu)"} slug="about" tags={"developer, " + (SK ? "UX dizajnér, InfoSec študent" : "UX designer, InfoSec student")} nbb nbt nhl>
+	<S dark tp name={"Ondrej Špánik (iairu)"} slug="about" tags={"developer, " + (SK ? "UX dizajnér, InfoSec študent" : "UX designer, InfoSec student")} nbb nbt nhl>
 	</S><br>
 	{:else}
 	<img src="/_index/logos.png" alt="Preferred technologies and affiliations" style="max-width: 400px; display: flex; margin: auto 7% auto auto;"/>
