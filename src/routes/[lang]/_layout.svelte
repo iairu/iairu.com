@@ -89,7 +89,7 @@
 	<slot />
 	{#if !isEmbedded}
 	   {#if isHomepage(currentSlug, currentURLlang)}
-    	<S dark={$dark || $darkHeader} icon="fa fa-address-card" name={current === "sk" ? "Som pripravený Vám asistovať" : "I am ready to assist you"} slug="contact" pt pb center nhl>
+    	<S dark={$dark || $darkHeader} icon="fa fa-address-card" name={current === "sk" ? "Budem rád, ak mi napíšete." : "I will be glad if you let me know."} slug="contact" pt pb center nhl>
     		<Nav nav={[
     			{icon: "fa fa-envelope", text: "E-mail: spanik11@gmail.com", href: "mailto:spanik11@gmail.com", isButton: isHomepage(currentSlug, currentURLlang), modal: false, hideExt: true},
     			// {icon: "fab fa-facebook-messenger", text: "Messenger", href: "https://m.me/iairu"},
