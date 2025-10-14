@@ -32,7 +32,7 @@
 <S dark wrapper bg="url('/_links/ms_knn_2_out.jpg') top no-repeat">
 <C count={2} let:column eq mdel={1}>
 	{#if column === 0}
-	<S dark tp name={"Ondrej Špánik (iairu)"} slug="about" tags={(SK ? "InfoSec študent" : "InfoSec student")} nbb nbt nhl>
+	<S dark tp name={"Ondrej Špánik"} slug="about" tags="" nbb nbt nhl>
 	</S><br>
 	{:else}
 	<img src="/_index/logos.png" alt="Preferred technologies and affiliations" style="max-width: 400px; display: flex; margin: auto 7% auto auto;"/>
@@ -515,9 +515,9 @@
 	<C count={2} let:column eq mdel={1}>
 		{#if column === 0}
 			{#if SK}
-			    Popri štúdiu informačnej bezpečnosti sa venujem vývoju pre macOS a iOS pomocou SwiftUI. Zameriavam sa najmä na písanie optimálnejších programov s podporou pre staršie verzie systému. Experimentujem s OpenCore na mojom Thinkpade X260. Nedávno som dokončil Find-A-Cat, program na správu rodokmeňov mačiek, ale momentálne ma viac zaujímajú user-friendly riešenia ako NocoDB - nadstavby nad existujúcimi systémami mi dávajú väčší zmysel než vývoj od nuly. Už päť rokov budujem weby pomocou Svelte a v diplomovke skúmam honeypoty v sieťovej bezpečnosti. Preferujem natívne aplikácie a Python pred Electronom. Safari je môj hlavný prehliadač pre jeho vyváženosť výkonu a výdrže, na Linuxe je to Firefox. Windows užívateľom odporúčam Edge. Na organizáciu používam Todoist a Apple Kalendár prepojený s Google Kalendárom. FSNotes cez iCloud mi vyhovuje viac než Apple Notes. Na výskumné a písomné práce volím Markdown s Pandocom namiesto LaTeXu, pre vývoj Zed Editor a rýchle úpravy vim.
+			    Na bakalárskej práci som obhájil Find-A-Cat, program na evidenciu mačiek so správou rodokmeňou a s algoritmom párenia. Na tímovom projekte som implementoval CI/CD pre automatické nasadenie vlastnej nadstavby NocoDB na zhodou okolností PowerPC a pomohol ostatným s Docker problémami vrátane dokumentácie. Na tvorbu webových stránok mám rád Svelte. V diplomovej práci sa snažím implementovať softvérový digital twin honeypot. Na organizáciu sa mi osvedčil OneNote a Apple Kalendár aplikácia napojená na Google účet, ale vždy sa prispôsobím potrebám tímu. Ako daily driver mám k svojim zvyšným Apple zariadeniam macOS na Thinkpade X260 (nie je to preklep :D). Pre vývoj momentálne používam VSCode. Medzi časom som dlhšie používal Notion, Zed, ArchLinux, FreeBSD, Obsidian, atp. Okrem štúdia a informatiky mám rád preklad japonských piesní, anime, mačky, turistiku, varenie a fotografovanie. <b>Momentálne si hľadám prácu, podľa možností a potreby tímu v oblastiach frontend, CI/CD, Docker, dokumentácia, Ansible, support a podobných. Otvorený návrhom.</b>
 			{:else}
-				While studying information security, I develop for macOS and iOS using SwiftUI. I focus mainly on writing more optimal programs for older versions of the system. I experiment with OpenCore on my Thinkpad X260. I recently completed Find-A-Cat, a cat pedigree management program, but I'm currently more interested in user-friendly solutions like NocoDB - extensions built on existing systems make more sense to me than development from scratch. I've been building websites using Svelte for five years and in my thesis I'm researching honeypots in network security. I prefer native applications and Python over Electron. Safari is my main browser for its balance of performance and battery life, on Linux it's Firefox. I recommend Edge to Windows users. For organization, I use Todoist and Apple Calendar linked with Google Calendar. FSNotes via iCloud suits me better than Apple Notes. For research writing, I choose Markdown with Pandoc instead of LaTeX, for development Zed Editor and quick edits vim.
+				For my bachelor's thesis, I defended Find-A-Cat, a program for pedigree management with a breeding algorithm. On a team project, I implemented CI/CD for automatic deployment of a custom NocoDB extension on PowerPC, coincidentally and helped others with Docker issues including documentation. For web development, I prefer Svelte. In my master's thesis, I'm trying to implement a software digital twin honeypot. For organization, OneNote and Apple Calendar app connected to Google account work well for me, but I always adapt to team needs. As a daily driver, I have macOS on a Thinkpad X260 alongside my other Apple devices (not a typo :D). For development, I currently use VSCode. In the meantime, I've extensively used Notion, Zed, ArchLinux, FreeBSD, Obsidian, etc. Besides studies and computer science, I enjoy translating Japanese songs, anime, cats, hiking, cooking and photography. <b>Currently looking for a job in Bratislava, depending on circumstances and team needs in areas of frontend, CI/CD, Docker, documentation, Ansible, support and similar. Open to ideas.</b>
 			{/if}
 			<p style="opacity:0.5; font-size: 10px;">
 				<span>Background photo by sergio souza (@serjosoza)</span><br>
@@ -558,14 +558,14 @@
             {#if SK}
             September 2019 – Júl 2024<br>
             <u>Odbor BC-INFO4 Informatika (bakalár), predĺžené 4-ročné štúdium</u><br>
-            - Priemer 1.41 (najlepších 11%) za prvé dva semestre<br>
+            - Priemer 1.41 za prvé dva semestre<br>
             - Nadobudnutie základov programovania v C++, JavaScript, PHP<br>
             - Zlepšenie rešeršových a prezentačných schopností; práce s Linuxom<br>
             - Pokračovanie na inžinierskom štúdiu v odbore "Informačná bezpečnosť"
             {:else}
             September 2019 – July 2024<br>
             <u>BC-INFO4 Computer Science (bachelor), prolonged 4-year study plan</u><br>
-            - Average 1.41 (not GPA) (top 11% of students) for first two semesters<br>
+            - Average 1.41 (not GPA, Slovak/EU scale) for first two semesters<br>
             - Acquired basics of programming in C++, JavaScript and PHP languages<br>
             - Improved research and presentation skills; work with Linux<br>
             - Continuing by studying master's in the field of "Information Security"
