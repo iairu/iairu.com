@@ -14,12 +14,11 @@
     export let icon = ""; // static/_thumbs/icons | expects svg if no format given | if it begins with fa, fontawesome will load instead
     export let bg = "default"; // static/_thumbs/bgs | expects jpg if no format given
     export let img = ""; // static/_thumbs/imgs | expects jpg if no format given
-    export let bgOpacity = ""; // specify a number between <0.0;1.0>
+    export let bgOpacity = "";
     export let empty = false; // act as a filler (to make last flex-grow elms less stretched / ugly)
     export let bgNoFilter = false;
     export let dark = false;
     export let showIfTag = "";
-    export let tp = false; // transparent background color, ideal when mixed with bgOpacity
 
     let l;
     const unsub = lang.subscribe((lng)=>{l = lng.current;});
@@ -55,11 +54,10 @@
 </script>
 
 {#if !showIfTag || (showIfTag && tags.includes(showIfTag.toLowerCase()))}
-    <section
+    <section 
         class="thumb"
         class:dark={dark}
         class:empty={empty}
-        class:tp={tp}
         >
         <div class="content">
 
@@ -81,21 +79,20 @@
             </div>
 
             <!-- Description -->
-            {#if desc}<p>{@html desc}</p>{/if}
+            {#if desc}<p>{desc}</p>{/if}
 
             <!-- Image -->
-            <!-- svelte-ignore a11y-click-events-have-key-events -->
             {#if img}<img class="img" src={"/_thumbs/imgs/" + (img.includes(".") ? img : img + ".jpg")} alt={name + " photo"} on:click={handleImageModal}>{/if}
 
             <!-- Navigation -->
             <Nav {nav} />
 
             <!-- Timeline -->
-            {#if from || to}
+            {#if from}
             <div class="details">
                 <span class="from">{from}</span>
                 <div class="arrow tags" class:dark>
-                    {#if to && to.split("-").length == 3}<span class="days">{calcDays(from,to,l)}</span>{/if}
+                    {#if to}<span class="days">{calcDays(from,to,l)}</span>{/if}
                     {#if progress}<div class="progress" style={"width: " + progress + "%; background-image: url('" + progressBg(progress) + "');"}></div>{/if}
                 </div>
                 <span class="to">{to ? to : "TBD"}</span>
@@ -110,8 +107,8 @@
 <style lang="scss" global>
     section.thumb {
         position: relative;
-        border: 1px solid rgba(0, 0, 0, 0.2);
-        background-color: white;
+        border: 1px solid rgba(59, 130, 246, 0.2);
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.05));
         background-size: cover;
         background-position: center;
         width: 350px;
@@ -121,14 +118,59 @@
         padding-bottom: 20px;
         color: black;
         border-radius: 10px;
-        overflow: hidden;
-        transform: scale(1.0);
-        transition: box-shadow 0.2s, transform 0.2s;
+        overflow: visible;
+        transition: all 0.3s ease;
+        box-shadow:
+            0 0 20px rgba(59, 130, 246, 0.05),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
         @media (max-width: 900px) {width: 100%;}
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 15px;
+            height: 15px;
+            border-top: 2px solid rgba(59, 130, 246, 0.4);
+            border-left: 2px solid rgba(59, 130, 246, 0.4);
+            border-radius: 10px 0 0 0;
+            transition: all 0.3s ease;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 15px;
+            height: 15px;
+            border-bottom: 2px solid rgba(59, 130, 246, 0.4);
+            border-right: 2px solid rgba(59, 130, 246, 0.4);
+            border-radius: 0 0 10px 0;
+            transition: all 0.3s ease;
+        }
+
         &:hover {
-            transition: box-shadow 0.2s, transform 0.2s;
-            box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.2);
-            transform: scale(1.02);
+            transform: translateY(-4px);
+            border-color: rgba(59, 130, 246, 0.4);
+            box-shadow:
+                0 0 30px rgba(59, 130, 246, 0.15),
+                0 10px 25px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+
+            &::before {
+                width: 20px;
+                height: 20px;
+                border-color: rgba(59, 130, 246, 0.6);
+            }
+
+            &::after {
+                width: 20px;
+                height: 20px;
+                border-color: rgba(59, 130, 246, 0.6);
+            }
         }
         .content {
             display: flex;
@@ -142,7 +184,12 @@
             display: flex;
             align-items: flex-start;
             justify-content: space-between;
-            .icon {width: 40px; font-size: 36px; color: black;}
+            .icon {
+                width: 40px;
+                font-size: 36px;
+                color: rgba(59, 130, 246, 0.8);
+                filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.3));
+            }
             h3 {
                 font-weight: bold;
                 margin: 0;
@@ -183,7 +230,7 @@
                 min-height: 5px;
                 background-image: url("/_thumbs/arrow-line.svg");
                 background-repeat: repeat-x;
-                background-size: 10px 2px; //2px instead of 1 for safari invisible fix
+                background-size: 10px 1px;
                 background-position: center;
                 &:after {
                     content: "";
@@ -216,17 +263,7 @@
             background: white;
         }
         .bg {
-            display: block;
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            top: 0;
-            height: 100%;
-            width: 100%;
-            opacity: 0.2;
-            object-fit: cover;
-            background: white;
+            display: none;
         }
         &.empty {
             margin-top: 0 !important;
@@ -250,7 +287,7 @@
                 }
                 .heading .icon {color: white;}
                 .img {border-color: rgba(255,255,255,0.2);}
-                .bg {
+                .bg { 
                     opacity: 0.3;
                     filter: contrast(0.5) brightness(1.5);
                 }
@@ -266,9 +303,6 @@
                 .from:before { content: "Od: ";}
                 .to:before { content: "Do: ";}
             }
-        }
-        &.tp {
-            background-color: transparent;
         }
     }
 </style>
