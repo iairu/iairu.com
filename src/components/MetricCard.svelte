@@ -34,14 +34,17 @@
     .metric-card {
         display: flex;
         align-items: center;
-        gap: 12px;
-        padding: 12px 16px;
-        background: linear-gradient(135deg, rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.02));
+        justify-content: center;
+        flex-direction: column;
+        gap: 8px;
+        padding: 16px;
+        background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(59, 130, 246, 0.05));
         border: 1px solid rgba(59, 130, 246, 0.2);
         border-radius: 8px;
         transition: all 0.2s ease;
         position: relative;
         overflow: hidden;
+        text-align: center;
 
         &:hover {
             border-color: rgba(59, 130, 246, 0.4);
@@ -113,19 +116,22 @@
     }
 
     .metric-content {
-        flex: 1;
-        min-width: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     .metric-value {
-        font-size: 20px;
+        font-size: 24px;
         font-weight: 700;
-        color: rgba(0, 0, 0, 0.9);
+        color: rgba(59, 130, 246, 0.9);
         display: flex;
         align-items: center;
+        justify-content: center;
         gap: 8px;
         line-height: 1;
-        margin-bottom: 4px;
+        margin-bottom: 6px;
 
         .trend {
             font-size: 12px;
@@ -159,10 +165,10 @@
 
     .metric-label {
         font-size: 11px;
-        font-weight: 500;
-        color: rgba(0, 0, 0, 0.6);
+        font-weight: 600;
+        color: rgba(59, 130, 246, 0.7);
         text-transform: uppercase;
-        letter-spacing: 0.5px;
+        letter-spacing: 0.8px;
     }
 
     .metric-sparkline {

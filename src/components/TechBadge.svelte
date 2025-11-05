@@ -38,19 +38,19 @@
         display: inline-flex;
         align-items: center;
         gap: 6px;
-        padding: 4px 10px;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid rgba(0, 0, 0, 0.1);
+        padding: 6px 12px;
+        background: rgba(59, 130, 246, 0.1);
+        border: 1px solid rgba(59, 130, 246, 0.2);
         border-radius: 6px;
         text-decoration: none;
         transition: all 0.2s;
         font-size: 0.75em;
 
         &:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: rgba(0, 0, 0, 0.2);
+            background: rgba(59, 130, 246, 0.15);
+            border-color: rgba(59, 130, 246, 0.4);
             transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
         }
 
         &.compact {
@@ -71,7 +71,8 @@
         }
 
         .badge-text {
-            color: #666;
+            color: rgba(59, 130, 246, 0.9);
+            font-weight: 500;
             white-space: nowrap;
         }
 

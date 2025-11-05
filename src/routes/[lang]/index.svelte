@@ -4,21 +4,27 @@
 	import S from '../../components/Section.svelte';
 	import C from "../../components/Columns.svelte";
 	import { lang } from '../../components/LangStore.svelte';
+	import { content } from '../../components/ContentStore.svelte';
 	import Tabs from '../../components/Tabs.svelte';
 	import Thumb from '../../components/Thumb.svelte';
 	import HighlightThumb from '../../components/HighlightThumb.svelte';
 	import { onMount } from 'svelte';
 	import { darkHeader } from '../../components/DarkStore.svelte';
 
-	
+
 	let l;
 	let SK = false;
+	let currentMode = 'it';
 	$: SK = l.current === "sk"; // basically a macro
 	const unsub = lang.subscribe((lng)=>{l = lng;});
+	const unsubContent = content.subscribe((mode) => {
+		currentMode = mode;
+	});
 	onMount(()=>{
 		darkHeader.set(false);
 		return ()=>{
 			unsub();
+			unsubContent();
 			darkHeader.set(false);
 		}
 	});
@@ -30,8 +36,8 @@
 	<meta name="robots" content="index,follow">
 </svelte:head>
 
-<S row icon="fa fa-calendar-check" name={SK ? "Projekty" : "Projects"} slug="projects" tabs={["Development", "Creative"]} filters={[["", "Javascript", "Autohotkey", "Python", "Blog"],["", "Animation", "Design", "Blog"]]}  let:tab let:filter pt pb cg>
-    {#if tab === 0}
+<S row icon="fa fa-calendar-check" name={currentMode === 'it' ? (SK ? "Projekty" : "Projects") : (SK ? "Tvorba" : "Creative")} slug="projects" pt pb cg>
+    {#if currentMode === 'it'}
 	<!-- Featured Projects -->
 	<div class="highlights-grid">
 		<HighlightThumb
@@ -65,7 +71,7 @@
 		icon="strukshow-w"
 		bg="strukshow"
 		tags="svelte, javascript, scss, html, php"
-        showIfTag={filter}
+        
 		desc={
 			SK	? "Komplexné riešenie modernej osobnej webovej stránky pomocou CockpitCMS a Svelte."
 				: "Complex solution of a modern personal website using CockpitCMS and Svelte."
@@ -82,7 +88,7 @@
 		icon="fa fa-file-code"
         bgOpacity={0.2}
 		tags="postgres, django, python, json, sql"
-        showIfTag={filter}
+        
 		desc={
 			SK	? "Django REST API pre komplexné SELECT queries nad Postgres databázou. Vypracované od základov nad existujúcou DB."
 				: "Django REST API for complex SELECT queries over a Postgres database. Created from scratch over an existing DB."
@@ -99,7 +105,7 @@
 		icon="fa fa-file-code"
         bgOpacity={0.2}
 		tags="assembly, ms-dos"
-        showIfTag={filter}
+        
 		desc={
 			SK	? "Počítanie rôznych druhov znakov a spracovanie argumentov, súborov v 16-bit MS-DOS Turbo Assembleri."
 				: "Counting different types of characters, processing arguments, files in 16-bit MS-DOS Turbo Assembler."
@@ -115,7 +121,7 @@
 		icon="fa fa-crop-alt"
 		bgOpacity={0.2}
 		tags="javascript, svelte, electron, scss"
-        showIfTag={filter}
+        
 		desc={
 			SK	? "Bohatý nástroj pre rýchlu tvorbu Anki-kompatibilných učebných CSV kariet."
 				: "A rich utility for fast creation of Anki-compatible CSV flashcards."
@@ -132,7 +138,7 @@
 		icon="fa fa-paint-brush"
         bgOpacity={0.2}
 		tags="autohotkey, ffmpeg, parsing"
-        showIfTag={filter}
+        
 		desc={
 			SK	? "Skript pre masové extrahovanie, spojenie a exportovanie timelapse súborov z Procreate prác pomocou 7z a FFMPEG."
 				: "Script for mass extraction, stitching and export of timelapse files from Procreate works using 7z and FFMPEG."
@@ -149,7 +155,7 @@
         bg="stp"
         icon="fa fa-gamepad"
         tags="javascript"
-        showIfTag={filter}
+        
         desc={
             SK 	? "Vanilla JavaScript hra inšpirovaná Street Fighterom. Prvý JavaScript projekt, stavané podľa MVC princípu."
                 : "Vanilla JavaScript game inspired by Street Fighter. First Javascript project, based on MVC."
@@ -165,7 +171,7 @@
         name="PCAP Analyzer"
         icon="fa fa-ethernet"
         tags="python, networking"
-        showIfTag={filter}
+        
         desc={
             SK	? "Vypíše dáta paketu pre .pcap formát, viacmenej práca s interpretáciou surových bajtov podľa štyroch často používaných štandardov."
                 : "Prints packet data for the .pcap format, mostly work with interpreting raw bytes per four well-established standards."
@@ -181,7 +187,7 @@
         icon="fa fa-network-wired"
 		bgOpacity={0.2}
         tags="iptables, networking, linux, sysadmin, blog"
-        showIfTag={filter}
+        
         desc={
             SK  ? "Návod nie len pre presmerovanie portov, ale všeobecné riešenie problémov v rámci IPTables." 
                 : "A walkthrough tutorial for not just port-forwarding, but problem solving when it comes to IPTables."
@@ -196,7 +202,7 @@
         icon="fa fa-tools"
         bgOpacity={0.12}
         tags="presentation, video"
-        showIfTag={filter}
+        
         desc={
             SK	? "Anglická prezentácia, ktorá rieši právo na opravu a temnú stránku spoločnosti Apple."
                 : "Presentation covering the Right to Repair and, on a related note, The Dark Side of Apple."
@@ -212,7 +218,7 @@
 		name={ SK ? "GUI pre gTTS" : "GUI for gTTS"}
 		icon="fa fa-comment-dots"
 		tags="python"
-        showIfTag={filter}
+        
 		desc={
 			SK	? "Jednoduché grafické rozhranie pre gTTS (Google Text-to-Speech) knižnicu."
 				: "Simple interface for gTTS (Google Text-to-Speech) library."
@@ -228,7 +234,7 @@
 		name="iairu.com"
 		icon="fa fa-code"
 		tags="sapper, svelte, javascript, scss, html"
-        showIfTag={filter}
+        
 		desc={
 			SK  ? "Riešenie osobného webového portfólia (tejto stránky) cez Sapper framework."
 				: "A personal web portfolio solution (this site) using Sapper framework."
@@ -239,7 +245,7 @@
 		name={SK ? "Masový nákup lístkov" : "Batch ticket shopping"}
 		icon="fa fa-shopping-cart"
 		tags="autohotkey"
-        showIfTag={filter}
+        
 		desc={
 			SK	? "Komplexná automatizácia nákupu cestovných lístkov, nakoľko UX portálu bolo a stále je mizerné. Skript nie je verejne dostupný."
 				: "Complex automatization for travel-ticket shopping. Script is not publicly available."
@@ -250,7 +256,7 @@
 		name={SK ? "Každodenná digitálna automatizácia" : "Everyday digital automation"}
 		icon="fa fa-file-code"
 		tags="autohotkey, blog"
-        showIfTag={filter}
+        
 		desc={
 			SK 	? "Viac ako 26 zaujímavých AutoHotkey skriptov pre automatizáciu repetitívnych digitálnych činností."
 				: "More than 26 interesting AutoHotkey scripts for automatization of repetitive digital activities."
@@ -264,7 +270,7 @@
 		name={SK ? "Linux návody" : "Linux tutorials"}
 		icon="fa fa-book"
 		tags="bash, sysadmin, vm"
-        showIfTag={filter}
+        
 		desc={
 			SK	? "Od inštalácie Debianu vo VM po sprevádzkovanie LAMP servera from scratch."
 				: "From Debian install inside a VM to LAMP-from-scratch server setup."
@@ -279,7 +285,7 @@
 		name={SK ? "IPv4 kalkulačka + návod" : "IPv4 Calc"}
 		icon="fa fa-sitemap"
 		tags="c, networking, blog"
-        showIfTag={filter}
+        
 		desc={
 			SK	? "Vypočíta z adresy a masky počiatočnú a koncovú adresu siete."
 				: "Calculates network and broadcast address from any IP and mask."
@@ -294,7 +300,7 @@
 		name="Coffee Machine"
 		icon="fa fa-terminal"
 		tags="java"
-        showIfTag={filter}
+        
 		desc={
 			SK 	? "Jednoduchý CLI kávomat, prvý Java projekt."
 				: "Simple CLI coffee machine, first Java project."
@@ -321,7 +327,7 @@
         name="Programovací denník (Leto 2020)"
         icon="fa fa-clipboard-list"
         tags="blog"
-        showIfTag={filter}
+        
         desc="Osobné projekty a experimenty počas leta v roku 2020."
         nav={[
             {icon: "fa fa-clipboard-list", text:"Prečítať", href:"/dev/log/", isButton: true},
@@ -329,14 +335,14 @@
         />
 	{/if}
 	<Thumb empty />
-	{:else if tab === 1}
+	{:else}
 	<Thumb
 		name={SK ? "Grafické portfolio" : "Graphic design portfolio"}
 		bg="gfxbg"
 		bgOpacity={1} bgNoFilter
 		icon="dumpling-w"
 		tags="design, concepts, digital"
-        showIfTag={filter}
+        
 		desc={
 			SK	? "Koncepty brandingu, staršie dizajny webov a maturitný projekt."
 				: "Branding concepts, older web designs and a graduation project."
@@ -350,7 +356,7 @@
 		bg="zrada"
 		icon="fa fa-paint-brush"
 		tags="3d, animation, blender"
-        showIfTag={filter}
+        
 		desc={
 			SK	? "Maturitný projekt - Animovaný príbeh typografie: 3D Animácia vytvorená v Blenderi o svete písmeniek."
 				: "Graduation project - Animated typography story: 3D Animation made in Blender about a world of letters."
@@ -365,7 +371,7 @@
         name={SK ? "Tajný projekt I (Dlhodobý)" : "Secret project I (Long-term)"}
         icon="fa fa-hourglass-half"
         tags="video, animation, story"
-        showIfTag={filter}
+        
         from="2016-06-01"
         progress={15}
         />
@@ -373,7 +379,7 @@
         name={SK ? "Tajný projekt II (Krátkodobý)" : "Secret project II (Short-term)"}
         icon="fa fa-hourglass-half"
         tags="video, animation, story"
-        showIfTag={filter}
+        
         from="2022-01-01"
         progress={30}
         />

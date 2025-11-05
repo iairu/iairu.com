@@ -8,15 +8,18 @@
         const path = $page.path;
         const segments = path.split('/').filter(Boolean);
 
-        breadcrumbs = segments.map((segment, index) => {
-            const href = '/' + segments.slice(0, index + 1).join('/');
-            const label = segment.charAt(0).toUpperCase() + segment.slice(1).replace(/-/g, ' ');
+        // Skip first segment (language) and map remaining
+        const contentSegments = segments.slice(1);
+
+        breadcrumbs = contentSegments.map((segment, index) => {
+            const href = '/' + segments.slice(0, index + 2).join('/');
+            const label = segment.toUpperCase().replace(/-/g, ' ');
             return { label, href };
         });
 
         // Add home breadcrumb
         if (breadcrumbs.length > 0) {
-            breadcrumbs.unshift({ label: 'Home', href: `/${segments[0] || 'en'}` });
+            breadcrumbs.unshift({ label: 'HOME', href: `/${segments[0] || 'en'}` });
         }
     }
 </script>
@@ -57,28 +60,31 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            font-size: 0.9em;
+            font-size: 0.85em;
+            font-family: monospace;
+            letter-spacing: 0.5px;
         }
 
         .breadcrumb-link {
-            color: #666;
+            color: rgba(59, 130, 246, 0.7);
             text-decoration: none;
             transition: color 0.2s;
+            font-weight: 500;
 
             &:hover {
-                color: black;
+                color: rgba(59, 130, 246, 0.9);
                 text-decoration: underline;
             }
         }
 
         .breadcrumb-separator {
-            color: #ccc;
+            color: rgba(59, 130, 246, 0.3);
             user-select: none;
         }
 
         .breadcrumb-current {
-            color: black;
-            font-weight: 500;
+            color: rgba(59, 130, 246, 0.9);
+            font-weight: 600;
         }
 
         @media print {

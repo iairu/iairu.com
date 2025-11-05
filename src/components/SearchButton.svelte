@@ -21,17 +21,18 @@
         align-items: center;
         gap: 10px;
         padding: 8px 16px;
-        background: white;
-        border: 2px solid black;
+        background: rgba(59, 130, 246, 0.05);
+        border: 1px solid rgba(59, 130, 246, 0.2);
         border-radius: 8px;
         cursor: pointer;
         font-size: 0.95em;
         transition: all 0.2s;
-        color: #666;
+        color: rgba(59, 130, 246, 0.9);
 
         &:hover {
-            background: rgba(0, 0, 0, 0.05);
-            color: black;
+            background: rgba(59, 130, 246, 0.1);
+            border-color: rgba(59, 130, 246, 0.4);
+            transform: translateY(-1px);
         }
 
         .fa-search {

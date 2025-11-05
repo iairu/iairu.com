@@ -1,6 +1,7 @@
 <script>
     import Nav from './Nav.svelte';
     import SearchButton from './SearchButton.svelte';
+    import SearchModal from './SearchModal.svelte';
     import AccessibilityControls from './AccessibilityControls.svelte';
     import StatusIndicator from './StatusIndicator.svelte';
 	import { stores } from '@sapper/app';
@@ -14,27 +15,22 @@
     export let useLangSelector = true;
     export let useContentSelector = true;
 
-    let searchVisible = false;
-    let searchQuery = '';
+    let searchModalOpen = false;
 
     function handleSearch() {
-        searchVisible = !searchVisible;
-        if (searchVisible) {
-            setTimeout(() => {
-                const input = document.querySelector('.search-input');
-                if (input) input.focus();
-            }, 100);
-        }
+        searchModalOpen = true;
     }
 
-    function performSearch() {
-        if (!searchQuery.trim()) return;
-        // Simple search - navigate to a search page or filter
-        window.location.href = `/${$lang.current}/dev/about?search=${encodeURIComponent(searchQuery)}`;
+    function closeSearch() {
+        searchModalOpen = false;
     }
 
     function toggleTheme() {
         dark.update(d => !d);
+        // Apply to document body for global effect
+        if (typeof document !== 'undefined') {
+            document.body.classList.toggle('dark-theme');
+        }
     }
 
     let showHomeArrow = false;
@@ -42,6 +38,8 @@
     $: splitPath = $page.path.split("/");
     $: showHomeArrow = splitPath.length > 3 || (splitPath.length === 3 && splitPath[splitPath.length - 1] !== "");
 </script>
+
+<SearchModal isOpen={searchModalOpen} onClose={closeSearch} />
 
 <header class:dark={$dark}>
     <div class="content">
@@ -52,20 +50,6 @@
             {/if}
         </div>
         <div class="right">
-            {#if searchVisible}
-            <div class="search-box">
-                <input
-                    type="text"
-                    class="search-input"
-                    placeholder="Search..."
-                    bind:value={searchQuery}
-                    on:keydown={(e) => e.key === 'Enter' && performSearch()}
-                />
-                <button class="search-submit" on:click={performSearch}>
-                    <i class="fa fa-search"></i>
-                </button>
-            </div>
-            {/if}
             {#if useContentSelector}
             <ContentSelector dark={$dark} />
             {/if}
