@@ -4,6 +4,7 @@
 	import Sidebar from '../../components/Sidebar.svelte';
 	import SidebarToggle from '../../components/SidebarToggle.svelte';
 	import Breadcrumbs from '../../components/Breadcrumbs.svelte';
+	import AccessibilityApplier from '../../components/AccessibilityApplier.svelte';
 	import '../../components/TechStyles.svelte';
 	import { href } from '../../components/Modal.svelte';
 	import Modal from '../../components/Modal.svelte';
@@ -61,6 +62,9 @@
 </script>
 
 {#if !error}
+<!-- Accessibility Settings Applier -->
+<AccessibilityApplier />
+
 <!-- Grid Background -->
 <div class="grid-bg"></div>
 
@@ -210,10 +214,11 @@
 	}
 	.layout-container {
 		display: flex;
-		gap: 30px;
+		gap: 0;
 		max-width: 1920px;
 		margin: 0 auto;
 		padding: 20px;
+		padding-left: 0;
 		box-sizing: border-box;
 		position: relative;
 

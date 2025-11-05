@@ -6,6 +6,7 @@
 	import { lang } from '../../components/LangStore.svelte';
 	import Tabs from '../../components/Tabs.svelte';
 	import Thumb from '../../components/Thumb.svelte';
+	import HighlightThumb from '../../components/HighlightThumb.svelte';
 	import { onMount } from 'svelte';
 	import { darkHeader } from '../../components/DarkStore.svelte';
 
@@ -97,6 +98,34 @@
 
 <S row icon="fa fa-calendar-check" name={SK ? "Projekty" : "Projects"} slug="projects" tabs={["Development", "Creative"]} filters={[["", "Javascript", "Autohotkey", "Python", "Blog"],["", "Animation", "Design", "Blog"]]}  let:tab let:filter pt pb cg>
     {#if tab === 0}
+	<!-- Featured Projects -->
+	<div class="highlights-grid">
+		<HighlightThumb
+			title="StrukShow.com"
+			desc="Modern personal website with CockpitCMS & Svelte"
+			link="https://strukshow.com"
+			icon="/_thumbs/icons/strukshow-w.svg"
+			badge="Featured"
+			status="hot"
+		/>
+		<HighlightThumb
+			title="PostgreSQL REST API"
+			desc="Django REST API for complex queries"
+			link="/dbs/"
+			icon="fa fa-database"
+			metric="Full-stack"
+			status="updated"
+		/>
+		<HighlightThumb
+			title="Digital Garden"
+			desc={SK ? "Dokumentácia a poznámky" : "Documentation & notes"}
+			link="/{l.current}/dev/about"
+			icon="fa fa-book"
+			badge="New"
+			status="new"
+		/>
+	</div>
+
 	<Thumb dark
 		name="StrukShow.com"
 		icon="strukshow-w"
@@ -500,3 +529,17 @@
         {icon: "far fa-file", text: (SK ? "Front-end developer / IT technik" : "Front-end developer / IT technician") + " [2022-06 PDF]", href: SK ? "/dl/resume-sk.pdf" : "/dl/resume-en.pdf", isButton: true},
 	]}/>
 </S>
+
+<style lang="scss" global>
+	.highlights-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: 12px;
+		margin-bottom: 20px;
+		width: 100%;
+
+		@media (max-width: 768px) {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

@@ -4,6 +4,8 @@
     import LangSelector from './LangSelector.svelte';
     import TechBadge from './TechBadge.svelte';
     import StatusIndicator from './StatusIndicator.svelte';
+    import AccessibilityControls from './AccessibilityControls.svelte';
+    import MetricCard from './MetricCard.svelte';
     import { stores } from '@sapper/app';
     const { page } = stores();
 
@@ -12,11 +14,13 @@
     let buildVersion = '2.0.0';
     let uptime = 0;
     let uptimeInterval;
+    let sessionRequests = 0;
 
     onMount(() => {
         const startTime = Date.now();
         uptimeInterval = setInterval(() => {
             uptime = Math.floor((Date.now() - startTime) / 1000);
+            sessionRequests += Math.random() > 0.7 ? 1 : 0; // Simulate activity
         }, 1000);
 
         return () => {
@@ -44,6 +48,30 @@
 
 <footer class:bottom={bottom} bind:this={elm}>
     <div class="footer-content">
+        <!-- Metrics Grid -->
+        <div class="footer-metrics">
+            <MetricCard
+                label="Uptime"
+                value="{Math.floor(uptime / 60)}:{String(uptime % 60).padStart(2, '0')}"
+                icon="fa fa-clock"
+                size="small"
+            />
+            <MetricCard
+                label="Session Activity"
+                value="{sessionRequests}"
+                icon="fa fa-chart-line"
+                trend="up"
+                trendValue="+{Math.floor(Math.random() * 10)}%"
+                size="small"
+            />
+            <MetricCard
+                label="Build Version"
+                value="v{buildVersion}"
+                icon="fa fa-code-branch"
+                size="small"
+            />
+        </div>
+
         <div class="footer-main">
             <span class="copyright">{copyright} &copy; {new Date().getFullYear()} All Rights Reserved</span>
             <span class="details"><slot /></span>
@@ -60,12 +88,7 @@
                 <span class="status-text">System Online</span>
             </div>
             <div class="status-item">
-                <i class="fa fa-code-branch"></i>
-                <span class="status-text">v{buildVersion}</span>
-            </div>
-            <div class="status-item">
-                <i class="fa fa-clock"></i>
-                <span class="status-text">{Math.floor(uptime / 60)}m {uptime % 60}s</span>
+                <AccessibilityControls compact={false} />
             </div>
         </div>
 
@@ -113,6 +136,13 @@
             display: flex;
             flex-direction: column;
             gap: 20px;
+        }
+
+        .footer-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 10px;
         }
 
         .footer-main {

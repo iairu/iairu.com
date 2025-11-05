@@ -1,6 +1,8 @@
 <script>
     import Nav from './Nav.svelte';
     import SearchButton from './SearchButton.svelte';
+    import AccessibilityControls from './AccessibilityControls.svelte';
+    import StatusIndicator from './StatusIndicator.svelte';
 	import { stores } from '@sapper/app';
     const { page } = stores();
 	import { dark, darkHeader } from './DarkStore.svelte';
@@ -38,6 +40,10 @@
             </div>
         </div>
         <div class="right">
+            <div class="header-indicators">
+                <StatusIndicator status="online" size="xs" />
+            </div>
+            <AccessibilityControls compact={true} />
             <SearchButton onClick={handleSearch} />
             <Nav {nav} />
         </div>
@@ -81,6 +87,16 @@
                 align-items: center;
                 gap: 15px;
                 flex-wrap: wrap;
+
+                .header-indicators {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    padding: 4px 8px;
+                    background: rgba(59, 130, 246, 0.05);
+                    border: 1px solid rgba(59, 130, 246, 0.15);
+                    border-radius: 6px;
+                }
             }
             .logo {
                 width: 120px;
