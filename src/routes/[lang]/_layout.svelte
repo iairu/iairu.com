@@ -1,5 +1,6 @@
 <script>
 	import { lang } from '../../components/LangStore.svelte';
+	import { dark } from '../../components/DarkStore.svelte';
 	import Header from '../../components/Header.svelte';
 	import Sidebar from '../../components/Sidebar.svelte';
 	import SidebarToggle from '../../components/SidebarToggle.svelte';
@@ -49,6 +50,17 @@
         return slug == "/" + lang || 
                slug == "/" + lang + "/";
     }
+
+	// Dark theme handling
+	dark.subscribe(isDark => {
+		if (typeof document !== 'undefined') {
+			if (isDark) {
+				document.body.classList.add('dark-theme');
+			} else {
+				document.body.classList.remove('dark-theme');
+			}
+		}
+	});
 
 	// Checks relying on Window available after mounting & onDestroy
 	let isIframe = false;
@@ -205,10 +217,51 @@
 		background-repeat: no-repeat;
 		color: black;
 		background-color: white;
+		transition: background-color 0.3s ease, color 0.3s ease;
+
 		@media screen {
-			&.dark {
+			&.dark, &.dark-theme {
 				color: white;
-				background-color: black;
+				background-color: #0a0a0a;
+
+				// Dark mode overrides for common elements
+				h1, h2, h3, h4, h5, h6 {
+					color: rgba(255, 255, 255, 0.95);
+				}
+
+				a {
+					color: rgba(59, 130, 246, 0.8);
+
+					&:hover {
+						color: rgba(59, 130, 246, 1);
+					}
+				}
+
+				code {
+					background-color: rgba(255, 255, 255, 0.1);
+					color: rgba(255, 255, 255, 0.9);
+					border-color: rgba(255, 255, 255, 0.2);
+				}
+
+				pre {
+					background: rgba(255, 255, 255, 0.05);
+					border-color: rgba(255, 255, 255, 0.2);
+				}
+
+				blockquote {
+					color: rgba(255, 255, 255, 0.9);
+					background-color: rgba(255, 255, 255, 0.05);
+					background-image: url("/_global/quote.svg");
+				}
+
+				hr {
+					border-color: rgba(255, 255, 255, 0.2);
+				}
+
+				select {
+					border-color: rgba(255, 255, 255, 0.2);
+					color: white;
+				}
 			}
 		}
 	}
@@ -294,11 +347,6 @@
 		width: 100%;
 		margin-bottom: 10px;
 	}
-	.dark select {
-		border-color: rgba(255,255,255,0.2);
-		color: white;
-	} 
-	@media screen {.dark hr {border-color: rgba(255,255,255,0.2);}}
 	span.message {
 		padding: 5px 15px;
 		&.error {

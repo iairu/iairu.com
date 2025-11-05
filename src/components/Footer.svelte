@@ -123,24 +123,23 @@
         <!-- Page Links -->
         <div class="footer-links">
             <div class="link-column">
-                <h4>About</h4>
-                <a href="/{currentLang}/dev/about">About Me</a>
-                <a href="/{currentLang}/dev/resume">Resume</a>
+                <h4>Documentation</h4>
+                <a href="/en/dev/iptables-portforward">IPTables Guide</a>
             </div>
             <div class="link-column">
-                <h4>Documentation</h4>
-                <a href="/{currentLang}/dev/iptables-portforward">IPTables</a>
-                <a href="/{currentLang}/dev/docker-guide">Docker Guide</a>
+                <h4>Tools</h4>
+                <a href="/sk/dev/ahk">AutoHotkey</a>
+                <a href="/sk/dev/ipv4-calc">IPv4 Calc</a>
             </div>
             <div class="link-column">
                 <h4>Projects</h4>
-                <a href="/{currentLang}/dev/log">Dev Log</a>
+                <a href="/sk/dev/log">Dev Log</a>
                 <a href="/{currentLang}/archive">Archive</a>
             </div>
             <div class="link-column">
                 <h4>Creative</h4>
-                <a href="/{currentLang}/dev/digital-art">Digital Art</a>
-                <a href="/{currentLang}/dev/music-translations">Music</a>
+                <a href="/en/art/comics">Comics</a>
+                <a href="/{currentLang}/links">Links</a>
             </div>
         </div>
 

@@ -13,6 +13,7 @@
         if (typeof document === 'undefined') return;
 
         const root = document.documentElement;
+        const body = document.body;
 
         // Font size
         const fontSizes = {
@@ -21,7 +22,11 @@
             large: '18px',
             xlarge: '20px'
         };
-        root.style.setProperty('--base-font-size', fontSizes[s.fontSize] || fontSizes.medium);
+        const fontSize = fontSizes[s.fontSize] || fontSizes.medium;
+        root.style.setProperty('--base-font-size', fontSize);
+        // Also set directly on html and body for better compatibility
+        root.style.fontSize = fontSize;
+        if (body) body.style.fontSize = fontSize;
 
         // Line height
         const lineHeights = {

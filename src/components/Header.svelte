@@ -27,10 +27,6 @@
 
     function toggleTheme() {
         dark.update(d => !d);
-        // Apply to document body for global effect
-        if (typeof document !== 'undefined') {
-            document.body.classList.toggle('dark-theme');
-        }
     }
 
     let showHomeArrow = false;

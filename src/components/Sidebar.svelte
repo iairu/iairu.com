@@ -6,34 +6,25 @@
 
     export let isOpen = false; // Control sidebar visibility
 
-    // Define the sidebar structure
+    // Define the sidebar structure - only includes files that actually exist
     const itStructure = {
-        'About': [
-            { title: 'About Me', slug: 'about' },
-            { title: 'Resume', slug: 'resume' },
-        ],
         'Documentation': [
-            { title: 'IPTables Port Forwarding', slug: 'iptables-portforward' },
-            { title: 'Docker Best Practices', slug: 'docker-guide' },
+            { title: 'IPTables Port Forwarding', slug: 'iptables-portforward', lang: 'en' },
         ],
-        'Guides': [],
         'Tools': [
-            { title: 'AutoHotkey Scripts', slug: 'ahk' },
-            { title: 'IPv4 Calculator', slug: 'ipv4-calc' },
+            { title: 'AutoHotkey Scripts', slug: 'ahk', lang: 'sk' },
+            { title: 'IPv4 Calculator', slug: 'ipv4-calc', lang: 'sk' },
         ],
         'Projects': [
-            { title: 'Development Log', slug: 'log' },
+            { title: 'Development Log', slug: 'log', lang: 'sk' },
         ]
     };
 
     const artStructure = {
-        'Art': [
-            { title: 'Digital Art Portfolio', slug: 'digital-art' },
+        'Comics': [
+            { title: 'Comics', slug: 'comics', lang: 'en' },
+            { title: 'Komiksy', slug: 'komixy', lang: 'sk' },
         ],
-        'Music': [
-            { title: 'Lyric Translations', slug: 'music-translations' },
-        ],
-        'Religion': []
     };
 
     let currentMode = 'it';
@@ -65,7 +56,9 @@
     });
 
     function getLink(item) {
-        return `/${currentLang}/dev/${item.slug}`;
+        const basePath = currentMode === 'it' ? 'dev' : 'art';
+        const itemLang = item.lang || currentLang;
+        return `/${itemLang}/${basePath}/${item.slug}`;
     }
 </script>
 
@@ -79,27 +72,27 @@
         <div class="highlights-section">
             {#if currentMode === 'it'}
                 <HighlightThumb
-                    title="Resume"
-                    desc="Full-stack developer & DevOps engineer"
-                    link="/{currentLang}/dev/resume"
-                    icon="fa fa-id-card"
-                    badge="Featured"
+                    title="IPTables Guide"
+                    desc="Linux firewall & port forwarding"
+                    link="/en/dev/iptables-portforward"
+                    icon="fa fa-fire"
+                    badge="Documentation"
                     status="updated"
                 />
                 <HighlightThumb
-                    title="Docker Guide"
-                    desc="Best practices for containerization"
-                    link="/{currentLang}/dev/docker-guide"
-                    icon="fab fa-docker"
-                    metric="5 min read"
+                    title="Development Log"
+                    desc="Project updates and changelog"
+                    link="/sk/dev/log"
+                    icon="fa fa-code"
+                    metric="Latest"
                     status="hot"
                 />
             {:else}
                 <HighlightThumb
-                    title="Digital Art"
-                    desc="Portfolio showcase"
-                    link="/{currentLang}/dev/digital-art"
-                    icon="fa fa-paint-brush"
+                    title="Comics"
+                    desc="Comic book collection"
+                    link="/en/art/comics"
+                    icon="fa fa-book"
                     badge="Portfolio"
                     status="new"
                 />
