@@ -8,6 +8,7 @@
     "built_start": "node __sapper__/build",
     "export_og": "sapper export --legacy",
     "export": "sapper export --legacy --entry \"/en /sk\"",
+    "export_vercel": "sapper export --legacy --entry \"/en /sk\"",
     "export_start": "npx serve __sapper__/export"
   },
   "dependencies": {
