@@ -4,6 +4,7 @@
 	import Sidebar from '../../components/Sidebar.svelte';
 	import SidebarToggle from '../../components/SidebarToggle.svelte';
 	import Breadcrumbs from '../../components/Breadcrumbs.svelte';
+	import '../../components/TechStyles.svelte';
 	import { href } from '../../components/Modal.svelte';
 	import Modal from '../../components/Modal.svelte';
 	import { onMount } from 'svelte';
@@ -60,6 +61,9 @@
 </script>
 
 {#if !error}
+<!-- Grid Background -->
+<div class="grid-bg"></div>
+
 <!-- Site content -->
 {#if !isIframe}
 	<SidebarToggle onClick={toggleSidebar} isOpen={sidebarOpen} />

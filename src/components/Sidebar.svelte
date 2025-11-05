@@ -115,16 +115,32 @@
         height: 100vh;
         overflow-y: auto;
         padding: 80px 20px 20px 20px;
-        border-right: 2px solid black;
-        background: white;
+        border-right: 1px solid rgba(59, 130, 246, 0.2);
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
         flex-shrink: 0;
         transform: translateX(-100%);
         transition: transform 0.3s ease-in-out;
         z-index: 100;
-        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+        box-shadow:
+            2px 0 20px rgba(59, 130, 246, 0.1),
+            inset -1px 0 0 rgba(255, 255, 255, 0.1);
 
         &.open {
             transform: translateX(0);
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(180deg,
+                transparent,
+                rgba(59, 130, 246, 0.3),
+                transparent);
         }
 
         @media (min-width: 1200px) {
@@ -134,11 +150,13 @@
             height: auto;
             max-height: calc(100vh - 40px);
             padding: 20px;
-            border: 2px solid black;
-            border-right: 2px solid black;
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-right: 1px solid rgba(59, 130, 246, 0.2);
             border-radius: 10px;
             z-index: 1;
-            box-shadow: none;
+            box-shadow:
+                0 0 20px rgba(59, 130, 246, 0.08),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
         }
 
         .sidebar-content {
@@ -166,7 +184,7 @@
             width: 100%;
             padding: 8px 10px;
             background: transparent;
-            border: 1px solid black;
+            border: 1px solid rgba(59, 130, 246, 0.2);
             border-radius: 5px;
             cursor: pointer;
             font-weight: bold;
@@ -174,9 +192,31 @@
             transition: all 0.2s;
             text-align: left;
             color: black;
+            position: relative;
+            overflow: hidden;
+
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg,
+                    transparent,
+                    rgba(59, 130, 246, 0.1),
+                    transparent);
+                transition: left 0.3s;
+            }
 
             &:hover {
-                background: rgba(0, 0, 0, 0.05);
+                background: rgba(59, 130, 246, 0.05);
+                border-color: rgba(59, 130, 246, 0.4);
+                box-shadow: 0 0 10px rgba(59, 130, 246, 0.1);
+
+                &::before {
+                    left: 100%;
+                }
             }
 
             i {

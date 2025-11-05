@@ -107,8 +107,8 @@
 <style lang="scss" global>
     section.thumb {
         position: relative;
-        border: 2px solid black;
-        background-color: transparent;
+        border: 1px solid rgba(59, 130, 246, 0.2);
+        background: linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.05));
         background-size: cover;
         background-position: center;
         width: 350px;
@@ -118,12 +118,59 @@
         padding-bottom: 20px;
         color: black;
         border-radius: 10px;
-        overflow: hidden;
-        transition: box-shadow 0.2s;
+        overflow: visible;
+        transition: all 0.3s ease;
+        box-shadow:
+            0 0 20px rgba(59, 130, 246, 0.05),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
         @media (max-width: 900px) {width: 100%;}
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 15px;
+            height: 15px;
+            border-top: 2px solid rgba(59, 130, 246, 0.4);
+            border-left: 2px solid rgba(59, 130, 246, 0.4);
+            border-radius: 10px 0 0 0;
+            transition: all 0.3s ease;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 15px;
+            height: 15px;
+            border-bottom: 2px solid rgba(59, 130, 246, 0.4);
+            border-right: 2px solid rgba(59, 130, 246, 0.4);
+            border-radius: 0 0 10px 0;
+            transition: all 0.3s ease;
+        }
+
         &:hover {
-            transition: box-shadow 0.2s;
-            box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.15);
+            transform: translateY(-4px);
+            border-color: rgba(59, 130, 246, 0.4);
+            box-shadow:
+                0 0 30px rgba(59, 130, 246, 0.15),
+                0 10px 25px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+
+            &::before {
+                width: 20px;
+                height: 20px;
+                border-color: rgba(59, 130, 246, 0.6);
+            }
+
+            &::after {
+                width: 20px;
+                height: 20px;
+                border-color: rgba(59, 130, 246, 0.6);
+            }
         }
         .content {
             display: flex;
@@ -137,7 +184,12 @@
             display: flex;
             align-items: flex-start;
             justify-content: space-between;
-            .icon {width: 40px; font-size: 36px; color: black;}
+            .icon {
+                width: 40px;
+                font-size: 36px;
+                color: rgba(59, 130, 246, 0.8);
+                filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.3));
+            }
             h3 {
                 font-weight: bold;
                 margin: 0;
