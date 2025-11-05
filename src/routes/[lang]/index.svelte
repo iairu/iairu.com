@@ -24,35 +24,37 @@
 </script>
 
 <svelte:head>
-	<title>Portfolio :: iairu</title>
-	<meta name="description" content="Junior Developer &amp; Graphic Designer">
+	<title>Ondrej Špánik - Full-Stack Developer & DevOps Engineer</title>
+	<meta name="description" content="Full-stack developer and DevOps engineer specializing in modern web technologies, system architecture, and automation. Digital garden featuring technical documentation, projects, and creative work.">
 	<meta name="robots" content="index,follow">
 </svelte:head>
 
 <S dark wrapper>
 <C count={2} let:column eq mdel={1}>
 	{#if column === 0}
-	<S dark name="Ondrej Špánik (airu)" slug="about" tags={"junior developer, " + (SK ? "grafický dizajnér, študent" : "graphic designer, student")} nbb nbt>
+	<S dark name="Ondrej Špánik" slug="about" tags={(SK ? "Full-stack developer, DevOps inžinier, softvérový architekt" : "full-stack developer, devops engineer, software architect")} nbb nbt>
 		<Quote dark>
 			{#if SK}
-				Vždy som mal priveľa digitálnych záujmov na to aby som sa pozastavil a obzrel druhým smerom, von z okna. 
-				Jedného dňa sa k tomu dostanem, predtým by som avšak rád napísal ešte pár tisícok riadkov kódu. 
-				Predstava, že si potom oddýchnem lehom v strede veľkej lúky znie nádherne, 
-				a zrovna vtedy mi zasvieti - je po oddychu, ak nejaký bol.
+				Staviam moderné webové aplikácie a infraštruktúru, ktorá ich podporuje.
+				Špecializujem sa na full-stack vývoj, DevOps praktiky a automatizáciu.
+				Verím v čistý kód, kontinuálne učenie a zdieľanie vedomostí s komunitou.
 			{:else}
-				I've always had too many digital interests to make me pause and think, perhaps look the other way - out the window.
-				Before I get to it one day, I plan on writing few thousand rows of code.
-				The idea, that I would chill-out beneath the blue sky sounds wonderful,
-				and that's when I get it - the rest is over, if there even was any.
+				Building modern web applications and the infrastructure that powers them.
+				Specializing in full-stack development, DevOps practices, and automation.
+				I believe in clean code, continuous learning, and sharing knowledge with the community.
 			{/if}
 		</Quote>
 	</S>
-	<S icon="fa fa-thumbs-up" name={SK ? "Záujmy" : "Interests"} slug="interests" hr importance={2}>
+	<S icon="fa fa-thumbs-up" name={SK ? "Špecializácia" : "Specialization"} slug="interests" hr importance={2}>
 		<p>
 			{#if SK}
-				Webové technológie, resp. čokoľvek sa dotýka Javascriptu a automatizácia repetitívnych činností. K pokroku ma najviac motivuje zlé/nedostatočné UX. Okrem toho poslednú dobu cestovanie :)
+				Moderné webové technológie (Svelte, React, Node.js), kontainerizácia a orchestrácia (Docker, Kubernetes),
+				CI/CD pipelines, infraštruktúra ako kód, a automatizácia vývojových procesov.
+				Vášnivo riešim problémy spojené s používateľskou skúsenosťou a škálovateľnosťou systémov.
 			{:else}
-				Web technologies, especially Javascript-related stuff and automation of repetitive tasks. The greatest motivation for me is fighting against bad or incomplete UX. Other than that lately travel :)
+				Modern web technologies (Svelte, React, Node.js), containerization and orchestration (Docker, Kubernetes),
+				CI/CD pipelines, infrastructure as code, and development workflow automation.
+				Passionate about solving challenges related to user experience and system scalability.
 			{/if}
 		</p>
 		<Nav nav={[
@@ -414,11 +416,11 @@
         />
 	{/if}
 </S>
-<S light icon="fa fa-running" name={SK ? "Najviac ma trápi..." : "Worries me the most..."} slug="quote" pt pb nbb sli>
+<S light icon="fa fa-lightbulb" name={SK ? "Filozofia" : "Philosophy"} slug="quote" pt pb nbb sli>
 	<span>
 		{
-			SK ? 	"Momentálne najmä snaha prežiť ďaľší semester..." : 
-					"Mainly an effort to survive the current semester..."
+			SK ? 	"\"Najlepší spôsob, ako predpovedať budúcnosť, je vytvoriť ju.\" - Premýšľam o budúcnosti technológií a aktívne prispievam k jej formovaniu." :
+					"\"The best way to predict the future is to create it.\" - Thinking about the future of technology and actively contributing to shape it."
 		}
 	</span>
 </S>

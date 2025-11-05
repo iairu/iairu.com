@@ -107,8 +107,8 @@
 <style lang="scss" global>
     section.thumb {
         position: relative;
-        border: 1px solid rgba(0, 0, 0, 0.2);
-        background-color: white;
+        border: 2px solid black;
+        background-color: transparent;
         background-size: cover;
         background-position: center;
         width: 350px;
@@ -123,7 +123,7 @@
         @media (max-width: 900px) {width: 100%;}
         &:hover {
             transition: box-shadow 0.2s;
-            box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.2);
+            box-shadow: 0px 0px 50px 0px rgba(0,0,0,0.15);
         }
         .content {
             display: flex;
@@ -211,16 +211,7 @@
             background: white;
         }
         .bg {
-            display: block;
-            position: absolute;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            top: 0;
-            height: 100%;
-            width: 100%;
-            opacity: 0.2;
-            object-fit: cover;
+            display: none;
         }
         &.empty {
             margin-top: 0 !important;

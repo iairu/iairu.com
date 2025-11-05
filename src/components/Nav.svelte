@@ -24,17 +24,18 @@
         // Preprocessed values for on:click handler so that it is guaranteed to be fast enough to preventDefault
         // Using e.target.getAttribute() instead was too slow for that in 10% of attempts
         processed[i] = {
-            modal: link.modal !== undefined ? link.modal : (link.href && link.href.charAt(0) === "/" && !isDownloadable(link.href) ? true : false),
+            modal: link.modal !== undefined ? link.modal : (link.href && link.href.charAt(0) === "/" && !isDownloadable(link.href) && !isDevPage(link.href) ? true : false),
             samePage: (link.href && link.href.charAt(0) === "#" && link.href.length > 1) ? true : (link.fnc ? true : false),
             disabled: (!link.href && !link.fnc) || (link.href && link.href.charAt(0) === "#" && link.href.length === 1) ? true : false,
             target: (link.sameTarget || link.href && link.href.charAt(0) === "#") ? "" : "_blank",
-            href: link.href ? ($lang.current && link.href.charAt(0) === "/" && !link.static && !hasToBeStatic(link.href) ? "/" + $lang.current + link.href : link.href) : "#"
+            href: link.href ? ($lang.current && link.href.charAt(0) === "/" && !link.static && !hasToBeStatic(link.href) && !isDevPage(link.href) ? "/" + $lang.current + link.href : link.href) : "#"
         };
         return true;
     }
 
     function isDownloadable(_href) {return !!_href.match(/\.(exe|pdf)/);}
     function hasToBeStatic(_href) {return isDownloadable(_href) || !!_href.match(/\.(svg|jpg|png|gif)/);}
+    function isDevPage(_href) {return !!_href.match(/\/dev\//);} // Check if link is to a dev page
     function isFunction(functionToCheck) {return functionToCheck && {}.toString.call(functionToCheck) === '[object Function]';}
 
     function handleAnchor(e, _href, _fnc, isModal, isSamePage, isDisabled, forceRefresh) {

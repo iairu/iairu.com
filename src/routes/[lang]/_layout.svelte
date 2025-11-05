@@ -1,6 +1,7 @@
 <script>
 	import { lang } from '../../components/LangStore.svelte';
 	import Header from '../../components/Header.svelte';
+	import Sidebar from '../../components/Sidebar.svelte';
 	import { href } from '../../components/Modal.svelte';
 	import Modal from '../../components/Modal.svelte';
 	import { onMount } from 'svelte';
@@ -57,19 +58,24 @@
 		{icon: "fa fa-envelope", text: "E-mail: spanik11@gmail.com", href: "mailto:spanik11@gmail.com", hideExt: true}
 	]} useLangSelector={isHomepage(currentSlug, currentURLlang)} />
 {/if}
-<main class:iframe={isIframe}>
-	<slot />
+<div class="layout-container" class:iframe={isIframe}>
 	{#if !isIframe}
-	<S dark icon="fa fa-address-card" name={current === "sk" ? "Kontakt" : "Contact"} slug="contact" pt pb sli>
-		<Nav nav={[
-			{icon: "fa fa-envelope", text: "E-mail: spanik11@gmail.com", href: "mailto:spanik11@gmail.com", isButton: true, modal: false, hideExt: true},
-			{icon: "fab fa-facebook-messenger", text: "Messenger", href: "https://m.me/iairu"},
-			{icon: "fab fa-linkedin", text: "LinkedIn", href: "https://www.linkedin.com/in/iairu"},
-			{icon: "fab fa-github", text: "GitHub", href: "https://github.com/iairu"}
-		]} />
-	</S>
+	<Sidebar />
 	{/if}
-</main>
+	<main class:iframe={isIframe} class:with-sidebar={!isIframe}>
+		<slot />
+		{#if !isIframe}
+		<S dark icon="fa fa-address-card" name={current === "sk" ? "Kontakt" : "Contact"} slug="contact" pt pb sli>
+			<Nav nav={[
+				{icon: "fa fa-envelope", text: "E-mail: spanik11@gmail.com", href: "mailto:spanik11@gmail.com", isButton: true, modal: false, hideExt: true},
+				{icon: "fab fa-facebook-messenger", text: "Messenger", href: "https://m.me/iairu"},
+				{icon: "fab fa-linkedin", text: "LinkedIn", href: "https://www.linkedin.com/in/iairu"},
+				{icon: "fab fa-github", text: "GitHub", href: "https://github.com/iairu"}
+			]} />
+		</S>
+		{/if}
+	</main>
+</div>
 {#if !isIframe}
 <Footer copyright={"iairu"}>
 	Powered by Svelte (Sapper framework), Vercel and FontAwesome
@@ -179,12 +185,39 @@
 			}
 		}
 	}
-	main {
-		position: relative;
+	.layout-container {
+		display: flex;
+		gap: 30px;
+		max-width: 1920px;
 		margin: 0 auto;
+		padding: 20px;
 		box-sizing: border-box;
+
 		&.iframe {
 			padding-top: 2em;
+		}
+
+		@media (max-width: 1200px) {
+			padding: 20px;
+		}
+	}
+
+	main {
+		position: relative;
+		flex: 1;
+		min-width: 0;
+		box-sizing: border-box;
+
+		&.with-sidebar {
+			max-width: calc(100% - 310px);
+		}
+
+		&.iframe {
+			padding-top: 2em;
+		}
+
+		@media (max-width: 1200px) {
+			max-width: 100% !important;
 		}
 	}
 	hr {

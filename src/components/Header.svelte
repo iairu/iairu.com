@@ -4,10 +4,12 @@
     const { page } = stores();
 	import { dark, darkHeader } from './DarkStore.svelte';
     import LangSelector from './LangSelector.svelte';
+    import ContentSelector from './ContentSelector.svelte';
     import { lang } from "./LangStore.svelte";
 
     export let nav;
     export let useLangSelector = true;
+    export let useContentSelector = true;
 
     let showHomeArrow = false;
     let splitPath;
@@ -20,9 +22,14 @@
         {#if showHomeArrow}<a class="home" href={"/" + ($lang.current ? $lang.current : "")}><i class="fa fa-angle-double-left"></i></a>{/if}
         <div class="left">
             <img class="logo" src={$dark || $darkHeader ? "/_global/logo-w.svg" : "/_global/logo.svg"} alt="Logo">
-            {#if useLangSelector}
-            <LangSelector dark={$dark || $darkHeader} />
-            {/if}
+            <div class="selectors">
+                {#if useContentSelector}
+                <ContentSelector dark={$dark || $darkHeader} />
+                {/if}
+                {#if useLangSelector}
+                <LangSelector dark={$dark || $darkHeader} />
+                {/if}
+            </div>
         </div>
         <Nav {nav} />
     </div>
@@ -33,8 +40,10 @@
         display: flex;
         padding: calc(2em + 20px);
         padding-bottom: 2em;
+        background: white;
+        border-bottom: 2px solid #ccc;
         @media (max-width: 850px) {
-            border-color: transparent;
+            border-color: #ccc;
         }
         .content {
             display: flex;
@@ -51,6 +60,11 @@
                 margin-bottom: 10px;
                 >*:not(:last-child) {
                     margin-right: 10px;
+                }
+                .selectors {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
                 }
             }
             .logo {
