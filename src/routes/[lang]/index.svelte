@@ -6,10 +6,11 @@
 	import { lang } from '../../components/LangStore.svelte';
 	import Tabs from '../../components/Tabs.svelte';
 	import Thumb from '../../components/Thumb.svelte';
+	import HighlightThumb from '../../components/HighlightThumb.svelte';
 	import { onMount } from 'svelte';
 	import { darkHeader } from '../../components/DarkStore.svelte';
 
-
+	
 	let l;
 	let SK = false;
 	$: SK = l.current === "sk"; // basically a macro
@@ -18,164 +19,134 @@
 		darkHeader.set(true);
 		return ()=>{
 			unsub();
-			darkHeader.set(false);
+			darkHeader.false(true);
 		}
 	});
 </script>
 
 <svelte:head>
-	<title>IT Portfolio :: iairu</title>
-	<meta name="description" content="Junior Developer &amp; Graphic Designer">
+	<title>Ondrej Špánik - Full-Stack Developer & DevOps Engineer</title>
+	<meta name="description" content="Full-stack developer and DevOps engineer specializing in modern web technologies, system architecture, and automation. Digital garden featuring technical documentation, projects, and creative work.">
 	<meta name="robots" content="index,follow">
 </svelte:head>
 
-<S dark wrapper bg="url('/_links/ms_knn_2_out.jpg') top no-repeat">
+<S dark wrapper>
 <C count={2} let:column eq mdel={1}>
 	{#if column === 0}
-	<S dark tp name={"Ondrej Špánik"} slug="about" tags="" nbb nbt nhl>
-	</S><br>
+	<S dark name="Ondrej Špánik" slug="about" tags={(SK ? "Full-stack developer, DevOps inžinier, softvérový architekt" : "full-stack developer, devops engineer, software architect")} nbb nbt>
+		<Quote dark>
+			{#if SK}
+				Staviam moderné webové aplikácie a infraštruktúru, ktorá ich podporuje.
+				Špecializujem sa na full-stack vývoj, DevOps praktiky a automatizáciu.
+				Verím v čistý kód, kontinuálne učenie a zdieľanie vedomostí s komunitou.
+			{:else}
+				Building modern web applications and the infrastructure that powers them.
+				Specializing in full-stack development, DevOps practices, and automation.
+				I believe in clean code, continuous learning, and sharing knowledge with the community.
+			{/if}
+		</Quote>
+	</S>
+	<S icon="fa fa-thumbs-up" name={SK ? "Špecializácia" : "Specialization"} slug="interests" hr importance={2}>
+		<p>
+			{#if SK}
+				Moderné webové technológie (Svelte, React, Node.js), kontainerizácia a orchestrácia (Docker, Kubernetes),
+				CI/CD pipelines, infraštruktúra ako kód, a automatizácia vývojových procesov.
+				Vášnivo riešim problémy spojené s používateľskou skúsenosťou a škálovateľnosťou systémov.
+			{:else}
+				Modern web technologies (Svelte, React, Node.js), containerization and orchestration (Docker, Kubernetes),
+				CI/CD pipelines, infrastructure as code, and development workflow automation.
+				Passionate about solving challenges related to user experience and system scalability.
+			{/if}
+		</p>
+		<Nav nav={[
+			{icon: "fa fa-feather-alt", 	text: SK ? "Biografia" : "Biography", href: "#bio"},
+			{icon: "fa fa-keyboard",		text: SK ? "Schopnosti" : "Skills", href: "#skills"},
+			{icon: "fa fa-graduation-cap", 	text: SK ? "Vzdelanie" : "Education", href: "#edu"}
+		]} />
+	</S>
+	<S dark row icon="fa fa-running" name={SK ? "Práve pracujem na..." : "Work in progress..."} slug="wip" nbb nbt pb hr cg importance={2}>
+		<Thumb dark
+			name="FIIT STU"
+			icon="fa fa-university"
+			tags="Bachelor's degree"
+            desc={
+                SK	? "Z každého rožka troška v IT. Pracujem na tom deň i noc... :)"
+                    : "A little bit of everything in IT. Working on it day and night... :)"
+            }
+			from="2019-09-01"
+			progress={6*100/8}
+		/>
+        <Thumb dark
+            name="Basic OpenGL Projects"
+            icon="fa fa-cube"
+            bgOpacity={0.2}
+            tags="c++, opengl"
+            desc={
+                SK	? "Jeden semester venovaný bezier. krivkám, shaderom, ... a druhý fyzike v OpenGL."
+                    : "One semester dedicated to bezier. curves, shaders, ... and second to physics in OpenGL."
+            }
+            from="2021-09-01"
+            progress={50}
+            to="2022-06-01"
+            />
+	</S>
 	{:else}
-	<img src="/_index/logos.png" alt="Preferred technologies and affiliations" style="max-width: 400px; display: flex; margin: auto 7% auto auto;"/>
+	<S bg="url('/_index/newpic2.jpg') 85% 40%/cover no-repeat" fh />
 	{/if}
 </C>
 </S>
 
-<S row icon="fa fa-calendar-check" name={SK ? "Projekty" : "Projects"} slug="projects" tabs={["Development", "Creative"]} filters={[["", "★", "Linux", "Javascript", "Python", "Blog"],["", "★", "Animation", "Design", "Blog"]]} let:tab let:filter defaultFilterNum={1} pt pb cg>
+<S row icon="fa fa-calendar-check" name={SK ? "Projekty" : "Projects"} slug="projects" tabs={["Development", "Creative"]} filters={[["", "Javascript", "Autohotkey", "Python", "Blog"],["", "Animation", "Design", "Blog"]]}  let:tab let:filter pt pb cg>
     {#if tab === 0}
-    <Thumb dark
-		name={SK ? "CI/CD pre tímové rental riešenie" : "CI/CD for team rental solution"}
-		icon="fa fa-code-branch"
-		bg="lines"
-		bgOpacity={0.15}
-		tags="★, linux, docker, nginx, bash"
-		showIfTag={filter}
-		desc={
-          		SK ? "<span style=\"font-size: 0.9em;\">CI/CD workflow (vrátane architektúry) vytvorený od základov pre dynamické nasadenie viacerých inštancií vlastného Angular+Django rental riešenia s využitím Docker, Github Actions, dvoch Nginx vrstiev (gateway+deployment), bash/sed/cat/pipe a ssh/sftp ako časť tímového projektu na FIIT STU.</span>"
-          		: "<span style=\"font-size: 0.9em;\">CI/CD workflow (including architecture) developed from scratch for dynamic deployment of multiple instances of custom Angular+Django rental solution using Docker, Github Actions, two Nginx layers (gateway+deployment), bash/sed/cat/pipe and ssh/sftp as part of team project at FIIT STU.</span>"
-		}
-		from="2024-10-20"
-		to="2024-12-10"
+	<!-- Featured Projects -->
+	<div class="highlights-grid">
+		<HighlightThumb
+			title="StrukShow.com"
+			desc="Modern personal website with CockpitCMS & Svelte"
+			link="https://strukshow.com"
+			icon="/_thumbs/icons/strukshow-w.svg"
+			badge="Featured"
+			status="hot"
 		/>
-    <Thumb dark
-        name={SK ? "Microservice Integrácia 2023" : "Microservice Integration 2023"}
-        bgOpacity={0.15}
-        icon="fa fa-network-wired"
-        bg="service"
-        tags="★, linux, vm, nomad, bash, aws"
-        showIfTag={filter}
-        desc={
-            SK  ? "Troubleshooting, administrácia a inštalácia microservisov pomocou AWS EC2 VM, sh/sed/grep/awk, RHEL a Oracle Linux, DB, objektového úložiska, interného API/Swagger a orchestračného systému vrátane dokumentovania pre Innovatrics."
-            : "Microservice troubleshooting, administration and installation using AWS EC2 VM, sh/sed/grep/awk, RHEL a Oracle Linux, DB, object storage, internal API/Swagger and orchestration system and Docker including documentation pre Innovatrics."
-        }
-        from="2022-07-01"
-        to="2023-10-31"
-        />
+		<HighlightThumb
+			title="PostgreSQL REST API"
+			desc="Django REST API for complex queries"
+			link="/dbs/"
+			icon="fa fa-database"
+			metric="Full-stack"
+			status="updated"
+		/>
+		<HighlightThumb
+			title="Digital Garden"
+			desc={SK ? "Dokumentácia a poznámky" : "Documentation & notes"}
+			link="/{l.current}/dev/about"
+			icon="fa fa-book"
+			badge="New"
+			status="new"
+		/>
+	</div>
+
 	<Thumb dark
-		name="Full StrukShow.com Solution"
-		bgOpacity={0.18}
+		name="StrukShow.com"
 		icon="strukshow-w"
 		bg="strukshow"
-		tags="★, svelte, javascript, scss, html, php"
+		tags="svelte, javascript, scss, html, php"
         showIfTag={filter}
 		desc={
-			SK	? "Komplexné riešenie modernej osobnej webovej stránky pomocou CockpitCMS/API, JS ES6, SCSS a Svelte."
-				: "Complex solution of a modern personal website using CockpitCMS/API, JS ES6, SCSS and Svelte."
+			SK	? "Komplexné riešenie modernej osobnej webovej stránky pomocou CockpitCMS a Svelte."
+				: "Complex solution of a modern personal website using CockpitCMS and Svelte."
 		}
 		from="2020-06-01"
 		to="2020-08-03"
 		nav={[
 			{icon: "fa fa-share", text: SK ? "Navštíviť" : "Visit", href:"https://strukshow.com", isButton: true},
-			{icon: "fa fa-file-alt", text: "Dokumentácia", href:"/strukshow-docs/", isButton: true, hide: !SK, static: true},
+			{icon: "fa fa-file-alt", text: "Dev Docs", href:"/strukshow-docs/", isButton: true, hide: !SK, static: true},
 		]}
 		/>
 	<Thumb dark
-    	name={SK ? "Tréner a inferrer pre textový model" : "Text training and inferring 2024"}
-    	icon="fa fa-brain"
-        bg="bert"
-        bgOpacity={0.15}
-    	tags="★, machine learning, ai, tkinter, python"
-    	showIfTag={filter}
-    	desc={
-    	SK ? "<span style=\"font-size: 0.9em;\">GUI workflow pre trénovanie a inferovanie DistilBERT modelu s vlastným (GUI/JSON) labelovaním. Automatická tvorba virtuálneho prostredia, správa súborov, validácia a inferovanie s voliteľným výstupom top labelov pre každý paragraf.</span>"
-    	: "<span style=\"font-size: 0.9em;\">GUI workflow for training and inferring a DistilBERT model with custom (GUI/JSON) labeling. Automatic virtual environment creation, file management, validation and inferring with optional output of top labels for each paragraph.</span>"
-    	}
-    	from="2024-09-08"
-    	to="2024-09-12"
-    	nav={[
-    		{icon: "fa fa-code-branch", text: SK ? "GitHub Repozitár" : "GitHub Repository", href:"https://github.com/iairu/notesort", isButton: true},
-    	]}
-    	/>
-	<Thumb dark
-    	name="ProcExp Procreate Exporter"
-    	icon="fa fa-paint-brush"
-        bg="procreate"
-        bgOpacity={0.15}
-    	tags="★, autohotkey, ffmpeg, parsing"
-        showIfTag={filter}
-    	desc={
-    		SK	? "Skript pre masové extrahovanie, spojenie a exportovanie timelapse súborov z Procreate prác pomocou 7z a FFMPEG."
-    			: "Script for mass extraction, stitching and export of timelapse files from Procreate works using 7z and FFMPEG."
-    	}
-    	from="2019-12-17"
-    	to="2020-01-21"
-    	nav={[
-    		{icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/ProcExp", isButton: true},
-    		{icon: "fa fa-download", text: SK ? "Stiahnuť" : "Download", href:"https://github.com/iairu/ProcExp/releases"},
-    	]}
-        />
-	<Thumb dark
-		name="BrianStruk.com CMS Solution"
-		icon="strukshow-w"
-		bg="brian"
-		tags="★, svelte, javascript, scss, html, php"
-		showIfTag={filter}
-		from="2022-06-22"
-		to="2022-06-23"
-		desc={
-		SK  ? "Komplexné riešenie modernej webovej stránky pre hudobného umelca pomocou zdieľaného CockpitCMS (so StrukShow a LubaStrukova) a Svelte."
-			: "Complex solution of a modern website for a music artist using shared CockpitCMS (with StrukShow and LubaStrukova) and Svelte."
-		}
-		nav={[
-			{icon: "fa fa-share", text: SK ? "Navštíviť" : "Visit", href:"https://brianstruk.com", isButton: true},
-		]}
-		/>
-	<Thumb
-        name="Save the Princess Browser Game"
-        _bgOpacity={0.18}
-        _bg="stp"
-        icon="fa fa-gamepad"
-        tags="javascript"
-        showIfTag={filter}
-        desc={
-            SK 	? "Vanilla JavaScript hra inšpirovaná Street Fighterom. Prvý JavaScript projekt, stavané podľa MVC princípu."
-                : "Vanilla JavaScript game inspired by Street Fighter. First Javascript project, based on MVC."
-        }
-        from="2020-02-21"
-        to="2020-06-24"
-        nav={[
-            {icon: "fa fa-play", text: SK ? "Zahrať" : "Play", href:"/dev/save-the-princess/", isButton: true},
-            {icon: "fa fa-file-alt", text:"Dokumentácia [PDF]", href:"/dl/save-the-princess.pdf", hide: !SK},
-        ]}
-        />
-	<Thumb
-    	name="AnkiScreener Flashcard Utility"
-    	icon="fa fa-crop-alt"
-    	tags="javascript, svelte, electron, scss"
-        showIfTag={filter}
-    	desc={
-    		SK	? "Nástroj pre rýchlu tvorbu Anki-kompatibilných učebných CSV kariet."
-    			: "Utility for fast creation of Anki-compatible CSV flashcards."
-    	}
-    	from="2020-09-23"
-    	to="2020-10-07"
-    	nav={[
-    		{icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/AnkiScreener", isButton: true},
-    		{icon: "fab fa-youtube", text: SK ? "Ukážka" : "Preview", href:"https://www.youtube.com/watch?v=LO1rb8nfDX4"},
-    	]}
-        />
-	<Thumb
 		name="PostgreSQL REST API"
 		icon="fa fa-file-code"
+        bgOpacity={0.2}
 		tags="postgres, django, python, json, sql"
         showIfTag={filter}
 		desc={
@@ -189,9 +160,10 @@
             {icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/dbs_django_postgresql"},
 		]}
 		/>
-	<Thumb
-		name="TASM Assembly Counter"
+	<Thumb dark
+		name="TASM Counter"
 		icon="fa fa-file-code"
+        bgOpacity={0.2}
 		tags="assembly, ms-dos"
         showIfTag={filter}
 		desc={
@@ -204,8 +176,59 @@
             {icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/tasm_counter", isButton: true},
 		]}
 		/>
+	<Thumb dark
+		name="AnkiScreener"
+		icon="fa fa-crop-alt"
+		bgOpacity={0.2}
+		tags="javascript, svelte, electron, scss"
+        showIfTag={filter}
+		desc={
+			SK	? "Bohatý nástroj pre rýchlu tvorbu Anki-kompatibilných učebných CSV kariet."
+				: "A rich utility for fast creation of Anki-compatible CSV flashcards."
+		}
+		from="2020-09-23"
+		to="2020-10-07"
+		nav={[
+			{icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/AnkiScreener", isButton: true},
+			{icon: "fab fa-youtube", text: SK ? "Ukážka" : "Preview", href:"https://www.youtube.com/watch?v=LO1rb8nfDX4"},
+		]}
+		/>
+	<Thumb dark
+		name="ProcExp"
+		icon="fa fa-paint-brush"
+        bgOpacity={0.2}
+		tags="autohotkey, ffmpeg, parsing"
+        showIfTag={filter}
+		desc={
+			SK	? "Skript pre masové extrahovanie, spojenie a exportovanie timelapse súborov z Procreate prác pomocou 7z a FFMPEG."
+				: "Script for mass extraction, stitching and export of timelapse files from Procreate works using 7z and FFMPEG."
+		}
+		from="2019-12-17"
+		to="2020-01-21"
+		nav={[
+			{icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/ProcExp", isButton: true},
+			{icon: "fa fa-download", text: SK ? "Stiahnuť" : "Download", href:"https://github.com/iairu/ProcExp/releases"},
+		]}
+        />
+    <Thumb dark
+        name="Save the Princess"
+        bg="stp"
+        icon="fa fa-gamepad"
+        tags="javascript"
+        showIfTag={filter}
+        desc={
+            SK 	? "Vanilla JavaScript hra inšpirovaná Street Fighterom. Prvý JavaScript projekt, stavané podľa MVC princípu."
+                : "Vanilla JavaScript game inspired by Street Fighter. First Javascript project, based on MVC."
+        }
+        from="2020-02-21"
+        to="2020-06-24"
+        nav={[
+            {icon: "fa fa-play", text: SK ? "Zahrať" : "Play", href:"/dev/save-the-princess/", isButton: true},
+            {icon: "fa fa-file-alt", text:"Docs [PDF]", href:"/dl/save-the-princess.pdf", hide: !SK},
+        ]}
+        />
     <Thumb
-        name="PCAP Analyzer CLI"
+        name="PCAP Analyzer"
         icon="fa fa-ethernet"
         tags="python, networking"
         showIfTag={filter}
@@ -219,23 +242,81 @@
             {icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/pcap_analyzer", isButton: true},
         ]}
         />
-    <Thumb
+	<Thumb
+        name="IPTables port-forwarding"
+        icon="fa fa-network-wired"
+		bgOpacity={0.2}
+        tags="iptables, networking, linux, sysadmin, blog"
+        showIfTag={filter}
+        desc={
+            SK  ? "Návod nie len pre presmerovanie portov, ale všeobecné riešenie problémov v rámci IPTables." 
+                : "A walkthrough tutorial for not just port-forwarding, but problem solving when it comes to IPTables."
+        }
+        nav={[
+			{icon: "fa fa-book", text:"Read", href:"/dev/iptables-portforward/", isButton: true, hide: SK},
+			{icon: "fa fa-book", text:"Prečítať (Anglicky)", href:"/en/dev/iptables-portforward/", isButton: true, hide: !SK, static: true},
+        ]}
+        />
+    <Thumb 
+        name="Right to Repair"
+        icon="fa fa-tools"
+        bgOpacity={0.12}
+        tags="presentation, video"
+        showIfTag={filter}
+        desc={
+            SK	? "Anglická prezentácia, ktorá rieši právo na opravu a temnú stránku spoločnosti Apple."
+                : "Presentation covering the Right to Repair and, on a related note, The Dark Side of Apple."
+        }
+        from="2020-12-03"
+        to="2020-12-08"
+        nav={[
+            {icon: "fab fa-youtube", text: SK ? "Pozrieť" : "Watch", href:"https://youtu.be/x2ToofrDWzw", isButton: true},
+            {icon: "fa fa-file-alt", text: SK ? "Slajdy [PDF]" : "Slides [PDF]", href:"/dl/right-to-repair-prez.pdf", static: true},
+        ]}
+        />
+	<Thumb 
+		name={ SK ? "GUI pre gTTS" : "GUI for gTTS"}
+		icon="fa fa-comment-dots"
+		tags="python"
+        showIfTag={filter}
+		desc={
+			SK	? "Jednoduché grafické rozhranie pre gTTS (Google Text-to-Speech) knižnicu."
+				: "Simple interface for gTTS (Google Text-to-Speech) library."
+		}
+		from="2020-05-17"
+		to="2020-05-18"
+		nav={[
+			{icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/gTTSgui", isButton: true},
+			{icon: "fa fa-download", text: SK ? "Stiahnuť" : "Download", href:"https://github.com/iairu/gTTSgui/releases"},
+		]}
+		/>
+	<Thumb
+		name="iairu.com"
+		icon="fa fa-code"
+		tags="sapper, svelte, javascript, scss, html"
+        showIfTag={filter}
+		desc={
+			SK  ? "Riešenie osobného webového portfólia (tejto stránky) cez Sapper framework."
+				: "A personal web portfolio solution (this site) using Sapper framework."
+		}
+		img="code_thumbs"
+		/>
+	<Thumb
 		name={SK ? "Masový nákup lístkov" : "Batch ticket shopping"}
 		icon="fa fa-shopping-cart"
 		tags="autohotkey"
-           showIfTag={filter}
+        showIfTag={filter}
 		desc={
 			SK	? "Komplexná automatizácia nákupu cestovných lístkov, nakoľko UX portálu bolo a stále je mizerné. Skript nie je verejne dostupný."
 				: "Complex automatization for travel-ticket shopping. Script is not publicly available."
 		}
 		img="listky"
 		/>
-
-    <Thumb
+	<Thumb 
 		name={SK ? "Každodenná digitálna automatizácia" : "Everyday digital automation"}
 		icon="fa fa-file-code"
 		tags="autohotkey, blog"
-       showIfTag={filter}
+        showIfTag={filter}
 		desc={
 			SK 	? "Viac ako 26 zaujímavých AutoHotkey skriptov pre automatizáciu repetitívnych digitálnych činností."
 				: "More than 26 interesting AutoHotkey scripts for automatization of repetitive digital activities."
@@ -245,11 +326,11 @@
 			{icon: "fa fa-book", text:"Seminárna práca [PDF]", href:"/dl/seminarka.pdf", hide: !SK},
 		]}
 		/>
-	<Thumb
+	<Thumb 
 		name={SK ? "Linux návody" : "Linux tutorials"}
 		icon="fa fa-book"
-		tags="bash, sysadmin, vm, linux"
-       showIfTag={filter}
+		tags="bash, sysadmin, vm"
+        showIfTag={filter}
 		desc={
 			SK	? "Od inštalácie Debianu vo VM po sprevádzkovanie LAMP servera from scratch."
 				: "From Debian install inside a VM to LAMP-from-scratch server setup."
@@ -260,91 +341,22 @@
 			{icon: "fa fa-book", text:"2 - HTTP Server [PDF]", href:"/dl/linux-http.pdf", hide: !SK},
 		]}
 		/>
-	<Thumb
-        name="IPTables Port-Forwarding"
-        icon="fa fa-network-wired"
-        tags="iptables, networking, linux, blog"
-        showIfTag={filter}
-        desc={
-            SK  ? "Návod nie len pre presmerovanie portov, ale všeobecné riešenie problémov v rámci IPTables."
-                : "A walkthrough tutorial for not just port-forwarding, but problem solving when it comes to IPTables."
-        }
-        nav={[
-			{icon: "fa fa-book", text:"Read", href:"/dev/iptables-portforward/", isButton: true, hide: SK},
-			{icon: "fa fa-book", text:"Prečítať (Anglicky)", href:"/en/dev/iptables-portforward/", isButton: true, hide: !SK, static: true},
-        ]}
-        />
-    <Thumb
-        name={SK ? "Right to Repair Prezentácia" : "Right to Repair Presentation"}
-        icon="fa fa-tools"
-        tags="presentation, video, blog"
-        showIfTag={filter}
-        _desc={
-            SK	? "Anglická prezentácia, ktorá rieši právo na opravu a temnú stránku spoločnosti Apple."
-                : "Presentation covering the Right to Repair and, on a related note, The Dark Side of Apple."
-        }
-        _from="2020-12-03"
-        _to="2020-12-08"
-        nav={[
-            {icon: "fab fa-youtube", text: SK ? "Pozrieť" : "Watch", href:"https://youtu.be/x2ToofrDWzw", isButton: true},
-            {icon: "fa fa-file-alt", text: SK ? "Slajdy [PDF]" : "Slides [PDF]", href:"/dl/right-to-repair-prez.pdf", static: true},
-        ]}
-        />
-	<!-- <Thumb
-		name="iairu.com"
-		icon="fa fa-code"
-		tags="sapper, svelte, javascript, scss, html"
-        showIfTag={filter}
-		desc={
-			SK  ? "Riešenie osobného webového portfólia (tejto stránky) cez Sapper framework."
-				: "A personal web portfolio solution (this site) using Sapper framework."
-		}
-		img="code_thumbs"
-		/> -->
-	<Thumb
-    	name="LubaStrukova.sk CMS Solution"
-    	icon="strukshow"
-    	tags="svelte, javascript, scss, html, php"
-    	showIfTag={filter}
-    	_desc={
-    		SK  ? "Komplexné riešenie modernej osobnej webovej stránky pomocou CockpitCMS a Svelte."
-    			: "Complex solution of a modern personal website using CockpitCMS and Svelte."
-    	}
-    	nav={[
-    		{icon: "fa fa-share", text: SK ? "Navštíviť" : "Visit", href:"https://lubastrukova.sk", isButton: true},
-    	]}
-    	/>
-	<Thumb
+	<Thumb 
 		name={SK ? "IPv4 kalkulačka + návod" : "IPv4 Calc"}
 		icon="fa fa-sitemap"
 		tags="c, networking, blog"
         showIfTag={filter}
-		_desc={
+		desc={
 			SK	? "Vypočíta z adresy a masky počiatočnú a koncovú adresu siete."
 				: "Calculates network and broadcast address from any IP and mask."
 		}
 		nav={[
-			{icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/ipv4calc/releases", isButton: true},
+			{icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/ipv4calc", isButton: true},
+			{icon: "fa fa-download", text: SK ? "Stiahnuť" : "Download", href:"https://github.com/iairu/ipv4calc/releases"},
 			{icon: "fa fa-book", text:"Návod na výpočet", href:"/dev/ipv4-calc/", isButton: true, hide: !SK},
 		]}
 		/>
 	<Thumb
-        name={ SK ? "GUI pre gTTS (Google Text-to-Speech)" : "GUI for gTTS (Google Text-to-Speech)"}
-        icon="fa fa-comment-dots"
-        tags="python"
-        showIfTag={filter}
-        _desc={
-        SK	? "Jednoduché grafické rozhranie pre gTTS (Google Text-to-Speech) knižnicu."
-        : "Simple interface for gTTS (Google Text-to-Speech) library."
-        }
-        _from="2020-05-17"
-        _to="2020-05-18"
-        nav={[
-        {icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/gTTSgui", isButton: true},
-        {icon: "fa fa-download", text: SK ? "Stiahnuť" : "Download", href:"https://github.com/iairu/gTTSgui/releases"},
-        ]}
-        />
-	<!-- <Thumb
 		name="Coffee Machine"
 		icon="fa fa-terminal"
 		tags="java"
@@ -359,19 +371,19 @@
 			{icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/coffeeMachine", isButton: true},
 			{icon: "fa fa-download", text: SK ? "Stiahnuť" : "Download", href:"https://github.com/iairu/coffeeMachine/releases"},
 		]}
-		/> -->
-	<!-- {#if !SK}
-	<Thumb
+		/>
+	{#if !SK}
+	<Thumb 
 		name="More stuff available in Slovak language"
 		icon="fa fa-globe-europe"
 		bg=""
 		desc="Additional documentation, localized project examples, ..."
 		nav={[
 			{icon: "fa fa-share", text:"Switch languages", href:"/sk#projects", static: true, modal: false, sameTarget: true},
-		]}
+		]} 
 		/>
 	{:else}
-    <Thumb
+    <Thumb 
         name="Programovací denník (Leto 2020)"
         icon="fa fa-clipboard-list"
         tags="blog"
@@ -379,32 +391,31 @@
         desc="Osobné projekty a experimenty počas leta v roku 2020."
         nav={[
             {icon: "fa fa-clipboard-list", text:"Prečítať", href:"/dev/log/", isButton: true},
-        ]}
+        ]} 
         />
-	{/if} -->
+	{/if}
 	<Thumb empty />
 	{:else if tab === 1}
 	<Thumb dark
-        name={SK ? "3D Animácia: ECHO 2022" : "3D Animation: ECHO 2022"}
-    	bg="echo"
-    	icon="fa fa-video"
-    	tags="★, 3d, animation, blender, vfx"
-    	showIfTag={filter}
-    	desc={
-    		SK ? "3D animovaný hudobný videoklip vytvorený v Blenderi pre rovnomennú skladbu."
-    		: "3D animated music video created in Blender for this track."
-    	}
-    	from="2022-06-01"
-    	to="2022-06-23"
-    	nav={[
-    		{icon: "fab fa-youtube", text: SK ? "Pozrieť" : "Watch", href:"https://www.youtube.com/watch?v=tlIpi9zFVsc", isButton: true}
-    	]}
-    	/>
+		name={SK ? "Grafické portfolio" : "Graphic design portfolio"}
+		bg="gfxbg"
+		bgOpacity={1} bgNoFilter
+		icon="dumpling-w"
+		tags="design, concepts, digital"
+        showIfTag={filter}
+		desc={
+			SK	? "Koncepty brandingu, staršie dizajny webov a maturitný projekt."
+				: "Branding concepts, older web designs and a graduation project."
+		}
+		nav={[
+			{icon: "fa fa-share", text: SK ? "Navštíviť" : "Visit", href: SK ? "/gfx/" : "/gfx/en/", isButton: true, modal: false, static: true},
+		]}
+		/>
 	<Thumb dark
-		name={SK ? "3D Animácia: Zrada kráľa 2019" : "3D Animation: Treason 2019"}
+		name={SK ? "Zrada kráľa" : "Treason"}
 		bg="zrada"
 		icon="fa fa-paint-brush"
-		tags="★, 3d, animation, blender"
+		tags="3d, animation, blender"
         showIfTag={filter}
 		desc={
 			SK	? "Maturitný projekt - Animovaný príbeh typografie: 3D Animácia vytvorená v Blenderi o svete písmeniek."
@@ -416,84 +427,7 @@
 			{icon: "fa fa-share", text: SK ? "Prezentácia" : "Presentation", href: SK ? "/gfx/zrada/" : "/gfx/en/treason/", isButton: true, modal: false, static: true},
 		]}
 		/>
-	<Thumb dark
-		name={SK ? "Reel 2D Animácie postáv" : "2D Character Animation Reel"}
-		bg="2019anim"
-        bgOpacity={0.3}
-		icon="fa fa-paint-brush"
-		tags="★, animation, 2D character animation"
-		showIfTag={filter}
-		desc={
-			SK ? "Ukážky 2D animácie postáv, walk cycles a experimentov s rôznymi štýlmi."
-			: "2D character animation samples, walk cycles and experiments with various styles."
-		}
-		from="2018-02-01"
-		to="2019-06-30"
-		nav={[
-			{icon: "fab fa-youtube", text: SK ? "Pozrieť" : "Watch", href:"https://youtu.be/w8deVJAyRk8", isButton: true}
-		]}
-		/>
-	<Thumb dark
-		name={SK ? "Reel 2D Animácie 2017" : "2D Animation Reel 2017"}
-		bg="2017anim"
-        bgOpacity={0.25}
-		icon="fa fa-paint-brush"
-		tags="★, animation, vfx"
-		showIfTag={filter}
-		desc={
-			SK ? "Ukážky 2D animácie z roku 2017, hlavne pozadia."
-			: "2D animation samples from 2017, mainly backgrounds."
-		}
-		from="2017-01-01"
-		to="2017-12-31"
-		nav={[
-			{icon: "fab fa-youtube", text: SK ? "Pozrieť" : "Watch", href:"https://youtu.be/eHjQdc94YRs", isButton: true}
-		]}
-		/>
-	<Thumb dark
-		name={SK ? "Grafické portfolio 2017-2019" : "Graphic design portfolio 2017-2019"}
-		bg="gfxbg"
-		bgOpacity={1} bgNoFilter
-		icon="dumpling-w"
-		tags="★, design, concepts, digital"
-        showIfTag={filter}
-		desc={
-			SK	? "Koncepty brandingu, staršie dizajny webov a maturitný projekt."
-				: "Branding concepts, older web designs and a graduation project."
-		}
-		nav={[
-			{icon: "fa fa-share", text: SK ? "Navštíviť" : "Visit", href: SK ? "/gfx/" : "/gfx/en/", isButton: true, modal: false, static: true},
-		]}
-		/>
-	<Thumb
-		name={SK ? "Sociálne média" : "Socials"}
-		icon="fa fa-share-alt"
-		tags="animation, blog"
-		showIfTag={filter}
-		desc={
-						SK ? "Japonské texty piesní s prekladom, náhodné veci a ďalšie linky."
-						: "Japanese song lyrics translated, random things and more links."
-		}
-		nav={[
-						{icon: "fab fa-youtube", text: "Ayu Animations", href:"https://youtube.com/@ayu-animations/", isButton: true},
-						{icon: "fab fa-youtube", text: "iairu99", href:"https://youtube.com/@iairu99/"},
-						{icon: "fa fa-share", text: SK ? "Viac" : "More", href: "/links", modal: true}
-		]}
-		/>
-	<Thumb
-		name={SK ? "Galéria ukážok komixov" : "Comic Samples Gallery"}
-		icon="fa fa-image"
-		tags="design"
-		showIfTag={filter}
-		desc={
-			SK ? "Ukážky kresieb a storyboardu vytvorené vo vlastných štýloch a technikách."
-			: "Drawing and storyboard samples made in personal styles and techniques."
-		}
-		nav={[
-			{icon: "fa fa-share", text: SK ? "Prezentácia" : "Presentation", href: SK ? "/sk/art/komixy" : "/en/art/comics", isButton: true, modal: true, static: true},
-		]}
-		/>
-    <!-- <Thumb
+    <Thumb 
         name={SK ? "Tajný projekt I (Dlhodobý)" : "Secret project I (Long-term)"}
         icon="fa fa-hourglass-half"
         tags="video, animation, story"
@@ -501,108 +435,111 @@
         from="2016-06-01"
         progress={15}
         />
-    <Thumb
+    <Thumb 
         name={SK ? "Tajný projekt II (Krátkodobý)" : "Secret project II (Short-term)"}
         icon="fa fa-hourglass-half"
         tags="video, animation, story"
         showIfTag={filter}
         from="2022-01-01"
         progress={30}
-        /> -->
+        />
 	{/if}
 </S>
+<S light icon="fa fa-lightbulb" name={SK ? "Filozofia" : "Philosophy"} slug="quote" pt pb nbb sli>
+	<span>
+		{
+			SK ? 	"\"Najlepší spôsob, ako predpovedať budúcnosť, je vytvoriť ju.\" - Premýšľam o budúcnosti technológií a aktívne prispievam k jej formovaniu." :
+					"\"The best way to predict the future is to create it.\" - Thinking about the future of technology and actively contributing to shape it."
+		}
+	</span>
+</S>
 <S light icon="fa fa-feather-alt" name={SK ? "Biografia" : "Biography"} slug="bio" bg="url('/_index/beach.jpg') top repeat-x" pt pb>
-	<C count={2} let:column eq mdel={1}>
+	<C count={2} let:column eq mrev>
 		{#if column === 0}
-			{#if SK}
-			    Na bakalárskej práci som obhájil Find-A-Cat, program na evidenciu mačiek so správou rodokmeňou a s algoritmom párenia. Na tímovom projekte som implementoval CI/CD pre automatické nasadenie vlastnej nadstavby NocoDB na zhodou okolností PowerPC a pomohol ostatným s Docker problémami vrátane dokumentácie. Na tvorbu webových stránok mám rád Svelte. V diplomovej práci sa snažím implementovať softvérový digital twin honeypot. Na organizáciu sa mi osvedčil OneNote a Apple Kalendár aplikácia napojená na Google účet, ale vždy sa prispôsobím potrebám tímu. Ako daily driver mám k svojim zvyšným Apple zariadeniam macOS na Thinkpade X260 (nie je to preklep :D). Pre vývoj momentálne používam VSCode. Medzi časom som dlhšie používal Notion, Zed, ArchLinux, FreeBSD, Obsidian, atp. Okrem štúdia a informatiky mám rád preklad japonských piesní, anime, mačky, turistiku, varenie a fotografovanie. <b>Momentálne si hľadám prácu, podľa možností a potreby tímu v oblastiach frontend, CI/CD, Docker, dokumentácia, Ansible, support a podobných. Otvorený návrhom.</b>
-			{:else}
-				For my bachelor's thesis, I defended Find-A-Cat, a program for pedigree management with a breeding algorithm. On a team project, I implemented CI/CD for automatic deployment of a custom NocoDB extension on PowerPC, coincidentally and helped others with Docker issues including documentation. For web development, I prefer Svelte. In my master's thesis, I'm trying to implement a software digital twin honeypot. For organization, OneNote and Apple Calendar app connected to Google account work well for me, but I always adapt to team needs. As a daily driver, I have macOS on a Thinkpad X260 alongside my other Apple devices (not a typo :D). For development, I currently use VSCode. In the meantime, I've extensively used Notion, Zed, ArchLinux, FreeBSD, Obsidian, etc. Besides studies and computer science, I enjoy translating Japanese songs, anime, cats, hiking, cooking and photography. <b>Currently looking for a job in Bratislava, depending on circumstances and team needs in areas of frontend, CI/CD, Docker, documentation, Ansible, support and similar. Open to ideas.</b>
-			{/if}
+			<Quote>
+				{#if SK}
+					Narodil som sa v Piešťanoch, študoval v Trenčíne a momentálne študujem v Bratislave. Od mala ma bavilo experimentovať s čímkoľvek, 
+					z čoho sa neskôr zrodil záujem o dva polárne rozdielne smery - technický a umelecký. Deň, kedy som dostal svoj prvý počítač, bol
+					dňom, ktorý ma kompletne vtiahol do digitálneho sveta, kde sa medze kreativite naozaj nekladú.
+				{:else}
+					I was born in Piešťany, studied in Trenčín and currently study in Bratislava. Ever since I was little, I was intrigued by experiments,
+					from which an interest for two polar opposites - technical and artistic direction - was born. The day I got my first computer was the day,
+					which completely sucked me into the digital world, where creativity barriers truly don't exist. 
+				{/if}
+			</Quote>
 			<p style="opacity:0.5; font-size: 10px;">
-				<span>Background photo by sergio souza (@serjosoza)</span><br>
-				<span>Illustration by me (@iairu)</span>
+				<span>Background photo by <a href="https://unsplash.com/@serjosoza">sergio souza</a> on <a href="https://unsplash.com/s/photos/scenery">Unsplash</a></span><br>
+				<span>Illustration by iairu</span>
 			</p>
 		{:else}
 			<S bg="url('/_index/bio.png') center center/contain no-repeat" fh up />
 		{/if}
 	</C>
-	<!-- <S row icon="fa fa-keyboard" name={SK ? "Schopnosti" : "Skills"} slug="skills" importance={2} hrd eq>
-		<C count={2} let:column eq>
-            {#if column === 0}
-                <Quote>
-                <h3><i class="fa fa-laptop-code"></i> {SK ? "Informatika" : "Computer Science"}</h3>
-                - HTML, CSS (SCSS, Tailwind), Git, Vim, Linux<br>
-                - JavaScript ES6 (Vanilla, Svelte, Electron, {SK ? "základy Vue.js, Angularu a Reactu" : "basics: Vue.js, Angular and React"})<br>
-                - Python, Bash/Zsh (+ cat, sed, pipe, alias, ...), C<br>
-                - PHP (Laravel), AutoHotkey/Automator/Apple Shortcuts<br>
-                - Pentesting
-                </Quote>
-            {:else}
-                <Quote>
-                <h3><i class="fa fa-paint-brush"></i> {SK ? "Grafický dizajn" : "Graphic design"}</h3>
-                {SK ? "- Denné skúsenosti s Blender, Affinity Designer, Davinci Resolve, "
-                : "- Daily experience with Blender, Affinity Designer, Davinci Resolve, "}
-                Adobe Photoshop, Adobe Illustrator, Adobe Premiere Pro, Adobe InDesign<br>
-                {SK ? "- Pozri hore 'Creative' voľbu vedľa nadpisu 'Projekty'"
-                : "- See 'Creative' option above next to 'Projects' heading"}
-                </Quote>
-            {/if}
-		</C>
-	</S> -->
+	<S row icon="fa fa-keyboard" name={SK ? "Schopnosti" : "Skills"} slug="skills" importance={2} hrd eq>
+		<Tabs names={[SK ? "Programovanie" : "Programming"]} let:active>
+			- HTML, CSS (SCSS), Git<br>
+			- JavaScript ES6 (Node.js, Svelte, Electron, {SK ? "základy Vue.js a Reactu" : "basics: Vue.js and React"}), PHP<br>
+			- C, Bash, {SK ? "Základné zručnosti v jazykoch" : "Basic knowledge of"} Java, Python<br>
+			- AutoHotkey
+		</Tabs>
+		<Tabs names={[SK ? "Grafický dizajn" : "Graphic design"]}>
+			{SK ? "- Expertné, každodenné skúsenosti s Adobe CC balíkom, najmä:"
+				: "- Expert, everyday experience with Adobe CC, especially:"}<br>
+			Adobe Photoshop, Adobe Illustrator, Adobe Premiere Pro, Adobe InDesign<br>
+			{SK ? "- Širšia znalosť softvéru Figma a Blender"
+				: "- Knowledge of Figma and Blender"}
+		</Tabs>
+	</S>
 	<S row icon="fa fa-graduation-cap" name={SK ? "Vzdelanie" : "Education"} slug="edu" importance={2} hrd eq>
-        <C count={2} let:column eq>
-        {#if column === 0}
-            <Quote>
-            <h3><i class="fa fa-university"></i> {SK ? "Fakulta informatiky a informačných technológií STU" : "Faculty of Informatics and Information Technologies STU"}</h3>
-            {#if SK}
-            September 2019 – Júl 2024<br>
-            <u>Odbor BC-INFO4 Informatika (bakalár), predĺžené 4-ročné štúdium</u><br>
-            - Priemer 1.41 za prvé dva semestre<br>
-            - Nadobudnutie základov programovania v C++, JavaScript, PHP<br>
-            - Zlepšenie rešeršových a prezentačných schopností; práce s Linuxom<br>
-            - Pokračovanie na inžinierskom štúdiu v odbore "Informačná bezpečnosť"
-            {:else}
-            September 2019 – July 2024<br>
-            <u>BC-INFO4 Computer Science (bachelor), prolonged 4-year study plan</u><br>
-            - Average 1.41 (not GPA, Slovak/EU scale) for first two semesters<br>
-            - Acquired basics of programming in C++, JavaScript and PHP languages<br>
-            - Improved research and presentation skills; work with Linux<br>
-            - Continuing by studying master's in the field of "Information Security"
-            {/if}
-            </Quote>
-        {:else}
-            <Quote>
-            <h3><i class="fa fa-palette"></i> {SK ? "Škola umeleckého priemyslu Trenčín" : "High-School of Arts Trenčín (ŠUPTN)"}</h3>
-            {#if SK}
-            September 2015 – Jún 2019<br>
-            <u>Odbor 8261 M Propagačná grafika, 4-ročné štúdium</u><br>
-            - Ukončené úplné stredné odborné vzdelanie<br>
-            - Nadobudnutie praktických aj teoretických znalostí v oblasti grafického dizajnu<br>
-            - Navrhovanie, organizácia, realizácia a prezentácia vlastnej grafickej a umeleckej tvorby<br>
-            - Skúsenosti s typografiou, printovými médiami, Adobe CC balíkom
-            {:else}
-            September 2015 – June 2019<br>
-            <u>8261 M Propagation graphics, 4-year study plan</u><br>
-            - Acquired practical and theoretical knowledge in the field of graphic design<br>
-            - Conceptualization, organizing, realization and presentation of original graphic and artistic works<br>
-            - Experience with typography, print media and Adobe CC bundle
-            {/if}
-            </Quote>
-        {/if}
-        </C>
+		<Tabs names={["FIIT " + (SK ? "(informatika)" : "(computer science)")]}>
+			{#if SK}
+			<b>Fakulta informatiky a informačných technológií STU</b> // September 2019 – Júl 2023<br>
+			<u>Odbor BC-INFO4 Informatika (bakalár), v druhej polovici 3. ročníka, 4-ročné štúdium</u><br>
+			- Priemer 1.41 (najlepších 11%) za prvé dva semestre<br>
+			- Nadobudnutie základov programovania v C++, JavaScript, PHP<br>
+			- Zlepšenie rešeršových a prezentačných schopností; práce s Linuxom
+			{:else}
+			<b>Faculty of Informatics and Information Technologies STU</b> // September 2019 – July 2023<br>
+			<u>BC-INFO4 Computer Science (bachelor), third year out of the 4-year study plan</u><br>
+			- Average 1.41 (not GPA) (top 11% of students) for first two semesters<br>
+			- Acquired basics of programming in C++, JavaScript and PHP languages<br>
+			- Improved research and presentation skills; work with Linux
+			{/if}
+		</Tabs>
+		<Tabs names={["SUPTN " + (SK ? "(grafický dizajn)" : "(graphic design)")]}>
+			{#if SK}
+			<b>Škola umeleckého priemyslu Trenčín</b> // September 2015 – Jún 2019<br>
+			<u>Odbor 8261 M Propagačná grafika, 4-ročné štúdium</u><br>
+			- Ukončené úplné stredné odborné vzdelanie<br>
+			- Nadobudnutie praktických aj teoretických znalostí v oblasti grafického dizajnu<br>
+			- Navrhovanie, organizácia, realizácia a prezentácia vlastnej grafickej a umeleckej tvorby<br>
+			- Skúsenosti s typografiou, printovými médiami, Adobe CC balíkom
+			{:else}
+			<b>Škola umeleckého priemyslu Trenčín</b> // September 2015 – June 2019<br>
+			<u>8261 M Propagation graphics, 4-year study plan</u><br>
+			- Acquired practical and theoretical knowledge in the field of graphic design<br>
+			- Conceptualization, organizing, realization and presentation of original graphic and artistic works<br>
+			- Experience with typography, print media and Adobe CC bundle
+			{/if}
+		</Tabs>
 	</S>
 </S>
-<!-- <S light icon="fa fa-running" name={SK ? "Najviac riešim..." : "Mostly dealing with..."} slug="quote" pt pb nbb sli>
-	<span>
-		{
-		SK ? 	"Vývoj iOS a macOS hobby projektov a kurzy informačnej bezpečnosti + diplomová práca" :
-				"iOS and macOS side-projects and information security courses + master thesis"
-		}
-	</span>
-</S> -->
-<!-- <S light icon="fa fa-comment-dots" name="Resume" slug="more" pt pb nbt sli>
+<S light icon="fa fa-comment-dots" name="Resume" slug="more" pt pb nbt sli>
 	<Nav nav={[
         {icon: "far fa-file", text: (SK ? "Front-end developer / IT technik" : "Front-end developer / IT technician") + " [2022-06 PDF]", href: SK ? "/dl/resume-sk.pdf" : "/dl/resume-en.pdf", isButton: true},
 	]}/>
-</S> -->
+</S>
+
+<style lang="scss" global>
+	.highlights-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: 12px;
+		margin-bottom: 20px;
+		width: 100%;
+
+		@media (max-width: 768px) {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

@@ -1,46 +1,64 @@
 <script>
     import Nav from './Nav.svelte';
+    import SearchButton from './SearchButton.svelte';
+    import AccessibilityControls from './AccessibilityControls.svelte';
+    import StatusIndicator from './StatusIndicator.svelte';
 	import { stores } from '@sapper/app';
     const { page } = stores();
 	import { dark, darkHeader } from './DarkStore.svelte';
     import LangSelector from './LangSelector.svelte';
-    // import { lang } from "./LangStore.svelte";
+    import ContentSelector from './ContentSelector.svelte';
+    import { lang } from "./LangStore.svelte";
 
     export let nav;
-    // export let useLangSelector = true;
+    export let useLangSelector = true;
+    export let useContentSelector = true;
 
-    let notHomepage = false;
+    function handleSearch() {
+        // Placeholder for search functionality
+        alert('Search functionality coming soon!');
+    }
+
+    let showHomeArrow = false;
     let splitPath;
     $: splitPath = $page.path.split("/");
-    $: notHomepage = splitPath.length > 3 || (splitPath.length === 3 && splitPath[splitPath.length - 1] !== "");
+    $: showHomeArrow = splitPath.length > 3 || (splitPath.length === 3 && splitPath[splitPath.length - 1] !== "");
 </script>
 
-<header class:_dark={$dark || $darkHeader}>
+<header class:dark={$dark || $darkHeader}>
     <div class="content">
-        <!-- Left arrow disabled due to window.history not propagating, won't fix -->
-        <!-- {#if notHomepage}<a class="home" href={"/" + ($lang.current ? $lang.current : "")}><i class="fa fa-angle-double-left"></i></a>{/if} -->
+        {#if showHomeArrow}<a class="home" href={"/" + ($lang.current ? $lang.current : "")}><i class="fa fa-angle-double-left"></i></a>{/if}
         <div class="left">
-            <!-- <img class="logo" src={$dark || $darkHeader ? "/_global/logo-w.svg" : "/_global/logo.svg"} alt="Logo"> -->
-            {#if notHomepage}
-                <!--<img class="logo" src="/_global/logo.svg" alt="Logo">-->
-                <div id="logo-space-placeholder"></div>
-            {:else}
-                <LangSelector _dark={$dark || $darkHeader} useAnchors />
-            {/if}
+            <img class="logo" src={$dark || $darkHeader ? "/_global/logo-w.svg" : "/_global/logo.svg"} alt="Logo">
+            <div class="selectors">
+                {#if useContentSelector}
+                <ContentSelector dark={$dark || $darkHeader} />
+                {/if}
+                {#if useLangSelector}
+                <LangSelector dark={$dark || $darkHeader} />
+                {/if}
+            </div>
         </div>
-        <Nav {nav} />
+        <div class="right">
+            <div class="header-indicators">
+                <StatusIndicator status="online" size="xs" />
+            </div>
+            <AccessibilityControls compact={true} />
+            <SearchButton onClick={handleSearch} />
+            <Nav {nav} />
+        </div>
     </div>
 </header>
 
 <style lang="scss" global>
     header {
         display: flex;
-        /* padding: 1em calc(2em + 20px) 0.6em; */
-        padding: 1em 0 0;
-        height: 60px;
-        overflow: hidden;
+        padding: calc(2em + 20px);
+        padding-bottom: 2em;
+        background: white;
+        border-bottom: 2px solid #ccc;
         @media (max-width: 850px) {
-            border-color: transparent;
+            border-color: #ccc;
         }
         .content {
             display: flex;
@@ -48,11 +66,7 @@
             justify-content: space-between;
             align-items: flex-start;
             position: relative;
-            max-width: 1820px;
-            padding: 0 20px 0 25px;
-            @media (max-width: 900px) {
-                padding: 0 15px 0 20px;
-            }
+            max-width: 1920px;
             margin: 0 auto;
             flex: 1;
             .left {
@@ -62,20 +76,33 @@
                 >*:not(:last-child) {
                     margin-right: 10px;
                 }
+                .selectors {
+                    display: flex;
+                    flex-direction: column;
+                    gap: 5px;
+                }
+            }
+            .right {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                flex-wrap: wrap;
+
+                .header-indicators {
+                    display: flex;
+                    align-items: center;
+                    gap: 8px;
+                    padding: 4px 8px;
+                    background: rgba(59, 130, 246, 0.05);
+                    border: 1px solid rgba(59, 130, 246, 0.15);
+                    border-radius: 6px;
+                }
             }
             .logo {
-                position: absolute;
-                width: auto;
-                top: 3px;
-                left: 20px;
-                height: 60px;
+                width: 120px;
                 opacity: 0.8;
-                margin: 0 0 0 20px;
-                transform: scale(1.5);
+                margin: 5px 10px 10px 0;
             }
-            /* .menu { // from LangSelector for logo offset
-                left: 90px;
-            } */
         }
         a.home {
             position: absolute;
@@ -98,42 +125,10 @@
         @media print {
             a.home {display: none;}
         }
-        .content {
-            @media (max-width: 1250px) and (min-width: 851px) {
-                > nav > :not(:nth-last-child(-n+3)) {
-                    .link-text, .icon-ext {
-                        display: none;
-                    }
-                }
-            }
-            @media (max-width: 850px) and (min-width: 701px) {
-                > nav > :not(:nth-last-child(-n+1)) {
-                    .link-text, .icon-ext {
-                        display: none !important;
-                    }
-                }
-            }
-            @media (max-width: 700px) {
-                > nav {
-                    .link-text, .icon-ext {
-                        display: none !important;
-                    }
-                }
-            }
-            @media (max-width: 500px) and (min-width: 351px) {
-                > nav > :not(:nth-last-child(-n+4)) {
-                    display: none;
-                }
-            }
-            @media (max-width: 350px) and (min-width: 301px) {
-                > nav > :not(:nth-last-child(-n+3)) {
-                    display: none;
-                }
-            }
-            @media (max-width: 300px) {
-                > nav > :not(:nth-last-child(-n+2)) {
-                    display: none;
-                }
+        @media (max-width: 850px) {
+            nav {
+                .link-text {display: none;}
+                .icon-ext {display: none;}
             }
         }
     }

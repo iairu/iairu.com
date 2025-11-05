@@ -2,6 +2,7 @@
     import { content } from './ContentStore.svelte';
     import { lang } from './LangStore.svelte';
     import { onMount } from 'svelte';
+    import HighlightThumb from './HighlightThumb.svelte';
 
     export let isOpen = false; // Control sidebar visibility
 
@@ -74,6 +75,37 @@
             {currentMode === 'it' ? 'IT Garden' : 'Art Garden'}
         </h3>
 
+        <!-- Featured/Highlight items -->
+        <div class="highlights-section">
+            {#if currentMode === 'it'}
+                <HighlightThumb
+                    title="Resume"
+                    desc="Full-stack developer & DevOps engineer"
+                    link="/{currentLang}/dev/resume"
+                    icon="fa fa-id-card"
+                    badge="Featured"
+                    status="updated"
+                />
+                <HighlightThumb
+                    title="Docker Guide"
+                    desc="Best practices for containerization"
+                    link="/{currentLang}/dev/docker-guide"
+                    icon="fab fa-docker"
+                    metric="5 min read"
+                    status="hot"
+                />
+            {:else}
+                <HighlightThumb
+                    title="Digital Art"
+                    desc="Portfolio showcase"
+                    link="/{currentLang}/dev/digital-art"
+                    icon="fa fa-paint-brush"
+                    badge="Portfolio"
+                    status="new"
+                />
+            {/if}
+        </div>
+
         {#each Object.entries(getStructure()) as [section, items]}
             <div class="sidebar-section">
                 <button
@@ -145,24 +177,30 @@
 
         @media (min-width: 1200px) {
             position: sticky;
-            top: 20px;
+            top: 0;
             transform: translateX(0);
-            height: auto;
-            max-height: calc(100vh - 40px);
+            height: 100vh;
+            max-height: 100vh;
             padding: 20px;
-            border: 1px solid rgba(59, 130, 246, 0.2);
+            border: none;
             border-right: 1px solid rgba(59, 130, 246, 0.2);
-            border-radius: 10px;
+            border-radius: 0;
             z-index: 1;
             box-shadow:
-                0 0 20px rgba(59, 130, 246, 0.08),
-                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+                2px 0 20px rgba(59, 130, 246, 0.08),
+                inset -1px 0 0 rgba(255, 255, 255, 0.1);
         }
 
         .sidebar-content {
             display: flex;
             flex-direction: column;
-            gap: 10px;
+            gap: 5px;
+        }
+
+        .highlights-section {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
         }
 
         .sidebar-title {
