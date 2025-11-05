@@ -9,29 +9,29 @@
     // Define the sidebar structure
     const itStructure = {
         'About': [
-            { title: 'About Me', slug: 'about', lang: 'en' },
-            { title: 'Resume', slug: 'resume', lang: 'en' },
+            { title: 'About Me', slug: 'about' },
+            { title: 'Resume', slug: 'resume' },
         ],
         'Documentation': [
-            { title: 'IPTables Port Forwarding', slug: 'iptables-portforward', lang: 'en' },
-            { title: 'Docker Best Practices', slug: 'docker-guide', lang: 'en' },
+            { title: 'IPTables Port Forwarding', slug: 'iptables-portforward' },
+            { title: 'Docker Best Practices', slug: 'docker-guide' },
         ],
         'Guides': [],
         'Tools': [
-            { title: 'AutoHotkey Scripts', slug: 'ahk', lang: 'sk' },
-            { title: 'IPv4 Calculator', slug: 'ipv4-calc', lang: 'sk' },
+            { title: 'AutoHotkey Scripts', slug: 'ahk' },
+            { title: 'IPv4 Calculator', slug: 'ipv4-calc' },
         ],
         'Projects': [
-            { title: 'Development Log', slug: 'log', lang: 'sk' },
+            { title: 'Development Log', slug: 'log' },
         ]
     };
 
     const artStructure = {
         'Art': [
-            { title: 'Digital Art Portfolio', slug: 'digital-art', lang: 'en' },
+            { title: 'Digital Art Portfolio', slug: 'digital-art' },
         ],
         'Music': [
-            { title: 'Lyric Translations', slug: 'music-translations', lang: 'en' },
+            { title: 'Lyric Translations', slug: 'music-translations' },
         ],
         'Religion': []
     };
@@ -124,11 +124,9 @@
                             <span class="empty-message">Coming soon...</span>
                         {:else}
                             {#each items as item}
-                                {#if !item.lang || item.lang === currentLang}
-                                    <a href={getLink(item)} class="sidebar-link">
-                                        {item.title}
-                                    </a>
-                                {/if}
+                                <a href={getLink(item)} class="sidebar-link">
+                                    {item.title}
+                                </a>
                             {/each}
                         {/if}
                     </div>

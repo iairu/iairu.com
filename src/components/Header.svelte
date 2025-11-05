@@ -5,7 +5,7 @@
     import StatusIndicator from './StatusIndicator.svelte';
 	import { stores } from '@sapper/app';
     const { page } = stores();
-	import { dark, darkHeader } from './DarkStore.svelte';
+	import { dark } from './DarkStore.svelte';
     import LangSelector from './LangSelector.svelte';
     import ContentSelector from './ContentSelector.svelte';
     import { lang } from "./LangStore.svelte";
@@ -14,9 +14,27 @@
     export let useLangSelector = true;
     export let useContentSelector = true;
 
+    let searchVisible = false;
+    let searchQuery = '';
+
     function handleSearch() {
-        // Placeholder for search functionality
-        alert('Search functionality coming soon!');
+        searchVisible = !searchVisible;
+        if (searchVisible) {
+            setTimeout(() => {
+                const input = document.querySelector('.search-input');
+                if (input) input.focus();
+            }, 100);
+        }
+    }
+
+    function performSearch() {
+        if (!searchQuery.trim()) return;
+        // Simple search - navigate to a search page or filter
+        window.location.href = `/${$lang.current}/dev/about?search=${encodeURIComponent(searchQuery)}`;
+    }
+
+    function toggleTheme() {
+        dark.update(d => !d);
     }
 
     let showHomeArrow = false;
@@ -25,21 +43,35 @@
     $: showHomeArrow = splitPath.length > 3 || (splitPath.length === 3 && splitPath[splitPath.length - 1] !== "");
 </script>
 
-<header class:dark={$dark || $darkHeader}>
+<header class:dark={$dark}>
     <div class="content">
         {#if showHomeArrow}<a class="home" href={"/" + ($lang.current ? $lang.current : "")}><i class="fa fa-angle-double-left"></i></a>{/if}
         <div class="left">
-            <img class="logo" src={$dark || $darkHeader ? "/_global/logo-w.svg" : "/_global/logo.svg"} alt="Logo">
-            <div class="selectors">
-                {#if useContentSelector}
-                <ContentSelector dark={$dark || $darkHeader} />
-                {/if}
-                {#if useLangSelector}
-                <LangSelector dark={$dark || $darkHeader} />
-                {/if}
-            </div>
+            {#if useLangSelector}
+            <LangSelector dark={$dark} />
+            {/if}
         </div>
         <div class="right">
+            {#if searchVisible}
+            <div class="search-box">
+                <input
+                    type="text"
+                    class="search-input"
+                    placeholder="Search..."
+                    bind:value={searchQuery}
+                    on:keydown={(e) => e.key === 'Enter' && performSearch()}
+                />
+                <button class="search-submit" on:click={performSearch}>
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+            {/if}
+            {#if useContentSelector}
+            <ContentSelector dark={$dark} />
+            {/if}
+            <button class="theme-toggle" on:click={toggleTheme} aria-label="Toggle theme">
+                <i class="fa fa-{$dark ? 'sun' : 'moon'}"></i>
+            </button>
             <div class="header-indicators">
                 <StatusIndicator status="online" size="xs" />
             </div>
@@ -53,10 +85,9 @@
 <style lang="scss" global>
     header {
         display: flex;
-        padding: calc(2em + 20px);
-        padding-bottom: 2em;
+        padding: 1em 2em;
         background: white;
-        border-bottom: 2px solid #ccc;
+        border-bottom: 1px solid rgba(59, 130, 246, 0.2);
         @media (max-width: 850px) {
             border-color: #ccc;
         }
@@ -98,10 +129,55 @@
                     border-radius: 6px;
                 }
             }
-            .logo {
-                width: 120px;
-                opacity: 0.8;
-                margin: 5px 10px 10px 0;
+            .search-box {
+                display: flex;
+                align-items: center;
+                gap: 5px;
+
+                .search-input {
+                    padding: 6px 12px;
+                    border: 1px solid rgba(59, 130, 246, 0.3);
+                    border-radius: 6px;
+                    font-size: 14px;
+                    width: 200px;
+
+                    &:focus {
+                        outline: none;
+                        border-color: rgba(59, 130, 246, 0.6);
+                    }
+                }
+
+                .search-submit {
+                    padding: 6px 12px;
+                    background: rgba(59, 130, 246, 0.1);
+                    border: 1px solid rgba(59, 130, 246, 0.3);
+                    border-radius: 6px;
+                    cursor: pointer;
+                    color: rgba(59, 130, 246, 0.9);
+
+                    &:hover {
+                        background: rgba(59, 130, 246, 0.2);
+                    }
+                }
+            }
+
+            .theme-toggle {
+                padding: 8px 12px;
+                background: rgba(59, 130, 246, 0.1);
+                border: 1px solid rgba(59, 130, 246, 0.2);
+                border-radius: 6px;
+                cursor: pointer;
+                color: rgba(59, 130, 246, 0.9);
+                transition: all 0.2s ease;
+
+                &:hover {
+                    background: rgba(59, 130, 246, 0.2);
+                    border-color: rgba(59, 130, 246, 0.4);
+                }
+
+                i {
+                    font-size: 16px;
+                }
             }
         }
         a.home {

@@ -6,6 +6,8 @@
     import StatusIndicator from './StatusIndicator.svelte';
     import AccessibilityControls from './AccessibilityControls.svelte';
     import MetricCard from './MetricCard.svelte';
+    import { accessibilitySettings } from './AccessibilityStore.svelte';
+    import { lang } from './LangStore.svelte';
     import { stores } from '@sapper/app';
     const { page } = stores();
 
@@ -15,6 +17,32 @@
     let uptime = 0;
     let uptimeInterval;
     let sessionRequests = 0;
+    let currentLang = 'en';
+
+    lang.subscribe(l => {
+        currentLang = l.current;
+    });
+
+    function increaseFontSize() {
+        accessibilitySettings.setSetting('fontSize', getNextSize(true));
+    }
+
+    function decreaseFontSize() {
+        accessibilitySettings.setSetting('fontSize', getNextSize(false));
+    }
+
+    function getNextSize(increase) {
+        let settings;
+        accessibilitySettings.subscribe(s => settings = s)();
+        const sizes = ['small', 'medium', 'large', 'xlarge'];
+        const currentIndex = sizes.indexOf(settings.fontSize);
+        if (increase && currentIndex < sizes.length - 1) {
+            return sizes[currentIndex + 1];
+        } else if (!increase && currentIndex > 0) {
+            return sizes[currentIndex - 1];
+        }
+        return settings.fontSize;
+    }
 
     onMount(() => {
         const startTime = Date.now();
@@ -82,6 +110,40 @@
             <TechBadge type="github" />
         </div>
 
+        <!-- Font Size Controls -->
+        <div class="font-size-controls">
+            <button class="font-btn" on:click={decreaseFontSize} aria-label="Decrease font size">
+                <span>A-</span>
+            </button>
+            <button class="font-btn" on:click={increaseFontSize} aria-label="Increase font size">
+                <span>A+</span>
+            </button>
+        </div>
+
+        <!-- Page Links -->
+        <div class="footer-links">
+            <div class="link-column">
+                <h4>About</h4>
+                <a href="/{currentLang}/dev/about">About Me</a>
+                <a href="/{currentLang}/dev/resume">Resume</a>
+            </div>
+            <div class="link-column">
+                <h4>Documentation</h4>
+                <a href="/{currentLang}/dev/iptables-portforward">IPTables</a>
+                <a href="/{currentLang}/dev/docker-guide">Docker Guide</a>
+            </div>
+            <div class="link-column">
+                <h4>Projects</h4>
+                <a href="/{currentLang}/dev/log">Dev Log</a>
+                <a href="/{currentLang}/archive">Archive</a>
+            </div>
+            <div class="link-column">
+                <h4>Creative</h4>
+                <a href="/{currentLang}/dev/digital-art">Digital Art</a>
+                <a href="/{currentLang}/dev/music-translations">Music</a>
+            </div>
+        </div>
+
         <div class="footer-status">
             <div class="status-item">
                 <StatusIndicator status="online" size="xs" pulse={true} />
@@ -143,6 +205,75 @@
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
             margin-bottom: 10px;
+        }
+
+        .font-size-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+
+            .font-btn {
+                padding: 10px 20px;
+                background: rgba(59, 130, 246, 0.1);
+                border: 1px solid rgba(59, 130, 246, 0.3);
+                border-radius: 6px;
+                cursor: pointer;
+                font-size: 18px;
+                font-weight: 600;
+                color: rgba(59, 130, 246, 0.9);
+                transition: all 0.2s ease;
+
+                &:hover {
+                    background: rgba(59, 130, 246, 0.2);
+                    border-color: rgba(59, 130, 246, 0.5);
+                    transform: translateY(-2px);
+                }
+
+                span {
+                    display: block;
+                }
+            }
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+            padding: 30px 0;
+            border-top: 1px solid rgba(59, 130, 246, 0.2);
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+
+            .link-column {
+                h4 {
+                    margin: 0 0 10px 0;
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: rgba(59, 130, 246, 0.9);
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                }
+
+                a {
+                    display: block;
+                    padding: 5px 0;
+                    color: #666;
+                    text-decoration: none;
+                    font-size: 14px;
+                    transition: all 0.2s ease;
+
+                    &:hover {
+                        color: rgba(59, 130, 246, 0.9);
+                        padding-left: 5px;
+                    }
+                }
+            }
+
+            @media (max-width: 768px) {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
         }
 
         .footer-main {

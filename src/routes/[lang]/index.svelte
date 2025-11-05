@@ -16,10 +16,10 @@
 	$: SK = l.current === "sk"; // basically a macro
 	const unsub = lang.subscribe((lng)=>{l = lng;});
 	onMount(()=>{
-		darkHeader.set(true);
+		darkHeader.set(false);
 		return ()=>{
 			unsub();
-			darkHeader.false(true);
+			darkHeader.set(false);
 		}
 	});
 </script>
@@ -29,72 +29,6 @@
 	<meta name="description" content="Full-stack developer and DevOps engineer specializing in modern web technologies, system architecture, and automation. Digital garden featuring technical documentation, projects, and creative work.">
 	<meta name="robots" content="index,follow">
 </svelte:head>
-
-<S dark wrapper>
-<C count={2} let:column eq mdel={1}>
-	{#if column === 0}
-	<S dark name="Ondrej Špánik" slug="about" tags={(SK ? "Full-stack developer, DevOps inžinier, softvérový architekt" : "full-stack developer, devops engineer, software architect")} nbb nbt>
-		<Quote dark>
-			{#if SK}
-				Staviam moderné webové aplikácie a infraštruktúru, ktorá ich podporuje.
-				Špecializujem sa na full-stack vývoj, DevOps praktiky a automatizáciu.
-				Verím v čistý kód, kontinuálne učenie a zdieľanie vedomostí s komunitou.
-			{:else}
-				Building modern web applications and the infrastructure that powers them.
-				Specializing in full-stack development, DevOps practices, and automation.
-				I believe in clean code, continuous learning, and sharing knowledge with the community.
-			{/if}
-		</Quote>
-	</S>
-	<S icon="fa fa-thumbs-up" name={SK ? "Špecializácia" : "Specialization"} slug="interests" hr importance={2}>
-		<p>
-			{#if SK}
-				Moderné webové technológie (Svelte, React, Node.js), kontainerizácia a orchestrácia (Docker, Kubernetes),
-				CI/CD pipelines, infraštruktúra ako kód, a automatizácia vývojových procesov.
-				Vášnivo riešim problémy spojené s používateľskou skúsenosťou a škálovateľnosťou systémov.
-			{:else}
-				Modern web technologies (Svelte, React, Node.js), containerization and orchestration (Docker, Kubernetes),
-				CI/CD pipelines, infrastructure as code, and development workflow automation.
-				Passionate about solving challenges related to user experience and system scalability.
-			{/if}
-		</p>
-		<Nav nav={[
-			{icon: "fa fa-feather-alt", 	text: SK ? "Biografia" : "Biography", href: "#bio"},
-			{icon: "fa fa-keyboard",		text: SK ? "Schopnosti" : "Skills", href: "#skills"},
-			{icon: "fa fa-graduation-cap", 	text: SK ? "Vzdelanie" : "Education", href: "#edu"}
-		]} />
-	</S>
-	<S dark row icon="fa fa-running" name={SK ? "Práve pracujem na..." : "Work in progress..."} slug="wip" nbb nbt pb hr cg importance={2}>
-		<Thumb dark
-			name="FIIT STU"
-			icon="fa fa-university"
-			tags="Bachelor's degree"
-            desc={
-                SK	? "Z každého rožka troška v IT. Pracujem na tom deň i noc... :)"
-                    : "A little bit of everything in IT. Working on it day and night... :)"
-            }
-			from="2019-09-01"
-			progress={6*100/8}
-		/>
-        <Thumb dark
-            name="Basic OpenGL Projects"
-            icon="fa fa-cube"
-            bgOpacity={0.2}
-            tags="c++, opengl"
-            desc={
-                SK	? "Jeden semester venovaný bezier. krivkám, shaderom, ... a druhý fyzike v OpenGL."
-                    : "One semester dedicated to bezier. curves, shaders, ... and second to physics in OpenGL."
-            }
-            from="2021-09-01"
-            progress={50}
-            to="2022-06-01"
-            />
-	</S>
-	{:else}
-	<S bg="url('/_index/newpic2.jpg') 85% 40%/cover no-repeat" fh />
-	{/if}
-</C>
-</S>
 
 <S row icon="fa fa-calendar-check" name={SK ? "Projekty" : "Projects"} slug="projects" tabs={["Development", "Creative"]} filters={[["", "Javascript", "Autohotkey", "Python", "Blog"],["", "Animation", "Design", "Blog"]]}  let:tab let:filter pt pb cg>
     {#if tab === 0}
@@ -126,7 +60,7 @@
 		/>
 	</div>
 
-	<Thumb dark
+	<Thumb
 		name="StrukShow.com"
 		icon="strukshow-w"
 		bg="strukshow"
@@ -143,7 +77,7 @@
 			{icon: "fa fa-file-alt", text: "Dev Docs", href:"/strukshow-docs/", isButton: true, hide: !SK, static: true},
 		]}
 		/>
-	<Thumb dark
+	<Thumb
 		name="PostgreSQL REST API"
 		icon="fa fa-file-code"
         bgOpacity={0.2}
@@ -160,7 +94,7 @@
             {icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/dbs_django_postgresql"},
 		]}
 		/>
-	<Thumb dark
+	<Thumb
 		name="TASM Counter"
 		icon="fa fa-file-code"
         bgOpacity={0.2}
@@ -176,7 +110,7 @@
             {icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/tasm_counter", isButton: true},
 		]}
 		/>
-	<Thumb dark
+	<Thumb
 		name="AnkiScreener"
 		icon="fa fa-crop-alt"
 		bgOpacity={0.2}
@@ -193,7 +127,7 @@
 			{icon: "fab fa-youtube", text: SK ? "Ukážka" : "Preview", href:"https://www.youtube.com/watch?v=LO1rb8nfDX4"},
 		]}
 		/>
-	<Thumb dark
+	<Thumb
 		name="ProcExp"
 		icon="fa fa-paint-brush"
         bgOpacity={0.2}
@@ -210,7 +144,7 @@
 			{icon: "fa fa-download", text: SK ? "Stiahnuť" : "Download", href:"https://github.com/iairu/ProcExp/releases"},
 		]}
         />
-    <Thumb dark
+    <Thumb
         name="Save the Princess"
         bg="stp"
         icon="fa fa-gamepad"
@@ -396,7 +330,7 @@
 	{/if}
 	<Thumb empty />
 	{:else if tab === 1}
-	<Thumb dark
+	<Thumb
 		name={SK ? "Grafické portfolio" : "Graphic design portfolio"}
 		bg="gfxbg"
 		bgOpacity={1} bgNoFilter
@@ -411,7 +345,7 @@
 			{icon: "fa fa-share", text: SK ? "Navštíviť" : "Visit", href: SK ? "/gfx/" : "/gfx/en/", isButton: true, modal: false, static: true},
 		]}
 		/>
-	<Thumb dark
+	<Thumb
 		name={SK ? "Zrada kráľa" : "Treason"}
 		bg="zrada"
 		icon="fa fa-paint-brush"
