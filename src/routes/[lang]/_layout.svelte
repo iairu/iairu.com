@@ -2,6 +2,8 @@
 	import { lang } from '../../components/LangStore.svelte';
 	import Header from '../../components/Header.svelte';
 	import Sidebar from '../../components/Sidebar.svelte';
+	import SidebarToggle from '../../components/SidebarToggle.svelte';
+	import Breadcrumbs from '../../components/Breadcrumbs.svelte';
 	import { href } from '../../components/Modal.svelte';
 	import Modal from '../../components/Modal.svelte';
 	import { onMount } from 'svelte';
@@ -15,6 +17,15 @@
 
 	export let external = false; // _layout is imported externally and language error shouldn't be checked
 	let error = false;
+	let sidebarOpen = false;
+
+	function toggleSidebar() {
+		sidebarOpen = !sidebarOpen;
+	}
+
+	function closeSidebar() {
+		sidebarOpen = false;
+	}
 
 	// Current Language and Slug from URL & lang store linkup
 	let currentSlug = "";
@@ -51,6 +62,7 @@
 {#if !error}
 <!-- Site content -->
 {#if !isIframe}
+	<SidebarToggle onClick={toggleSidebar} isOpen={sidebarOpen} />
 	<Header nav={[
 		{icon: "fab fa-facebook-messenger", text: "Messenger", href: "https://m.me/iairu"},
 		{icon: "fab fa-linkedin", text: "LinkedIn", href: "https://www.linkedin.com/in/iairu"},
@@ -60,9 +72,16 @@
 {/if}
 <div class="layout-container" class:iframe={isIframe}>
 	{#if !isIframe}
-	<Sidebar />
+	<Sidebar isOpen={sidebarOpen} />
+	<!-- Overlay for mobile sidebar -->
+	{#if sidebarOpen}
+	<div class="sidebar-overlay" on:click={closeSidebar}></div>
+	{/if}
 	{/if}
 	<main class:iframe={isIframe} class:with-sidebar={!isIframe}>
+		{#if !isIframe && !isHomepage(currentSlug, currentURLlang)}
+		<Breadcrumbs />
+		{/if}
 		<slot />
 		{#if !isIframe}
 		<S dark icon="fa fa-address-card" name={current === "sk" ? "Kontakt" : "Contact"} slug="contact" pt pb sli>
@@ -192,6 +211,7 @@
 		margin: 0 auto;
 		padding: 20px;
 		box-sizing: border-box;
+		position: relative;
 
 		&.iframe {
 			padding-top: 2em;
@@ -200,6 +220,26 @@
 		@media (max-width: 1200px) {
 			padding: 20px;
 		}
+	}
+
+	.sidebar-overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: rgba(0, 0, 0, 0.5);
+		z-index: 99;
+		animation: fadein 0.3s;
+
+		@media (min-width: 1200px) {
+			display: none;
+		}
+	}
+
+	@keyframes fadein {
+		from { opacity: 0; }
+		to { opacity: 1; }
 	}
 
 	main {

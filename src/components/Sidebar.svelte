@@ -3,6 +3,8 @@
     import { lang } from './LangStore.svelte';
     import { onMount } from 'svelte';
 
+    export let isOpen = false; // Control sidebar visibility
+
     // Define the sidebar structure
     const itStructure = {
         'About': [
@@ -66,7 +68,7 @@
     }
 </script>
 
-<aside class="sidebar">
+<aside class="sidebar" class:open={isOpen}>
     <div class="sidebar-content">
         <h3 class="sidebar-title">
             {currentMode === 'it' ? 'IT Garden' : 'Art Garden'}
@@ -106,19 +108,37 @@
 
 <style lang="scss" global>
     aside.sidebar {
-        position: sticky;
-        top: 20px;
+        position: fixed;
+        top: 0;
+        left: 0;
         width: 280px;
-        max-height: calc(100vh - 40px);
+        height: 100vh;
         overflow-y: auto;
-        padding: 20px;
-        border: 2px solid black;
-        border-radius: 10px;
+        padding: 80px 20px 20px 20px;
+        border-right: 2px solid black;
         background: white;
         flex-shrink: 0;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+        z-index: 100;
+        box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
 
-        @media (max-width: 1200px) {
-            display: none;
+        &.open {
+            transform: translateX(0);
+        }
+
+        @media (min-width: 1200px) {
+            position: sticky;
+            top: 20px;
+            transform: translateX(0);
+            height: auto;
+            max-height: calc(100vh - 40px);
+            padding: 20px;
+            border: 2px solid black;
+            border-right: 2px solid black;
+            border-radius: 10px;
+            z-index: 1;
+            box-shadow: none;
         }
 
         .sidebar-content {

@@ -1,5 +1,6 @@
 <script>
     import Nav from './Nav.svelte';
+    import SearchButton from './SearchButton.svelte';
 	import { stores } from '@sapper/app';
     const { page } = stores();
 	import { dark, darkHeader } from './DarkStore.svelte';
@@ -10,6 +11,11 @@
     export let nav;
     export let useLangSelector = true;
     export let useContentSelector = true;
+
+    function handleSearch() {
+        // Placeholder for search functionality
+        alert('Search functionality coming soon!');
+    }
 
     let showHomeArrow = false;
     let splitPath;
@@ -31,7 +37,10 @@
                 {/if}
             </div>
         </div>
-        <Nav {nav} />
+        <div class="right">
+            <SearchButton onClick={handleSearch} />
+            <Nav {nav} />
+        </div>
     </div>
 </header>
 
@@ -66,6 +75,12 @@
                     flex-direction: column;
                     gap: 5px;
                 }
+            }
+            .right {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                flex-wrap: wrap;
             }
             .logo {
                 width: 120px;
