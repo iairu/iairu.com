@@ -1,0 +1,55 @@
+:root {
+  --color-primary: #00ff41; /* Matrix green */
+  --color-primary-alt: #008f11; /* Darker Matrix green */
+  --color-primary-a: rgba(0, 255, 65, 0.60);
+  --color-support: #00b16a; /* Teal-green accent */
+  --color-success: #00ff41;
+  --color-alert: #ff004f; /* Neon magenta for contrast */
+  --color-idle: #00b16a;
+  --color-background-alt: #0a0f0b; /* Very dark greenish */
+  --color-background: #0d1a12; /* Matrix black-green */
+  --color-foreground: #14281a; /* Slightly lighter green-black */
+  --color-mist: #1a2f1a; /* Faded green */
+
+  --discord: #00ffea; /* Neon cyan for contrast */
+
+  --icon-tracking: #00ffea;
+  --icon-plugins: #00b16a;
+  --icon-customization: #00ff41;
+  --icon-subtitle: #b6ff00;
+  --icon-auto-skip: #ff004f;
+  --icon-smooth: #00ff41;
+
+  /* not faded */
+  --vp-c-brand-1: var(--color-primary);
+  --vp-c-brand-2: var(--color-primary);
+  --vp-c-brand-3: var(--color-primary);
+
+  --vp-home-hero-image-background-image: linear-gradient(-45deg, var(--color-primary-a));
+  --vp-home-hero-image-filter: blur(72px);
+  --vp-home-hero-name-color: transparent;
+  --vp-home-hero-name-background: -webkit-linear-gradient(270deg, var(--color-primary) 30%, var(--color-primary-alt));
+}
+
+.VPButton.brand {
+  color: black !important;
+}
+
+.VPNavBarAppearance,
+.VPNavScreenAppearance,
+.VPMenu>.group:first-child {
+  display: none !important;
+}
+
+.dark {
+  --vp-c-default-1: var(--color-mist);
+  --vp-c-default-2: var(--color-mist);
+  --vp-c-default-3: var(--color-mist);
+  --vp-c-default-soft: var(--color-mist);
+
+  --vp-c-bg: var(--color-background);
+  --vp-c-bg-soft: var(--color-foreground);
+  --vp-c-bg-alt: var(--color-background-alt);
+
+  --vp-c-text: #00ff41; /* Matrix green text */
+}
