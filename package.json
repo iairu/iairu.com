@@ -1,43 +1,20 @@
 {
-  "name": "iairu",
-  "description": "Personal Portfolio",
-  "version": "0.0.3",
+  "name": "iairu-com",
+  "version": "1.0.0",
+  "main": "index.js",
+  "private": true,
+  "author": "spanik11@gmail.com",
+  "license": "MIT",
   "scripts": {
-    "dev": "sapper dev",
-    "build": "sapper build --legacy",
-    "build_start": "node __sapper__/build",
-    "export": "sapper export --legacy --entry \"/entrypoints\" && node utility/postexport.mjs",
-    "export_start": "npx serve __sapper__/export",
-    "export_vercel": "npm run export"
-  },
-  "dependencies": {
-    "compression": "^1.7.1",
-    "polka": "next",
-    "sirv": "^1.0.0"
+    "dev": "vitepress dev",
+    "build": "vitepress build",
+    "preview": "vitepress preview",
+    "deploy": "npm run build && npm run deploy"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0",
-    "@babel/plugin-syntax-dynamic-import": "^7.0.0",
-    "@babel/plugin-transform-runtime": "^7.0.0",
-    "@babel/preset-env": "^7.0.0",
-    "@babel/runtime": "^7.0.0",
-    "@jackfranklin/rollup-plugin-markdown": "^0.3.0",
-    "@rollup/plugin-babel": "^5.0.0",
-    "@rollup/plugin-commonjs": "^14.0.0",
-    "@rollup/plugin-image": "^2.0.6",
-    "@rollup/plugin-node-resolve": "^8.0.0",
-    "@rollup/plugin-replace": "^2.4.0",
-    "@rollup/plugin-url": "^5.0.0",
-    "autoprefixer": "^10.3.1",
-    "moment": "^2.29.3",
-    "sass": "^1.71.1",
-    "postcss": "^8.3.5",
-    "rollup": "^2.3.4",
-    "rollup-plugin-glob": "^1.0.2",
-    "rollup-plugin-svelte": "^7.0.0",
-    "rollup-plugin-terser": "^7.0.0",
-    "sapper": "^0.28.0",
-    "svelte": "^3.49.0",
-    "svelte-preprocess": "^4.7.4"
+    "vitepress": "^1.6.4"
+  },
+  "dependencies": {
+    "@octokit/rest": "^22.0.1"
   }
 }
