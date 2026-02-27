@@ -5,7 +5,6 @@
 	import Sidebar from '../../components/Sidebar.svelte';
 	import SidebarToggle from '../../components/SidebarToggle.svelte';
 	import Breadcrumbs from '../../components/Breadcrumbs.svelte';
-	import AccessibilityApplier from '../../components/AccessibilityApplier.svelte';
 	import '../../components/TechStyles.svelte';
 	import { href } from '../../components/Modal.svelte';
 	import Modal from '../../components/Modal.svelte';
@@ -74,9 +73,6 @@
 </script>
 
 {#if !error}
-<!-- Accessibility Settings Applier -->
-<AccessibilityApplier />
-
 <!-- Grid Background -->
 <div class="grid-bg"></div>
 
@@ -221,8 +217,8 @@
 
 		@media screen {
 			&.dark, &.dark-theme {
-				color: white;
-				background-color: #0a0a0a;
+				color: rgba(255, 255, 255, 0.85); /* Softer white for readability */
+				background-color: #09090b; /* Premium dark shade */
 
 				// Dark mode overrides for common elements
 				h1, h2, h3, h4, h5, h6 {
@@ -230,37 +226,53 @@
 				}
 
 				a {
-					color: rgba(59, 130, 246, 0.8);
+					color: rgba(59, 130, 246, 0.9);
 
 					&:hover {
-						color: rgba(59, 130, 246, 1);
+						color: rgba(96, 165, 250, 1);
 					}
 				}
 
 				code {
-					background-color: rgba(255, 255, 255, 0.1);
+					background-color: rgba(255, 255, 255, 0.08);
 					color: rgba(255, 255, 255, 0.9);
-					border-color: rgba(255, 255, 255, 0.2);
+					border-color: rgba(255, 255, 255, 0.15);
 				}
 
 				pre {
-					background: rgba(255, 255, 255, 0.05);
-					border-color: rgba(255, 255, 255, 0.2);
+					background: rgba(255, 255, 255, 0.03);
+					border-color: rgba(255, 255, 255, 0.1);
 				}
 
 				blockquote {
-					color: rgba(255, 255, 255, 0.9);
-					background-color: rgba(255, 255, 255, 0.05);
-					background-image: url("/_global/quote.svg");
+					color: rgba(255, 255, 255, 0.85);
+					background-color: rgba(255, 255, 255, 0.03);
+					border-left: 4px solid rgba(59, 130, 246, 0.5);
+					background-image: none; /* Removed the distracting quote image */
 				}
 
 				hr {
-					border-color: rgba(255, 255, 255, 0.2);
+					border-color: rgba(255, 255, 255, 0.1);
 				}
 
 				select {
-					border-color: rgba(255, 255, 255, 0.2);
+					border-color: rgba(255, 255, 255, 0.15);
 					color: white;
+					background: #111113;
+				}
+
+				/* Scrollbar for dark theme */
+				&::-webkit-scrollbar-thumb {
+					background: rgba(255, 255, 255, 0.2);
+					&:hover {
+						background: rgba(255, 255, 255, 0.3);
+					}
+				}
+				&::-webkit-scrollbar-track {
+					background: rgba(0, 0, 0, 0.2);
+				}
+				* {
+					scrollbar-color: #555 #111;
 				}
 			}
 		}

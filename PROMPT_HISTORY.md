@@ -1,0 +1,1 @@
+improve site design, remove unnecessary features from sidebar, make simpler and more accessible with existing features, remove unnecessary features from header, improve dark mode, improve mobile responsive css, add hero-style intro for homepage that looks like one of those fancy ai websites

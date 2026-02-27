@@ -1,29 +1,13 @@
 <script>
     import Nav from './Nav.svelte';
-    import SearchButton from './SearchButton.svelte';
-    import SearchModal from './SearchModal.svelte';
-    import AccessibilityControls from './AccessibilityControls.svelte';
-    import StatusIndicator from './StatusIndicator.svelte';
 	import { stores } from '@sapper/app';
     const { page } = stores();
 	import { dark } from './DarkStore.svelte';
     import LangSelector from './LangSelector.svelte';
-    import ContentSelector from './ContentSelector.svelte';
     import { lang } from "./LangStore.svelte";
 
     export let nav;
     export let useLangSelector = true;
-    export let useContentSelector = true;
-
-    let searchModalOpen = false;
-
-    function handleSearch() {
-        searchModalOpen = true;
-    }
-
-    function closeSearch() {
-        searchModalOpen = false;
-    }
 
     function toggleTheme() {
         dark.update(d => !d);
@@ -35,8 +19,6 @@
     $: showHomeArrow = splitPath.length > 3 || (splitPath.length === 3 && splitPath[splitPath.length - 1] !== "");
 </script>
 
-<SearchModal isOpen={searchModalOpen} onClose={closeSearch} />
-
 <header class:dark={$dark}>
     <div class="content">
         {#if showHomeArrow}<a class="home" href={"/" + ($lang.current ? $lang.current : "")}><i class="fa fa-angle-double-left"></i></a>{/if}
@@ -46,17 +28,9 @@
             {/if}
         </div>
         <div class="right">
-            {#if useContentSelector}
-            <ContentSelector dark={$dark} />
-            {/if}
             <button class="theme-toggle" on:click={toggleTheme} aria-label="Toggle theme">
                 <i class="fa fa-{$dark ? 'sun' : 'moon'}"></i>
             </button>
-            <div class="header-indicators">
-                <StatusIndicator status="online" size="xs" />
-            </div>
-            <AccessibilityControls compact={true} />
-            <SearchButton onClick={handleSearch} />
             <Nav {nav} />
         </div>
     </div>
@@ -98,47 +72,6 @@
                 align-items: center;
                 gap: 15px;
                 flex-wrap: wrap;
-
-                .header-indicators {
-                    display: flex;
-                    align-items: center;
-                    gap: 8px;
-                    padding: 4px 8px;
-                    background: rgba(59, 130, 246, 0.05);
-                    border: 1px solid rgba(59, 130, 246, 0.15);
-                    border-radius: 6px;
-                }
-            }
-            .search-box {
-                display: flex;
-                align-items: center;
-                gap: 5px;
-
-                .search-input {
-                    padding: 6px 12px;
-                    border: 1px solid rgba(59, 130, 246, 0.3);
-                    border-radius: 6px;
-                    font-size: 14px;
-                    width: 200px;
-
-                    &:focus {
-                        outline: none;
-                        border-color: rgba(59, 130, 246, 0.6);
-                    }
-                }
-
-                .search-submit {
-                    padding: 6px 12px;
-                    background: rgba(59, 130, 246, 0.1);
-                    border: 1px solid rgba(59, 130, 246, 0.3);
-                    border-radius: 6px;
-                    cursor: pointer;
-                    color: rgba(59, 130, 246, 0.9);
-
-                    &:hover {
-                        background: rgba(59, 130, 246, 0.2);
-                    }
-                }
             }
 
             .theme-toggle {

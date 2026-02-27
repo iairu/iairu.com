@@ -2,7 +2,6 @@
     import { content } from './ContentStore.svelte';
     import { lang } from './LangStore.svelte';
     import { onMount } from 'svelte';
-    import HighlightThumb from './HighlightThumb.svelte';
 
     export let isOpen = false; // Control sidebar visibility
 
@@ -67,37 +66,6 @@
         <h3 class="sidebar-title">
             {currentMode === 'it' ? 'IT Garden' : 'Art Garden'}
         </h3>
-
-        <!-- Featured/Highlight items -->
-        <div class="highlights-section">
-            {#if currentMode === 'it'}
-                <HighlightThumb
-                    title="IPTables Guide"
-                    desc="Linux firewall & port forwarding"
-                    link="/en/dev/iptables-portforward"
-                    icon="fa fa-fire"
-                    badge="Documentation"
-                    status="updated"
-                />
-                <HighlightThumb
-                    title="Development Log"
-                    desc="Project updates and changelog"
-                    link="/sk/dev/log"
-                    icon="fa fa-code"
-                    metric="Latest"
-                    status="hot"
-                />
-            {:else}
-                <HighlightThumb
-                    title="Comics"
-                    desc="Comic book collection"
-                    link="/en/art/comics"
-                    icon="fa fa-book"
-                    badge="Portfolio"
-                    status="new"
-                />
-            {/if}
-        </div>
 
         {#each Object.entries(getStructure()) as [section, items]}
             <div class="sidebar-section">
@@ -186,12 +154,6 @@
             display: flex;
             flex-direction: column;
             gap: 5px;
-        }
-
-        .highlights-section {
-            margin-bottom: 15px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
         }
 
         .sidebar-title {

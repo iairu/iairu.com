@@ -36,6 +36,23 @@
 	<meta name="robots" content="index,follow">
 </svelte:head>
 
+<section class="hero-section">
+	<div class="hero-content">
+		<h1 class="hero-title">
+			{SK ? 'Budúcnosť je ' : 'The future is '}
+			<span class="gradient-text">{SK ? 'torená dnes.' : 'created today.'}</span>
+		</h1>
+		<p class="hero-subtitle">
+			{SK ? 'Premýšľam o budúcnosti technológií a aktívne prispievam k jej formovaniu. Full-stack vývoj a inžinierstvo systému so zameraním na precíznosť.' : 'Thinking about the future of technology and actively contributing to shape it. Full-stack development and system engineering with a focus on precision.'}
+		</p>
+		<div class="hero-cta">
+			<a href="#projects" class="cta-button primary">{SK ? 'Zobraziť projekty' : 'View Projects'}</a>
+			<a href={SK ? '/dev/about' : '/en/dev/about'} class="cta-button secondary">{SK ? 'Digitálna záhrada' : 'Digital Garden'}</a>
+		</div>
+	</div>
+	<div class="hero-background-glow"></div>
+</section>
+
 <S row icon="fa fa-calendar-check" name={currentMode === 'it' ? (SK ? "Projekty" : "Projects") : (SK ? "Tvorba" : "Creative")} slug="projects" pt pb cg>
     {#if currentMode === 'it'}
 	<!-- Featured Projects -->
@@ -385,14 +402,6 @@
         />
 	{/if}
 </S>
-<S light icon="fa fa-lightbulb" name={SK ? "Filozofia" : "Philosophy"} slug="quote" pt pb nbb sli>
-	<span>
-		{
-			SK ? 	"\"Najlepší spôsob, ako predpovedať budúcnosť, je vytvoriť ju.\" - Premýšľam o budúcnosti technológií a aktívne prispievam k jej formovaniu." :
-					"\"The best way to predict the future is to create it.\" - Thinking about the future of technology and actively contributing to shape it."
-		}
-	</span>
-</S>
 <S light icon="fa fa-feather-alt" name={SK ? "Biografia" : "Biography"} slug="bio" bg="url('/_index/beach.jpg') top repeat-x" pt pb>
 	<C count={2} let:column eq mrev>
 		{#if column === 0}
@@ -480,6 +489,118 @@
 
 		@media (max-width: 768px) {
 			grid-template-columns: 1fr;
+		}
+	}
+
+	.hero-section {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		min-height: 50vh;
+		padding: 4rem 2rem;
+		text-align: center;
+		position: relative;
+		overflow: hidden;
+
+		.hero-content {
+			max-width: 800px;
+			z-index: 2;
+			position: relative;
+		}
+
+		.hero-title {
+			font-size: clamp(2.5rem, 5vw, 4rem);
+			font-weight: 800;
+			line-height: 1.1;
+			margin-bottom: 1.5rem;
+			letter-spacing: -0.02em;
+
+			.gradient-text {
+				background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+				-webkit-background-clip: text;
+				-webkit-text-fill-color: transparent;
+				background-clip: text;
+				color: transparent;
+			}
+		}
+
+		.hero-subtitle {
+			font-size: clamp(1.1rem, 2vw, 1.25rem);
+			color: #666;
+			line-height: 1.6;
+			margin-bottom: 2.5rem;
+			max-width: 600px;
+			margin-left: auto;
+			margin-right: auto;
+			
+			// Adjust color for dark mode gracefully inside Svelte's global scoping by making text inherit dark properties via body naturally, but forcing opacity
+			:global(body.dark) & {
+				color: rgba(255, 255, 255, 0.7);
+			}
+		}
+
+		.hero-cta {
+			display: flex;
+			gap: 1rem;
+			justify-content: center;
+			flex-wrap: wrap;
+
+			.cta-button {
+				padding: 0.875rem 1.5rem;
+				border-radius: 8px;
+				font-weight: 600;
+				font-size: 1rem;
+				text-decoration: none;
+				transition: all 0.2s ease;
+
+				&.primary {
+					background: #3b82f6;
+					color: white;
+					box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3);
+
+					&:hover {
+						background: #2563eb;
+						transform: translateY(-2px);
+						box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+					}
+				}
+
+				&.secondary {
+					background: transparent;
+					color: #333;
+					border: 1px solid rgba(0, 0, 0, 0.1);
+
+					:global(body.dark) & {
+						color: white;
+						border-color: rgba(255, 255, 255, 0.2);
+					}
+
+					&:hover {
+						background: rgba(0, 0, 0, 0.05);
+						
+						:global(body.dark) & {
+							background: rgba(255, 255, 255, 0.05);
+						}
+					}
+				}
+			}
+		}
+
+		.hero-background-glow {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			width: 60vw;
+			height: 60vw;
+			transform: translate(-50%, -50%);
+			background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+			z-index: 1;
+			pointer-events: none;
+
+			:global(body.dark) & {
+				background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+			}
 		}
 	}
 </style>
