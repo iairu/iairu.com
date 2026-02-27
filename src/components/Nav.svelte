@@ -24,7 +24,7 @@
         // Preprocessed values for on:click handler so that it is guaranteed to be fast enough to preventDefault
         // Using e.target.getAttribute() instead was too slow for that in 10% of attempts
         processed[i] = {
-            modal: link.modal !== undefined ? link.modal : (link.href && link.href.charAt(0) === "/" && !isDownloadable(link.href) ? true : false),
+            modal: link.modal !== undefined ? link.modal : (link.href && link.href.charAt(0) === "/" && !isDownloadable(link.href) ? true : false), // todo: reactively check viewport width and if below 700 set modal to false
             samePage: (link.href && link.href.charAt(0) === "#" && link.href.length > 1) ? true : (link.fnc ? true : false),
             disabled: (!link.href && !link.fnc) || (link.href && link.href.charAt(0) === "#" && link.href.length === 1) ? true : false,
             target: (link.sameTarget || link.href && link.href.charAt(0) === "#") ? "" : "_blank",

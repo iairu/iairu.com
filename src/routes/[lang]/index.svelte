@@ -85,7 +85,7 @@
 		to="2020-08-03"
 		nav={[
 			{icon: "fa fa-share", text: SK ? "Navštíviť" : "Visit", href:"https://strukshow.com", isButton: true},
-			{icon: "fa fa-file-alt", text: "Dokumentácia", href:"/strukshow-docs/", isButton: true, hide: !SK, static: true},
+			{icon: "fa fa-file-alt", text: "Dokumentácia", href:"/strukshow-docs/", isButton: true, hide: !SK, static: true}, //todo: move strukshow docs to cms docs
 		]}
 		/>
 	<Thumb dark
@@ -270,7 +270,7 @@
                 : "A walkthrough tutorial for not just port-forwarding, but problem solving when it comes to IPTables."
         }
         nav={[
-			{icon: "fa fa-book", text:"Read", href:"/dev/iptables-portforward/", isButton: true, hide: SK},
+			{icon: "fa fa-book", text:"Read", href:"/dev/iptables-portforward/", isButton: true, hide: SK}, //todo: move this one from /dev/ to /guide/ with redirect
 			{icon: "fa fa-book", text:"Prečítať (Anglicky)", href:"/en/dev/iptables-portforward/", isButton: true, hide: !SK, static: true},
         ]}
         />
@@ -413,7 +413,7 @@
 		from="2019-03-28"
 		to="2019-05-14"
 		nav={[
-			{icon: "fa fa-share", text: SK ? "Prezentácia" : "Presentation", href: SK ? "/gfx/zrada/" : "/gfx/en/treason/", isButton: true, modal: false, static: true},
+			{icon: "fa fa-share", text: SK ? "Prezentácia" : "Presentation", href: SK ? "/gfx/zrada/" : "/gfx/en/treason/", isButton: true, modal: false, static: true}, // todo: move to /old/gfx
 		]}
 		/>
 	<Thumb dark
@@ -462,7 +462,7 @@
 				: "Branding concepts, older web designs and a graduation project."
 		}
 		nav={[
-			{icon: "fa fa-share", text: SK ? "Navštíviť" : "Visit", href: SK ? "/gfx/" : "/gfx/en/", isButton: true, modal: false, static: true},
+			{icon: "fa fa-share", text: SK ? "Navštíviť" : "Visit", href: SK ? "/gfx/" : "/gfx/en/", isButton: true, modal: false, static: true}, // todo: move to /old/gfx
 		]}
 		/>
 	<Thumb

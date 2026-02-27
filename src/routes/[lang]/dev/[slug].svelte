@@ -47,7 +47,7 @@
     }
 
     function processDate(date) {
-        moment.locale(currentLang);
+        moment.locale(currentLang); // todo: use ISO format instead of American
         return moment(date).calendar();
     }
 

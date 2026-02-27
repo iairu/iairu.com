@@ -1,6 +1,9 @@
 <h1>Entrypoints</h1>
 <p>This file will be removed after build using utility/postexport.mjs, but is necessary for export command to crawl subsites with redirects properly.</p>
 
+<!-- todo: automatically generate these by having node.js script crawl ./src file structure and remap it to URLs -->
+<!-- todo: after implementing above: automatically generate sitemap from entrypoints -->
+
 <h2>Main entrypoints</h2>
 <a href="/">Language redirect</a>
 <!-- Note that / entrypoint contains links to /en and /sk in <noscript> for sapper export to crawl them -->

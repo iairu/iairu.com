@@ -81,6 +81,7 @@
                         <div class="tab-spacer">
                             <TabMenu names={tabs} bind:active={tab} />
                             {#if filters != undefined && filters.length == tabs.length}
+                                <!-- todo: hide filters on mobile -->
                                 <TabMenu names={filters[tab]} bind:active={filterNum}/>
                             {/if}
                         </div>
@@ -88,6 +89,7 @@
                         <div class="tab-spacer">
                             <div class="placeholder"></div>
                             {#if filters != undefined && filters.length}
+                                <!-- todo: hide filters on mobile -->
                                 <TabMenu names={filters} bind:active={filterNum}/>
                             {/if}
                         </div>
@@ -160,6 +162,7 @@
                         justify-content: space-between;
                         @media (max-width: 1200px) { // taking into account the largest combined tabmenu length
                             width: 100%; // same-position hack for other tabs 
+                            // todo: remove right padding esp. on mobile looks off
                         }
                         @media (max-width: 900px) {
                             flex-flow: column;
