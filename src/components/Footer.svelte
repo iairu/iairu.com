@@ -166,10 +166,20 @@
         text-align: center;
         box-sizing: border-box;
         padding: 3em 2em;
-        color: #424242;
-        background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.05));
-        border-top: 1px solid rgba(59, 130, 246, 0.1);
+        color: white;
+        background: #09090b;
         position: relative;
+        margin-top: 10px; // account for jagged overflow
+
+        &::after {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 0;
+            right: 0;
+            height: 10px;
+            background: url("data:image/svg+xml,%3Csvg width='20' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 L10 0 L20 10 Z' fill='%2309090b'/%3E%3C/svg%3E") repeat-x;
+        }
 
         &::before {
             content: '';
@@ -186,8 +196,8 @@
 
         nav {justify-content: center;}
         &.bottom {
-            background: linear-gradient(180deg, rgba(0, 0, 0, 0.5), black);
-            border-top-color: rgba(59, 130, 246, 0.2);
+            background: black;
+            border-top-color: rgba(var(--theme-color-rgb), 0.2);
         }
 
         .footer-content {
@@ -249,7 +259,7 @@
                     margin: 0 0 10px 0;
                     font-size: 14px;
                     font-weight: 600;
-                    color: rgba(59, 130, 246, 0.9);
+                    color: rgba(var(--theme-color-rgb), 0.9);
                     text-transform: uppercase;
                     letter-spacing: 0.5px;
                 }
@@ -257,14 +267,14 @@
                 a {
                     display: block;
                     padding: 5px 0;
-                    color: #333;
+                    color: rgba(255, 255, 255, 0.85);
                     text-decoration: none;
                     font-size: 14px;
                     transition: all 0.2s ease;
                     font-weight: 500;
 
                     &:hover {
-                        color: rgba(59, 130, 246, 1);
+                        color: white;
                         padding-left: 5px;
                     }
                 }
@@ -304,8 +314,8 @@
             gap: 20px;
             flex-wrap: wrap;
             padding: 15px;
-            background: rgba(59, 130, 246, 0.03);
-            border: 1px solid rgba(59, 130, 246, 0.1);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.15);
             border-radius: 0;
 
             .status-item {
@@ -315,12 +325,12 @@
                 font-size: 0.85em;
 
                 i {
-                    color: rgba(59, 130, 246, 0.6);
+                    color: rgba(var(--theme-color-rgb), 0.6);
                     font-size: 0.9em;
                 }
 
                 .status-text {
-                    color: #333;
+                    color: white;
                     font-family: monospace;
                     font-weight: 600;
                 }

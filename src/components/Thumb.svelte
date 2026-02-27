@@ -107,7 +107,7 @@
 <style lang="scss" global>
     section.thumb {
         position: relative;
-        border: 1px solid rgba(59, 130, 246, 0.2);
+        border: 1px solid rgba(var(--theme-color-rgb), 0.2);
         background: linear-gradient(135deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.05));
         background-size: cover;
         background-position: center;
@@ -117,11 +117,11 @@
         padding: 25px;
         padding-bottom: 20px;
         color: black;
-        border-radius: 10px;
+        border-radius: 0;
         overflow: visible;
         transition: all 0.3s ease;
         box-shadow:
-            0 0 20px rgba(59, 130, 246, 0.05),
+            0 0 20px rgba(var(--theme-color-rgb), 0.05),
             inset 0 1px 0 rgba(255, 255, 255, 0.1);
 
         @media (max-width: 900px) {width: 100%;}
@@ -133,9 +133,9 @@
             left: 0;
             width: 15px;
             height: 15px;
-            border-top: 2px solid rgba(59, 130, 246, 0.4);
-            border-left: 2px solid rgba(59, 130, 246, 0.4);
-            border-radius: 10px 0 0 0;
+            border-top: 2px solid rgba(var(--theme-color-rgb), 0.4);
+            border-left: 2px solid rgba(var(--theme-color-rgb), 0.4);
+            border-radius: 0;
             transition: all 0.3s ease;
         }
 
@@ -146,30 +146,30 @@
             right: 0;
             width: 15px;
             height: 15px;
-            border-bottom: 2px solid rgba(59, 130, 246, 0.4);
-            border-right: 2px solid rgba(59, 130, 246, 0.4);
-            border-radius: 0 0 10px 0;
+            border-bottom: 2px solid rgba(var(--theme-color-rgb), 0.4);
+            border-right: 2px solid rgba(var(--theme-color-rgb), 0.4);
+            border-radius: 0;
             transition: all 0.3s ease;
         }
 
         &:hover {
             transform: translateY(-4px);
-            border-color: rgba(59, 130, 246, 0.4);
+            border-color: rgba(var(--theme-color-rgb), 0.4);
             box-shadow:
-                0 0 30px rgba(59, 130, 246, 0.15),
+                0 0 30px rgba(var(--theme-color-rgb), 0.15),
                 0 10px 25px rgba(0, 0, 0, 0.1),
                 inset 0 1px 0 rgba(255, 255, 255, 0.2);
 
             &::before {
                 width: 20px;
                 height: 20px;
-                border-color: rgba(59, 130, 246, 0.6);
+                border-color: rgba(var(--theme-color-rgb), 0.6);
             }
 
             &::after {
                 width: 20px;
                 height: 20px;
-                border-color: rgba(59, 130, 246, 0.6);
+                border-color: rgba(var(--theme-color-rgb), 0.6);
             }
         }
         .content {
@@ -187,8 +187,8 @@
             .icon {
                 width: 40px;
                 font-size: 36px;
-                color: rgba(59, 130, 246, 0.8);
-                filter: drop-shadow(0 0 8px rgba(59, 130, 246, 0.3));
+                color: rgba(var(--theme-color-rgb), 0.8);
+                filter: drop-shadow(0 0 8px rgba(var(--theme-color-rgb), 0.3));
             }
             h3 {
                 font-weight: bold;
@@ -211,7 +211,7 @@
             object-fit: cover;
             object-position: top;
             border: 1px solid rgba(0,0,0,0.2);
-            border-radius: 5px;
+            border-radius: 0;
             cursor: zoom-in;
         }
         .details {
@@ -273,7 +273,7 @@
             border: none;
         }
         @media screen {
-            &.dark {
+            &.dark, :global(body.dark-theme) & {
                 border-color: rgba(255, 255, 255, 0.2);
                 background-color: black;
                 color: white;
@@ -289,7 +289,7 @@
                 .img {border-color: rgba(255,255,255,0.2);}
                 .bg { 
                     opacity: 0.3;
-                    filter: contrast(0.5) brightness(1.5);
+                    filter: contrast(0.8) brightness(0.5);
                 }
             }
         }

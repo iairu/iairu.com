@@ -25,7 +25,7 @@
             background: #f1f1f1;
             border: 1px solid rgba(0,0,0,0.2);
             padding: 5px 15px;
-            border-radius: 0 5px 5px 5px;
+            border-radius: 0;
         }
     }
 </style>

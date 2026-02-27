@@ -38,19 +38,33 @@
         flex-direction: column;
         gap: 8px;
         padding: 16px;
-        background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(59, 130, 246, 0.05));
-        border: 1px solid rgba(59, 130, 246, 0.2);
+        background: linear-gradient(135deg, rgba(var(--theme-color-rgb), 0.08), rgba(var(--theme-color-rgb), 0.05));
+        border: 1px solid rgba(var(--theme-color-rgb), 0.2);
         border-radius: 8px;
         transition: all 0.2s ease;
         position: relative;
         overflow: hidden;
         text-align: center;
 
+        :global(body.dark-theme) & {
+            border-color: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            
+            .metric-value, .metric-label, .metric-icon i {
+                color: white;
+            }
+            .metric-icon {
+                border-color: rgba(255, 255, 255, 0.2);
+                background: rgba(255, 255, 255, 0.1);
+            }
+        }
+
         &:hover {
-            border-color: rgba(59, 130, 246, 0.4);
-            background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(59, 130, 246, 0.03));
+            border-color: rgba(var(--theme-color-rgb), 0.4);
+            background: linear-gradient(135deg, rgba(var(--theme-color-rgb), 0.08), rgba(var(--theme-color-rgb), 0.03));
             transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+            box-shadow: 0 4px 12px rgba(var(--theme-color-rgb), 0.15);
         }
 
         &.small {
@@ -81,7 +95,7 @@
             left: 0;
             width: 3px;
             height: 100%;
-            background: linear-gradient(180deg, rgba(59, 130, 246, 0.6), rgba(59, 130, 246, 0.2));
+            background: linear-gradient(180deg, rgba(var(--theme-color-rgb), 0.6), rgba(var(--theme-color-rgb), 0.2));
         }
     }
 
@@ -92,13 +106,13 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: rgba(59, 130, 246, 0.1);
-        border: 1px solid rgba(59, 130, 246, 0.2);
+        background: rgba(var(--theme-color-rgb), 0.1);
+        border: 1px solid rgba(var(--theme-color-rgb), 0.2);
         border-radius: 8px;
         position: relative;
 
         i {
-            color: rgba(59, 130, 246, 0.9);
+            color: rgba(var(--theme-color-rgb), 0.9);
             font-size: 16px;
         }
 
@@ -125,7 +139,7 @@
     .metric-value {
         font-size: 24px;
         font-weight: 700;
-        color: rgba(59, 130, 246, 0.9);
+        color: rgba(var(--theme-color-rgb), 0.9);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -166,7 +180,7 @@
     .metric-label {
         font-size: 11px;
         font-weight: 600;
-        color: rgba(59, 130, 246, 0.7);
+        color: rgba(var(--theme-color-rgb), 0.7);
         text-transform: uppercase;
         letter-spacing: 0.8px;
     }
@@ -181,11 +195,11 @@
         background:
             linear-gradient(135deg,
                 transparent 25%,
-                rgba(59, 130, 246, 0.3) 25%,
-                rgba(59, 130, 246, 0.3) 50%,
+                rgba(var(--theme-color-rgb), 0.3) 25%,
+                rgba(var(--theme-color-rgb), 0.3) 50%,
                 transparent 50%,
                 transparent 75%,
-                rgba(59, 130, 246, 0.3) 75%);
+                rgba(var(--theme-color-rgb), 0.3) 75%);
         background-size: 4px 4px;
     }
 

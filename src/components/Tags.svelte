@@ -23,7 +23,7 @@
         font-weight: bold;
         padding: 0 5px;
         border: 1px solid rgba(0,0,0,0.2);
-        border-radius: 4px;
+        border-radius: 0;
         white-space: nowrap;
         &:not(:last-child) {
             margin-right: 3px;

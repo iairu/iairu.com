@@ -70,6 +70,10 @@
             text-transform: uppercase;
             letter-spacing: 0.5px;
             font-weight: 500;
+
+            :global(body.dark-theme) & {
+                color: white;
+            }
         }
     }
 

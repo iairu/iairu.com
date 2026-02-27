@@ -93,12 +93,11 @@
         @media print { display: none; }
         flex-flow: row wrap;
         $col: rgb(140, 155, 177);
-        $colbg: rgba(107, 122, 145, 0.76);
         margin: 5px 0;
         gap: 5px;
         a {
             padding: 5px;
-            color: darken($color: $col, $amount: 10);
+            color: rgba(var(--theme-color-rgb), 0.9);
             text-decoration: none;
             margin-right: 10px;
             .icon {
@@ -116,11 +115,11 @@
         }
         a.button {
             padding: 5px 15px;
-            border-radius: 5px;
-            background: $colbg;
+            border-radius: 0;
+            background: rgba(var(--theme-color-rgb), 0.8);
             color: white;
             &:focus {
-                background: darken($color: $colbg, $amount: 10)
+                background: rgba(var(--theme-color-rgb), 1);
             }
         }
     }

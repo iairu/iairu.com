@@ -5,6 +5,7 @@
 	import Sidebar from '../../components/Sidebar.svelte';
 	import SidebarToggle from '../../components/SidebarToggle.svelte';
 	import Breadcrumbs from '../../components/Breadcrumbs.svelte';
+	import { content, sidebarCollapsed } from '../../components/ContentStore.svelte';
 	import '../../components/TechStyles.svelte';
 	import { href } from '../../components/Modal.svelte';
 	import Modal from '../../components/Modal.svelte';
@@ -28,6 +29,11 @@
 	function closeSidebar() {
 		sidebarOpen = false;
 	}
+
+	let isSidebarCollapsed = false;
+	sidebarCollapsed.subscribe(collapsed => {
+		isSidebarCollapsed = collapsed;
+	});
 
 	// Current Language and Slug from URL & lang store linkup
 	let currentSlug = "";
@@ -58,6 +64,14 @@
 			} else {
 				document.body.classList.remove('dark-theme');
 			}
+		}
+	});
+
+	// Content theme handling
+	content.subscribe(mode => {
+		if (typeof document !== 'undefined') {
+			document.body.classList.remove('theme-it', 'theme-art');
+			document.body.classList.add('theme-' + mode);
 		}
 	});
 
@@ -94,7 +108,7 @@
 	<div class="sidebar-overlay" on:click={closeSidebar}></div>
 	{/if}
 	{/if}
-	<main class:iframe={isIframe} class:with-sidebar={!isIframe}>
+	<main class:iframe={isIframe} class:with-sidebar={!isIframe} class:sidebar-collapsed={isSidebarCollapsed}>
 		{#if !isIframe && !isHomepage(currentSlug, currentURLlang)}
 		<Breadcrumbs />
 		{/if}
@@ -141,6 +155,14 @@
 		line-height: 1.5;
 		color: #333;
 		background: white;
+
+		/* Default (IT) Theme Color: Blue */
+		--theme-color-rgb: 59, 130, 246;
+
+		&.theme-art {
+			/* Art Theme Color: Green */
+			--theme-color-rgb: 16, 185, 129;
+		}
 	}
 	body, button {
 		font-family: Roboto, -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
@@ -164,7 +186,7 @@
 		color: #555;
 		background-color: #f0f0f0;
 		padding: 1px 0.4em;
-		border-radius: 2px;
+		border-radius: 0;
 		border: 1px solid rgba(0,0,0,0.2);
 	}
 	pre {
@@ -174,13 +196,13 @@
 		display: flex;
 		flex-flow: column;
 		padding: 10px;
-		border-radius: 5px;
+		border-radius: 0;
 		overflow-x: auto;
 	}
     blockquote {
         margin: 0;
         padding: 15px;
-        border-radius: 5px;
+        border-radius: 0;
         font-style: italic;
         color: black;
         background-color: rgba(0,0,0,0.05);
@@ -200,7 +222,7 @@
 	pre>code {border: none;}
 	table {
 		box-shadow: 0 0 10px rgba(0,0,0,0.2);
-		border-radius: 5px;
+		border-radius: 0;
 	}
 	th {background-color: rgba(0,0,0,0.1);}
 	tr:not(:last-child) td {border-bottom: 1px solid rgba(0,0,0,0.15);}
@@ -226,16 +248,11 @@
 				}
 
 				a {
-					color: rgba(59, 130, 246, 0.9);
+					color: rgba(var(--theme-color-rgb), 0.9);
 
 					&:hover {
-						color: rgba(96, 165, 250, 1);
+						color: rgba(var(--theme-color-rgb), 1);
 					}
-				}
-				
-				img {
-					filter: invert(1) hue-rotate(180deg);
-					opacity: 0.9;
 				}
 
 				code {
@@ -252,7 +269,7 @@
 				blockquote {
 					color: rgba(255, 255, 255, 0.85);
 					background-color: rgba(255, 255, 255, 0.03);
-					border-left: 4px solid rgba(59, 130, 246, 0.5);
+					border-left: 4px solid rgba(var(--theme-color-rgb), 0.5);
 					background-image: none; /* Removed the distracting quote image */
 				}
 
@@ -287,8 +304,7 @@
 		gap: 0;
 		max-width: 1920px;
 		margin: 0 auto;
-		padding: 20px;
-		padding-left: 0;
+		padding: 0 20px 20px 0;
 		box-sizing: border-box;
 		position: relative;
 
@@ -326,9 +342,17 @@
 		flex: 1;
 		min-width: 0;
 		box-sizing: border-box;
+		padding-top: 20px;
+        transition: max-width 0.3s ease;
 
 		&.with-sidebar {
 			max-width: calc(100% - 310px);
+            
+            &.sidebar-collapsed {
+                @media (min-width: 1200px) {
+                    max-width: calc(100% - 70px);
+                }
+            }
 		}
 
 		&.iframe {
@@ -344,7 +368,24 @@
 		border-top: 1px solid rgba(0,0,0,0.2);
 		// margin: 0 20px;
 		&.hrd {
-			border-top: 1px dashed rgba(0,0,0,0.2);
+			border-top: none;
+            height: 10px;
+            background: transparent;
+            position: relative;
+            overflow: hidden;
+            
+            &::before {
+                content: '';
+                position: absolute;
+                top: 0; left: 0; right: 0; bottom: 0;
+                background: url("data:image/svg+xml,%3Csvg width='20' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 5 L5 0 L15 10 L20 5' fill='none' stroke='rgba(0,0,0,0.2)' stroke-width='2'/%3E%3C/svg%3E") repeat-x;
+            }
+            
+            :global(body.dark) &, :global(body.dark-theme) & {
+                &::before {
+                    background: url("data:image/svg+xml,%3Csvg width='20' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 5 L5 0 L15 10 L20 5' fill='none' stroke='rgba(255,255,255,0.2)' stroke-width='2'/%3E%3C/svg%3E") repeat-x;
+                }
+            }
 		}
 		&.hrp {
 			margin-top: 20px;

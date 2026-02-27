@@ -40,9 +40,10 @@
         z-index: -1;
         pointer-events: none;
         background-image:
-            linear-gradient(rgba(59, 130, 246, 0.03) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(59, 130, 246, 0.03) 1px, transparent 1px);
+            linear-gradient(rgba(var(--theme-color-rgb), 0.03) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(var(--theme-color-rgb), 0.03) 1px, transparent 1px);
         background-size: 20px 20px;
+        animation: gridPan 60s linear infinite;
 
         &::before {
             content: '';
@@ -51,7 +52,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.05), transparent 70%);
+            background: radial-gradient(circle at 50% 50%, rgba(var(--theme-color-rgb), 0.05), transparent 70%);
         }
 
         &::after {
@@ -61,9 +62,15 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-image: radial-gradient(circle at 25% 25%, rgba(59, 130, 246, 0.08) 1px, transparent 1px);
+            background-image: radial-gradient(circle at 25% 25%, rgba(var(--theme-color-rgb), 0.08) 1px, transparent 1px);
             background-size: 40px 40px;
+            animation: gridPan 40s linear infinite reverse;
         }
+    }
+
+    @keyframes gridPan {
+        0% { background-position: 0 0; }
+        100% { background-position: 120px 120px; }
     }
 
     /* Tech Border Utilities */

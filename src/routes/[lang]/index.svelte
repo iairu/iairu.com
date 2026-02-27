@@ -36,448 +36,96 @@
 	<meta name="robots" content="index,follow">
 </svelte:head>
 
-<section class="hero-section">
-	<div class="hero-content">
-		<h1 class="hero-title">
-			{SK ? 'Kód a ' : 'Code and '}
-			<span class="gradient-text">{SK ? 'Umenie.' : 'Art.'}</span>
-		</h1>
-		<p class="hero-subtitle">
-			{SK ? 'Spojenie precízneho softvérového inžinierstva s kreatívnym digitálnym dizajnom.' : 'Fusing precise software engineering with creative digital design.'}
-		</p>
-		<div class="hero-cta">
-			<a href="#projects" class="cta-button primary" on:click={() => content.setMode('it')}>{SK ? 'Softvérové inžinierstvo' : 'Software Engineering'}</a>
-			<a href="#projects" class="cta-button secondary border-artist" on:click={() => content.setMode('art')}>{SK ? 'Umelecké portfólio' : 'Art Portfolio'}</a>
+<section class="split-hero-section">
+	<a href="/{l.current}/dev/" class="split-side it-side">
+		<div class="content-wrapper">
+			<div class="icon-wrapper">
+				<i class="fa fa-code"></i>
+			</div>
+			<h1 class="split-title">
+				{SK ? 'Softvérové' : 'Software'}
+				<span>{SK ? 'Inžinierstvo' : 'Engineering'}</span>
+			</h1>
+			<p class="split-subtitle">
+				{SK ? 'Precízny kód, moderné technológie a komplexné digitálne riešenia.' : 'Precise code, modern technologies, and complex digital solutions.'}
+			</p>
+			<span class="explore-btn primary">Explore IT Portfolio &rarr;</span>
+		</div>
+		<div class="side-background"></div>
+	</a>
+
+	<a href="/{l.current}/art/" class="split-side art-side">
+		<div class="content-wrapper">
+			<div class="icon-wrapper">
+				<i class="fa fa-paint-brush"></i>
+			</div>
+			<h1 class="split-title">
+				{SK ? 'Umelecká' : 'Art &'}
+				<span>{SK ? 'Tvorba' : 'Design'}</span>
+			</h1>
+			<p class="split-subtitle">
+				{SK ? 'Kreatívny digitálny dizajn, 3D vizualizácie a vizuálne narátyvy.' : 'Creative digital design, 3D visualizations, and visual narratives.'}
+			</p>
+			<span class="explore-btn secondary">Explore Art Portfolio &rarr;</span>
+		</div>
+		<div class="side-background"></div>
+	</a>
+	
+	<div class="split-divider">
+		<div class="divider-line"></div>
+		<div class="divider-circle">
+			<span>OR</span>
 		</div>
 	</div>
-	<div class="hero-background-glow"></div>
 </section>
 
-<S row icon="fa fa-calendar-check" name={currentMode === 'it' ? (SK ? "Projekty" : "Projects") : (SK ? "Tvorba" : "Creative")} slug="projects" pt pb cg>
-    {#if currentMode === 'it'}
-	<!-- Featured Projects -->
-	<div class="highlights-grid">
-		<HighlightThumb
-			title="StrukShow.com"
-			desc="Modern personal website with CockpitCMS & Svelte"
-			link="https://strukshow.com"
-			icon="/_thumbs/icons/strukshow-w.svg"
-			badge="Featured"
-			status="hot"
-		/>
-		<HighlightThumb
-			title="PostgreSQL REST API"
-			desc="Django REST API for complex queries"
-			link="/dbs/"
-			icon="fa fa-database"
-			metric="Full-stack"
-			status="updated"
-		/>
-		<HighlightThumb
-			title="Digital Garden"
-			desc={SK ? "Dokumentácia a poznámky" : "Documentation & notes"}
-			link="/{l.current}/dev/about"
-			icon="fa fa-book"
-			badge="New"
-			status="new"
-		/>
+<div class="split-highlights-container">
+	<div class="split-half it-half">
+		<h2 class="half-title">Softvérové Inžinierstvo</h2>
+		<div class="highlights-grid">
+			<HighlightThumb
+				title="StrukShow.com"
+				desc="Modern personal website with CockpitCMS & Svelte"
+				link="/en/dev/"
+				icon="/_thumbs/icons/strukshow-w.svg"
+				badge="Featured"
+				status="hot"
+			/>
+			<HighlightThumb
+				title="PostgreSQL REST API"
+				desc="Django REST API for complex queries"
+				link="/en/dev/"
+				icon="fa fa-database"
+				metric="Full-stack"
+				status="updated"
+			/>
+		</div>
+		<a href="/en/dev/" class="view-all-button primary">View All IT Projects &rarr;</a>
 	</div>
-
-	<Thumb
-		name="StrukShow.com"
-		icon="strukshow-w"
-		bg="strukshow"
-		tags="svelte, javascript, scss, html, php"
-        
-		desc={
-			SK	? "Komplexné riešenie modernej osobnej webovej stránky pomocou CockpitCMS a Svelte."
-				: "Complex solution of a modern personal website using CockpitCMS and Svelte."
-		}
-		from="2020-06-01"
-		to="2020-08-03"
-		nav={[
-			{icon: "fa fa-share", text: SK ? "Navštíviť" : "Visit", href:"https://strukshow.com", isButton: true},
-			{icon: "fa fa-file-alt", text: "Dev Docs", href:"/strukshow-docs/", isButton: true, hide: !SK, static: true},
-		]}
-		/>
-	<Thumb
-		name="PostgreSQL REST API"
-		icon="fa fa-file-code"
-        bgOpacity={0.2}
-		tags="postgres, django, python, json, sql"
-        
-		desc={
-			SK	? "Django REST API pre komplexné SELECT queries nad Postgres databázou. Vypracované od základov nad existujúcou DB."
-				: "Django REST API for complex SELECT queries over a Postgres database. Created from scratch over an existing DB."
-		}
-		from="2022-02-17"
-		to="2022-05-08"
-		nav={[
-            {icon: "fa fa-file-alt", text: SK ? "Statické demo" : "Static demo", href:"/dbs/", isButton: true, static: true},
-            {icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/dbs_django_postgresql"},
-		]}
-		/>
-	<Thumb
-		name="TASM Counter"
-		icon="fa fa-file-code"
-        bgOpacity={0.2}
-		tags="assembly, ms-dos"
-        
-		desc={
-			SK	? "Počítanie rôznych druhov znakov a spracovanie argumentov, súborov v 16-bit MS-DOS Turbo Assembleri."
-				: "Counting different types of characters, processing arguments, files in 16-bit MS-DOS Turbo Assembler."
-		}
-		from="2022-03-07"
-		to="2022-03-21"
-		nav={[
-            {icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/tasm_counter", isButton: true},
-		]}
-		/>
-	<Thumb
-		name="AnkiScreener"
-		icon="fa fa-crop-alt"
-		bgOpacity={0.2}
-		tags="javascript, svelte, electron, scss"
-        
-		desc={
-			SK	? "Bohatý nástroj pre rýchlu tvorbu Anki-kompatibilných učebných CSV kariet."
-				: "A rich utility for fast creation of Anki-compatible CSV flashcards."
-		}
-		from="2020-09-23"
-		to="2020-10-07"
-		nav={[
-			{icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/AnkiScreener", isButton: true},
-			{icon: "fab fa-youtube", text: SK ? "Ukážka" : "Preview", href:"https://www.youtube.com/watch?v=LO1rb8nfDX4"},
-		]}
-		/>
-	<Thumb
-		name="ProcExp"
-		icon="fa fa-paint-brush"
-        bgOpacity={0.2}
-		tags="autohotkey, ffmpeg, parsing"
-        
-		desc={
-			SK	? "Skript pre masové extrahovanie, spojenie a exportovanie timelapse súborov z Procreate prác pomocou 7z a FFMPEG."
-				: "Script for mass extraction, stitching and export of timelapse files from Procreate works using 7z and FFMPEG."
-		}
-		from="2019-12-17"
-		to="2020-01-21"
-		nav={[
-			{icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/ProcExp", isButton: true},
-			{icon: "fa fa-download", text: SK ? "Stiahnuť" : "Download", href:"https://github.com/iairu/ProcExp/releases"},
-		]}
-        />
-    <Thumb
-        name="Save the Princess"
-        bg="stp"
-        icon="fa fa-gamepad"
-        tags="javascript"
-        
-        desc={
-            SK 	? "Vanilla JavaScript hra inšpirovaná Street Fighterom. Prvý JavaScript projekt, stavané podľa MVC princípu."
-                : "Vanilla JavaScript game inspired by Street Fighter. First Javascript project, based on MVC."
-        }
-        from="2020-02-21"
-        to="2020-06-24"
-        nav={[
-            {icon: "fa fa-play", text: SK ? "Zahrať" : "Play", href:"/" + l.current + "/dev/save-the-princess/", isButton: true},
-            {icon: "fa fa-file-alt", text:"Docs [PDF]", href:"/dl/save-the-princess.pdf", hide: !SK},
-        ]}
-        />
-    <Thumb
-        name="PCAP Analyzer"
-        icon="fa fa-ethernet"
-        tags="python, networking"
-        
-        desc={
-            SK	? "Vypíše dáta paketu pre .pcap formát, viacmenej práca s interpretáciou surových bajtov podľa štyroch často používaných štandardov."
-                : "Prints packet data for the .pcap format, mostly work with interpreting raw bytes per four well-established standards."
-        }
-        from="2021-10-10"
-        to="2021-10-21"
-        nav={[
-            {icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/pcap_analyzer", isButton: true},
-        ]}
-        />
-	<Thumb
-        name="IPTables port-forwarding"
-        icon="fa fa-network-wired"
-		bgOpacity={0.2}
-        tags="iptables, networking, linux, sysadmin, blog"
-        
-        desc={
-            SK  ? "Návod nie len pre presmerovanie portov, ale všeobecné riešenie problémov v rámci IPTables." 
-                : "A walkthrough tutorial for not just port-forwarding, but problem solving when it comes to IPTables."
-        }
-        nav={[
-			{icon: "fa fa-book", text:"Read", href:"/" + l.current + "/dev/iptables-portforward/", isButton: true, hide: SK},
-			{icon: "fa fa-book", text:"Prečítať (Anglicky)", href:"/en/dev/iptables-portforward/", isButton: true, hide: !SK, static: true},
-        ]}
-        />
-    <Thumb 
-        name="Right to Repair"
-        icon="fa fa-tools"
-        bgOpacity={0.12}
-        tags="presentation, video"
-        
-        desc={
-            SK	? "Anglická prezentácia, ktorá rieši právo na opravu a temnú stránku spoločnosti Apple."
-                : "Presentation covering the Right to Repair and, on a related note, The Dark Side of Apple."
-        }
-        from="2020-12-03"
-        to="2020-12-08"
-        nav={[
-            {icon: "fab fa-youtube", text: SK ? "Pozrieť" : "Watch", href:"https://youtu.be/x2ToofrDWzw", isButton: true},
-            {icon: "fa fa-file-alt", text: SK ? "Slajdy [PDF]" : "Slides [PDF]", href:"/dl/right-to-repair-prez.pdf", static: true},
-        ]}
-        />
-	<Thumb 
-		name={ SK ? "GUI pre gTTS" : "GUI for gTTS"}
-		icon="fa fa-comment-dots"
-		tags="python"
-        
-		desc={
-			SK	? "Jednoduché grafické rozhranie pre gTTS (Google Text-to-Speech) knižnicu."
-				: "Simple interface for gTTS (Google Text-to-Speech) library."
-		}
-		from="2020-05-17"
-		to="2020-05-18"
-		nav={[
-			{icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/gTTSgui", isButton: true},
-			{icon: "fa fa-download", text: SK ? "Stiahnuť" : "Download", href:"https://github.com/iairu/gTTSgui/releases"},
-		]}
-		/>
-	<Thumb
-		name="iairu.com"
-		icon="fa fa-code"
-		tags="sapper, svelte, javascript, scss, html"
-        
-		desc={
-			SK  ? "Riešenie osobného webového portfólia (tejto stránky) cez Sapper framework."
-				: "A personal web portfolio solution (this site) using Sapper framework."
-		}
-		img="code_thumbs"
-		/>
-	<Thumb
-		name={SK ? "Masový nákup lístkov" : "Batch ticket shopping"}
-		icon="fa fa-shopping-cart"
-		tags="autohotkey"
-        
-		desc={
-			SK	? "Komplexná automatizácia nákupu cestovných lístkov, nakoľko UX portálu bolo a stále je mizerné. Skript nie je verejne dostupný."
-				: "Complex automatization for travel-ticket shopping. Script is not publicly available."
-		}
-		img="listky"
-		/>
-	<Thumb 
-		name={SK ? "Každodenná digitálna automatizácia" : "Everyday digital automation"}
-		icon="fa fa-file-code"
-		tags="autohotkey, blog"
-        
-		desc={
-			SK 	? "Viac ako 26 zaujímavých AutoHotkey skriptov pre automatizáciu repetitívnych digitálnych činností."
-				: "More than 26 interesting AutoHotkey scripts for automatization of repetitive digital activities."
-		}
-		nav={[
-			{icon: "fa fa-stream", text: SK ? "Pozrieť popisky skriptov" : "View descriptions (soon)", href: SK ? "/" + l.current + "/dev/ahk/" : "#", isButton: true, hide: !SK},
-			{icon: "fa fa-book", text:"Seminárna práca [PDF]", href:"/dl/seminarka.pdf", hide: !SK},
-		]}
-		/>
-	<Thumb 
-		name={SK ? "Linux návody" : "Linux tutorials"}
-		icon="fa fa-book"
-		tags="bash, sysadmin, vm"
-        
-		desc={
-			SK	? "Od inštalácie Debianu vo VM po sprevádzkovanie LAMP servera from scratch."
-				: "From Debian install inside a VM to LAMP-from-scratch server setup."
-		}
-		nav={[
-			{icon: "fa fa-th", text: SK ? "CheatSheet príkazov" : "Command CheatSheet (soon)", href: SK ? "/dl/linux-prikazy.svg" : "#", isButton: true, hide: !SK},
-			{icon: "fa fa-book", text:"1 - Inštalácia Debianu [PDF]", href:"/dl/linux-install.pdf", hide: !SK},
-			{icon: "fa fa-book", text:"2 - HTTP Server [PDF]", href:"/dl/linux-http.pdf", hide: !SK},
-		]}
-		/>
-	<Thumb 
-		name={SK ? "IPv4 kalkulačka + návod" : "IPv4 Calc"}
-		icon="fa fa-sitemap"
-		tags="c, networking, blog"
-        
-		desc={
-			SK	? "Vypočíta z adresy a masky počiatočnú a koncovú adresu siete."
-				: "Calculates network and broadcast address from any IP and mask."
-		}
-		nav={[
-			{icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/ipv4calc", isButton: true},
-			{icon: "fa fa-download", text: SK ? "Stiahnuť" : "Download", href:"https://github.com/iairu/ipv4calc/releases"},
-			{icon: "fa fa-book", text:"Návod na výpočet", href:"/" + l.current + "/dev/ipv4-calc/", isButton: true, hide: !SK},
-		]}
-		/>
-	<Thumb
-		name="Coffee Machine"
-		icon="fa fa-terminal"
-		tags="java"
-        
-		desc={
-			SK 	? "Jednoduchý CLI kávomat, prvý Java projekt."
-				: "Simple CLI coffee machine, first Java project."
-		}
-		from="2020-07-01"
-		to="2020-08-12"
-		nav={[
-			{icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/coffeeMachine", isButton: true},
-			{icon: "fa fa-download", text: SK ? "Stiahnuť" : "Download", href:"https://github.com/iairu/coffeeMachine/releases"},
-		]}
-		/>
-	{#if !SK}
-	<Thumb 
-		name="More stuff available in Slovak language"
-		icon="fa fa-globe-europe"
-		bg=""
-		desc="Additional documentation, localized project examples, ..."
-		nav={[
-			{icon: "fa fa-share", text:"Switch languages", href:"/sk#projects", static: true, modal: false, sameTarget: true},
-		]} 
-		/>
-	{:else}
-    <Thumb 
-        name="Programovací denník (Leto 2020)"
-        icon="fa fa-clipboard-list"
-        tags="blog"
-        
-        desc="Osobné projekty a experimenty počas leta v roku 2020."
-        nav={[
-            {icon: "fa fa-clipboard-list", text:"Prečítať", href:"/" + l.current + "/dev/log/", isButton: true},
-        ]} 
-        />
-	{/if}
-	<Thumb empty />
-	{:else}
-	<Thumb
-		name={SK ? "Grafické portfolio" : "Graphic design portfolio"}
-		bg="gfxbg"
-		bgOpacity={1} bgNoFilter
-		icon="dumpling-w"
-		tags="design, concepts, digital"
-        
-		desc={
-			SK	? "Koncepty brandingu, staršie dizajny webov a maturitný projekt."
-				: "Branding concepts, older web designs and a graduation project."
-		}
-		nav={[
-			{icon: "fa fa-share", text: SK ? "Navštíviť" : "Visit", href: SK ? "/gfx/" : "/gfx/en/", isButton: true, modal: false, static: true},
-		]}
-		/>
-	<Thumb
-		name={SK ? "Zrada kráľa" : "Treason"}
-		bg="zrada"
-		icon="fa fa-paint-brush"
-		tags="3d, animation, blender"
-        
-		desc={
-			SK	? "Maturitný projekt - Animovaný príbeh typografie: 3D Animácia vytvorená v Blenderi o svete písmeniek."
-				: "Graduation project - Animated typography story: 3D Animation made in Blender about a world of letters."
-		}
-		from="2019-03-28"
-		to="2019-05-14"
-		nav={[
-			{icon: "fa fa-share", text: SK ? "Prezentácia" : "Presentation", href: SK ? "/gfx/zrada/" : "/gfx/en/treason/", isButton: true, modal: false, static: true}, // todo: move to /old/gfx
-		]}
-		/>
-    <Thumb 
-        name={SK ? "Tajný projekt I (Dlhodobý)" : "Secret project I (Long-term)"}
-        icon="fa fa-hourglass-half"
-        tags="video, animation, story"
-        
-        from="2016-06-01"
-        progress={15}
-        />
-    <Thumb 
-        name={SK ? "Tajný projekt II (Krátkodobý)" : "Secret project II (Short-term)"}
-        icon="fa fa-hourglass-half"
-        tags="video, animation, story"
-        
-        from="2022-01-01"
-        progress={30}
-        />
-	{/if}
-</S>
-<S light icon="fa fa-feather-alt" name={SK ? "Biografia" : "Biography"} slug="bio" bg="url('/_index/beach.jpg') top repeat-x" pt pb>
-	<C count={2} let:column eq mrev>
-		{#if column === 0}
-			<Quote>
-				{#if SK}
-					Narodil som sa v Piešťanoch, študoval v Trenčíne a momentálne študujem v Bratislave. Od mala ma bavilo experimentovať s čímkoľvek, 
-					z čoho sa neskôr zrodil záujem o dva polárne rozdielne smery - technický a umelecký. Deň, kedy som dostal svoj prvý počítač, bol
-					dňom, ktorý ma kompletne vtiahol do digitálneho sveta, kde sa medze kreativite naozaj nekladú.
-				{:else}
-					I was born in Piešťany, studied in Trenčín and currently study in Bratislava. Ever since I was little, I was intrigued by experiments,
-					from which an interest for two polar opposites - technical and artistic direction - was born. The day I got my first computer was the day,
-					which completely sucked me into the digital world, where creativity barriers truly don't exist. 
-				{/if}
-			</Quote>
-			<p style="opacity:0.5; font-size: 10px;">
-				<span>Background photo by <a href="https://unsplash.com/@serjosoza">sergio souza</a> on <a href="https://unsplash.com/s/photos/scenery">Unsplash</a></span><br>
-				<span>Illustration by iairu</span>
-			</p>
-		{:else}
-			<S bg="url('/_index/bio.png') center center/contain no-repeat" fh up />
-		{/if}
-	</C>
-	<S row icon="fa fa-keyboard" name={SK ? "Schopnosti" : "Skills"} slug="skills" importance={2} hrd eq>
-		<Tabs names={[SK ? "Programovanie" : "Programming"]} let:active>
-			- HTML, CSS (SCSS), Git<br>
-			- JavaScript ES6 (Node.js, Svelte, Electron, {SK ? "základy Vue.js a Reactu" : "basics: Vue.js and React"}), PHP<br>
-			- C, Bash, {SK ? "Základné zručnosti v jazykoch" : "Basic knowledge of"} Java, Python<br>
-			- AutoHotkey
-		</Tabs>
-		<Tabs names={[SK ? "Grafický dizajn" : "Graphic design"]}>
-			{SK ? "- Expertné, každodenné skúsenosti s Adobe CC balíkom, najmä:"
-				: "- Expert, everyday experience with Adobe CC, especially:"}<br>
-			Adobe Photoshop, Adobe Illustrator, Adobe Premiere Pro, Adobe InDesign<br>
-			{SK ? "- Širšia znalosť softvéru Figma a Blender"
-				: "- Knowledge of Figma and Blender"}
-		</Tabs>
-	</S>
-	<S row icon="fa fa-graduation-cap" name={SK ? "Vzdelanie" : "Education"} slug="edu" importance={2} hrd eq>
-		<Tabs names={["FIIT " + (SK ? "(informatika)" : "(computer science)")]}>
-			{#if SK}
-			<b>Fakulta informatiky a informačných technológií STU</b> // September 2019 – Júl 2023<br>
-			<u>Odbor BC-INFO4 Informatika (bakalár), v druhej polovici 3. ročníka, 4-ročné štúdium</u><br>
-			- Priemer 1.41 (najlepších 11%) za prvé dva semestre<br>
-			- Nadobudnutie základov programovania v C++, JavaScript, PHP<br>
-			- Zlepšenie rešeršových a prezentačných schopností; práce s Linuxom
-			{:else}
-			<b>Faculty of Informatics and Information Technologies STU</b> // September 2019 – July 2023<br>
-			<u>BC-INFO4 Computer Science (bachelor), third year out of the 4-year study plan</u><br>
-			- Average 1.41 (not GPA) (top 11% of students) for first two semesters<br>
-			- Acquired basics of programming in C++, JavaScript and PHP languages<br>
-			- Improved research and presentation skills; work with Linux
-			{/if}
-		</Tabs>
-		<Tabs names={["SUPTN " + (SK ? "(grafický dizajn)" : "(graphic design)")]}>
-			{#if SK}
-			<b>Škola umeleckého priemyslu Trenčín</b> // September 2015 – Jún 2019<br>
-			<u>Odbor 8261 M Propagačná grafika, 4-ročné štúdium</u><br>
-			- Ukončené úplné stredné odborné vzdelanie<br>
-			- Nadobudnutie praktických aj teoretických znalostí v oblasti grafického dizajnu<br>
-			- Navrhovanie, organizácia, realizácia a prezentácia vlastnej grafickej a umeleckej tvorby<br>
-			- Skúsenosti s typografiou, printovými médiami, Adobe CC balíkom
-			{:else}
-			<b>Škola umeleckého priemyslu Trenčín</b> // September 2015 – June 2019<br>
-			<u>8261 M Propagation graphics, 4-year study plan</u><br>
-			- Acquired practical and theoretical knowledge in the field of graphic design<br>
-			- Conceptualization, organizing, realization and presentation of original graphic and artistic works<br>
-			- Experience with typography, print media and Adobe CC bundle
-			{/if}
-		</Tabs>
-	</S>
-</S>
-<S light icon="fa fa-comment-dots" name="Resume" slug="more" pt pb nbt sli>
-	<Nav nav={[
-        {icon: "far fa-file", text: (SK ? "Front-end developer / IT technik" : "Front-end developer / IT technician") + " [2022-06 PDF]", href: SK ? "/dl/resume-sk.pdf" : "/dl/resume-en.pdf", isButton: true},
-	]}/>
-</S>
+	
+	<div class="split-half art-half">
+		<h2 class="half-title">Umelecké Portfólio</h2>
+		<div class="highlights-grid">
+			<HighlightThumb
+				title="Zrada kráľa"
+				desc="3D Animation made in Blender about a world of letters."
+				link="/en/art/"
+				icon="fa fa-paint-brush"
+				badge="Featured"
+				status="hot"
+			/>
+			<HighlightThumb
+				title="Graphic design portfolio"
+				desc="Branding concepts, older web designs and digital art."
+				link="/en/art/"
+				icon="fa fa-pencil-ruler"
+				metric="Design"
+				status="updated"
+			/>
+		</div>
+		<a href="/en/art/" class="view-all-button secondary border-artist">View All Art Projects &rarr;</a>
+	</div>
+</div>
 
 <style lang="scss" global>
 	.highlights-grid {
@@ -492,115 +140,274 @@
 		}
 	}
 
-	.hero-section {
+	.split-hero-section {
 		display: flex;
 		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-		min-height: 50vh;
-		padding: 4rem 2rem;
-		text-align: center;
+		width: 100vw;
+		min-height: 80vh;
 		position: relative;
+		left: 50%;
+		right: 50%;
+		margin-left: -50vw;
+		margin-right: -50vw;
+		background: #000;
 		overflow: hidden;
 
-		.hero-content {
-			max-width: 800px;
-			z-index: 2;
+		@media (min-width: 900px) {
+			flex-direction: row;
+			min-height: 70vh;
+		}
+
+		.split-side {
+			flex: 1;
 			position: relative;
-		}
-
-		.hero-title {
-			font-size: clamp(2.5rem, 5vw, 4rem);
-			font-weight: 800;
-			line-height: 1.1;
-			margin-bottom: 1.5rem;
-			letter-spacing: -0.02em;
-
-			.gradient-text {
-				background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-				-webkit-background-clip: text;
-				-webkit-text-fill-color: transparent;
-				background-clip: text;
-				color: transparent;
-			}
-		}
-
-		.hero-subtitle {
-			font-size: clamp(1.1rem, 2vw, 1.25rem);
-			color: #666;
-			line-height: 1.6;
-			margin-bottom: 2.5rem;
-			max-width: 600px;
-			margin-left: auto;
-			margin-right: auto;
-			
-			// Adjust color for dark mode gracefully inside Svelte's global scoping by making text inherit dark properties via body naturally, but forcing opacity
-			:global(body.dark) & {
-				color: rgba(255, 255, 255, 0.7);
-			}
-		}
-
-		.hero-cta {
 			display: flex;
-			gap: 1rem;
+			align-items: center;
 			justify-content: center;
-			flex-wrap: wrap;
+			text-decoration: none;
+			padding: 4rem 2rem;
+			color: white;
+			transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+			z-index: 1;
+			overflow: hidden;
+			
+			&::before {
+				content: '';
+				position: absolute;
+				top: 0; left: 0; right: 0; bottom: 0;
+				background: rgba(0,0,0,0.4);
+				transition: background 0.5s ease;
+				z-index: 0;
+			}
 
-			.cta-button {
-				padding: 0.875rem 1.5rem;
-				border-radius: 8px;
-				font-weight: 600;
-				font-size: 1rem;
-				text-decoration: none;
-				transition: all 0.2s ease;
+			.content-wrapper {
+				position: relative;
+				z-index: 2;
+				text-align: center;
+				max-width: 500px;
+				transition: transform 0.5s ease;
+			}
+			
+			.icon-wrapper {
+				font-size: 3rem;
+				margin-bottom: 1.5rem;
+				opacity: 0.8;
+				transition: all 0.3s ease;
+			}
 
-				&.primary {
-					background: #3b82f6;
-					color: white;
-					box-shadow: 0 4px 14px rgba(59, 130, 246, 0.3);
-
-					&:hover {
-						background: #2563eb;
-						transform: translateY(-2px);
-						box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
-					}
+			.split-title {
+				font-size: clamp(2rem, 4vw, 3.5rem);
+				font-weight: 800;
+				line-height: 1.1;
+				margin: 0 0 1rem 0;
+				letter-spacing: -0.02em;
+				
+				span {
+					display: block;
 				}
+			}
 
-				&.secondary {
-					background: transparent;
-					color: #333;
-					border: 1px solid rgba(0, 0, 0, 0.1);
+			.split-subtitle {
+				font-size: clamp(1rem, 1.5vw, 1.25rem);
+				opacity: 0.8;
+				line-height: 1.6;
+				margin-bottom: 2rem;
+				transition: opacity 0.3s ease;
+			}
+			
+			.explore-btn {
+				display: inline-block;
+				padding: 0.75rem 1.5rem;
+				border: 1px solid rgba(255,255,255,0.3);
+				font-weight: 600;
+				text-transform: uppercase;
+				letter-spacing: 0.05em;
+				font-size: 0.9rem;
+				transition: all 0.3s ease;
+				background: rgba(0,0,0,0.2);
+				backdrop-filter: blur(4px);
+			}
 
-					:global(body.dark) & {
-						color: white;
-						border-color: rgba(255, 255, 255, 0.2);
-					}
+			.side-background {
+				position: absolute;
+				top: 0; left: 0; right: 0; bottom: 0;
+				z-index: -1;
+				background-size: cover;
+				background-position: center;
+				transition: transform 0.8s scale;
+			}
 
-					&:hover {
-						background: rgba(0, 0, 0, 0.05);
-						
-						:global(body.dark) & {
-							background: rgba(255, 255, 255, 0.05);
-						}
-					}
+			&:hover {
+				flex: 1.15;
+				
+				&::before {
+					background: rgba(0,0,0,0.1);
+				}
+				
+				.content-wrapper {
+					transform: scale(1.05);
+				}
+				
+				.icon-wrapper {
+					transform: translateY(-10px);
+					opacity: 1;
+				}
+				
+				.side-background {
+					transform: scale(1.05);
+				}
+				
+				.explore-btn {
+					background: white;
+					color: black;
 				}
 			}
 		}
 
-		.hero-background-glow {
-			position: absolute;
-			top: 50%;
-			left: 50%;
-			width: 60vw;
-			height: 60vw;
-			transform: translate(-50%, -50%);
-			background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
-			z-index: 1;
-			pointer-events: none;
+		.it-side {
+			.side-background {
+				background: radial-gradient(circle at center, rgba(59, 130, 246, 0.4) 0%, rgba(10, 20, 40, 0.9) 100%);
+			}
+			&::after {
+				content: '';
+				position: absolute;
+				top: 0; right: 0; bottom: 0; width: 1px;
+				background: rgba(59, 130, 246, 0.5);
+			}
+			&:hover .icon-wrapper { color: rgb(96, 165, 250); text-shadow: 0 0 20px rgba(59, 130, 246, 0.8); }
+		}
 
-			:global(body.dark) & {
-				background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 70%);
+		.art-side {
+			.side-background {
+				background: radial-gradient(circle at center, rgba(16, 185, 129, 0.4) 0%, rgba(10, 30, 20, 0.9) 100%);
+			}
+			&::after {
+				content: '';
+				position: absolute;
+				top: 0; left: 0; bottom: 0; width: 1px;
+				background: rgba(16, 185, 129, 0.5);
+			}
+			&:hover .icon-wrapper { color: rgb(52, 211, 153); text-shadow: 0 0 20px rgba(16, 185, 129, 0.8); }
+		}
+
+		.split-divider {
+			position: absolute;
+			left: 50%;
+			top: 50%;
+			transform: translate(-50%, -50%);
+			z-index: 10;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			pointer-events: none;
+			
+			@media (max-width: 899px) {
+				flex-direction: column;
+				width: 100%;
+				height: auto;
+			}
+
+			.divider-line {
+				position: absolute;
+				background: rgba(255, 255, 255, 0.2);
+				
+				@media (min-width: 900px) {
+					width: 2px;
+					height: 100vh;
+				}
+				@media (max-width: 899px) {
+					height: 2px;
+					width: 100vw;
+				}
+			}
+
+			.divider-circle {
+				position: relative;
+				width: 50px;
+				height: 50px;
+				background: #09090b;
+				border: 2px solid rgba(255, 255, 255, 0.2);
+				border-radius: 50%;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				color: rgba(255, 255, 255, 0.6);
+				font-size: 0.8rem;
+				font-weight: bold;
+				letter-spacing: 0.1em;
+				backdrop-filter: blur(10px);
 			}
 		}
 	}
+		.view-all-button {
+			display: inline-block;
+			margin-top: 2rem;
+			padding: 0.875rem 1.5rem;
+			border-radius: 0;
+			font-weight: 600;
+			font-size: 1rem;
+			text-decoration: none;
+			transition: all 0.2s ease;
+			border: 1px solid transparent;
+
+			&.primary {
+				background: rgba(59, 130, 246, 0.1);
+				color: rgba(59, 130, 246, 1);
+				border-color: rgba(59, 130, 246, 0.5);
+
+				&:hover {
+					background: rgba(59, 130, 246, 0.2);
+					transform: translateY(-2px);
+				}
+			}
+
+			&.secondary {
+				background: rgba(16, 185, 129, 0.1);
+				color: rgba(16, 185, 129, 1);
+				border-color: rgba(16, 185, 129, 0.5);
+
+				&:hover {
+					background: rgba(16, 185, 129, 0.2);
+					transform: translateY(-2px);
+				}
+			}
+		}
+
+		.highlights-grid {
+			display: flex;
+			flex-direction: column;
+			gap: 1.5rem;
+		}
+
+		.split-highlights-container {
+			display: flex;
+			flex-direction: column;
+			width: 100%;
+			max-width: 1400px;
+			margin: 0 auto;
+			padding: 2rem;
+			gap: 4rem;
+
+			@media (min-width: 900px) {
+				flex-direction: row;
+				padding: 4rem;
+				gap: 4rem;
+			}
+		}
+
+		.split-half {
+			flex: 1;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+
+			.half-title {
+				font-size: 2rem;
+				margin-bottom: 2rem;
+				text-align: center;
+			}
+
+			&.it-half .half-title { color: rgb(59, 130, 246); }
+			&.art-half .half-title { color: rgb(16, 185, 129); }
+		}
 </style>

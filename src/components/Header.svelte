@@ -42,7 +42,7 @@
         display: flex;
         padding: 1em 2em;
         background: white;
-        border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+        border-bottom: 1px solid rgba(var(--theme-color-rgb), 0.2);
         @media (max-width: 850px) {
             border-color: #ccc;
         }
@@ -77,7 +77,7 @@
                     }
 
                     &:hover {
-                        color: #3b82f6;
+                        color: rgba(var(--theme-color-rgb), 1);
                     }
                 }
 
@@ -96,16 +96,16 @@
 
             .theme-toggle {
                 padding: 8px 12px;
-                background: rgba(59, 130, 246, 0.1);
-                border: 1px solid rgba(59, 130, 246, 0.2);
-                border-radius: 6px;
+                background: rgba(var(--theme-color-rgb), 0.1);
+                border: 1px solid rgba(var(--theme-color-rgb), 0.2);
+                border-radius: 0;
                 cursor: pointer;
-                color: rgba(59, 130, 246, 0.9);
+                color: rgba(var(--theme-color-rgb), 0.9);
                 transition: all 0.2s ease;
 
                 &:hover {
-                    background: rgba(59, 130, 246, 0.2);
-                    border-color: rgba(59, 130, 246, 0.4);
+                    background: rgba(var(--theme-color-rgb), 0.2);
+                    border-color: rgba(var(--theme-color-rgb), 0.4);
                 }
 
                 i {

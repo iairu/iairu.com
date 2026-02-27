@@ -1,5 +1,5 @@
 <script>
-    import { content } from './ContentStore.svelte';
+    import { content, sidebarCollapsed } from './ContentStore.svelte';
     import { lang } from './LangStore.svelte';
     import { onMount } from 'svelte';
 
@@ -29,6 +29,7 @@
     let currentMode = 'it';
     let currentLang = 'en';
     let openSections = {};
+    let isCollapsed = false;
 
     content.subscribe(mode => {
         currentMode = mode;
@@ -37,6 +38,14 @@
     lang.subscribe(l => {
         currentLang = l.current;
     });
+
+    sidebarCollapsed.subscribe(collapsed => {
+        isCollapsed = collapsed;
+    });
+
+    function toggleSidebar() {
+        sidebarCollapsed.update(n => !n);
+    }
 
     function toggleSection(section) {
         openSections[section] = !openSections[section];
@@ -61,13 +70,19 @@
     }
 </script>
 
-<aside class="sidebar" class:open={isOpen}>
+<aside class="sidebar" class:open={isOpen} class:collapsed={isCollapsed}>
     <div class="sidebar-content">
-        <h3 class="sidebar-title">
-            {currentMode === 'it' ? 'IT Garden' : 'Art Garden'}
-        </h3>
+        <div class="sidebar-header-row">
+            <h3 class="sidebar-title" style="color: {currentMode === 'it' ? 'rgba(59, 130, 246, 1)' : 'rgba(16, 185, 129, 1)'}; border-bottom-color: {currentMode === 'it' ? 'rgba(59, 130, 246, 0.5)' : 'rgba(16, 185, 129, 0.5)'}">
+                {currentMode === 'it' ? 'IT Garden' : 'Art Garden'}
+            </h3>
+            <button class="collapse-toggle" on:click={toggleSidebar} title="Toggle Sidebar">
+                <i class="fa fa-chevron-left"></i>
+            </button>
+        </div>
 
-        {#each Object.entries(getStructure()) as [section, items]}
+        <div class="sidebar-scrollable" class:hidden={isCollapsed}>
+            {#each Object.entries(getStructure()) as [section, items]}
             <div class="sidebar-section">
                 <button
                     class="section-header"
@@ -94,7 +109,16 @@
                 {/if}
             </div>
         {/each}
+        </div>
     </div>
+    
+    {#if isCollapsed}
+    <div class="collapsed-sidebar-pill">
+        <button class="expand-toggle" on:click={toggleSidebar} title="Expand Sidebar">
+            <i class="fa fa-chevron-right"></i>
+        </button>
+    </div>
+    {/if}
 </aside>
 
 <style lang="scss" global>
@@ -106,7 +130,7 @@
         height: 100vh;
         overflow-y: auto;
         padding: 80px 20px 20px 20px;
-        border-right: 1px solid rgba(59, 130, 246, 0.2);
+        border-right: 1px solid rgba(var(--theme-color-rgb), 0.2);
         background: rgba(255, 255, 255, 0.95);
         
         :global(body.dark-theme) & {
@@ -120,7 +144,7 @@
         transition: transform 0.3s ease-in-out;
         z-index: 100;
         box-shadow:
-            2px 0 20px rgba(59, 130, 246, 0.1),
+            2px 0 20px rgba(var(--theme-color-rgb), 0.1),
             inset -1px 0 0 rgba(255, 255, 255, 0.1);
 
         &.open {
@@ -136,7 +160,7 @@
             height: 100%;
             background: linear-gradient(180deg,
                 transparent,
-                rgba(59, 130, 246, 0.3),
+                rgba(var(--theme-color-rgb), 0.3),
                 transparent);
         }
 
@@ -148,30 +172,90 @@
             max-height: 100vh;
             padding: 20px;
             border: none;
-            border-right: 1px solid rgba(59, 130, 246, 0.2);
+            border-right: 1px solid rgba(var(--theme-color-rgb), 0.2);
             border-radius: 0;
-            z-index: 1;
+            z-index: 10;
             box-shadow:
-                2px 0 20px rgba(59, 130, 246, 0.08),
+                2px 0 20px rgba(var(--theme-color-rgb), 0.08),
                 inset -1px 0 0 rgba(255, 255, 255, 0.1);
+                
+            &.collapsed {
+                width: 60px;
+                padding: 20px 10px;
+                
+                .sidebar-content {
+                    opacity: 0;
+                    pointer-events: none;
+                    visibility: hidden;
+                }
+            }
         }
 
         .sidebar-content {
             display: flex;
             flex-direction: column;
             gap: 5px;
+            transition: opacity 0.2s ease;
+        }
+
+        .sidebar-header-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            border-bottom: 2px solid transparent; /* Replaced by inline styles */
+        }
+        
+        .collapse-toggle {
+            background: transparent;
+            border: 1px solid rgba(128, 128, 128, 0.2);
+            color: inherit;
+            cursor: pointer;
+            padding: 4px 8px;
+            font-size: 0.8rem;
+            transition: all 0.2s;
+            
+            &:hover {
+                background: rgba(128, 128, 128, 0.1);
+            }
+            
+            :global(body.dark-theme) & {
+                color: rgba(255,255,255,0.7);
+            }
+        }
+        
+        .collapsed-sidebar-pill {
+            position: absolute;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            
+            .expand-toggle {
+                background: rgba(var(--theme-color-rgb), 0.1);
+                border: 1px solid rgba(var(--theme-color-rgb), 0.3);
+                color: rgba(var(--theme-color-rgb), 1);
+                cursor: pointer;
+                padding: 8px 12px;
+                transition: all 0.2s;
+                
+                &:hover {
+                    background: rgba(var(--theme-color-rgb), 0.2);
+                }
+            }
+        }
+        
+        .sidebar-scrollable {
+            &.hidden {
+                display: none;
+            }
         }
 
         .sidebar-title {
-            margin: 0 0 15px 0;
-            padding-bottom: 10px;
-            border-bottom: 2px solid black;
+            margin: 0;
+            padding-bottom: 5px;
             font-size: 1.2em;
             font-weight: bold;
-
-            :global(body.dark-theme) & {
-                border-bottom-color: rgba(255, 255, 255, 0.85);
-            }
+            transition: color 0.3s;
         }
 
         .sidebar-section {
@@ -185,8 +269,8 @@
             width: 100%;
             padding: 8px 10px;
             background: transparent;
-            border: 1px solid rgba(59, 130, 246, 0.2);
-            border-radius: 5px;
+            border: 1px solid rgba(var(--theme-color-rgb), 0.2);
+            border-radius: 0;
             cursor: pointer;
             font-weight: bold;
             font-size: 0.95em;
@@ -209,15 +293,15 @@
                 height: 100%;
                 background: linear-gradient(90deg,
                     transparent,
-                    rgba(59, 130, 246, 0.1),
+                    rgba(var(--theme-color-rgb), 0.1),
                     transparent);
                 transition: left 0.3s;
             }
 
             &:hover {
-                background: rgba(59, 130, 246, 0.05);
-                border-color: rgba(59, 130, 246, 0.4);
-                box-shadow: 0 0 10px rgba(59, 130, 246, 0.1);
+                background: rgba(var(--theme-color-rgb), 0.05);
+                border-color: rgba(var(--theme-color-rgb), 0.4);
+                box-shadow: 0 0 10px rgba(var(--theme-color-rgb), 0.1);
 
                 &::before {
                     left: 100%;
@@ -256,7 +340,7 @@
             :global(body.dark-theme) & {
                 color: rgba(255, 255, 255, 0.85);
             }
-            border-radius: 4px;
+            border-radius: 0;
             font-size: 0.9em;
             transition: all 0.2s;
             display: block;
@@ -285,7 +369,7 @@
 
         &::-webkit-scrollbar-thumb {
             background: rgba(0, 0, 0, 0.2);
-            border-radius: 3px;
+            border-radius: 0;
 
             &:hover {
                 background: rgba(0, 0, 0, 0.3);

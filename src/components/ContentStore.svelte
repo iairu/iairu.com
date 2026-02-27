@@ -12,4 +12,7 @@
             }
         }
     };
+
+    // Global sidebar state
+    export const sidebarCollapsed = writable(false);
 </script>

@@ -39,18 +39,25 @@
         align-items: center;
         gap: 6px;
         padding: 6px 12px;
-        background: rgba(59, 130, 246, 0.1);
-        border: 1px solid rgba(59, 130, 246, 0.2);
-        border-radius: 6px;
+        background: rgba(var(--theme-color-rgb), 0.1);
+        border: 1px solid rgba(var(--theme-color-rgb), 0.2);
+        border-radius: 0;
         text-decoration: none;
         transition: all 0.2s;
         font-size: 0.75em;
 
+        :global(body.dark-theme) & {
+            border-color: rgba(255, 255, 255, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+            .badge-text { color: white; }
+            .badge-icon { color: white !important; }
+        }
+
         &:hover {
-            background: rgba(59, 130, 246, 0.15);
-            border-color: rgba(59, 130, 246, 0.4);
+            background: rgba(var(--theme-color-rgb), 0.15);
+            border-color: rgba(var(--theme-color-rgb), 0.4);
             transform: translateY(-1px);
-            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+            box-shadow: 0 4px 12px rgba(var(--theme-color-rgb), 0.2);
         }
 
         &.compact {
@@ -71,7 +78,7 @@
         }
 
         .badge-text {
-            color: rgba(59, 130, 246, 0.9);
+            color: rgba(var(--theme-color-rgb), 0.9);
             font-weight: 500;
             white-space: nowrap;
         }

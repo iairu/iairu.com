@@ -35,7 +35,7 @@
         flex-wrap: wrap;
         position: relative;
         border: 1px solid rgba(0,0,0,0.2);
-        border-radius: 5px;
+        border-radius: 0;
         overflow: hidden;
         margin: 5px 0;
         button {
@@ -75,7 +75,7 @@
             flex-flow: row;
             border: 1px solid rgba(0,0,0,0.2);
             border-bottom: none;
-            border-radius: 5px 5px 0 0;
+            border-radius: 0;
             overflow: hidden;
             margin-bottom: -1px;
             button {
