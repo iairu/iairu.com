@@ -29,7 +29,7 @@
         z-index: 101;
         background: white;
         border: 2px solid black;
-        border-radius: 8px;
+        border-radius: 0;
         padding: 10px;
         cursor: pointer;
         display: flex;

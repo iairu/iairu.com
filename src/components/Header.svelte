@@ -23,6 +23,7 @@
     <div class="content">
         {#if showHomeArrow}<a class="home" href={"/" + ($lang.current ? $lang.current : "")}><i class="fa fa-angle-double-left"></i></a>{/if}
         <div class="left">
+            <a href="/" class="logo" class:dark={$dark}>iairu</a>
             {#if useLangSelector}
             <LangSelector dark={$dark} />
             {/if}
@@ -61,6 +62,25 @@
                 >*:not(:last-child) {
                     margin-right: 10px;
                 }
+                
+                .logo {
+                    font-size: 1.5rem;
+                    font-weight: 900;
+                    letter-spacing: -0.05em;
+                    text-decoration: none;
+                    margin-right: 20px;
+                    color: black;
+                    transition: color 0.3s ease;
+                    
+                    &.dark {
+                        color: white;
+                    }
+
+                    &:hover {
+                        color: #3b82f6;
+                    }
+                }
+
                 .selectors {
                     display: flex;
                     flex-direction: column;

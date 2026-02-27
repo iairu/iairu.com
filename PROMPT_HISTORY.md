@@ -1,1 +1,5 @@
 improve site design, remove unnecessary features from sidebar, make simpler and more accessible with existing features, remove unnecessary features from header, improve dark mode, improve mobile responsive css, add hero-style intro for homepage that looks like one of those fancy ai websites
+
+---
+
+dark mode does not work properly for sidebar and some text on site that is kept black, all text should be a shade of white when dark mode is active, nothing should have white-ish background when dark mode is active, make sure to invert (and adjust with css filters like hue) any images that are used on the site under dark mode, add "iairu" (aka "i air you" as software developer/artist) style logo, make sure there are no dead buttons that lead to 404 page, make sure art portfolio can be opened and adjust the hero branding to include this "split attraction" reality

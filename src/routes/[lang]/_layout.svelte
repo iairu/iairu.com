@@ -232,6 +232,11 @@
 						color: rgba(96, 165, 250, 1);
 					}
 				}
+				
+				img {
+					filter: invert(1) hue-rotate(180deg);
+					opacity: 0.9;
+				}
 
 				code {
 					background-color: rgba(255, 255, 255, 0.08);

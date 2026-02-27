@@ -216,8 +216,8 @@
         }
         &.dark {
             color: white;
-            background: #222222;
-            border: 1px solid #2e2e2e;
+            background: #111113;
+            border: 1px solid rgba(255, 255, 255, 0.1);
             border-left: none;
             border-right: none;
         }

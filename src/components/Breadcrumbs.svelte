@@ -43,8 +43,8 @@
 
 <style lang="scss" global>
     .breadcrumbs {
-        padding: 10px 0;
-        margin-bottom: 20px;
+        padding: 0;
+        margin-bottom: 40px;
 
         .breadcrumb-list {
             display: flex;

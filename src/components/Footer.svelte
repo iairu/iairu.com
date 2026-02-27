@@ -216,7 +216,7 @@
                 padding: 10px 20px;
                 background: rgba(59, 130, 246, 0.1);
                 border: 1px solid rgba(59, 130, 246, 0.3);
-                border-radius: 6px;
+                border-radius: 0;
                 cursor: pointer;
                 font-size: 18px;
                 font-weight: 600;
@@ -257,13 +257,14 @@
                 a {
                     display: block;
                     padding: 5px 0;
-                    color: #666;
+                    color: #333;
                     text-decoration: none;
                     font-size: 14px;
                     transition: all 0.2s ease;
+                    font-weight: 500;
 
                     &:hover {
-                        color: rgba(59, 130, 246, 0.9);
+                        color: rgba(59, 130, 246, 1);
                         padding-left: 5px;
                     }
                 }
@@ -305,7 +306,7 @@
             padding: 15px;
             background: rgba(59, 130, 246, 0.03);
             border: 1px solid rgba(59, 130, 246, 0.1);
-            border-radius: 8px;
+            border-radius: 0;
 
             .status-item {
                 display: flex;
@@ -319,8 +320,9 @@
                 }
 
                 .status-text {
-                    color: #666;
+                    color: #333;
                     font-family: monospace;
+                    font-weight: 600;
                 }
             }
         }

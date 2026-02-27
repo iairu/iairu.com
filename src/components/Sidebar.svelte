@@ -108,6 +108,12 @@
         padding: 80px 20px 20px 20px;
         border-right: 1px solid rgba(59, 130, 246, 0.2);
         background: rgba(255, 255, 255, 0.95);
+        
+        :global(body.dark-theme) & {
+            background: rgba(10, 10, 12, 0.95);
+            border-right-color: rgba(255, 255, 255, 0.1);
+        }
+
         backdrop-filter: blur(10px);
         flex-shrink: 0;
         transform: translateX(-100%);
@@ -162,6 +168,10 @@
             border-bottom: 2px solid black;
             font-size: 1.2em;
             font-weight: bold;
+
+            :global(body.dark-theme) & {
+                border-bottom-color: rgba(255, 255, 255, 0.85);
+            }
         }
 
         .sidebar-section {
@@ -183,6 +193,10 @@
             transition: all 0.2s;
             text-align: left;
             color: black;
+
+            :global(body.dark-theme) & {
+                color: rgba(255, 255, 255, 0.85);
+            }
             position: relative;
             overflow: hidden;
 
@@ -238,6 +252,10 @@
             padding: 6px 10px;
             text-decoration: none;
             color: black;
+            
+            :global(body.dark-theme) & {
+                color: rgba(255, 255, 255, 0.85);
+            }
             border-radius: 4px;
             font-size: 0.9em;
             transition: all 0.2s;

@@ -39,15 +39,15 @@
 <section class="hero-section">
 	<div class="hero-content">
 		<h1 class="hero-title">
-			{SK ? 'Budúcnosť je ' : 'The future is '}
-			<span class="gradient-text">{SK ? 'torená dnes.' : 'created today.'}</span>
+			{SK ? 'Kód a ' : 'Code and '}
+			<span class="gradient-text">{SK ? 'Umenie.' : 'Art.'}</span>
 		</h1>
 		<p class="hero-subtitle">
-			{SK ? 'Premýšľam o budúcnosti technológií a aktívne prispievam k jej formovaniu. Full-stack vývoj a inžinierstvo systému so zameraním na precíznosť.' : 'Thinking about the future of technology and actively contributing to shape it. Full-stack development and system engineering with a focus on precision.'}
+			{SK ? 'Spojenie precízneho softvérového inžinierstva s kreatívnym digitálnym dizajnom.' : 'Fusing precise software engineering with creative digital design.'}
 		</p>
 		<div class="hero-cta">
-			<a href="#projects" class="cta-button primary">{SK ? 'Zobraziť projekty' : 'View Projects'}</a>
-			<a href={SK ? '/dev/about' : '/en/dev/about'} class="cta-button secondary">{SK ? 'Digitálna záhrada' : 'Digital Garden'}</a>
+			<a href="#projects" class="cta-button primary" on:click={() => content.setMode('it')}>{SK ? 'Softvérové inžinierstvo' : 'Software Engineering'}</a>
+			<a href="#projects" class="cta-button secondary border-artist" on:click={() => content.setMode('art')}>{SK ? 'Umelecké portfólio' : 'Art Portfolio'}</a>
 		</div>
 	</div>
 	<div class="hero-background-glow"></div>
@@ -180,7 +180,7 @@
         from="2020-02-21"
         to="2020-06-24"
         nav={[
-            {icon: "fa fa-play", text: SK ? "Zahrať" : "Play", href:"/dev/save-the-princess/", isButton: true},
+            {icon: "fa fa-play", text: SK ? "Zahrať" : "Play", href:"/" + l.current + "/dev/save-the-princess/", isButton: true},
             {icon: "fa fa-file-alt", text:"Docs [PDF]", href:"/dl/save-the-princess.pdf", hide: !SK},
         ]}
         />
@@ -210,7 +210,7 @@
                 : "A walkthrough tutorial for not just port-forwarding, but problem solving when it comes to IPTables."
         }
         nav={[
-			{icon: "fa fa-book", text:"Read", href:"/dev/iptables-portforward/", isButton: true, hide: SK},
+			{icon: "fa fa-book", text:"Read", href:"/" + l.current + "/dev/iptables-portforward/", isButton: true, hide: SK},
 			{icon: "fa fa-book", text:"Prečítať (Anglicky)", href:"/en/dev/iptables-portforward/", isButton: true, hide: !SK, static: true},
         ]}
         />
@@ -279,7 +279,7 @@
 				: "More than 26 interesting AutoHotkey scripts for automatization of repetitive digital activities."
 		}
 		nav={[
-			{icon: "fa fa-stream", text: SK ? "Pozrieť popisky skriptov" : "View descriptions (soon)", href: SK ? "/dev/ahk/" : "#", isButton: true, hide: !SK},
+			{icon: "fa fa-stream", text: SK ? "Pozrieť popisky skriptov" : "View descriptions (soon)", href: SK ? "/" + l.current + "/dev/ahk/" : "#", isButton: true, hide: !SK},
 			{icon: "fa fa-book", text:"Seminárna práca [PDF]", href:"/dl/seminarka.pdf", hide: !SK},
 		]}
 		/>
@@ -310,7 +310,7 @@
 		nav={[
 			{icon: "fa fa-code-branch", text:"GitHub", href:"https://github.com/iairu/ipv4calc", isButton: true},
 			{icon: "fa fa-download", text: SK ? "Stiahnuť" : "Download", href:"https://github.com/iairu/ipv4calc/releases"},
-			{icon: "fa fa-book", text:"Návod na výpočet", href:"/dev/ipv4-calc/", isButton: true, hide: !SK},
+			{icon: "fa fa-book", text:"Návod na výpočet", href:"/" + l.current + "/dev/ipv4-calc/", isButton: true, hide: !SK},
 		]}
 		/>
 	<Thumb
@@ -347,7 +347,7 @@
         
         desc="Osobné projekty a experimenty počas leta v roku 2020."
         nav={[
-            {icon: "fa fa-clipboard-list", text:"Prečítať", href:"/dev/log/", isButton: true},
+            {icon: "fa fa-clipboard-list", text:"Prečítať", href:"/" + l.current + "/dev/log/", isButton: true},
         ]} 
         />
 	{/if}
