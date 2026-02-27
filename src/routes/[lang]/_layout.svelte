@@ -1,8 +1,14 @@
 <script>
 	import { lang } from '../../components/LangStore.svelte';
+	import { dark } from '../../components/DarkStore.svelte';
 	import Header from '../../components/Header.svelte';
+	import Sidebar from '../../components/Sidebar.svelte';
+	import SidebarToggle from '../../components/SidebarToggle.svelte';
+	import Breadcrumbs from '../../components/Breadcrumbs.svelte';
+	import AccessibilityApplier from '../../components/AccessibilityApplier.svelte';
+	import '../../components/TechStyles.svelte';
+	import { href } from '../../components/Modal.svelte';
 	import Modal from '../../components/Modal.svelte';
-	import { dark, darkHeader } from '../../components/DarkStore.svelte';
 	import { onMount } from 'svelte';
 	import ToTop from '../../components/ToTop.svelte';
 	import Nav from '../../components/Nav.svelte';
@@ -14,10 +20,19 @@
 
 	export let external = false; // _layout is imported externally and language error shouldn't be checked
 	let error = false;
+	let sidebarOpen = false;
+
+	function toggleSidebar() {
+		sidebarOpen = !sidebarOpen;
+	}
+
+	function closeSidebar() {
+		sidebarOpen = false;
+	}
 
 	// Current Language and Slug from URL & lang store linkup
 	let currentSlug = "";
-    let currentURLlang = "en";
+	let currentURLlang = "en";
 	const unsubPage = page.subscribe(({ path, params })=>{
 		currentSlug = path;
 		currentURLlang = params.lang;
@@ -30,34 +45,27 @@
 		supported = lng.supported;
 	});
 	error = (!external && !supported.includes(currentURLlang)) ? true : false;
-    let currentSlugOnly = "";
-    $: currentSlugOnly = ((slug) => {
-        let slugNoLang = ""
-        let parts = slug.split("/")
-        if (parts.length > 1) {
-            if (parts[0] == "") { parts.shift() }
-            if (supported.indexOf(parts[0]) > -1) { parts.shift() }
-        }
-        slugNoLang = parts.join("/")
-        return slugNoLang
-    })(currentSlug)
 	
     function isHomepage(slug, lang) {
         return slug == "/" + lang || 
                slug == "/" + lang + "/";
     }
 
-    // list of embedded slugs (excluding "/[lang]/"), where header and footer won't be shown (for custom layout and embedding)
-    let embedded = ["links"]
-    
+	// Dark theme handling
+	dark.subscribe(isDark => {
+		if (typeof document !== 'undefined') {
+			if (isDark) {
+				document.body.classList.add('dark-theme');
+			} else {
+				document.body.classList.remove('dark-theme');
+			}
+		}
+	});
+
 	// Checks relying on Window available after mounting & onDestroy
-	let isEmbedded = false;
-    $: isEmbedded = ((slugOnly) => {
-        if (embedded.indexOf(slugOnly) > -1) { return true; }
-    })(currentSlugOnly)
-	let isIFrame = false;
+	let isIframe = false;
 	onMount(()=>{
-        if (window.location !== window.parent.location) { isEmbedded = true; isIFrame = true;} // site in <iframe>
+		if (window.location !== window.parent.location) { isIframe = true;}
 		return ()=>{
 			unsubLang();
 			unsubPage();
@@ -66,59 +74,56 @@
 </script>
 
 {#if !error}
+<!-- Accessibility Settings Applier -->
+<AccessibilityApplier />
+
+<!-- Grid Background -->
+<div class="grid-bg"></div>
+
 <!-- Site content -->
-{#if !isEmbedded}
-    {#if isHomepage(currentSlug, currentURLlang)}
+{#if !isIframe}
+	<SidebarToggle onClick={toggleSidebar} isOpen={sidebarOpen} />
 	<Header nav={[
-		{icon: "fa fa-feather-alt", 	text: current === "sk" ? "Biografia" : "Biography", href: "#bio"},
-		{icon: "fa fa-graduation-cap", 	text: current === "sk" ? "Vzdelanie" : "Education", href: "#edu"},
+		{icon: "fab fa-facebook-messenger", text: "Messenger", href: "https://m.me/iairu"},
 		{icon: "fab fa-linkedin", text: "LinkedIn", href: "https://www.linkedin.com/in/iairu"},
 		{icon: "fab fa-github", text: "GitHub", href: "https://github.com/iairu"},
 		{icon: "fa fa-envelope", text: "E-mail: spanik11@gmail.com", href: "mailto:spanik11@gmail.com", hideExt: true}
-	]} />
-	{:else}
-   	<Header nav={[
-        {icon: "fa fa-home", text: current === "sk" ? "Domov" : "Homepage", href: "/", hideExt: true, sameTarget: true, modal: false},
-        {icon: "fab fa-linkedin", text: "LinkedIn", href: "https://www.linkedin.com/in/iairu"},
-        {icon: "fab fa-github", text: "GitHub", href: "https://github.com/iairu"},
-        {icon: "fa fa-envelope", text: "E-mail: spanik11@gmail.com", href: "mailto:spanik11@gmail.com", hideExt: true}
-        ]} />
-	{/if}
+	]} useLangSelector={isHomepage(currentSlug, currentURLlang)} />
 {/if}
-<main class:iframe={isIFrame}>
-	<slot />
-	{#if !isEmbedded}
-	   {#if isHomepage(currentSlug, currentURLlang)}
-    	<S dark={$dark || $darkHeader} icon="fa fa-address-card" name={current === "sk" ? "Budem rád, ak mi napíšete." : "I will be glad if you let me know."} slug="contact" pt pb center nhl>
-    		<Nav nav={[
-    			{icon: "fa fa-envelope", text: "E-mail: spanik11@gmail.com", href: "mailto:spanik11@gmail.com", isButton: isHomepage(currentSlug, currentURLlang), modal: false, hideExt: true},
-    			// {icon: "fab fa-facebook-messenger", text: "Messenger", href: "https://m.me/iairu"},
-    			{icon: "fab fa-linkedin", text: "LinkedIn", href: "https://www.linkedin.com/in/iairu"},
-    			{icon: "fab fa-github", text: "GitHub", href: "https://github.com/iairu"}
-    		]} />
-    	</S>
-    	{:else}
-    	<S dark={$dark || $darkHeader} slug="contact" pt pb sli nhl>
-    		<Nav nav={[
-        		{ icon: "fa fa-home", text: current === "sk" ? "Domov" : "Homepage", href: "/" , isButton: true, modal: false, hideExt: true, sameTarget: true, static: true },
-    			{icon: "fa fa-envelope", text: "E-mail: spanik11@gmail.com", href: "mailto:spanik11@gmail.com", isButton: isHomepage(currentSlug, currentURLlang), modal: false, hideExt: true},
-    			// {icon: "fab fa-facebook-messenger", text: "Messenger", href: "https://m.me/iairu"},
-    			{icon: "fab fa-linkedin", text: "LinkedIn", href: "https://www.linkedin.com/in/iairu"},
-    			{icon: "fab fa-github", text: "GitHub", href: "https://github.com/iairu"}
-    		]} />
-    	</S>
-    	{/if}
+<div class="layout-container" class:iframe={isIframe}>
+	{#if !isIframe}
+	<Sidebar isOpen={sidebarOpen} />
+	<!-- Overlay for mobile sidebar -->
+	{#if sidebarOpen}
+	<div class="sidebar-overlay" on:click={closeSidebar}></div>
 	{/if}
-</main>
-{#if !isEmbedded}
+	{/if}
+	<main class:iframe={isIframe} class:with-sidebar={!isIframe}>
+		{#if !isIframe && !isHomepage(currentSlug, currentURLlang)}
+		<Breadcrumbs />
+		{/if}
+		<slot />
+		{#if !isIframe}
+		<S dark icon="fa fa-address-card" name={current === "sk" ? "Kontakt" : "Contact"} slug="contact" pt pb sli>
+			<Nav nav={[
+				{icon: "fa fa-envelope", text: "E-mail: spanik11@gmail.com", href: "mailto:spanik11@gmail.com", isButton: true, modal: false, hideExt: true},
+				{icon: "fab fa-facebook-messenger", text: "Messenger", href: "https://m.me/iairu"},
+				{icon: "fab fa-linkedin", text: "LinkedIn", href: "https://www.linkedin.com/in/iairu"},
+				{icon: "fab fa-github", text: "GitHub", href: "https://github.com/iairu"}
+			]} />
+		</S>
+		{/if}
+	</main>
+</div>
+{#if !isIframe}
 <Footer copyright={"iairu"}>
-	Powered by Svelte, Vercel and FontAwesome
+	Powered by Svelte (Sapper framework), Vercel and FontAwesome
 </Footer>
 {/if}
 
 <!-- Floating fixed pos. stuff -->
-{#if !isIFrame}<Modal />{/if}
-<ToTop {isIFrame} />
+{#if !isIframe}<Modal />{/if}
+<ToTop {isIframe} />
 {:else}
 	<Error 
 		status={404}
@@ -212,20 +217,110 @@
 		background-repeat: no-repeat;
 		color: black;
 		background-color: white;
+		transition: background-color 0.3s ease, color 0.3s ease;
+
 		@media screen {
-			&.dark {
+			&.dark, &.dark-theme {
 				color: white;
-				background-color: black;
+				background-color: #0a0a0a;
+
+				// Dark mode overrides for common elements
+				h1, h2, h3, h4, h5, h6 {
+					color: rgba(255, 255, 255, 0.95);
+				}
+
+				a {
+					color: rgba(59, 130, 246, 0.8);
+
+					&:hover {
+						color: rgba(59, 130, 246, 1);
+					}
+				}
+
+				code {
+					background-color: rgba(255, 255, 255, 0.1);
+					color: rgba(255, 255, 255, 0.9);
+					border-color: rgba(255, 255, 255, 0.2);
+				}
+
+				pre {
+					background: rgba(255, 255, 255, 0.05);
+					border-color: rgba(255, 255, 255, 0.2);
+				}
+
+				blockquote {
+					color: rgba(255, 255, 255, 0.9);
+					background-color: rgba(255, 255, 255, 0.05);
+					background-image: url("/_global/quote.svg");
+				}
+
+				hr {
+					border-color: rgba(255, 255, 255, 0.2);
+				}
+
+				select {
+					border-color: rgba(255, 255, 255, 0.2);
+					color: white;
+				}
 			}
 		}
 	}
+	.layout-container {
+		display: flex;
+		gap: 0;
+		max-width: 1920px;
+		margin: 0 auto;
+		padding: 20px;
+		padding-left: 0;
+		box-sizing: border-box;
+		position: relative;
+
+		&.iframe {
+			padding-top: 2em;
+		}
+
+		@media (max-width: 1200px) {
+			padding: 20px;
+		}
+	}
+
+	.sidebar-overlay {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: rgba(0, 0, 0, 0.5);
+		z-index: 99;
+		animation: fadein 0.3s;
+
+		@media (min-width: 1200px) {
+			display: none;
+		}
+	}
+
+	@keyframes fadein {
+		from { opacity: 0; }
+		to { opacity: 1; }
+	}
+
 	main {
 		position: relative;
-		margin: 0 auto;
+		flex: 1;
+		min-width: 0;
 		box-sizing: border-box;
-		/* &.iframe {
+
+		&.with-sidebar {
+			max-width: calc(100% - 310px);
+		}
+
+		&.iframe {
 			padding-top: 2em;
-		} */
+		}
+
+		@media (max-width: 1200px) {
+			max-width: 100% !important;
+		}
 	}
 	hr {
 		border: none;
@@ -252,11 +347,6 @@
 		width: 100%;
 		margin-bottom: 10px;
 	}
-	.dark select {
-		border-color: rgba(255,255,255,0.2);
-		color: white;
-	} 
-	@media screen {.dark hr {border-color: rgba(255,255,255,0.2);}}
 	span.message {
 		padding: 5px 15px;
 		&.error {

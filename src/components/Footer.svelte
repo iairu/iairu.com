@@ -2,10 +2,59 @@
 	import { onMount } from 'svelte';
     import Nav from './Nav.svelte';
     import LangSelector from './LangSelector.svelte';
+    import TechBadge from './TechBadge.svelte';
+    import StatusIndicator from './StatusIndicator.svelte';
+    import AccessibilityControls from './AccessibilityControls.svelte';
+    import MetricCard from './MetricCard.svelte';
+    import { accessibilitySettings } from './AccessibilityStore.svelte';
+    import { lang } from './LangStore.svelte';
     import { stores } from '@sapper/app';
     const { page } = stores();
 
     export let copyright = "";
+
+    let buildVersion = '2.0.0';
+    let uptime = 0;
+    let uptimeInterval;
+    let sessionRequests = 0;
+    let currentLang = 'en';
+
+    lang.subscribe(l => {
+        currentLang = l.current;
+    });
+
+    function increaseFontSize() {
+        accessibilitySettings.setSetting('fontSize', getNextSize(true));
+    }
+
+    function decreaseFontSize() {
+        accessibilitySettings.setSetting('fontSize', getNextSize(false));
+    }
+
+    function getNextSize(increase) {
+        let settings;
+        accessibilitySettings.subscribe(s => settings = s)();
+        const sizes = ['small', 'medium', 'large', 'xlarge'];
+        const currentIndex = sizes.indexOf(settings.fontSize);
+        if (increase && currentIndex < sizes.length - 1) {
+            return sizes[currentIndex + 1];
+        } else if (!increase && currentIndex > 0) {
+            return sizes[currentIndex - 1];
+        }
+        return settings.fontSize;
+    }
+
+    onMount(() => {
+        const startTime = Date.now();
+        uptimeInterval = setInterval(() => {
+            uptime = Math.floor((Date.now() - startTime) / 1000);
+            sessionRequests += Math.random() > 0.7 ? 1 : 0; // Simulate activity
+        }, 1000);
+
+        return () => {
+            clearInterval(uptimeInterval);
+        };
+    });
     let elm;
     let bottom = false; // Recalculated on path change, footer load and window resize
     let bottomTimer = false; // Stores last known timer for bottom determination to be canceled on repetitive calls (e.g. window resizing)
@@ -26,10 +75,86 @@
 />
 
 <footer class:bottom={bottom} bind:this={elm}>
-    <span class="copyright">{copyright} &copy; {new Date().getFullYear()} All Rights Reserved</span>
-    <span class="details"><slot /></span>
-    <!-- <LangSelector useAnchors /> -->
-    <!-- Hidden because on non-index site it may redirect to incorrect index language -->
+    <div class="footer-content">
+        <!-- Metrics Grid -->
+        <div class="footer-metrics">
+            <MetricCard
+                label="Uptime"
+                value="{Math.floor(uptime / 60)}:{String(uptime % 60).padStart(2, '0')}"
+                icon="fa fa-clock"
+                size="small"
+            />
+            <MetricCard
+                label="Session Activity"
+                value="{sessionRequests}"
+                icon="fa fa-chart-line"
+                trend="up"
+                trendValue="+{Math.floor(Math.random() * 10)}%"
+                size="small"
+            />
+            <MetricCard
+                label="Build Version"
+                value="v{buildVersion}"
+                icon="fa fa-code-branch"
+                size="small"
+            />
+        </div>
+
+        <div class="footer-main">
+            <span class="copyright">{copyright} &copy; {new Date().getFullYear()} All Rights Reserved</span>
+            <span class="details"><slot /></span>
+        </div>
+
+        <div class="footer-badges">
+            <TechBadge type="vercel" />
+            <TechBadge type="github" />
+        </div>
+
+        <!-- Font Size Controls -->
+        <div class="font-size-controls">
+            <button class="font-btn" on:click={decreaseFontSize} aria-label="Decrease font size">
+                <span>A-</span>
+            </button>
+            <button class="font-btn" on:click={increaseFontSize} aria-label="Increase font size">
+                <span>A+</span>
+            </button>
+        </div>
+
+        <!-- Page Links -->
+        <div class="footer-links">
+            <div class="link-column">
+                <h4>Documentation</h4>
+                <a href="/en/dev/iptables-portforward">IPTables Guide</a>
+            </div>
+            <div class="link-column">
+                <h4>Tools</h4>
+                <a href="/sk/dev/ahk">AutoHotkey</a>
+                <a href="/sk/dev/ipv4-calc">IPv4 Calc</a>
+            </div>
+            <div class="link-column">
+                <h4>Projects</h4>
+                <a href="/sk/dev/log">Dev Log</a>
+                <a href="/{currentLang}/archive">Archive</a>
+            </div>
+            <div class="link-column">
+                <h4>Creative</h4>
+                <a href="/en/art/comics">Comics</a>
+                <a href="/{currentLang}/links">Links</a>
+            </div>
+        </div>
+
+        <div class="footer-status">
+            <div class="status-item">
+                <StatusIndicator status="online" size="xs" pulse={true} />
+                <span class="status-text">System Online</span>
+            </div>
+            <div class="status-item">
+                <AccessibilityControls compact={false} />
+            </div>
+        </div>
+
+        <LangSelector useAnchors />
+    </div>
 </footer>
 
 <style lang="scss" global>
@@ -40,13 +165,175 @@
         justify-content: center;
         text-align: center;
         box-sizing: border-box;
-        padding: 2em;
+        padding: 3em 2em;
         color: #424242;
-        background: white;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0.05));
+        border-top: 1px solid rgba(59, 130, 246, 0.1);
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg,
+                transparent,
+                rgba(59, 130, 246, 0.3),
+                transparent);
+        }
+
         nav {justify-content: center;}
-        &.bottom {background: black;}
-        >.details {
+        &.bottom {
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0.5), black);
+            border-top-color: rgba(59, 130, 246, 0.2);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .footer-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .font-size-controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+
+            .font-btn {
+                padding: 10px 20px;
+                background: rgba(59, 130, 246, 0.1);
+                border: 1px solid rgba(59, 130, 246, 0.3);
+                border-radius: 6px;
+                cursor: pointer;
+                font-size: 18px;
+                font-weight: 600;
+                color: rgba(59, 130, 246, 0.9);
+                transition: all 0.2s ease;
+
+                &:hover {
+                    background: rgba(59, 130, 246, 0.2);
+                    border-color: rgba(59, 130, 246, 0.5);
+                    transform: translateY(-2px);
+                }
+
+                span {
+                    display: block;
+                }
+            }
+        }
+
+        .footer-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            margin: 30px 0;
+            padding: 30px 0;
+            border-top: 1px solid rgba(59, 130, 246, 0.2);
+            border-bottom: 1px solid rgba(59, 130, 246, 0.2);
+
+            .link-column {
+                h4 {
+                    margin: 0 0 10px 0;
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: rgba(59, 130, 246, 0.9);
+                    text-transform: uppercase;
+                    letter-spacing: 0.5px;
+                }
+
+                a {
+                    display: block;
+                    padding: 5px 0;
+                    color: #666;
+                    text-decoration: none;
+                    font-size: 14px;
+                    transition: all 0.2s ease;
+
+                    &:hover {
+                        color: rgba(59, 130, 246, 0.9);
+                        padding-left: 5px;
+                    }
+                }
+            }
+
+            @media (max-width: 768px) {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+        }
+
+        .footer-main {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .copyright {
+            font-weight: 500;
+        }
+
+        .details {
             font-size: 11px;
+            opacity: 0.7;
+        }
+
+        .footer-badges {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .footer-status {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            padding: 15px;
+            background: rgba(59, 130, 246, 0.03);
+            border: 1px solid rgba(59, 130, 246, 0.1);
+            border-radius: 8px;
+
+            .status-item {
+                display: flex;
+                align-items: center;
+                gap: 6px;
+                font-size: 0.85em;
+
+                i {
+                    color: rgba(59, 130, 246, 0.6);
+                    font-size: 0.9em;
+                }
+
+                .status-text {
+                    color: #666;
+                    font-family: monospace;
+                }
+            }
+        }
+
+        @media (max-width: 768px) {
+            .footer-status {
+                flex-direction: column;
+                gap: 10px;
+
+                .status-item {
+                    justify-content: center;
+                }
+            }
         }
     }
 </style>
