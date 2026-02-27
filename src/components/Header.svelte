@@ -22,7 +22,8 @@
         <div class="left">
             <!-- <img class="logo" src={$dark || $darkHeader ? "/_global/logo-w.svg" : "/_global/logo.svg"} alt="Logo"> -->
             {#if notHomepage}
-                <img class="logo" src="/_global/logo.svg" alt="Logo">
+                <!--<img class="logo" src="/_global/logo.svg" alt="Logo">-->
+                <div id="logo-space-placeholder"></div>
             {:else}
                 <LangSelector _dark={$dark || $darkHeader} useAnchors />
             {/if}
