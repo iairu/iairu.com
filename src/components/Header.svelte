@@ -11,7 +11,7 @@
     export let isTransparent = false;
 
     function toggleTheme() {
-        dark.update(d => !d);
+        dark.setManual(!$dark);
     }
 
     let showHomeArrow = false;
@@ -22,7 +22,7 @@
 
 <header class:dark={$dark} class:transparent={isTransparent}>
     <div class="content">
-        {#if showHomeArrow}<a class="home" href={"/" + ($lang.current ? $lang.current : "")}><i class="fa fa-angle-double-left"></i></a>{/if}
+        <a class="home" class:hidden={!showHomeArrow} href={"/" + ($lang.current ? $lang.current : "")}><i class="fa fa-angle-double-left"></i></a>
         <div class="left">
             <a href="/" class="logo" class:dark={$dark || isTransparent}>iairu</a>
             {#if useLangSelector}
@@ -56,9 +56,10 @@
             max-width: 1920px;
             margin: 0 auto;
             flex: 1;
+            box-sizing: border-box;
             .left {
                 display: flex;
-                align-items:flex-end;
+                align-items: center;
                 margin-bottom: 10px;
                 >*:not(:last-child) {
                     margin-right: 10px;
@@ -119,12 +120,19 @@
             left: -40px;
             top: 2px;
             opacity: 0.5;
-            padding: 0 10px;
+            visibility: hidden;
+            padding: 0 20px 0 10px;
             font-size: 24px;
             color: #8c9bb1;
             outline: none;
             &:hover {opacity: 0.7;}
             &:focus {opacity: 1;}
+
+            &.hidden {
+                visibility: hidden;
+                pointer-events: none;
+                opacity: 0;
+            }
         }
         @media screen {
             &.dark {
@@ -134,6 +142,14 @@
         }
         @media print {
             a.home {display: none;}
+        }
+        @media (max-width: 1200px) {
+            .content {
+                padding-left: 50px;
+            }
+            a.home {
+                visibility: hidden;
+            }
         }
         @media (max-width: 850px) {
             nav {

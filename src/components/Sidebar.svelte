@@ -81,7 +81,7 @@
             </button>
         </div>
 
-        <div class="sidebar-scrollable" class:hidden={isCollapsed}>
+        <div class="sidebar-scrollable" class:collapsed-hide={isCollapsed}>
             {#each Object.entries(getStructure()) as [section, items]}
             <div class="sidebar-section">
                 <button
@@ -246,6 +246,10 @@
             :global(body.dark-theme) & {
                 color: rgba(255,255,255,0.7);
             }
+
+            @media (max-width: 1199px) {
+                display: none;
+            }
         }
         
         .collapsed-sidebar-pill {
@@ -267,11 +271,17 @@
                     background: rgba(var(--theme-color-rgb), 0.2);
                 }
             }
+
+            @media (max-width: 1199px) {
+                display: none;
+            }
         }
         
         .sidebar-scrollable {
-            &.hidden {
-                display: none;
+            &.collapsed-hide {
+                @media (min-width: 1200px) {
+                    display: none;
+                }
             }
         }
 

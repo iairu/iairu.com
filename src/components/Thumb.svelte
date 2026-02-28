@@ -59,6 +59,7 @@
         class:dark={dark}
         class:empty={empty}
         >
+        <div class="sweep"></div>
         <div class="content">
 
             <!-- Heading, Tags, Icon -->
@@ -118,58 +119,83 @@
         padding-bottom: 20px;
         color: black;
         border-radius: 0;
-        overflow: visible;
+        overflow: hidden;
         transition: all 0.3s ease;
         box-shadow:
             0 0 20px rgba(var(--theme-color-rgb), 0.05),
             inset 0 1px 0 rgba(255, 255, 255, 0.1);
+
+        .sweep {
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg,
+                transparent,
+                rgba(var(--theme-color-rgb), 0.1),
+                transparent);
+            transition: left 0.4s ease;
+            pointer-events: none;
+            z-index: 0;
+        }
 
         @media (max-width: 900px) {width: 100%;}
 
         &::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
+            top: -1px;
+            left: -1px;
             width: 15px;
             height: 15px;
-            border-top: 2px solid rgba(var(--theme-color-rgb), 0.4);
-            border-left: 2px solid rgba(var(--theme-color-rgb), 0.4);
+            border-top: 2px solid rgba(var(--theme-color-rgb), 0.6);
+            border-left: 2px solid rgba(var(--theme-color-rgb), 0.6);
             border-radius: 0;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+            box-sizing: border-box;
+            z-index: 10;
         }
 
         &::after {
             content: '';
             position: absolute;
-            bottom: 0;
-            right: 0;
+            bottom: -1px;
+            right: -1px;
             width: 15px;
             height: 15px;
-            border-bottom: 2px solid rgba(var(--theme-color-rgb), 0.4);
-            border-right: 2px solid rgba(var(--theme-color-rgb), 0.4);
+            border-bottom: 2px solid rgba(var(--theme-color-rgb), 0.6);
+            border-right: 2px solid rgba(var(--theme-color-rgb), 0.6);
             border-radius: 0;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            pointer-events: none;
+            box-sizing: border-box;
+            z-index: 10;
         }
 
         &:hover {
             transform: translateY(-4px);
-            border-color: rgba(var(--theme-color-rgb), 0.4);
+            border-color: rgba(var(--theme-color-rgb), 0.1);
             box-shadow:
                 0 0 30px rgba(var(--theme-color-rgb), 0.15),
                 0 10px 25px rgba(0, 0, 0, 0.1),
                 inset 0 1px 0 rgba(255, 255, 255, 0.2);
 
+            .sweep {
+                left: 100%;
+            }
+
             &::before {
-                width: 20px;
-                height: 20px;
-                border-color: rgba(var(--theme-color-rgb), 0.6);
+                width: calc(100% + 2px);
+                height: calc(100% + 2px);
+                border-color: rgba(var(--theme-color-rgb), 0.8);
             }
 
             &::after {
-                width: 20px;
-                height: 20px;
-                border-color: rgba(var(--theme-color-rgb), 0.6);
+                width: calc(100% + 2px);
+                height: calc(100% + 2px);
+                border-color: rgba(var(--theme-color-rgb), 0.8);
             }
         }
         .content {

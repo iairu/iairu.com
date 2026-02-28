@@ -79,54 +79,6 @@
 	</div>
 </section>
 
-<div class="split-highlights-container">
-	<div class="split-half it-half">
-		<h2 class="half-title">Softvérové Inžinierstvo</h2>
-		<div class="highlights-grid">
-			<HighlightThumb
-				title="StrukShow.com"
-				desc="Modern personal website with CockpitCMS & Svelte"
-				link="/en/dev/"
-				icon="/_thumbs/icons/strukshow-w.svg"
-				badge="Featured"
-				status="hot"
-			/>
-			<HighlightThumb
-				title="PostgreSQL REST API"
-				desc="Django REST API for complex queries"
-				link="/en/dev/"
-				icon="fa fa-database"
-				metric="Full-stack"
-				status="updated"
-			/>
-		</div>
-		<a href="/en/dev/" class="view-all-button primary">View All IT Projects &rarr;</a>
-	</div>
-	
-	<div class="split-half art-half">
-		<h2 class="half-title">Umelecké Portfólio</h2>
-		<div class="highlights-grid">
-			<HighlightThumb
-				title="Zrada kráľa"
-				desc="3D Animation made in Blender about a world of letters."
-				link="/en/art/"
-				icon="fa fa-paint-brush"
-				badge="Featured"
-				status="hot"
-			/>
-			<HighlightThumb
-				title="Graphic design portfolio"
-				desc="Branding concepts, older web designs and digital art."
-				link="/en/art/"
-				icon="fa fa-pencil-ruler"
-				metric="Design"
-				status="updated"
-			/>
-		</div>
-		<a href="/en/art/" class="view-all-button secondary border-artist">View All Art Projects &rarr;</a>
-	</div>
-</div>
-
 <style lang="scss" global>
 	.highlights-grid {
 		display: grid;
@@ -390,6 +342,7 @@
 			margin: 0 auto;
 			padding: 2rem;
 			gap: 4rem;
+			box-sizing: border-box;
 
 			@media (min-width: 900px) {
 				flex-direction: row;

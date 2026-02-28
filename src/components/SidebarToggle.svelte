@@ -27,10 +27,11 @@
         top: 20px;
         left: 20px;
         z-index: 101;
-        background: white;
-        border: 2px solid black;
+        background: rgba(var(--theme-color-rgb), 0.1);
+        border: 1px solid rgba(var(--theme-color-rgb), 0.2);
+        color: rgba(var(--theme-color-rgb), 0.9);
         border-radius: 0;
-        padding: 10px;
+        padding: 8px 12px;
         cursor: pointer;
         display: flex;
         align-items: center;
@@ -38,7 +39,8 @@
         transition: all 0.2s;
 
         &:hover {
-            background: rgba(0, 0, 0, 0.05);
+            background: rgba(var(--theme-color-rgb), 0.2);
+            border-color: rgba(var(--theme-color-rgb), 0.4);
         }
 
         &:active {
@@ -55,6 +57,17 @@
 
         @media print {
             display: none;
+        }
+
+        :global(body.dark-theme) & {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.3);
+            color: white;
+            svg { stroke: white; }
+            
+            &:hover {
+                background: rgba(255, 255, 255, 0.2);
+            }
         }
     }
 </style>

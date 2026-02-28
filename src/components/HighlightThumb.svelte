@@ -147,6 +147,9 @@
             font-size: 14px;
             font-weight: 600;
             color: rgba(0, 0, 0, 0.9);
+            :global(body.dark-theme) & {
+                color: rgba(255, 255, 255, 0.9);
+            }
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -156,6 +159,9 @@
             margin: 2px 0 0;
             font-size: 12px;
             color: rgba(0, 0, 0, 0.6);
+            :global(body.dark-theme) & {
+                color: rgba(255, 255, 255, 0.6);
+            }
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -233,6 +239,9 @@
     .metric, .date {
         font-size: 11px;
         color: rgba(0, 0, 0, 0.5);
+        :global(body.dark-theme) & {
+            color: rgba(255, 255, 255, 0.5);
+        }
         white-space: nowrap;
     }
 

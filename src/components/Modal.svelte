@@ -213,7 +213,7 @@
         position: fixed;
         justify-content: center;
         align-items: center;
-        z-index: 90;
+        z-index: 1000;
         left: 0;
         top: 0;
         right: 0;

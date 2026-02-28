@@ -92,7 +92,9 @@
 
 <!-- Site content -->
 {#if !isIframe}
+	{#if !isHomepage(currentSlug, currentURLlang)}
 	<SidebarToggle onClick={toggleSidebar} isOpen={sidebarOpen} />
+	{/if}
 	<Header isTransparent={isHomepage(currentSlug, currentURLlang)} nav={[
 		{icon: "fab fa-facebook-messenger", text: "Messenger", href: "https://m.me/iairu"},
 		{icon: "fab fa-linkedin", text: "LinkedIn", href: "https://www.linkedin.com/in/iairu"},
@@ -252,6 +254,10 @@
 
 					&:hover {
 						color: rgba(var(--theme-color-rgb), 1);
+					}
+
+					&.button {
+						color: white;
 					}
 				}
 

@@ -58,7 +58,7 @@
         sidebarCollapsed.set(true);
         if (content) {toc = generateTOC(content);}
         return (()=>{
-            darkstore.set(false);
+            darkstore.restoreManual();
             darkHeader.set(false);
             sidebarCollapsed.set(false);
             unsubLang();
@@ -90,7 +90,6 @@
                     <hr>
                 </div>
             {/if}
-            {#if post.metadata.bg}<div class="post-bg" style={"background-image: url('/_dev/bgs/" + post.metadata.bg + ".jpg');"}></div>{/if}
             <C count={2} let:column np>
                 {#if column === 0}
                 {#if toc && toc.length}
@@ -143,26 +142,6 @@
                 position: relative;
                 z-index: 10;
             }
-            >.post-bg {
-                position: absolute;
-                top: 0;
-                left: 0;
-                right: 0;
-                width: 100%;
-                height: 40vh;
-                opacity: 0.2;
-                background-size: cover;
-                background-position: center;
-                &:after {
-                    content: "";
-                    position: absolute;
-                    top: 0;
-                    left: 0;
-                    right: 0;
-                    bottom: 0;
-                    background: linear-gradient(transparent, white);
-                }
-            }
             .toc {
                 position: sticky;
                 top: 0;
@@ -201,11 +180,6 @@
                 color: white;
                 background: black;
             }
-        }
-    }
-    @media screen {
-        body.dark section.post>.post-bg:after {
-            background: linear-gradient(transparent, black);
         }
     }
 </style>

@@ -36,3 +36,14 @@ fix the deprecation warning for sass and any other remaining warnings during bui
 
 ---
 
+delete .post-bg, button.sidebar-toggle is overlaying .left and a.home (e.g. .left.logo), reduce .breadcrumbs bottom padding and increase left padding, .sidebar-toggle does not have dark mode, .home should have more right padding, sidebar is empty on mobile as it is not triggered by hover, hide .collapse-toggle and .expand-toggle on mobile, make sidebar always expanded internally on mobile, .split-highlights-container horizontal padding causes content to go off screen, .highlight-thumb is missing white text in dark mode, a.button should have white text on dark mode always
+
+hide hamburger menu on landing page, "header .right" contents are partially off-screen, put visibility hidden on a.home, make modal have higher z-index than hamburger menu button, dark theme toggle is sometimes not remembered (store dark mode manual trigger state in localStorage)
+
+make .sidebar-toggle look like .theme-toggle, make .logo centered vertically
+
+copy .section-header background animation to section.thumb, add better border animation to section.thumb
+
+---
+
+---
