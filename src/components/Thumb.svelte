@@ -83,6 +83,8 @@
             {#if desc}<p>{desc}</p>{/if}
 
             <!-- Image -->
+            <!-- svelte-ignore a11y-click-events-have-key-events -->
+            <!-- svelte-ignore a11y-no-noninteractive-element-interactions -->
             {#if img}<img class="img" src={"/_thumbs/imgs/" + (img.includes(".") ? img : img + ".jpg")} alt={name + " photo"} on:click={handleImageModal}>{/if}
 
             <!-- Navigation -->
@@ -320,10 +322,10 @@
             }
         }
         @media print {
-            &, &>* {page-break-inside: avoid;} // doesnt work dont know why
             border-radius: 0;
             border: none;
             margin: 0 !important;
+            &, &>* {page-break-inside: avoid;} // doesnt work dont know why
             .bg, .img, .heading .icon { display: none; }
             .details {
                 .from:before { content: "Od: ";}

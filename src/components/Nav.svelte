@@ -90,11 +90,11 @@
 <style lang="scss" global>
     nav {
         display: flex;
-        @media print { display: none; }
         flex-flow: row wrap;
         $col: rgb(140, 155, 177);
         margin: 5px 0;
         gap: 5px;
+        @media print { display: none; }
         a {
             padding: 5px;
             color: rgba(var(--theme-color-rgb), 0.9);

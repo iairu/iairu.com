@@ -46,4 +46,268 @@ copy .section-header background animation to section.thumb, add better border an
 
 ---
 
----
+fix the following:
+
+src/components/Thumb.svelte
+A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event.
+84: 
+85:             <!-- Image -->
+86:             {#if img}<img class="img" src={"/_thumbs/imgs/" + (img.includes(".") ? img : img + ".jpg")} alt={name + " photo"} on:click={handleImageModal}>{/if}
+                         ^
+87: 
+88:             <!-- Navigation -->
+
+Deprecation Warning: Sass's behavior for declarations that appear after nested
+rules will be changing to match the behavior specified by CSS in an upcoming
+version. To keep the existing behavior, move the declaration above the nested
+rule. To opt into the new behavior, wrap the declaration in `& {}`.
+
+More info: https://sass-lang.com/d/mixed-decls
+
+    ╷
+191 │             &, &>* {page-break-inside: avoid;} // doesnt work dont know why
+    │             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ nested rule
+192 │             border-radius: 0;
+    │             ^^^^^^^^^^^^^^^^ declaration
+    ╵
+    src/components/Thumb.svelte 192:13  root stylesheet
+
+Deprecation Warning: Sass's behavior for declarations that appear after nested
+rules will be changing to match the behavior specified by CSS in an upcoming
+version. To keep the existing behavior, move the declaration above the nested
+rule. To opt into the new behavior, wrap the declaration in `& {}`.
+
+More info: https://sass-lang.com/d/mixed-decls
+
+    ╷
+191 │             &, &>* {page-break-inside: avoid;} // doesnt work dont know why
+    │             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ nested rule
+... │
+193 │             border: none;
+    │             ^^^^^^^^^^^^ declaration
+    ╵
+    src/components/Thumb.svelte 193:13  root stylesheet
+
+Deprecation Warning: Sass's behavior for declarations that appear after nested
+rules will be changing to match the behavior specified by CSS in an upcoming
+version. To keep the existing behavior, move the declaration above the nested
+rule. To opt into the new behavior, wrap the declaration in `& {}`.
+
+More info: https://sass-lang.com/d/mixed-decls
+
+    ╷
+191 │             &, &>* {page-break-inside: avoid;} // doesnt work dont know why
+    │             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ nested rule
+... │
+194 │             margin: 0 !important;
+    │             ^^^^^^^^^^^^^^^^^^^^ declaration
+    ╵
+    src/components/Thumb.svelte 194:13  root stylesheet
+
+Deprecation Warning: Sass's behavior for declarations that appear after nested
+rules will be changing to match the behavior specified by CSS in an upcoming
+version. To keep the existing behavior, move the declaration above the nested
+rule. To opt into the new behavior, wrap the declaration in `& {}`.
+
+More info: https://sass-lang.com/d/mixed-decls
+
+    ╷
+191 │             &, &>* {page-break-inside: avoid;} // doesnt work dont know why
+    │             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ nested rule
+192 │             border-radius: 0;
+    │             ^^^^^^^^^^^^^^^^ declaration
+    ╵
+    src/components/Thumb.svelte 192:13  root stylesheet
+
+Deprecation Warning: Sass's behavior for declarations that appear after nested
+rules will be changing to match the behavior specified by CSS in an upcoming
+version. To keep the existing behavior, move the declaration above the nested
+rule. To opt into the new behavior, wrap the declaration in `& {}`.
+
+More info: https://sass-lang.com/d/mixed-decls
+
+    ╷
+191 │             &, &>* {page-break-inside: avoid;} // doesnt work dont know why
+    │             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ nested rule
+... │
+193 │             border: none;
+    │             ^^^^^^^^^^^^ declaration
+    ╵
+    src/components/Thumb.svelte 193:13  root stylesheet
+
+Deprecation Warning: Sass's behavior for declarations that appear after nested
+rules will be changing to match the behavior specified by CSS in an upcoming
+version. To keep the existing behavior, move the declaration above the nested
+rule. To opt into the new behavior, wrap the declaration in `& {}`.
+
+More info: https://sass-lang.com/d/mixed-decls
+
+    ╷
+191 │             &, &>* {page-break-inside: avoid;} // doesnt work dont know why
+    │             ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ nested rule
+... │
+194 │             margin: 0 !important;
+    │             ^^^^^^^^^^^^^^^^^^^^ declaration
+    ╵
+    src/components/Thumb.svelte 194:13  root stylesheet
+
+Deprecation Warning: Sass's behavior for declarations that appear after nested
+rules will be changing to match the behavior specified by CSS in an upcoming
+version. To keep the existing behavior, move the declaration above the nested
+rule. To opt into the new behavior, wrap the declaration in `& {}`.
+
+More info: https://sass-lang.com/d/mixed-decls
+
+  ╷
+4 │         @media print { display: none; }
+  │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ nested rule
+5 │         flex-flow: row wrap;
+  │         ^^^^^^^^^^^^^^^^^^^ declaration
+  ╵
+    src/components/Nav.svelte 5:9  root stylesheet
+
+Deprecation Warning: Sass's behavior for declarations that appear after nested
+rules will be changing to match the behavior specified by CSS in an upcoming
+version. To keep the existing behavior, move the declaration above the nested
+rule. To opt into the new behavior, wrap the declaration in `& {}`.
+
+More info: https://sass-lang.com/d/mixed-decls
+
+  ╷
+4 │         @media print { display: none; }
+  │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ nested rule
+5 │         flex-flow: row wrap;
+  │         ^^^^^^^^^^^^^^^^^^^ declaration
+  ╵
+    src/components/Nav.svelte 5:9  root stylesheet
+
+Deprecation Warning: Sass's behavior for declarations that appear after nested
+rules will be changing to match the behavior specified by CSS in an upcoming
+version. To keep the existing behavior, move the declaration above the nested
+rule. To opt into the new behavior, wrap the declaration in `& {}`.
+
+More info: https://sass-lang.com/d/mixed-decls
+
+    ╷
+4   │         @media print { display: none; }
+    │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ nested rule
+... │
+7   │         margin: 5px 0;
+    │         ^^^^^^^^^^^^^ declaration
+    ╵
+    src/components/Nav.svelte 7:9  root stylesheet
+
+Deprecation Warning: Sass's behavior for declarations that appear after nested
+rules will be changing to match the behavior specified by CSS in an upcoming
+version. To keep the existing behavior, move the declaration above the nested
+rule. To opt into the new behavior, wrap the declaration in `& {}`.
+
+More info: https://sass-lang.com/d/mixed-decls
+
+    ╷
+4   │         @media print { display: none; }
+    │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ nested rule
+... │
+7   │         margin: 5px 0;
+    │         ^^^^^^^^^^^^^ declaration
+    ╵
+    src/components/Nav.svelte 7:9  root stylesheet
+
+Deprecation Warning: Sass's behavior for declarations that appear after nested
+rules will be changing to match the behavior specified by CSS in an upcoming
+version. To keep the existing behavior, move the declaration above the nested
+rule. To opt into the new behavior, wrap the declaration in `& {}`.
+
+More info: https://sass-lang.com/d/mixed-decls
+
+    ╷
+4   │         @media print { display: none; }
+    │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ nested rule
+... │
+8   │         gap: 5px;
+    │         ^^^^^^^^ declaration
+    ╵
+    src/components/Nav.svelte 8:9  root stylesheet
+
+Deprecation Warning: Sass's behavior for declarations that appear after nested
+rules will be changing to match the behavior specified by CSS in an upcoming
+version. To keep the existing behavior, move the declaration above the nested
+rule. To opt into the new behavior, wrap the declaration in `& {}`.
+
+More info: https://sass-lang.com/d/mixed-decls
+
+    ╷
+4   │         @media print { display: none; }
+    │         ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ nested rule
+... │
+8   │         gap: 5px;
+    │         ^^^^^^^^ declaration
+    ╵
+    src/components/Nav.svelte 8:9  root stylesheet
+
+• server
+src/routes/[lang]/_layout.svelte
+A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event.
+106:   <!-- Overlay for mobile sidebar -->
+107:   {#if sidebarOpen}
+108:   <div class="sidebar-overlay" on:click={closeSidebar}></div>
+       ^
+109:   {/if}
+110:   {/if}
+src/components/Thumb.svelte
+A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event.
+83: 
+84:             <!-- Image -->
+85:             {#if img}<img class="img" src={"/_thumbs/imgs/" + (img.includes(".") ? img : img + ".jpg")} alt={name + " photo"} on:click={handleImageModal}>{/if}
+                         ^
+86: 
+87:             <!-- Navigation -->
+src/components/HighlightThumb.svelte
+A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event.
+22: </script>
+23: 
+24: <div class="highlight-thumb tech-border" on:click={handleClick} class:clickable={link}>
+    ^
+25:     <div class="thumb-content">
+26:         <div class="left-section">
+src/components/AccessibilityControls.svelte
+A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event.
+138:             </div>
+139:         </div>
+140:         <div class="overlay" on:click={togglePanel}></div>
+             ^
+141:     {/if}
+142: </div>
+• client
+src/routes/[lang]/_layout.svelte
+A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event.
+106:   <!-- Overlay for mobile sidebar -->
+107:   {#if sidebarOpen}
+108:   <div class="sidebar-overlay" on:click={closeSidebar}></div>
+       ^
+109:   {/if}
+110:   {/if}
+src/components/Thumb.svelte
+A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event.
+83: 
+84:             <!-- Image -->
+85:             {#if img}<img class="img" src={"/_thumbs/imgs/" + (img.includes(".") ? img : img + ".jpg")} alt={name + " photo"} on:click={handleImageModal}>{/if}
+                         ^
+86: 
+87:             <!-- Navigation -->
+src/components/HighlightThumb.svelte
+A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event.
+22: </script>
+23: 
+24: <div class="highlight-thumb tech-border" on:click={handleClick} class:clickable={link}>
+    ^
+25:     <div class="thumb-content">
+26:         <div class="left-section">
+src/components/AccessibilityControls.svelte
+A11y: visible, non-interactive elements with an on:click event must be accompanied by an on:keydown, on:keyup, or on:keypress event.
+138:             </div>
+139:         </div>
+140:         <div class="overlay" on:click={togglePanel}></div>
+             ^
+141:     {/if}
+142: </div>
