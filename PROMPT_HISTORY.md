@@ -30,3 +30,9 @@ make the modal compatible with dark mode and remove rounded corners from it, bas
 
 ---
 
+fix: the collapsible sidebar is empty when in the hover mode
+
+fix the deprecation warning for sass and any other remaining warnings during build process
+
+---
+

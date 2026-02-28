@@ -200,6 +200,10 @@
                         opacity: 1;
                         pointer-events: auto;
                         visibility: visible;
+
+                        .sidebar-scrollable {
+                            display: block !important;
+                        }
                     }
 
                     .collapsed-sidebar-pill {

@@ -27,11 +27,21 @@ const onwarn = (warning, onwarn) =>
 	(warning.code === 'CIRCULAR_DEPENDENCY') || // disabled circular dep. warnings \/
 	//(warning.code === 'CIRCULAR_DEPENDENCY' && /[/\\]@sapper[/\\]/.test(warning.message)) ||
 	onwarn(warning);
-    
+
 const _preprocess = sveltePreprocess({
-    postcss: {
-        plugins: [autoprefixer],
-    }
+	postcss: {
+		plugins: [autoprefixer],
+	},
+	scss: {
+		api: 'modern-compiler',
+		quietDeps: true,
+		silenceDeprecations: ['legacy-js-api']
+	},
+	sass: {
+		api: 'modern-compiler',
+		quietDeps: true,
+		silenceDeprecations: ['legacy-js-api']
+	}
 });
 
 export default {
@@ -39,12 +49,12 @@ export default {
 		input: config.client.input(),
 		output: config.client.output(),
 		plugins: [
-            markdown(),
+			markdown(),
 			glob(),
-            images(),
+			images(),
 			replace({
 				preventAssignment: true,
-				values:{
+				values: {
 					'process.browser': true,
 					'process.env.NODE_ENV': JSON.stringify(mode)
 				},
@@ -54,11 +64,11 @@ export default {
 					dev,
 					hydratable: true,
 				},
-                preprocess: _preprocess
+				preprocess: _preprocess
 			}),
 			// url({
-				// sourceDir: path.resolve(__dirname, 'src/node_modules/images'),
-				// publicPath: '/client/'
+			// sourceDir: path.resolve(__dirname, 'src/node_modules/images'),
+			// publicPath: '/client/'
 			// }),
 			resolve({
 				browser: true,
@@ -96,12 +106,12 @@ export default {
 		input: config.server.input(),
 		output: config.server.output(),
 		plugins: [
-            markdown(),
+			markdown(),
 			glob(),
-            images(),
+			images(),
 			replace({
 				preventAssignment: true,
-				values:{
+				values: {
 					'process.browser': false,
 					'process.env.NODE_ENV': JSON.stringify(mode)
 				},
@@ -112,13 +122,13 @@ export default {
 					generate: 'ssr',
 					hydratable: true,
 				},
-                preprocess: _preprocess,
+				preprocess: _preprocess,
 				emitCss: false
 			}),
 			// url({
-				// sourceDir: path.resolve(__dirname, 'src/node_modules/images'),
-				// publicPath: '/client/',
-				// emitFiles: false // already emitted by client build
+			// sourceDir: path.resolve(__dirname, 'src/node_modules/images'),
+			// publicPath: '/client/',
+			// emitFiles: false // already emitted by client build
 			// }),
 			resolve({
 				dedupe: ['svelte']
@@ -131,21 +141,21 @@ export default {
 	},
 
 	// serviceworker: {
-		// input: config.serviceworker.input(),
-		// output: config.serviceworker.output(),
-		// plugins: [
-			// resolve(),
-			// replace({
-				// preventAssignment: true,
-				// values:{
-					// 'process.browser': true,
-					// 'process.env.NODE_ENV': JSON.stringify(mode)
-				// },
-			// }),
-			// commonjs(),
-			// !dev && terser()
-		// ],
-		// preserveEntrySignatures: false,
-		// onwarn,
+	// input: config.serviceworker.input(),
+	// output: config.serviceworker.output(),
+	// plugins: [
+	// resolve(),
+	// replace({
+	// preventAssignment: true,
+	// values:{
+	// 'process.browser': true,
+	// 'process.env.NODE_ENV': JSON.stringify(mode)
+	// },
+	// }),
+	// commonjs(),
+	// !dev && terser()
+	// ],
+	// preserveEntrySignatures: false,
+	// onwarn,
 	// }
 };
