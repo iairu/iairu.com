@@ -143,13 +143,9 @@
 	.split-hero-section {
 		display: flex;
 		flex-direction: column;
-		width: 100vw;
+		width: 100%;
 		min-height: 80vh;
 		position: relative;
-		left: 50%;
-		right: 50%;
-		margin-left: -50vw;
-		margin-right: -50vw;
 		background: #000;
 		overflow: hidden;
 
@@ -175,7 +171,7 @@
 				content: '';
 				position: absolute;
 				top: 0; left: 0; right: 0; bottom: 0;
-				background: rgba(0,0,0,0.4);
+				background: rgba(0,0,0,0.5);
 				transition: background 0.5s ease;
 				z-index: 0;
 			}
@@ -317,7 +313,7 @@
 				}
 				@media (max-width: 899px) {
 					height: 2px;
-					width: 100vw;
+					width: 100%;
 				}
 			}
 

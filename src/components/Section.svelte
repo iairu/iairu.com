@@ -36,6 +36,7 @@
     export let light = false;
     export let tp = false; // transparent background (especially relevant when dark theme is active)
     export let bg = ""; // background CSS attribute, options: "bg-color bg-image position/bg-size bg-repeat bg-origin bg-clip bg-attachment", if dark or light is true, don't set color
+    export let footerMerge = false; // Merge with Footer with jagged lines
     export let defaultFilterNum = 0;
     let tab = 0;
     let filterNum = defaultFilterNum;
@@ -64,6 +65,7 @@
     class:up={up} class:fw={fw}
     class:wrapper={wrapper}
     class:tp={tp}
+    class:footer-merge={footerMerge}
     style={bg ? "background: " + (dark ? "#222222 " : light ? "#ececec " : "") + bg + ";" : ""}
     >
     <div class="content-wrapper" class:center={center}>
@@ -296,6 +298,37 @@
             background-color: transparent;
             &.dark {
                 border-color: rgba(255, 255, 255, 0.1);
+            }
+        }
+        &.footer-merge {
+            background: #09090b !important;
+            border: none !important;
+            margin-top: 10px;
+            padding-bottom: 2em;
+            
+            &::before {
+                content: '';
+                position: absolute;
+                top: -10px;
+                left: 0;
+                right: 0;
+                height: 10px;
+                background: url("data:image/svg+xml,%3Csvg width='20' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 L10 0 L20 10 Z' fill='%2309090b'/%3E%3C/svg%3E") repeat-x;
+            }
+            &::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 1px;
+                background: linear-gradient(90deg,
+                    transparent,
+                    rgba(59, 130, 246, 0.3),
+                    transparent);
+            }
+            .content-wrapper {
+                max-width: 1200px; /* map footer max-width */
             }
         }
     }

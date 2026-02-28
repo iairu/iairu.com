@@ -93,38 +93,38 @@
 <!-- Site content -->
 {#if !isIframe}
 	<SidebarToggle onClick={toggleSidebar} isOpen={sidebarOpen} />
-	<Header nav={[
+	<Header isTransparent={isHomepage(currentSlug, currentURLlang)} nav={[
 		{icon: "fab fa-facebook-messenger", text: "Messenger", href: "https://m.me/iairu"},
 		{icon: "fab fa-linkedin", text: "LinkedIn", href: "https://www.linkedin.com/in/iairu"},
 		{icon: "fab fa-github", text: "GitHub", href: "https://github.com/iairu"},
 		{icon: "fa fa-envelope", text: "E-mail: spanik11@gmail.com", href: "mailto:spanik11@gmail.com", hideExt: true}
 	]} useLangSelector={isHomepage(currentSlug, currentURLlang)} />
 {/if}
-<div class="layout-container" class:iframe={isIframe}>
-	{#if !isIframe}
+<div class="layout-container" class:iframe={isIframe} class:is-homepage={isHomepage(currentSlug, currentURLlang)}>
+	{#if !isIframe && !isHomepage(currentSlug, currentURLlang)}
 	<Sidebar isOpen={sidebarOpen} />
 	<!-- Overlay for mobile sidebar -->
 	{#if sidebarOpen}
 	<div class="sidebar-overlay" on:click={closeSidebar}></div>
 	{/if}
 	{/if}
-	<main class:iframe={isIframe} class:with-sidebar={!isIframe} class:sidebar-collapsed={isSidebarCollapsed}>
+	<main class:iframe={isIframe} class:with-sidebar={!isIframe && !isHomepage(currentSlug, currentURLlang)} class:sidebar-collapsed={isSidebarCollapsed} class:is-homepage={isHomepage(currentSlug, currentURLlang)}>
 		{#if !isIframe && !isHomepage(currentSlug, currentURLlang)}
 		<Breadcrumbs />
 		{/if}
 		<slot />
-		{#if !isIframe}
-		<S dark icon="fa fa-address-card" name={current === "sk" ? "Kontakt" : "Contact"} slug="contact" pt pb sli>
-			<Nav nav={[
-				{icon: "fa fa-envelope", text: "E-mail: spanik11@gmail.com", href: "mailto:spanik11@gmail.com", isButton: true, modal: false, hideExt: true},
-				{icon: "fab fa-facebook-messenger", text: "Messenger", href: "https://m.me/iairu"},
-				{icon: "fab fa-linkedin", text: "LinkedIn", href: "https://www.linkedin.com/in/iairu"},
-				{icon: "fab fa-github", text: "GitHub", href: "https://github.com/iairu"}
-			]} />
-		</S>
-		{/if}
 	</main>
 </div>
+{#if !isIframe}
+<S footerMerge dark icon="fa fa-address-card" name={current === "sk" ? "Kontakt" : "Contact"} slug="contact" pt pb sli>
+	<Nav nav={[
+		{icon: "fa fa-envelope", text: "E-mail: spanik11@gmail.com", href: "mailto:spanik11@gmail.com", isButton: true, modal: false, hideExt: true},
+		{icon: "fab fa-facebook-messenger", text: "Messenger", href: "https://m.me/iairu"},
+		{icon: "fab fa-linkedin", text: "LinkedIn", href: "https://www.linkedin.com/in/iairu"},
+		{icon: "fab fa-github", text: "GitHub", href: "https://github.com/iairu"}
+	]} />
+</S>
+{/if}
 {#if !isIframe}
 <Footer copyright={"iairu"}>
 	Powered by Svelte (Sapper framework), Vercel and FontAwesome
@@ -312,8 +312,16 @@
 			padding-top: 2em;
 		}
 
+		&.is-homepage {
+			max-width: 100%;
+			padding: 0;
+		}
+
 		@media (max-width: 1200px) {
 			padding: 20px;
+			&.is-homepage {
+				padding: 0;
+			}
 		}
 	}
 
@@ -357,6 +365,10 @@
 
 		&.iframe {
 			padding-top: 2em;
+		}
+
+		&.is-homepage {
+			padding-top: 0;
 		}
 
 		@media (max-width: 1200px) {

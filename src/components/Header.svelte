@@ -8,6 +8,7 @@
 
     export let nav;
     export let useLangSelector = true;
+    export let isTransparent = false;
 
     function toggleTheme() {
         dark.update(d => !d);
@@ -19,17 +20,17 @@
     $: showHomeArrow = splitPath.length > 3 || (splitPath.length === 3 && splitPath[splitPath.length - 1] !== "");
 </script>
 
-<header class:dark={$dark}>
+<header class:dark={$dark} class:transparent={isTransparent}>
     <div class="content">
         {#if showHomeArrow}<a class="home" href={"/" + ($lang.current ? $lang.current : "")}><i class="fa fa-angle-double-left"></i></a>{/if}
         <div class="left">
-            <a href="/" class="logo" class:dark={$dark}>iairu</a>
+            <a href="/" class="logo" class:dark={$dark || isTransparent}>iairu</a>
             {#if useLangSelector}
             <LangSelector dark={$dark} />
             {/if}
         </div>
         <div class="right">
-            <button class="theme-toggle" on:click={toggleTheme} aria-label="Toggle theme">
+            <button class="theme-toggle" class:transparent={isTransparent} on:click={toggleTheme} aria-label="Toggle theme">
                 <i class="fa fa-{$dark ? 'sun' : 'moon'}"></i>
             </button>
             <Nav {nav} />
@@ -138,6 +139,37 @@
             nav {
                 .link-text {display: none;}
                 .icon-ext {display: none;}
+            }
+        }
+        &.transparent {
+            position: absolute;
+            width: 100%;
+            top: 0;
+            left: 0;
+            background: transparent !important;
+            border-bottom: none !important;
+            z-index: 100;
+            color: white;
+
+            .logo {
+                color: white !important;
+            }
+
+            .theme-toggle {
+                background: rgba(255, 255, 255, 0.1);
+                border-color: rgba(255, 255, 255, 0.3);
+                color: white;
+
+                &:hover {
+                    background: rgba(255, 255, 255, 0.2);
+                }
+            }
+
+            :global(nav a) {
+                color: rgba(255, 255, 255, 0.85);
+                &:hover {
+                    color: white;
+                }
             }
         }
     }

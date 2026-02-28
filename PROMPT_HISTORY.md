@@ -17,3 +17,11 @@ add animated backgrounds and jagged lines where relevant, copy footer content co
 create a comprehensive plan: add collapse-uncollapse button to sidebar, adjust sidebar heading color to match software/art button colors, make the art button equivalently important to software, move projects and biography into their own pages with sidebar, create proper landing page with hero "split attraction" svg preview and other sections like modern sites, landing page will not have a sidebar but a choice between software and art projects with two highlighted previews from each, art will focus mostly on traditional painting and costume design
 
 ---
+
+do not show sidebar on landing page, make landing page more responsive to smaller width screens
+
+remove the margin from above hero landing section, make the header merged with the hero section only on landing page
+
+make the contact section merged with jagged line and background from the bottom of the pages
+
+

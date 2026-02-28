@@ -169,30 +169,6 @@
         color: white;
         background: #09090b;
         position: relative;
-        margin-top: 10px; // account for jagged overflow
-
-        &::after {
-            content: '';
-            position: absolute;
-            top: -10px;
-            left: 0;
-            right: 0;
-            height: 10px;
-            background: url("data:image/svg+xml,%3Csvg width='20' height='10' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 L10 0 L20 10 Z' fill='%2309090b'/%3E%3C/svg%3E") repeat-x;
-        }
-
-        &::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg,
-                transparent,
-                rgba(59, 130, 246, 0.3),
-                transparent);
-        }
 
         nav {justify-content: center;}
         &.bottom {
