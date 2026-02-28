@@ -12,6 +12,7 @@
     import { lang } from "../../../components/LangStore.svelte";
     import { dark as darkstore } from "../../../components/DarkStore.svelte";
     import { darkHeader } from "../../../components/DarkStore.svelte";
+    import { sidebarCollapsed } from "../../../components/ContentStore.svelte";
     import Tags from "../../../components/Tags.svelte";
     import moment from "moment/src/moment.js";
     import "moment/src/locale/sk.js";
@@ -59,6 +60,7 @@
     onMount(() => {
         darkstore.set(dark);
         darkHeader.set(dark);
+        sidebarCollapsed.set(true);
         if (content) {
             toc = generateTOC(content);
         }
@@ -66,6 +68,7 @@
         return () => {
             darkstore.set(false);
             darkHeader.set(false);
+            sidebarCollapsed.set(false);
             unsubLang();
         };
     });

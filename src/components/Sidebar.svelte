@@ -182,11 +182,31 @@
             &.collapsed {
                 width: 60px;
                 padding: 20px 10px;
+                transition: width 0.3s ease-in-out;
                 
                 .sidebar-content {
                     opacity: 0;
                     pointer-events: none;
                     visibility: hidden;
+                    transition: opacity 0.2s ease-in-out;
+                }
+
+                &:hover {
+                    width: 280px;
+                    padding: 20px;
+                    border-right: 1px solid rgba(var(--theme-color-rgb), 0.2);
+
+                    .sidebar-content {
+                        opacity: 1;
+                        pointer-events: auto;
+                        visibility: visible;
+                    }
+
+                    .collapsed-sidebar-pill {
+                        opacity: 0;
+                        pointer-events: none;
+                        visibility: hidden;
+                    }
                 }
             }
         }
@@ -229,6 +249,7 @@
             top: 20px;
             left: 50%;
             transform: translateX(-50%);
+            transition: opacity 0.2s ease;
             
             .expand-toggle {
                 background: rgba(var(--theme-color-rgb), 0.1);

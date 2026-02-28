@@ -17,10 +17,10 @@
     let iframe; // iframeElm for window listeners
     let favicon = "";
 
-    // Check if system is in dark mode
     let prefersDarkMode = false;
-    onMount(() => {
-        prefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    import { dark } from "./DarkStore.svelte";
+    dark.subscribe((isDark) => {
+        prefersDarkMode = isDark;
     });
 
     // Iframe manipulation functions
@@ -227,7 +227,7 @@
             height: 80vh;
             // height: calc(80vw / 16 * 9);    
             border: 1px solid rgba(0,0,0,0.2);
-            border-radius: 10px;
+            border-radius: 0;
             background-color: white;
             overflow: hidden;
             z-index: 93;

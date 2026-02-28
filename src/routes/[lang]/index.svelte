@@ -172,7 +172,7 @@
 				position: absolute;
 				top: 0; left: 0; right: 0; bottom: 0;
 				background: rgba(0,0,0,0.5);
-				transition: background 0.5s ease;
+				transition: background 0.6s cubic-bezier(0.19, 1, 0.22, 1);
 				z-index: 0;
 			}
 
@@ -205,9 +205,10 @@
 
 			.split-subtitle {
 				font-size: clamp(1rem, 1.5vw, 1.25rem);
-				opacity: 0.8;
+				opacity: 0.9;
 				line-height: 1.6;
 				margin-bottom: 2rem;
+				text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 				transition: opacity 0.3s ease;
 			}
 			
@@ -237,7 +238,7 @@
 				flex: 1.15;
 				
 				&::before {
-					background: rgba(0,0,0,0.1);
+					background: rgba(0,0,0,0.2);
 				}
 				
 				.content-wrapper {
@@ -352,8 +353,11 @@
 				border-color: rgba(59, 130, 246, 0.5);
 
 				&:hover {
-					background: rgba(59, 130, 246, 0.2);
+					background: rgba(59, 130, 246, 1);
+					color: white;
+					border-color: rgba(59, 130, 246, 1);
 					transform: translateY(-2px);
+					box-shadow: 0 4px 15px rgba(59, 130, 246, 0.4);
 				}
 			}
 
@@ -363,8 +367,11 @@
 				border-color: rgba(16, 185, 129, 0.5);
 
 				&:hover {
-					background: rgba(16, 185, 129, 0.2);
+					background: rgba(16, 185, 129, 1);
+					color: white;
+					border-color: rgba(16, 185, 129, 1);
 					transform: translateY(-2px);
+					box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
 				}
 			}
 		}

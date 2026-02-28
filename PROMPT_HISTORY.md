@@ -24,4 +24,9 @@ remove the margin from above hero landing section, make the header merged with t
 
 make the contact section merged with jagged line and background from the bottom of the pages
 
+---
+
+make the modal compatible with dark mode and remove rounded corners from it, basically make it look like it fits the rest of the site, improve css on landing page, autohide (and show on hover) sidebar on blog posts
+
+---
 
