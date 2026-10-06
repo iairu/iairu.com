@@ -75,11 +75,11 @@ const raw = [
   { id: 'usb-caps', repo: 'smvit-usbcaps-project-website', fields: ['hardware', 'systems'], interests: ['maker', 'infra'],
     title: 'USB-caps', tag: { en: 'Smart USB-TTL serial converter', sk: 'Inteligentný USB-TTL prevodník' },
     desc: { en: 'Advanced USB-TTL serial converter with automatic detection, BLE-based protection against USB Killers and a wireless terminal. Documentation site of the hardware project.', sk: 'Pokročilý USB-TTL sériový prevodník s automatickou detekciou, ochranou pred USB Killerom cez BLE a bezdrôtovým terminálom. Dokumentačný web hardvérového projektu.' } },
-  { id: 'lelek', repo: 'ST-017-PromoSite', lang: 'Astro', fields: ['hardware', 'art3d', 'software'], interests: ['maker', 'visual', 'web', 'audio'], featured: true, image: '/img/lelek.png',
-    title: 'LELEK', tag: { en: 'A CNC-carved nightjar that sings', sk: 'CNC vyrezaný lelek, ktorý spieva' },
+  { id: 'nightjar-gift', repo: 'ST-017-PromoSite', lang: 'Astro', fields: ['hardware', 'art3d', 'software'], interests: ['maker', 'visual', 'web', 'audio'], featured: true, image: '/img/nightjar-gift.png',
+    title: 'NightJar.Gift', tag: { en: 'A CNC-carved nightjar that sings', sk: 'CNC vyrezaný lelek, ktorý spieva' },
     desc: { en: 'A wooden nightjar with a button on its back: hold it and the bird sings its churring night call, let go and it sleeps. CAD model, CNC toolpaths, board v1 to v8 and the promo site, all in the open.', sk: 'Drevený lelek s tlačidlom na chrbte: podrž ho a vták zaspieva svoj vrčivý nočný hlas, pusti a zaspí. CAD model, CNC dráhy, dosky v1 až v8 a promo web, všetko otvorene.' },
-    long: { en: 'LELEK is the project that sums up this portfolio: a 3D model becomes toolpaths, toolpaths become two halves of beech, and a circuit with no microcontroller and no firmware sits inside. It is built for the course Systems Thinking in IT and Digital Fabrication at FIIT STU. Every board revision, dead end and fix is documented.', sk: 'LELEK je projekt, ktorý zhŕňa celé toto portfólio: 3D model sa mení na dráhy nástroja, dráhy na dve polovice buku a vnútri je obvod bez mikrokontroléra a bez firmvéru. Vzniká v predmete Systémové myslenie v IT a digitálna fabrikácia na FIIT STU. Každá verzia dosky, slepá ulička a oprava je zdokumentovaná.' },
-    links: [{ label: 'nightjar.gift', href: 'https://nightjar.gift' }, { label: { en: 'Documentation (KNIFES)', sk: 'Dokumentácia (KNIFES)' }, href: 'https://knifes.nightjar.gift' }] },
+    long: { en: 'NightJar.Gift is the project that sums up this portfolio: a 3D model becomes toolpaths, toolpaths become two halves of beech, and a circuit with no microcontroller and no firmware sits inside. It is built for the course Systems Thinking in IT and Digital Fabrication at FIIT STU. Every board revision, dead end and fix is documented.', sk: 'NightJar.Gift je projekt, ktorý zhŕňa celé toto portfólio: 3D model sa mení na dráhy nástroja, dráhy na dve polovice buku a vnútri je obvod bez mikrokontroléra a bez firmvéru. Vzniká v predmete Systémové myslenie v IT a digitálna fabrikácia na FIIT STU. Každá verzia dosky, slepá ulička a oprava je zdokumentovaná.' },
+    links: [{ label: 'nightjar.gift', href: 'https://nightjar.gift' }, { label: { en: 'Documentation (KNIFES)', sk: 'Dokumentácia (KNIFES)' }, href: 'https://knifes.nightjar.gift', only: 'en' }] },
   { id: 'angular-dotnet', repo: 'angular-dotnet-docker-boilerplate', fields: ['software', 'systems'], interests: ['web', 'infra'],
     title: 'Angular + .NET boilerplate', tag: { en: 'Full-stack starter with Docker', sk: 'Full-stack základ s Dockerom' },
     desc: { en: 'Tested template: Angular front end, .NET C# back end, Docker and an Nginx reverse proxy so one port serves both.', sk: 'Otestovaná šablóna: Angular frontend, .NET C# backend, Docker a Nginx reverse proxy, aby oba bežali cez jeden port.' } },
@@ -89,7 +89,7 @@ const raw = [
   { id: 'dbs-django', repo: 'dbs_django_postgresql', fields: ['software', 'systems'], interests: ['web', 'data'],
     title: 'PostgreSQL REST API', tag: { en: 'Django REST over complex SQL', sk: 'Django REST nad zložitým SQL' },
     desc: { en: 'Django REST API for complex SELECT queries over a PostgreSQL database, built from scratch over an existing schema. A static snapshot of the API is online.', sk: 'Django REST API pre zložité SELECT dotazy nad databázou PostgreSQL, vytvorené od základov nad existujúcou schémou. Statická ukážka API je online.' },
-    links: [{ label: { en: 'Static demo', sk: 'Statické demo' }, href: '/dbs/' }] },
+    links: [{ label: { en: 'Static demo', sk: 'Statické demo' }, href: '/dbs/', only: 'en' }] },
   { id: 'decipher', repo: 'decipher', fields: ['systems'], interests: ['infra'],
     title: 'decipher', tag: { en: 'Ransomware decryption PoC', sk: 'PoC dešifrovania ransomvéru' },
     desc: { en: 'Proof of concept that recovers files encrypted by ransomware from a memory dump.', sk: 'Proof of concept, ktorý obnoví súbory zašifrované ransomvérom z výpisu pamäte.' } },
@@ -120,7 +120,7 @@ const raw = [
   { id: 'ipv4calc', repo: 'ipv4calc', fields: ['systems', 'software'], interests: ['infra', 'learning'],
     title: 'IPv4 calculator', tag: { en: 'Network and broadcast in C', sk: 'Sieť a broadcast v C' },
     desc: { en: 'Small C program that calculates network, broadcast and number of connectable devices from any IP and mask. There is a written walkthrough of the maths.', sk: 'Malý C program, ktorý z ľubovoľnej IP a masky vypočíta sieť, broadcast a počet pripojiteľných zariadení. K matematike je písaný postup.' },
-    links: [{ label: { en: 'Walkthrough (SK)', sk: 'Postup' }, href: 'doc:ipv4-calc' }] },
+    links: [{ label: { en: 'Walkthrough', sk: 'Postup' }, href: 'doc:ipv4-calc' }] },
   { id: 'zprpr1', repo: 'zprpr1', fields: ['software'], interests: ['learning'],
     title: 'ZPRPR1', tag: { en: 'First C programming classes', sk: 'Prvé hodiny programovania v C' },
     desc: { en: 'School projects and exercises from very basic programming classes in C.', sk: 'Školské projekty a cvičenia z úplných základov programovania v C.' } },
@@ -129,15 +129,15 @@ const raw = [
   { id: 'strukshow', lang: 'Svelte', year: 2020, fields: ['software', 'design'], interests: ['web'], image: `${P}/strukshow.jpg`,
     title: 'StrukShow.com', tag: { en: 'Personal website with CockpitCMS', sk: 'Osobný web s CockpitCMS' },
     desc: { en: 'A complete modern personal website built on CockpitCMS and Svelte, with developer documentation covering hierarchy, CMS, Svelte, performance, SEO and deployment.', sk: 'Kompletný moderný osobný web postavený na CockpitCMS a Svelte, s vývojárskou dokumentáciou o hierarchii, CMS, Svelte, výkone, SEO a nasadení.' },
-    links: [{ label: 'strukshow.com', href: 'https://strukshow.com' }, { label: { en: 'Developer docs', sk: 'Vývojárska dokumentácia' }, href: '/strukshow-docs/' }] },
+    links: [{ label: 'strukshow.com', href: 'https://strukshow.com' }, { label: { en: 'Developer docs', sk: 'Vývojárska dokumentácia' }, href: '/strukshow-docs/', only: 'sk' }] },
   { id: 'save-the-princess', lang: 'JavaScript', year: 2020, fields: ['software', 'design'], interests: ['games'], image: `${P}/stp.jpg`,
     title: 'Save the Princess', tag: { en: 'Street Fighter style browser game', sk: 'Prehliadačová hra v štýle Street Fighter' },
     desc: { en: 'Vanilla JavaScript fighting game inspired by Street Fighter. First JavaScript project, built on the MVC pattern. Playable in the browser.', sk: 'Bojová hra vo vanilla JavaScripte inšpirovaná Street Fighterom. Prvý JavaScript projekt postavený na MVC. Dá sa hrať v prehliadači.' },
-    links: [{ label: { en: 'Play', sk: 'Hrať' }, href: '/_dev/save-the-princess/game.html' }, { label: { en: 'Documentation (PDF, SK)', sk: 'Dokumentácia (PDF)' }, href: '/dl/save-the-princess.pdf' }] },
+    links: [{ label: { en: 'Play', sk: 'Hrať' }, href: '/_dev/save-the-princess/game.html' }, { label: { en: 'Documentation (PDF)', sk: 'Dokumentácia (PDF)' }, href: '/dl/save-the-princess.pdf', only: 'sk' }] },
   { id: 'ahk-scripts', lang: 'AutoHotkey', year: 2018, fields: ['software'], interests: ['automation'], image: `${P}/service.jpg`,
     title: 'AutoHotkey scripts', tag: { en: '26+ daily automations', sk: '26+ každodenných automatizácií' },
     desc: { en: 'More than 26 AutoHotkey scripts for repetitive digital chores: window layout, keybinds for animation and video software, bulk export, ticket buying and more.', sk: 'Viac ako 26 AutoHotkey skriptov pre opakované digitálne činnosti: rozloženie okien, skratky pre animačný a video softvér, hromadný export, kupovanie lístkov a ďalšie.' },
-    links: [{ label: { en: 'Write-up (SK)', sk: 'Popis' }, href: 'doc:ahk' }] },
+    links: [{ label: { en: 'Write-up', sk: 'Popis' }, href: 'doc:ahk' }] },
 
   // ---------------- art and design ----------------
   { id: 'zrada', year: 2019, fields: ['art3d', 'design'], interests: ['visual'], image: `${P}/zrada.jpg`, tools: ['Blender'],
@@ -189,6 +189,7 @@ const raw = [
 
 const KNOWN_LANG = { 'Jupyter Notebook': 'Python (notebook)' };
 
+// Projects without a picture of their own get a generated one (npm run thumbs, see scripts/make-thumbs.mjs).
 export const projects = raw.map((p) => {
   const r = p.repo ? gh[p.repo] : null;
   if (p.repo && !r) throw new Error(`projects.js: repo ${p.repo} missing from repos.json (run npm run sync:repos)`);
@@ -196,6 +197,7 @@ export const projects = raw.map((p) => {
   const links = (p.links || []).map((l) => ({ ...l }));
   return {
     ...p,
+    image: p.image ?? `/img/thumbs/${p.id}.jpg`,
     language,
     stars: r ? r.stars : 0,
     year: p.year ?? Number(r.created.slice(0, 4)),

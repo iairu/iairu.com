@@ -7,7 +7,7 @@ import { ui, LANGS } from '../data/i18n.js';
 import { SITE_DESCRIPTION, person } from '../data/site.js';
 
 // path: this page's path after /<lang>/ (used for the language switch and hreflang)
-const { lang = 'en', title, description = SITE_DESCRIPTION[lang], path = '', crumbs = [], image = '/img/lelek.png', noindex = false, type = 'website' } = Astro.props;
+const { lang = 'en', title, description = SITE_DESCRIPTION[lang], path = '', crumbs = [], image = '/img/nightjar-gift.png', noindex = false, type = 'website' } = Astro.props;
 const T = ui[lang];
 const full = title ? `${title} · ${person.nick}` : `${person.full}: ${lang === 'sk' ? 'prompt inžinier a 3D umelec' : 'prompt engineer & 3D artist'}`;
 const origin = Astro.site?.origin ?? '';
@@ -40,7 +40,7 @@ const ld = { '@context': 'https://schema.org', '@type': 'Person', name: person.n
     <script type="application/ld+json" set:html={JSON.stringify(ld)} />
     <script is:inline>
       (function () {
-        var d = document.documentElement; d.classList.add('js');
+        var d = document.documentElement; d.classList.add('js'); d.setAttribute('data-sky', String(1 + Math.floor(Math.random() * 6)));
         var t = null; try { t = localStorage.getItem('iairu-theme'); } catch (e) {}
         if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
         d.setAttribute('data-theme', t);
@@ -48,6 +48,7 @@ const ld = { '@context': 'https://schema.org', '@type': 'Person', name: person.n
     </script>
   </head>
   <body>
+    <div class="sky" aria-hidden="true"></div>
     <a class="skip" href="#main">{T.skip}</a>
     <Header lang={lang} path={path} />
     <Breadcrumbs lang={lang} crumbs={crumbs} />

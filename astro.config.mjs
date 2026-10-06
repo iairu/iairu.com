@@ -29,6 +29,8 @@ export default defineConfig({
     '/sk/dev/save-the-princess': '/sk/projects/save-the-princess/',
     '/en/art/comics': '/en/projects/comics/',
     '/sk/art/komixy': '/sk/projects/comics/',
+    '/en/projects/lelek': '/en/projects/nightjar-gift/',
+    '/sk/projects/lelek': '/sk/projects/nightjar-gift/',
     '/gfx': '/sk/art/',
     '/gfx/en': '/en/art/',
     '/zrada': '/sk/projects/zrada/',

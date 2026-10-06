@@ -1,12 +1,13 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import { LANGS, ui } from '../../../data/i18n.js';
-import { docs, staticDocs } from '../../../data/docs.js';
-import { tr, lhref, isExternal } from '../../../data/util.js';
+import { docsFor, staticDocsFor } from '../../../data/docs.js';
+import { lhref, isExternal } from '../../../data/util.js';
 
 export const getStaticPaths = () => LANGS.map((lang) => ({ params: { lang } }));
 const { lang } = Astro.params;
 const T = (en, sk) => (lang === 'sk' ? sk : en);
+const docs = docsFor(lang), staticDocs = staticDocsFor(lang);
 ---
 <Base lang={lang} path="docs/" title={ui[lang].nav.docs}
   description={T('Write-ups, tutorials and documentation that go beyond the portfolio cards.', 'Články, návody a dokumentácia, ktoré presahujú portfóliové karty.')}
@@ -21,7 +22,7 @@ const T = (en, sk) => (lang === 'sk' ? sk : en);
       <ul class="list">
         {docs.map((d) => (
           <li><a href={lhref(lang, `docs/${d.slug}/`)}>
-            <span class="meta"><span class="tag">{d.lang.toUpperCase()}</span> {d.date}</span>
+            <span class="meta">{d.date}{d.translated && <span class="tag">{T("translated", "preložené")}</span>}</span>
             <h3>{d.title}</h3>
             <p>{d.desc}</p>
             <span class="tags">{d.tags.map((t) => <span class="tag">{t}</span>)}</span>
@@ -34,8 +35,8 @@ const T = (en, sk) => (lang === 'sk' ? sk : en);
         {staticDocs.map((d) => (
           <li><a href={d.href} {...(isExternal(d.href) ? { rel: 'noopener', target: '_blank' } : {})}>
             <span class="meta"><span class="tag">{d.tag}</span></span>
-            <h3>{tr(d.title, lang)}{isExternal(d.href) ? ' ↗' : ''}</h3>
-            <p>{tr(d.desc, lang)}</p>
+            <h3>{d.title}{isExternal(d.href) ? ' ↗' : ''}</h3>
+            <p>{d.desc}</p>
           </a></li>
         ))}
       </ul>

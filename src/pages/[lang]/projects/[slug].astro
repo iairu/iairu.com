@@ -11,13 +11,13 @@ const { lang } = Astro.params;
 const { p } = Astro.props;
 const T = (en, sk) => (lang === 'sk' ? sk : en);
 const title = tr(p.title, lang);
-const links = [...(p.repoUrl ? [{ label: 'GitHub', href: p.repoUrl, primary: !p.links.length }] : []), ...p.links.map((l) => ({ label: tr(l.label, lang), href: resolveHref(l.href, lang) }))];
+const links = [...(p.repoUrl ? [{ label: 'GitHub', href: p.repoUrl, primary: !p.links.length }] : []), ...p.links.filter((l) => !l.only || l.only === lang).map((l) => ({ label: tr(l.label, lang), href: resolveHref(l.href, lang) }))];
 const related = projects.filter((o) => o.id !== p.id && o.fields.some((f) => p.fields.includes(f))).sort((a, b) => b.fields.filter((f) => p.fields.includes(f)).length - a.fields.filter((f) => p.fields.includes(f)).length || b.stars - a.stars).slice(0, 3);
 const idx = projects.findIndex((o) => o.id === p.id);
 const color = fields[p.fields[0]].color;
 const gallery = p.gallery ?? [];
 ---
-<Base lang={lang} path={`projects/${p.id}/`} title={title} description={tr(p.desc, lang)} image={p.image ?? '/img/lelek.png'}
+<Base lang={lang} path={`projects/${p.id}/`} title={title} description={tr(p.desc, lang)} image={p.image ?? '/img/nightjar-gift.png'}
   crumbs={[{ label: ui[lang].nav.projects, href: lhref(lang, 'projects/') }, { label: title }]}>
   <article class={`block c-${color}`}>
     <div class="wrap">

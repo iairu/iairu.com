@@ -11,8 +11,8 @@ export const person = {
 export const links = {
   github: 'https://github.com/iairu',
   linkedin: 'https://www.linkedin.com/in/iairu',
-  lelek: 'https://nightjar.gift',
-  lelekDocs: 'https://knifes.nightjar.gift',
+  nightjar: 'https://nightjar.gift',
+  nightjarDocs: 'https://knifes.nightjar.gift',
   fiit: 'https://www.fiit.stuba.sk',
   suptn: 'https://www.suptn.sk',
 };

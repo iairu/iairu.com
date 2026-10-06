@@ -2,15 +2,15 @@
 import MeshCircuit from './MeshCircuit.astro';
 const { lang = 'en' } = Astro.props;
 const L = lang === 'sk'
-  ? { solid: 'Drevo', wire: 'Drôtený model', circuit: 'Výkres', spin: 'Otáčanie', load: 'Načítavam 3D model LELEK…', hint: 'Potiahni myšou a otoč lelka. Tvar je skutočný CNC model.', nogl: '3D zobrazenie vyžaduje WebGL.', fail: 'Model sa nepodarilo načítať.' }
-  : { solid: 'Wood', wire: 'Wireframe', circuit: 'Blueprint', spin: 'Spin', load: 'Loading the LELEK 3D model…', hint: 'Drag to turn the bird. This is the real CNC model.', nogl: '3D view needs WebGL.', fail: 'Could not load the model.' };
+  ? { solid: 'Drevo', wire: 'Drôtený model', circuit: 'Výkres', spin: 'Otáčanie', load: 'Načítavam 3D model NightJar.Gift…', hint: 'Potiahni myšou a otoč lelka. Tvar je skutočný CNC model.', nogl: '3D zobrazenie vyžaduje WebGL.', fail: 'Model sa nepodarilo načítať.' }
+  : { solid: 'Wood', wire: 'Wireframe', circuit: 'Blueprint', spin: 'Spin', load: 'Loading the NightJar.Gift 3D model…', hint: 'Drag to turn the bird. This is the real CNC model.', nogl: '3D view needs WebGL.', fail: 'Could not load the model.' };
 ---
 <div class="viewer" data-viewer data-model="/models/nightjar.stl" data-button="/models/nightjar_button.stl" data-fail={L.fail} data-nogl={L.nogl}>
   <div class="poster" data-loading>
     <MeshCircuit class="poster-art" />
     <p class="load">{L.load}</p>
   </div>
-  <canvas aria-label="3D model of the LELEK wooden nightjar" role="img"></canvas>
+  <canvas aria-label="3D model of the NightJar.Gift wooden nightjar" role="img"></canvas>
   <div class="ctrl" role="group" aria-label="3D view">
     <button type="button" data-mode="solid" aria-pressed="true" class="on">{L.solid}</button>
     <button type="button" data-mode="wire" aria-pressed="false">{L.wire}</button>

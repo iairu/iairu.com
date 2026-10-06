@@ -3,12 +3,13 @@ import Base from '../../layouts/Base.astro';
 import { LANGS, ui } from '../../data/i18n.js';
 import { nav, fields } from '../../data/site.js';
 import { projects } from '../../data/projects.js';
-import { docs, staticDocs } from '../../data/docs.js';
+import { docsFor, staticDocsFor } from '../../data/docs.js';
 import { tr, lhref } from '../../data/util.js';
 
 export const getStaticPaths = () => LANGS.map((lang) => ({ params: { lang } }));
 const { lang } = Astro.params;
 const T = (en, sk) => (lang === 'sk' ? sk : en);
+const docs = docsFor(lang), staticDocs = staticDocsFor(lang);
 const g = (id) => projects.filter((p) => p.fields[0] === id);
 ---
 <Base lang={lang} path="sitemap/" title={ui[lang].nav.sitemap} description={T('Every page of the site in one list.', 'Každá stránka webu v jednom zozname.')} crumbs={[{ label: ui[lang].nav.sitemap }]}>
@@ -27,8 +28,8 @@ const g = (id) => projects.filter((p) => p.fields[0] === id);
           </ul>
           <h2>{ui[lang].nav.docs}</h2>
           <ul>
-            {docs.map((d) => <li><a href={lhref(lang, `docs/${d.slug}/`)}>{d.title}</a> <small>({d.lang})</small></li>)}
-            {staticDocs.filter((d) => !d.href.startsWith('http')).map((d) => <li><a href={d.href}>{tr(d.title, lang)}</a></li>)}
+            {docs.map((d) => <li><a href={lhref(lang, `docs/${d.slug}/`)}>{d.title}</a></li>)}
+            {staticDocs.filter((d) => !d.href.startsWith('http')).map((d) => <li><a href={d.href}>{d.title}</a></li>)}
           </ul>
         </div>
         <div>

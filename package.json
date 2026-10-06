@@ -8,7 +8,9 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "sync:repos": "node scripts/sync-repos.mjs"
+    "sync:repos": "node scripts/sync-repos.mjs",
+    "thumbs": "node scripts/make-thumbs.mjs",
+    "sky": "python3 scripts/make-sky.py"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.0",
