@@ -2,6 +2,7 @@
 // repos.json, a snapshot written by `npm run sync:repos`; everything else is curated here.
 // Order on the site: most starred first, then newest.
 import snapshot from './repos.json';
+import repoImages from './repo-images.json';
 
 const gh = Object.fromEntries(snapshot.repos.map((r) => [r.name, r]));
 export const repoSnapshotDate = snapshot.synced;
@@ -189,7 +190,8 @@ const raw = [
 
 const KNOWN_LANG = { 'Jupyter Notebook': 'Python (notebook)' };
 
-// Projects without a picture of their own get a generated one (npm run thumbs, see scripts/make-thumbs.mjs).
+// Picture order: a hand-picked one, else one taken from the project's GitHub repository
+// (src/data/repo-images.json), else a generated one (npm run thumbs, scripts/make-thumbs.mjs).
 export const projects = raw.map((p) => {
   const r = p.repo ? gh[p.repo] : null;
   if (p.repo && !r) throw new Error(`projects.js: repo ${p.repo} missing from repos.json (run npm run sync:repos)`);
@@ -197,7 +199,7 @@ export const projects = raw.map((p) => {
   const links = (p.links || []).map((l) => ({ ...l }));
   return {
     ...p,
-    image: p.image ?? `/img/thumbs/${p.id}.jpg`,
+    image: p.image ?? (repoImages[p.id] ? `/img/repos/${p.id}.jpg` : `/img/thumbs/${p.id}.jpg`),
     language,
     stars: r ? r.stars : 0,
     year: p.year ?? Number(r.created.slice(0, 4)),

@@ -104,9 +104,9 @@ code, kbd { font-family: var(--mono); font-size: .9em; }
 /* Star-field backdrop: one of six generated pictures, picked at random per visit, fading out
    downwards. Azure in the dark theme, sepia in the light theme (see scripts/make-sky.py). */
 .sky { position: absolute; top: 0; left: 0; right: 0; height: min(78vh, 720px); z-index: -1; pointer-events: none;
-  background: center top / cover no-repeat; opacity: .5;
+  background: center top / cover no-repeat; opacity: .26;
   -webkit-mask-image: linear-gradient(180deg, #000 0, rgb(0 0 0 / .65) 38%, transparent 100%); mask-image: linear-gradient(180deg, #000 0, rgb(0 0 0 / .65) 38%, transparent 100%); }
-:root[data-theme='light'] .sky { opacity: .62; }
+:root[data-theme='light'] .sky { opacity: .34; }
 @media (max-width: 700px) { .sky { background-size: auto 100%; height: min(60vh, 520px); } }
 :root[data-theme='dark'][data-sky='1'] .sky { background-image: url('/img/sky/dark-1.jpg'); }
 :root[data-theme='dark'][data-sky='2'] .sky { background-image: url('/img/sky/dark-2.jpg'); }

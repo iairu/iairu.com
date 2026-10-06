@@ -1,0 +1,13 @@
+{
+  "_note": "Project id -> a presentable picture taken from the project's own GitHub repository. Fetched into public/img/repos/ by scripts/fetch-repo-images.py. crop = [left, top, right, bottom] in source pixels.",
+  "aiv-logic-plugins": { "repo": "logic-plugins", "path": "Screenshots/1.png" },
+  "tables-cms": { "repo": "tables-cms", "path": "TABLES-OLD.app/Contents/Resources/static/assets/tables-feature-highlight-banner.png" },
+  "twodolisty": { "repo": "twodolisty", "path": "_Assets/screenshot.png" },
+  "ankiscreener": { "repo": "AnkiScreener", "path": "readme_images/menu.png" },
+  "tasm-counter": { "repo": "tasm_counter", "path": "foto/kompilacia_funguje.png" },
+  "usb-caps": { "repo": "smvit-usbcaps-project-website", "path": "img/smvit-brand-header.png" },
+  "castlecall": { "repo": "castlecall", "path": "logo.png" },
+  "privateshare": { "repo": "PrivateShare", "path": "readme_images/gui.png" },
+  "honeypot-ids": { "repo": "honeypot-ids", "path": "ids/eshop_seed/site/hero.jpg" },
+  "llm-rag-dspy": { "repo": "llm-rag-dspy-playground", "path": "1_AI-POSTUP.drawio.png", "crop": [0, 0, 1001, 563] }
+}

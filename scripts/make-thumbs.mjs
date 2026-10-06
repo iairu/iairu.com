@@ -154,7 +154,7 @@ h1{font:700 52px/1 B;letter-spacing:-.03em}.tag{font:500 18px M;color:${c0}}
 }
 
 const only = process.argv.slice(2);
-const todo = projects.filter((p) => (only.length ? only.includes(p.id) : !p.image));
+const todo = projects.filter((p) => (only.length ? only.includes(p.id) : p.image.startsWith('/img/thumbs/')));
 mkdirSync(new URL('public/img/thumbs/', root), { recursive: true });
 const browser = await chromium.launch();
 const page = await browser.newPage({ viewport: { width: 960, height: 540 } });
