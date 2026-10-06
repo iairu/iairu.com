@@ -1,12 +1,12 @@
 ---
-title:	Vyprážané rezance
+title:	Vyprážané rezance s papričkovým olejom
 category:	recipes
 tags:	recipe, noodles, paprika
 desc:	Jednoduché suroviny, zložitý postup: rezance postavené na oleji s papričkovým výluhom, vajciach a neustálom miešaní.
 date:	2021-03-22
 ---
 
-Tento recept je z hľadiska surovín jednoduchý a z hľadiska postupu zložitý, postavený najmä na mletej paprike, vajciach a neustálom miešaní, polievaní a podobne.
+Suroviny sú jednoduché, ale postup si vyžaduje pozornosť: stojí na oleji s papričkovým výluhom, vajciach, neustálom miešaní a pridávaní malých množstiev vody.
 
 Výsledkom sú dosť neutrálne rezance, ktoré sa dajú podávať takmer ku všetkému, čo by inak išlo s ryžou alebo zemiakmi. Dajú sa pridať aj do polievky.
 

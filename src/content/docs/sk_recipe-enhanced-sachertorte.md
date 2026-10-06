@@ -1,12 +1,12 @@
 ---
-title:	Vylepšená Sacherova torta
+title:	Sacherova torta
 category:	recipes
 tags:	recipe, cake, chocolate
 desc:	Sacherova torta krok za krokom s marhuľovým džemom a varenou čokoládovou polevou, so štyrmi misami, ktoré treba sledovať.
 date:	2019-08-27
 ---
 
-Prečítaj si celý recept vopred a uisti sa, že rozumieš tomu, čo sa tu hovorí. Všetko vopred odvaž a odmeraj.
+Prečítaj si celý recept pred začatím a všetko vopred odvaž a odmeraj. Recept používa štyri misy, preto si pamätaj, ktorá je ktorá.
 
 ## Suroviny
 
@@ -46,4 +46,4 @@ Rúru predhrej na 170 °C.
     - Rýchlo prelej na Sacherovu tortu.
     - Špachtľu namáčaj do steknutej čokolády a použi ju na pokrytie nepokrytých častí torty.
 11. Nechaj Sacherovu tortu vychladnúť: presuň ju na čistý tanier a daj do chladničky aspoň na hodinu.
-12. Hotovo.
+12. Podávaj.

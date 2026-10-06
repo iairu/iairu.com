@@ -1,12 +1,12 @@
 ---
-title:	Enhanced Sachertorte
+title:	Sachertorte
 category:	recipes
 tags:	recipe, cake, chocolate
 desc:	A step-by-step Sachertorte with apricot jam and a boiled chocolate glaze, with four bowls to keep track of.
 date:	2019-08-27
 ---
 
-Read the entire recipe ahead of time and make sure you understand what is said here. Weigh and measure everything in advance.
+Read the whole recipe before you start, and weigh and measure everything in advance. The recipe uses four bowls, so keep track of which is which.
 
 ## Ingredients
 
@@ -46,4 +46,4 @@ Preheat the oven to 170 °C.
     - Quickly transfer onto the Sachertorte.
     - Dip your spatula into the dripped-off chocolate and use it to cover any uncovered parts of the Sachertorte.
 11. Let the Sachertorte cool: transfer it to a clean plate and put it in the fridge for at least an hour.
-12. Done.
+12. Serve.

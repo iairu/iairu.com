@@ -1,5 +1,5 @@
 ---
-title:	Superrýchly pizza chlieb z mikrovlnky
+title:	Rýchly pizza toast z mikrovlnky
 category:	recipes
 tags:	recipe, microwave, quick
 desc:	Pizza toast za jednu minútu v mikrovlnke.
@@ -19,5 +19,5 @@ date:	2020-02-08
 3. Potom trochu oregana, aby pokrylo syr.
 4. Potom celý chlieb pokry pepperoni.
 5. Hoď to na tanieri do mikrovlnky na minútu (syr môže odkvapkávať).
-6. Jedz rýchlo po ~30 sekundách (hneď = horúce, nie rýchlo = syr stuhne).
+6. Jedz po asi 30 sekundách: hneď z mikrovlnky je príliš horúci a ak počkáš dlhšie, syr stvrdne.
 7. Voliteľne: pridaj navrch kečup.

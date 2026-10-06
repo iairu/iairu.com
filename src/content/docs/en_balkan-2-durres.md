@@ -2,58 +2,56 @@
 title:	Balkan 2: Durrës
 category:	travel
 tags:	travel, hitchhike, albania, durres
-desc:	Day two: working out Albanian intercity buses, a questionable hamburger and an apartment with a view of a museum.
+desc:	Day two: working out how Albanian intercity buses work, and a night in Durrës.
 date:	2021-08-14
 ---
 
-**7:40AM, still at the Rooster hostel** - We got up after our restful sleep. The hellish warmth had been exchanged for a pleasant morning temperature. The air conditioning had to be on through the whole night and even now it's still on. All of the beds in this 6-bunk room are occupied, but even so, everyone is just doing their own thing and not bothering anybody else.
+**7:40, Rooster hostel**
 
-As for today, we will go back to the marketplace, then somehow head to the second largest city in Albania, Durrës.
+We woke up rested. The air conditioning had run all night, and although all six beds in the dorm were taken, everyone minded their own business. The plan for the day: another look at the market, then on to Durrës, the second largest city in Albania.
 
-![The marketplace](/img/montaigne/travel/balkan-2-durres/1.jpg)
+![The market](/img/montaigne/travel/balkan-2-durres/1.jpg)
 
-The marketplace, which we found filled with insane amounts of tobacco. Some random merchant wanted to sell us an entire kilogram cheaply. I had to say *"no"* like 3-4 times, and he was like *"it's good for you"* 😂.
+The market was full of tobacco. One merchant offered us a whole kilogram at a low price. I declined three or four times, and he assured me each time that it was good for me.
 
 ![A stall](/img/montaigne/travel/balkan-2-durres/2.jpg)
 
-**3:40PM, lying in our Durrës apartment** - Getting here was fun. We couldn't find any information on the internet about how the intercity buses work. We only knew that they leave every 30 minutes from the station. We packed our things and left the Rooster hostel at **11AM**.
+**15:40, our apartment in Durrës**
 
-We let the reception lady explain the bus schedules to us. It works like this: local buses have no schedule at all and you have to talk to the driver to find out where they're headed. *"The buses aren't marked. Just approach them and be like 'Terminal?' and if they're like 'Terminal.' then you know you will get to the bus station."* And from there on to Durrës.
+Getting here was an adventure of its own. We found no information online about how intercity buses work. All we knew was that they leave the station every 30 minutes. We left the hostel at **11:00** and asked the receptionist, who explained that local buses have no timetable and are not marked: you ask the driver, say "Terminal?", and if he answers "Terminal", the bus goes to the bus station, from where buses leave for Durrës.
 
-Before we took the bus, we went to see the city centre once more. What is the first thing tourists like us usually want to take with them? Postcards! So... we walked around looking for postcards. As it turns out, the lady at the post office knew English, but still had no idea what postcards were and presented us with a catalogue of postage stamps instead 😂. My sister was already losing her mind, because all we wanted by this point was to arrive at some kind of souvenir shop, which we had actually passed along the way, so we then had to walk a long way back. In any case, the merchant at the souvenir shop did indeed have some postcards... hidden in the back for no one to see. As odd as this whole situation was, we ended up happy.
+Before leaving we went through the centre once more, looking for postcards. The post office clerk spoke English but did not know what a postcard was and offered us a catalogue of stamps. We walked on, passed a souvenir shop without noticing it and had to walk back. The merchant did have postcards, kept out of sight at the back of the shop. We left happy, if a little tired.
 
-The second bus driver we approached was indeed headed for the Terminal. The road there was weird in all sorts of ways: random\* architecture on top of each other, trash next to the road. *(\*Google: Tirana, the capital of Albania, is known for its colourful Ottoman-, Fascist- and Soviet-era architecture.)*
+The second bus driver we asked was going to the Terminal. On the way we saw buildings of very different eras standing next to each other and plenty of litter beside the road. (Tirana is known for its mix of Ottoman, Fascist and Soviet-era architecture.)
 
-After we arrived, we slowly came to a bunch of realisations. Bus tickets are not bought ahead of time, or at the driver's seat, but from a guide (basically an additional person who always rides the bus alongside the driver) once you're already seated, first come, first served. The so-called "Terminal" is actually just a broken-down concrete skeleton that has stood for at least 20 years in the middle of an overgrown field. All you get is the parking lot next to the "Terminal", which is constantly filled with buses and nagging taxi drivers. The traffic lights are more advanced and show timers, yet people don't care and cars run a red light ~20% of the time, which is a lot. Honk!
+At the Terminal we learned how it all works. Tickets are not bought in advance or from the driver, but from a conductor who rides along, once you are seated. The "Terminal" itself is an unfinished concrete shell that has stood in an overgrown field for at least twenty years, and the actual stop is the car park next to it, full of buses and taxi drivers touting for customers. Traffic lights show a countdown, but a fair share of cars ran the red light anyway.
 
-But anyway, let's slow down a bit. We get to the parking lot and here is what happens: all the buses are now properly marked, but the bus we got onto was apparently full and after not even 50 metres we got kicked out, because standing or sitting on the stairs is not allowed. Then we walked not even 5 metres to find the next bus, when I realised that it only stands in the same spot and all the other buses are for different destinations. On our way back to that spot a taxi driver started nagging us, saying random lies like *"That was the last bus to Durrës today."* even though it was barely **noon**, and *"It will cost 5000 Lek"* (~40 €).
+The first bus we boarded was full and we had to leave after about fifty metres, because standing on the steps was not allowed. A taxi driver then told us the last bus to Durrës had already left, although it was barely noon, and quoted 5000 Lek (about 40 €). When we declined, his price dropped to 3200 Lek.
 
-![The bus parking lot](/img/montaigne/travel/balkan-2-durres/3.jpg)
+![The bus car park](/img/montaigne/travel/balkan-2-durres/3.jpg)
 
-And as we tried to persuade the driver to leave us be while two of his friends watched, suddenly he was like *"no, it will cost only 3200 Lek"*. Another driver with a much calmer tone of voice noticed the situation and approached us in the middle of it too.
+A calmer driver stepped in, led us away from the others to the right bus and apologised: *"Sorry, it's a big problem in Albania, our people doing this."* The bus cost 150 Lek per person, ten times less than the taxi.
 
-He managed to navigate us away from the other nagging drivers to the parking spot for our bus, saying *"Sorry, it's a big problem in Albania, our people doing this."* As for how much English these people knew: the nagging ones barely any, just enough to get by, and the calmer one clearly knew more, and not just in terms of English. In any case, the bus cost 150 Lek per person. Yes, 10x less.
-
-It's an experience for buses coming from Tirana and headed for Durrës to even get onto the "highway" they arrived from, because here they apparently don't know how to build exits and entrances, so it took the bus driver another 15 minutes to get all the way back to the nearest roundabout, just so the bus could get into the right lane.
-
-The road to Durrës was OK. From the window we could see even more broken-down and odd architectural pieces, overgrown with grass and mixed in with industrial buildings. Most of the grass in this country is scorched by the sun, there is close to no green left in it, and I have no idea how it manages to survive. Durrës may be 46 km from Tirana and there may be a few more towns in between, but whoever designed them didn't actually design anything. There was not even a 50 m stretch of road where we could tell that we were outside any kind of settlement. Population centres in this country are practically the whole country, not like over here in Slovakia, where cities, towns and villages are settlements and then you have no more settlements, just fields.
+The bus took an extra 15 minutes because it had to drive to the nearest roundabout to get onto the right carriageway. The route to Durrës was fine. From the window we saw more unfinished buildings among industrial sites and fields of sun-scorched grass. Between Tirana and Durrës, 46 km apart, there was hardly any stretch of road without buildings, which is quite different from Slovakia, where towns and villages are clearly separated by fields.
 
 ![The road to Durrës](/img/montaigne/travel/balkan-2-durres/4.jpg)
 
-Once we arrived in Durrës, I bought a very questionable piece of food advertised as a *"hamburger"* in a run-down "restaurant", because why not (note: this is actually a really bad idea in most cases if you don't want to ruin your trip). Well, here is what it contained:
+In Durrës I bought a "hamburger" at a run-down restaurant. A word of advice: this is rarely a good idea on a trip. This is what it contained:
 
 ![The hamburger](/img/montaigne/travel/balkan-2-durres/5.jpg)
 
-By the time I got to eat it, the already soggy fries had gotten even soggier. Surprisingly enough, it was edible. Not palatable, but edible. In any case, before I got to eat my hamburger, we first had to reach our apartment. It was just about **12:30PM** when we were forced to walk through the whole town, because the bus station was 1.2 km from where we were staying (note: future me can only laugh at this pathetically low number, even at noon 😂). Towards the end there was of course a problem even finding the place we were staying at. Once we got to the point marked in my Booking.com app, such a place simply wasn't there.
+By the time I ate it, the fries had gone soggy. It was edible, if not enjoyable. First, though, we had to reach the apartment, about 1.2 km from the bus station. It was **12:30** and very hot, which made the walk feel longer than it was. At the point marked in the Booking.com app there was no such place.
 
 ![Looking for the apartment](/img/montaigne/travel/balkan-2-durres/6.jpg)
 
-As we circled the same building for the third time, we stopped a random grandpa and somehow, using body language and pictures, explained to him what we were looking for. He then proceeded to lead us all the way there, because whenever he wanted to go on with his day and let us keep walking on our own, we had no idea what he meant. In any case the place, called very simply *"Top view"*, actually had a pretty good view and cost us once again around 14 € together for a single night, maybe even less. Finally, all the issues vanished for the day. I could take a shower and enjoy my "hamburger" alongside the view, which for the most part was just the back of the local archaeological museum.
+After circling the same building three times we asked an elderly man, and explained what we were looking for with gestures and pictures. He walked us all the way there. The apartment, called *Top view*, did have a good view, mostly of the back of the local archaeological museum, and cost about 14 € for both of us for the night. I took a shower and ate my hamburger on the balcony.
 
 ![The view](/img/montaigne/travel/balkan-2-durres/7.jpg)
 
 ![The beach](/img/montaigne/travel/balkan-2-durres/8.jpg)
 
-**Some more things that happened on this day** - In the afternoon we went to the beach and enjoyed the sea. Afterwards we stayed at a questionable Italian restaurant, precisely because, unlike all the other restaurants, this one had no guests at all. The food was good, but the staff's behaviour rather questionable. Afterwards we walked along the beach until nighttime, then it started getting crowded, and then my sister got upset because *"you don't know how to take pictures with composition"*, ironically enough for an artist who studied composition in art classes 😂.
+**The rest of the day**
+
+In the afternoon we went to the beach. For dinner we picked an Italian restaurant precisely because it was the only one with no guests. The food was good, the service less so. We walked along the beach until dark, when it grew crowded, and my sister told me I could not compose a photograph. Coming from an artist who studied composition, that was fair.
 
 Previous: [Balkan 1: Tirana](../balkan-1-tirana/)

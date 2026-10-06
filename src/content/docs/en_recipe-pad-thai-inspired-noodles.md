@@ -38,13 +38,13 @@ date:	2020-02-08
 9. While holding the cover for the wok, pour in a full glass of water and quickly cover.
 10. After 10 seconds uncover for a quick mix, then cover again until the water starts to boil off.
 11. Chop about 2.5 inches of scallion, preferably only the green part.
-12. Get your plate and fork ready in the meantime, the wait is boring.
+12. Prepare a plate and fork in the meantime.
 13. After the water starts to boil off and the noodles are left in a sauce-like mix, slowly add another 1 to 1.5 cups of water over time and leave uncovered.
 14. After the sauce boils down enough that it is no longer moving on its own, move the noodles to one side of the wok. Ingredients in the sauce can cause the oil to splatter high, so try to avoid that.
 15. Add a bit of oil to the other side of the wok; you can let it run under the noodles.
 16. Right afterwards crack an egg into the oil-only side and mix it around in itself (leave the noodles untouched for now).
 17. Drop the chopped scallion and mozzarella onto the noodles, with no mixing until the egg fries down a little.
-18. Mix it all up. It should become a bit too sticky.
-19. Pour a wheeze of oil around the sides and 0.25 glass of water, mix well and serve immediately with bonus scallion and sesame seeds on top.
+18. Mix it all up. It should turn quite sticky.
+19. Pour a splash of oil around the sides and 0.25 glass of water, mix well and serve immediately with bonus scallion and sesame seeds on top.
 
 ![The finished noodles](/img/montaigne/recipes/pad-thai-inspired-rice-noodles/1.jpg)

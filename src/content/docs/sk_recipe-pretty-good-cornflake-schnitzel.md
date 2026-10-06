@@ -1,5 +1,5 @@
 ---
-title:	Celkom dobrý rezeň z cornflakes
+title:	Kuracie rezne v obale z cornflakes (vylepšená verzia)
 category:	recipes
 tags:	recipe, chicken, cornflakes
 desc:	Vylepšený rezeň z cornflakes: tenké kúsky kuracieho mäsa, marináda zo sušeného korenia a trojstupňový obal.
@@ -10,13 +10,12 @@ date:	2021-03-22
 
 ### Tenké kúsky kuracích pŕs
 
-1. Umy pred krájaním.
-2. Nakrájaj na tenké kúsky.
-3. Daj do veľkej nádoby.
-4. Umy.
-5. Zmiešaj s veľmi mierne osolenou vodou.
-6. Nechaj stáť, kým rozdrvíš cornflakes.
-7. Po odstátí ešte raz premiešaj a vylej vodu.
+1. Kuracie mäso umy pred krájaním.
+2. Nakrájaj ho na tenké kúsky a daj do veľkej nádoby.
+3. Opláchni ešte raz.
+4. Zalej veľmi mierne osolenou vodou.
+5. Nechaj stáť, kým rozdrvíš cornflakes.
+6. Premiešaj a vodu vylej.
 
 ### Rozdrvené cornflakes
 

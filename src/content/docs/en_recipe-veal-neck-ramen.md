@@ -1,5 +1,5 @@
 ---
-title:	Repurposed veal neck (ramen edition)
+title:	Ramen from leftover roast veal neck
 category:	recipes
 tags:	recipe, ramen, leftovers
 desc:	How to turn a two-day-old roast veal neck into a quick noodle ramen.

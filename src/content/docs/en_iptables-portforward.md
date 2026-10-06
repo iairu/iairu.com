@@ -39,7 +39,7 @@ For this reason on any conventional router there is a port-forwarding table that
 
 The act of port-forwarding also allows to move the entire port range to different numbers (which means that your request port doesn't actually have to be the port that the webserver is ran on, if it happens to already be occupied or you just want it on a different port).
 
-On Linux devices such as Raspberry PI this process can be achieved using the "for many dreaded"`iptables` firewall.
+On Linux devices such as Raspberry PI this can be done with the `iptables` firewall, which has a reputation for being hard to approach.
 
 ### Adding relevant iptables rules
 
@@ -104,11 +104,11 @@ The second and third reasons are a part of the same problem that will require de
 
 > This can be achieved by either:
 >
-> - Hoping that StackOverflow has the answer, then getting angry when it doesn't work and you don't know why or where to look for clues (while great for exploring options, don't blindly do this if you expect to get out of the rabbit hole of problems)
+> - Searching forums such as StackOverflow for an answer (useful for exploring options, but on its own it rarely tells you where your particular problem is)
 > - Creating & reading the logs, figuring out the current path that your request takes
-> - Blindly checking tables & chains for rules that could be causing trouble
+> - Checking tables and chains one by one for rules that could be causing the problem
 
-**Playing the detective**
+**Finding the cause**
 
 Check the iptables flowchart and try to figure out where the request could get stuck by listing the entries of the given tables.
 
@@ -175,7 +175,7 @@ Secondary to that there is the actual information within the packet that can be 
 
 Lastly, the way you figure out whether a packet manages to get to the end is that you slowly encroach on the rules by logging in different chains and seeing which ones the packet managed to pass through unharmed. 
 
-I recommend that you open two terminals for this, one with the live log, and a second one where you spam different iptables rule addition/removal and log addition/removal commands hoping that something will stick.
+I recommend that you open two terminals for this, one with the live log, and a second one where you add and remove iptables rules and log rules, and observe the effect in the first.
 
 > For me, the greater part of the 6 hours that my packets refused to get through was spent figuring out how to get to this stage. My problem was that one of the FILTER table rules on FORWARD chain were rejecting my packet, even though it wasn't obvious from the listing. I fixed the problem by inserting a rule to the first position to ACCEPT anything destined for my webserver. (`iptables -I FORWARD 1 -p tcp --dport 80 -j ACCEPT`)
 

@@ -6,20 +6,18 @@ desc:	Ako sa začal desaťdňový, väčšinou stopovaný výlet po Balkáne, so
 date:	2021-08-12
 ---
 
-Boli sme unavení z tej či onej pandémie, tak raz moja sestra vošla do mojej izby a bolo to také niečo niečo stopovanie, niečo niečo lacné letenky. Keďže som mal dosť svojho všedného života, jednoducho som povedal „okej“...
+Po dlhom období pandemických obmedzení mi sestra navrhla výlet: stopovanie, lacné letenky, žiadny pevný plán. Chcel som zmenu oproti rutine, a tak som súhlasil hneď.
 
-Prvé dva dni sme boli dosť sústredení na seba a cestovali sme tak, ako zvyčajne, ale potom sa nám otvoril svet. Problémy akoby zmizli a sťažnosti prestali existovať. Ako sa bude meniť moja myseľ, bude sa veľmi meniť aj štýl písania. Po týchto dvoch dňoch sme sa spriatelili s náhodným chlapom, začali sme naozaj stopovať, zblížili sme sa s rôznymi spôsobmi života ľudí a viac sme si ich vážili a pokračovali sme spolu zvyšok našej prvej cesty.
+Prvé dva dni sme cestovali tak, ako zvyknú turisti. Potom sme stretli cudzinca, ktorý nám ukázal, ako sa to robí, a začali sme stopovať naozaj. Cestou sme spoznali veľa ľudí a ich spôsobov života a začali sme ich oceňovať. Zodpovedajúco sa mení aj štýl týchto zápisov: začínajú ako zoznam sťažností a postupne sa menia na zvedavejšie.
 
-Samozrejme, keď raz začneš, nedá sa prestať, a tak nasledovali ďalšie dobrodružstvá pre každého z nás, ale tieto príbehy ešte len treba vyrozprávať.
+Bol to prvý z niekoľkých výletov, o ktorých napíšem inokedy.
 
-**Krajiny**: Albánsko, Čierna Hora, Bosna a Hercegovina, Maďarsko (tak trochu)
+## Stručne
 
-**Dĺžka**: 10 dní
-
-**Spoločníci**: ja, Katka (moja sestra), Šebestián Bok (predstavený neskôr)
-
-**Doprava**: iba lietadlo a lacné autobusy (prvé dva dni), iba stopovanie (ďalších sedem dní), vlaky (posledný deň)
-
-**Počet stopov**: ~11 rôznych áut
+- **Krajiny:** Albánsko, Čierna Hora, Bosna a Hercegovina, Maďarsko (krátko)
+- **Dĺžka:** 10 dní
+- **Spoločníci:** ja, Katka (moja sestra) a Šebestián Bok, ktorý sa k nám pridal neskôr
+- **Doprava:** lietadlo a lacné autobusy prvé dva dni, stopovanie ďalších sedem a vlaky v posledný deň
+- **Jazdy:** približne 11 rôznych áut
 
 Ďalej: [Balkán 1: Tirana](../balkan-1-tirana/)

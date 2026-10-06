@@ -47,7 +47,7 @@ Všimni si, že pri konverzií 1111 1100, keď vieš, že maximálne číslo dos
 
 ## **3. Počiatočná adresa siete**
 
-Teraz keď máš binárnu adresu aj binárnu masku (prvé dva príklady), potrebuješ urobiť tzv. binárny súčin týchto dvoch a z toho ti vylezie 🐍 počiatočná adresa siete.
+Teraz keď máš binárnu adresu aj binárnu masku (prvé dva príklady), potrebuješ urobiť tzv. binárny súčin týchto dvoch a z toho ti vyjde počiatočná adresa siete.
 
 Binárny súčin funguje tak, že prenásobíš cifry pod sebou a dostaneš teda buď 0 alebo 1.
 

@@ -1,8 +1,8 @@
 ---
-title:	Best roll
+title:	Bacon and egg roll
 category:	recipes
 tags:	recipe, bacon, egg
-desc:	A bacon, egg and pickle roll with a rolled-up omelette and sweet chilli sauce.
+desc:	A roll with bacon, a rolled omelette, pickles and sweet chilli sauce.
 date:	2019-09-05
 ---
 
@@ -20,7 +20,7 @@ date:	2019-09-05
 ## Instructions
 
 1. Defrost the rolls, heat up the pan with a bit of oil.
-2. Dice a bit of the onion and slice a bit of the onion.
+2. Dice some of the onion and slice the rest.
 3. Once the oil heats up, put a bit of the diced onion and paprika powder in and mix, lower the heat and cover for 10-15 seconds.
 4. Put strips of bacon on top of the paprika-onion mix in the pan (make sure to remove the chewy part before frying) and cover for 30-45 seconds.
 5. Cut the rolls in half (with the halves still holding together) and add slices of raw onion on the bottom.
@@ -30,4 +30,4 @@ date:	2019-09-05
 9. As soon as the egg is rolled, move it to a plate and slice it in half along the longer side. Place the two long layered egg strips that result into the two rolls.
 10. Drip in some of that good sweet chilli sauce.
 11. Slice the pickles along the longer side into quarters and put them into the rolls.
-12. Done.
+12. Serve immediately.

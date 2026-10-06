@@ -1,5 +1,5 @@
 ---
-title:	Questionable cornflake schnitzel
+title:	Cornflake chicken schnitzel (first version)
 category:	recipes
 tags:	recipe, chicken, cornflakes
 desc:	A chicken schnitzel in a cornflake and breadcrumb coating with a pepper-oil, ginger and sweet chilli marinade.
@@ -14,27 +14,27 @@ date:	2019-08-27
 - Squeeze a bit of onion through a garlic press into the pan.
 - Add spicy red pepper dust (not sweet pepper dust).
 - Fry for a while.
-- Filter through a paper towel if you manage to burn it like I did :<
+- If the oil burns, filter it through a paper towel.
 
 ### 2. Marinade prep
 
-- Squeeze one garlic clove through the garlic press (two is too much, I tried it last time lol).
+- Squeeze one garlic clove through the garlic press (two is too much).
 - Squeeze a bit of ginger (without skin) through the same press.
 - Mix everything with the pepper oil infusion.
 - Add a bit of spicy red pepper dust and sweet red pepper dust.
 - Add seasoning and salt.
 - Add a bit of melted butter (~50 g?).
-- Add sweet chilli sauce (the most important thing that makes it good).
+- Add sweet chilli sauce (the key ingredient).
 
 ### 3. Marinating
 
-- Cut the chicken breasts into reasonable slices and remove all the chewy stuff.
+- Cut the chicken breasts into reasonable slices and remove tendons and sinew.
 - Wash them in cold water.
 - Mix with the marinade.
 - Let rest for 5 min, then put in the fridge for 30 min or more.
 - After the fridge the marinade will have solidified because of the butter. Quickly heat it over boiling water and CAREFULLY mix so as not to cook the meat.
 
-### 4. The KFC-style schnitzel
+### 4. Coating and frying
 
 - Crush the cornflakes (in a plastic bag).
 - Mix the crushed cornflakes with breadcrumbs.
@@ -48,4 +48,4 @@ date:	2019-08-27
 
 ### 5. Recommended serving
 
-Rested chicken schnitzels straight from the fridge with fresh lettuce, cucumber slices, onion, tomatoes and some burger Hellmann's mayonnaise mix in a toasted burger bun.
+Serve the rested schnitzels with fresh lettuce, sliced cucumber, onion, tomatoes and Hellmann's mayonnaise in a toasted burger bun.

@@ -1,5 +1,5 @@
 ---
-title:	Pretty-good cornflake schnitzel
+title:	Cornflake chicken schnitzel (improved version)
 category:	recipes
 tags:	recipe, chicken, cornflakes
 desc:	The improved cornflake schnitzel: thin chicken pieces, a dry-spice marinade and a three-stage coating.
@@ -10,13 +10,12 @@ date:	2021-03-22
 
 ### Thin chicken breast pieces
 
-1. Wash before cutting.
-2. Cut into thin pieces.
-3. Put in a large container.
-4. Wash.
-5. Mix in very slightly salted water.
-6. Let sit while working on crushing the cornflakes.
-7. After sitting, mix once more and remove the water.
+1. Wash the chicken before cutting.
+2. Cut it into thin pieces and put them in a large container.
+3. Rinse again.
+4. Cover with very lightly salted water.
+5. Let sit while you crush the cornflakes.
+6. Stir once more and pour off the water.
 
 ### Crushed cornflakes
 

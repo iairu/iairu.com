@@ -6,20 +6,18 @@ desc:	How a ten-day, mostly hitchhiked trip through the Balkans started, with th
 date:	2021-08-12
 ---
 
-We were tired of this pandemic and that pandemic, so my sister walked into my room one day and was like something something hitchhiking, something something cheap flight tickets. Because I had enough of my mundane ways of life, I simply said "ok"...
+After a long stretch of pandemic restrictions, my sister proposed a trip: hitchhiking, cheap flights, no fixed plan. I was ready for a change from routine and agreed on the spot.
 
-For the first two days we were rather self-centred and travelled as we usually would, but then the world opened up to us. Issues seemingly disappeared and complaints stopped existing. As such, as my mind changes, the writing style will also change a lot. After those two days we befriended a random guy, started actually hitchhiking, became more familiar with and appreciative of different people's ways of life, and went on for the rest of our first journey together.
+For the first two days we travelled the way tourists usually do. Then we met a stranger who showed us how it is done, and we began hitchhiking in earnest. Along the way we got to know many people and their ways of life, and we came to appreciate them. The writing style of these entries changes accordingly: it starts as a list of complaints and gradually becomes more curious.
 
-Of course, once you start, you can't stop, so more adventures followed for each of us, but those stories have yet to be told.
+It turned out to be the first of several trips, which I will write up another time.
 
-**Countries**: Albania, Montenegro, Bosnia & Herzegovina, Hungary (kind of)
+## At a glance
 
-**Length**: 10 days
-
-**Companions**: me, Katka (my sister), Šebestián Bok (introduced later)
-
-**Transport**: plane and cheap buses only (first two days), hitchhiking only (the next seven days), trains (the last day)
-
-**Hitch count**: ~11 different cars
+- **Countries:** Albania, Montenegro, Bosnia and Herzegovina, Hungary (briefly)
+- **Length:** 10 days
+- **Companions:** me, Katka (my sister), and Šebestián Bok, who joined us later
+- **Transport:** plane and cheap buses for the first two days, hitchhiking for the next seven, trains on the last day
+- **Rides:** about 11 different cars
 
 Next: [Balkan 1: Tirana](../balkan-1-tirana/)

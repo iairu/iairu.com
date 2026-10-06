@@ -1,5 +1,5 @@
 ---
-title:	Pochybný kukuričný rezeň z cornflakes
+title:	Kuracie rezne v obale z cornflakes (prvá verzia)
 category:	recipes
 tags:	recipe, chicken, cornflakes
 desc:	Kuracie rezne v obale z cornflakes a strúhanky s marinádou z papričkového oleja, zázvoru a sladkej chilli omáčky.
@@ -14,27 +14,27 @@ date:	2019-08-27
 - Cez lis na cesnak pretlač trochu cibule do panvice.
 - Pridaj ostrú červenú mletú papriku (nie sladkú).
 - Chvíľu opekaj.
-- Ak sa ti podarí pripáliť to ako mne, prefiltruj cez papierovú utierku :<
+- Ak sa olej pripáli, prefiltruj ho cez papierovú utierku.
 
 ### 2. Príprava marinády
 
-- Cez lis na cesnak pretlač jeden strúčik cesnaku (dva sú príliš veľa, minule som to skúšal lol).
+- Cez lis na cesnak pretlač jeden strúčik cesnaku (dva sú príliš veľa).
 - Cez ten istý lis pretlač trochu zázvoru (bez šupky).
 - Všetko zmiešaj s papričkovým olejom.
 - Pridaj trochu ostrej červenej papriky a sladkej červenej papriky.
 - Pridaj korenie a soľ.
 - Pridaj trochu rozpusteného masla (~50 g?).
-- Pridaj sladkú chilli omáčku (to najdôležitejšie, vďaka čomu je to dobré).
+- Pridaj sladkú chilli omáčku (kľúčová surovina).
 
 ### 3. Marinovanie
 
-- Kuracie pŕsia nakrájaj na primerané plátky a odstráň všetky žuvavé časti.
+- Kuracie pŕsia nakrájaj na primerané plátky a odstráň šľachy a väzivo.
 - Umy ich v studenej vode.
 - Zmiešaj s marinádou.
 - Nechaj 5 minút odpočinúť a potom daj do chladničky na 30 minút a viac.
 - Po chladničke marináda stuhne kvôli maslu. Rýchlo ju nad vriacou vodou zohrej a OPATRNE premiešaj, aby sa mäso neuvarilo.
 
-### 4. Rezeň ako z KFC
+### 4. Obaľovanie a vyprážanie
 
 - Cornflakes rozdrv (v plastovom vrecku).
 - Rozdrvené cornflakes zmiešaj so strúhankou.
@@ -48,4 +48,4 @@ date:	2019-08-27
 
 ### 5. Odporúčané servírovanie
 
-Odpočinuté kuracie rezne priamo z chladničky so šalátom, plátkami uhorky, cibuľou, paradajkami a hellmannsovou majonézou v opečenej burgerovej žemli.
+Odpočinuté rezne podávaj so šalátom, plátkami uhorky, cibuľou, paradajkami a majonézou Hellmann's v opečenej burgerovej žemli.

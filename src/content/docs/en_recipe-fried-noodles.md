@@ -1,12 +1,12 @@
 ---
-title:	Fryiyed noodles
+title:	Pan-fried noodles with paprika oil
 category:	recipes
 tags:	recipe, noodles, paprika
 desc:	Simple ingredients, a fiddly process: noodles built on paprika-infused oil, eggs and constant stirring.
 date:	2021-03-22
 ---
 
-This recipe is simple ingredient-wise and complicated process-wise, based mostly around paprika powder, eggs and constant mixing, stirring, dousing and so on.
+The ingredients are simple, but the method needs attention: it is built around paprika-infused oil, eggs, constant stirring and small additions of water.
 
 It results in fairly neutral noodles that can be served alongside almost anything that would otherwise work with rice or potatoes. They can also be added to a soup.
 

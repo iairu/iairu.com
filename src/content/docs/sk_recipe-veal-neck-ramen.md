@@ -1,5 +1,5 @@
 ---
-title:	Prerobený teľací krk (ramen edícia)
+title:	Ramen zo zvyškov pečeného teľacieho krku
 category:	recipes
 tags:	recipe, ramen, leftovers
 desc:	Ako z dva dni starého pečeného teľacieho krku urobiť rýchly ramen s nudľami.

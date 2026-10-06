@@ -104,11 +104,11 @@ Druhý a tretí dôvod sú súčasťou jedného problému, ktorý si vyžiada hl
 
 > To sa dá dosiahnuť:
 >
-> - Dúfaním, že odpoveď je na StackOverflow, a potom hnevom, keď nefunguje a nevieš prečo ani kde hľadať stopy (skvelé na preskúmanie možností, ale nerob to naslepo, ak sa chceš dostať z králičej nory problémov)
+> - Hľadaním odpovede na fórach ako StackOverflow (užitočné na preskúmanie možností, ale samo osebe zriedka povie, kde je tvoj konkrétny problém)
 > - Vytvorením a čítaním logov, aby si zistil, akou cestou tvoja požiadavka ide
-> - Naslepo kontrolovať tabuľky a reťazce, či v nich nie sú pravidlá, ktoré robia problémy
+> - Postupnou kontrolou tabuliek a reťazcov, či v nich nie sú pravidlá, ktoré spôsobujú problém
 
-**Hranie sa na detektíva**
+**Hľadanie príčiny**
 
 Pozri sa na diagram iptables a skús zistiť, kde by sa požiadavka mohla zasekať, výpisom záznamov v danych tabuľkách.
 
@@ -175,7 +175,7 @@ Druhoradé sú skutočné informácie v pakete, ktorý môže `iptables` zabloko
 
 Napokon, či sa paket dostane až na koniec, zistíš tak, že pomaly zužuješ pravidlá logovaním v rôznych reťazcoch a sleduješ, cez ktoré paket prešiel nepoškodený.
 
-Odporúčam otvoriť si na to dva terminály, jeden so živým logom a druhý, v ktorom budeš spamovať rôzne príkazy na pridanie a odobratie pravidiel iptables a logovania v nádeji, že sa niečo ujme.
+Odporúčam otvoriť si na to dva terminály, jeden so živým logom a druhý, v ktorom budeš pridávať a odstraňovať pravidlá iptables a logovacie pravidlá a v prvom sledovať ich účinok.
 
 > Pre mňa väčšia časť zo 6 hodín, počas ktorých moje pakety odmietali prejsť, išla na zistenie, ako sa k tejto fáze dostať. Môj problém bol, že niektoré pravidlo tabuľky FILTER v reťazci FORWARD zamietalo môj paket, hoci to z výpisu nebolo zrejmé. Problém som vyriešil vložením pravidla na prvú pozíciu, ktoré ACCEPT-uje čokoľvek určené pre môj webserver. (`iptables -I FORWARD 1 -p tcp --dport 80 -j ACCEPT`)
 
