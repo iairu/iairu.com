@@ -1,0 +1,68 @@
+---
+import Base from '../../../layouts/Base.astro';
+import ProjectCard from '../../../components/ProjectCard.astro';
+import { LANGS, ui } from '../../../data/i18n.js';
+import { byId } from '../../../data/projects.js';
+import { tr, lhref } from '../../../data/util.js';
+
+export const getStaticPaths = () => LANGS.map((lang) => ({ params: { lang } }));
+const { lang } = Astro.params;
+const T = (en, sk) => (lang === 'sk' ? sk : en);
+const brands = ['zenit', 'ghast', 'kooptn', 'drot', 'slniecko', 'domkultury'].map((id) => byId[id]);
+const groups = [
+  { id: 'animation', title: T('3D & animation', '3D a animácia'), text: T('Blender worlds and long-running animated stories.', 'Svety z Blendera a dlhodobé animované príbehy.'), items: ['zrada', 'secret-animation'] },
+  { id: 'illustration', title: T('Illustration & comics', 'Ilustrácia a komiksy'), text: T('Drawn on a tablet in Procreate and Clip Studio Paint, painted on canvas.', 'Kreslené na tablete v Procreate a Clip Studio Paint, maľované na plátno.'), items: ['comics', 'painting-costume'] },
+  { id: 'web', title: T('Web design', 'Webdizajn'), text: T('Where design and code first met.', 'Kde sa dizajn a kód prvýkrát stretli.'), items: ['web-designs', 'strukshow', 'save-the-princess'] },
+].map((g) => ({ ...g, items: g.items.map((i) => byId[i]) }));
+---
+<Base lang={lang} path="art/" title={ui[lang].nav.art}
+  description={T('3D animation, illustration, branding and web design by Ondrej "iairu" Špánik: the former graphic design portfolio, now part of the main site.', '3D animácia, ilustrácia, branding a webdizajn Ondreja „iairu“ Špánika: bývalé grafické portfólio, teraz súčasť hlavnej stránky.')}
+  crumbs={[{ label: ui[lang].nav.art }]}>
+  <section class="block head">
+    <div class="wrap">
+      <p class="eyebrow">{T('Art & 3D', 'Umenie a 3D')}</p>
+      <h1>{T('The mesh side', 'Strana modelov a obrazu')}</h1>
+      <p class="lead">{T('Graphic design school (SUPTN Trenčín, 2015–2019) came first, so form still leads function in how I build things. This page collects the former graphic design portfolio; every card opens the full piece.', 'Prvá bola škola grafického dizajnu (SUPTN Trenčín, 2015–2019), preto u mňa forma stále predchádza funkciu. Táto stránka združuje bývalé grafické portfólio; každá karta otvorí celé dielo.')}</p>
+      <ul class="jump" aria-label={T('Sections', 'Sekcie')}>
+        <li><a href="#branding">{T('Branding', 'Branding')}</a></li>
+        {groups.map((g) => <li><a href={`#${g.id}`}>{g.title}</a></li>)}
+        <li><a href={lhref(lang, 'projects/?field=art3d')}>{T('Filter all 3D ↗', 'Filtrovať 3D ↗')}</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block band" id="branding" aria-labelledby="h-branding">
+    <div class="wrap">
+      <div class="sec-head"><h2 id="h-branding">{T('Branding & logos', 'Branding a logá')}</h2><p>{T('Competition entries, school assignments and concepts from 2017–2018, with PDFs of the logos and manuals.', 'Súťažné práce, školské zadania a koncepty z rokov 2017–2018, s PDF logami a manuálmi.')}</p></div>
+      <ul class="brands">
+        {brands.map((b) => (
+          <li><a href={lhref(lang, `projects/${b.id}/`)} style={`background-image:url(${b.bg})`}>
+            <img src={b.logo} alt="" loading="lazy" />
+            <span><b>{tr(b.title, lang)}</b> <small>{b.year}</small><br />{tr(b.tag, lang)}</span>
+          </a></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  {groups.map((g) => (
+    <section class="block" id={g.id} aria-labelledby={`h-${g.id}`}>
+      <div class="wrap">
+        <div class="sec-head"><h2 id={`h-${g.id}`}>{g.title}</h2><p>{g.text}</p></div>
+        <div class="grid g3">{g.items.map((p) => <ProjectCard p={p} lang={lang} />)}</div>
+      </div>
+    </section>
+  ))}
+</Base>
+<style>
+  .head { padding-bottom: 1.5rem; }
+  .jump { display: flex; flex-wrap: wrap; gap: .5rem; list-style: none; margin: 1.6rem 0 0; padding: 0; }
+  .jump a { display: inline-block; padding: .55em .9em; border: 1px solid var(--line2); color: var(--ink); text-decoration: none; font: 500 .8rem var(--mono); }
+  .jump a:hover { border-color: var(--copper); color: var(--copper); }
+  .brands { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr)); }
+  .brands a { display: grid; grid-template-rows: 180px auto; border: 1px solid var(--line); background: var(--bg3) center/cover; color: var(--ink); text-decoration: none; transition: transform .2s, border-color .2s; overflow: hidden; }
+  .brands a:hover { transform: translateY(-3px); border-color: var(--lime); }
+  .brands img { width: 60%; max-height: 130px; margin: auto; object-fit: contain; filter: drop-shadow(0 4px 12px rgb(0 0 0 / .35)); }
+  .brands span { background: var(--bg2); padding: .9rem 1rem; font-size: .92rem; color: var(--soft); border-top: 1px solid var(--line); }
+  .brands b { color: var(--ink); font-size: 1.05rem; } .brands small { font-family: var(--mono); margin-left: .4rem; }
+</style>

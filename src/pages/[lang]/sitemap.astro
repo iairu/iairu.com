@@ -1,0 +1,51 @@
+---
+import Base from '../../layouts/Base.astro';
+import { LANGS, ui } from '../../data/i18n.js';
+import { nav, fields } from '../../data/site.js';
+import { projects } from '../../data/projects.js';
+import { docs, staticDocs } from '../../data/docs.js';
+import { tr, lhref } from '../../data/util.js';
+
+export const getStaticPaths = () => LANGS.map((lang) => ({ params: { lang } }));
+const { lang } = Astro.params;
+const T = (en, sk) => (lang === 'sk' ? sk : en);
+const g = (id) => projects.filter((p) => p.fields[0] === id);
+---
+<Base lang={lang} path="sitemap/" title={ui[lang].nav.sitemap} description={T('Every page of the site in one list.', 'Každá stránka webu v jednom zozname.')} crumbs={[{ label: ui[lang].nav.sitemap }]}>
+  <section class="block">
+    <div class="wrap">
+      <p class="eyebrow">{ui[lang].nav.sitemap}</p>
+      <h1>{T('Every page, one list', 'Každá stránka v jednom zozname')}</h1>
+      <p class="lead">{T('A machine-readable version is at', 'Strojovo čitateľná verzia je na')} <a href="/sitemap-index.xml">/sitemap-index.xml</a>.</p>
+      <div class="cols">
+        <div>
+          <h2>{T('Main pages', 'Hlavné stránky')}</h2>
+          <ul>
+            <li><a href={lhref(lang)}>{ui[lang].nav.home}</a></li>
+            {nav.map((n) => <li><a href={lhref(lang, n.path)}>{ui[lang].nav[n.key]}</a></li>)}
+            <li><a href={lhref(lang, 'sitemap/')}>{ui[lang].nav.sitemap}</a></li>
+          </ul>
+          <h2>{ui[lang].nav.docs}</h2>
+          <ul>
+            {docs.map((d) => <li><a href={lhref(lang, `docs/${d.slug}/`)}>{d.title}</a> <small>({d.lang})</small></li>)}
+            {staticDocs.filter((d) => !d.href.startsWith('http')).map((d) => <li><a href={d.href}>{tr(d.title, lang)}</a></li>)}
+          </ul>
+        </div>
+        <div>
+          <h2>{ui[lang].nav.projects}</h2>
+          {Object.entries(fields).map(([k, f]) => g(k).length > 0 && (
+            <>
+              <h3>{tr(f.label, lang)}</h3>
+              <ul>{g(k).map((p) => <li><a href={lhref(lang, `projects/${p.id}/`)}>{tr(p.title, lang)}</a></li>)}</ul>
+            </>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+<style>
+  .cols { display: grid; gap: 2rem 4rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); margin-top: 2rem; }
+  h2 { font-size: 1.2rem; color: var(--copper); margin-top: 1.6rem; } h3 { font-size: .95rem; font-family: var(--mono); color: var(--cyan); margin: 1.2rem 0 .4rem; }
+  ul { list-style: none; padding: 0; margin: 0; display: grid; gap: .35rem; } small { color: var(--soft); }
+</style>

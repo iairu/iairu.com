@@ -1,0 +1,30 @@
+---
+import Base from '../../../layouts/Base.astro';
+import { LANGS, ui } from '../../../data/i18n.js';
+import { docs } from '../../../data/docs.js';
+import { lhref } from '../../../data/util.js';
+
+export const getStaticPaths = () => LANGS.flatMap((lang) => docs.map((d) => ({ params: { lang, slug: d.slug }, props: { d } })));
+const { lang } = Astro.params;
+const { d } = Astro.props;
+const T = (en, sk) => (lang === 'sk' ? sk : en);
+const other = d.lang !== lang;
+---
+<Base lang={lang} path={`docs/${d.slug}/`} title={d.title} description={d.desc || d.title} type="article"
+  crumbs={[{ label: ui[lang].nav.docs, href: lhref(lang, 'docs/') }, { label: d.title }]}>
+  <article class="block">
+    <div class="wrap">
+      <p class="eyebrow">{d.date}</p>
+      {other && <p class="note" role="note">{d.lang === 'sk' ? ui[lang].docNoteSk : ui[lang].docNote}</p>}
+      <div class="prose" lang={d.lang}>
+        <h1>{d.title}</h1>
+        <Fragment set:html={d.html} />
+      </div>
+      <p class="back"><a class="btn ghost" href={lhref(lang, 'docs/')}>← {ui[lang].nav.docs}</a></p>
+    </div>
+  </article>
+</Base>
+<style>
+  .note { border-left: 3px solid var(--copper); padding: .5rem 1rem; background: var(--bg2); max-width: 78ch; font-size: .95rem; color: var(--soft); }
+  .back { margin-top: 3rem; }
+</style>

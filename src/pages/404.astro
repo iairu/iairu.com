@@ -1,0 +1,16 @@
+---
+import Base from '../layouts/Base.astro';
+import { ui } from '../data/i18n.js';
+---
+<Base lang="en" title="404" path="" noindex description="Page not found">
+  <section class="block">
+    <div class="wrap narrow">
+      <p class="eyebrow">404</p>
+      <h1>{ui.en.notFound.title}<br /><span class="sk">{ui.sk.notFound.title}</span></h1>
+      <p class="lead">{ui.en.notFound.text}</p>
+      <p class="lead sk-l">{ui.sk.notFound.text}</p>
+      <p class="cta"><a class="btn primary" href="/en/projects/">{ui.en.notFound.projects}</a> <a class="btn ghost" href="/sk/projects/">{ui.sk.notFound.projects}</a> <a class="btn ghost" href="/">{ui.en.notFound.home}</a></p>
+    </div>
+  </section>
+</Base>
+<style> .sk { color: var(--copper); } .sk-l { font-size: 1rem; } .cta { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.6rem; } </style>

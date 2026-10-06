@@ -1,8 +1,6 @@
 .DS_Store
-/node_modules/
-/src/node_modules/@sapper/
-yarn-error.log
-/__sapper__/
-/src/routes/\[lang\]/dev/md/img/
-/tmp
+node_modules/
+dist/
+.astro/
+*.log
 *.code-workspace

@@ -1,0 +1,151 @@
+---
+import Base from '../../layouts/Base.astro';
+import Viewer from '../../components/Viewer.astro';
+import ProjectCard from '../../components/ProjectCard.astro';
+import { LANGS } from '../../data/i18n.js';
+import { fields, person, links } from '../../data/site.js';
+import { projects, facet, byId } from '../../data/projects.js';
+import { tr, lhref } from '../../data/util.js';
+
+export const getStaticPaths = () => LANGS.map((lang) => ({ params: { lang } }));
+const { lang } = Astro.params;
+const T = (en, sk) => (lang === 'sk' ? sk : en);
+const top = projects.slice(0, 6);
+const art = ['zrada', 'zenit', 'comics', 'ghast'].map((i) => byId[i]);
+const counts = facet(projects, (p) => p.fields);
+const totalStars = projects.reduce((s, p) => s + p.stars, 0);
+const pipeline = [
+  { n: '01', c: 'violet', t: T('Prompt', 'Prompt'), d: T('Direct AI like an instrument: specify, test, iterate, and keep the human in charge of the result.', 'Riadiť AI ako nástroj: zadať, otestovať, iterovať a nechať ľudí zodpovedných za výsledok.') },
+  { n: '02', c: 'cyan', t: T('Code', 'Kód'), d: T('Classic programming: C, Python, JavaScript, Svelte, Astro. Software that is read, tested and kept.', 'Klasické programovanie: C, Python, JavaScript, Svelte, Astro. Softvér, ktorý sa číta, testuje a udržiava.') },
+  { n: '03', c: 'pink', t: T('Model', 'Model'), d: T('Blender and CAD: shape something in 3D until it can be measured, rendered or cut.', 'Blender a CAD: vytvarovať niečo v 3D, kým sa to nedá zmerať, vyrenderovať alebo vyrezať.') },
+  { n: '04', c: 'copper', t: T('Circuit', 'Obvod'), d: T('Schematics, boards and firmware, or better no firmware: electronics that fit inside the shape.', 'Schémy, dosky a firmvér, alebo ešte lepšie žiadny firmvér: elektronika, ktorá sa zmestí do tvaru.') },
+  { n: '05', c: 'lime', t: T('Object', 'Objekt'), d: T('CNC, wood, solder. The thing sits on a desk, you press a button and it works.', 'CNC, drevo, spájka. Vec stojí na stole, stlačíš tlačidlo a funguje.') },
+];
+---
+<Base lang={lang} path="" description={T('Ondrej "iairu" Špánik: prompt engineer and 3D artist who turns code, electronics and 3D models into real working objects.', 'Ondrej „iairu“ Špánik: prompt inžinier a 3D umelec, ktorý mení kód, elektroniku a 3D modely na skutočné fungujúce objekty.')}>
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div class="copy">
+        <p class="eyebrow">{tr(person.role, lang)}</p>
+        <h1>
+          {lang === 'sk' ? <>Kde sa <span class="a">sieť modelu</span> stretne s <span class="b">obvodom</span>.</> : <>Where the <span class="a">mesh</span> meets the <span class="b">circuit</span>.</>}
+        </h1>
+        <p class="lead">{T(
+          'I am Ondrej "iairu" Špánik. I bridge classic programming, electronics and 3D models into objects that really work: designed on screen, carved, wired and switched on.',
+          'Som Ondrej „iairu“ Špánik. Spájam klasické programovanie, elektrotechniku a 3D modely do objektov, ktoré naozaj fungujú: navrhnuté na obrazovke, vyrezané, zapojené a zapnuté.')}</p>
+        <div class="cta">
+          <a class="btn primary" href={lhref(lang, 'projects/')}>{T('Browse projects', 'Prehľadať projekty')} →</a>
+          <a class="btn ghost" href={lhref(lang, 'art/')}>{T('See art & 3D', 'Pozrieť umenie a 3D')}</a>
+        </div>
+        <ul class="stats" aria-label={T('Numbers', 'Čísla')}>
+          <li><b>{projects.length}</b> {T('projects', 'projektov')}</li>
+          <li><b>★ {totalStars}</b> {T('GitHub stars', 'hviezdičiek')}</li>
+          <li><b>{Object.keys(fields).length}</b> {T('fields', 'odborov')}</li>
+          <li><b>2</b> {T('languages', 'jazyky')}</li>
+        </ul>
+      </div>
+      <Viewer lang={lang} />
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="bridge">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <p class="eyebrow">{T('How it fits together', 'Ako to do seba zapadá')}</p>
+        <h2 id="bridge">{T('One pipeline, from an idea to something you can hold', 'Jeden postup, od nápadu k niečomu, čo môžeš chytiť do ruky')}</h2>
+      </div>
+      <ol class="pipe">
+        {pipeline.map((s) => <li class={`c-${s.c}`} data-reveal><span class="n">{s.n}</span><h3>{s.t}</h3><p>{s.d}</p></li>)}
+      </ol>
+    </div>
+  </section>
+
+  <section class="block band" aria-labelledby="top">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <p class="eyebrow">{T('Most starred', 'Najviac hviezdičiek')}</p>
+        <h2 id="top">{T('What people on GitHub liked most', 'Čo sa ľuďom na GitHube páčilo najviac')}</h2>
+        <p>{T('The full list is ordered the same way, and you can filter it.', 'Celý zoznam je zoradený rovnako a dá sa filtrovať.')}</p>
+      </div>
+      <div class="grid g3">{top.map((p) => <ProjectCard p={p} lang={lang} />)}</div>
+      <p class="more"><a class="btn ghost" href={lhref(lang, 'projects/')}>{T(`All ${projects.length} projects`, `Všetkých ${projects.length} projektov`)} →</a></p>
+    </div>
+  </section>
+
+  <section class="block" aria-labelledby="fields">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <p class="eyebrow">{T('Find your way', 'Nájdi si cestu')}</p>
+        <h2 id="fields">{T('Pick the field you care about', 'Vyber si odbor, ktorý ťa zaujíma')}</h2>
+        <p>{T('Each link opens the portfolio already filtered. Combine it with a language or an area of interest there.', 'Každý odkaz otvorí portfólio s predvoleným filtrom. Tam ho môžeš skombinovať s jazykom alebo oblasťou záujmu.')}</p>
+      </div>
+      <ul class="fields">
+        {Object.entries(fields).map(([k, f]) => (
+          <li class={`c-${f.color}`} data-reveal><a href={lhref(lang, `projects/?field=${k}`)}><span class="cnt">{counts.get(k) ?? 0}</span><h3>{tr(f.label, lang)}</h3><p>{tr(f.hint, lang)}</p></a></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="block lelek" aria-labelledby="lelek">
+    <div class="wrap split">
+      <div data-reveal>
+        <p class="eyebrow">{T('Latest object', 'Najnovší objekt')}</p>
+        <h2 id="lelek">LELEK: {T('a wooden nightjar that sings', 'drevený lelek, ktorý spieva')}</h2>
+        <p class="lead">{T('A 3D model became CNC toolpaths, then two halves of beech with a circuit that has no microcontroller and no firmware. Hold the button on its back and it churrs; let go and it sleeps.', '3D model sa stal dráhami pre CNC, potom dvoma polovicami buku s obvodom bez mikrokontroléra a bez firmvéru. Podrž tlačidlo na jeho chrbte a vrčí; pusti a zaspí.')}</p>
+        <div class="cta">
+          <a class="btn primary" href={lhref(lang, 'projects/lelek/')}>{T('Read the story', 'Prečítať príbeh')}</a>
+          <a class="btn ghost" href={links.lelek} rel="noopener" target="_blank">nightjar.gift ↗</a>
+        </div>
+      </div>
+      <img class="lel-img" src="/img/lelek.png" alt={T('LELEK promo picture', 'Promo obrázok LELEK')} loading="lazy" width="1200" height="630" data-reveal />
+    </div>
+  </section>
+
+  <section class="block band" aria-labelledby="art">
+    <div class="wrap">
+      <div class="sec-head" data-reveal>
+        <p class="eyebrow">{T('The other half', 'Druhá polovica')}</p>
+        <h2 id="art">{T('Art, branding and 3D', 'Umenie, branding a 3D')}</h2>
+        <p>{T('Before the code, there was a graphic design school. The old graphic portfolio now lives here.', 'Pred kódom bola škola grafického dizajnu. Staré grafické portfólio teraz žije tu.')}</p>
+      </div>
+      <div class="grid g3 art4">{art.map((p) => <ProjectCard p={p} lang={lang} compact />)}</div>
+      <p class="more"><a class="btn ghost" href={lhref(lang, 'art/')}>{T('Whole art gallery', 'Celá galéria umenia')} →</a></p>
+    </div>
+  </section>
+
+  <section class="block contact" aria-labelledby="hi">
+    <div class="wrap narrow center" data-reveal>
+      <h2 id="hi">{T('Have a thing that should exist?', 'Máš vec, ktorá by mala existovať?')}</h2>
+      <p class="lead">{T('Tell me what it should do. I will tell you honestly which parts are code, which are copper and which are wood.', 'Povedz mi, čo má robiť. Poviem ti úprimne, ktoré časti budú kód, ktoré meď a ktoré drevo.')}</p>
+      <div class="cta mid"><a class="btn primary" href={`mailto:${person.email}`}>{person.email}</a><a class="btn ghost" href={lhref(lang, 'contact/')}>{T('More ways to reach me', 'Ďalšie spôsoby kontaktu')}</a></div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .hero { padding-block: clamp(2rem, 5vw, 4.5rem) clamp(2.5rem, 6vw, 5rem); position: relative; overflow: hidden; }
+  .hero-grid { display: grid; gap: clamp(1.5rem, 4vw, 3.5rem); grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); align-items: center; }
+  h1 .a { color: var(--cyan); } h1 .b { color: var(--copper); position: relative; }
+  .hero .lead { margin-bottom: 1.6rem; }
+  .cta { display: flex; flex-wrap: wrap; gap: .7rem; } .cta.mid { justify-content: center; margin-top: 1.4rem; }
+  .stats { display: flex; flex-wrap: wrap; gap: .5rem 1.8rem; list-style: none; padding: 0; margin: 2rem 0 0; font: 400 .8rem var(--mono); color: var(--soft); }
+  .stats b { color: var(--ink); font-size: 1.1rem; margin-right: .2em; }
+  .pipe { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 0; list-style: none; margin: 0; padding: 0; counter-reset: x; border: 1px solid var(--line); }
+  .pipe li { --c: var(--cyan); padding: 1.4rem 1.2rem 1.5rem; border-right: 1px solid var(--line); position: relative; background: var(--bg2); }
+  .pipe li:last-child { border-right: 0; }
+  .pipe li::before { content: ''; position: absolute; left: 0; top: 0; height: 4px; width: 100%; background: var(--c); }
+  .pipe .n { font: 500 .75rem var(--mono); color: var(--c); } .pipe h3 { margin: .3rem 0 .5rem; } .pipe p { margin: 0; font-size: .92rem; color: var(--soft); line-height: 1.5; }
+  .more { margin-top: 1.6rem; }
+  .fields { list-style: none; padding: 0; margin: 0; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); }
+  .fields li { --c: var(--cyan); }
+  .fields a { display: block; height: 100%; padding: 1.3rem 1.3rem 1.4rem; border: 1px solid var(--line); background: var(--bg2); text-decoration: none; color: var(--ink); position: relative; transition: border-color .2s, transform .2s; }
+  .fields a:hover { border-color: var(--c); transform: translateY(-3px); }
+  .fields .cnt { position: absolute; top: 1rem; right: 1.2rem; font: 700 2.4rem var(--font); color: var(--c); opacity: .85; line-height: 1; }
+  .fields h3 { margin-right: 3rem; color: var(--c); } .fields p { margin: 0; color: var(--soft); font-size: .95rem; }
+  .lelek { background: linear-gradient(180deg, transparent, color-mix(in srgb, var(--copper) 7%, transparent)); }
+  .lel-img { border: 1px solid var(--line); box-shadow: var(--shadow); width: 100%; height: auto; border-top: 3px solid var(--copper); }
+  .center { text-align: center; } .center .lead { margin-inline: auto; }
+  .contact { border-top: 1px solid var(--line); }
+  @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } .pipe li { border-right: 0; border-bottom: 1px solid var(--line); } }
+</style>

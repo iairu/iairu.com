@@ -1,0 +1,56 @@
+---
+import { fields } from '../data/site.js';
+import { tr, lhref, fmtStars } from '../data/util.js';
+const { p, lang, compact = false, filterable = false } = Astro.props;
+const title = tr(p.title, lang), tag = tr(p.tag, lang), desc = tr(p.desc, lang);
+const main = fields[p.fields[0]];
+const search = [title, tag, desc, p.language, ...(p.tools || []), ...p.fields.map((f) => tr(fields[f].label, lang))].join(' ').toLowerCase();
+const initials = String(title).replace(/[^\p{L}\p{N}]+/gu, ' ').trim().split(' ').slice(0, 2).map((w) => w[0]).join('').toUpperCase();
+const href = lhref(lang, `projects/${p.id}/`);
+const data = filterable ? {
+  'data-id': p.id, 'data-fields': p.fields.join(' '), 'data-interests': p.interests.join(' '), 'data-lang': p.language ?? '',
+  'data-stars': p.stars, 'data-year': p.year, 'data-name': String(title).toLowerCase(), 'data-search': search,
+} : {};
+---
+<article class={`card c-${main.color}`} {...data}>
+  <a class="media" href={href} tabindex="-1" aria-hidden="true">
+    {p.image
+      ? <img src={p.image} alt="" loading="lazy" decoding="async" width="480" height="270" />
+      : <span class="ph" aria-hidden="true"><span>{initials}</span></span>}
+  </a>
+  <div class="body">
+    <p class="meta">
+      <span>{p.year}</span>
+      {p.stars > 0 && <span class="star" title="GitHub stars">★ {fmtStars(p.stars)}</span>}
+      {p.fork && <span>fork</span>}
+      {p.archived && <span>archived</span>}
+    </p>
+    <h3><a href={href}>{title}</a></h3>
+    <p class="tag-line">{tag}</p>
+    {!compact && <p class="desc">{desc}</p>}
+    <div class="tags">
+      {p.fields.slice(0, 2).map((f) => <span class={`tag c-${fields[f].color}`}>{tr(fields[f].label, lang)}</span>)}
+      {p.language && <span class="tag lang">{p.language}</span>}
+    </div>
+  </div>
+</article>
+<style>
+  .card { --c: var(--cyan); display: flex; flex-direction: column; background: var(--bg2); border: 1px solid var(--line); position: relative; transition: transform .2s, border-color .2s, box-shadow .2s; min-width: 0; }
+  .card::before { content: ''; position: absolute; top: -1px; left: -1px; width: 28px; height: 3px; background: var(--c); transition: width .25s; z-index: 2; }
+  .card:hover { transform: translateY(-3px); border-color: var(--c); box-shadow: var(--shadow); }
+  .card:hover::before { width: calc(100% + 2px); }
+  .media { display: block; aspect-ratio: 16 / 9; overflow: hidden; background: var(--bg3); border-bottom: 1px solid var(--line); }
+  .media img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
+  .card:hover .media img { transform: scale(1.04); }
+  .ph { display: grid; place-items: center; width: 100%; height: 100%;
+    background: linear-gradient(135deg, color-mix(in srgb, var(--c) 22%, var(--bg3)), var(--bg3)),
+      repeating-linear-gradient(45deg, transparent 0 11px, color-mix(in srgb, var(--c) 14%, transparent) 11px 12px); background-blend-mode: normal; }
+  .ph span { font: 700 clamp(2.4rem, 8vw, 3.4rem) var(--font); letter-spacing: -.04em; color: var(--c); opacity: .9; }
+  .body { padding: 1rem 1.1rem 1.2rem; display: flex; flex-direction: column; gap: .35rem; flex: 1; }
+  .meta { display: flex; gap: .8rem; margin: 0; font: 500 .72rem var(--mono); color: var(--soft); }
+  h3 { margin: 0; font-size: 1.25rem; } h3 a { color: var(--ink); text-decoration: none; } h3 a::after { content: ''; position: absolute; inset: 0; z-index: 1; }
+  .tag-line { margin: 0; color: var(--c); font: 500 .8rem var(--mono); }
+  .desc { margin: .3rem 0 .5rem; color: var(--soft); font-size: .95rem; line-height: 1.5; }
+  .tags { margin-top: auto; padding-top: .5rem; }
+  .card[hidden] { display: none; }
+</style>
