@@ -1,34 +1,30 @@
-## iairu.com v3
+## iairu.com v2
 
-Portfolio of Ondrej "iairu" Špánik, prompt engineer and 3D artist who bridges classic programming, electronics and 3D models into working objects.
-Built with [Astro](https://astro.build) (static output), English and Slovak, no tracking. It replaces the Svelte + Sapper site and merges the old graphic design portfolio (`/gfx`) into it.
+A multi-language portfolio of my *so-far-mostly-personal* dev works built on top of the lightweight [Sapper](https://sapper.svelte.dev/) framework. 
 
-```bash
-npm install
-npm run dev          # dev server
-npm run build        # static site -> dist/
-npm run preview
-npm run sync:repos   # refresh the GitHub snapshot (stars, languages) in src/data/repos.json
-```
+### Directory content
 
-Needs Node 20+. Set `SITE_URL` at build time for absolute canonical / sitemap URLs (default `https://iairu.com`).
+- `static` - all the stuff that is not processed by Sapper and is kept as is, includes assets (images, videos, external libraries) and other parts of the site not covered by the framework (some documentations, graphic design portfolio)
+- `src` - Svelte components and route files processed by Sapper
+- `__sapper__` - gitignored directory with generated dev/build/export files, content can be replicated using equivalently named commands in package.json
 
-### Where things live
+### A short ToDo list of stuff to be done before release
 
-| What | Where |
-|---|---|
-| Every project (bilingual text, fields, interests, links) | `src/data/projects.js` |
-| GitHub numbers snapshot (stars decide the order) | `src/data/repos.json`, from `npm run sync:repos` |
-| Fields of expertise, areas of interest, quick-start presets, menu | `src/data/site.js` |
-| UI strings, 404 text | `src/data/i18n.js` |
-| Write-ups (markdown, one language each: `en_` / `sk_` prefix) | `src/content/docs/` |
-| Portfolio filters (client side, state kept in the URL) | `src/pages/[lang]/projects/index.astro`, `src/scripts/finder.ts` |
-| Pages | `src/pages/[lang]/*` (`/en/...` and `/sk/...`); `/` redirects by browser language |
-| Hero 3D viewer (three.js, lazy loaded) | `src/components/Viewer.astro`, models in `public/models` |
-| Old static content kept at its old URLs | `public/dl`, `public/gfx/dl`, `public/dbs`, `public/strukshow-docs`, `public/_dev` |
+- ~~`dev/[slug]` - 404 instead of 500~~
+- ~~create `[lang]` and create some kind of a SEO-friendly language URL handling~~
+- ~~biography, some numbers and catchy text content overall~~
+- Maybe also:
+  - ~~TOC-style side menu for .md generated content~~ (in progress)
+  - History navigation on modals 
+  - Stats component with cool circles
+  - A ton of other stuff written in my OneNote
 
-### Adding a project
+### Best-practices not used in practice
 
-Add an entry to `raw` in `src/data/projects.js`. Give it `repo` (a name from `repos.json`) to inherit stars, language and date, or set `year` and `lang` by hand for work outside GitHub. Pick `fields` and `interests` keys from `site.js`. The portfolio, the detail page, the sitemap and the filters pick it up on the next build.
+- All info is currently pulled directly from either .md or a given route .svelte file (index.svelte for example), not from JSON, because I don't have a reason that would warrant such change.
+  - Maybe except the iframe stuff, that would definitely work better with a more reasonable content / front-end relationship, because currently the site gets loaded separately in each iframe, however there isn't that much benefit from it.
 
-Old Sapper and `/gfx` URLs are redirected in `astro.config.mjs`.
+### Important for maintenance
+
+- Custom `server.mjs` mod (that removes the need for `<base>` and thus fixes `href="#some-id"` relative links outside root file) requires that the modifications from previous commits be made to the `node_modules/sapper/runtime/server.mjs` file, not the generated `src/...` file (which would get overwritten on deployment). Alternative option might be developing a custom `rollup` plugin.
+- If svelte language server complains about `node-sass` bindings just download them [from here](https://github.com/sass/node-sass/releases) , put them into the directory svelte tells you about, don't question why the rebuild command doesn't work or what kind of an idiot invented this one of a kind system or what they're used for, no time for any of that.

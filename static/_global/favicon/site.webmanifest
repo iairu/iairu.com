@@ -1,0 +1,19 @@
+{
+    "name": "iairu",
+    "short_name": "iairu",
+    "icons": [
+        {
+            "src": "/_global/favicon/android-chrome-192x192.png?v=2bAzMM0Red",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "/_global/favicon/android-chrome-512x512.png?v=2bAzMM0Red",
+            "sizes": "512x512",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#ffffff",
+    "background_color": "#ffffff",
+    "display": "standalone"
+}
