@@ -1,5 +1,6 @@
 ---
 title: 	Každodenná digitálna automatizácia pomocou AutoHotkey skriptov
+category:	guides
 tags:	autohotkey, scripting, automation, hobby
 desc: 	Viac ako 26 zaujímavých AutoHotkey skriptov pre automatizáciu repetitívnych digitálnych činností.
 date: 	2020-08-08 13:30

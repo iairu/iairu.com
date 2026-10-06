@@ -14,7 +14,7 @@ const T = (en, sk) => (lang === 'sk' ? sk : en);
   <article class="block">
     <div class="wrap">
       <p class="eyebrow">{d.date}</p>
-      {d.translated && <p class="note" role="note">{T('Translated into English in 2026 from the original Slovak text of 2020.', 'Preložené do slovenčiny v roku 2026 z pôvodného anglického textu z roku 2020.')}</p>}
+      {d.translated && <p class="note" role="note">{T('Translated into English from the original Slovak text.', 'Preložené do slovenčiny z pôvodného anglického textu.')}</p>}
       <div class="prose">
         <h1>{d.title}</h1>
         <Fragment set:html={d.html} />

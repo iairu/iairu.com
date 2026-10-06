@@ -13,14 +13,15 @@ function parse([path, raw]) {
     if (k) meta[k[1]] = k[2].trim();
   }
   const [, lang, slug] = file.match(/^([a-z]{2})_(.+)\.md$/);
-  return { slug, lang, title: meta.title, desc: meta.desc || '', date: (meta.date || '').slice(0, 10), tags: (meta.tags || '').split(/\s*,\s*/).filter(Boolean), html: marked.parse(m ? m[2] : src) };
+  return { slug, lang, category: meta.category || 'guides', title: meta.title, desc: meta.desc || '', date: (meta.date || '').slice(0, 10), tags: (meta.tags || '').split(/\s*,\s*/).filter(Boolean), html: marked.parse(m ? m[2] : src) };
 }
 
-// Slugs whose original was written in English; every other write-up was originally Slovak.
+// Original language per slug (default English). Every write-up exists in both languages.
 // Each write-up exists in both languages (the other one translated), and each site lists only its own.
-const ORIGINAL_EN = new Set(['iptables-portforward']);
+const ORIGINAL_SK = new Set(['ahk', 'ipv4-calc', 'log', 'recipe-veal-neck-ramen']);
+const originalLang = (slug) => (ORIGINAL_SK.has(slug) ? 'sk' : 'en');
 const all = Object.entries(files).map(parse).sort((a, b) => b.date.localeCompare(a.date));
-export const docsFor = (lang) => all.filter((d) => d.lang === lang).map((d) => ({ ...d, translated: ORIGINAL_EN.has(d.slug) ? lang !== 'en' : lang !== 'sk' }));
+export const docsFor = (lang) => all.filter((d) => d.lang === lang).map((d) => ({ ...d, translated: originalLang(d.slug) !== lang, original: originalLang(d.slug) }));
 
 // Other documentation that is not markdown. `lang` is the language the file is written in;
 // each site lists only the files in its own language.
@@ -34,4 +35,10 @@ const S = [
   { lang: 'sk', title: 'Seminárna práca', desc: 'Písaná seminárna práca z FIIT STU.', href: '/dl/seminarka.pdf', tag: 'PDF' },
   { lang: 'en', title: 'NightJar.Gift documentation (KNIFES)', desc: 'Build log, board versions and project management of the wooden nightjar.', href: 'https://knifes.nightjar.gift', tag: 'external' },
 ];
+export const CATEGORIES = {
+  guides: { en: 'Guides and logs', sk: 'Návody a zápisky' },
+  research: { en: 'Research', sk: 'Výskum' },
+  travel: { en: 'Travel', sk: 'Cestovanie' },
+  recipes: { en: 'Recipes', sk: 'Recepty' },
+};
 export const staticDocsFor = (lang) => S.filter((d) => d.lang === lang);

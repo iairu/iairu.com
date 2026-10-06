@@ -1,0 +1,745 @@
+{
+ "galleries": {
+  "illustration": [
+   {
+    "src": "/img/montaigne/illustration/2-1.jpg",
+    "thumb": "/img/montaigne/illustration/2-1_t.jpg",
+    "w": 556,
+    "h": 529,
+    "alt": "2-1"
+   },
+   {
+    "src": "/img/montaigne/illustration/2-2.jpg",
+    "thumb": "/img/montaigne/illustration/2-2_t.jpg",
+    "w": 558,
+    "h": 757,
+    "alt": "2-2"
+   },
+   {
+    "src": "/img/montaigne/illustration/2-3.jpg",
+    "thumb": "/img/montaigne/illustration/2-3_t.jpg",
+    "w": 512,
+    "h": 768,
+    "alt": "2-3"
+   },
+   {
+    "src": "/img/montaigne/illustration/3-2.jpg",
+    "thumb": "/img/montaigne/illustration/3-2_t.jpg",
+    "w": 576,
+    "h": 733,
+    "alt": "3-2"
+   },
+   {
+    "src": "/img/montaigne/illustration/4-2.jpg",
+    "thumb": "/img/montaigne/illustration/4-2_t.jpg",
+    "w": 543,
+    "h": 768,
+    "alt": "4-2"
+   },
+   {
+    "src": "/img/montaigne/illustration/4-3.jpg",
+    "thumb": "/img/montaigne/illustration/4-3_t.jpg",
+    "w": 512,
+    "h": 768,
+    "alt": "4-3"
+   },
+   {
+    "src": "/img/montaigne/illustration/5-3.jpg",
+    "thumb": "/img/montaigne/illustration/5-3_t.jpg",
+    "w": 515,
+    "h": 768,
+    "alt": "5-3"
+   },
+   {
+    "src": "/img/montaigne/illustration/5-4.jpg",
+    "thumb": "/img/montaigne/illustration/5-4_t.jpg",
+    "w": 512,
+    "h": 768,
+    "alt": "5-4"
+   },
+   {
+    "src": "/img/montaigne/illustration/7-1.jpg",
+    "thumb": "/img/montaigne/illustration/7-1_t.jpg",
+    "w": 515,
+    "h": 768,
+    "alt": "7-1"
+   },
+   {
+    "src": "/img/montaigne/illustration/7-3.jpg",
+    "thumb": "/img/montaigne/illustration/7-3_t.jpg",
+    "w": 514,
+    "h": 768,
+    "alt": "7-3"
+   },
+   {
+    "src": "/img/montaigne/illustration/7-4.jpg",
+    "thumb": "/img/montaigne/illustration/7-4_t.jpg",
+    "w": 513,
+    "h": 768,
+    "alt": "7-4"
+   },
+   {
+    "src": "/img/montaigne/illustration/8-2.jpg",
+    "thumb": "/img/montaigne/illustration/8-2_t.jpg",
+    "w": 514,
+    "h": 768,
+    "alt": "8-2"
+   },
+   {
+    "src": "/img/montaigne/illustration/8-4.jpg",
+    "thumb": "/img/montaigne/illustration/8-4_t.jpg",
+    "w": 514,
+    "h": 768,
+    "alt": "8-4"
+   }
+  ],
+  "sketches": [
+   {
+    "src": "/img/montaigne/sketches/1.jpg",
+    "thumb": "/img/montaigne/sketches/1_t.jpg",
+    "w": 754,
+    "h": 768,
+    "alt": "1"
+   },
+   {
+    "src": "/img/montaigne/sketches/10.jpg",
+    "thumb": "/img/montaigne/sketches/10_t.jpg",
+    "w": 772,
+    "h": 584,
+    "alt": "10"
+   },
+   {
+    "src": "/img/montaigne/sketches/11.jpg",
+    "thumb": "/img/montaigne/sketches/11_t.jpg",
+    "w": 773,
+    "h": 581,
+    "alt": "11"
+   },
+   {
+    "src": "/img/montaigne/sketches/12.jpg",
+    "thumb": "/img/montaigne/sketches/12_t.jpg",
+    "w": 768,
+    "h": 768,
+    "alt": "12"
+   },
+   {
+    "src": "/img/montaigne/sketches/13.jpg",
+    "thumb": "/img/montaigne/sketches/13_t.jpg",
+    "w": 612,
+    "h": 768,
+    "alt": "13"
+   },
+   {
+    "src": "/img/montaigne/sketches/2.jpg",
+    "thumb": "/img/montaigne/sketches/2_t.jpg",
+    "w": 615,
+    "h": 768,
+    "alt": "2"
+   },
+   {
+    "src": "/img/montaigne/sketches/3.jpg",
+    "thumb": "/img/montaigne/sketches/3_t.jpg",
+    "w": 614,
+    "h": 768,
+    "alt": "3"
+   },
+   {
+    "src": "/img/montaigne/sketches/4.jpg",
+    "thumb": "/img/montaigne/sketches/4_t.jpg",
+    "w": 612,
+    "h": 768,
+    "alt": "4"
+   },
+   {
+    "src": "/img/montaigne/sketches/5.jpg",
+    "thumb": "/img/montaigne/sketches/5_t.jpg",
+    "w": 770,
+    "h": 613,
+    "alt": "5"
+   },
+   {
+    "src": "/img/montaigne/sketches/6.jpg",
+    "thumb": "/img/montaigne/sketches/6_t.jpg",
+    "w": 614,
+    "h": 768,
+    "alt": "6"
+   },
+   {
+    "src": "/img/montaigne/sketches/7.jpg",
+    "thumb": "/img/montaigne/sketches/7_t.jpg",
+    "w": 773,
+    "h": 664,
+    "alt": "7"
+   },
+   {
+    "src": "/img/montaigne/sketches/8.jpg",
+    "thumb": "/img/montaigne/sketches/8_t.jpg",
+    "w": 771,
+    "h": 579,
+    "alt": "8"
+   },
+   {
+    "src": "/img/montaigne/sketches/9.jpg",
+    "thumb": "/img/montaigne/sketches/9_t.jpg",
+    "w": 774,
+    "h": 434,
+    "alt": "9"
+   }
+  ],
+  "comics": [
+   {
+    "src": "/img/montaigne/comics/6.jpg",
+    "thumb": "/img/montaigne/comics/6_t.jpg",
+    "w": 542,
+    "h": 768,
+    "alt": "6"
+   },
+   {
+    "src": "/img/montaigne/comics/7.jpg",
+    "thumb": "/img/montaigne/comics/7_t.jpg",
+    "w": 542,
+    "h": 768,
+    "alt": "7"
+   },
+   {
+    "src": "/img/montaigne/comics/8.jpg",
+    "thumb": "/img/montaigne/comics/8_t.jpg",
+    "w": 542,
+    "h": 768,
+    "alt": "8"
+   },
+   {
+    "src": "/img/montaigne/comics/9.jpg",
+    "thumb": "/img/montaigne/comics/9_t.jpg",
+    "w": 542,
+    "h": 768,
+    "alt": "9"
+   },
+   {
+    "src": "/img/montaigne/comics/x.jpg",
+    "thumb": "/img/montaigne/comics/x_t.jpg",
+    "w": 771,
+    "h": 768,
+    "alt": "x"
+   },
+   {
+    "src": "/img/montaigne/comics/xx.jpg",
+    "thumb": "/img/montaigne/comics/xx_t.jpg",
+    "w": 611,
+    "h": 768,
+    "alt": "xx"
+   },
+   {
+    "src": "/img/montaigne/comics/xxx.jpg",
+    "thumb": "/img/montaigne/comics/xxx_t.jpg",
+    "w": 613,
+    "h": 768,
+    "alt": "xxx"
+   }
+  ],
+  "paintings": [
+   {
+    "src": "/img/montaigne/paintings/0-0-3.jpg",
+    "thumb": "/img/montaigne/paintings/0-0-3_t.jpg",
+    "w": 993,
+    "h": 768,
+    "alt": "0 0 3"
+   },
+   {
+    "src": "/img/montaigne/paintings/00.jpg",
+    "thumb": "/img/montaigne/paintings/00_t.jpg",
+    "w": 1366,
+    "h": 768,
+    "alt": "00"
+   },
+   {
+    "src": "/img/montaigne/paintings/000.jpg",
+    "thumb": "/img/montaigne/paintings/000_t.jpg",
+    "w": 1366,
+    "h": 733,
+    "alt": "000"
+   },
+   {
+    "src": "/img/montaigne/paintings/008.jpg",
+    "thumb": "/img/montaigne/paintings/008_t.jpg",
+    "w": 1088,
+    "h": 704,
+    "alt": "008"
+   },
+   {
+    "src": "/img/montaigne/paintings/06.jpg",
+    "thumb": "/img/montaigne/paintings/06_t.jpg",
+    "w": 1366,
+    "h": 768,
+    "alt": "06"
+   },
+   {
+    "src": "/img/montaigne/paintings/1.jpg",
+    "thumb": "/img/montaigne/paintings/1_t.jpg",
+    "w": 1366,
+    "h": 768,
+    "alt": "1"
+   },
+   {
+    "src": "/img/montaigne/paintings/1-1.jpg",
+    "thumb": "/img/montaigne/paintings/1-1_t.jpg",
+    "w": 1366,
+    "h": 768,
+    "alt": "1-1"
+   },
+   {
+    "src": "/img/montaigne/paintings/1-14.jpg",
+    "thumb": "/img/montaigne/paintings/1-14_t.jpg",
+    "w": 1366,
+    "h": 768,
+    "alt": "1-14"
+   },
+   {
+    "src": "/img/montaigne/paintings/1-23.jpg",
+    "thumb": "/img/montaigne/paintings/1-23_t.jpg",
+    "w": 1366,
+    "h": 768,
+    "alt": "1-23"
+   },
+   {
+    "src": "/img/montaigne/paintings/1-7.jpg",
+    "thumb": "/img/montaigne/paintings/1-7_t.jpg",
+    "w": 1366,
+    "h": 768,
+    "alt": "1-7"
+   },
+   {
+    "src": "/img/montaigne/paintings/10.jpg",
+    "thumb": "/img/montaigne/paintings/10_t.jpg",
+    "w": 1366,
+    "h": 768,
+    "alt": "10"
+   },
+   {
+    "src": "/img/montaigne/paintings/16-4.jpg",
+    "thumb": "/img/montaigne/paintings/16-4_t.jpg",
+    "w": 1366,
+    "h": 768,
+    "alt": "16-4"
+   },
+   {
+    "src": "/img/montaigne/paintings/2-2.jpg",
+    "thumb": "/img/montaigne/paintings/2-2_t.jpg",
+    "w": 1366,
+    "h": 768,
+    "alt": "2-2"
+   },
+   {
+    "src": "/img/montaigne/paintings/2-7.jpg",
+    "thumb": "/img/montaigne/paintings/2-7_t.jpg",
+    "w": 1366,
+    "h": 768,
+    "alt": "2-7"
+   },
+   {
+    "src": "/img/montaigne/paintings/3.jpg",
+    "thumb": "/img/montaigne/paintings/3_t.jpg",
+    "w": 1366,
+    "h": 768,
+    "alt": "3"
+   },
+   {
+    "src": "/img/montaigne/paintings/4.jpg",
+    "thumb": "/img/montaigne/paintings/4_t.jpg",
+    "w": 1366,
+    "h": 768,
+    "alt": "4"
+   },
+   {
+    "src": "/img/montaigne/paintings/5.jpg",
+    "thumb": "/img/montaigne/paintings/5_t.jpg",
+    "w": 1082,
+    "h": 768,
+    "alt": "5"
+   },
+   {
+    "src": "/img/montaigne/paintings/5-1.jpg",
+    "thumb": "/img/montaigne/paintings/5-1_t.jpg",
+    "w": 1366,
+    "h": 768,
+    "alt": "5-1"
+   },
+   {
+    "src": "/img/montaigne/paintings/5-1_c62556ab-33e2-4d88-95ac-c92be05bb633.jpg",
+    "thumb": "/img/montaigne/paintings/5-1_c62556ab-33e2-4d88-95ac-c92be05bb633_t.jpg",
+    "w": 1366,
+    "h": 768,
+    "alt": "5-1"
+   },
+   {
+    "src": "/img/montaigne/paintings/5-2.jpg",
+    "thumb": "/img/montaigne/paintings/5-2_t.jpg",
+    "w": 1366,
+    "h": 768,
+    "alt": "5-2"
+   },
+   {
+    "src": "/img/montaigne/paintings/7.jpg",
+    "thumb": "/img/montaigne/paintings/7_t.jpg",
+    "w": 1366,
+    "h": 768,
+    "alt": "7"
+   },
+   {
+    "src": "/img/montaigne/paintings/b-1.jpg",
+    "thumb": "/img/montaigne/paintings/b-1_t.jpg",
+    "w": 1366,
+    "h": 768,
+    "alt": "b1"
+   },
+   {
+    "src": "/img/montaigne/paintings/b-2.jpg",
+    "thumb": "/img/montaigne/paintings/b-2_t.jpg",
+    "w": 1366,
+    "h": 768,
+    "alt": "b2"
+   },
+   {
+    "src": "/img/montaigne/paintings/env-0.jpg",
+    "thumb": "/img/montaigne/paintings/env-0_t.jpg",
+    "w": 1016,
+    "h": 768,
+    "alt": "env0"
+   },
+   {
+    "src": "/img/montaigne/paintings/env-1.jpg",
+    "thumb": "/img/montaigne/paintings/env-1_t.jpg",
+    "w": 1016,
+    "h": 768,
+    "alt": "env1"
+   },
+   {
+    "src": "/img/montaigne/paintings/env-2.jpg",
+    "thumb": "/img/montaigne/paintings/env-2_t.jpg",
+    "w": 1016,
+    "h": 768,
+    "alt": "env2"
+   },
+   {
+    "src": "/img/montaigne/paintings/env-3.jpg",
+    "thumb": "/img/montaigne/paintings/env-3_t.jpg",
+    "w": 1016,
+    "h": 768,
+    "alt": "env3"
+   },
+   {
+    "src": "/img/montaigne/paintings/env-4.jpg",
+    "thumb": "/img/montaigne/paintings/env-4_t.jpg",
+    "w": 1016,
+    "h": 768,
+    "alt": "env4"
+   }
+  ],
+  "animation": [
+   {
+    "src": "/img/montaigne/animation/work-in-progress.jpg",
+    "thumb": "/img/montaigne/animation/work-in-progress_t.jpg",
+    "w": 770,
+    "h": 768,
+    "alt": "Work in Progress"
+   },
+   {
+    "src": "/img/montaigne/animation/work-in-progress-2.jpg",
+    "thumb": "/img/montaigne/animation/work-in-progress-2_t.jpg",
+    "w": 616,
+    "h": 768,
+    "alt": "Work in Progress"
+   },
+   {
+    "src": "/img/montaigne/animation/work-in-progress-3.jpg",
+    "thumb": "/img/montaigne/animation/work-in-progress-3_t.jpg",
+    "w": 614,
+    "h": 768,
+    "alt": "Work in Progress"
+   },
+   {
+    "src": "/img/montaigne/animation/work-in-progress-4.jpg",
+    "thumb": "/img/montaigne/animation/work-in-progress-4_t.jpg",
+    "w": 613,
+    "h": 768,
+    "alt": "Work in Progress"
+   }
+  ],
+  "about": [
+   {
+    "src": "/img/montaigne/about/1.jpg",
+    "thumb": "/img/montaigne/about/1_t.jpg",
+    "w": 576,
+    "h": 768
+   },
+   {
+    "src": "/img/montaigne/about/2.jpg",
+    "thumb": "/img/montaigne/about/2_t.jpg",
+    "w": 127,
+    "h": 52
+   },
+   {
+    "src": "/img/montaigne/about/3.jpg",
+    "thumb": "/img/montaigne/about/3_t.jpg",
+    "w": 193,
+    "h": 28
+   }
+  ]
+ },
+ "posts": {
+  "travel/balkan-intro": {
+   "title": "Balkan Intro",
+   "date": "12 Aug 2021",
+   "body": "We were tired from pandemic this pandemic that, so my sister walked into my room one day and was like something something hitchhiking, something something cheap flight tickets. Because I had enough of my mundane ways of life, I simply said \"ok\"...\nFor the first two days we were rather self-centered and traveled as we would usually, but then the world opened to us. Issues seemingly disappeared and complaints stopped existing. As such, as my mind changes, the writing style will also change a lot. After those two days we befriended a random guy, started actually hitchhiking, became more familiar and appreciative of different people's ways of life and went on for the rest of our first journey together.\nOf course once you start, you can't stop, so more adventures followed for each of us, but those stories have yet to be told.\n\n<b>Countries</b>: Albania, Montenegro, Bosnia &amp; Herzegovina, Hungary (kind of)\n\n<b>Length</b>: 10 days\n\n<b>Companions</b>:\nMe\nKatka (my sister)\nŠebestián Bok (introduced later)\n\n<b>Transport</b>:\nPlane + Cheap buses only (first two days) Hitchhiking only (the next seven days) Trains (the last day)\n\n<b>Hitch count</b>: ~11 different cars\n\n",
+   "images": []
+  },
+  "travel/balkan-1-tirana": {
+   "title": "Balkan 1️⃣ Tirana",
+   "date": "13 Aug 2021",
+   "body": "<img src=\"https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_F7D598B2-1C05-40D1-9CD6-2B04A8752AF3/public\" style=\"background-color:initial;max-width:min(100%,395px);max-height:min(329px);;background-image:url(https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_F7D598B2-1C05-40D1-9CD6-2B04A8752AF3/public);height:auto;width:100%;object-fit:cover;background-size:cover;display:block;\" width=\"395\" height=\"329\">\n<b>3:06PM, Somewhere in the clouds </b>- Right now, me and my brother are flying with the prestigious low-cost WizzAir into the murderous* capital of Albania - Tirana, the beginning of our ultimate Balkan adventure. The first complaint, a 2 hour long flight delay, marking 5 and a half hours at the airport. Well anyway, who cares, we're alive and the mood ain't going below 5/10. +5 points Muránske buchty**, -5 points Not enough chairs at the airport, +10 points We got a place to stay for just 14€ for both of us with 9.5/10 rating. <i>(*sk. \"týrať\" means \"to torment\", **leftover food from my sister's hike)</i>\n<i>And that marks the last diary entry by my sister. Why is that so? She was so immersed in the moment after we arrived, that she never found the mood for any further writing. Next up, you will have to enjoy just me and my complaints .</i>\n<img src=\"https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_4D38ED3F-31D1-4BF1-BB06-6CECB0D216F2/public\" style=\"background-color:initial;max-width:min(100%,387px);max-height:min(224px);;background-image:url(https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_4D38ED3F-31D1-4BF1-BB06-6CECB0D216F2/public);height:auto;width:100%;object-fit:cover;background-size:cover;display:block;\" width=\"387\" height=\"224\">\n<b>7:03PM, Present at the Rooster hostel </b>- Finally, we're able to rest for a few minutes, because before our arrival the following events took place...\nWe've landed at the Tirana International Airport and immediately after exiting the plane, we were fanned by a rather high temperature alongside the hellish sun, which immediately started to bake our skin. It also got a bit harder to breathe.\nNow that the delayed arrival was behind us, and as we got past the fast customs for EU citizens, we started looking for our pre-paid bus to the city center. From simply looking around we were spotted by an Albanian dude, who barely spoke any English... or rather didn't speak any English at all, yet still managed to explain to us, by simply pointing at his watch and using his hands, that the bus will arrive at <b>4:30PM</b>. Peak conversation, more like this will follow, because nobody here understands anything we can say and Google Translate combined with any language is literally useless in Albanian. We found a shop at the airport and bought ourselves some water for 199Lek. Of course, the bus was either ~20 minutes late, or our favorite Albanian dude had incorrectly explained himself or we didn't understand him that precisely, well anyway, <b>5PM </b>and we're off to the city. Once we arrived, we got greeted by the Albanian traffic.\n<i>Constantly honking on each other, more dirt in general, people with large sacks at the back of their bikes, buildings that are completely falling apart next to the main street, unsafe chaotic electrical wiring, nonexistent crosswalks, ...</i>\n<img src=\"https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_2EDF2F8B-4CEA-401F-8737-080628C676E0/public\" style=\"background-color:initial;max-width:min(100%,387px);max-height:min(562px);;background-image:url(https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_2EDF2F8B-4CEA-401F-8737-080628C676E0/public);height:auto;width:100%;object-fit:cover;background-size:cover;display:block;\" width=\"387\" height=\"562\">\nNext up we find ourselves looking for our bank's ATM, which was promoted by our bank, in the mobile app, to have free withdrawals, even here in Albania. Well, nope 😂, of course we got lied to. Who cares anyway... Moving through the side streets we arrive at our hostel, where we're greeted by the first and only person who not only speaks English, but is actually British, the reception lady. We were overjoyed, because we could finally get some help getting around.\nWe've departed the hostel for a walk around Tirana in search of food. We found a traditional restaurant in an odd alley, then got ourselves Tave Dheu and veal, both with rice. Yum!\n<img src=\"https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_DADDD289-FE80-48D2-94A1-D4E025FBF8BC/public\" style=\"background-color:initial;max-width:min(100%,387px);max-height:min(326px);;background-image:url(https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_DADDD289-FE80-48D2-94A1-D4E025FBF8BC/public);height:auto;width:100%;object-fit:cover;background-size:cover;display:block;\" width=\"387\" height=\"326\">\n<img src=\"https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_92C96ADF-FC17-4816-A1DB-03FF215CEA97/public\" style=\"background-color:initial;max-width:min(100%,388px);max-height:min(294px);;background-image:url(https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_92C96ADF-FC17-4816-A1DB-03FF215CEA97/public);height:auto;width:100%;object-fit:cover;background-size:cover;display:block;\" width=\"388\" height=\"294\">\nAs I approached the cashier, she seemed so nervous in front of me, that she completely miscalculated how much I owed her. While I explained to her that she made a mistake a thought went through my head <i>\"Did she just get a crush on me?\"</i> immediately followed by <i>\"Nah, I don't have time or space for this\"</i>.\nOn the way back we bought tiny travel shampoos in the Rossmann drug store, then I bought myself a lemonade in the Conad store (kind of like Coop Jednota or 7/11), because the Lemon Soda we had with the food was too damn good. We also found the city's marketplace, obviously closed at this hour.\n<i>I may not have been to India or Iran, but it sure felt like someone merged London and Tehran into a single place. This is apparently still Europe.</i>\n\n",
+   "images": [
+    {
+     "src": "/img/montaigne/travel/balkan-1-tirana/1.jpg",
+     "thumb": "/img/montaigne/travel/balkan-1-tirana/1_t.jpg",
+     "w": 395,
+     "h": 329
+    },
+    {
+     "src": "/img/montaigne/travel/balkan-1-tirana/2.jpg",
+     "thumb": "/img/montaigne/travel/balkan-1-tirana/2_t.jpg",
+     "w": 387,
+     "h": 224
+    },
+    {
+     "src": "/img/montaigne/travel/balkan-1-tirana/3.jpg",
+     "thumb": "/img/montaigne/travel/balkan-1-tirana/3_t.jpg",
+     "w": 387,
+     "h": 562
+    },
+    {
+     "src": "/img/montaigne/travel/balkan-1-tirana/4.jpg",
+     "thumb": "/img/montaigne/travel/balkan-1-tirana/4_t.jpg",
+     "w": 387,
+     "h": 326
+    },
+    {
+     "src": "/img/montaigne/travel/balkan-1-tirana/5.jpg",
+     "thumb": "/img/montaigne/travel/balkan-1-tirana/5_t.jpg",
+     "w": 388,
+     "h": 294
+    }
+   ]
+  },
+  "travel/balkan-2-durres": {
+   "title": "Balkan 2️⃣ Durres",
+   "date": "14 Aug 2021",
+   "body": "<b>7:40AM, Still at the Rooster hostel </b>- We got up after our restful sleep. The hellish warmth got exchanged for a pleasant morning temperature. Air conditioning had to be turned on through the whole night, even now it's still ON. All of the beds in this 6-bunk room are occupied, but even so, everyone is just doing their thing and not bothering anybody else.\nAs for today, we will get back to the marketplace, then head somehow to the second largest city in Albania, Durres.\n<img src=\"https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_2ECACBA7-5C6A-4147-8914-22E1F2787274/public\" style=\"background-color:initial;max-width:min(100%,388px);max-height:min(292px);;background-image:url(https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_2ECACBA7-5C6A-4147-8914-22E1F2787274/public);height:auto;width:100%;object-fit:cover;background-size:cover;display:block;\" width=\"388\" height=\"292\">\nMarketplace, which we found filled with insane amounts of tobacco. Some random merchant wanted to sell us an entire kilogram for cheap, I had to say <i>\"no\"</i> like 3-4 times, he was like <i>\"it's good for you\"</i> 😂.\n<img src=\"https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_12E45BF0-5C59-4212-9B33-01FDE8F13EC4/public\" style=\"background-color:initial;max-width:min(100%,387px);max-height:min(294px);;background-image:url(https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_12E45BF0-5C59-4212-9B33-01FDE8F13EC4/public);height:auto;width:100%;object-fit:cover;background-size:cover;display:block;\" width=\"387\" height=\"294\">\n<b>3:40PM, Laying in our Durres apartment </b>- Getting here was fun. We couldn't find any information on the internet as to how the intercity buses work. We only knew that they leave every 30 minutes from the Station. We packed up our things and got out of hostel Rooster at <b>11AM</b>.\nWe let the reception lady explain the bus schedules to us. Well it works like this, local buses have no schedule at all and you have to talk with the driver in order to figure out where they're headed. <i>\"The buses aren't marked. Just approach them and be like \"Terminal?\" and if they're like \"Terminal.\" then you know you will get to the bus station.\"</i> And then from there to Durres.\nBefore we took the bus, we went to see the city center once more. What is the first thing that tourists like us usually want to take with them? Postcards! So... we walked around and looked for postcards. As it turns out, the lady at the post-office knew English, but still had no idea what postcards were and presented us with a catalog of postage stamps instead 😂 . My sister was already losing her mind, because all we wanted by this point was to arrive at some kind of a souvenir shop, which we actually passed along the way, so we then had to walk a long way back from where we came. In any case, the merchant at the souvenir shop did indeed have some postcards... hidden in the back for no-one to see. As odd as this whole situation was, we did end up happy.\nThe second bus driver we approached was indeed headed over to the Terminal. The road towards there was all sorts of ways weird. Random* architecture on top of each other, trash next to the road. (*Google: Tirana, the capital of Albania, is known for its colorful Ottoman-, Fascist- and Soviet-era architecture.)\nAfter we arrived, we slowly came to a bunch of realizations: Buying the bus tickets is not done ahead of time, or at the driver's seat, but through a guide (basically an additional person that always takes the bus alongside the driver) when you're already seated, first come, first take. The so-called \"Terminal\" is actually just a broken-down concrete skeleton, which stands for at least 20 years in the middle of an overgrown grass field. All you get is the parking lot next to the \"Terminal\", which is constantly filled with buses and nagging taxi drivers. The semaphores are more advanced and show timers, yet people don't care and cars run a red light ~20% of the time, which is a lot. Honk!\nBut anyway, let's slow down a bit, we get to the parking lot and here is what happens: All the buses are now properly marked, however the bus we got onto was apparently full and after not even 50 meters we got kicked out, because standing/sitting on stairs is not allowed. Afterwards we walked not even 5 meters to find the next bus, when I realized that it only stands at the same spot and all the other buses are for different destinations. On our way back to that spot a taxi driver started nagging us, saying random lies like <i>\"That was the last bus to Durres today.\"</i> even though its barely <b>noon </b>and that <i>\"It will cost 5000Lek\"</i> (~40€).\n<img src=\"https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_C35B0CBF-6F03-492D-955C-50FE4EA92638/public\" style=\"background-color:initial;max-width:min(100%,386px);max-height:min(566px);;background-image:url(https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_C35B0CBF-6F03-492D-955C-50FE4EA92638/public);height:auto;width:100%;object-fit:cover;background-size:cover;display:block;\" width=\"386\" height=\"566\">\nAnd at that time as we tried to persuade the driver to leave us be while two of his friends watched by, suddenly he was like <i>\"no it will cost only 3200Lek\"</i>, another driver with a much calmer tone of voice took note of the situation and approached us in the middle of it too.\nHe managed to navigate us away from the other nagging drivers to the parking spot for our bus, saying <i>\"Sorry, it's a big problem in Albania, our people doing this.\"</i> As for how much English these people knew, the nagging ones barely any, just to get by and the calmer one, well he clearly knew more and not just in terms of English. In any case, the bus cost 150Lek per person, yes, 10x less.\nIt's an experience for the buses coming from Tirana and headed for Durres to even get to the \"highway\" from which they arrived, because here they apparently don't know how to build exits/entrances and so it took another 15 minutes for the bus driver to get all the way back to the nearest roundabout, just so the bus could get to the right lane.\nThe road to Durres was OK. From the window we could see even more broken down and odd architectural pieces overgrown with grass-fields and mixed in with industrial buildings. Most of the grass in this country is scorched by the sun, there is close to no green left in it and I have no idea how it manages to survive. Durres may be 46km away from Tirana and there may be some more towns in between, but whoever designed them didn't actually design anything. There was not even a 50m stretch of road where we could see, that we're outside any kind of settlement. Population centers in this country are actually the whole country and not like over here in Slovakia, where cities/towns/villages are settlements and then you don't have any more settlements, just fields.\n<img src=\"https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_211BF30A-D435-4141-9CFE-A1FEFF833919/public\" style=\"background-color:initial;max-width:min(100%,388px);max-height:min(472px);;background-image:url(https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_211BF30A-D435-4141-9CFE-A1FEFF833919/public);height:auto;width:100%;object-fit:cover;background-size:cover;display:block;\" width=\"388\" height=\"472\">\nOnce we arrived to Durres, I bought a very questionable piece of food that was advertised as a <i>\"hamburger\"</i> in a run down \"restaurant\", because why not (note: this is actually a really bad idea in most cases if you don't want to ruin your trip). Well, here is what it contained:\n<img src=\"https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_D86BADE6-E60E-4D8A-9BDA-DAC5B1839AC2/public\" style=\"background-color:initial;max-width:min(100%,220px);max-height:min(126px);;background-image:url(https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_D86BADE6-E60E-4D8A-9BDA-DAC5B1839AC2/public);height:auto;width:100%;object-fit:cover;background-size:cover;display:block;\" width=\"220\" height=\"126\">\nBy the time I got to eat it, the already soggy fries got even soggier. Surprisingly enough, it was eatable. Not palatable, but eatable. In any case, before I got to eat my hamburger, we first had to arrive at our apartment. It was just about <b>12:30PM </b>when we were forced to walk through the whole town, because the bus station had to be 1.2km from the place we stayed at (note: the future me can only laugh at this pathetically low number, even during noon 😂). Towards the end, there was of course a problem to even find the place we were staying at. Once we got to the point marked in my Booking.com app, such a place simply wasn't there.\n<img src=\"https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_866E3671-B317-4B00-AFD9-9D9C698FF0F6/public\" style=\"background-color:initial;max-width:min(100%,390px);max-height:min(560px);;background-image:url(https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_866E3671-B317-4B00-AFD9-9D9C698FF0F6/public);height:auto;width:100%;object-fit:cover;background-size:cover;display:block;\" width=\"390\" height=\"560\">\nAs we circled around the same building for the third time, we stopped a random grandpa and somehow using body language and pictures we explained to him what we're looking for. He then proceeded to navigate us all the way there, because whenever he wanted to go on with his day and let us keep walking on our own we had no idea what he meant. In any case the place called very simply just <i>\"Top view\"</i> actually had a pretty good view and cost us once again around ~14€ together for a single night, maybe even less. Finally, all the issues vanished for the day, I could take a shower and enjoy my \"hamburger\" alongside the view, which for the most part was just the back of the local archeological museum.\n<img src=\"https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_00BDD0B6-7688-4EE4-9CB4-C771FAD1F878/public\" style=\"background-color:initial;max-width:min(100%,386px);max-height:min(221px);;background-image:url(https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_00BDD0B6-7688-4EE4-9CB4-C771FAD1F878/public);height:auto;width:100%;object-fit:cover;background-size:cover;display:block;\" width=\"386\" height=\"221\">\n<img src=\"https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_27132C70-D1F2-430E-A941-9DFB54FA726F/public\" style=\"background-color:initial;max-width:min(100%,388px);max-height:min(295px);;background-image:url(https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_27132C70-D1F2-430E-A941-9DFB54FA726F/public);height:auto;width:100%;object-fit:cover;background-size:cover;display:block;\" width=\"388\" height=\"295\">\n<b>Here are some more things that occurred on this day </b>- In the afternoon, we went to the beach, enjoyed the sea. Afterwards, we stayed at a questionable Italian restaurant, precisely because unlike all the other restaurants this one had no guests at all. The food was good, but the staff behavior rather questionable. Afterwards we walked by the beach until nighttime, then it started getting crowded and afterwards my sister got upset because <i>\"you don't know how to take pictures with composition\"</i>, ironically enough for an artist that studied composition during art classes 😂.\n\n",
+   "images": [
+    {
+     "src": "/img/montaigne/travel/balkan-2-durres/1.jpg",
+     "thumb": "/img/montaigne/travel/balkan-2-durres/1_t.jpg",
+     "w": 388,
+     "h": 292
+    },
+    {
+     "src": "/img/montaigne/travel/balkan-2-durres/2.jpg",
+     "thumb": "/img/montaigne/travel/balkan-2-durres/2_t.jpg",
+     "w": 387,
+     "h": 294
+    },
+    {
+     "src": "/img/montaigne/travel/balkan-2-durres/3.jpg",
+     "thumb": "/img/montaigne/travel/balkan-2-durres/3_t.jpg",
+     "w": 386,
+     "h": 566
+    },
+    {
+     "src": "/img/montaigne/travel/balkan-2-durres/4.jpg",
+     "thumb": "/img/montaigne/travel/balkan-2-durres/4_t.jpg",
+     "w": 388,
+     "h": 472
+    },
+    {
+     "src": "/img/montaigne/travel/balkan-2-durres/5.jpg",
+     "thumb": "/img/montaigne/travel/balkan-2-durres/5_t.jpg",
+     "w": 220,
+     "h": 126
+    },
+    {
+     "src": "/img/montaigne/travel/balkan-2-durres/6.jpg",
+     "thumb": "/img/montaigne/travel/balkan-2-durres/6_t.jpg",
+     "w": 390,
+     "h": 560
+    },
+    {
+     "src": "/img/montaigne/travel/balkan-2-durres/7.jpg",
+     "thumb": "/img/montaigne/travel/balkan-2-durres/7_t.jpg",
+     "w": 386,
+     "h": 221
+    },
+    {
+     "src": "/img/montaigne/travel/balkan-2-durres/8.jpg",
+     "thumb": "/img/montaigne/travel/balkan-2-durres/8_t.jpg",
+     "w": 388,
+     "h": 295
+    }
+   ]
+  },
+  "recipes/best-roll": {
+   "title": "🥖 Best roll",
+   "date": "05 Sep 2019",
+   "body": "<h2 class=\"f3\" id=\"ingredients\">Ingredients<a class='anchor' href='#ingredients' aria-label=\"Permalink to Ingredients\" role=\"complementary\" aria-hidden=\"true\">#</a></h2><ul class=\"dashed\" data-apple-notes-indent-amount=\"0\"><li>rolls</li><li>bacon strips (one per roll)</li><li>onion</li><li>sweet chilli sauce</li><li>egg (one per two rolls)</li><li>pickles (half to two thirds per roll)</li><li>sweet paprika powder</li><li>oil</li></ul>\n<div></div><h2 class=\"f3\" id=\"instructions\">Instructions<a class='anchor' href='#instructions' aria-label=\"Permalink to Instructions\" role=\"complementary\" aria-hidden=\"true\">#</a></h2><ol data-apple-notes-indent-amount=\"0\"><li>Defrost the rolls, heat up the pan with a bit of oil</li><li>Dice a bit of the onion and slice a bit of the onion</li><li>Once oil heats up, put a bit of the onion and paprika powder in it and mix, lower the heat and cover for 10-15 seconds</li><li>Put strips of bacon on top of the paprika powder onion mix in the pan (make sure to remove the chewy part before frying) and cover for 30-45sec</li><li>Knife rolls in half (with the pieces still holding together), add slices of raw onion on bottom</li><li>Turn the heat off for a bit, let the pan cool and simultaneously move everything from the pan into the rolls (chopsticks are pretty useful for this), with the exception of oil</li><li>Put the pan back on low heat, quickly crack an egg into it, salt it, whisk it, spread it and pepper it (in written order) and cover the pan</li><li>Gradually check the egg, once it starts detaching from the pan (while still a bit liquid on top), quickly roll it up into a pancake-like roll with a spatula or something like that, careful not to tear it</li><li>As soon as the egg gets rolled move it to a plate and slice in half along the longer side, then place the two long layered egg strips that got created as a result into two rolls</li><li>Drip in some of that good sweet chilli sauce</li><li>Slice pickles along the longer side into quarters and put into the rolls</li><li>Done</li></ol>",
+   "images": []
+  },
+  "recipes/superfast-microwave-pizza-bread": {
+   "title": "🍕 Superfast Microwave Pizza Bread",
+   "date": "08 Feb 2020",
+   "body": "<h2 class=\"f3\" id=\"ingredients\">Ingredients<a class='anchor' href='#ingredients' aria-label=\"Permalink to Ingredients\" role=\"complementary\" aria-hidden=\"true\">#</a></h2><ul class=\"dashed\" data-apple-notes-indent-amount=\"0\"><li>2 slices of bread</li><li>a bit of oregano</li><li>pepperoni</li></ul>\n<div></div><h2 class=\"f3\" id=\"instructions\">Instructions<a class='anchor' href='#instructions' aria-label=\"Permalink to Instructions\" role=\"complementary\" aria-hidden=\"true\">#</a></h2><ol data-apple-notes-indent-amount=\"0\"><li>2 slices of bread into toaster, only for a little bit so the bread doesn't get soggy in the microwave</li><li>put on a slice of gouda or lidl grated mozarella or tavený syr to rougly cover the bread</li><li>next a little bit of oregano to cover the cheese</li><li>then cover the entire bread with pepperoni</li><li>throw into microwave for a minute on a plate (because the cheese may drip off)</li><li>eat quickly after ~30 seconds (right away = hot, not quick = cheese will solidify)</li><li>Optional: add ketchup topping</li></ol>",
+   "images": []
+  },
+  "recipes/questionable-cornflake-schnitzel": {
+   "title": "🍗 Questionable Cornflake Schnitzel",
+   "date": "27 Aug 2019",
+   "body": "<h2 class=\"f3\" id=\"instructions\">Instructions<a class='anchor' href='#instructions' aria-label=\"Permalink to Instructions\" role=\"complementary\" aria-hidden=\"true\">#</a></h2><div></div><h3 class=\"f4\" id=\"1-pepper-oil-infusion\">1 Pepper oil infusion<a class='anchor' href='#1-pepper-oil-infusion' aria-label=\"Permalink to 1 Pepper oil infusion\" role=\"complementary\" aria-hidden=\"true\">#</a></h3><ol data-apple-notes-indent-amount=\"0\"><li>Sunflower oil -&gt; frying pan -&gt; reasonably hot</li><li>Squeeze a bit of onion through garlic grinder -&gt; frying pan</li><li>Add spicy red pepper dust (not sweet pepper dust)</li><li>Fry for a while</li><li>Filter through paper towel if you manage to burn it like i did :&lt;</li></ol>\n<div></div><h3 class=\"f4\" id=\"2-marinade-prep\">2 Marinade prep<a class='anchor' href='#2-marinade-prep' aria-label=\"Permalink to 2 Marinade prep\" role=\"complementary\" aria-hidden=\"true\">#</a></h3><ol data-apple-notes-indent-amount=\"0\"><li>Squeeze a one garlic clove (two is too much i tried it last time lol) through garlic grinder</li><li>Squeeze a bit of ginger (without skin) through the same grinder</li><li>Mix all with pepper oil infusion</li><li>Add a bit of spicy red pepper dust and sweet red pepper dust</li><li>Add seasoning and salt</li><li>Add a bit of melted butter (~50g?)</li><li>Add sweet chilli sauce (the most important thing that makes it good)</li></ol>\n<div></div><h3 class=\"f4\" id=\"3-marinade-process\">3 Marinade process<a class='anchor' href='#3-marinade-process' aria-label=\"Permalink to 3 Marinade process\" role=\"complementary\" aria-hidden=\"true\">#</a></h3><ol data-apple-notes-indent-amount=\"0\"><li>Cut chicken breasts into reasonable slices, remove all the chewy stuff</li><li>wash them in cold water</li><li>mix with the marinade</li><li>let rest for 5min then put to fridge for 30min+</li><li>after fridge the marinade will be solidified because of the butter, quickly heat it over boiling water, CAREFULLY mix not to cook the meat</li></ol>\n<div></div><h3 class=\"f4\" id=\"4-kfc-shnitzel-process\">4 KFC Shnitzel process<a class='anchor' href='#4-kfc-shnitzel-process' aria-label=\"Permalink to 4 KFC Shnitzel process\" role=\"complementary\" aria-hidden=\"true\">#</a></h3><ol data-apple-notes-indent-amount=\"0\"><li>Crush corn flakes (in a plastic bag)</li><li>Mix crushed corn flakes with bread crumbs</li><li>Whip one egg in a separate bowl</li><li>Shnitzel:<ol data-apple-notes-indent-amount=\"1\"><li>Put one chicken breast first in all-purpose flour</li><li>Make sure flour properly covers it, shake off excess</li><li>Then in egg mixture (forks and bowl movement can help spread the egg)</li><li>Then into the crushed corn flake mix (pressing the cornflakes down onto the breast can help accumulate them)</li></ol></li><li>Fry, occasionally flip</li><li>Done</li></ol>\n<div></div><h3 class=\"f4\" id=\"5-recommended-serving\">5 Recommended serving<a class='anchor' href='#5-recommended-serving' aria-label=\"Permalink to 5 Recommended serving\" role=\"complementary\" aria-hidden=\"true\">#</a></h3><i>Rested chicken shnitzels straight from fridge with fresh lettuce, cucumber slices, onion, tomatoes</i>\n<i>and some burger hellmans mayonaise mix in a toasted burger bun</i>",
+   "images": []
+  },
+  "recipes/pretty-good-cornflake-schnitzel": {
+   "title": "🍗 Pretty-good Cornflake Schnitzel",
+   "date": "22 Mar 2021",
+   "body": "<h2 class=\"f3\" id=\"instructions\">Instructions<a class='anchor' href='#instructions' aria-label=\"Permalink to Instructions\" role=\"complementary\" aria-hidden=\"true\">#</a></h2><div></div><h3 class=\"f4\" id=\"thin-chicken-breast-pieces\">thin chicken breast pieces<a class='anchor' href='#thin-chicken-breast-pieces' aria-label=\"Permalink to thin chicken breast pieces\" role=\"complementary\" aria-hidden=\"true\">#</a></h3><ol data-apple-notes-indent-amount=\"0\"><li>wash before cutting-</li><li>cut into thin pieces-</li><li>put in large container-</li><li>wash-</li><li>mix in very slightly salted water-</li><li>let sit while working on crushing cornflakes-</li><li>after sitting done, mix once more, remove water-</li></ol>\n<div></div><h3 class=\"f4\" id=\"crushed-cornflakes\">crushed cornflakes<a class='anchor' href='#crushed-cornflakes' aria-label=\"Permalink to crushed cornflakes\" role=\"complementary\" aria-hidden=\"true\">#</a></h3><ol data-apple-notes-indent-amount=\"0\"><li>crush softly under a blanket in a plastic bag (the bag is bound to gain pinholes)-</li><li>later during the process use the bag to mix the cornflakes over the breasts-</li></ol>\n<div></div><h3 class=\"f4\" id=\"marinade\">marinade<a class='anchor' href='#marinade' aria-label=\"Permalink to marinade\" role=\"complementary\" aria-hidden=\"true\">#</a></h3><ol data-apple-notes-indent-amount=\"0\"><li>put following ingredients on top of the pieces-<ol data-apple-notes-indent-amount=\"1\"><li>~3tsp paprika powder-</li><li>~1tsp kebab seasoning-</li><li>~2tsp ginger powder-</li><li>red pepper flakes-</li><li>salt-</li></ol></li><li>mix thoroughly-</li><li>lightly sprinked garlic powder over top-</li><li>3 lemon drops per cut piece-</li><li>let rest-</li><li>while marinading: prepare everything in order for the frying process below-</li></ol>\n<div></div><h3 class=\"f4\" id=\"eggwash\">eggwash<a class='anchor' href='#eggwash' aria-label=\"Permalink to eggwash\" role=\"complementary\" aria-hidden=\"true\">#</a></h3><ol data-apple-notes-indent-amount=\"0\"><li>mix egg or two -</li><li>add 1.5tsp of oregano-</li><li>add a bit of paprika powder for color-</li><li>red pepper flakes-</li><li>mix again-</li></ol>\n<div></div><h3 class=\"f4\" id=\"frying-process\">frying process<a class='anchor' href='#frying-process' aria-label=\"Permalink to frying process\" role=\"complementary\" aria-hidden=\"true\">#</a></h3>heatup oil on the frying pan, preferably close to deepfrying temperature\n\nlayout and apply in following order\n<ol data-apple-notes-indent-amount=\"0\"><li>all-purpose flour</li><li>eggwash</li><li>cornflake bag</li><li>frying pan</li></ol>",
+   "images": []
+  },
+  "recipes/fryiyed-noodles": {
+   "title": "🍜 Fryiyed noodles",
+   "date": "22 Mar 2021",
+   "body": "This is a simple recipe ingredient-wise and complicated process-wise mostly based around paprika\npowder, eggs and constant mixing, stiring, dousing, etc.\n\nIt results in fairly neutral noodles that can be served alongside almost anything that would work with\nrice or potatoes otherwise, they can also be added to a soup.<h2 class=\"f3\" id=\"ingredients\">Ingredients<a class='anchor' href='#ingredients' aria-label=\"Permalink to Ingredients\" role=\"complementary\" aria-hidden=\"true\">#</a></h2><ul class=\"dashed\" data-apple-notes-indent-amount=\"0\"><li>wheat noodles (preferably not thick)-</li><li>sunflower oil-</li><li>paprika powder-</li><li>eggs-</li><li>oregano (optional)-</li><li>garlic powder (optional)-</li><li>onion (optional)-</li></ul>\n<div></div><h2 class=\"f3\" id=\"instructions\">Instructions<a class='anchor' href='#instructions' aria-label=\"Permalink to Instructions\" role=\"complementary\" aria-hidden=\"true\">#</a></h2><ol data-apple-notes-indent-amount=\"0\"><li>wheat noodles: boil with teriyaki sauce, maggi liquid seasoning, tiny bit of soy sauce, salt-</li><li>infusion: roast paprika powder on hot oil (optionally with diced onion), keep stirring, pour into a small mug, allow the dark pieces to fall to the bottom, we only care about the infused oil, discard those after the oil gets used up</li><li>after the noodles are ready drain the water, then- prepare another pepper infusion in the same pan, this time a little bit less paprika, alongside add tiny bit of curry powder, salt, pepper, red pepper flakes</li><li>throw noodles onto the pan, stir violently, important: when the mix starts to dry up add a bit of water, mix and cover, uncover after 30sec and repeat, sometimes add infusion</li><li>after ~3-5 repetitions move noodles to the side, add infusion to the bottom (make sure there is close to no water on the bottom), add an egg or two, salt them, add a bit of oregano on top of eggs (optional), let the eggs fryup a little, mix the eggs ignoring the noodles, chop the eggs up into small chunks</li><li>after the eggs look decent, mix with noodles, keep using water like before to keep the noodles from going dry, optionally add garlic powder</li><li>spread the noodles out over the pan and let fry one last time, mix and serve</li></ol>",
+   "images": []
+  },
+  "recipes/pad-thai-inspired-rice-noodles": {
+   "title": "🍜 Pad Thai-inspired Rice Noodles",
+   "date": "08 Feb 2020",
+   "body": "<h2 class=\"f3\" id=\"ingredients\">Ingredients<a class='anchor' href='#ingredients' aria-label=\"Permalink to Ingredients\" role=\"complementary\" aria-hidden=\"true\">#</a></h2><ul class=\"dashed\" data-apple-notes-indent-amount=\"0\"><li>1 egg</li><li>2,5inches of scallion</li><li>sesame seeds are optional</li><li>rice noodles</li><li>hot pepper powder</li><li>chinese spices powder</li><li>pad thai sauce</li><li>red (spicy) curry sauce</li><li>grated mozzarella</li></ul>\n<div></div><h2 class=\"f3\" id=\"instructions\">Instructions<a class='anchor' href='#instructions' aria-label=\"Permalink to Instructions\" role=\"complementary\" aria-hidden=\"true\">#</a></h2><ol data-apple-notes-indent-amount=\"0\"><li>heat up the wok a bit</li><li>chop onion</li><li>get a bit of oil to boil</li><li>start preparing the special sauce<ol data-apple-notes-indent-amount=\"1\"><li>1 teaspoon of spicy curry sauce (or not spicy, doesnt matter much)</li><li>a drop of pad-thai sauce</li><li>mix in 0,5 teaspoon of hot paprika (or powdered chilli)</li><li>add 3 drops of freshly squeezed lemon juice</li><li>mix in a teaspoon of china seasoning</li><li>add 0,5 teaspoon of baking soda</li><li>mix thoroughly</li></ol></li><li>fry the onion</li><li>finish the special sauce prep</li><li>FAST PART: when the onion starts to caramelize drop in halved rice noodles and add a bit more oil</li><li>then quickly pour the special sauce over the rice noodles</li><li>quickly pour in a splash of pad-thai over the noodles</li><li>while holding cover for the wok, pour in a full glass of water and quickly cover</li><li>after 10 seconds uncover for a quick mix, cover again until the water starts to boil off</li><li>chop up about 2,5inches of scallion, preferably only the green part</li><li>get your plate and fork ready in the meantime the wait is boring</li><li>after the water starts to boil off and the noodles are left in a sauce-like mix slowly over time add another 1 to 1,5 cups of water and leave uncovered</li><li>after the sauce boils enough to where it is no longer moving on its own move the noodles to one side of the wok ingredients in the sauce can cause the oil to sprinkle high, try to avoid having it moving in ingredients in the sauce can cause the oil to sprinkle high, try to avoid having it moving in</li><li>add a bit of oil to the other side of wok, you can let it move under the noodles</li><li>right afterwards crack an egg into the oil-only side and mix around in itself (leave noodles untouched for now)</li><li>drop chopped up scallion and mozarella on the noodles, no mixing until the egg fries down a little</li><li>mix it all up, it should become a bit too sticky</li><li>pour in a wheeze of oil around the sides and a 0,25 glass of water, mix well and serve immediately with bonus scallion and sesame seeds on top</li></ol>\n\n<img src=\"https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_A0D220B5-8E11-4B5C-9A32-7E9F2377F9AA/public\" style=\"background-color:#EFEAE3;max-width:min(100%,828px);max-height:min(459px);;background-image:url(https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_A0D220B5-8E11-4B5C-9A32-7E9F2377F9AA/public);height:auto;width:100%;object-fit:cover;background-size:cover;display:block;\" width=\"828\" height=\"459\">\n",
+   "images": [
+    {
+     "src": "/img/montaigne/recipes/pad-thai-inspired-rice-noodles/1.jpg",
+     "thumb": "/img/montaigne/recipes/pad-thai-inspired-rice-noodles/1_t.jpg",
+     "w": 828,
+     "h": 459
+    }
+   ]
+  },
+  "recipes/repurposed-telaci-krk-ramen-edition": {
+   "title": "🇸🇰🍜 Repurposed telací krk (Ramen edition)",
+   "date": "05 Jan 2021",
+   "body": "<h2 class=\"f3\" id=\"instrukcie\">Inštrukcie<a class='anchor' href='#instrukcie' aria-label=\"Permalink to Inštrukcie\" role=\"complementary\" aria-hidden=\"true\">#</a></h2><ol data-apple-notes-indent-amount=\"0\"><li>daj vodu variť do rajnice-</li><li>do malej bielej (kompótovej) misky:<ol data-apple-notes-indent-amount=\"1\"><li>pečený telací krk (2 dni starý) v chladničke - odrezať 3 plátky, narezať ich</li><li>kapustový list narezať na slíže</li><li>2 plátky petržlene narezať</li><li>pol hlávky cesnaku narezať nadrobno</li></ol></li><li>až je všetko v miske a voda takmer vrie, prehoď do vody-</li><li>pridaj okom<ol data-apple-notes-indent-amount=\"1\"><li>soľ</li><li>sezamový olej</li><li>teriyaki sójovku</li><li>čajovú lyžičku mletej papriky</li><li>čierne korenie</li></ol></li><li>nechaj variť na časovač ešte 12 minút-</li><li>potom nevypínaj, pridaj nudle nech sa spravia<ol data-apple-notes-indent-amount=\"1\"><li>občas premiešaj, trvá cca 7 minút</li><li>pri čakaní priprav misku a lyžicu</li><li>podľa chuti čajová lyžička octu k záveru</li><li>ešte 1-2 minúty a hotovo</li></ol></li><li>po preliatí štipku chilli na vrch-</li></ol>\n\n<img src=\"https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_4A7DFCB3-EF9B-461D-BA81-97D32C6513F0/public\" style=\"background-color:#C89C54;max-width:min(100%,612px);max-height:min(445px);;background-image:url(https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_4A7DFCB3-EF9B-461D-BA81-97D32C6513F0/public);height:auto;width:100%;object-fit:cover;background-size:cover;display:block;\" width=\"612\" height=\"445\">\n<img src=\"https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_55AFEB33-E331-40D8-9A7C-F0990420B631/public\" style=\"background-color:#F7F0EC;max-width:min(100%,610px);max-height:min(1143px);;background-image:url(https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_55AFEB33-E331-40D8-9A7C-F0990420B631/public);height:auto;width:100%;object-fit:cover;background-size:cover;display:block;\" width=\"610\" height=\"1143\">\n",
+   "images": [
+    {
+     "src": "/img/montaigne/recipes/repurposed-telaci-krk-ramen-edition/1.jpg",
+     "thumb": "/img/montaigne/recipes/repurposed-telaci-krk-ramen-edition/1_t.jpg",
+     "w": 612,
+     "h": 445
+    },
+    {
+     "src": "/img/montaigne/recipes/repurposed-telaci-krk-ramen-edition/2.jpg",
+     "thumb": "/img/montaigne/recipes/repurposed-telaci-krk-ramen-edition/2_t.jpg",
+     "w": 409,
+     "h": 768
+    }
+   ]
+  },
+  "recipes/enhanced-sachertorte": {
+   "title": "🍰 Enhanced Sachertorte",
+   "date": "27 Aug 2019",
+   "body": "Read the entire recipe ahead of time and make sure you understand wtf is said here.\nWeigh and measure everything in advance<h2 class=\"f3\" id=\"ingredients\">Ingredients<a class='anchor' href='#ingredients' aria-label=\"Permalink to Ingredients\" role=\"complementary\" aria-hidden=\"true\">#</a></h2>Here are weights for a third-sized Sachertorte and a normal one:\n<img src=\"https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_496ACFD7-E242-4F19-8132-AEFBA6410F93/public\" style=\"background-color:#2C2C2C;max-width:min(100%,771px);max-height:min(739px);;background-image:url(https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_496ACFD7-E242-4F19-8132-AEFBA6410F93/public);height:auto;width:100%;object-fit:cover;background-size:cover;display:block;\" width=\"771\" height=\"739\"><h2 class=\"f3\" id=\"instructions\">Instructions<a class='anchor' href='#instructions' aria-label=\"Permalink to Instructions\" role=\"complementary\" aria-hidden=\"true\">#</a></h2>Preheat oven to 170C<h3 class=\"f4\" id=\"1-bowl-1-main-mixture\">1. Bowl 1 (Main mixture)<a class='anchor' href='#1-bowl-1-main-mixture' aria-label=\"Permalink to 1. Bowl 1 (Main mixture)\" role=\"complementary\" aria-hidden=\"true\">#</a></h3><ol data-apple-notes-indent-amount=\"0\"><li>Melt butter over boiling water</li></ol>\n<div></div><h3 class=\"f4\" id=\"2-bowl-2-can-be-a-mug-as-well-but-its-slower-than-melting-it-in-a-metal-bowl\">2. Bowl 2 (can be a mug as well, but it's slower than melting it in a metal bowl)<a class='anchor' href='#2-bowl-2-can-be-a-mug-as-well-but-its-slower-than-melting-it-in-a-metal-bowl' aria-label=\"Permalink to 2. Bowl 2 (can be a mug as well, but it's slower than melting it in a metal bowl)\" role=\"complementary\" aria-hidden=\"true\">#</a></h3><ol data-apple-notes-indent-amount=\"0\"><li>Melt chocolate over boilingu water (only for sachertorte) (you can also add a bit of cocoa for a better, more bitter taste)</li></ol>\n<div></div><h3 class=\"f4\" id=\"3-bowl-1-main-mixture\">3. Bowl 1 (Main mixture)<a class='anchor' href='#3-bowl-1-main-mixture' aria-label=\"Permalink to 3. Bowl 1 (Main mixture)\" role=\"complementary\" aria-hidden=\"true\">#</a></h3><ol data-apple-notes-indent-amount=\"0\"><li>Add icing sugar and vanilla sugar</li><li>Mixer while adding egg yolks</li><li>After mixing add melted chocolate from bowl 2 and mix with a spatula</li></ol>\n<div></div><h3 class=\"f4\" id=\"4-bowl-3-for-egg-whites\">4. Bowl 3 (For egg whites)<a class='anchor' href='#4-bowl-3-for-egg-whites' aria-label=\"Permalink to 4. Bowl 3 (For egg whites)\" role=\"complementary\" aria-hidden=\"true\">#</a></h3><ol data-apple-notes-indent-amount=\"0\"><li>Egg whites go here</li><li>Mixer while adding crystal sugar</li><li>After substance solidifies a bit and there is no more clear liquid, add to bowl 1 and mix in with a spatula</li></ol>\n<div></div><h3 class=\"f4\" id=\"5-bowl-1\">5. Bowl 1<a class='anchor' href='#5-bowl-1' aria-label=\"Permalink to 5. Bowl 1\" role=\"complementary\" aria-hidden=\"true\">#</a></h3><ol data-apple-notes-indent-amount=\"0\"><li>sift flour into the mixture and mix with a spatula</li></ol>\n<div></div><h3 class=\"f4\" id=\"6-bowl-4-for-baking\">6. Bowl 4 (For baking)<a class='anchor' href='#6-bowl-4-for-baking' aria-label=\"Permalink to 6. Bowl 4 (For baking)\" role=\"complementary\" aria-hidden=\"true\">#</a></h3><ol data-apple-notes-indent-amount=\"0\"><li>butter it out, flour it out</li><li>transfer the bowl 1 content over</li><li>bake for 40min</li></ol>\n<div></div><h3 class=\"f4\" id=\"7-cut-the-baked-sachertorte-in-half-or-into-thirds-and-add-apricot-jam-and-turkish-honey-if-you-got-some-its-nice\">7. Cut the baked sachertorte in half (or into thirds) and add apricot jam (and turkish honey if you got some, its nice)<a class='anchor' href='#7-cut-the-baked-sachertorte-in-half-or-into-thirds-and-add-apricot-jam-and-turkish-honey-if-you-got-some-its-nice' aria-label=\"Permalink to 7. Cut the baked sachertorte in half (or into thirds) and add apricot jam (and turkish honey if you got some, its nice)\" role=\"complementary\" aria-hidden=\"true\">#</a></h3><div></div><h3 class=\"f4\" id=\"8-make-a-makeshift-holder-for-the-sachertorte-so-that-the-glaze-wont-stick-to-the-bottom-see-drawing\">8. Make a makeshift holder for the sachertorte so that the glaze won't stick to the bottom (see drawing)<a class='anchor' href='#8-make-a-makeshift-holder-for-the-sachertorte-so-that-the-glaze-wont-stick-to-the-bottom-see-drawing' aria-label=\"Permalink to 8. Make a makeshift holder for the sachertorte so that the glaze won't stick to the bottom (see drawing)\" role=\"complementary\" aria-hidden=\"true\">#</a></h3><img src=\"https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_D5AC46FD-1415-4F09-A149-B470C060F2AF/public\" style=\"background-color:#FDFDFD;max-width:min(100%,943px);max-height:min(136px);;background-image:url(https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_D5AC46FD-1415-4F09-A149-B470C060F2AF/public);height:auto;width:100%;object-fit:cover;background-size:cover;display:block;\" width=\"943\" height=\"136\"><h3 class=\"f4\" id=\"9-bowl-2-chocolate\">9. Bowl 2 (Chocolate)<a class='anchor' href='#9-bowl-2-chocolate' aria-label=\"Permalink to 9. Bowl 2 (Chocolate)\" role=\"complementary\" aria-hidden=\"true\">#</a></h3><ol data-apple-notes-indent-amount=\"0\"><li>Add the rest of chocolate here with a bit of cocoa if you have any and melt over</li><li>boiling water</li></ol>\n<div></div><h3 class=\"f4\" id=\"10-boiling-water-pan-for-chocolate\">10. Boiling water pan for chocolate<a class='anchor' href='#10-boiling-water-pan-for-chocolate' aria-label=\"Permalink to 10. Boiling water pan for chocolate\" role=\"complementary\" aria-hidden=\"true\">#</a></h3><ol data-apple-notes-indent-amount=\"0\"><li>add sugar to the amount of boiling water specified in the glaze part of spreadsheet and wait for it to melt</li><li>add the melted chocolate from bowl 2</li><li>mix while boiling until the chocolate starts to stick to the walls of the pan</li><li>quickly transfer onto the sachertorte</li><li>dip your spatula into the dripped off chocolate and use it to cover any uncovered parts of the sachertorte</li></ol>\n<div></div><h3 class=\"f4\" id=\"11-let-the-sachertorte-cool\">11. Let the sachertorte cool<a class='anchor' href='#11-let-the-sachertorte-cool' aria-label=\"Permalink to 11. Let the sachertorte cool\" role=\"complementary\" aria-hidden=\"true\">#</a></h3><ol data-apple-notes-indent-amount=\"0\"><li>transfer it to a clean plate</li><li>put it into a fridge for at least an hour</li></ol>\n<div></div>Done",
+   "images": [
+    {
+     "src": "/img/montaigne/recipes/enhanced-sachertorte/1.jpg",
+     "thumb": "/img/montaigne/recipes/enhanced-sachertorte/1_t.jpg",
+     "w": 771,
+     "h": 739
+    },
+    {
+     "src": "/img/montaigne/recipes/enhanced-sachertorte/2.jpg",
+     "thumb": "/img/montaigne/recipes/enhanced-sachertorte/2_t.jpg",
+     "w": 943,
+     "h": 136
+    }
+   ]
+  },
+  "graphics/dom-kultury-javorina": {
+   "title": "Dom Kultúry Javorina",
+   "date": "01 Jan 2019",
+   "body": "<img src=\"https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_09ED1ED4-1AE0-4FE0-81E1-B574FC24EC07/public\" style=\"background-color:initial;max-width:min(100%,238px);max-height:min(137px);;background-image:url(https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_09ED1ED4-1AE0-4FE0-81E1-B574FC24EC07/public);height:auto;width:100%;object-fit:cover;background-size:cover;display:block;\" width=\"238\" height=\"137\">\n<img src=\"https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_36B61272-0DFC-414D-A8E8-613EC6A7CEC9/public\" style=\"background-color:initial;max-width:min(100%,311px);max-height:min(128px);;background-image:url(https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_36B61272-0DFC-414D-A8E8-613EC6A7CEC9/public);height:auto;width:100%;object-fit:cover;background-size:cover;display:block;\" width=\"311\" height=\"128\">\n<img src=\"https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_760A1062-B791-4A36-AB5D-84BDACE55092/public\" style=\"background-color:initial;max-width:min(100%,573px);max-height:min(323px);;background-image:url(https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_760A1062-B791-4A36-AB5D-84BDACE55092/public);height:auto;width:100%;object-fit:cover;background-size:cover;display:block;\" width=\"573\" height=\"323\">\n"
+  },
+  "graphics/drot": {
+   "title": "Drôt",
+   "date": "01 Jan 2019",
+   "body": "<img src=\"https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_57C97C2F-DFE7-48D2-AFDB-D1CBAA709B5B/public\" style=\"background-color:initial;max-width:min(100%,239px);max-height:min(135px);;background-image:url(https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_57C97C2F-DFE7-48D2-AFDB-D1CBAA709B5B/public);height:auto;width:100%;object-fit:cover;background-size:cover;display:block;\" width=\"239\" height=\"135\">\n<img src=\"https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_0932CF89-2E7E-4292-B5E1-00F525CC657F/public\" style=\"background-color:initial;max-width:min(100%,635px);max-height:min(448px);;background-image:url(https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_0932CF89-2E7E-4292-B5E1-00F525CC657F/public);height:auto;width:100%;object-fit:cover;background-size:cover;display:block;\" width=\"635\" height=\"448\">\n"
+  },
+  "software/proc-exp": {
+   "title": "🖌️ ProcExp",
+   "date": "07 Oct 2020",
+   "body": "Script for mass extraction, stitching and export of timelapse files from Procreate works using 7z and FFMPEG.\n<a href=\"https://github.com/iairu/ProcExp\">GitHub</a>\n<a href=\"https://github.com/iairu/ProcExp/releases\">Download</a>\n\n<b><span style=\"color: #A1A1A1\">Utilized technologies</span></b><span style=\"color: #A1A1A1\">: autohotkey, ffmpeg, parsing</span>\n<b><span style=\"color: #A1A1A1\">Work started:</span></b><span style=\"color: #A1A1A1\"> 2019-12-17</span>\n<b><span style=\"color: #A1A1A1\">Work finished:</span></b><span style=\"color: #A1A1A1\"> 2020-01-21</span>\n<b><span style=\"color: #A1A1A1\">Total days worked:</span></b><span style=\"color: #A1A1A1\"> 35</span>"
+  },
+  "software/save-the-princess": {
+   "title": "🎮 Save the Princess",
+   "date": "24 Jun 2020",
+   "body": "Vanilla JavaScript game inspired by Street Fighter. First Javascript project, based on MVC.\n\n<b><span style=\"color: #A1A1A1\">Utilized technologies</span></b><span style=\"color: #A1A1A1\">: javascript</span>\n<b><span style=\"color: #A1A1A1\">Work started:</span></b><span style=\"color: #A1A1A1\"> 2020-02-21</span>\n<b><span style=\"color: #A1A1A1\">Work finished:</span></b><span style=\"color: #A1A1A1\"> 2020-06-24</span>\n<b><span style=\"color: #A1A1A1\">Total days worked:</span></b><span style=\"color: #A1A1A1\"> 125</span>"
+  },
+  "software/anki-screener": {
+   "title": "📺 AnkiScreener",
+   "date": "07 Oct 2020",
+   "body": "A rich utility for fast creation of Anki-compatible CSV flashcards.\n<a href=\"https://github.com/iairu/AnkiScreener\">GitHub</a>\n<div class='embed-container'><iframe src=\"https://www.youtube.com/embed/LO1rb8nfDX4\"></iframe></div>\n\n<b><span style=\"color: #A1A1A1\">Utilized technologies</span></b><span style=\"color: #A1A1A1\">: javascript, svelte, electron, scss</span>\n<b><span style=\"color: #A1A1A1\">Work started:</span></b><span style=\"color: #A1A1A1\"> 2020-09-23</span>\n<b><span style=\"color: #A1A1A1\">Work finished:</span></b><span style=\"color: #A1A1A1\"> 2020-10-07</span>\n<b><span style=\"color: #A1A1A1\">Total days worked:</span></b><span style=\"color: #A1A1A1\"> 15</span>"
+  },
+  "animation/demo-reel": {
+   "title": "🎞️ Demo Reel",
+   "date": "05 Sep 2021",
+   "body": "<a href=\"../../../../files/Accounts/C037F400-EC11-4FAB-ACA5-467EE47E1BD1/Media/F19D7E55-6766-42D5-8EFF-5D4F47817FA4/1_E4971324-925F-4082-B207-B32BE1D6C9A4/demo.mp4\" class=\"attr\" data-apple-notes-zidentifier=\"DA108C3D-8317-4F92-9E2D-65BE9607A8CC\"></a>\n"
+  },
+  "animation/treason": {
+   "title": "🔠 Treason",
+   "date": "20 May 2019",
+   "body": "This was my high school graduation project, made with Blender.\n<div class='embed-container'><iframe src=\"https://youtube.com/embed/eBoPF2v_9EY\"></iframe></div>\n\n"
+  },
+  "software/struk-show": {
+   "title": "🕸️ StrukShow",
+   "date": "03 Aug 2020",
+   "body": "Complex solution of a modern personal website using CockpitCMS and Svelte.\n<a href=\"https://www.strukshow.com\">Website</a>\n\n<b><span style=\"color: #A1A1A1\">Utilized technologies</span></b><span style=\"color: #A1A1A1\">: svelte, javascript, scss, html, php</span>\n<b><span style=\"color: #A1A1A1\">Work started:</span></b><span style=\"color: #A1A1A1\"> 2020-06-01</span>\n<b><span style=\"color: #A1A1A1\">Work finished:</span></b><span style=\"color: #A1A1A1\"> 2020-08-03</span>\n<b><span style=\"color: #A1A1A1\">Total days worked:</span></b><span style=\"color: #A1A1A1\"> 64</span>"
+  },
+  "research/find-a-cat-thesis": {
+   "title": "🎓 Find A Cat Thesis",
+   "date": "20 May 2024",
+   "body": "This is my Bachelor thesis in the field of Computer Science, more specifically Informatics. The thesis has also been made available on <a href=\"http://CRZP.sk\">CRZP.sk</a> (Final Thesis Central Registry of Slovak Republic). Enjoy!<h2 class=\"f3\" id=\"annotation\">Annotation<a class='anchor' href='#annotation' aria-label=\"Permalink to Annotation\" role=\"complementary\" aria-hidden=\"true\">#</a></h2>Animal database providers like PawPeds, Omakissa or Sverak currently utilise limited software and hardware environments due to their financing options and commercial viability. These limitations force them to utilise web-hosting services for operation of their evidence systems and management of datasets instead of utilising more suitable offerings like virtual machines. Because societal and managerial interest exists in processed data, we apply explorational data analysis techniques to look for new ways to conceptualise and implement a more suitable evidence system with regards to modularity, algorithmical feasibility, user experience, data exchangeability and future-proofing.<h2 class=\"f3\" id=\"contents\">Contents<a class='anchor' href='#contents' aria-label=\"Permalink to Contents\" role=\"complementary\" aria-hidden=\"true\">#</a></h2>My thesis covers the following chapters:\n<ul class=\"dashed\" data-apple-notes-indent-amount=\"0\"><li>Analysis (20 pages)<ul class=\"dashed\" data-apple-notes-indent-amount=\"1\"><li>Initial considerations</li><li>Interested parties and their needs</li><li>Dataset readiness and algorithms</li><li>Database systems</li><li>Conclusion of the analysis</li></ul></li><li>Conceptualization (14 pages)<ul class=\"dashed\" data-apple-notes-indent-amount=\"1\"><li>Project goals and requirements</li><li>Obstacles</li><li>Model View Controller pattern</li><li>Major changes</li><li>Algorithms and Data Processing</li><li>Laravel</li></ul></li><li>Implementation (32 pages)<ul class=\"dashed\" data-apple-notes-indent-amount=\"1\"><li>Inherited Project</li><li>Migrations</li><li>Algorithms</li><li>Data processing</li><li>Docker image</li><li>Testing</li><li>Expansion potential</li></ul></li><li>Conclusion (4 pages)</li><li>Resume (Short transcription of the thesis in my native language, 14 pages)</li><li>Attachments (Not included)<ul class=\"dashed\" data-apple-notes-indent-amount=\"1\"><li>Planning (14 pages)</li><li>User Documentation (4 pages)</li><li>Technical Documentation (3 pages)</li></ul></li></ul>\n<div></div><h2 class=\"f3\" id=\"downloads\">Downloads<a class='anchor' href='#downloads' aria-label=\"Permalink to Downloads\" role=\"complementary\" aria-hidden=\"true\">#</a></h2>Here is both a quick overview presentation of the project and thesis, which highlights most important points and the thesis itself.\n\n<a href=\"/files/A2B167D6-9048-4578-936F-03F688D279B6\" download=\"file.pdf\" target=\"_blank\">Presentation.pdf</a>\n<a href=\"/files/B83DCEBD-223C-4841-939E-02715BA7EF0D\" download=\"file.pdf\" target=\"_blank\">Thesis.pdf</a><h2 class=\"f3\" id=\"related\">Related<a class='anchor' href='#related' aria-label=\"Permalink to Related\" role=\"complementary\" aria-hidden=\"true\">#</a></h2>Have a look at the software project counterpart <a href=\"/software/find-a-cat\">here</a>.\n\nFeel free to send me an e-mail on <a href=\"mailto:spanik11@gmail.com\">spanik11@gmail.com</a> with your thoughts and suggestions. Thank you.\n\n<b><span style=\"color: #A1A1A1\">Utilized technologies</span></b><span style=\"color: #A1A1A1\">: php, laravel, bootstrap, mysql, docker</span>\n<b><span style=\"color: #A1A1A1\">Work started:</span></b><span style=\"color: #A1A1A1\"> 2022-09-20</span>\n<b><span style=\"color: #A1A1A1\">Work finished:</span></b><span style=\"color: #A1A1A1\"> 2024-05-16</span>\n<b><span style=\"color: #A1A1A1\">Total days worked:</span></b><span style=\"color: #A1A1A1\"> 605</span>"
+  },
+  "research/right-to-repair": {
+   "title": "🛠️ Right to Repair",
+   "date": "08 Dec 2020",
+   "body": "A presentation covering the Right to Repair and, on a related note, The Dark Side of Apple.\n\n<div class='embed-container'><iframe src=\"https://youtube.com/embed/x2ToofrDWzw\"></iframe></div>\n\n<b><span style=\"color: #A1A1A1\">Kind</span></b><span style=\"color: #A1A1A1\">: presentation</span>\n<b><span style=\"color: #A1A1A1\">Work started:</span></b><span style=\"color: #A1A1A1\"> 2020-12-03</span>\n<b><span style=\"color: #A1A1A1\">Work finished:</span></b><span style=\"color: #A1A1A1\"> 2020-12-08</span>\n<b><span style=\"color: #A1A1A1\">Total days worked:</span></b><span style=\"color: #A1A1A1\"> 5</span>"
+  },
+  "graphics/ghast-energy": {
+   "title": "Ghast Energy",
+   "date": "01 Jan 2019",
+   "body": "<img src=\"https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_307685C7-DAF7-4558-8764-7D534B737164/public\" style=\"background-color:initial;max-width:min(100%,239px);max-height:min(134px);;background-image:url(https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_307685C7-DAF7-4558-8764-7D534B737164/public);height:auto;width:100%;object-fit:cover;background-size:cover;display:block;\" width=\"239\" height=\"134\">\n<img src=\"https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_09693B7A-13F1-4B2B-ADBE-5E2E7E48F89B/public\" style=\"background-color:initial;max-width:min(100%,627px);max-height:min(326px);;background-image:url(https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_09693B7A-13F1-4B2B-ADBE-5E2E7E48F89B/public);height:auto;width:100%;object-fit:cover;background-size:cover;display:block;\" width=\"627\" height=\"326\">\n"
+  },
+  "graphics/zenit": {
+   "title": "Zenit",
+   "date": "01 Jan 2019",
+   "body": "<img src=\"https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_A8CBCA49-0683-4E4A-AF8A-C395A69D027D/public\" style=\"background-color:initial;max-width:min(100%,240px);max-height:min(131px);;background-image:url(https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_A8CBCA49-0683-4E4A-AF8A-C395A69D027D/public);height:auto;width:100%;object-fit:cover;background-size:cover;display:block;\" width=\"240\" height=\"131\">\n<img src=\"https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_26634979-BFD2-490A-A1B1-B10C76295FE4/public\" style=\"background-color:initial;max-width:min(100%,628px);max-height:min(324px);;background-image:url(https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_26634979-BFD2-490A-A1B1-B10C76295FE4/public);height:auto;width:100%;object-fit:cover;background-size:cover;display:block;\" width=\"628\" height=\"324\">\n"
+  },
+  "graphics/slniecko": {
+   "title": "Slniečko",
+   "date": "01 Jan 2019",
+   "body": "<img src=\"https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_8D4FDD11-25FC-43FA-A9D3-D512A4B30C14/public\" style=\"background-color:initial;max-width:min(100%,241px);max-height:min(134px);;background-image:url(https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_8D4FDD11-25FC-43FA-A9D3-D512A4B30C14/public);height:auto;width:100%;object-fit:cover;background-size:cover;display:block;\" width=\"241\" height=\"134\">\n<img src=\"https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_54785A16-617D-4D97-80AA-2FA58C4B0EC5/public\" style=\"background-color:initial;max-width:min(100%,312px);max-height:min(568px);;background-image:url(https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_54785A16-617D-4D97-80AA-2FA58C4B0EC5/public);height:auto;width:100%;object-fit:cover;background-size:cover;display:block;\" width=\"312\" height=\"568\">\n"
+  },
+  "animation/work-in-progress": {
+   "title": "✨ Work in Progress",
+   "date": "26 Jul 2024",
+   "body": "Although I have been working on the animated “layf” series since 2016, I had to do a complete restart from scratch in 2020 due to artistic improvement and for the most part have been on a hiatus since 2021. Here is some behind the scenes.\n<img src=\"https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_7004F208-299A-4BA7-A5AE-FB3F7164E1DE/public\" style=\"background-color:initial;max-width:min(100%,770px);max-height:min(768px);;background-image:url(https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_7004F208-299A-4BA7-A5AE-FB3F7164E1DE/public);height:auto;width:100%;object-fit:cover;background-size:cover;display:block;\" width=\"770\" height=\"768\">\n<img src=\"https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_68A5A8E5-2BFB-4E29-89A0-9183C13F15FC/public\" style=\"background-color:initial;max-width:min(100%,722px);max-height:min(900px);;background-image:url(https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_68A5A8E5-2BFB-4E29-89A0-9183C13F15FC/public);height:auto;width:100%;object-fit:cover;background-size:cover;display:block;\" width=\"722\" height=\"900\">\n<img src=\"https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_BF12AC2A-31D8-42CE-943B-F571B4CA0643/public\" style=\"background-color:initial;max-width:min(100%,721px);max-height:min(901px);;background-image:url(https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_BF12AC2A-31D8-42CE-943B-F571B4CA0643/public);height:auto;width:100%;object-fit:cover;background-size:cover;display:block;\" width=\"721\" height=\"901\">\n<img src=\"https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_30BCB00D-29A9-4774-A636-FE16F0671499/public\" style=\"background-color:initial;max-width:min(100%,722px);max-height:min(904px);;background-image:url(https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_30BCB00D-29A9-4774-A636-FE16F0671499/public);height:auto;width:100%;object-fit:cover;background-size:cover;display:block;\" width=\"722\" height=\"904\">\n"
+  },
+  "graphics/school-cooperation": {
+   "title": "School Cooperation",
+   "date": "01 Jan 2019",
+   "body": "<img src=\"https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_E7A02963-9011-46EF-B93A-A52A3B827261/public\" style=\"background-color:initial;max-width:min(100%,243px);max-height:min(135px);;background-image:url(https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_E7A02963-9011-46EF-B93A-A52A3B827261/public);height:auto;width:100%;object-fit:cover;background-size:cover;display:block;\" width=\"243\" height=\"135\">\n<img src=\"https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_D0E6D5ED-C2FB-4C99-956C-C2AC79B34A98/public\" style=\"background-color:initial;max-width:min(100%,664px);max-height:min(523px);;background-image:url(https://imagedelivery.net/phxEHgsq3j8gSnfNAJVJSQ/NODE2_D0E6D5ED-C2FB-4C99-956C-C2AC79B34A98/public);height:auto;width:100%;object-fit:cover;background-size:cover;display:block;\" width=\"664\" height=\"523\">\n"
+  }
+ }
+}

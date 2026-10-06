@@ -1,5 +1,6 @@
 ---
 title:	Port-forwarding a Raspberry PI Access Point using IPTables
+category:	guides
 tags:	iptables, networking, linux, sysadmin
 desc:	A walkthrough tutorial for not just port-forwarding, but problem solving when it comes to IPTables.
 date:	2020-09-05

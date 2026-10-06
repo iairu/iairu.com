@@ -42,6 +42,7 @@ const gallery = p.gallery ?? [];
         <div><dt>{T('Fields', 'Odbory')}</dt><dd class="tags">{p.fields.map((f) => <a class={`tag c-${fields[f].color}`} href={lhref(lang, `projects/?field=${f}`)}>{tr(fields[f].label, lang)}</a>)}</dd></div>
         <div><dt>{T('Interests', 'Záujmy')}</dt><dd class="tags">{p.interests.map((i) => <a class="tag" href={lhref(lang, `projects/?interest=${i}`)}>{tr(interests[i].label, lang)}</a>)}</dd></div>
         {p.language && <div><dt>{T('Language', 'Jazyk')}</dt><dd class="tags"><a class="tag lang c-amber" href={lhref(lang, `projects/?lang=${encodeURIComponent(p.language)}`)}>{p.language}</a></dd></div>}
+        {p.worked && <div><dt>{T('Worked on', 'Práca na projekte')}</dt><dd>{p.worked[0]} → {p.worked[1]} · {p.worked[2]} {T('days', 'dní')}</dd></div>}
         {p.tools && <div><dt>{T('Tools', 'Nástroje')}</dt><dd class="tags">{p.tools.map((t) => <span class="tag">{t}</span>)}</dd></div>}
         <div><dt>{T('Year', 'Rok')}</dt><dd>{p.year}{p.updated ? ` · ${T('last push', 'posledný push')} ${p.updated}` : ''}</dd></div>
         {p.repoUrl && <div><dt>GitHub</dt><dd><span class="star">★ {p.stars}</span> <small>({repoSnapshotDate})</small></dd></div>}
@@ -49,9 +50,9 @@ const gallery = p.gallery ?? [];
 
       {gallery.length > 0 && (
         <section aria-label={T('Gallery', 'Galéria')}>
-          <h2>{T('Gallery', 'Galéria')}</h2>
+          <h2>{p.galleryTitle ? tr(p.galleryTitle, lang) : T('Gallery', 'Galéria')}</h2>
           <ul class="gal">
-            {gallery.map((g, i) => <li><a href={g} target="_blank" rel="noopener"><img src={p.thumbs?.[i] ?? g} alt={`${title} ${i + 1}`} loading="lazy" /></a></li>)}
+            {gallery.map((g, i) => <li><a href={g} target="_blank" rel="noopener"><img src={p.thumbs?.[i] ?? g} alt={p.alts?.[i] ? `${title}: ${p.alts[i]}` : `${title} ${i + 1}`} loading="lazy" /></a></li>)}
           </ul>
           <p class="note">{T('Images open full size in a new tab.', 'Obrázky sa otvoria v plnej veľkosti v novej karte.')}</p>
         </section>

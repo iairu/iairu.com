@@ -1,5 +1,6 @@
 ---
 title: 	Zápisky mojej programovacej aktivity
+category:	guides
 tags:	log, diary, activity
 desc: 	Každodenná činnosť môjho záujmu v rôznych oblastiach programovania od polovice Mája 2020.
 date: 	2020-08-15 11:40

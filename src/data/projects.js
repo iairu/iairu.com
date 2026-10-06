@@ -3,9 +3,16 @@
 // Order on the site: most starred first, then newest.
 import snapshot from './repos.json';
 import repoImages from './repo-images.json';
+import montaigne from './montaigne.json';
 
 const gh = Object.fromEntries(snapshot.repos.map((r) => [r.name, r]));
 export const repoSnapshotDate = snapshot.synced;
+
+// galleries imported from the old personal site (scripts/import-montaigne.py)
+const G = (k) => montaigne.galleries[k];
+const srcs = (k) => G(k).map((g) => g.src);
+const thumbs = (k) => G(k).map((g) => g.thumb);
+const alts = (k) => G(k).map((g) => g.alt);
 
 const A = '/img/art';
 const P = '/img/projects';
@@ -14,9 +21,10 @@ const P = '/img/projects';
 // lang: programming language override (null = none, e.g. art)   tools: non-code tools
 const raw = [
   // ---------------- on GitHub ----------------
-  { id: 'procexp', repo: 'ProcExp', fields: ['software', 'design'], interests: ['automation', 'visual'], image: `${P}/procreate.jpg`,
+  { id: 'procexp', repo: 'ProcExp', worked: ['2019-12-17', '2020-01-21', 35], tools: ['AutoHotkey', 'FFmpeg', '7-Zip'], fields: ['software', 'design'], interests: ['automation', 'visual'], image: `${P}/procreate.jpg`,
     title: 'ProcExp', tag: { en: 'Procreate timelapse batch exporter', sk: 'Hromadný exportér Procreate timelapse videí' },
-    desc: { en: 'A GUI that exports timelapse videos from many Procreate files at once, straight from .procreate files or app content. Born from an artist\'s need to stop exporting one by one.', sk: 'GUI, ktoré naraz exportuje timelapse videá z viacerých Procreate súborov, priamo z .procreate súborov alebo obsahu aplikácie. Vzniklo z potreby umelca prestať exportovať po jednom.' } },
+    desc: { en: 'A GUI that exports timelapse videos from many Procreate files at once, straight from .procreate files or app content. Born from an artist\'s need to stop exporting one by one. Uses 7-Zip and FFmpeg to extract, stitch and export.', sk: 'GUI, ktoré naraz exportuje timelapse videá z viacerých Procreate súborov, priamo z .procreate súborov alebo obsahu aplikácie. Vzniklo z potreby umelca prestať exportovať po jednom. Na rozbalenie, spojenie a export využíva 7-Zip a FFmpeg.' },
+    links: [{ label: { en: 'Download', sk: 'Stiahnuť' }, href: 'https://github.com/iairu/ProcExp/releases' }] },
   { id: 'aiv-logic-plugins', repo: 'logic-plugins', fields: ['software', 'ai'], interests: ['audio'],
     title: 'AIV vocal chain', tag: { en: 'Logic Pro vocal chain plugin', sk: 'Vokálový reťazec ako plugin pre Logic Pro' },
     desc: { en: 'A vocal chain for Logic Pro: resonance, drive, noise gate, pitch, de-esser, three-band EQ, FET compressor, limiter, delay and reverb in one plugin.', sk: 'Vokálový reťazec pre Logic Pro: rezonancia, drive, noise gate, pitch, de-esser, trojpásmový EQ, FET kompresor, limiter, delay a reverb v jednom plugine.' } },
@@ -45,9 +53,10 @@ const raw = [
   { id: 'ytfico', repo: 'ytfico', fields: ['software'], interests: ['automation'],
     title: 'ytfico', tag: { en: 'YouTube first-comment script', sk: 'Skript na prvý komentár na YouTube' },
     desc: { en: 'A YouTube API script that posts the first comment on new videos.', sk: 'Skript cez YouTube API, ktorý pridáva prvý komentár pod nové videá.' } },
-  { id: 'ankiscreener', repo: 'AnkiScreener', fields: ['software'], interests: ['automation', 'learning'],
+  { id: 'ankiscreener', repo: 'AnkiScreener', worked: ['2020-09-23', '2020-10-07', 15], tools: ['Svelte', 'Electron', 'SCSS'], fields: ['software'], interests: ['automation', 'learning'],
     title: 'AnkiScreener', tag: { en: 'Screenshots to flashcards', sk: 'Snímky obrazovky na kartičky' },
-    desc: { en: 'An Electron tool for taking lots of screenshots of study material quickly and exporting them as an Anki-importable CSV.', sk: 'Electron nástroj na rýchle snímanie veľkého množstva študijného materiálu s exportom do CSV importovateľného do Anki.' } },
+    desc: { en: 'An Electron tool for taking lots of screenshots of study material quickly and exporting them as an Anki-importable CSV: a rich utility for fast creation of flashcards.', sk: 'Electron nástroj na rýchle snímanie veľkého množstva študijného materiálu s exportom do CSV importovateľného do Anki: bohatý nástroj na rýchle vytváranie kartičiek.' },
+    links: [{ label: { en: 'Demo video', sk: 'Ukážkové video' }, href: 'https://www.youtube.com/watch?v=LO1rb8nfDX4' }] },
   { id: 'csrutils', repo: 'CSRutils', fields: ['systems'], interests: ['infra'],
     title: 'CSRutils', tag: { en: 'Pick a safe csr-active-config', sk: 'Výber bezpečného csr-active-config' },
     desc: { en: 'Utilities that help work out the right SIP / csr-active-config value for your use case without leaving the system exposed.', sk: 'Nástroje, ktoré pomôžu nájsť správnu hodnotu SIP / csr-active-config pre tvoj prípad bez toho, aby zostal systém odkrytý.' } },
@@ -127,11 +136,11 @@ const raw = [
     desc: { en: 'School projects and exercises from very basic programming classes in C.', sk: 'Školské projekty a cvičenia z úplných základov programovania v C.' } },
 
   // ---------------- not (only) on GitHub: code ----------------
-  { id: 'strukshow', lang: 'Svelte', year: 2020, fields: ['software', 'design'], interests: ['web'], image: `${P}/strukshow.jpg`,
+  { id: 'strukshow', worked: ['2020-06-01', '2020-08-03', 64], tools: ['Svelte', 'CockpitCMS', 'SCSS', 'PHP'], lang: 'Svelte', year: 2020, fields: ['software', 'design'], interests: ['web'], image: `${P}/strukshow.jpg`,
     title: 'StrukShow.com', tag: { en: 'Personal website with CockpitCMS', sk: 'Osobný web s CockpitCMS' },
     desc: { en: 'A complete modern personal website built on CockpitCMS and Svelte, with developer documentation covering hierarchy, CMS, Svelte, performance, SEO and deployment.', sk: 'Kompletný moderný osobný web postavený na CockpitCMS a Svelte, s vývojárskou dokumentáciou o hierarchii, CMS, Svelte, výkone, SEO a nasadení.' },
-    links: [{ label: 'strukshow.com', href: 'https://strukshow.com' }, { label: { en: 'Developer docs', sk: 'Vývojárska dokumentácia' }, href: '/strukshow-docs/', only: 'sk' }] },
-  { id: 'save-the-princess', lang: 'JavaScript', year: 2020, fields: ['software', 'design'], interests: ['games'], image: `${P}/stp.jpg`,
+    links: [{ label: 'strukshow.com', href: 'https://www.strukshow.com' }, { label: { en: 'Developer docs', sk: 'Vývojárska dokumentácia' }, href: '/strukshow-docs/', only: 'sk' }] },
+  { id: 'save-the-princess', worked: ['2020-02-21', '2020-06-24', 125], lang: 'JavaScript', year: 2020, fields: ['software', 'design'], interests: ['games'], image: `${P}/stp.jpg`,
     title: 'Save the Princess', tag: { en: 'Street Fighter style browser game', sk: 'Prehliadačová hra v štýle Street Fighter' },
     desc: { en: 'Vanilla JavaScript fighting game inspired by Street Fighter. First JavaScript project, built on the MVC pattern. Playable in the browser.', sk: 'Bojová hra vo vanilla JavaScripte inšpirovaná Street Fighterom. Prvý JavaScript projekt postavený na MVC. Dá sa hrať v prehliadači.' },
     links: [{ label: { en: 'Play', sk: 'Hrať' }, href: '/_dev/save-the-princess/game.html' }, { label: { en: 'Documentation (PDF)', sk: 'Dokumentácia (PDF)' }, href: '/dl/save-the-princess.pdf', only: 'sk' }] },
@@ -178,14 +187,39 @@ const raw = [
     gallery: [`${A}/bolstrun.jpg`, `${A}/branokuzelnik.jpg`, `${A}/bustdesign.jpg`, `${A}/iairu.jpg`] },
   { id: 'comics', year: 2024, fields: ['design', 'art3d'], interests: ['visual'], image: `${A}/comics/6_thumb.jpg`, tools: ['Procreate', 'Clip Studio Paint'],
     title: { en: 'Comic book', sk: 'Komiks' }, tag: { en: 'Sample pages', sk: 'Ukážkové strany' },
-    desc: { en: 'Sample pages from a comic book in progress.', sk: 'Ukážkové strany z komiksu, na ktorom pracujem.' },
-    gallery: [6, 7, 8, 9].map((n) => `${A}/comics/${n}.jpg`), thumbs: [6, 7, 8, 9].map((n) => `${A}/comics/${n}_thumb.jpg`) },
+    desc: { en: 'Some sample pages from my comic book.', sk: 'Niekoľko ukážkových strán z môjho komiksu.' },
+    gallery: srcs('comics'), thumbs: thumbs('comics'), alts: alts('comics') },
+  { id: 'illustration', year: 2022, fields: ['design'], interests: ['visual'], tools: ['Procreate', 'Clip Studio Paint'],
+    title: { en: 'Illustration', sk: 'Ilustrácia' }, tag: { en: 'Selected illustrations, mostly from around 2022', sk: 'Vybrané ilustrácie, väčšinou z okolia roku 2022' },
+    desc: { en: 'Selected illustrations from my work, mostly dated around 2022.', sk: 'Vybrané ilustrácie z mojej tvorby, väčšinou datované okolo roku 2022.' },
+    gallery: srcs('illustration'), thumbs: thumbs('illustration'), alts: alts('illustration') },
+  { id: 'sketches', year: 2024, fields: ['design', 'art3d'], interests: ['visual'], tools: ['Procreate', 'Clip Studio Paint'],
+    title: { en: 'Sketches', sk: 'Skice' }, tag: { en: 'From the ayu_animations account', sk: 'Z účtu ayu_animations' },
+    desc: { en: 'Sketches related to my animation Instagram account ayu_animations.', sk: 'Skice súvisiace s mojím animačným Instagram účtom ayu_animations.' },
+    links: [{ label: 'Instagram ayu_animations', href: 'https://www.instagram.com/ayu_animations' }],
+    gallery: srcs('sketches'), thumbs: thumbs('sketches'), alts: alts('sketches') },
+  { id: 'environment-paintings', year: 2022, fields: ['design', 'art3d'], interests: ['visual'], tools: ['Procreate', 'Clip Studio Paint'],
+    title: { en: 'Environment paintings', sk: 'Maľby prostredí' }, tag: { en: 'Background art for my animation', sk: 'Pozadia pre moju animáciu' },
+    desc: { en: 'Sample environment paintings, mostly background art for my animation.', sk: 'Ukážkové maľby prostredí, väčšinou pozadia pre moju animáciu.' },
+    gallery: srcs('paintings'), thumbs: thumbs('paintings'), alts: alts('paintings') },
   { id: 'painting-costume', year: 2017, fields: ['design'], interests: ['visual', 'maker'], tools: ['Acrylic', 'Oil', 'EVA foam'],
     title: { en: 'Painting & costume making', sk: 'Maľba a kostýmy' }, tag: { en: 'Traditional craft', sk: 'Tradičné remeslo' },
     desc: { en: 'Acrylic and oil on canvas, focused on expressionism and portraits, plus hand-built costumes and props from fabric and EVA foam.', sk: 'Akryl a olej na plátne so zameraním na expresionizmus a portréty, plus ručne vyrobené kostýmy a rekvizity z látky a EVA peny.' } },
-  { id: 'secret-animation', year: 2016, fields: ['art3d', 'design'], interests: ['visual'], tools: ['Blender', 'Video'],
-    title: { en: 'Untitled animation stories', sk: 'Animované príbehy bez názvu' }, tag: { en: 'Two long-term secrets', sk: 'Dve dlhodobé tajomstvá' },
-    desc: { en: 'Two animated story projects, one running since 2016 and one since 2022. Nothing to show yet, which is the point.', sk: 'Dva animované príbehové projekty, jeden beží od roku 2016 a druhý od roku 2022. Zatiaľ nie je čo ukázať, o to ide.' } },
+  { id: 'layf-animation', year: 2016, fields: ['art3d', 'design'], interests: ['visual'], tools: ['Blender', 'Clip Studio Paint'],
+    title: { en: 'layf (animated series)', sk: 'layf (animovaný seriál)' }, tag: { en: 'In the making since 2016', sk: 'Vzniká od roku 2016' },
+    desc: { en: 'An animated series I have worked on extensively since early 2016, about the time I started learning Japanese (unrelated). Restarted from scratch in 2020 for artistic improvement and mostly on hiatus since 2021. Updates appear on the ayu_animations Instagram.', sk: 'Animovaný seriál, na ktorom intenzívne pracujem od začiatku roku 2016, približne v čase, keď som sa začal učiť japončinu (nesúvisí). V roku 2020 som ho začal úplne odznova kvôli umeleckému zlepšeniu a od roku 2021 je väčšinou pozastavený. Novinky sa objavujú na Instagrame ayu_animations.' },
+    links: [{ label: 'Instagram ayu_animations', href: 'https://www.instagram.com/ayu_animations' }],
+    gallery: srcs('animation'), thumbs: thumbs('animation'), alts: alts('animation'), galleryTitle: { en: 'Behind the scenes', sk: 'Zákulisie' } },
+
+  // ---------------- research and presentations ----------------
+  { id: 'find-a-cat-thesis', lang: 'PHP', year: 2024, fields: ['software', 'systems'], interests: ['data', 'web'], worked: ['2022-09-20', '2024-05-16', 605], tools: ['Laravel', 'MySQL', 'Docker', 'Bootstrap'],
+    title: { en: 'Find A Cat: Bachelor thesis', sk: 'Find A Cat: bakalárska práca' }, tag: { en: 'Bachelor thesis in Informatics, FIIT STU', sk: 'Bakalárska práca z informatiky, FIIT STU' },
+    desc: { en: 'My Bachelor thesis: exploratory data analysis and a redesigned, modular evidence system for animal (cat pedigree) databases, implemented in Laravel with a Docker image.', sk: 'Moja bakalárska práca: prieskumná analýza dát a prepracovaný, modulárny evidenčný systém pre databázy zvierat (rodokmene mačiek), implementovaný v Laraveli s Docker image.' },
+    links: [{ label: { en: 'Read the summary', sk: 'Prečítať zhrnutie' }, href: 'doc:find-a-cat-thesis' }, { label: { en: 'Thesis (PDF)', sk: 'Práca (PDF)' }, href: '/dl/find-a-cat-thesis.pdf' }, { label: { en: 'Presentation (PDF)', sk: 'Prezentácia (PDF)' }, href: '/dl/find-a-cat-presentation.pdf' }, { label: 'CRZP.sk', href: 'http://CRZP.sk' }] },
+  { id: 'right-to-repair', year: 2020, fields: ['hardware'], interests: ['maker', 'learning'], worked: ['2020-12-03', '2020-12-08', 5], tools: ['Presentation'],
+    title: { en: 'Right to Repair', sk: 'Právo na opravu' }, tag: { en: 'A presentation, and the dark side of Apple', sk: 'Prezentácia a tmavá stránka Applu' },
+    desc: { en: 'A presentation covering the Right to Repair and, on a related note, the dark side of Apple.', sk: 'Prezentácia o práve na opravu a, v súvislosti s tým, o tmavej stránke Applu.' },
+    links: [{ label: { en: 'Video', sk: 'Video' }, href: 'https://www.youtube.com/watch?v=x2ToofrDWzw' }, { label: { en: 'Slides (PDF)', sk: 'Snímky (PDF)' }, href: '/dl/right-to-repair-prez.pdf' }] },
 ];
 
 const KNOWN_LANG = { 'Jupyter Notebook': 'Python (notebook)' };
@@ -199,7 +233,7 @@ export const projects = raw.map((p) => {
   const links = (p.links || []).map((l) => ({ ...l }));
   return {
     ...p,
-    image: p.image ?? (repoImages[p.id] ? `/img/repos/${p.id}.jpg` : `/img/thumbs/${p.id}.jpg`),
+    image: p.image ?? p.thumbs?.[0] ?? (repoImages[p.id] ? `/img/repos/${p.id}.jpg` : `/img/thumbs/${p.id}.jpg`),
     language,
     stars: r ? r.stars : 0,
     year: p.year ?? Number(r.created.slice(0, 4)),

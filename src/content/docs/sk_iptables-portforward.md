@@ -1,5 +1,6 @@
 ---
 title:	Presmerovanie portov (port-forwarding) na Raspberry Pi Access Pointe pomocou IPTables
+category:	guides
 tags:	iptables, networking, linux, sysadmin
 desc:	Návod nielen na presmerovanie portov, ale aj na riešenie problémov s IPTables.
 date:	2020-09-05

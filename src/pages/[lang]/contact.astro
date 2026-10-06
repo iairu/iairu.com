@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import { LANGS, ui } from '../../data/i18n.js';
 import { person, links } from '../../data/site.js';
-import { lhref } from '../../data/util.js';
+import { lhref, tr } from '../../data/util.js';
 
 export const getStaticPaths = () => LANGS.map((lang) => ({ params: { lang } }));
 const { lang } = Astro.params;
@@ -10,7 +10,10 @@ const T = (en, sk) => (lang === 'sk' ? sk : en);
 const rows = [
   { k: 'E-mail', v: person.email, href: `mailto:${person.email}`, note: T('Best way. I answer in English or Slovak.', 'Najlepší spôsob. Odpovedám po anglicky alebo slovensky.') },
   { k: 'GitHub', v: 'github.com/iairu', href: links.github, note: T('All code, with issues open.', 'Všetok kód, issues sú otvorené.') },
+  { k: 'Messenger', v: 'm.me/iairu', href: links.messenger, note: T('Quick questions.', 'Rýchle otázky.') },
   { k: 'LinkedIn', v: 'linkedin.com/in/iairu', href: links.linkedin, note: T('Work history.', 'Pracovná história.') },
+  { k: 'Instagram', v: '@spanik11', href: links.instagram, note: T('Personal. Animation and sketches live on @ayu_animations.', 'Osobný. Animácie a skice sú na @ayu_animations.') },
+  { k: 'Instagram', v: '@ayu_animations', href: links.animationInstagram, note: T('Art and animation updates.', 'Novinky o umení a animácii.') },
   { k: 'NightJar.Gift', v: 'nightjar.gift', href: links.nightjar, note: T('The wooden nightjar project.', 'Projekt dreveného leleka.') },
   { k: T('CV', 'Životopis'), v: 'PDF', href: lang === 'sk' ? '/dl/resume-sk.pdf' : '/dl/resume-en.pdf', note: T('Front-end developer / IT technician.', 'Front-end developer / IT technik.') },
 ];
@@ -28,7 +31,7 @@ const rows = [
           <div><dt>{r.k}</dt><dd><a href={r.href} {...(r.href.startsWith('http') ? { rel: 'me noopener' } : {})}>{r.v}</a><small>{r.note}</small></dd></div>
         ))}
       </dl>
-      <p class="loc">{person.name} · {person.location[lang]}</p>
+      <p class="loc">{person.name} · {person.location[lang]} · {tr(person.pronounced, lang)}</p>
     </div>
   </section>
 </Base>

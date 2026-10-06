@@ -13,8 +13,11 @@ const skills = [
   { c: 'copper', h: T('Electronics & making', 'Elektronika a výroba'), li: [T('Circuit design, simulation and PCB layout', 'Návrh obvodov, simulácia a návrh DPS'), T('CNC toolpaths and joinery in wood', 'Dráhy nástroja pre CNC a spoje v dreve'), T('Parametric CAD, 3D-printed and carved enclosures', 'Parametrické CAD, 3D-tlačené a vyrezávané puzdrá')] },
   { c: 'pink', h: T('3D & graphic design', '3D a grafický dizajn'), li: [T('Everyday expert use of Adobe CC: Photoshop, Illustrator, Premiere Pro, InDesign', 'Každodenné expertné používanie Adobe CC: Photoshop, Illustrator, Premiere Pro, InDesign'), T('Blender, Figma, OpenGL', 'Blender, Figma, OpenGL'), T('Procreate, Clip Studio Paint; traditional painting and costume making', 'Procreate, Clip Studio Paint; tradičná maľba a výroba kostýmov')] },
 ];
+const work = [
+  { c: 'cyan', t: 'Innovatrics', s: T('Junior System and Service Delivery Engineer', 'Junior systémový inžinier a inžinier doručovania služieb'), d: T('Delivery Team · part-time while studying · 1 year and 3 months', 'Delivery Team · popri štúdiu na čiastočný úväzok · 1 rok a 3 mesiace'), li: [T('Learned and set up virtual machines based on Linux and Windows Server', 'Učenie a nastavovanie virtuálnych strojov na báze Linuxu a Windows Servera'), T('Administration of clustering technologies similar to Kubernetes', 'Administrácia klastrových technológií podobných Kubernetes')], logo: '/img/montaigne/about/3.jpg', href: links.innovatrics },
+];
 const edu = [
-  { c: 'cyan', t: 'FIIT STU', s: T('Computer science, bachelor (BC-INFO4)', 'Informatika, bakalár (BC-INFO4)'), d: T('Faculty of Informatics and Information Technologies STU, Bratislava · 2019 – 2023', 'Fakulta informatiky a informačných technológií STU, Bratislava · 2019 – 2023'), li: [T('Top 11% of students in the first two semesters (average 1.41)', 'Najlepších 11 % študentov po prvých dvoch semestroch (priemer 1,41)'), T('Foundations in C++, JavaScript and PHP; research, presentation and Linux work', 'Základy C++, JavaScriptu a PHP; rešerše, prezentácie a práca s Linuxom')] },
+  { c: 'cyan', t: 'FIIT STU', logo: '/img/montaigne/about/2.jpg', s: T('Computer science, bachelor (BC-INFO4), then master’s degree', 'Informatika, bakalár (BC-INFO4), potom magisterské štúdium'), d: T('Faculty of Informatics and Information Technologies STU, Bratislava · 2019 – now', 'Fakulta informatiky a informačných technológií STU, Bratislava · 2019 – dnes'), li: [T('Bachelor thesis: Find A Cat, a redesigned evidence system for cat pedigree databases', 'Bakalárska práca: Find A Cat, prepracovaný evidenčný systém pre databázy rodokmeňov mačiek'), T('Top 11% of students in the first two semesters (average 1.41)', 'Najlepších 11 % študentov po prvých dvoch semestroch (priemer 1,41)'), T('Foundations in C++, JavaScript and PHP; research, presentation and Linux work', 'Základy C++, JavaScriptu a PHP; rešerše, prezentácie a práca s Linuxom')] },
   { c: 'lime', t: 'SUPTN', s: T('Graphic design, 8261 M Propagation graphics', 'Grafický dizajn, 8261 M Propagačná grafika'), d: T('School of Art Industry Trenčín · 2015 – 2019', 'Škola umeleckého priemyslu Trenčín · 2015 – 2019'), li: [T('Conceptualising, realising and presenting original graphic and artistic work', 'Navrhovanie, realizácia a prezentácia vlastnej grafickej a umeleckej tvorby'), T('Typography, print media, the Adobe CC bundle', 'Typografia, tlačové médiá, balík Adobe CC')] },
   { c: 'copper', t: T('Ongoing', 'Aktuálne'), s: T('Systems Thinking in IT and Digital Fabrication', 'Systémové myslenie v IT a digitálna fabrikácia'), d: T('FIIT STU course · 2026/2027 · project NightJar.Gift', 'Predmet na FIIT STU · 2026/2027 · projekt NightJar.Gift'), li: [T('Taking an object from CAD to CNC to circuit to documentation, alone', 'Dotiahnuť objekt od CAD cez CNC a obvod až po dokumentáciu, sám')] },
 ];
@@ -28,13 +31,14 @@ const edu = [
         <p class="eyebrow">{T('About', 'O mne')}</p>
         <h1>{person.name}</h1>
         <p class="lead">{T('Born in Piešťany, schooled in Trenčín, studying in Bratislava. Since I was little I have been drawn to experiments, and that grew into two opposite directions: technical and artistic.', 'Narodený v Piešťanoch, vyštudovaný v Trenčíne, študujúci v Bratislave. Od malička ma priťahovali experimenty a z toho vyrástli dva protichodné smery: technický a umelecký.')}</p>
+        <p class="pron">{tr(person.pronounced, lang)}</p>
         <p>{T('The day I got my first computer pulled me completely into the digital world, where creativity has no walls. Today the two directions finally meet: I design in 3D, wire what I design and prompt the machines that help me build it.', 'Deň, keď som dostal prvý počítač, ma úplne vtiahol do digitálneho sveta, kde kreativita nemá hranice. Dnes sa tie dva smery konečne stretávajú: navrhujem v 3D, zapájam, čo navrhnem, a promptujem stroje, ktoré mi to pomáhajú postaviť.')}</p>
         <div class="cta">
           <a class="btn primary" href="/dl/resume-en.pdf">{T('CV (PDF, English)', 'Životopis (PDF, anglicky)')}</a>
           <a class="btn ghost" href="/dl/resume-sk.pdf">{T('CV (PDF, Slovak)', 'Životopis (PDF, slovensky)')}</a>
         </div>
       </div>
-      <img class="portrait" src="/img/bio.png" alt={T('Illustration by iairu', 'Ilustrácia od iairu')} width="700" height="287" />
+      <div class="pics"><img class="photo" src="/img/montaigne/about/1.jpg" alt={T('Ondrej Špánik, photographed at dusk', 'Ondrej Špánik, fotografia za súmraku')} width="384" height="512" /><img class="portrait" src="/img/bio.png" alt={T('Illustration by iairu', 'Ilustrácia od iairu')} width="700" height="287" /></div>
     </div>
   </section>
 
@@ -47,11 +51,21 @@ const edu = [
     </div>
   </section>
 
+  <section class="block" aria-labelledby="work">
+    <div class="wrap">
+      <div class="sec-head"><h2 id="work">{T('Experience', 'Skúsenosti')}</h2></div>
+      <div class="grid g3">
+        {work.map((s) => <div class={`panel c-${s.c}`}>{s.logo && <img class="logo" src={s.logo} alt={s.t} height="40" />}<p class="k">{s.t}</p><h3>{s.s}</h3><p class="d">{s.d}</p><ul>{s.li.map((x) => <li>{x}</li>)}</ul><p class="more"><a href={s.href} rel="noopener" target="_blank">{s.t} ↗</a></p></div>)}
+        <div class="panel c-lime"><p class="k">{T('Interests', 'Záujmy')}</p><h3>{T('Cybersecurity and language learning', 'Kybernetická bezpečnosť a učenie sa jazykov')}</h3><p class="d">{T('Past passions in projects were mostly graphics and web development; I started learning Japanese in 2016.', 'Moje minulé vášne v projektoch boli väčšinou grafika a webvývoj; japončinu som sa začal učiť v roku 2016.')}</p></div>
+      </div>
+    </div>
+  </section>
+
   <section class="block" aria-labelledby="edu">
     <div class="wrap">
       <div class="sec-head"><h2 id="edu">{T('Education', 'Vzdelanie')}</h2></div>
       <div class="grid g3">
-        {edu.map((s) => <div class={`panel c-${s.c}`}><p class="k">{s.t}</p><h3>{s.s}</h3><p class="d">{s.d}</p><ul>{s.li.map((x) => <li>{x}</li>)}</ul></div>)}
+        {edu.map((s) => <div class={`panel c-${s.c}`}>{s.logo && <img class="logo" src={s.logo} alt={s.t} height="40" />}<p class="k">{s.t}</p><h3>{s.s}</h3><p class="d">{s.d}</p><ul>{s.li.map((x) => <li>{x}</li>)}</ul></div>)}
       </div>
     </div>
   </section>
@@ -66,10 +80,14 @@ const edu = [
 </Base>
 <style>
   .cta { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1.4rem; }
+  .pics { display: grid; gap: 1rem; } .photo { width: min(100%, 360px); height: auto; border: 1px solid var(--line); border-top: 3px solid var(--copper); }
+  .pron { font: 400 .85rem var(--mono); color: var(--copper); }
   .portrait { border: 1px solid var(--line); padding: 1rem; background: var(--bg2); width: 100%; height: auto; border-top: 3px solid var(--cyan); }
   :global(:root[data-theme='dark']) .portrait { filter: invert(.9) hue-rotate(180deg); }
   .panel { --c: var(--cyan); background: var(--bg2); border: 1px solid var(--line); border-top: 3px solid var(--c); padding: 1.3rem 1.3rem 1.5rem; }
   .panel h3 { color: var(--c); } .k { font: 500 .72rem var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--soft); margin: 0 0 .3rem; } .d { color: var(--soft); font-size: .92rem; }
   ul { margin: 0; padding-left: 1.1rem; display: grid; gap: .5rem; } li::marker { color: var(--c); }
+  .logo { height: 40px; width: auto; margin-bottom: .8rem; background: #fff; padding: 4px 8px; }
+  .more { margin: 1rem 0 0; font: 500 .8rem var(--mono); }
   .center { text-align: center; } .center .lead { margin-inline: auto; }
 </style>

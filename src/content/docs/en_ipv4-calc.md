@@ -1,5 +1,6 @@
 ---
 title: 	IPv4: first and last addresses, masks and network size
+category:	guides
 tags:	networking, math, bitwise ops
 desc:	How to work out the network address, broadcast address and number of hosts from an IPv4 address and a mask, by hand.
 date:	2020-06-14

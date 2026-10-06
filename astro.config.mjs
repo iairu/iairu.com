@@ -31,6 +31,8 @@ export default defineConfig({
     '/sk/art/komixy': '/sk/projects/comics/',
     '/en/projects/lelek': '/en/projects/nightjar-gift/',
     '/sk/projects/lelek': '/sk/projects/nightjar-gift/',
+    '/en/projects/secret-animation': '/en/projects/layf-animation/',
+    '/sk/projects/secret-animation': '/sk/projects/layf-animation/',
     '/gfx': '/sk/art/',
     '/gfx/en': '/en/art/',
     '/zrada': '/sk/projects/zrada/',

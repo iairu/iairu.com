@@ -1,7 +1,7 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import { LANGS, ui } from '../../../data/i18n.js';
-import { docsFor, staticDocsFor } from '../../../data/docs.js';
+import { docsFor, staticDocsFor, CATEGORIES } from '../../../data/docs.js';
 import { lhref, isExternal } from '../../../data/util.js';
 
 export const getStaticPaths = () => LANGS.map((lang) => ({ params: { lang } }));
@@ -18,17 +18,21 @@ const docs = docsFor(lang), staticDocs = staticDocsFor(lang);
       <h1>{T('Everything past the cards', 'Všetko za hranicou kariet')}</h1>
       <p class="lead">{T('Portfolio cards stay short. The longer story of how things were built lives here, or in the repositories linked from each project.', 'Karty v portfóliu ostávajú krátke. Dlhší príbeh o tom, ako veci vznikli, žije tu alebo v repozitároch, na ktoré odkazuje každý projekt.')}</p>
 
-      <h2 class="sub">{T('Write-ups', 'Články')}</h2>
-      <ul class="list">
-        {docs.map((d) => (
-          <li><a href={lhref(lang, `docs/${d.slug}/`)}>
-            <span class="meta">{d.date}{d.translated && <span class="tag">{T("translated", "preložené")}</span>}</span>
-            <h3>{d.title}</h3>
-            <p>{d.desc}</p>
-            <span class="tags">{d.tags.map((t) => <span class="tag">{t}</span>)}</span>
-          </a></li>
-        ))}
-      </ul>
+      {Object.entries(CATEGORIES).map(([cat, label]) => docs.some((d) => d.category === cat) && (
+        <>
+          <h2 class="sub" id={cat}>{label[lang]}</h2>
+          <ul class="list">
+            {docs.filter((d) => d.category === cat).map((d) => (
+              <li><a href={lhref(lang, `docs/${d.slug}/`)}>
+                <span class="meta">{d.date}{d.translated && <span class="tag">{T('translated', 'preložené')}</span>}</span>
+                <h3>{d.title}</h3>
+                <p>{d.desc}</p>
+                <span class="tags">{d.tags.map((t) => <span class="tag">{t}</span>)}</span>
+              </a></li>
+            ))}
+          </ul>
+        </>
+      ))}
 
       <h2 class="sub">{T('Documentation and downloads', 'Dokumentácia a súbory na stiahnutie')}</h2>
       <ul class="list">

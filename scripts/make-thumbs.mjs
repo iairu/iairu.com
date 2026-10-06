@@ -9,8 +9,9 @@ import { chromium } from 'playwright';
 
 const root = new URL('../', import.meta.url);
 const tmp = new URL('scripts/.projects.tmp.mjs', root);
+// projects.js imports JSON data files; inline them so it can be loaded as a plain module here
 writeFileSync(tmp, readFileSync(new URL('src/data/projects.js', root), 'utf8')
-  .replace(/import snapshot from '\.\/repos\.json';/, `const snapshot = JSON.parse(${JSON.stringify(readFileSync(new URL('src/data/repos.json', root), 'utf8'))});`));
+  .replace(/import (\w+) from '\.\/([\w-]+)\.json';/g, (_, name, file) => `const ${name} = JSON.parse(${JSON.stringify(readFileSync(new URL(`src/data/${file}.json`, root), 'utf8'))});`));
 const { projects } = await import(tmp.href);
 rmSync(tmp);
 
@@ -128,14 +129,14 @@ function html(p) {
   const artOnly = p.id === 'painting-costume' || p.id === 'secret-animation';
   const lang = p.language && CODE[p.language] ? p.language : null;
   const code = lang ? CODE[lang] : null;
-  const file = `${(p.repoUrl ? p.repoUrl.split('/').pop() : p.id).toLowerCase()}/main.${EXT[lang] ?? 'txt'}`;
+  const file = !code ? `${p.id}.pptx` : `${(p.repoUrl ? p.repoUrl.split('/').pop() : p.id).toLowerCase()}/main.${EXT[lang] ?? 'txt'}`;
   const kind = MOTIF[p.interests[0]] ?? 'mesh';
   const chips = p.fields.slice(0, 3).map((f) => `<b style="color:${COLOR[FIELD_COLOR[f]]};border-color:${COLOR[FIELD_COLOR[f]]}99">${FIELD_LABEL[f]}</b>`).join('') + (p.language ? `<b style="color:#ffcf5a;border-color:#ffcf5a99">● ${esc(p.language.toUpperCase())}</b>` : '');
   const stars = p.stars ? `<span class="st">★ ${p.stars}</span>` : '';
   const body = artOnly
     ? `<svg class="art" viewBox="0 0 960 540" preserveAspectRatio="xMidYMid slice">${art(p.id, r)}</svg><div class="shade"></div>`
     : `<div class="glow" style="background:radial-gradient(520px 420px at 78% 42%,${c0}33,transparent 70%),radial-gradient(420px 360px at 12% 100%,${c1}26,transparent 70%)"></div>
-       <div class="win"><div class="bar"><i></i><i></i><i></i><span>${esc(file)}</span></div><pre>${(code ?? []).map((l, i) => `<u>${i + 1}</u>${hl(l)}`).join('\n')}</pre></div>
+       <div class="win"><div class="bar"><i></i><i></i><i></i><span>${esc(file)}</span></div>${code ? `<pre>${code.map((l, i) => `<u>${i + 1}</u>${hl(l)}`).join('\n')}</pre>` : `<div class="slide"><div class="sh">${esc(title)}</div>${[88, 72, 80, 56].map((w) => `<div class="sb" style="width:${w}%"></div>`).join('')}</div>`}</div>
        <svg class="motif" viewBox="0 0 400 400">${motif(kind, c0, r)}</svg>`;
   return `<!doctype html><meta charset=utf-8><style>${FONTS}
 *{box-sizing:border-box;margin:0}body{width:960px;height:540px;overflow:hidden;background:#0a0f14;position:relative;font-family:B,sans-serif;color:#e9eff3}
@@ -145,7 +146,7 @@ body::before{content:"";position:absolute;inset:0;background-image:linear-gradie
 .bar{display:flex;gap:7px;align-items:center;padding:9px 12px;border-bottom:1px solid #243542;font:400 12px M}.bar i{width:9px;height:9px;border-radius:50%;background:#35505f}.bar span{margin-left:10px;color:#9fb1bd}
 pre{font:400 14.5px/1.62 M;padding:14px 16px 16px 8px;color:#cfdbe3;white-space:pre;overflow:hidden}u{display:inline-block;width:2.4em;text-align:right;margin-right:1.1em;color:#4a6272;text-decoration:none}
 i.k{color:#ff74b8;font-style:normal}i.s{color:#bde75e;font-style:normal}i.n{color:#ffcf5a;font-style:normal}i.c{color:#5d7889;font-style:normal}
-.motif{position:absolute;right:20px;top:40px;width:380px;height:380px;opacity:.95}
+.slide{padding:26px 28px 34px;display:flex;flex-direction:column;gap:16px}.sh{font:700 30px/1.1 B;color:#e9eff3;margin-bottom:8px}.sb{height:12px;background:#35505f;opacity:.7}.motif{position:absolute;right:20px;top:40px;width:380px;height:380px;opacity:.95}
 .cap{position:absolute;left:44px;right:44px;bottom:34px;display:flex;flex-direction:column;gap:8px}
 h1{font:700 52px/1 B;letter-spacing:-.03em}.tag{font:500 18px M;color:${c0}}
 .chips{display:flex;gap:8px;align-items:center;margin-top:4px}.chips b{font:500 12px M;letter-spacing:.08em;border:1px solid;padding:5px 9px}.st{font:500 15px M;color:#ffcf5a;margin-left:6px}

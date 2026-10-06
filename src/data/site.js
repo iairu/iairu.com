@@ -5,12 +5,17 @@ export const person = {
   full: 'Ondrej "iairu" Špánik',
   email: 'spanik11@gmail.com',
   location: { en: 'Bratislava, Slovakia', sk: 'Bratislava, Slovensko' },
+  pronounced: { en: 'My name is pronounced “Andrei”.', sk: 'Moje meno sa vyslovuje „Andrej“, anglicky ako „Andrei“.' },
   role: { en: 'Prompt engineer · 3D artist · maker', sk: 'Prompt inžinier · 3D umelec · maker' },
 };
 
 export const links = {
   github: 'https://github.com/iairu',
   linkedin: 'https://www.linkedin.com/in/iairu',
+  instagram: 'https://instagram.com/spanik11',
+  animationInstagram: 'https://www.instagram.com/ayu_animations',
+  messenger: 'https://m.me/iairu',
+  innovatrics: 'https://www.innovatrics.com',
   nightjar: 'https://nightjar.gift',
   nightjarDocs: 'https://knifes.nightjar.gift',
   fiit: 'https://www.fiit.stuba.sk',

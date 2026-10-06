@@ -1,5 +1,6 @@
 ---
 title: 	IPv4, Počiatočné i maximálne adresy a masky
+category:	guides
 tags:	networking, math, bitwise ops
 date:	2020-06-14
 bg: 	default

@@ -1,5 +1,6 @@
 ---
 title: 	Everyday digital automation with AutoHotkey scripts
+category:	guides
 tags:	autohotkey, scripting, automation, hobby
 desc: 	More than 26 interesting AutoHotkey scripts that automate repetitive digital chores.
 date: 	2020-08-08 13:30

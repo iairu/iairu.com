@@ -1,5 +1,6 @@
 ---
 title: 	Notes on my programming activity
+category:	guides
 tags:	log, diary, activity
 desc: 	Daily activity across different areas of programming since mid-May 2020.
 date: 	2020-08-15 11:40

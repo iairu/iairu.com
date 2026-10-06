@@ -10,8 +10,8 @@ const { lang } = Astro.params;
 const T = (en, sk) => (lang === 'sk' ? sk : en);
 const brands = ['zenit', 'ghast', 'kooptn', 'drot', 'slniecko', 'domkultury'].map((id) => byId[id]);
 const groups = [
-  { id: 'animation', title: T('3D & animation', '3D a animácia'), text: T('Blender worlds and long-running animated stories.', 'Svety z Blendera a dlhodobé animované príbehy.'), items: ['zrada', 'secret-animation'] },
-  { id: 'illustration', title: T('Illustration & comics', 'Ilustrácia a komiksy'), text: T('Drawn on a tablet in Procreate and Clip Studio Paint, painted on canvas.', 'Kreslené na tablete v Procreate a Clip Studio Paint, maľované na plátno.'), items: ['comics', 'painting-costume'] },
+  { id: 'animation', title: T('3D & animation', '3D a animácia'), text: T('Blender worlds and long-running animated stories.', 'Svety z Blendera a dlhodobé animované príbehy.'), items: ['zrada', 'layf-animation'] },
+  { id: 'illustration', title: T('Illustration & comics', 'Ilustrácia a komiksy'), text: T('Drawn on a tablet in Procreate and Clip Studio Paint, painted on canvas. Each card opens a full gallery.', 'Kreslené na tablete v Procreate a Clip Studio Paint, maľované na plátno.'), items: ['illustration', 'comics', 'sketches', 'environment-paintings', 'painting-costume'] },
   { id: 'web', title: T('Web design', 'Webdizajn'), text: T('Where design and code first met.', 'Kde sa dizajn a kód prvýkrát stretli.'), items: ['web-designs', 'strukshow', 'save-the-princess'] },
 ].map((g) => ({ ...g, items: g.items.map((i) => byId[i]) }));
 ---
