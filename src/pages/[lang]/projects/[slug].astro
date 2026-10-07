@@ -32,8 +32,8 @@ const gallery = p.gallery ?? [];
           </div>
         </div>
         {(p.image || p.logo) && (
-          <div class="hero-img" style={p.bg ? `background-image:url(${p.bg})` : undefined}>
-            {p.logo ? <img class="logo" src={p.logo} alt={title} /> : <img src={p.image} alt="" />}
+          <div class="hero-img" data-zoom-group style={p.bg ? `background-image:url(${p.bg})` : undefined}>
+            {p.logo ? <img class="logo" src={p.logo} alt={title} /> : <img src={p.image} alt={title} data-zoom />}
           </div>
         )}
       </header>
@@ -51,10 +51,10 @@ const gallery = p.gallery ?? [];
       {gallery.length > 0 && (
         <section aria-label={T('Gallery', 'Galéria')}>
           <h2>{p.galleryTitle ? tr(p.galleryTitle, lang) : T('Gallery', 'Galéria')}</h2>
-          <ul class="gal">
-            {gallery.map((g, i) => <li><a href={g} target="_blank" rel="noopener"><img src={p.thumbs?.[i] ?? g} alt={p.alts?.[i] ? `${title}: ${p.alts[i]}` : `${title} ${i + 1}`} loading="lazy" /></a></li>)}
+          <ul class="gal" data-zoom-group>
+            {gallery.map((g, i) => <li><a href={g} data-zoom target="_blank" rel="noopener"><img src={p.thumbs?.[i] ?? g} alt={p.alts?.[i] ? `${title}: ${p.alts[i]}` : `${title} ${i + 1}`} loading="lazy" /></a></li>)}
           </ul>
-          <p class="note">{T('Images open full size in a new tab.', 'Obrázky sa otvoria v plnej veľkosti v novej karte.')}</p>
+          <p class="note">{T('Click an image to view it full size; swipe or use the arrows to browse.', 'Klikni na obrázok pre zobrazenie v plnej veľkosti; prechádzať môžeš ťahaním alebo šípkami.')}</p>
         </section>
       )}
 

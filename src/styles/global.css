@@ -122,3 +122,7 @@ code, kbd { font-family: var(--mono); font-size: .9em; }
 :root[data-theme='light'][data-sky='6'] .sky { background-image: url('/img/sky/light-6.jpg'); }
 html:not([data-sky]) .sky { background-image: url('/img/sky/dark-1.jpg'); }
 :root[data-theme='light']:not([data-sky]) .sky { background-image: url('/img/sky/light-1.jpg'); }
+
+/* a modal (search, image viewer) is open: freeze the page behind it */
+html.modal-open { overflow: hidden; }
+img[data-zoom], a[data-zoom] { cursor: zoom-in; }

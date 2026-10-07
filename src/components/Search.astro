@@ -1,0 +1,152 @@
+---
+// Site-wide search palette (Ctrl+K, Cmd+K on macOS). The index is a static JSON per language,
+// fetched the first time the palette opens. Any element with [data-search-open] opens it and any
+// [data-kbd] element gets the shortcut hint for the visitor's platform.
+const { lang = 'en' } = Astro.props;
+const L = lang === 'sk'
+  ? { title: 'Hľadať na webe', ph: 'Hľadať projekty, dokumenty, stránky…', close: 'Zavrieť', none: 'Nič sa nenašlo pre', hint: 'Skús iné slovo alebo časť názvu.', nav: 'šípky vyberajú', go: 'Enter otvorí', esc: 'Esc zavrie', err: 'Index sa nepodarilo načítať.', recent: 'Rýchle odkazy' }
+  : { title: 'Search the site', ph: 'Search projects, docs, pages…', close: 'Close', none: 'Nothing found for', hint: 'Try another word or part of a title.', nav: 'arrows to select', go: 'Enter to open', esc: 'Esc to close', err: 'Could not load the index.', recent: 'Quick links' };
+---
+<dialog class="srch" id="search" aria-label={L.title} data-index={`/${lang}/search.json`} data-none={L.none} data-hint={L.hint} data-err={L.err} data-recent={L.recent}>
+  <form method="dialog" class="box" role="search" onsubmit="return false">
+    <div class="row">
+      <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.6-3.6"/></svg>
+      <input type="search" id="search-q" placeholder={L.ph} autocomplete="off" autocapitalize="off" spellcheck="false" enterkeyhint="go" role="combobox" aria-expanded="true" aria-controls="search-list" aria-label={L.title} />
+      <button type="button" class="x" data-search-close aria-label={L.close}>
+        <span class="esc" aria-hidden="true">esc</span>
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg>
+      </button>
+    </div>
+    <p class="status sr-only" role="status" aria-live="polite"></p>
+    <ul id="search-list" role="listbox" aria-label={L.title}></ul>
+    <p class="keys" aria-hidden="true"><span>↑↓ {L.nav}</span><span>↵ {L.go}</span><span>{L.esc}</span></p>
+  </form>
+</dialog>
+
+<script>
+  const dlg = document.getElementById('search') as HTMLDialogElement | null;
+  const mac = /Mac|iPhone|iPad|iPod/.test(navigator.platform || navigator.userAgent);
+  document.querySelectorAll('[data-kbd]').forEach((k) => { k.textContent = mac ? '⌘K' : 'Ctrl K'; });
+
+  if (dlg) {
+    type Item = { t: string; k: string; u: string; d?: string; s: string; hay?: string };
+    const q = dlg.querySelector<HTMLInputElement>('#search-q')!;
+    const list = dlg.querySelector<HTMLUListElement>('#search-list')!;
+    const status = dlg.querySelector<HTMLElement>('.status')!;
+    let items: Item[] | null = null, shown: Item[] = [], active = 0, opener: HTMLElement | null = null;
+    const norm = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+
+    async function load() {
+      if (items) return;
+      try {
+        const r = await fetch(dlg!.dataset.index!);
+        items = (await r.json()).map((i: Item) => ({ ...i, hay: norm(`${i.t} ${i.d ?? ''} ${i.s}`) }));
+      } catch { items = []; status.textContent = dlg!.dataset.err!; }
+    }
+
+    const score = (i: Item, words: string[]) => {
+      const t = norm(i.t); let s = 0;
+      for (const w of words) {
+        if (t === w) s += 60; else if (t.startsWith(w)) s += 40; else if (t.includes(w)) s += 28;
+        else if (i.hay!.includes(w)) s += 8; else return 0;
+      }
+      return s;
+    };
+
+    function paint() {
+      const text = norm(q.value.trim());
+      const words = text.split(/\s+/).filter(Boolean);
+      shown = !items ? [] : words.length
+        ? items.map((i) => [i, score(i, words)] as const).filter(([, s]) => s > 0).sort((a, b) => b[1] - a[1]).slice(0, 30).map(([i]) => i)
+        : items.slice(0, 9);
+      active = 0;
+      list.replaceChildren(...shown.map((i, n) => {
+        const li = document.createElement('li'); li.id = `sr-${n}`; li.setAttribute('role', 'option');
+        const a = document.createElement('a'); a.href = i.u; a.tabIndex = -1;
+        if (i.u.startsWith('http')) { a.rel = 'noopener'; a.target = '_blank'; }
+        const k = document.createElement('span'); k.className = 'k'; k.textContent = i.k;
+        const b = document.createElement('span'); b.className = 'b';
+        const h = document.createElement('b'); h.textContent = i.t; b.append(h);
+        if (i.d) { const d = document.createElement('small'); d.textContent = i.d; b.append(d); }
+        a.append(k, b); li.append(a);
+        li.addEventListener('mousemove', () => select(n, false));
+        return li;
+      }));
+      if (words.length && !shown.length) {
+        const li = document.createElement('li'); li.className = 'none';
+        li.innerHTML = ''; const p = document.createElement('p'); p.textContent = `${dlg!.dataset.none} “${q.value.trim()}”. ${dlg!.dataset.hint}`; li.append(p); list.append(li);
+      }
+      status.textContent = words.length ? `${shown.length}` : '';
+      list.dataset.empty = String(!words.length);
+      select(0, false);
+    }
+
+    function select(n: number, scroll = true) {
+      if (!shown.length) return;
+      active = (n + shown.length) % shown.length;
+      list.querySelectorAll('[role=option]').forEach((li, idx) => li.setAttribute('aria-selected', String(idx === active)));
+      q.setAttribute('aria-activedescendant', `sr-${active}`);
+      if (scroll) list.querySelector(`#sr-${active}`)?.scrollIntoView({ block: 'nearest' });
+    }
+
+    async function open(from?: HTMLElement | null) {
+      if (dlg!.open) return;
+      opener = from ?? (document.activeElement as HTMLElement | null);
+      document.documentElement.classList.add('modal-open');
+      dlg!.showModal();
+      q.focus();
+      await load(); paint();
+    }
+    const close = () => dlg!.close();
+    dlg.addEventListener('close', () => { document.documentElement.classList.remove('modal-open'); q.value = ''; opener?.focus?.(); });
+    dlg.addEventListener('click', (e) => { if (e.target === dlg) close(); }); // backdrop
+    dlg.querySelector('[data-search-close]')!.addEventListener('click', close);
+    list.addEventListener('click', (e) => { if ((e.target as HTMLElement).closest('a')) close(); });
+    q.addEventListener('input', paint);
+    q.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowDown') { e.preventDefault(); select(active + 1); }
+      else if (e.key === 'ArrowUp') { e.preventDefault(); select(active - 1); }
+      else if (e.key === 'Enter') {
+        const i = shown[active]; if (!i) return; e.preventDefault();
+        if (i.u.startsWith('http')) window.open(i.u, '_blank', 'noopener'); else location.href = i.u;
+      }
+    });
+    document.querySelectorAll<HTMLElement>('[data-search-open]').forEach((b) => b.addEventListener('click', () => open(b)));
+    document.addEventListener('keydown', (e) => {
+      if ((e.ctrlKey || e.metaKey) && !e.altKey && !e.shiftKey && e.key.toLowerCase() === 'k') { e.preventDefault(); dlg.open ? close() : open(); }
+    });
+  }
+</script>
+
+<style>
+  .srch { padding: 0; border: 1px solid var(--line2); background: var(--bg); color: var(--ink); width: min(640px, calc(100% - 2rem)); max-width: none; max-height: min(70dvh, 560px); margin: 12dvh auto auto; box-shadow: var(--shadow), 0 0 0 1px rgb(0 0 0 / .2); border-top: 3px solid var(--copper); overflow: hidden; }
+  .srch[open] { display: flex; flex-direction: column; animation: pop .16s ease-out; }
+  .srch::backdrop { background: rgb(4 8 12 / .62); backdrop-filter: blur(3px); -webkit-backdrop-filter: blur(3px); }
+  @keyframes pop { from { opacity: 0; transform: translateY(-8px); } }
+  .box { display: flex; flex-direction: column; min-height: 0; flex: 1; margin: 0; }
+  .row { display: flex; align-items: center; gap: .7rem; padding: 0 .4rem 0 1rem; border-bottom: 1px solid var(--line); color: var(--soft); }
+  input { flex: 1; min-width: 0; height: 56px; background: none; border: 0; color: var(--ink); font: 400 1.05rem var(--font); outline: none; -webkit-appearance: none; appearance: none; }
+  input::-webkit-search-cancel-button { display: none; }
+  input::placeholder { color: var(--soft); opacity: .8; }
+  .row:focus-within { border-bottom-color: var(--cyan); }
+  .x { display: inline-flex; align-items: center; gap: .5rem; min-width: 44px; height: 44px; justify-content: center; background: none; border: 0; color: var(--soft); cursor: pointer; font: 500 .7rem var(--mono); }
+  .x:hover { color: var(--ink); }
+  .esc { border: 1px solid var(--line2); padding: .2em .45em; border-radius: 2px; }
+  ul { list-style: none; margin: 0; padding: .4rem; overflow-y: auto; overscroll-behavior: contain; flex: 1; min-height: 0; }
+  li a { display: grid; grid-template-columns: 5.6rem 1fr; gap: .8rem; align-items: baseline; padding: .65rem .7rem; text-decoration: none; color: var(--ink); border-left: 3px solid transparent; }
+  li[aria-selected='true'] a { background: var(--bg3); border-left-color: var(--cyan); }
+  .k { font: 500 .66rem var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--copper); }
+  .b { display: grid; min-width: 0; }
+  .b b { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .b small { color: var(--soft); font-size: .84rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .none { padding: 1.4rem 1rem; color: var(--soft); } .none p { margin: 0; }
+  .keys { display: flex; gap: 1.2rem; margin: 0; padding: .55rem 1rem; border-top: 1px solid var(--line); font: 400 .68rem var(--mono); color: var(--soft); }
+  @media (hover: none), (max-width: 640px) { .keys { display: none; } .esc { display: none; } }
+  @media (max-width: 640px) {
+    .srch { width: 100%; max-height: none; height: 100dvh; margin: 0; border: 0; border-top: 3px solid var(--copper); }
+    input { font-size: 16px; } /* 16px stops iOS from zooming the page on focus */
+    ul { padding-bottom: calc(.4rem + env(safe-area-inset-bottom)); }
+    li a { grid-template-columns: 1fr; gap: .1rem; padding: .8rem .7rem; }
+    .k { order: 2; font-size: .62rem; }
+  }
+</style>

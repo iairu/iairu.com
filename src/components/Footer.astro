@@ -3,6 +3,8 @@ import { ui } from '../data/i18n.js';
 import { nav, person, links } from '../data/site.js';
 import { lhref, tr } from '../data/util.js';
 import { repoSnapshotDate } from '../data/projects.js';
+import Logo from './Logo.astro';
+import SearchButton from './SearchButton.astro';
 const { lang } = Astro.props;
 const T = ui[lang];
 const F = T.footer;
@@ -18,9 +20,10 @@ const quick = [
   <div class="wrap">
     <div class="top">
       <div class="about">
-        <a class="brand" href={lhref(lang)}>iairu</a>
+        <a class="brand" href={lhref(lang)} aria-label={`iairu, ${T.nav.home}`}><Logo height={40} /></a>
         <p class="who">{person.full}</p>
         <p class="small">{F.blurb}</p>
+        <p class="search"><SearchButton lang={lang} variant="wide" /></p>
         <p class="small"><a class="mail" href={`mailto:${person.email}`}>{person.email}</a></p>
       </div>
       <nav class="map" aria-label={F.sitemap}>
@@ -66,7 +69,8 @@ const quick = [
   .ftr { background: var(--bg2); border-top: 1px solid var(--line); padding: clamp(2.5rem, 5vw, 4rem) 0 1.6rem; margin-top: clamp(3rem, 6vw, 6rem); position: relative; }
   .ftr::before { content: ''; position: absolute; left: 0; right: 0; top: -1px; height: 3px; background: linear-gradient(90deg, var(--cyan) 0 50%, var(--copper) 50% 100%); }
   .top { display: grid; gap: 2.5rem; grid-template-columns: minmax(220px, 1fr) 3fr; }
-  .brand { font: 700 1.6rem var(--font); letter-spacing: -.03em; color: var(--ink); text-decoration: none; }
+  .brand { display: inline-block; color: var(--ink); text-decoration: none; }
+  .search { margin: 1.2rem 0 1rem; }
   .who { font: 500 .8rem var(--mono); color: var(--copper); margin: .2rem 0 .8rem; }
   .small { color: var(--soft); max-width: 34ch; font-size: .95rem; }
   .mail { color: var(--ink); }

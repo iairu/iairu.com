@@ -2,6 +2,8 @@
 import { ui, LANGS, LANG_NAMES } from '../data/i18n.js';
 import { nav } from '../data/site.js';
 import { lhref } from '../data/util.js';
+import Logo from './Logo.astro';
+import SearchButton from './SearchButton.astro';
 const { lang, path = '' } = Astro.props;
 const T = ui[lang];
 const here = Astro.url.pathname;
@@ -10,8 +12,7 @@ const active = (p) => here.startsWith(lhref(lang, p));
 <header class="hdr" id="top">
   <div class="wrap bar">
     <a class="brand" href={lhref(lang)} aria-label={`iairu, ${T.nav.home}`}>
-      <svg class="mark" viewBox="0 0 32 32" width="30" height="30" aria-hidden="true"><path d="M4 8 16 3l12 5v16l-12 5L4 24Z" fill="none" stroke="var(--cyan)" stroke-width="2" stroke-linejoin="round"/><path d="M16 3v26M4 8l12 6 12-6" fill="none" stroke="var(--cyan)" stroke-width="1.2" opacity=".6"/><path d="M16 14v8h8" fill="none" stroke="var(--copper)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="22" r="2.4" fill="var(--copper)"/></svg>
-      <span>iairu</span>
+      <Logo height={26} />
     </a>
     <nav id="primary-nav" aria-label="Main">
       <ul>
@@ -19,6 +20,7 @@ const active = (p) => here.startsWith(lhref(lang, p));
       </ul>
     </nav>
     <div class="tools">
+      <SearchButton lang={lang} variant="compact" />
       <div class="langs" role="group" aria-label={T.language}>
         {LANGS.map((l) => <a href={lhref(l, path)} hreflang={l} lang={l} aria-current={l === lang ? 'true' : undefined} title={LANG_NAMES[l]}>{l.toUpperCase()}</a>)}
       </div>
@@ -35,7 +37,7 @@ const active = (p) => here.startsWith(lhref(lang, p));
 <style>
   .hdr { position: sticky; top: 0; z-index: 90; height: var(--hdr); background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid var(--line); }
   .bar { display: flex; align-items: center; gap: 1rem; height: 100%; }
-  .brand { display: inline-flex; align-items: center; gap: .6rem; color: var(--ink); text-decoration: none; font: 700 1.3rem var(--font); letter-spacing: -.03em; margin-right: auto; }
+  .brand { display: inline-flex; align-items: center; gap: .6rem; color: var(--ink); text-decoration: none; margin-right: auto; padding: .4rem 0; }
   nav ul { display: flex; gap: .1rem; list-style: none; margin: 0; padding: 0; }
   nav a { display: block; padding: .5rem .85rem; color: var(--soft); text-decoration: none; font: 500 .82rem var(--mono); letter-spacing: .03em; position: relative; }
   nav a:hover { color: var(--ink); }
