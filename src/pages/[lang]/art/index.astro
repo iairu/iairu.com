@@ -16,13 +16,13 @@ const groups = [
 ].map((g) => ({ ...g, items: g.items.map((i) => byId[i]) }));
 ---
 <Base lang={lang} path="art/" title={ui[lang].nav.art}
-  description={T('3D animation, illustration, branding and web design by Ondrej "iairu" Špánik: the former graphic design portfolio, now part of the main site.', '3D animácia, ilustrácia, branding a webdizajn Ondreja „iairu“ Špánika: bývalé grafické portfólio, teraz súčasť hlavnej stránky.')}
+  description={T('3D animation, illustration, branding and web design by Ondrej "iairu" Špánik: form treated as a problem to solve.', '3D animácia, ilustrácia, branding a webdizajn Ondreja „iairu“ Špánika: tvar ako problém na vyriešenie.')}
   crumbs={[{ label: ui[lang].nav.art }]}>
   <section class="block head">
     <div class="wrap">
-      <p class="eyebrow">{T('Art & 3D', 'Umenie a 3D')}</p>
-      <h1>{T('The mesh side', 'Strana modelov a obrazu')}</h1>
-      <p class="lead">{T('Graphic design school (SUPTN Trenčín, 2015–2019) came first, so form still leads function in how I build things. This page collects the former graphic design portfolio; every card opens the full piece.', 'Prvá bola škola grafického dizajnu (SUPTN Trenčín, 2015–2019), preto u mňa forma stále predchádza funkciu. Táto stránka združuje bývalé grafické portfólio; každá karta otvorí celé dielo.')}</p>
+      <p class="eyebrow">{T('Art, branding & 3D', 'Umenie, branding a 3D')}</p>
+      <h1>{T('When the problem is how it looks', 'Keď je problémom, ako to vyzerá')}</h1>
+      <p class="lead">{T('Graphic design school (SUPTN Trenčín, 2015–2019) came before the code, and it taught me to treat form as a problem to solve, not decoration. Here the challenge is how something should look, move or be recognised: a logo that has to hold up, a world made of letters, a comic page, a character. Every card opens the whole piece.', 'Škola grafického dizajnu (SUPTN Trenčín, 2015–2019) prišla pred kódom a naučila ma brať tvar ako problém na vyriešenie, nie ako dekoráciu. Tu je výzvou, ako má niečo vyzerať, pohybovať sa alebo byť spoznané: logo, ktoré musí obstáť, svet z písmen, komiksová strana, postava. Každá karta otvorí celé dielo.')}</p>
       <ul class="jump" aria-label={T('Sections', 'Sekcie')}>
         <li><a href="#branding">{T('Branding', 'Branding')}</a></li>
         {groups.map((g) => <li><a href={`#${g.id}`}>{g.title}</a></li>)}
@@ -33,7 +33,7 @@ const groups = [
 
   <section class="block band" id="branding" aria-labelledby="h-branding">
     <div class="wrap">
-      <div class="sec-head"><h2 id="h-branding">{T('Branding & logos', 'Branding a logá')}</h2><p>{T('Competition entries, school assignments and concepts from 2017–2018, with PDFs of the logos and manuals.', 'Súťažné práce, školské zadania a koncepty z rokov 2017–2018, s PDF logami a manuálmi.')}</p></div>
+      <div class="sec-head"><h2 id="h-branding">{T('Branding & logos', 'Branding a logá')}</h2><p>{T('One question each time: how does an idea become an identity people recognise? Competition entries, school assignments and concepts from 2017–2018, with PDFs of the logos and manuals.', 'Vždy jedna otázka: ako sa z nápadu stane identita, ktorú ľudia spoznajú? Súťažné práce, školské zadania a koncepty z rokov 2017–2018, s PDF logami a manuálmi.')}</p></div>
       <ul class="brands">
         {brands.map((b) => (
           <li><a href={lhref(lang, `projects/${b.id}/`)} style={`background-image:url(${b.bg})`}>

@@ -22,20 +22,20 @@ const pipeline = [
   { n: '05', c: 'lime', t: T('Object', 'Objekt'), d: T('CNC, wood, solder. The thing sits on a desk, you press a button and it works.', 'CNC, drevo, spájka. Vec stojí na stole, stlačíš tlačidlo a funguje.') },
 ];
 ---
-<Base lang={lang} path="" description={T('Ondrej "iairu" Špánik: prompt engineer and 3D artist who turns code, electronics and 3D models into real working objects.', 'Ondrej „iairu“ Špánik: prompt inžinier a 3D umelec, ktorý mení kód, elektroniku a 3D modely na skutočné fungujúce objekty.')}>
+<Base lang={lang} path="" description={T('Ondrej "iairu" Špánik: prompt engineer and maker who takes on one challenge at a time, from code and circuits to 3D and illustration.', 'Ondrej „iairu“ Špánik: prompt inžinier a 3D umelec, ktorý mení kód, elektroniku a 3D modely na skutočné fungujúce objekty.')}>
   <section class="hero">
     <div class="wrap hero-grid">
       <div class="copy">
         <p class="eyebrow">{tr(person.role, lang)}</p>
         <h1>
-          {lang === 'sk' ? <>Kde sa <span class="a">sieť modelu</span> stretne s <span class="b">obvodom</span>.</> : <>Where the <span class="a">mesh</span> meets the <span class="b">circuit</span>.</>}
+          {lang === 'sk' ? <>Výzva si vyberie <span class="a">remeslo</span>, ja ho <span class="b">dotiahnem</span>.</> : <>The challenge picks the <span class="a">craft</span>. I <span class="b">finish</span> it.</>}
         </h1>
         <p class="lead">{T(
-          'I am Ondrej "iairu" Špánik. I bridge classic programming, electronics and 3D models into objects that really work: designed on screen, carved, wired and switched on.',
-          'Som Ondrej „iairu“ Špánik. Spájam klasické programovanie, elektrotechniku a 3D modely do objektov, ktoré naozaj fungujú: navrhnuté na obrazovke, vyrezané, zapojené a zapnuté.')}</p>
+          'I am Ondrej "iairu" Špánik. I take on one challenge at a time and go deep until it works, so my focus moves with the problem: code one month, a circuit or a 3D model the next, a prompt-driven build after that. What stays constant is the standard: it is finished, it runs, and I understand why.',
+          'Som Ondrej „iairu“ Špánik. Riešim jednu výzvu naraz a idem do hĺbky, kým to nefunguje, takže moje zameranie sa hýbe s problémom: jeden mesiac kód, ďalší obvod alebo 3D model, potom vývoj riadený promptami. Stále ostáva štandard: je to dokončené, beží to a viem prečo.')}</p>
         <div class="cta">
-          <a class="btn primary" href={lhref(lang, 'projects/')}>{T('Browse projects', 'Prehľadať projekty')} →</a>
-          <a class="btn ghost" href={lhref(lang, 'art/')}>{T('See art & 3D', 'Pozrieť umenie a 3D')}</a>
+          <a class="btn primary" href={lhref(lang, 'projects/')}>{T('See the challenges', 'Pozrieť výzvy')} →</a>
+          <a class="btn ghost" href={lhref(lang, 'art/')}>{T('See the art & 3D', 'Pozrieť umenie a 3D')}</a>
         </div>
         <ul class="stats" aria-label={T('Numbers', 'Čísla')}>
           <li><b>{projects.length}</b> {T('projects', 'projektov')}</li>
@@ -51,8 +51,9 @@ const pipeline = [
   <section class="block" aria-labelledby="bridge">
     <div class="wrap">
       <div class="sec-head" data-reveal>
-        <p class="eyebrow">{T('How it fits together', 'Ako to do seba zapadá')}</p>
-        <h2 id="bridge">{T('One pipeline, from an idea to something you can hold', 'Jeden postup, od nápadu k niečomu, čo môžeš chytiť do ruky')}</h2>
+        <p class="eyebrow">{T('How I work', 'Ako pracujem')}</p>
+        <h2 id="bridge">{T('One method, whichever tools the problem needs', 'Jedna metóda, nech problém vyžaduje akékoľvek nástroje')}</h2>
+        <p>{T('No project uses every step. The challenge decides where the work goes deep; the steps are just the order I check them in.', 'Žiadny projekt nepoužije všetky kroky. Výzva určí, kde sa ide do hĺbky; kroky sú len poradie, v akom ich prechádzam.')}</p>
       </div>
       <ol class="pipe">
         {pipeline.map((s) => <li class={`c-${s.c}`} data-reveal><span class="n">{s.n}</span><h3>{s.t}</h3><p>{s.d}</p></li>)}
@@ -75,9 +76,9 @@ const pipeline = [
   <section class="block" aria-labelledby="fields">
     <div class="wrap">
       <div class="sec-head" data-reveal>
-        <p class="eyebrow">{T('Find your way', 'Nájdi si cestu')}</p>
-        <h2 id="fields">{T('Pick the field you care about', 'Vyber si odbor, ktorý ťa zaujíma')}</h2>
-        <p>{T('Each link opens the portfolio already filtered. Combine it with a language or an area of interest there.', 'Každý odkaz otvorí portfólio s predvoleným filtrom. Tam ho môžeš skombinovať s jazykom alebo oblasťou záujmu.')}</p>
+        <p class="eyebrow">{T('Chapters, not boxes', 'Kapitoly, nie škatuľky')}</p>
+        <h2 id="fields">{T('Follow the challenge you care about', 'Sleduj výzvu, ktorá ťa zaujíma')}</h2>
+        <p>{T('Every project was one specific problem, and its field is just what the problem needed. Open a field to see that chapter, or combine two there to see where they met.', 'Každý projekt bol jeden konkrétny problém a jeho odbor je len to, čo problém potreboval. Otvor odbor a uvidíš danú kapitolu, alebo ich tam skombinuj a uvidíš, kde sa stretli.')}</p>
       </div>
       <ul class="fields">
         {Object.entries(fields).map(([k, f]) => (
@@ -90,7 +91,7 @@ const pipeline = [
   <section class="block nj" aria-labelledby="nj">
     <div class="wrap split">
       <div data-reveal>
-        <p class="eyebrow">{T('Latest object', 'Najnovší objekt')}</p>
+        <p class="eyebrow">{T('Current challenge', 'Aktuálna výzva')}</p>
         <h2 id="nj">NightJar.Gift: {T('a wooden nightjar that sings', 'drevený lelek, ktorý spieva')}</h2>
         <p class="lead">{T('A 3D model became CNC toolpaths, then two halves of beech with a circuit that has no microcontroller and no firmware. Hold the button on its back and it churrs; let go and it sleeps.', '3D model sa stal dráhami pre CNC, potom dvoma polovicami buku s obvodom bez mikrokontroléra a bez firmvéru. Podrž tlačidlo na jeho chrbte a vrčí; pusti a zaspí.')}</p>
         <p class="temp" role="note"><b>{T('Temporary model.', 'Dočasný model.')}</b> {T('The 3D bird above is a stand-in, not the final version of the model.', 'Trojrozmerný lelok vyššie je zástupný, nie konečná verzia modelu.')}</p>
@@ -106,12 +107,12 @@ const pipeline = [
   <section class="block band" aria-labelledby="art">
     <div class="wrap">
       <div class="sec-head" data-reveal>
-        <p class="eyebrow">{T('The other half', 'Druhá polovica')}</p>
-        <h2 id="art">{T('Art, branding and 3D', 'Umenie, branding a 3D')}</h2>
-        <p>{T('Before the code, there was a graphic design school. The old graphic portfolio now lives here.', 'Pred kódom bola škola grafického dizajnu. Staré grafické portfólio teraz žije tu.')}</p>
+        <p class="eyebrow">{T('When the challenge is form', 'Keď je výzvou tvar')}</p>
+        <h2 id="art">{T('Art that had to solve something', 'Umenie, ktoré malo niečo vyriešiť')}</h2>
+        <p>{T('A logo that must hold up, a story told in letters, a character that has to read at a glance. The graphic design school came before the code, and it still shapes how I build.', 'Logo, ktoré musí obstáť, príbeh vyrozprávaný písmenami, postava, ktorá sa musí čítať na prvý pohľad. Škola grafického dizajnu prišla pred kódom a stále formuje to, ako stavam.')}</p>
       </div>
       <div class="grid g3 art4">{art.map((p) => <ProjectCard p={p} lang={lang} compact />)}</div>
-      <p class="more"><a class="btn ghost" href={lhref(lang, 'art/')}>{T('Whole art gallery', 'Celá galéria umenia')} →</a></p>
+      <p class="more"><a class="btn ghost" href={lhref(lang, 'art/')}>{T('The whole art side', 'Celá umelecká strana')} →</a></p>
     </div>
   </section>
 

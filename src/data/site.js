@@ -6,7 +6,7 @@ export const person = {
   email: 'spanik11@gmail.com',
   location: { en: 'Bratislava, Slovakia', sk: 'Bratislava, Slovensko' },
   pronounced: { en: 'My name is pronounced “Andrei”.', sk: 'Moje meno sa vyslovuje „Andrej“, anglicky ako „Andrei“.' },
-  role: { en: 'Prompt engineer · 3D artist · maker', sk: 'Prompt inžinier · 3D umelec · maker' },
+  role: { en: 'Prompt engineer · maker · one challenge at a time', sk: 'Prompt inžinier · maker · jedna výzva naraz' },
 };
 
 export const links = {
@@ -23,8 +23,8 @@ export const links = {
 };
 
 export const SITE_DESCRIPTION = {
-  en: 'Portfolio of Ondrej "iairu" Špánik: prompt engineer and 3D artist who bridges classic programming, electronics and 3D models into real, working objects.',
-  sk: 'Portfólio Ondreja „iairu“ Špánika: prompt inžiniera a 3D umelca, ktorý spája klasické programovanie, elektrotechniku a 3D modely do skutočných, fungujúcich objektov.',
+  en: 'Portfolio of Ondrej "iairu" Špánik: prompt engineer and maker who takes on one challenge at a time and learns whatever it needs, from code and circuits to 3D and illustration.',
+  sk: 'Portfólio Ondreja „iairu“ Špánika: prompt inžiniera a makera, ktorý rieši jednu výzvu naraz a naučí sa všetko, čo si vyžaduje: od kódu a obvodov po 3D a ilustráciu.',
 };
 
 // Fields of expertise: which discipline a project belongs to.
