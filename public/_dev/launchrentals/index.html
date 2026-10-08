@@ -1,0 +1,558 @@
+<!doctype html>
+<html lang="sk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tím č.8 - Komplexný manažment požičovní</title>
+    <link
+      href="./vendor/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="./vendor/fa-all.min.css"
+    />
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+      }
+      .handwriting {
+        font-family: "Segoe Script", "Comic Sans MS", cursive;
+      }
+      .sticky-header {
+        position: sticky;
+        top: 0;
+        backdrop-filter: blur(8px);
+        background-color: rgba(255, 255, 255, 0.9);
+      }
+      .mobile-menu {
+        display: none;
+      }
+      @media (max-width: 768px) {
+        .mobile-menu.active {
+          display: block;
+        }
+        .desktop-nav {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-white text-gray-900">
+    <header class="fixed w-full border-b border-gray-200 bg-white z-50">
+      <div
+        class="container mx-auto px-4 h-16 flex items-center justify-between"
+      >
+        <div class="flex items-center gap-2">
+          <span class="text-lg">TPCup'25</span>
+          <span class="text-lg font-bold">Tím 8</span>
+        </div>
+
+        <nav class="desktop-nav">
+          <ul class="flex items-center gap-8">
+            <li>
+              <a href="#about" class="text-sm font-medium hover:text-gray-600"
+                ><i class="fas fa-info-circle mr-2"></i>O našom tíme</a
+              >
+            </li>
+            <li>
+              <a href="#team" class="text-sm font-medium hover:text-gray-600"
+                ><i class="fas fa-users mr-2"></i>Členovia tímu</a
+              >
+            </li>
+            <li>
+              <a href="#project" class="text-sm font-medium hover:text-gray-600"
+                ><i class="fas fa-project-diagram mr-2"></i>O projekte</a
+              >
+            </li>
+            <li>
+              <a
+                href="#attachments"
+                class="text-sm font-medium hover:text-gray-600"
+                ><i class="fas fa-paperclip mr-2"></i>Prílohy</a
+              >
+            </li>
+          </ul>
+        </nav>
+
+        <button
+          onclick="document.getElementById('mobileMenu').classList.add('active')"
+          class="md:hidden"
+          aria-label="Toggle menu"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </header>
+
+    <div id="mobileMenu" class="mobile-menu fixed inset-0 bg-white p-4 z-50">
+      <div class="flex items-center justify-between mb-8">
+        <span class="text-lg font-bold">Menu</span>
+        <button
+          onclick="document.getElementById('mobileMenu').classList.remove('active')"
+          aria-label="Close menu"
+        >
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <nav>
+        <ul class="flex flex-col gap-4">
+          <li>
+            <a
+              href="#about"
+              onclick="document.getElementById('mobileMenu').classList.remove('active')"
+              class="text-lg font-medium"
+              ><i class="fas fa-info-circle mr-2"></i>O našom tíme</a
+            >
+          </li>
+          <li>
+            <a
+              href="#team"
+              onclick="document.getElementById('mobileMenu').classList.remove('active')"
+              class="text-lg font-medium"
+              ><i class="fas fa-users mr-2"></i>Členovia tímu</a
+            >
+          </li>
+          <li>
+            <a
+              href="#project"
+              onclick="document.getElementById('mobileMenu').classList.remove('active')"
+              class="text-lg font-medium"
+              ><i class="fas fa-project-diagram mr-2"></i>O projekte</a
+            >
+          </li>
+          <li>
+            <a
+              href="#attachments"
+              onclick="document.getElementById('mobileMenu').classList.remove('active')"
+              class="text-lg font-medium"
+              ><i class="fas fa-paperclip mr-2"></i>Prílohy</a
+            >
+          </li>
+        </ul>
+      </nav>
+    </div>
+
+    <main>
+      <section
+        class="relative h-screen flex items-center justify-center bg-white"
+      >
+        <div class="container mx-auto px-4 text-center">
+          <h1 class="flex justify-center">
+            <img
+              src="./lr-logo-b.svg"
+              alt="Logo projektu Launch.Rentals"
+              class="w-full max-w-2xl"
+            />
+          </h1>
+          <p class="text-2xl mb-8"></p>
+          <p class="text-lg italic text-gray-600 max-w-2xl mx-auto mb-16">
+            Vytvárame komplexné softvérové riešenie pre manažment požičovní,
+            ktoré integruje všetky potrebné funkcie pre efektívne riadenie
+            prevádzky.
+          </p>
+          <button
+            class="animate-bounce absolute bottom-12 left-1/2 transform -translate-x-1/2 text-gray-400 hover:text-gray-600"
+          >
+            <i class="fas fa-chevron-down text-4xl"></i>
+          </button>
+        </div>
+      </section>
+
+      <section id="about" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+          <h2 class="text-4xl font-bold mb-12 text-center">O našom tíme</h2>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="space-y-8">
+              <p class="text-lg leading-relaxed">
+                Sme tím siedmich študentov inžinierskeho štúdia na FIIT STU,
+                kombinujúci znalosti z informačnej bezpečnosti a softvérového
+                inžinierstva. Náš tím spája technické znalosti s praktickým
+                pochopením potrieb požičovní vďaka priamej spolupráci s reálnymi
+                prevádzkami.
+              </p>
+              <div class="flex flex-wrap gap-4 pt-4 border-t border-gray-200">
+                <span class="handwriting text-lg text-gray-600">Ondrej Š.</span>
+                <span class="handwriting text-lg text-gray-600">Adrián V.</span>
+                <span class="handwriting text-lg text-gray-600">Tomáš A.</span>
+                <span class="handwriting text-lg text-gray-600">Oliver P.</span>
+                <span class="handwriting text-lg text-gray-600"
+                  >Dominik P.</span
+                >
+                <span class="handwriting text-lg text-gray-600">Patrik F.</span>
+                <span class="handwriting text-lg text-gray-600">Eliáš P.</span>
+              </div>
+            </div>
+            <div class="rounded-xl overflow-hidden shadow-lg">
+              <img
+                src="./stretnutie.jpg"
+                alt="Tímová fotka"
+                class="w-full h-auto"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="team" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+          <h2 class="text-4xl font-bold mb-12 text-center">Členovia tímu</h2>
+          <div
+            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8"
+          >
+            <div
+              class="bg-white rounded-xl shadow-sm p-6 flex flex-col items-center text-center"
+            >
+              <div
+                class="w-24 h-24 rounded-full overflow-hidden mb-4 bg-gray-100"
+              >
+                <img
+                  src="./profile-pics/ondrej.webp"
+                  alt="Ondrej Š."
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <h3 class="font-bold text-lg">Ondrej Š.</h3>
+              <p class="text-gray-500">Backend, DevOps, Scrum master</p>
+            </div>
+            <div
+              class="bg-white rounded-xl shadow-sm p-6 flex flex-col items-center text-center"
+            >
+              <div
+                class="w-24 h-24 rounded-full overflow-hidden mb-4 bg-gray-100"
+              >
+                <img
+                  src="./profile-pics/adrian.webp"
+                  alt="Adrián V."
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <h3 class="font-bold text-lg">Adrián V.</h3>
+              <p class="text-gray-500">UX/UI dizajn, Frontend</p>
+            </div>
+            <div
+              class="bg-white rounded-xl shadow-sm p-6 flex flex-col items-center text-center"
+            >
+              <div
+                class="w-24 h-24 rounded-full overflow-hidden mb-4 bg-gray-100"
+              >
+                <img
+                  src="./profile-pics/tomas.webp"
+                  alt="Tomáš A."
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <h3 class="font-bold text-lg">Tomáš A.</h3>
+              <p class="text-gray-500">Auth0, Databázová architektúra</p>
+            </div>
+            <div
+              class="bg-white rounded-xl shadow-sm p-6 flex flex-col items-center text-center"
+            >
+              <div
+                class="w-24 h-24 rounded-full overflow-hidden mb-4 bg-gray-100"
+              >
+                <img
+                  src="./profile-pics/oliver.webp"
+                  alt="Oliver P."
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <h3 class="font-bold text-lg">Oliver P.</h3>
+              <p class="text-gray-500">Frontend, Lokalizácia</p>
+            </div>
+            <div
+              class="bg-white rounded-xl shadow-sm p-6 flex flex-col items-center text-center"
+            >
+              <div
+                class="w-24 h-24 rounded-full overflow-hidden mb-4 bg-gray-100"
+              >
+                <img
+                  src="./profile-pics/dominik.png"
+                  alt="Dominik P."
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <h3 class="font-bold text-lg">Dominik P.</h3>
+              <p class="text-gray-500">Swagger API, Systémová integrácia</p>
+            </div>
+            <div
+              class="bg-white rounded-xl shadow-sm p-6 flex flex-col items-center text-center"
+            >
+              <div
+                class="w-24 h-24 rounded-full overflow-hidden mb-4 bg-gray-100"
+              >
+                <img
+                  src="./profile-pics/patrik.webp"
+                  alt="Patrik F."
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <h3 class="font-bold text-lg">Patrik F.</h3>
+              <p class="text-gray-500">Analýza požiadaviek, Backend, DevOps</p>
+            </div>
+            <div
+              class="bg-white rounded-xl shadow-sm p-6 flex flex-col items-center text-center"
+            >
+              <div
+                class="w-24 h-24 rounded-full overflow-hidden mb-4 bg-gray-100"
+              >
+                <img
+                  src="./profile-pics/elias.png"
+                  alt="Eliáš P."
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <h3 class="font-bold text-lg">Eliáš P.</h3>
+              <p class="text-gray-500">Analytika, Frontend</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="project" class="py-20 bg-gray-50">
+        <div class="container mx-auto px-4">
+          <h2 class="text-4xl font-bold mb-12 text-center">O projekte</h2>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <div class="rounded-xl overflow-hidden shadow-lg cursor-pointer">
+              <img
+                src="./systems.jpg"
+                alt="Diagram projektu"
+                class="w-full h-auto"
+                onclick="openModal(this)"
+              />
+            </div>
+
+            <!-- Modal -->
+            <div
+              id="imageModal"
+              class="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 hidden"
+              onclick="closeModal()"
+            >
+              <div class="relative">
+                <button
+                  onclick="closeModal()"
+                  class="absolute -top-10 right-0 text-white text-xl p-2"
+                >
+                  <i class="fas fa-times"></i>
+                </button>
+                <img
+                  id="modalImage"
+                  src=""
+                  alt="Zväčšený obrázok"
+                  class="max-h-[90vh] max-w-[90vw]"
+                />
+                <p class="text-white text-center mt-4">
+                  Fig.1: Prehľad väčšiny služieb, ktoré náš SaaS projekt
+                  poskytuje
+                </p>
+              </div>
+            </div>
+
+            <div class="space-y-6">
+              <h3 class="text-2xl font-bold">Launch.Rentals</h3>
+              <p class="text-lg leading-relaxed">
+                Vytvárame all-in-one SaaS riešenie pre manažment požičovní,
+                ktoré integruje centralizovaný rezervačný systém, správu
+                inventára, manažment zamestnancov a CRM systém. Náš systém je
+                navrhnutý tak, aby vyhovel potrebám rôznych typov požičovní - od
+                oblečenia a športového vybavenia až po elektroniku a dopravné
+                prostriedky.
+              </p>
+              <a
+                href="https://launch.rentals"
+                class="bg-blue-600 text-white px-6 py-2 rounded-full hover:bg-blue-700 inline-block"
+                >Prejsť na riešenie <i class="fas fa-arrow-right ml-2"></i
+              ></a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="attachments" class="py-20">
+        <div class="container mx-auto px-4">
+          <h2 class="text-4xl font-bold mb-12 text-center">Prílohy</h2>
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            <div class="bg-white rounded-xl shadow-sm p-8">
+              <h3 class="text-2xl font-bold mb-6">Dokumenty</h3>
+              <div class="mb-6">
+                <p class="text-sm font-medium text-amber-600">
+                  <i class="fas fa-exclamation-triangle mr-2"></i>
+                  Súbory budú dostupné až po dokončení práce na projekte.
+                </p>
+              </div>
+              <ul class="space-y-4">
+                <li
+                  class="flex items-center justify-between border-b border-gray-100 pb-4"
+                >
+                  <span class="font-medium"
+                    >TPCup prihláška (aktualizované)</span
+                  >
+                  <a
+                    href="#"
+                    class="flex items-center gap-2 text-sm font-medium text-gray-400 line-through pointer-events-none"
+                    disabled
+                  >
+                    <i class="fas fa-download"></i>
+                    Stiahnuť
+                  </a>
+                </li>
+                <li
+                  class="flex items-center justify-between border-b border-gray-100 pb-4"
+                >
+                  <span class="font-medium"
+                    >Výsledná zápisnica za prvý semester (tri šprinty)</span
+                  >
+                  <a
+                    href="#"
+                    class="flex items-center gap-2 text-sm font-medium text-gray-400 line-through pointer-events-none"
+                    disabled
+                  >
+                    <i class="fas fa-download"></i>
+                    Stiahnuť
+                  </a>
+                </li>
+                <li
+                  class="flex items-center justify-between border-b border-gray-100 pb-4"
+                >
+                  <span class="font-medium"
+                    >Scrum plán na druhý semester (tri šprinty)</span
+                  >
+                  <a
+                    href="#"
+                    class="flex items-center gap-2 text-sm font-medium text-gray-400 line-through pointer-events-none"
+                    disabled
+                  >
+                    <i class="fas fa-download"></i>
+                    Stiahnuť
+                  </a>
+                </li>
+                <li
+                  class="flex items-center justify-between border-b border-gray-100 pb-4"
+                >
+                  <span class="font-medium"
+                    >Výsledná zápisnica za druhý semester (štyri šprinty)</span
+                  >
+                  <a
+                    href="#"
+                    class="flex items-center gap-2 text-sm font-medium text-gray-400 line-through pointer-events-none"
+                    disabled
+                  >
+                    <i class="fas fa-download"></i>
+                    Stiahnuť
+                  </a>
+                </li>
+                <li
+                  class="flex items-center justify-between border-b border-gray-100 pb-4"
+                >
+                  <span class="font-medium">Spätná väzba firiem</span>
+                  <a
+                    href="#"
+                    class="flex items-center gap-2 text-sm font-medium text-gray-400 line-through pointer-events-none"
+                    disabled
+                  >
+                    <i class="fas fa-download"></i>
+                    Stiahnuť
+                  </a>
+                </li>
+                <li
+                  class="flex items-center justify-between border-b border-gray-100 pb-4"
+                >
+                  <span class="font-medium">TPCup prezentácia</span>
+                  <a
+                    href="#"
+                    class="flex items-center gap-2 text-sm font-medium text-gray-400 line-through pointer-events-none"
+                    disabled
+                  >
+                    <i class="fas fa-download"></i>
+                    Stiahnuť
+                  </a>
+                </li>
+                <li
+                  class="flex items-center justify-between border-b border-gray-100 pb-4"
+                >
+                  <span class="font-medium"
+                    >Technická dokumentácia a diagramy</span
+                  >
+                  <a
+                    href="#"
+                    class="flex items-center gap-2 text-sm font-medium text-gray-400 line-through pointer-events-none"
+                    disabled
+                  >
+                    <i class="fas fa-download"></i>
+                    Stiahnuť
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-sm p-8">
+              <h3 class="text-2xl font-bold mb-6 hidden">Kontakt</h3>
+              <div class="flex flex-col items-center justify-center h-full">
+                <div class="mb-6">
+                  <a href="https://fiit.stuba.sk">
+                    <img
+                      src="./STU-FIIT-nfv.png"
+                      alt="Logo FIIT STU"
+                      class="rounded-xl"
+                    />
+                  </a>
+                </div>
+                <div class="flex items-center gap-2 text-lg mb-4">
+                  <a
+                    href="mailto:tim8tp2024@gmail.com"
+                    class="font-medium hover:text-gray-600"
+                  >
+                    Členovia projektu
+                    <i class="fas fa-envelope ml-2"></i>
+                  </a>
+                  <span class="text-gray-400">|</span>
+                  <span class="text-gray-500 select-all cursor-pointer"
+                    >tim8tp2024@gmail.com</span
+                  >
+                </div>
+                <div class="flex items-center gap-2 text-lg mb-4">
+                  <a
+                    href="mailto:richard.marko@stuba.sk"
+                    class="font-medium hover:text-gray-600"
+                  >
+                    Vedúci projektu
+                    <i class="fas fa-envelope ml-2"></i>
+                  </a>
+                  <span class="text-gray-400">|</span>
+                  <span class="text-gray-500 select-all cursor-pointer"
+                    >richard.marko@stuba.sk</span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="py-8 border-t border-gray-200">
+      <div class="container mx-auto px-4 text-center">
+        <p class="text-sm text-gray-500">
+          &copy; 2025 Tím č.8. - FIIT STU Všetky práva vyhradené.
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      function openModal(img) {
+        document.getElementById("modalImage").src = img.src;
+        document.getElementById("imageModal").classList.remove("hidden");
+        document.addEventListener("keydown", handleEsc);
+      }
+
+      function closeModal() {
+        document.getElementById("imageModal").classList.add("hidden");
+        document.removeEventListener("keydown", handleEsc);
+      }
+
+      function handleEsc(e) {
+        if (e.key === "Escape") closeModal();
+      }
+    </script>
+  </body>
+</html>
