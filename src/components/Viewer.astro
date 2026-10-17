@@ -5,7 +5,7 @@ const L = lang === 'sk'
   ? { solid: 'Drevo', wire: 'Drôtený model', circuit: 'Výkres', spin: 'Otáčanie', load: 'Načítavam 3D model NightJar.Gift…', hint: 'Potiahni prstom alebo myšou a otoč lelka.', badge: 'Návrh v2', warn: 'Toto je aktuálny návrh (Nightjar v2), nie hotový vták: zatiaľ nič nebolo vyrezané, takže skutočný lelek sa ešte môže líšiť.', nogl: '3D zobrazenie vyžaduje WebGL.', fail: 'Model sa nepodarilo načítať.' }
   : { solid: 'Wood', wire: 'Wireframe', circuit: 'Blueprint', spin: 'Spin', load: 'Loading the NightJar.Gift 3D model…', hint: 'Drag to turn the bird.', badge: 'Design v2', warn: 'This is the current design (Nightjar v2), not a finished bird: nothing has been carved yet, so the real one may still differ.', nogl: '3D view needs WebGL.', fail: 'Could not load the model.' };
 ---
-<div class="viewer" data-viewer data-model="/models/nightjar.stl" data-button="/models/nightjar_button.stl" data-fail={L.fail} data-nogl={L.nogl}>
+<div class="viewer" data-viewer data-model="/models/nightjar.stl" data-button="/models/nightjar_button.stl" data-internals="/models/nightjar_internals.stl" data-fail={L.fail} data-nogl={L.nogl}>
   <div class="poster" data-loading>
     <MeshCircuit class="poster-art" />
     <p class="load">{L.load}</p>
@@ -46,22 +46,28 @@ const L = lang === 'sk'
     controls.autoRotate = !reduce; controls.autoRotateSpeed = 1.2;
 
     const loader = new STLLoader();
-    const [g1, g2] = await Promise.all([loader.loadAsync(root.dataset.model!), loader.loadAsync(root.dataset.button!)]);
+    const [g1, g2, g3] = await Promise.all([root.dataset.model!, root.dataset.button!, root.dataset.internals!].map((u) => loader.loadAsync(u)));
     const prep = (g: any) => { g.deleteAttribute('normal'); const m = mergeVertices(g, 0.05); m.computeVertexNormals(); m.rotateX(-Math.PI / 2); return m; };
-    const body = prep(g1), btn = prep(g2);
+    const body = prep(g1), btn = prep(g2), inner = prep(g3);
     body.computeBoundingBox();
     const c = new THREE.Vector3(); body.boundingBox!.getCenter(c);
     const group = new THREE.Group();
     const wood = new THREE.MeshStandardMaterial({ color: 0xc9a074, roughness: 0.62 });
     const woodBtn = new THREE.MeshStandardMaterial({ color: 0x8a5a32, roughness: 0.5 });
-    const ghost = new THREE.MeshBasicMaterial({ color: 0x0b2230, transparent: true, opacity: 0.8, polygonOffset: true, polygonOffsetFactor: 1, polygonOffsetUnits: 1 });
+    // blueprint: see-through blue shell without edges or depth writes, electronics visible inside from every angle
+    const ghost = new THREE.MeshBasicMaterial({ color: 0x5fb4e8, transparent: true, opacity: 0.22, depthWrite: false });
+    const innerFill = new THREE.MeshBasicMaterial({ color: 0xff9a52, transparent: true, opacity: 0.35 });
     const bodyMesh = new THREE.Mesh(body, wood), btnMesh = new THREE.Mesh(btn, woodBtn);
+    const innerMesh = new THREE.Mesh(inner, innerFill);
+    const innerEdges = new THREE.LineSegments(new THREE.EdgesGeometry(inner, 30), new THREE.LineBasicMaterial({ color: 0xffc89a }));
+    bodyMesh.renderOrder = btnMesh.renderOrder = 1;
+    innerMesh.visible = innerEdges.visible = false;
     const edgeCyan = new THREE.LineBasicMaterial({ color: 0x3fe0d0 });
     const edgeCopper = new THREE.LineBasicMaterial({ color: 0xff9a52 });
     const bodyEdges = new THREE.LineSegments(new THREE.EdgesGeometry(body, 22), edgeCyan);
     const btnEdges = new THREE.LineSegments(new THREE.EdgesGeometry(btn, 22), edgeCopper);
     bodyEdges.visible = btnEdges.visible = false;
-    group.add(bodyMesh, btnMesh, bodyEdges, btnEdges);
+    group.add(innerMesh, innerEdges, bodyMesh, btnMesh, bodyEdges, btnEdges);
     group.position.sub(c);
     scene.add(group);
 
@@ -78,7 +84,8 @@ const L = lang === 'sk'
       const solid = m === 'solid';
       bodyMesh.visible = btnMesh.visible = solid || m === 'circuit';
       bodyMesh.material = solid ? wood : ghost; btnMesh.material = solid ? woodBtn : ghost;
-      bodyEdges.visible = btnEdges.visible = !solid;
+      bodyEdges.visible = btnEdges.visible = m === 'wire';
+      innerMesh.visible = innerEdges.visible = m === 'circuit';
       bodyEdges.material = edgeCyan; btnEdges.material = edgeCopper;
       if (m === 'wire') { bodyMesh.visible = btnMesh.visible = false; }
       modes.forEach((x) => { const on = x === b; x.classList.toggle('on', on); x.setAttribute('aria-pressed', String(on)); });
