@@ -4,8 +4,8 @@
 // gallery: arrows, keyboard and swipe move between them. Without JS the links still open the file.
 const { lang = 'en' } = Astro.props;
 const L = lang === 'sk'
-  ? { close: 'Zavrieť', prev: 'Predchádzajúci obrázok', next: 'Ďalší obrázok', loading: 'Načítavam…', open: 'Obrázok v plnej veľkosti', full: 'Otvoriť originál ↗' }
-  : { close: 'Close', prev: 'Previous image', next: 'Next image', loading: 'Loading…', open: 'Full-size image', full: 'Open original ↗' };
+  ? { close: 'Zavrieť', prev: 'Predchádzajúci obrázok', next: 'Ďalší obrázok', loading: 'Načítavam…', open: 'Obrázok v plnej veľkosti', full: 'Otvoriť originál' }
+  : { close: 'Close', prev: 'Previous image', next: 'Next image', loading: 'Loading…', open: 'Full-size image', full: 'Open original' };
 ---
 <dialog class="lb" id="lightbox" aria-label={L.open} data-loading={L.loading}>
   <div class="stage">

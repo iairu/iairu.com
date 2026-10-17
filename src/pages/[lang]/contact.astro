@@ -23,7 +23,6 @@ const rows = [
   crumbs={[{ label: ui[lang].nav.contact }]}>
   <section class="block">
     <div class="wrap">
-      <p class="eyebrow">{T('Contact', 'Kontakt')}</p>
       <h1>{T('Say hello', 'Ozvi sa')}</h1>
       <p class="lead">{T('Tell me what the thing should do, who it is for and by when. A few sentences are enough to start.', 'Napíš, čo má vec robiť, pre koho je a dokedy. Na začiatok stačí pár viet.')}</p>
       <dl class="rows">
@@ -38,8 +37,8 @@ const rows = [
 <style>
   .rows { margin: 2.5rem 0 1rem; border-top: 1px solid var(--line); max-width: 760px; }
   .rows > div { display: grid; grid-template-columns: 9rem 1fr; gap: 1rem; padding: 1.1rem 0; border-bottom: 1px solid var(--line); }
-  dt { font: 500 .75rem var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--copper); padding-top: .35rem; }
+  dt { font-weight: 600; color: var(--soft); padding-top: .45rem; }
   dd { margin: 0; } dd a { font-size: clamp(1.2rem, 1rem + 1.2vw, 1.8rem); font-weight: 600; word-break: break-word; } dd small { display: block; color: var(--soft); margin-top: .2rem; }
-  .loc { font: 400 .85rem var(--mono); color: var(--soft); }
+  .loc { font-size: .95rem; color: var(--soft); }
   @media (max-width: 560px) { .rows > div { grid-template-columns: 1fr; gap: .2rem; } }
 </style>

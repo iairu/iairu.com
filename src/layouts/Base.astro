@@ -79,11 +79,9 @@ const ld = { '@context': 'https://schema.org', '@type': 'Person', name: person.n
       btn?.addEventListener('click', () => setMenu(btn.getAttribute('aria-expanded') !== 'true'));
       nav?.addEventListener('click', (e) => { if ((e.target as HTMLElement).closest('a')) setMenu(false); });
       document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
-      const els = document.querySelectorAll('[data-reveal]');
-      if ('IntersectionObserver' in window) {
-        const io = new IntersectionObserver((es) => es.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: 0.1 });
-        els.forEach((el) => io.observe(el));
-      } else els.forEach((el) => el.classList.add('in'));
     </script>
-  </body>
+  <!-- impeccable-live-start -->
+<script is:inline src="http://localhost:8400/live.js?token=e498c88c-89db-4e28-8e5b-f75e507a4c35"></script>
+<!-- impeccable-live-end -->
+</body>
 </html>

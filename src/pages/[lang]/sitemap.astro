@@ -15,7 +15,6 @@ const g = (id) => projects.filter((p) => p.fields[0] === id);
 <Base lang={lang} path="sitemap/" title={ui[lang].nav.sitemap} description={T('Every page of the site in one list.', 'Každá stránka webu v jednom zozname.')} crumbs={[{ label: ui[lang].nav.sitemap }]}>
   <section class="block">
     <div class="wrap">
-      <p class="eyebrow">{ui[lang].nav.sitemap}</p>
       <h1>{T('Every page, one list', 'Každá stránka v jednom zozname')}</h1>
       <p class="lead">{T('A machine-readable version is at', 'Strojovo čitateľná verzia je na')} <a href="/sitemap-index.xml">/sitemap-index.xml</a>.</p>
       <div class="cols">
@@ -47,6 +46,6 @@ const g = (id) => projects.filter((p) => p.fields[0] === id);
 </Base>
 <style>
   .cols { display: grid; gap: 2rem 4rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); margin-top: 2rem; }
-  h2 { font-size: 1.2rem; color: var(--copper); margin-top: 1.6rem; } h3 { font-size: .95rem; font-family: var(--mono); color: var(--cyan); margin: 1.2rem 0 .4rem; }
+  h2 { font-size: 1.3rem; margin-top: 1.6rem; } h3 { font-size: 1rem; color: var(--soft); margin: 1.2rem 0 .4rem; }
   ul { list-style: none; padding: 0; margin: 0; display: grid; gap: .35rem; } small { color: var(--soft); }
 </style>

@@ -5,6 +5,7 @@ import { LANGS, ui } from '../../../data/i18n.js';
 import { fields, interests, presets } from '../../../data/site.js';
 import { projects, facet, repoSnapshotDate } from '../../../data/projects.js';
 import { tr } from '../../../data/util.js';
+import Icon from '../../../components/Icon.astro';
 
 export const getStaticPaths = () => LANGS.map((lang) => ({ params: { lang } }));
 const { lang } = Astro.params;
@@ -27,15 +28,18 @@ const ui_ = {
   description={T('Every project began as one specific problem. Ordered by GitHub stars, filterable by field, programming language and area of interest.', 'Každý projekt vznikol ako jeden konkrétny problém. Zoradené podľa hviezdičiek na GitHube, s filtrami podľa odboru, programovacieho jazyka a oblasti záujmu.')}
   crumbs={[{ label: ui[lang].nav.projects }]}>
   <section class="block head">
+    <svg class="art" viewBox="0 0 1200 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+    <g stroke="var(--copper)"><path d="M1200 60h-210l-40 40v90l-30 30h-120"/><path d="M1200 120h-150l-30 30v110l40 40h140"/><path d="M780 0v40l-30 30h-90"/><circle cx="796" cy="220" r="5"/><circle cx="1190" cy="300" r="5"/><circle cx="656" cy="70" r="5"/></g>
+    <g stroke="var(--cyan)"><path d="M1200 360h-320l-40-40h-200"/><path d="M1060 0v24l20 20h120"/><circle cx="636" cy="320" r="5"/><circle cx="1060" cy="150" r="4" fill="var(--cyan)" stroke="none"/></g>
+  </svg>
     <div class="wrap">
-      <p class="eyebrow">{T('Challenges', 'Výzvy')}</p>
       <h1>{T('One problem at a time', 'Jeden problém naraz')}</h1>
       <p class="lead">{T('Each project began as one specific problem, and its field is simply what that problem needed, so work that crosses disciplines is normal here. Ordered by GitHub stars. The filters are a shortcut to the chapter you care about: a discipline, a language or the thing you are trying to get done.', 'Každý projekt vznikol ako jeden konkrétny problém a jeho odbor je jednoducho to, čo problém potreboval, takže práce naprieč odbormi sú tu bežné. Zoradené podľa hviezdičiek na GitHube. Filtre sú skratka ku kapitole, ktorá ťa zaujíma: odbor, jazyk alebo vec, ktorú chceš dosiahnuť.')}</p>
     </div>
   </section>
 
   <section class="wrap finder" id="filters" data-finder data-all={projects.length}
-    data-s-none={ui_.none} data-s-count={ui_.count} data-s-lang-hide={ui_.langHide} data-s-stars={ui_.starsNote} data-s-try={ui_.tryRemove}>
+    data-s-none={ui_.none} data-s-count={ui_.count} data-s-lang-hide={ui_.langHide} data-s-stars={ui_.starsNote} data-s-try={ui_.tryRemove} data-s-starred={T('Starred', 'S hviezdičkou')}>
     <form class="panel" aria-label={T('Filters', 'Filtre')} onsubmit="return false">
       <div class="row search">
         <label for="q" class="lab">{T('Search', 'Hľadať')}</label>
@@ -104,7 +108,7 @@ const ui_ = {
         <div class="chips" data-try></div>
       </div>
       <noscript><p class="remark">{T('Filters need JavaScript. All projects are listed above.', 'Filtre potrebujú JavaScript. Všetky projekty sú vypísané vyššie.')}</p></noscript>
-      <p class="foot">{T('GitHub numbers snapshot', 'Stav GitHubu k dátumu')}: {repoSnapshotDate}. <a href="https://github.com/iairu?tab=repositories" rel="noopener">github.com/iairu ↗</a></p>
+      <p class="foot">{T('GitHub numbers snapshot', 'Stav GitHubu k dátumu')}: {repoSnapshotDate}. <a href="https://github.com/iairu?tab=repositories" rel="noopener">github.com/iairu <Icon name="ext" /></a></p>
     </div>
   </section>
 </Base>
@@ -116,18 +120,26 @@ const ui_ = {
 </script>
 
 <style>
-  .head { padding-bottom: 1rem; }
+  .head { padding-bottom: 1rem; isolation: isolate; overflow: hidden; }
+  /* the routed board from the homepage, entering from the right edge behind the title */
+  .head .art { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; opacity: .13; }
   .finder { display: grid; grid-template-columns: minmax(260px, 340px) 1fr; gap: clamp(1.2rem, 3vw, 2.5rem); align-items: start; padding-bottom: 2rem; }
-  .panel { position: sticky; top: calc(var(--hdr) + 12px); max-height: calc(100dvh - var(--hdr) - 24px); overflow: auto; background: var(--bg2); border: 1px solid var(--line); padding: 1rem 1.1rem; display: grid; gap: 1.1rem; border-top: 3px solid var(--cyan); }
+  .panel { position: sticky; top: calc(var(--hdr) + 12px); max-height: calc(100dvh - var(--hdr) - 24px); overflow: auto; background: var(--bg2); border: 1px solid var(--line); padding: 1rem 1.1rem; display: grid; gap: 1.1rem; }
   :global(html:not(.js)) .panel { display: none; }
   fieldset { border: 0; padding: 0; margin: 0; min-width: 0; }
-  .lab { font: 500 .72rem var(--mono); text-transform: uppercase; letter-spacing: .14em; color: var(--copper); padding: 0; margin-bottom: .35rem; display: block; }
+  .lab { font: 600 1rem var(--font); color: var(--ink); padding: 0; margin-bottom: .3rem; display: block; }
   .hint { font-size: .82rem; color: var(--soft); margin: 0 0 .55rem; line-height: 1.4; }
   input[type='search'], select { width: 100%; min-height: 44px; background: var(--bg); color: var(--ink); border: 1px solid var(--line2); padding: .6rem .8rem; font: 400 1rem var(--font); border-radius: 2px; }
+  /* search reads as the same recessed well as the header search, with the lens drawn in cyan */
+  input[type='search'] { background: var(--bg3) no-repeat .75rem 50% / 18px; border-color: var(--line); padding-left: 2.4rem; box-shadow: inset 0 1px 2px rgb(0 0 0 / .25); transition: border-color .15s;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233fe0d0' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.6-3.6'/%3E%3C/svg%3E"); }
+  :global(:root[data-theme='light']) input[type='search'] { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23007a70' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.6-3.6'/%3E%3C/svg%3E"); }
+  input[type='search']:hover, input[type='search']:focus { border-color: var(--cyan); }
+  input[type='search']::placeholder { color: var(--soft); opacity: .85; }
   input[type='search']:focus-visible, select:focus-visible { outline-offset: 1px; }
   .chips { display: flex; flex-wrap: wrap; gap: .4rem; }
-  .chip { --c: var(--cyan); position: relative; display: inline-flex; align-items: center; gap: .45em; min-height: 36px; padding: .4em .7em; border: 1px solid var(--line2); background: var(--bg); color: var(--ink); font: 500 .8rem var(--mono); cursor: pointer; user-select: none; border-radius: 2px; }
-  .chip i { font-style: normal; opacity: .6; font-size: .72rem; }
+  .chip { --c: var(--cyan); position: relative; display: inline-flex; align-items: center; gap: .45em; min-height: 36px; padding: .4em .7em; border: 1px solid var(--line2); background: var(--bg); color: var(--ink); font: 500 .88rem var(--font); cursor: pointer; user-select: none; border-radius: 2px; }
+  .chip i { font: 500 .72rem var(--mono); font-variant-numeric: tabular-nums; opacity: .65; }
   .chip:hover { border-color: var(--c); }
   .chip input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
   .chip:has(input:checked), .chip.on { background: var(--c); color: var(--on-accent); border-color: var(--c); }
@@ -137,11 +149,11 @@ const ui_ = {
   .lang { --c: var(--amber); }
   .bar { display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: .6rem; }
   .bar .lab { margin: 0; }
-  .status { font: 500 .85rem var(--mono); margin: 0 0 .4rem; color: var(--ink); }
-  .remark { font-size: .9rem; color: var(--soft); border-left: 3px solid var(--copper); padding: .3rem .8rem; margin: .2rem 0 1rem; }
+  .status { font-weight: 600; margin: 0 0 .4rem; color: var(--ink); }
+  .remark { font-size: .9rem; color: var(--soft); background: var(--bg2); border: 1px solid var(--line); padding: .5rem .8rem; margin: .2rem 0 1rem; }
   .list { margin-top: 1rem; }
   .empty { border: 1px dashed var(--line2); padding: 2rem; margin-top: 1rem; }
-  .foot { margin-top: 2rem; font: 400 .76rem var(--mono); color: var(--soft); }
+  .foot { margin-top: 2rem; font-size: .85rem; color: var(--soft); }
   @media (max-width: 900px) {
     .finder { grid-template-columns: 1fr; }
     .panel { position: static; max-height: none; }

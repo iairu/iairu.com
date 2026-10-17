@@ -71,7 +71,7 @@ export function initFinder(root: HTMLElement) {
       const active: [string, HTMLInputElement | null, string][] = [];
       root.querySelectorAll<HTMLInputElement>('input:checked').forEach((i) => active.push([i.closest('.chip')!.querySelector('span')!.textContent!, i, '']));
       if (text) active.push([`“${q.value.trim()}”`, null, 'q']);
-      if (starred.on) active.push(['★', null, 'starred']);
+      if (starred.on) active.push([root.dataset.sStarred || 'starred', null, 'starred']);
       for (const [label, input, kind] of active) {
         const b = document.createElement('button'); b.type = 'button'; b.className = 'chip on'; b.textContent = `× ${label}`;
         b.onclick = () => { if (input) input.checked = false; else if (kind === 'q') q.value = ''; else starred.on = false; render(); };

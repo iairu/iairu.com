@@ -20,13 +20,12 @@ const groups = [
   crumbs={[{ label: ui[lang].nav.art }]}>
   <section class="block head">
     <div class="wrap">
-      <p class="eyebrow">{T('Art, branding & 3D', 'Umenie, branding a 3D')}</p>
       <h1>{T('When the problem is how it looks', 'Keď je problémom, ako to vyzerá')}</h1>
       <p class="lead">{T('Graphic design school (SUPTN Trenčín, 2015–2019) came before the code, and it taught me to treat form as a problem to solve, not decoration. Here the challenge is how something should look, move or be recognised: a logo that has to hold up, a world made of letters, a comic page, a character. Every card opens the whole piece.', 'Škola grafického dizajnu (SUPTN Trenčín, 2015–2019) prišla pred kódom a naučila ma brať tvar ako problém na vyriešenie, nie ako dekoráciu. Tu je výzvou, ako má niečo vyzerať, pohybovať sa alebo byť spoznané: logo, ktoré musí obstáť, svet z písmen, komiksová strana, postava. Každá karta otvorí celé dielo.')}</p>
       <ul class="jump" aria-label={T('Sections', 'Sekcie')}>
         <li><a href="#branding">{T('Branding', 'Branding')}</a></li>
         {groups.map((g) => <li><a href={`#${g.id}`}>{g.title}</a></li>)}
-        <li><a href={lhref(lang, 'projects/?field=art3d')}>{T('Filter all 3D ↗', 'Filtrovať 3D ↗')}</a></li>
+        <li><a href={lhref(lang, 'projects/?field=art3d')}>{T('Filter all 3D', 'Filtrovať 3D')}</a></li>
       </ul>
     </div>
   </section>
@@ -57,11 +56,11 @@ const groups = [
 <style>
   .head { padding-bottom: 1.5rem; }
   .jump { display: flex; flex-wrap: wrap; gap: .5rem; list-style: none; margin: 1.6rem 0 0; padding: 0; }
-  .jump a { display: inline-block; padding: .55em .9em; border: 1px solid var(--line2); color: var(--ink); text-decoration: none; font: 500 .8rem var(--mono); }
-  .jump a:hover { border-color: var(--copper); color: var(--copper); }
+  .jump a { display: inline-block; padding: .55em .9em; border: 1px solid var(--line2); color: var(--ink); text-decoration: none; font-weight: 500; font-size: .95rem; border-radius: 2px; }
+  .jump a:hover { border-color: var(--cyan); background: var(--bg3); }
   .brands { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 330px), 1fr)); }
-  .brands a { display: grid; grid-template-rows: 180px auto; border: 1px solid var(--line); background: var(--bg3) center/cover; color: var(--ink); text-decoration: none; transition: transform .2s, border-color .2s; overflow: hidden; }
-  .brands a:hover { transform: translateY(-3px); border-color: var(--lime); }
+  .brands a { display: grid; grid-template-rows: 180px auto; border: 1px solid var(--line); background: var(--bg3) center/cover; color: var(--ink); text-decoration: none; transition: border-color .2s; overflow: hidden; }
+  .brands a:hover { border-color: var(--lime); }
   .brands img { width: 60%; max-height: 130px; margin: auto; object-fit: contain; filter: drop-shadow(0 4px 12px rgb(0 0 0 / .35)); }
   .brands span { background: var(--bg2); padding: .9rem 1rem; font-size: .92rem; color: var(--soft); border-top: 1px solid var(--line); }
   .brands b { color: var(--ink); font-size: 1.05rem; } .brands small { font-family: var(--mono); margin-left: .4rem; }

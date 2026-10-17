@@ -1,5 +1,6 @@
 ---
 import Base from '../../../layouts/Base.astro';
+import Icon from '../../../components/Icon.astro';
 import { LANGS, ui } from '../../../data/i18n.js';
 import { docsFor } from '../../../data/docs.js';
 import { lhref } from '../../../data/util.js';
@@ -13,17 +14,18 @@ const T = (en, sk) => (lang === 'sk' ? sk : en);
   crumbs={[{ label: ui[lang].nav.docs, href: lhref(lang, 'docs/') }, { label: d.title }]}>
   <article class="block">
     <div class="wrap">
-      <p class="eyebrow">{d.date}</p>
       {d.translated && <p class="note" role="note">{T('Translated into English from the original Slovak text.', 'Preložené do slovenčiny z pôvodného anglického textu.')}</p>}
       <div class="prose">
         <h1>{d.title}</h1>
+        {d.date && <p class="date"><time datetime={d.date}>{d.date}</time></p>}
         <Fragment set:html={d.html} />
       </div>
-      <p class="back"><a class="btn ghost" href={lhref(lang, 'docs/')}>← {ui[lang].nav.docs}</a></p>
+      <p class="back"><a class="btn ghost" href={lhref(lang, 'docs/')}><Icon name="prev" /> {ui[lang].nav.docs}</a></p>
     </div>
   </article>
 </Base>
 <style>
-  .note { border-left: 3px solid var(--copper); padding: .5rem 1rem; background: var(--bg2); max-width: 78ch; font-size: .95rem; color: var(--soft); }
+  .date { font: 400 .85rem var(--mono); font-variant-numeric: tabular-nums; color: var(--soft); margin-top: -.6em; }
+  .note { border: 1px solid var(--line); padding: .5rem 1rem; background: var(--bg2); max-width: 78ch; font-size: .95rem; color: var(--soft); }
   .back { margin-top: 3rem; }
 </style>
