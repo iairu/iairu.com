@@ -1,6 +1,6 @@
 ---
 name: iairu.com
-description: The Night Workbench in IBM Carbon colour — one dark bench where wireframe and circuit trace share the same sheet, set in IBM Plex with a Qiskit-purple voice.
+description: The Night Workbench in IBM Carbon colour — one dark bench where wireframe and circuit trace share the same sheet, set in IBM Plex with an IBM-blue voice.
 colors:
   bg: "#161616"
   bg2: "#262626"
@@ -9,13 +9,13 @@ colors:
   soft: "#c6c6c6"
   line: "#393939"
   line2: "#525252"
-  purple: "#a56eff"
   blue: "#78a9ff"
+  cobalt: "#4589ff"
   cyan: "#33b1ff"
   magenta: "#ff7eb6"
   teal: "#3ddbd9"
   yellow: "#f1c21b"
-  on-accent: "#1c0f30"
+  on-accent: "#001141"
   focus: "#78a9ff"
   bg-paper: "#ffffff"
   bg2-paper: "#f4f4f4"
@@ -24,8 +24,8 @@ colors:
   soft-paper: "#525252"
   line-paper: "#e0e0e0"
   line2-paper: "#a8a8a8"
-  purple-paper: "#6929c4"
   blue-paper: "#0f62fe"
+  cobalt-paper: "#0043ce"
   cyan-paper: "#0072c3"
   magenta-paper: "#d02670"
   teal-paper: "#005d5d"

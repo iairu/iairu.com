@@ -39,7 +39,7 @@ const L = lang === 'sk'
     camera.position.set(-330, 150, 420);
     scene.add(new THREE.HemisphereLight(0xfff1dc, 0x24303a, 1.3));
     const key = new THREE.DirectionalLight(0xffe2b8, 2.4); key.position.set(200, 320, 260); scene.add(key);
-    const rim = new THREE.DirectionalLight(0xa56eff, 1.4); rim.position.set(-260, 120, -240); scene.add(rim);
+    const rim = new THREE.DirectionalLight(0x78a9ff, 1.4); rim.position.set(-260, 120, -240); scene.add(rim);
     const controls = new OrbitControls(camera, canvas);
     controls.enableDamping = true; controls.enablePan = false; controls.enableZoom = false;
     controls.autoRotate = !reduce; controls.autoRotateSpeed = 1.2;
@@ -55,7 +55,7 @@ const L = lang === 'sk'
     const woodBtn = new THREE.MeshStandardMaterial({ color: 0x8a5a32, roughness: 0.5 });
     // blueprint: see-through blue shell without edges or depth writes, electronics visible inside from every angle
     const ghost = new THREE.MeshBasicMaterial({ color: 0x5fb4e8, transparent: true, opacity: 0.22, depthWrite: false });
-    const innerFill = new THREE.MeshBasicMaterial({ color: 0x78a9ff, transparent: true, opacity: 0.35 });
+    const innerFill = new THREE.MeshBasicMaterial({ color: 0x4589ff, transparent: true, opacity: 0.35 });
     const bodyMesh = new THREE.Mesh(body, wood), btnMesh = new THREE.Mesh(btn, woodBtn);
     const innerMesh = new THREE.Mesh(inner, innerFill);
     const innerEdges = new THREE.LineSegments(new THREE.EdgesGeometry(inner, 30), new THREE.LineBasicMaterial({ color: 0xffc89a }));
@@ -119,13 +119,13 @@ const L = lang === 'sk'
 </script>
 
 <style>
-  .viewer { position: relative; aspect-ratio: 1 / 1; max-height: 640px; width: 100%; border: 1px solid var(--line); background: radial-gradient(70% 70% at 50% 45%, color-mix(in srgb, var(--purple) 12%, var(--bg2)), var(--bg2)); overflow: hidden; touch-action: pan-y; }
+  .viewer { position: relative; aspect-ratio: 1 / 1; max-height: 640px; width: 100%; border: 1px solid var(--line); background: radial-gradient(70% 70% at 50% 45%, color-mix(in srgb, var(--blue) 12%, var(--bg2)), var(--bg2)); overflow: hidden; touch-action: pan-y; }
   /* a low board: up to ~4 degrees of lean, its edge showing as a stack of thin layers on the low side */
   .viewer { --tx: 0; --ty: 0; transform: perspective(1600px) rotateY(calc(var(--tx) * 4deg)) rotateX(calc(var(--ty) * -3deg));
     box-shadow: calc(var(--tx) * -1px) calc(var(--ty) * -1px + 1px) 0 var(--bg3), calc(var(--tx) * -2px) calc(var(--ty) * -2px + 2px) 0 var(--bg3),
       calc(var(--tx) * -3px) calc(var(--ty) * -3px + 3px) 0 var(--line), calc(var(--tx) * -14px) calc(var(--ty) * -10px + 22px) 34px -18px rgb(0 0 0 / .7);
     transition: transform .9s cubic-bezier(.16, 1, .3, 1), box-shadow .9s cubic-bezier(.16, 1, .3, 1); }
-  .viewer::before, .viewer::after { content: ''; position: absolute; width: 22px; height: 22px; border: 2px solid var(--blue); pointer-events: none; z-index: 3; }
+  .viewer::before, .viewer::after { content: ''; position: absolute; width: 22px; height: 22px; border: 2px solid var(--cobalt); pointer-events: none; z-index: 3; }
   .viewer::before { top: 8px; left: 8px; border-right: 0; border-bottom: 0; }
   .viewer::after { bottom: 8px; right: 8px; border-left: 0; border-top: 0; }
   canvas { position: absolute; inset: 0; width: 100%; height: 100%; cursor: grab; opacity: 0; transition: opacity .6s; touch-action: pan-y; }
@@ -137,9 +137,9 @@ const L = lang === 'sk'
   @keyframes float { 50% { transform: translateY(-8px) rotate(1.5deg); } }
   .ctrl { position: absolute; top: 12px; right: 12px; z-index: 4; display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 4px; }
   .ctrl button { font: 500 .82rem var(--font); padding: .5em .75em; min-height: 36px; background: var(--bg); color: var(--ink); border: 1px solid var(--line2); cursor: pointer; border-radius: 2px; }
-  .ctrl button.on { background: var(--purple); color: var(--on-accent); border-color: var(--purple); }
-  .badge { position: absolute; top: 12px; left: 12px; z-index: 4; margin: 0; max-width: min(15rem, calc(100% - 24px - 11.5rem)); display: grid; gap: .25rem; padding: .5rem .65rem; background: var(--bg); border: 1px dashed var(--blue); font-size: .78rem; line-height: 1.4; color: var(--soft); }
-  .badge b { color: var(--blue); font-weight: 600; }
+  .ctrl button.on { background: var(--blue); color: var(--on-accent); border-color: var(--blue); }
+  .badge { position: absolute; top: 12px; left: 12px; z-index: 4; margin: 0; max-width: min(15rem, calc(100% - 24px - 11.5rem)); display: grid; gap: .25rem; padding: .5rem .65rem; background: var(--bg); border: 1px dashed var(--cobalt); font-size: .78rem; line-height: 1.4; color: var(--soft); }
+  .badge b { color: var(--cobalt); font-weight: 600; }
   @media (max-width: 560px) { .badge { max-width: none; right: 12px; top: auto; bottom: 34px; } .ctrl { top: 10px; left: 12px; justify-content: flex-start; } }
   .cap { position: absolute; bottom: 10px; left: 14px; right: 14px; z-index: 4; margin: 0; font-size: .8rem; color: var(--soft); pointer-events: none; }
 </style>

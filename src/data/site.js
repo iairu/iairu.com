@@ -31,9 +31,9 @@ export const SITE_DESCRIPTION = {
 export const fields = {
   ai: { color: 'cyan', label: { en: 'Prompt engineering & AI', sk: 'Prompt engineering a AI' },
     hint: { en: 'LLM workflows, prompt-driven builds, ML experiments.', sk: 'LLM postupy, vývoj riadený promptami, ML experimenty.' } },
-  software: { color: 'purple', label: { en: 'Software & web', sk: 'Softvér a web' },
+  software: { color: 'blue', label: { en: 'Software & web', sk: 'Softvér a web' },
     hint: { en: 'Apps, sites, tools, classic programming.', sk: 'Aplikácie, weby, nástroje, klasické programovanie.' } },
-  hardware: { color: 'blue', label: { en: 'Electronics & making', sk: 'Elektronika a výroba' },
+  hardware: { color: 'cobalt', label: { en: 'Electronics & making', sk: 'Elektronika a výroba' },
     hint: { en: 'Circuits, boards, CNC, objects you can hold.', sk: 'Obvody, dosky, CNC, predmety, ktoré môžeš chytiť do ruky.' } },
   art3d: { color: 'magenta', label: { en: '3D & animation', sk: '3D a animácia' },
     hint: { en: 'Blender, 3D models, OpenGL, animated stories.', sk: 'Blender, 3D modely, OpenGL, animované príbehy.' } },

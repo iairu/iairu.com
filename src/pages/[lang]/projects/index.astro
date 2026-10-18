@@ -29,8 +29,8 @@ const ui_ = {
   crumbs={[{ label: ui[lang].nav.projects }]}>
   <section class="block head">
     <svg class="art" viewBox="0 0 1200 420" preserveAspectRatio="xMidYMid slice" aria-hidden="true" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-    <g stroke="var(--blue)"><path d="M1200 60h-210l-40 40v90l-30 30h-120"/><path d="M1200 120h-150l-30 30v110l40 40h140"/><path d="M780 0v40l-30 30h-90"/><circle cx="796" cy="220" r="5"/><circle cx="1190" cy="300" r="5"/><circle cx="656" cy="70" r="5"/></g>
-    <g stroke="var(--purple)"><path d="M1200 360h-320l-40-40h-200"/><path d="M1060 0v24l20 20h120"/><circle cx="636" cy="320" r="5"/><circle cx="1060" cy="150" r="4" fill="var(--purple)" stroke="none"/></g>
+    <g stroke="var(--cobalt)"><path d="M1200 60h-210l-40 40v90l-30 30h-120"/><path d="M1200 120h-150l-30 30v110l40 40h140"/><path d="M780 0v40l-30 30h-90"/><circle cx="796" cy="220" r="5"/><circle cx="1190" cy="300" r="5"/><circle cx="656" cy="70" r="5"/></g>
+    <g stroke="var(--blue)"><path d="M1200 360h-320l-40-40h-200"/><path d="M1060 0v24l20 20h120"/><circle cx="636" cy="320" r="5"/><circle cx="1060" cy="150" r="4" fill="var(--blue)" stroke="none"/></g>
   </svg>
     <div class="wrap">
       <h1>{T('One problem at a time', 'Jeden problém naraz')}</h1>
@@ -132,13 +132,13 @@ const ui_ = {
   input[type='search'], select { width: 100%; min-height: 44px; background: var(--bg); color: var(--ink); border: 1px solid var(--line2); padding: .6rem .8rem; font: 400 1rem var(--font); border-radius: 2px; }
   /* search reads as the same recessed well as the header search, with the lens drawn in cyan */
   input[type='search'] { background: var(--bg3) no-repeat .75rem 50% / 18px; border-color: var(--line); padding-left: 2.4rem; box-shadow: inset 0 1px 2px rgb(0 0 0 / .25); transition: border-color .15s;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a56eff' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.6-3.6'/%3E%3C/svg%3E"); }
-  :global(:root[data-theme='light']) input[type='search'] { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%236929c4' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.6-3.6'/%3E%3C/svg%3E"); }
-  input[type='search']:hover, input[type='search']:focus { border-color: var(--purple); }
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2378a9ff' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.6-3.6'/%3E%3C/svg%3E"); }
+  :global(:root[data-theme='light']) input[type='search'] { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%230f62fe' stroke-width='2' stroke-linecap='round'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.6-3.6'/%3E%3C/svg%3E"); }
+  input[type='search']:hover, input[type='search']:focus { border-color: var(--blue); }
   input[type='search']::placeholder { color: var(--soft); opacity: .85; }
   input[type='search']:focus-visible, select:focus-visible { outline-offset: 1px; }
   .chips { display: flex; flex-wrap: wrap; gap: .4rem; }
-  .chip { --c: var(--purple); position: relative; display: inline-flex; align-items: center; gap: .45em; min-height: 36px; padding: .4em .7em; border: 1px solid var(--line2); background: var(--bg); color: var(--ink); font: 500 .88rem var(--font); cursor: pointer; user-select: none; border-radius: 2px; }
+  .chip { --c: var(--blue); position: relative; display: inline-flex; align-items: center; gap: .45em; min-height: 36px; padding: .4em .7em; border: 1px solid var(--line2); background: var(--bg); color: var(--ink); font: 500 .88rem var(--font); cursor: pointer; user-select: none; border-radius: 2px; }
   .chip i { font: 500 .72rem var(--mono); font-variant-numeric: tabular-nums; opacity: .65; }
   .chip:hover { border-color: var(--c); }
   .chip input { position: absolute; opacity: 0; inset: 0; margin: 0; cursor: pointer; }
