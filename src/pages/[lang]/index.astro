@@ -118,8 +118,7 @@ const pipeline = [
 </Base>
 
 <script>
-  // Tilt the hero headline slightly: toward the pointer on desktop, with the device's tilt on phones.
-  // Never runs with reduced motion.
+  // Tilt the hero headline slightly toward the pointer on desktop. Never runs with reduced motion.
   const h = document.querySelector<HTMLElement>('[data-tilt]');
   const hero = h?.closest<HTMLElement>('.hero');
   if (h && hero && matchMedia('(prefers-reduced-motion: no-preference)').matches) {
@@ -143,17 +142,6 @@ const pipeline = [
         set(clamp((e.clientX - (r.left + r.width / 2)) / (r.width / 2)), clamp((e.clientY - (r.top + r.height / 2)) / (r.height / 1.2)));
       });
       hero.addEventListener('pointerleave', reset);
-    } else if ('DeviceOrientationEvent' in window) {
-      // The first reading is the resting pose, so the headline starts flat however the phone is held.
-      let base: [number, number] | null = null;
-      const onTilt = (e: DeviceOrientationEvent) => {
-        if (e.beta == null || e.gamma == null) return;
-        base ??= [e.beta, e.gamma];
-        set(clamp((e.gamma - base[1]) / 25), clamp((e.beta - base[0]) / 25));
-      };
-      // Attach without prompting; iOS devices that gate motion behind a permission prompt simply won't tilt.
-      addEventListener('deviceorientation', onTilt);
-      document.addEventListener('visibilitychange', () => { if (document.hidden) { base = null; reset(); } });
     }
   }
 </script>

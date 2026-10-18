@@ -97,8 +97,8 @@ const L = lang === 'sk'
     io.observe(el);
   });
 
-  // The viewer is a thin board on the bench: it leans a few degrees toward the pointer anywhere on the page,
-  // or with the phone's own tilt. The model inside keeps its own drag and spin.
+  // The viewer is a thin board on the bench: it leans a few degrees toward the pointer anywhere on the page.
+  // The model inside keeps its own drag and spin.
   function tiltBoards(boards: HTMLElement[]) {
     if (reduce || !boards.length) return;
     let raf = 0;
@@ -113,17 +113,6 @@ const L = lang === 'sk'
         set(clamp((e.clientX - (r.left + r.width / 2)) / (innerWidth / 2)), clamp((e.clientY - (r.top + r.height / 2)) / (innerHeight / 2)));
       }, { passive: true });
       document.documentElement.addEventListener('pointerleave', () => set(0, 0));
-    } else if ('DeviceOrientationEvent' in window) {
-      // the first reading is the resting pose, so the board starts flat however the phone is held
-      let base: [number, number] | null = null;
-      const onTilt = (e: DeviceOrientationEvent) => {
-        if (e.beta == null || e.gamma == null) return;
-        base ??= [e.beta, e.gamma];
-        set(clamp((e.gamma - base[1]) / 25), clamp((e.beta - base[0]) / 25));
-      };
-      // Attach without prompting; iOS devices that gate motion behind a permission prompt simply won't tilt.
-      addEventListener('deviceorientation', onTilt);
-      document.addEventListener('visibilitychange', () => { if (document.hidden) { base = null; set(0, 0); } });
     }
   }
   tiltBoards([...document.querySelectorAll<HTMLElement>('[data-viewer]')]);
