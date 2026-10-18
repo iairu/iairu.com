@@ -55,7 +55,7 @@ const L = lang === 'sk'
     const woodBtn = new THREE.MeshStandardMaterial({ color: 0x8a5a32, roughness: 0.5 });
     // blueprint: see-through blue shell without edges or depth writes, electronics visible inside from every angle
     const ghost = new THREE.MeshBasicMaterial({ color: 0x5fb4e8, transparent: true, opacity: 0.22, depthWrite: false });
-    const innerFill = new THREE.MeshBasicMaterial({ color: 0xff9a52, transparent: true, opacity: 0.35 });
+    const innerFill = new THREE.MeshBasicMaterial({ color: 0x78a9ff, transparent: true, opacity: 0.35 });
     const bodyMesh = new THREE.Mesh(body, wood), btnMesh = new THREE.Mesh(btn, woodBtn);
     const innerMesh = new THREE.Mesh(inner, innerFill);
     const innerEdges = new THREE.LineSegments(new THREE.EdgesGeometry(inner, 30), new THREE.LineBasicMaterial({ color: 0xffc89a }));
