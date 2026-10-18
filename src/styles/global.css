@@ -1,25 +1,25 @@
-@import '@fontsource-variable/bricolage-grotesque/index.css';
-@import '@fontsource-variable/bricolage-grotesque/wdth.css';
+@import '@fontsource-variable/ibm-plex-sans/index.css';
+@import '@fontsource-variable/ibm-plex-sans/wght.css';
 @import '@fontsource/ibm-plex-mono/400.css';
 @import '@fontsource/ibm-plex-mono/500.css';
 
-/* The night workbench: code (cyan), electronics (copper), 3D (pink) and illustration (lime)
-   laid out on one dark bench under a star-field sky. */
+/* The night workbench on IBM Carbon colours: Qiskit purple is the primary voice, IBM blue the
+   structural one, over neutral-gray surfaces. Six Carbon field hues tag each discipline. */
 :root {
-  --bg: #0a0f14; --bg2: #0f171f; --bg3: #15212b; --ink: #e9eff3; --soft: #9fb1bd; --line: #243542; --line2: #35505f;
-  --cyan: #3fe0d0; --copper: #ff9a52; --pink: #ff74b8; --violet: #b199ff; --lime: #bde75e; --amber: #ffcf5a;
-  --on-accent: #06100f; --focus: #8fd0ff; --margin-shade: rgb(0 0 0 / .32);
+  --bg: #161616; --bg2: #262626; --bg3: #393939; --ink: #f4f4f4; --soft: #c6c6c6; --line: #393939; --line2: #525252;
+  --purple: #a56eff; --blue: #78a9ff; --magenta: #ff7eb6; --cyan: #33b1ff; --teal: #3ddbd9; --yellow: #f1c21b;
+  --on-accent: #1c0f30; --focus: #78a9ff; --margin-shade: rgb(0 0 0 / .32);
   --shadow: 0 18px 40px -22px rgb(0 0 0 / .9);
-  --font: 'Bricolage Grotesque Variable', 'Segoe UI', system-ui, sans-serif;
+  --font: 'IBM Plex Sans Variable', 'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif;
   --mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
   --maxw: 1200px; --gutter: clamp(16px, 4vw, 40px); --hdr: 64px;
   color-scheme: dark;
 }
 :root[data-theme='light'] {
-  --bg: #f4f2ea; --bg2: #ebe8dc; --bg3: #e0dccd; --ink: #121c24; --soft: #4b5b66; --line: #cfcab8; --line2: #a9a38c;
-  --cyan: #007a70; --copper: #b2500c; --pink: #b8216f; --violet: #5a3fc4; --lime: #4c6e00; --amber: #8a6200;
-  --on-accent: #ffffff; --focus: #0b57b8; --margin-shade: rgb(60 50 30 / .07);
-  --shadow: 0 16px 34px -22px rgb(20 30 40 / .45);
+  --bg: #ffffff; --bg2: #f4f4f4; --bg3: #e0e0e0; --ink: #161616; --soft: #525252; --line: #e0e0e0; --line2: #a8a8a8;
+  --purple: #6929c4; --blue: #0f62fe; --magenta: #d02670; --cyan: #0072c3; --teal: #005d5d; --yellow: #8a6a00;
+  --on-accent: #ffffff; --focus: #0f62fe; --margin-shade: rgb(0 0 0 / .05);
+  --shadow: 0 16px 34px -22px rgb(20 30 40 / .4);
   color-scheme: light;
 }
 *, *::before, *::after { box-sizing: border-box; }
@@ -48,16 +48,16 @@ h1 { font-size: clamp(2.5rem, 1.4rem + 5vw, 5.2rem); font-weight: 700; letter-sp
 h2 { font-size: clamp(1.7rem, 1.3rem + 2vw, 2.8rem); }
 h3 { font-size: clamp(1.15rem, 1.05rem + .5vw, 1.45rem); line-height: 1.2; }
 p { margin: 0 0 1em; text-wrap: pretty; }
-a { color: var(--cyan); text-underline-offset: .2em; text-decoration-thickness: 1px; }
+a { color: var(--purple); text-underline-offset: .2em; text-decoration-thickness: 1px; }
 a:hover { text-decoration-thickness: 2px; }
 :focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 2px; }
-::selection { background: var(--cyan); color: var(--on-accent); }
-html { scrollbar-color: var(--line2) var(--bg); caret-color: var(--cyan); }
+::selection { background: var(--purple); color: var(--on-accent); }
+html { scrollbar-color: var(--line2) var(--bg); caret-color: var(--purple); }
 .icon { display: inline-block; vertical-align: -.12em; flex: none; }
 code, kbd { font-family: var(--mono); font-size: .9em; }
 .mono { font-family: var(--mono); font-variant-numeric: tabular-nums; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-.skip { position: absolute; left: -999px; top: 8px; background: var(--cyan); color: var(--on-accent); padding: .6rem 1rem; z-index: 300; font-weight: 600; }
+.skip { position: absolute; left: -999px; top: 8px; background: var(--purple); color: var(--on-accent); padding: .6rem 1rem; z-index: 300; font-weight: 600; }
 .skip:focus { left: 8px; }
 .wrap { width: min(100% - 2 * var(--gutter), var(--maxw)); margin-inline: auto; }
 .narrow { width: min(100% - 2 * var(--gutter), 780px); margin-inline: auto; }
@@ -72,8 +72,8 @@ code, kbd { font-family: var(--mono); font-size: .9em; }
 .split { display: grid; gap: clamp(2rem, 5vw, 4.5rem); grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); align-items: center; }
 
 /* field colour hooks */
-.c-cyan { --c: var(--cyan); } .c-copper { --c: var(--copper); } .c-pink { --c: var(--pink); }
-.c-violet { --c: var(--violet); } .c-lime { --c: var(--lime); } .c-amber { --c: var(--amber); }
+.c-purple { --c: var(--purple); } .c-blue { --c: var(--blue); } .c-magenta { --c: var(--magenta); }
+.c-cyan { --c: var(--cyan); } .c-teal { --c: var(--teal); } .c-yellow { --c: var(--yellow); }
 
 /* buttons: squared parts; hover shifts the fill, nothing jumps */
 .btn {
@@ -83,10 +83,10 @@ code, kbd { font-family: var(--mono); font-size: .9em; }
   border-radius: 2px; transition: background-color .15s, border-color .15s, color .15s;
 }
 .btn:hover { --bg-b: color-mix(in srgb, var(--ink) 82%, var(--bg)); text-decoration: none; }
-.btn.primary { --bg-b: var(--cyan); --fg-b: var(--on-accent); --bd-b: var(--cyan); }
-.btn.primary:hover { --bg-b: color-mix(in srgb, var(--cyan) 80%, var(--ink)); --bd-b: var(--bg-b); }
+.btn.primary { --bg-b: var(--purple); --fg-b: var(--on-accent); --bd-b: var(--purple); }
+.btn.primary:hover { --bg-b: color-mix(in srgb, var(--purple) 80%, var(--ink)); --bd-b: var(--bg-b); }
 .btn.ghost { --bg-b: transparent; --fg-b: var(--ink); --bd-b: var(--line2); }
-.btn.ghost:hover { --bg-b: var(--bg3); --bd-b: var(--cyan); }
+.btn.ghost:hover { --bg-b: var(--bg3); --bd-b: var(--purple); }
 .btn.sm { min-height: 38px; padding: .55em .85em; font-size: .85rem; }
 
 /* chips and tags */
@@ -94,7 +94,7 @@ code, kbd { font-family: var(--mono); font-size: .9em; }
 .tag.lang { font: 500 .72rem/1 var(--mono); }
 .tag.lang::before { content: ''; width: .6em; height: .6em; background: currentColor; border-radius: 50%; }
 .tags { display: flex; flex-wrap: wrap; gap: .4rem; }
-.star { color: var(--amber); }
+.star { color: var(--yellow); }
 
 /* prose for markdown docs */
 .prose { max-width: 78ch; }

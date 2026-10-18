@@ -23,7 +23,7 @@ const ld = { '@context': 'https://schema.org', '@type': 'Person', name: person.n
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{full}</title>
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#0a0f14" />
+    <meta name="theme-color" content="#161616" />
     <meta name="color-scheme" content="dark light" />
     <link rel="canonical" href={canonical} />
     {LANGS.map((l) => <link rel="alternate" hreflang={l} href={`${origin}/${l}/${path}`} />)}
@@ -64,7 +64,7 @@ const ld = { '@context': 'https://schema.org', '@type': 'Person', name: person.n
     <script>
       const root = document.documentElement;
       const meta = document.querySelector('meta[name=theme-color]');
-      const paint = () => meta?.setAttribute('content', root.getAttribute('data-theme') === 'light' ? '#f4f2ea' : '#0a0f14');
+      const paint = () => meta?.setAttribute('content', root.getAttribute('data-theme') === 'light' ? '#ffffff' : '#161616');
       paint();
       document.getElementById('theme-toggle')?.addEventListener('click', () => {
         const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';

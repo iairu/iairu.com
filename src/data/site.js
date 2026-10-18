@@ -29,17 +29,17 @@ export const SITE_DESCRIPTION = {
 
 // Fields of expertise: which discipline a project belongs to.
 export const fields = {
-  ai: { color: 'violet', label: { en: 'Prompt engineering & AI', sk: 'Prompt engineering a AI' },
+  ai: { color: 'cyan', label: { en: 'Prompt engineering & AI', sk: 'Prompt engineering a AI' },
     hint: { en: 'LLM workflows, prompt-driven builds, ML experiments.', sk: 'LLM postupy, vývoj riadený promptami, ML experimenty.' } },
-  software: { color: 'cyan', label: { en: 'Software & web', sk: 'Softvér a web' },
+  software: { color: 'purple', label: { en: 'Software & web', sk: 'Softvér a web' },
     hint: { en: 'Apps, sites, tools, classic programming.', sk: 'Aplikácie, weby, nástroje, klasické programovanie.' } },
-  hardware: { color: 'copper', label: { en: 'Electronics & making', sk: 'Elektronika a výroba' },
+  hardware: { color: 'blue', label: { en: 'Electronics & making', sk: 'Elektronika a výroba' },
     hint: { en: 'Circuits, boards, CNC, objects you can hold.', sk: 'Obvody, dosky, CNC, predmety, ktoré môžeš chytiť do ruky.' } },
-  art3d: { color: 'pink', label: { en: '3D & animation', sk: '3D a animácia' },
+  art3d: { color: 'magenta', label: { en: '3D & animation', sk: '3D a animácia' },
     hint: { en: 'Blender, 3D models, OpenGL, animated stories.', sk: 'Blender, 3D modely, OpenGL, animované príbehy.' } },
-  design: { color: 'lime', label: { en: 'Graphic design & illustration', sk: 'Grafický dizajn a ilustrácia' },
+  design: { color: 'teal', label: { en: 'Graphic design & illustration', sk: 'Grafický dizajn a ilustrácia' },
     hint: { en: 'Logos, branding, web design, comics, painting.', sk: 'Logá, branding, webdizajn, komiksy, maľba.' } },
-  systems: { color: 'amber', label: { en: 'Systems, network & security', sk: 'Systémy, siete a bezpečnosť' },
+  systems: { color: 'yellow', label: { en: 'Systems, network & security', sk: 'Systémy, siete a bezpečnosť' },
     hint: { en: 'Linux, networking, low-level C, security research.', sk: 'Linux, siete, nízkoúrovňové C, bezpečnostný výskum.' } },
 };
 

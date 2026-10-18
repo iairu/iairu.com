@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "design-system-font",
+        "value": "ibm plex sans",
+        "createdAt": "2026-10-18T14:27:59.649Z",
+        "reason": "intentional brand font: IBM Plex Sans is the new site typeface (Qiskit/Carbon), declared in DESIGN.md typography"
+      }
+    ]
+  }
+}

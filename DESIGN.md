@@ -1,62 +1,63 @@
 ---
 name: iairu.com
-description: The Night Workbench — one dark blueprint bench where wireframe and circuit trace share the same sheet.
+description: The Night Workbench in IBM Carbon colour — one dark bench where wireframe and circuit trace share the same sheet, set in IBM Plex with a Qiskit-purple voice.
 colors:
-  bench-black: "#0a0f14"
-  bench-panel: "#0f171f"
-  bench-inset: "#15212b"
-  chalk-ink: "#e9eff3"
-  pencil-grey: "#9fb1bd"
-  grid-rule: "#243542"
-  grid-rule-strong: "#35505f"
-  wireframe-cyan: "#3fe0d0"
-  trace-copper: "#ff9a52"
-  render-pink: "#ff74b8"
-  prompt-violet: "#b199ff"
-  ink-lime: "#bde75e"
-  signal-amber: "#ffcf5a"
-  on-accent: "#06100f"
-  focus-blue: "#8fd0ff"
-  paper-bench: "#f4f2ea"
-  paper-panel: "#ebe8dc"
-  paper-inset: "#e0dccd"
-  paper-ink: "#121c24"
-  paper-pencil: "#4b5b66"
-  paper-rule: "#cfcab8"
-  paper-rule-strong: "#a9a38c"
-  wireframe-cyan-paper: "#007a70"
-  trace-copper-paper: "#b2500c"
-  render-pink-paper: "#b8216f"
-  prompt-violet-paper: "#5a3fc4"
-  ink-lime-paper: "#4c6e00"
-  signal-amber-paper: "#8a6200"
-  focus-blue-paper: "#0b57b8"
+  bg: "#161616"
+  bg2: "#262626"
+  bg3: "#393939"
+  ink: "#f4f4f4"
+  soft: "#c6c6c6"
+  line: "#393939"
+  line2: "#525252"
+  purple: "#a56eff"
+  blue: "#78a9ff"
+  cyan: "#33b1ff"
+  magenta: "#ff7eb6"
+  teal: "#3ddbd9"
+  yellow: "#f1c21b"
+  on-accent: "#1c0f30"
+  focus: "#78a9ff"
+  bg-paper: "#ffffff"
+  bg2-paper: "#f4f4f4"
+  bg3-paper: "#e0e0e0"
+  ink-paper: "#161616"
+  soft-paper: "#525252"
+  line-paper: "#e0e0e0"
+  line2-paper: "#a8a8a8"
+  purple-paper: "#6929c4"
+  blue-paper: "#0f62fe"
+  cyan-paper: "#0072c3"
+  magenta-paper: "#d02670"
+  teal-paper: "#005d5d"
+  yellow-paper: "#8a6a00"
+  on-accent-paper: "#ffffff"
+  focus-paper: "#0f62fe"
 typography:
   display:
-    fontFamily: "'Bricolage Grotesque Variable', 'Segoe UI', system-ui, sans-serif"
+    fontFamily: "'IBM Plex Sans Variable', 'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif"
     fontSize: "clamp(2.5rem, 1.4rem + 5vw, 5.2rem)"
     fontWeight: 700
     lineHeight: 1.08
     letterSpacing: "-0.035em"
   headline:
-    fontFamily: "'Bricolage Grotesque Variable', 'Segoe UI', system-ui, sans-serif"
+    fontFamily: "'IBM Plex Sans Variable', 'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif"
     fontSize: "clamp(1.7rem, 1.3rem + 2vw, 2.8rem)"
     fontWeight: 640
     lineHeight: 1.08
     letterSpacing: "-0.02em"
   title:
-    fontFamily: "'Bricolage Grotesque Variable', 'Segoe UI', system-ui, sans-serif"
+    fontFamily: "'IBM Plex Sans Variable', 'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif"
     fontSize: "clamp(1.15rem, 1.05rem + .5vw, 1.45rem)"
     fontWeight: 640
     lineHeight: 1.2
     letterSpacing: "-0.02em"
   lead:
-    fontFamily: "'Bricolage Grotesque Variable', 'Segoe UI', system-ui, sans-serif"
+    fontFamily: "'IBM Plex Sans Variable', 'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif"
     fontSize: "clamp(1.1rem, 1.05rem + .5vw, 1.35rem)"
     fontWeight: 400
     lineHeight: 1.5
   body:
-    fontFamily: "'Bricolage Grotesque Variable', 'Segoe UI', system-ui, sans-serif"
+    fontFamily: "'IBM Plex Sans Variable', 'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif"
     fontSize: "clamp(1rem, .96rem + .2vw, 1.12rem)"
     fontWeight: 400
     lineHeight: 1.6
@@ -83,14 +84,14 @@ spacing:
   header: "64px"
 components:
   button-default:
-    backgroundColor: "{colors.chalk-ink}"
-    textColor: "{colors.bench-black}"
+    backgroundColor: "{colors.ink}"
+    textColor: "{colors.bg}"
     typography: "{typography.mono-ui}"
     rounded: "{rounded.part}"
     padding: ".85em 1.3em"
     height: "46px"
   button-primary:
-    backgroundColor: "{colors.wireframe-cyan}"
+    backgroundColor: "{colors.purple}"
     textColor: "{colors.on-accent}"
     typography: "{typography.mono-ui}"
     rounded: "{rounded.part}"
@@ -98,7 +99,7 @@ components:
     height: "46px"
   button-ghost:
     backgroundColor: "transparent"
-    textColor: "{colors.chalk-ink}"
+    textColor: "{colors.ink}"
     typography: "{typography.mono-ui}"
     rounded: "{rounded.part}"
     padding: ".85em 1.3em"
@@ -109,40 +110,40 @@ components:
     height: "38px"
   tag:
     backgroundColor: "transparent"
-    textColor: "{colors.pencil-grey}"
+    textColor: "{colors.soft}"
     rounded: "{rounded.part}"
     padding: ".42em .65em"
   chip:
-    backgroundColor: "{colors.bench-black}"
-    textColor: "{colors.chalk-ink}"
+    backgroundColor: "{colors.bg}"
+    textColor: "{colors.ink}"
     typography: "{typography.mono-ui}"
     rounded: "{rounded.part}"
     padding: ".4em .7em"
     height: "36px"
   chip-selected:
-    backgroundColor: "{colors.wireframe-cyan}"
+    backgroundColor: "{colors.purple}"
     textColor: "{colors.on-accent}"
     rounded: "{rounded.part}"
   card:
-    backgroundColor: "{colors.bench-panel}"
-    textColor: "{colors.chalk-ink}"
+    backgroundColor: "{colors.bg2}"
+    textColor: "{colors.ink}"
     rounded: "{rounded.none}"
     padding: "1rem 1.1rem 1.2rem"
   input-field:
-    backgroundColor: "{colors.bench-black}"
-    textColor: "{colors.chalk-ink}"
+    backgroundColor: "{colors.bg}"
+    textColor: "{colors.ink}"
     typography: "{typography.body}"
     rounded: "{rounded.part}"
     padding: ".6rem .8rem"
     height: "44px"
   nav-link:
-    textColor: "{colors.pencil-grey}"
+    textColor: "{colors.soft}"
     typography: "{typography.mono-ui}"
     padding: ".5rem .85rem"
   nav-link-active:
-    textColor: "{colors.chalk-ink}"
+    textColor: "{colors.ink}"
   lang-switch-active:
-    backgroundColor: "{colors.wireframe-cyan}"
+    backgroundColor: "{colors.purple}"
     textColor: "{colors.on-accent}"
     padding: ".45rem .55rem"
 ---
@@ -153,83 +154,83 @@ components:
 
 **Creative North Star: "The Night Workbench"**
 
-It's late, the room is dark, and everything is laid out on one bench: a 3D model's wireframe, a half-routed circuit board, a sketch, a terminal. The whole site is that bench. The page itself is a near-black surface ruled with a faint 48px drafting grid. Above it a star-field sky (one of six generated pictures, picked at random per visit) fades down into the work. Every discipline gets drawn on the same sheet, in the same squared, labelled hand, so a recipe, a PCB and a Blender render all read as parts of one practice rather than separate storefronts.
+It's late, the room is dark, and everything is laid out on one bench: a 3D model's wireframe, a half-routed circuit board, a sketch, a terminal. The whole site is that bench. The page itself is a neutral near-black surface ruled with a faint 48px drafting grid. Above it a star-field sky (one of six generated pictures, picked at random per visit) fades down into the work. Every discipline gets drawn on the same sheet, in the same squared, labelled hand, so a recipe, a PCB and a Blender render all read as parts of one practice rather than separate storefronts.
 
-The character is **technical and playful**: blueprint rigour first (mono labels, exact rules, 2px corners, numbered steps), with small physical surprises on top. A button jumps up-left and leaves a copper shadow behind it, a card's colour bar runs across its whole top edge on hover, and the hero icosahedron is half wireframe, half PCB trace. Colour is functional: two signature accents name the two halves of the work (wireframe vs. wiring), and six field colours tag which discipline a thing belongs to. Density is moderate. Sections breathe (up to 6.5rem of block padding), but cards, filters and meta lines are compact and dense with mono detail, like labels on parts bins.
+The bench is rendered in **IBM's Carbon palette** and set in **IBM Plex**, the typeface and colour system behind Qiskit. Neutral Carbon grays carry every surface; a single **Qiskit purple** is the voice of the work and **IBM blue** is its structural hand. The character is **technical and playful**: Carbon rigour first (mono labels, exact rules, 2px corners, numbered steps), with small physical surprises on top. A button jumps up-left and leaves a blue shadow behind it, a card's colour bar runs across its whole top edge on hover, and the hero icosahedron is half wireframe, half PCB trace. Colour is functional: two signature accents name the roles (voice vs. structure), and six Carbon field colours tag which discipline a thing belongs to. Density is moderate. Sections breathe (up to 6.5rem of block padding), but cards, filters and meta lines are compact and dense with mono detail, like labels on parts bins.
 
-Dark is the native theme. Light is a full first-class counterpart: the bench becomes warm drafting paper, the sky turns sepia, and every accent drops to a deep ink tone that passes contrast on paper. Neither theme is an inversion of the other; both are tuned by hand.
+Dark is the native theme. Light is a full first-class counterpart: the bench becomes Carbon white, the sky lightens, and every accent drops to a deeper Carbon tone that passes contrast on white. Neither theme is an inversion of the other; both use Carbon's hand-tuned token steps.
 
 **Key Characteristics:**
-- Near-black bench with a 48px drafting grid and a random star-field sky that fades out downwards.
-- Two signature accents, Wireframe Cyan and Trace Copper, plus six field colours applied through a single `--c` hook.
-- Bricolage Grotesque for voice, IBM Plex Mono for every label, meta line, control and number.
+- Neutral Carbon-gray bench (`#161616`) with a 48px drafting grid and a random star-field sky that fades out downwards.
+- Two signature accents, Qiskit Purple (voice) and IBM Blue (structure), plus six Carbon field colours applied through a single `--c` hook.
+- IBM Plex Sans for voice, IBM Plex Mono for every label, meta line, control and number.
 - Squared parts: 2px corners on controls, 0 on cards and panels.
 - Hard offset shadows and growing accent bars instead of soft lifts.
-- Hand-tuned dark (default) and paper-light themes.
+- Hand-tuned dark (default) and Carbon-white themes, both drawn from Carbon tokens.
 
 ## Colors
 
-The palette is a dark bench lit by two working colours: cyan for what's drawn and copper for what's wired. Six discipline colours act as coloured pencils, one per field.
+The palette is IBM Carbon. Neutral grays carry every surface; a vivid purple is the one colour the eye follows (links, primary actions), and a confident blue does the structural talking (labels, section heads, the interactive lift). Six Carbon discipline colours act as coloured pencils, one per field. The CSS custom property for each colour is named for its hue (`--purple`, `--blue`, `--cyan`, `--magenta`, `--teal`, `--yellow`); a field is bound to one through `fields[x].color` in `site.js`.
 
 ### Primary
-- **Wireframe Cyan** (`wireframe-cyan`; paper: `wireframe-cyan-paper`): the "drawn" half. Used for links, primary buttons, the active language switch, selected chips, text selection, the search focus underline, the projects filter panel's top rule, and the Software & web field. It is the default `--c` for any component that has no field.
-- **Trace Copper** (`trace-copper`; paper: `trace-copper-paper`): the "wired" half and the system's structural voice. Used for eyebrows and section labels, the active-nav underline, breadcrumb separators, the button hover shadow, the viewer's corner brackets, `pre` left rules, search result kinds, remarks and notices, and the Electronics & making field.
+- **Qiskit Purple** (`purple`; paper: `purple-paper`): the site's voice. Used for links, primary buttons, the active language switch, selected chips, text selection, the caret, the search focus underline, and the Software & web field. It is the default `--c` for any component that has no field. Dark `#a56eff` (Carbon Purple 50), paper `#6929c4` (Purple 70).
+- **IBM Blue** (`blue`; paper: `blue-paper`): the structural voice. Used for eyebrows and section labels, the active-nav underline, breadcrumb separators, the button hover shadow, the viewer's corner brackets, `pre` left rules, search result kinds, remarks and notices, and the Electronics & making field. Dark `#78a9ff` (Carbon Blue 40), paper `#0f62fe` (Blue 60).
 
 ### Secondary (field pencils)
-Each field of expertise owns one colour, assigned through the `.c-{name}` → `--c` hook. They appear on card top bars, tag outlines, chip selection, pipeline step bars and field counts, never as page backgrounds.
-- **Prompt Violet** (`prompt-violet`): Prompt engineering & AI.
-- **Render Pink** (`render-pink`): 3D & animation.
-- **Ink Lime** (`ink-lime`): Graphic design & illustration.
-- **Signal Amber** (`signal-amber`): Systems, network & security; also GitHub stars (★) and the language filter.
-- Cyan and Copper double as the Software and Electronics pencils.
+Each field of expertise owns one Carbon colour, assigned through the `.c-{hue}` → `--c` hook. They appear on card top bars, tag outlines, chip selection, pipeline step bars and field counts, never as page backgrounds.
+- **Cyan** (`cyan`): Prompt engineering & AI. Carbon Cyan 40 / Cyan 70.
+- **Magenta** (`magenta`): 3D & animation. Carbon Magenta 40 / Magenta 60.
+- **Teal** (`teal`): Graphic design & illustration. Carbon Teal 30 / Teal 70.
+- **Yellow** (`yellow`): Systems, network & security; also GitHub stars (★) and the language filter. Carbon Yellow 30 / custom dark gold.
+- Purple and Blue double as the Software and Electronics pencils.
 
-### Neutral
-- **Bench Black** (`bench-black`; paper: `paper-bench`): page background, input and chip fill, mobile nav sheet, dialog body.
-- **Bench Panel** (`bench-panel`; paper: `paper-panel`): raised working surfaces such as cards, the filter panel, `.band` sections, the footer, pipeline cells, `pre` blocks.
-- **Bench Inset** (`bench-inset`; paper: `paper-inset`): recessed wells such as card media placeholders, inline `code`, table heads, the selected search result.
-- **Chalk Ink** (`chalk-ink`; paper: `paper-ink`): headings, body text, default button fill.
-- **Pencil Grey** (`pencil-grey`; paper: `paper-pencil`): secondary text, leads, meta lines, nav links at rest, hints.
-- **Grid Rule** (`grid-rule`; paper: `paper-rule`): hairline borders on cards, sections, header, tables.
-- **Grid Rule Strong** (`grid-rule-strong`; paper: `paper-rule-strong`): control outlines (ghost buttons, chips, inputs, language switch, search button).
-- **On-Accent** (`on-accent`; paper: white): text on any filled accent.
-- **Focus Blue** (`focus-blue`; paper: `focus-blue-paper`): the 3px focus outline, and nothing else.
+### Neutral (Carbon gray ramp)
+- **bg** (`#161616`; paper `#ffffff`): page background, input and chip fill, mobile nav sheet, dialog body.
+- **bg2** (`#262626`; paper `#f4f4f4`): raised working surfaces such as cards, the filter panel, `.band` sections, the footer, pipeline cells, `pre` blocks.
+- **bg3** (`#393939`; paper `#e0e0e0`): recessed wells such as card media placeholders, inline `code`, table heads, the selected search result.
+- **ink** (`#f4f4f4`; paper `#161616`): headings, body text, default button fill.
+- **soft** (`#c6c6c6`; paper `#525252`): secondary text, leads, meta lines, nav links at rest, hints.
+- **line** (`#393939`; paper `#e0e0e0`): hairline borders on cards, sections, header, tables.
+- **line2** (`#525252`; paper `#a8a8a8`): control outlines (ghost buttons, chips, inputs, language switch, search button).
+- **on-accent** (`#1c0f30`; paper `#ffffff`): text on any filled accent.
+- **focus** (`#78a9ff`; paper `#0f62fe`): the 3px focus outline, and nothing else.
 - The drafting grid is `rgb(120 190 220 / .07)` (paper: `rgb(20 60 90 / .07)`), drawn as two 1px linear gradients on `body`.
 
 ### Named Rules
-**The Two Halves Rule.** Cyan means drawn (code, links, selection); copper means wired (structure, labels, emphasis). Don't swap them, and don't add a third signature accent.
+**The Two Voices Rule.** Purple is the voice of the work (links, primary actions, selection); blue is its structure (labels, eyebrows, section heads, the lift shadow). Don't swap them, and don't add a third signature accent.
 
 **The Pencil Hook Rule.** Field colour enters a component only through `--c`. Components read `var(--c, …)`; they never hard-code a field hex.
 
-**The Paper Ink Rule.** Every dark-theme accent has a darker paper twin that clears contrast on `paper-bench`. Never reuse a dark-theme accent on the light theme.
+**The Carbon Token Rule.** Every colour comes from a Carbon token step. Each dark-theme accent has a deeper paper twin (a lower/higher Carbon step) that clears contrast on the white bench. Never reuse a dark-theme accent value on the light theme.
 
 ## Typography
 
-**Display Font:** Bricolage Grotesque Variable (with Segoe UI, system-ui)
-**Body Font:** Bricolage Grotesque Variable (same family)
+**Display Font:** IBM Plex Sans Variable (with IBM Plex Sans, Segoe UI, system-ui)
+**Body Font:** IBM Plex Sans Variable (same family)
 **Label/Mono Font:** IBM Plex Mono 400/500 (with ui-monospace, SF Mono, Menlo)
 
-**Character:** Bricolage carries the voice: slightly quirky, warm, and tightly tracked at display sizes, like a maker's handwriting set in metal. Plex Mono is the bench label maker. It handles every number, tag, nav item, button, eyebrow and breadcrumb, which is what gives the site its schematic feel.
+**Character:** IBM Plex is the Carbon/Qiskit typeface, and it carries the voice here: humanist, engineered, quietly confident, tightly tracked at display sizes. Plex Mono is the bench label maker. It handles every number, tag, nav item, button, eyebrow and breadcrumb, which is what gives the site its schematic, instrument-panel feel. Plex Sans and Plex Mono are siblings from the same family, so headings and labels sit together cleanly.
 
 ### Hierarchy
-- **Display** (h1): hero and page titles. Tight negative tracking. Hero spans can colour single words cyan and copper.
+- **Display** (h1): hero and page titles. Tight negative tracking. Hero spans can colour single words purple and blue.
 - **Headline** (h2): section heads, always preceded by a mono eyebrow.
 - **Title** (h3): card titles (fixed 1.25rem inside cards), pipeline steps, field tiles.
-- **Lead**: intro paragraphs in Pencil Grey, max 52ch.
+- **Lead**: intro paragraphs in soft gray, max 52ch.
 - **Body**: fluid 1rem–1.12rem at line-height 1.6. Long-form `.prose` caps at 78ch.
-- **Label** (eyebrow): uppercase, wide-tracked, copper, with a 1.8em × 2px leading rule. Filter-panel and footer headings use the same treatment at .72rem / .14–.15em.
+- **Label** (eyebrow): uppercase, wide-tracked, blue, with a 1.8em × 2px leading rule. Filter-panel and footer headings use the same treatment at .72rem / .14–.15em.
 - **Mono UI**: nav, buttons, chips, meta lines, breadcrumbs, captions; .66–.88rem at weight 500.
 
 Headings use `text-wrap: balance` and paragraphs use `text-wrap: pretty`.
 
 ### Named Rules
-**The Label Maker Rule.** If it's a number, a category, a control or a piece of metadata, set it in Plex Mono. Bricolage is for things a person would say.
+**The Label Maker Rule.** If it's a number, a category, a control or a piece of metadata, set it in Plex Mono. Plex Sans is for things a person would say.
 
-**The Eyebrow-First Rule.** Every section headline sits under a copper mono eyebrow that names the section in a few words.
+**The Eyebrow-First Rule.** Every section headline sits under a blue mono eyebrow that names the section in a few words.
 
 ## Layout
 
 - **Container:** `.wrap` is `min(100% − 2·gutter, 1200px)`, centred. `.narrow` uses 780px for reading pages. The gutter is fluid, 16–40px.
-- **Sections:** `.block` gets fluid vertical padding (3–6.5rem). `.band` alternates a section onto Bench Panel with hairline rules top and bottom.
+- **Sections:** `.block` gets fluid vertical padding (3–6.5rem). `.band` alternates a section onto the bg2 gray with hairline rules top and bottom.
 - **Grids:** auto-fit grids with `min(100%, N)` minimums (`.g2` 340px, `.g3` 280px, `.split` 420px) so they collapse to one column without breakpoints. The gap is fluid, 1–1.5rem.
 - **Hero:** two columns (copy 1.1fr / viewer 1fr). They stack at 900px.
 - **Projects finder:** a sticky filter panel (260–340px) beside the results. It stacks and un-sticks at 900px.
@@ -243,12 +244,12 @@ Headings use `text-wrap: balance` and paragraphs use `text-wrap: pretty`.
 
 ## Elevation & Depth
 
-Mostly flat, with depth shown by tonal steps (Bench Black → Panel → Inset) and hairline rules. A single shadow exists, a long, dark, tight drop (`--shadow`). It appears only as a response: on card hover, on the search dialog, and on the Nightjar image. The playful depth cue is the **hard offset shadow**: buttons move (−2px, −2px) and cast a solid 4px Trace Copper block, as if lifted off the paper. Glass is limited to the sticky header (88% bench + 12px blur), viewer controls and the dialog backdrop.
+Mostly flat, with depth shown by tonal steps (bg → bg2 → bg3, Carbon's gray layering) and hairline rules. A single shadow exists, a long, dark, tight drop (`--shadow`). It appears only as a response: on card hover, on the search dialog, and on the Nightjar image. The playful depth cue is the **hard offset shadow**: buttons move (−2px, −2px) and cast a solid 4px IBM Blue block, as if lifted off the paper. Glass is limited to the sticky header (88% bench + 12px blur), viewer controls and the dialog backdrop.
 
 ### Named Rules
 **The Flat-At-Rest Rule.** Nothing casts a shadow until the visitor touches it.
 
-**The Hard Shadow Rule.** Interactive lift is a solid offset block in copper, never a soft glow.
+**The Hard Shadow Rule.** Interactive lift is a solid offset block in blue, never a soft glow.
 
 ## Shapes
 
@@ -256,63 +257,63 @@ Squared parts on a drafting sheet. Controls (buttons, chips, tags, inputs, searc
 
 Recurring geometry:
 - **Accent bars:** a 3–4px coloured rule on a top or left edge marks a surface's discipline or role (card top bar, filter panel, dialog, footer split bar, `pre`/blockquote/remark left rules, selected search result).
-- **Corner brackets:** 22px copper L-brackets at opposite corners frame the 3D viewer like a camera viewfinder.
+- **Corner brackets:** 22px blue L-brackets at opposite corners frame the 3D viewer like a camera viewfinder.
 - **Dashed borders** mean provisional or optional: preset chips, empty states, the viewer's notice badge.
 - **Hatching:** 45° repeating stripes in the field colour fill image placeholders.
-- **Split rule:** the footer's top bar is half cyan, half copper, the two halves of the work side by side.
+- **Split rule:** the footer's top bar is half purple, half blue, the two voices of the work side by side.
 
 ## Components
 
 ### Buttons
 Square tools that jump when touched.
 - **Shape:** 2px corners, 46px minimum height (38px for `.sm`), mono .88rem/500 label, .6em icon gap.
-- **Default:** Chalk Ink fill with Bench Black text.
-- **Primary:** Wireframe Cyan fill with On-Accent text. Used for the main call to action in a group.
-- **Ghost:** transparent with a Grid Rule Strong outline and Chalk Ink text.
-- **Hover:** translate (−2px, −2px) plus a 4px 4px solid Trace Copper shadow, over 150ms. No colour change.
-- **Focus:** the global 3px Focus Blue outline at 3px offset.
+- **Default:** Ink fill with bg text.
+- **Primary:** Qiskit Purple fill with on-accent text. Used for the main call to action in a group.
+- **Ghost:** transparent with a line2 outline and ink text.
+- **Hover:** translate (−2px, −2px) plus a 4px 4px solid IBM Blue shadow, over 150ms. No colour change.
+- **Focus:** the global 3px focus-blue outline at 3px offset.
 
 ### Tags & Chips
 - **Tag** (read-only): mono .7rem, an outline in 60% `--c`, text in `--c`. The language variant leads with a filled dot.
-- **Chip** (filter toggle): 36px minimum, Bench Black fill with a Grid Rule Strong outline. Hover outlines it in `--c`. **Selected** fills with `--c` and uses On-Accent text. **Dim** (no results) drops to .38 opacity. **Preset** chips are transparent with dashed outlines. Counts sit inside in a smaller, faded italic-free span.
+- **Chip** (filter toggle): 36px minimum, bg fill with a line2 outline. Hover outlines it in `--c`. **Selected** fills with `--c` and uses on-accent text. **Dim** (no results) drops to .38 opacity. **Preset** chips are transparent with dashed outlines. Counts sit inside in a smaller, faded span.
 
 ### Cards / Containers
-- **Project card:** Bench Panel, a 1px Grid Rule border, square, no shadow at rest. A 28 × 3px `--c` bar sits on the top-left edge.
+- **Project card:** bg2, a 1px line border, square, no shadow at rest. A 28 × 3px `--c` bar sits on the top-left edge.
 - **Hover:** the card lifts 3px, its border turns `--c`, the top bar grows to full width (250ms), it gains the soft shadow, and the media zooms to 1.04.
-- **Media:** 16:9, Bench Inset fill. A missing image becomes a hatched `--c` placeholder showing the project's initial in a large Bricolage letter.
-- **Body:** a mono meta line, a 1.25rem title whose link covers the whole card, a mono tagline in `--c`, a Pencil Grey description and tags pinned to the bottom.
-- **Panels** (filter panel, pipeline cells, field tiles): the same Bench Panel and hairline treatment, with a coloured top rule.
+- **Media:** 16:9, bg3 fill. A missing image becomes a hatched `--c` placeholder showing the project's initial in a large Plex Sans letter.
+- **Body:** a mono meta line, a 1.25rem title whose link covers the whole card, a mono tagline in `--c`, a soft-gray description and tags pinned to the bottom.
+- **Panels** (filter panel, pipeline cells, field tiles): the same bg2 and hairline treatment, with a coloured top rule.
 
 ### Inputs / Fields
-- **Style:** Bench Black fill, a Grid Rule Strong outline, 2px corners, 44px minimum height, body font at 1rem (16px on mobile so iOS doesn't zoom).
-- **Search dialog field:** a borderless 56px input whose row underline turns cyan on focus.
-- **Focus:** the global Focus Blue outline (1px offset on filter inputs).
+- **Style:** bg fill, a line2 outline, 2px corners, 44px minimum height, body font at 1rem (16px on mobile so iOS doesn't zoom).
+- **Search dialog field:** a borderless 56px input whose row underline turns purple on focus.
+- **Focus:** the global focus-blue outline (1px offset on filter inputs).
 
 ### Navigation
 - **Header:** sticky glass bar with the logo on the left, mono nav links and tools (search, EN/SK switch, theme toggle, menu).
-- **Links:** Pencil Grey at rest, Chalk Ink on hover. The active link gets a 2px copper underline inset to the label width.
-- **Language switch:** a segmented outline control. The active language is filled with Wireframe Cyan.
-- **Mobile (≤860px):** a full-width sheet under the header with 1rem links, hairline separators, and a short copper bar marking the active page.
-- **Breadcrumbs:** mono .78rem, with copper `/` separators. Links turn cyan on hover.
+- **Links:** soft gray at rest, ink on hover. The active link gets a 2px blue underline inset to the label width.
+- **Language switch:** a segmented outline control. The active language is filled with Qiskit Purple.
+- **Mobile (≤860px):** a full-width sheet under the header with 1rem links, hairline separators, and a short blue bar marking the active page.
+- **Breadcrumbs:** mono .78rem, with blue `/` separators. Links turn purple on hover.
 
 ### Search Dialog
-A command palette. It's a square `<dialog>` with a copper top rule and a blurred dark backdrop, and it pops in over 160ms. Results are rows of a copper mono kind label plus a bold title and grey summary. The selected row gets a Bench Inset fill and a 3px cyan left rule. On mobile it goes full-screen.
+A command palette. It's a square `<dialog>` with a blue top rule and a blurred dark backdrop, and it pops in over 160ms. Results are rows of a blue mono kind label plus a bold title and gray summary. The selected row gets a bg3 fill and a 3px purple left rule. On mobile it goes full-screen.
 
 ### 3D Viewer (signature)
-The Nightjar bench. It's a square frame with a radial cyan glow on Bench Panel and copper corner brackets. A floating MeshCircuit poster shows until three.js loads. Mono toggle buttons sit top-right, and the active one is filled cyan. A dashed copper notice badge sits top-left, and a mono caption runs along the bottom.
+The Nightjar bench. It's a square frame with a radial purple glow on bg2 and blue corner brackets. A floating MeshCircuit poster shows until three.js loads. Mono toggle buttons sit top-right, and the active one is filled purple. A dashed blue notice badge sits top-left, and a mono caption runs along the bottom.
 
 ### Pipeline Strip (signature)
-A row of numbered steps (01 Prompt → 05 Object) in one bordered strip. Each cell has a 4px top bar in its field colour, a mono step number in that colour, a title and a grey description. It stacks vertically at 900px.
+A row of numbered steps (01 Prompt → 05 Object) in one bordered strip. Each cell has a 4px top bar in its field colour, a mono step number in that colour, a title and a gray description. It stacks vertically at 900px.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** route every discipline colour through `--c` via the `.c-{field}` classes.
-- **Do** set numbers, labels, controls and metadata in IBM Plex Mono, and speech in Bricolage.
-- **Do** put a copper mono eyebrow above every section headline.
+- **Do** route every discipline colour through `--c` via the `.c-{hue}` classes.
+- **Do** set numbers, labels, controls and metadata in IBM Plex Mono, and speech in IBM Plex Sans.
+- **Do** put a blue mono eyebrow above every section headline.
 - **Do** keep controls at a 2px corner and cards, panels and media fully square.
-- **Do** use the hard copper offset shadow for button hover and the growing `--c` top bar for card hover.
-- **Do** tune every new colour for both themes by hand, with a darker paper twin for light.
+- **Do** use the hard blue offset shadow for button hover and the growing `--c` top bar for card hover.
+- **Do** draw every new colour from a Carbon token step, with a deeper paper twin for light that clears contrast.
 - **Do** keep tap targets at 36px or more (chips), 40px or more (icon buttons) and 44px or more (inputs and primary controls).
 - **Do** respect `prefers-reduced-motion`. The global rule already kills animations and transitions.
 
@@ -320,6 +321,6 @@ A row of numbered steps (01 Prompt → 05 Object) in one bordered strip. Each ce
 - **Don't** round cards, panels, dialogs or images, or go past 2px on controls.
 - **Don't** use soft glows or resting shadows. Depth is tonal until interaction.
 - **Don't** introduce a third signature accent, or use field colours as large background fills.
-- **Don't** swap the meaning of cyan (drawn) and copper (wired).
+- **Don't** swap the roles of purple (voice) and blue (structure).
 - **Don't** reuse dark-theme accent values on the paper theme.
 - **Don't** overlay a second grid or texture that competes with the 48px drafting grid.

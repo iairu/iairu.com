@@ -42,7 +42,7 @@ const gallery = p.gallery ?? [];
       <dl class="facts">
         <div><dt>{T('Fields', 'Odbory')}</dt><dd class="tags">{p.fields.map((f) => <a class={`tag c-${fields[f].color}`} href={lhref(lang, `projects/?field=${f}`)}>{tr(fields[f].label, lang)}</a>)}</dd></div>
         <div><dt>{T('Interests', 'Záujmy')}</dt><dd class="tags">{p.interests.map((i) => <a class="tag" href={lhref(lang, `projects/?interest=${i}`)}>{tr(interests[i].label, lang)}</a>)}</dd></div>
-        {p.language && <div><dt>{T('Language', 'Jazyk')}</dt><dd class="tags"><a class="tag lang c-amber" href={lhref(lang, `projects/?lang=${encodeURIComponent(p.language)}`)}>{p.language}</a></dd></div>}
+        {p.language && <div><dt>{T('Language', 'Jazyk')}</dt><dd class="tags"><a class="tag lang c-yellow" href={lhref(lang, `projects/?lang=${encodeURIComponent(p.language)}`)}>{p.language}</a></dd></div>}
         {p.worked && <div><dt>{T('Worked on', 'Práca na projekte')}</dt><dd class="num">{p.worked[0]} – {p.worked[1]} · {p.worked[2]} {T('days', 'dní')}</dd></div>}
         {p.tools && <div><dt>{T('Tools', 'Nástroje')}</dt><dd class="tags">{p.tools.map((t) => <span class="tag">{t}</span>)}</dd></div>}
         <div><dt>{T('Year', 'Rok')}</dt><dd class="num">{p.year}{p.updated ? ` · ${T('last push', 'posledný push')} ${p.updated}` : ''}</dd></div>

@@ -56,7 +56,7 @@ const edu = [
       <div class="sec-head"><h2 id="work">{T('Experience', 'Skúsenosti')}</h2></div>
       <div class="grid g3">
         {work.map((s) => <div class={`panel c-${s.c}`}>{s.logo && <img class="logo" src={s.logo} alt={s.t} height="40" />}<p class="k">{s.t}</p><h3>{s.s}</h3><p class="d">{s.d}</p><ul>{s.li.map((x) => <li>{x}</li>)}</ul><p class="more"><a href={s.href} rel="noopener" target="_blank">{s.t} <Icon name="ext" /></a></p></div>)}
-        <div class="panel c-lime"><p class="k">{T('Interests', 'Záujmy')}</p><h3>{T('Cybersecurity and language learning', 'Kybernetická bezpečnosť a učenie sa jazykov')}</h3><p class="d">{T('Past passions in projects were mostly graphics and web development; I started learning Japanese in 2016.', 'Moje minulé vášne v projektoch boli väčšinou grafika a webvývoj; japončinu som sa začal učiť v roku 2016.')}</p></div>
+        <div class="panel c-teal"><p class="k">{T('Interests', 'Záujmy')}</p><h3>{T('Cybersecurity and language learning', 'Kybernetická bezpečnosť a učenie sa jazykov')}</h3><p class="d">{T('Past passions in projects were mostly graphics and web development; I started learning Japanese in 2016.', 'Moje minulé vášne v projektoch boli väčšinou grafika a webvývoj; japončinu som sa začal učiť v roku 2016.')}</p></div>
       </div>
     </div>
   </section>
@@ -81,10 +81,10 @@ const edu = [
 <style>
   .cta { display: flex; flex-wrap: wrap; gap: .7rem; margin-top: 1.4rem; }
   .pics { display: grid; gap: 1rem; }
-  .pron { color: var(--copper); font-size: .95rem; }
+  .pron { color: var(--blue); font-size: .95rem; }
   .portrait { border: 1px solid var(--line); padding: 1rem; background: var(--bg2); width: 100%; height: auto; }
   :global(:root[data-theme='dark']) .portrait { filter: invert(.9) hue-rotate(180deg); }
-  .panel { --c: var(--cyan); background: var(--bg2); border: 1px solid var(--line); padding: 1.3rem 1.3rem 1.5rem; }
+  .panel { --c: var(--purple); background: var(--bg2); border: 1px solid var(--line); padding: 1.3rem 1.3rem 1.5rem; }
   .panel h3 { color: var(--c); } .k { font-weight: 600; color: var(--soft); margin: 0 0 .3rem; } .d { color: var(--soft); font-size: .92rem; }
   ul { margin: 0; padding-left: 1.1rem; display: grid; gap: .5rem; } li::marker { color: var(--c); }
   .logo { height: 40px; width: auto; margin-bottom: .8rem; background: #fff; padding: 4px 8px; }

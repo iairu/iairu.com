@@ -30,14 +30,14 @@ for (const e of list) {
 ---
 <svg class={cls} viewBox="0 0 600 600" role="img" aria-label="A 3D wireframe whose right half turns into circuit traces" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="mc-fade" x1="0" x2="1"><stop offset="0" stop-color="var(--cyan)" stop-opacity=".95" /><stop offset="1" stop-color="var(--cyan)" stop-opacity=".35" /></linearGradient>
+    <linearGradient id="mc-fade" x1="0" x2="1"><stop offset="0" stop-color="var(--purple)" stop-opacity=".95" /><stop offset="1" stop-color="var(--purple)" stop-opacity=".35" /></linearGradient>
   </defs>
   <g fill="none" stroke-linecap="round" stroke-linejoin="round">
     {wire.map((e) => <line x1={pts[e[0]][0]} y1={pts[e[0]][1]} x2={pts[e[1]][0]} y2={pts[e[1]][1]} stroke="url(#mc-fade)" stroke-width="1.6" />)}
-    {copper.map((e) => <path d={trace(e)} stroke="var(--copper)" stroke-width="5" />)}
+    {copper.map((e) => <path d={trace(e)} stroke="var(--blue)" stroke-width="5" />)}
     {copper.map((e) => <path d={trace(e)} stroke="var(--bg)" stroke-width="1" opacity=".5" />)}
   </g>
   {pts.map(([x, y], i) => (x > 300
-    ? <g><circle cx={x} cy={y} r="11" fill="var(--copper)" /><circle cx={x} cy={y} r="4.5" fill="var(--bg)" /></g>
-    : <circle cx={x} cy={y} r="4" fill="var(--bg)" stroke="var(--cyan)" stroke-width="1.8" />))}
+    ? <g><circle cx={x} cy={y} r="11" fill="var(--blue)" /><circle cx={x} cy={y} r="4.5" fill="var(--bg)" /></g>
+    : <circle cx={x} cy={y} r="4" fill="var(--bg)" stroke="var(--purple)" stroke-width="1.8" />))}
 </svg>
