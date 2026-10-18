@@ -121,12 +121,8 @@ const L = lang === 'sk'
         base ??= [e.beta, e.gamma];
         set(clamp((e.gamma - base[1]) / 25), clamp((e.beta - base[0]) / 25));
       };
-      const listen = () => addEventListener('deviceorientation', onTilt);
-      const DOE = DeviceOrientationEvent as unknown as { requestPermission?: () => Promise<'granted' | 'denied'> };
-      // iOS only hands out motion data after a tap asks for it
-      if (typeof DOE.requestPermission === 'function') {
-        addEventListener('touchend', () => DOE.requestPermission!().then((p) => p === 'granted' && listen()).catch(() => {}), { once: true });
-      } else listen();
+      // Attach without prompting; iOS devices that gate motion behind a permission prompt simply won't tilt.
+      addEventListener('deviceorientation', onTilt);
       document.addEventListener('visibilitychange', () => { if (document.hidden) { base = null; set(0, 0); } });
     }
   }
