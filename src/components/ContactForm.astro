@@ -1,0 +1,127 @@
+---
+import Icon from './Icon.astro';
+import { ui } from '../data/i18n.js';
+import { contactForm, booking } from '../data/site.js';
+
+const { lang = 'sk' } = Astro.props;
+const f = ui[lang].form;
+const origin = Astro.site?.origin ?? '';
+const next = `${origin}/${lang}/?sent=1#booking`;
+---
+<form
+  class="cform"
+  method="POST"
+  action={contactForm.action}
+  data-ajax={contactForm.ajax}
+  data-mail={booking.email}
+  data-ok={f.success}
+  data-err={f.error}
+  data-sending={f.sending}
+>
+  <!-- FormSubmit configuration -->
+  <input type="hidden" name="_subject" value={f.subject} />
+  <input type="hidden" name="_template" value="table" />
+  <input type="hidden" name="_captcha" value="false" />
+  <input type="hidden" name="_next" value={next} />
+  <!-- honeypot: bots fill this, humans never see it -->
+  <input type="text" name="_honey" class="hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+  <div class="row">
+    <label>
+      <span>{f.name}</span>
+      <input type="text" name="name" required placeholder={f.namePh} autocomplete="name" />
+    </label>
+    <label>
+      <span>{f.email}</span>
+      <input type="email" name="email" required placeholder={f.emailPh} autocomplete="email" />
+    </label>
+  </div>
+  <div class="row">
+    <label>
+      <span>{f.phone}</span>
+      <input type="tel" name="phone" placeholder={f.phonePh} autocomplete="tel" />
+    </label>
+    <label>
+      <span>{f.event}</span>
+      <input type="text" name="event" placeholder={f.eventPh} />
+    </label>
+  </div>
+  <label>
+    <span>{f.message}</span>
+    <textarea name="message" required rows="5" placeholder={f.messagePh}></textarea>
+  </label>
+
+  <div class="actions">
+    <button class="btn" type="submit">{f.send} <Icon name="next" /></button>
+    <p class="status" role="status" aria-live="polite"></p>
+  </div>
+</form>
+
+<style>
+  .cform { display: grid; gap: 1rem; text-align: left; }
+  .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  label { display: grid; gap: 0.4rem; }
+  label span { font: 600 0.72rem/1 var(--sans); letter-spacing: 0.12em; text-transform: uppercase; color: var(--soft); }
+  input, textarea {
+    font: 400 1rem/1.5 var(--sans); color: var(--ink);
+    background: var(--bg3); border: 1px solid var(--line2); border-radius: 3px;
+    padding: 0.8em 0.9em; width: 100%; transition: border-color 0.2s, background-color 0.2s;
+  }
+  input::placeholder, textarea::placeholder { color: var(--mute); }
+  input:focus, textarea:focus { outline: none; border-color: var(--gold); background: color-mix(in srgb, var(--bg3) 70%, #000); }
+  textarea { resize: vertical; min-height: 120px; }
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+  .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.4rem; margin-top: 0.3rem; }
+  .cform.sending .btn { opacity: 0.7; pointer-events: none; }
+  .status { margin: 0; font-size: 0.92rem; color: var(--soft); }
+  .status.ok { color: var(--gold-bright); }
+  .status.err { color: #ff9a8b; }
+  .status a { color: inherit; text-decoration: underline; }
+  @media (max-width: 560px) { .row { grid-template-columns: 1fr; } }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLFormElement>('form.cform').forEach((form) => {
+    const status = form.querySelector('.status') as HTMLElement | null;
+    // No-JS fallback returns here with ?sent=1 after FormSubmit's redirect.
+    try {
+      if (new URLSearchParams(location.search).get('sent') === '1' && status) {
+        status.textContent = form.dataset.ok || 'Sent.';
+        status.className = 'status ok';
+      }
+    } catch {}
+    form.addEventListener('submit', async (e) => {
+      // Progressive enhancement: AJAX submit for inline feedback; falls back to a
+      // normal POST (FormSubmit's own thank-you page) if anything here fails.
+      const ajax = form.dataset.ajax;
+      if (!ajax || !('fetch' in window)) return;
+      e.preventDefault();
+      if (status) { status.textContent = ''; status.className = 'status'; }
+      form.classList.add('sending');
+      const btn = form.querySelector('button[type=submit]') as HTMLButtonElement | null;
+      const sendingText = form.dataset.sending;
+      const original = btn?.innerHTML;
+      if (btn && sendingText) btn.textContent = sendingText;
+      try {
+        const data = new FormData(form);
+        const res = await fetch(ajax, { method: 'POST', body: data, headers: { Accept: 'application/json' } });
+        const json = await res.json().catch(() => ({}));
+        if (res.ok && (json.success === 'true' || json.success === true)) {
+          if (status) { status.textContent = form.dataset.ok || 'Sent.'; status.className = 'status ok'; }
+          form.reset();
+        } else {
+          throw new Error(json.message || 'failed');
+        }
+      } catch (err) {
+        const mail = form.dataset.mail;
+        if (status) {
+          status.className = 'status err';
+          status.innerHTML = (form.dataset.err || 'Could not send.') + (mail ? ` <a href="mailto:${mail}">${mail}</a>.` : '');
+        }
+      } finally {
+        form.classList.remove('sending');
+        if (btn && original) btn.innerHTML = original;
+      }
+    });
+  });
+</script>

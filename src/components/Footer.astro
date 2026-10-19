@@ -1,78 +1,96 @@
 ---
 import Icon from './Icon.astro';
 import { ui } from '../data/i18n.js';
-import { nav, booking, links, person } from '../data/site.js';
-import { lhref, lhash } from '../data/util.js';
+import { nav, booking, management, links, person } from '../data/site.js';
+import { lhref, lhash, tr } from '../data/util.js';
 
 const { lang = 'sk' } = Astro.props;
 const T = ui[lang];
 const F = T.footer;
 const year = new Date().getFullYear();
 ---
-<footer class="site-footer">
-  <div class="wrap-wide grid">
-    <div class="col brand-col">
-      <img src="/media/logo-white.svg" alt="StrukShow" width="776" height="184" class="flogo" />
-      <p class="tag">{F.tagline}</p>
+<footer class="site-footer" id="footer">
+  <div class="wrap-wide top">
+    <div class="about">
+      <a class="brand" href={lhref(lang)} aria-label="StrukShow — home">
+        <img src="/media/logo-white.svg" alt="StrukShow" width="776" height="184" />
+      </a>
+      <p class="who">{person.name}</p>
+      <p class="role">{tr(person.role, lang)}</p>
+      <p class="small">{F.tagline}</p>
       <div class="social">
-        <a href={links.instagram} rel="noopener" target="_blank" aria-label="Instagram"><Icon name="instagram" size="1.3rem" /></a>
-        <a href={links.youtube} rel="noopener" target="_blank" aria-label="YouTube"><Icon name="youtube" size="1.3rem" /></a>
+        <a href={links.instagram} rel="me noopener" target="_blank" aria-label="Instagram"><Icon name="instagram" size="1.3rem" /></a>
+        <a href={links.youtube} rel="me noopener" target="_blank" aria-label="YouTube"><Icon name="youtube" size="1.3rem" /></a>
       </div>
     </div>
 
-    <div class="col">
-      <h3 class="ftitle">{F.navTitle}</h3>
-      <ul>
-        {nav.map((item) => (
-          <li><a href={item.hash ? lhash(lang, item.path, item.hash) : lhref(lang, item.path)}>{T.nav[item.key]}</a></li>
-        ))}
-      </ul>
-    </div>
+    <nav class="map" aria-label={F.navTitle}>
+      <div class="col">
+        <h2>{F.navTitle}</h2>
+        <ul>
+          <li><a href={lhref(lang)}>{T.nav.home}</a></li>
+          {nav.filter((n) => n.key !== 'home').map((n) => (
+            <li><a href={n.hash ? lhash(lang, n.path, n.hash) : lhref(lang, n.path)}>{T.nav[n.key]}</a></li>
+          ))}
+          <li><a href={lhref(lang, 'ponuka/')}>{lang === 'sk' ? 'Prémiová show' : 'Premium show'}</a></li>
+          <li><a href={lhref(lang, 'sitemap/')}>{T.nav.sitemap}</a></li>
+        </ul>
+      </div>
 
-    <div class="col">
-      <h3 class="ftitle">{F.contactTitle}</h3>
-      <ul>
-        <li><a href={`mailto:${booking.email}`}>{booking.email}</a></li>
-        <li><a href={`tel:${booking.phoneHref}`}>{booking.phone}</a></li>
-        <li class="loc">{person.location[lang]}</li>
-      </ul>
-    </div>
+      <div class="col">
+        <h2>{F.contactTitle}</h2>
+        <ul>
+          <li><a href={`mailto:${booking.email}`}>{booking.email}</a></li>
+          <li><a href={`tel:${booking.phoneHref}`}>{booking.phone}</a></li>
+          <li><a href={`mailto:${management.email}`}>{management.email}</a></li>
+          <li class="loc">{person.location[lang]}</li>
+        </ul>
+      </div>
+
+      <div class="col">
+        <h2>{F.followTitle}</h2>
+        <ul>
+          <li><a href={links.instagram} rel="noopener" target="_blank">Instagram <Icon name="ext" size="0.85rem" /></a></li>
+          <li><a href={links.youtube} rel="noopener" target="_blank">YouTube <Icon name="ext" size="0.85rem" /></a></li>
+          <li><a href={lhash(lang, '', 'booking')}>{T.bookNow}</a></li>
+        </ul>
+      </div>
+    </nav>
   </div>
 
-  <div class="wrap-wide foot">
+  <div class="wrap-wide bottom">
     <p>© {year} StrukShow — {person.name}. {F.rights}</p>
-    <div class="foot-right">
-      <span class="credits">{F.credits}</span>
-      <a class="top" href="#main">{F.top} <Icon name="up" size="0.9rem" /></a>
-    </div>
+    <p class="meta">
+      <span>{F.credits}</span>
+      <a class="top-link" href="#main">{F.top} <Icon name="up" size="0.85rem" /></a>
+    </p>
   </div>
 </footer>
 
 <style>
-  .site-footer { background: var(--bg2); border-top: 1px solid var(--line); padding-top: clamp(3rem, 6vw, 5rem); margin-top: auto; }
-  .grid { display: grid; gap: clamp(2rem, 5vw, 4rem); grid-template-columns: 1.6fr 1fr 1fr; padding-bottom: clamp(2.5rem, 5vw, 4rem); }
-  .brand-col { max-width: 34ch; }
-  .flogo { height: 24px; width: auto; margin-bottom: 1.2rem; }
-  .tag { color: var(--soft); font-weight: 300; line-height: 1.6; }
-  .social { display: flex; gap: 0.8rem; margin-top: 1.3rem; }
+  .site-footer { background: var(--bg2); border-top: 1px solid var(--line); margin-top: auto; }
+  .top { display: grid; grid-template-columns: minmax(240px, 1.3fr) 3fr; gap: clamp(2rem, 5vw, 4rem); padding-top: clamp(3rem, 6vw, 5rem); padding-bottom: clamp(2.5rem, 5vw, 4rem); }
+  .brand { display: inline-block; }
+  .brand img { height: 26px; width: auto; display: block; }
+  .who { font-family: var(--serif); font-size: 1.5rem; color: var(--ink); margin: 1.1rem 0 0.1rem; }
+  .role { color: var(--gold); font-size: 0.82rem; letter-spacing: 0.04em; margin: 0 0 0.9rem; }
+  .small { color: var(--soft); max-width: 36ch; font-weight: 300; font-size: 0.92rem; }
+  .social { display: flex; gap: 0.8rem; margin-top: 1.4rem; }
   .social a { display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; color: var(--soft); border: 1px solid var(--line2); border-radius: 50%; transition: color 0.2s, border-color 0.2s, transform 0.2s; }
   .social a:hover { color: var(--gold); border-color: var(--gold); transform: translateY(-2px); }
 
-  .ftitle { font-family: var(--sans); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.1rem; }
-  .col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.7rem; }
-  .col ul a { color: var(--soft); font-weight: 400; }
-  .col ul a:hover { color: var(--gold); }
-  .loc { color: var(--mute); }
+  .map { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.6rem 1.4rem; }
+  .col h2 { font-family: var(--sans); font-size: 0.74rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin: 0 0 1rem; }
+  .col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
+  .col a { color: var(--soft); display: inline-flex; align-items: center; gap: 0.4em; }
+  .col a:hover { color: var(--gold); }
+  .col .loc { color: var(--mute); }
 
-  .foot { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; padding-block: 1.6rem; border-top: 1px solid var(--line); font-size: 0.82rem; color: var(--mute); }
-  .foot p { margin: 0; }
-  .foot-right { display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
-  .credits { color: var(--mute); }
-  .top { display: inline-flex; align-items: center; gap: 0.4em; color: var(--soft); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.74rem; }
-  .top:hover { color: var(--gold); }
+  .bottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.6rem 2rem; padding-block: 1.5rem; border-top: 1px solid var(--line); font-size: 0.8rem; color: var(--mute); }
+  .bottom p { margin: 0; max-width: 70ch; }
+  .meta { display: inline-flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+  .top-link { display: inline-flex; align-items: center; gap: 0.4em; color: var(--soft); letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.72rem; }
+  .top-link:hover { color: var(--gold); }
 
-  @media (max-width: 760px) {
-    .grid { grid-template-columns: 1fr 1fr; }
-    .brand-col { grid-column: 1 / -1; }
-  }
+  @media (max-width: 800px) { .top { grid-template-columns: 1fr; } }
 </style>

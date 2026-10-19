@@ -7,8 +7,9 @@ import Gallery from '../../components/Gallery.astro';
 import Testimonials from '../../components/Testimonials.astro';
 import YouTube from '../../components/YouTube.astro';
 import Icon from '../../components/Icon.astro';
+import ContactForm from '../../components/ContactForm.astro';
 import { LANGS, ui, tr } from '../../data/i18n.js';
-import { booking, links } from '../../data/site.js';
+import { booking, links, person } from '../../data/site.js';
 import { lhref } from '../../data/util.js';
 import { home } from '../../data/content.js';
 
@@ -98,15 +99,24 @@ const h = home;
 
   <!-- Booking -->
   <section class="section booking" id="booking" aria-labelledby="book-h">
-    <div class="narrow center" data-reveal>
-      <p class="eyebrow">{tr(h.booking.label, lang)}</p>
-      <h2 id="book-h">{tr(h.booking.heading, lang)}</h2>
-      <p class="lead">{tr(h.booking.lead, lang)}</p>
-      <div class="contacts">
-        <a class="contact" href={`mailto:${booking.email}`}><Icon name="mail" size="1.3rem" /><span>{booking.email}</span></a>
-        <a class="contact" href={`tel:${booking.phoneHref}`}><Icon name="phone" size="1.3rem" /><span>{booking.phone}</span></a>
+    <div class="wrap book-grid">
+      <div class="book-intro" data-reveal>
+        <p class="eyebrow">{tr(h.booking.label, lang)}</p>
+        <h2 id="book-h">{tr(h.booking.heading, lang)}</h2>
+        <p class="lead">{tr(h.booking.lead, lang)}</p>
+        <ul class="contacts">
+          <li><a href={`mailto:${booking.email}`}><Icon name="mail" size="1.2rem" /><span>{booking.email}</span></a></li>
+          <li><a href={`tel:${booking.phoneHref}`}><Icon name="phone" size="1.2rem" /><span>{booking.phone}</span></a></li>
+          <li class="loc"><span>{person.location[lang]}</span></li>
+        </ul>
+        <div class="social">
+          <a href={links.instagram} rel="noopener" target="_blank" aria-label="Instagram"><Icon name="instagram" size="1.3rem" /></a>
+          <a href={links.youtube} rel="noopener" target="_blank" aria-label="YouTube"><Icon name="youtube" size="1.3rem" /></a>
+        </div>
       </div>
-      <div class="cta mid"><a class="btn" href={`mailto:${booking.email}`}>{T.bookNow} <Icon name="next" /></a></div>
+      <div class="book-form" data-reveal>
+        <ContactForm lang={lang} />
+      </div>
     </div>
   </section>
 </Base>
@@ -131,11 +141,17 @@ const h = home;
   .video .wrap { max-width: 980px; }
 
   .booking { background: radial-gradient(130% 100% at 50% 0%, color-mix(in srgb, var(--gold) 7%, transparent), transparent 60%), var(--bg); border-top: 1px solid var(--line); }
-  .contacts { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem 2.2rem; margin: 2rem 0 0.4rem; }
-  .contact { display: inline-flex; align-items: center; gap: 0.6rem; color: var(--ink); font-size: 1.05rem; }
-  .contact:hover { color: var(--gold); }
-  .contact .icon { color: var(--gold); }
-  .cta.mid { justify-content: center; margin-top: 1.8rem; }
+  .book-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
+  .book-intro .lead { margin-bottom: 1.6rem; }
+  .contacts { list-style: none; margin: 1.6rem 0 0; padding: 0; display: grid; gap: 0.8rem; }
+  .contacts a, .contacts .loc { display: inline-flex; align-items: center; gap: 0.7rem; color: var(--ink); font-size: 1.05rem; }
+  .contacts a:hover { color: var(--gold); }
+  .contacts .icon { color: var(--gold); }
+  .contacts .loc { color: var(--soft); padding-left: calc(1.2rem + 0.7rem); }
+  .book-intro .social { display: flex; gap: 0.8rem; margin-top: 1.6rem; }
+  .book-intro .social a { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; color: var(--soft); border: 1px solid var(--line2); border-radius: 50%; transition: color 0.2s, border-color 0.2s, transform 0.2s; }
+  .book-intro .social a:hover { color: var(--gold); border-color: var(--gold); transform: translateY(-2px); }
+  .book-form { border: 1px solid var(--line); background: color-mix(in srgb, var(--bg2) 70%, transparent); padding: clamp(1.4rem, 3vw, 2.2rem); border-radius: 4px; }
 
-  @media (max-width: 860px) { .split { grid-template-columns: 1fr; } .two { grid-template-columns: 1fr; } }
+  @media (max-width: 860px) { .split { grid-template-columns: 1fr; } .two { grid-template-columns: 1fr; } .book-grid { grid-template-columns: 1fr; } }
 </style>

@@ -12,6 +12,9 @@
   --mute: #7c776e;
   --line: #26262e;
   --line2: #34343f;
+  /* vertical content rails: a thin gold-tinted line each side, darker margins beyond */
+  --rail: color-mix(in srgb, var(--gold) 34%, var(--line2));
+  --margin-shade: rgb(0 0 0 / 0.42);
 
   --gold: #d1a645;
   --gold-bright: #ecc677;
@@ -57,6 +60,26 @@ body {
   overflow-x: hidden;
 }
 main { flex: 1; }
+
+/* Two vertical rails framing the content column across the whole page (over every
+   band and the hero), with the margins beyond them a shade darker. Drawn once as a
+   fixed overlay; sits above content, below the header, dialogs and the skip link. */
+body::after {
+  /* the rails stand just outside the widest column (--wide), never nearer than 8px to the edge */
+  --edge: max(8px, calc((100% - min(100% - 2 * var(--gutter), var(--wide))) / 2 - clamp(8px, 2vw, 28px)));
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  background: linear-gradient(90deg,
+    var(--margin-shade) 0 var(--edge),
+    var(--rail) var(--edge) calc(var(--edge) + 1px),
+    transparent calc(var(--edge) + 1px) calc(100% - var(--edge) - 1px),
+    var(--rail) calc(100% - var(--edge) - 1px) calc(100% - var(--edge)),
+    var(--margin-shade) calc(100% - var(--edge)));
+}
+@media print { body::after { content: none; } }
 
 img, svg, video, canvas { max-width: 100%; display: block; }
 

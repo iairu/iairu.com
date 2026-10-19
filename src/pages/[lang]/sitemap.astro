@@ -1,0 +1,59 @@
+---
+import Base from '../../layouts/Base.astro';
+import Icon from '../../components/Icon.astro';
+import { LANGS, ui, tr } from '../../data/i18n.js';
+import { lhref } from '../../data/util.js';
+
+export const getStaticPaths = () => LANGS.map((lang) => ({ params: { lang } }));
+const { lang } = Astro.params;
+const T = ui[lang];
+const S = T.sitemap;
+
+const pages = [
+  { href: lhref(lang), label: T.nav.home },
+  { href: lhref(lang, 'produkcia/'), label: T.nav.production },
+  { href: lhref(lang, 'ponuka/'), label: lang === 'sk' ? 'Prémiová kúzelnícka show' : 'Premium magic show' },
+  { href: lhref(lang) + '#show', label: T.nav.show },
+  { href: lhref(lang) + '#gallery', label: T.nav.gallery },
+  { href: lhref(lang) + '#booking', label: T.nav.booking },
+];
+---
+<Base lang={lang} path="sitemap/" title={S.title} description={S.intro} solidHeader>
+  <section class="section smap">
+    <div class="narrow">
+      <p class="eyebrow">{S.title}</p>
+      <h1>{S.title}</h1>
+      <p class="lead">{S.intro}</p>
+
+      <ul class="plist">
+        {pages.map((p) => (
+          <li><a href={p.href}><span>{p.label}</span><Icon name="next" size="1rem" /></a></li>
+        ))}
+      </ul>
+
+      <h2 class="lang-h">{S.langs}</h2>
+      <ul class="langs">
+        {LANGS.map((l) => (
+          <li><a href={lhref(l)} hreflang={l}>{l === 'sk' ? 'Slovensky' : 'English'} — {`/${l}/`}</a></li>
+        ))}
+      </ul>
+
+      <p class="xml"><a href="/sitemap-index.xml">sitemap-index.xml</a> · XML {lang === 'sk' ? 'pre vyhľadávače' : 'for search engines'}</p>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .smap { padding-top: calc(var(--hdr) + clamp(2rem, 5vw, 4rem)); }
+  .plist { list-style: none; margin: 2rem 0 0; padding: 0; border-top: 1px solid var(--line); }
+  .plist li { border-bottom: 1px solid var(--line); }
+  .plist a { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 1rem 0; color: var(--ink); font-family: var(--serif); font-size: 1.4rem; }
+  .plist a:hover { color: var(--gold); }
+  .plist .icon { color: var(--gold); transition: transform 0.2s; }
+  .plist a:hover .icon { transform: translateX(4px); }
+  .lang-h { margin-top: clamp(2rem, 4vw, 3rem); }
+  .langs { list-style: none; margin: 1rem 0 0; padding: 0; display: grid; gap: 0.6rem; }
+  .langs a { color: var(--soft); }
+  .langs a:hover { color: var(--gold); }
+  .xml { margin-top: 2rem; font-size: 0.88rem; color: var(--mute); }
+</style>

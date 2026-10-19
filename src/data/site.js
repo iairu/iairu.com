@@ -33,6 +33,15 @@ export const links = {
   instagram: 'https://www.instagram.com/brianstruk',
 };
 
+// Contact form delivery via FormSubmit (https://formsubmit.co) — no backend or API
+// key needed; it emails the booking address. The owner must click the one-time
+// activation link FormSubmit emails on the first submission. To switch providers
+// (Formspree, Web3Forms, a Vercel function…) change only the two URLs below.
+export const contactForm = {
+  action: `https://formsubmit.co/${booking.email}`,
+  ajax: `https://formsubmit.co/ajax/${booking.email}`,
+};
+
 export const SITE_DESCRIPTION = {
   sk: 'Hľadáte kúzelníka na vašu akciu? Braňo Struk z Česko Slovensko má talent prináša modernú kúzelnícku show so štýlom pre deti aj dospelých. 10 000 divákov ročne, 2,5 milióna online zhliadnutí.',
   en: 'Looking for a magician for your event? Brian Struk, known from Got Talent, delivers a modern, high-class magic show for children and adults. 10,000 viewers a year, 2.5 million online views.',
