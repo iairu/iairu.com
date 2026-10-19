@@ -42,5 +42,5 @@ Needs Node 20+. Set `SITE_URL` at build time for absolute canonical / sitemap UR
 
 Text is taken from the original CockpitCMS content and lightly cleaned up; the English for
 the `/ponuka` page was translated for this rewrite (the original was Slovak only). Headings
-use **Cormorant Garamond**, body copy **Inter**, both from Google Fonts. Videos are loaded as
+use **Bodoni Moda**, body copy **Hanken Grotesk**, both from Google Fonts. Videos are loaded as
 click-to-play YouTube facades; the production showreel is a self-hosted muted loop.

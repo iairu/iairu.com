@@ -1,6 +1,7 @@
 /* StrukShow — an elevated take on the original dark/luxury magician brand.
-   Near-black surfaces, warm ivory ink, a single gold accent. Cormorant Garamond
-   for display, Inter for everything functional. Dark only, by design. */
+   Near-black surfaces, warm ivory ink, a single gold accent. Bodoni Moda (a
+   theatrical high-contrast didone) for display, Hanken Grotesk for everything
+   functional. Dark only, by design. */
 
 :root {
   --bg: #0a0a0c;
@@ -22,8 +23,8 @@
   --on-gold: #0a0a0c;
   --tint: color-mix(in srgb, var(--gold) 12%, transparent);
 
-  --serif: 'Cormorant Garamond', 'Cormorant', Georgia, 'Times New Roman', serif;
-  --sans: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --serif: 'Bodoni Moda', 'Bodoni 72', Didot, 'Bodoni MT', Georgia, 'Times New Roman', serif;
+  --sans: 'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 
   --maxw: 1180px;
   --wide: 1360px;
@@ -40,6 +41,9 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: calc(var(--hdr) + 18px);
   -webkit-text-size-adjust: 100%;
+  /* never scroll sideways: `clip` (viewport treats it as hidden) with `hidden` as the older-browser fallback */
+  overflow-x: hidden;
+  overflow-x: clip;
 }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
@@ -58,6 +62,9 @@ body {
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
   overflow-x: hidden;
+  overflow-x: clip;
+  /* long unbroken strings (e-mail addresses) wrap instead of widening the page */
+  overflow-wrap: break-word;
 }
 main { flex: 1; }
 
@@ -87,14 +94,15 @@ img, svg, video, canvas { max-width: 100%; display: block; }
 h1, h2, h3, h4 {
   font-family: var(--serif);
   font-weight: 600;
-  line-height: 1.04;
-  letter-spacing: -0.01em;
+  line-height: 1.1;
+  letter-spacing: -0.005em;
   margin: 0 0 0.4em;
   text-wrap: balance;
 }
-h1 { font-size: clamp(2.8rem, 1.6rem + 6vw, 6rem); font-weight: 700; }
-h2 { font-size: clamp(2rem, 1.4rem + 2.6vw, 3.4rem); }
-h3 { font-size: clamp(1.4rem, 1.1rem + 1.2vw, 2rem); }
+/* Bodoni Moda runs wider and larger on the body than a Garamond, so the scale is a notch smaller */
+h1 { font-size: clamp(2.5rem, 1.5rem + 5vw, 5.2rem); font-weight: 600; }
+h2 { font-size: clamp(1.8rem, 1.3rem + 2.3vw, 3rem); }
+h3 { font-size: clamp(1.3rem, 1.05rem + 1vw, 1.8rem); }
 p { margin: 0 0 1em; text-wrap: pretty; }
 strong, b { font-weight: 600; color: var(--ink); }
 em, i { font-style: italic; }

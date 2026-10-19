@@ -37,7 +37,7 @@ const year = new Date().getFullYear();
         </ul>
       </div>
 
-      <div class="col">
+      <div class="col contact">
         <h2>{F.contactTitle}</h2>
         <ul>
           <li><a href={`mailto:${booking.email}`}>{booking.email}</a></li>
@@ -79,7 +79,9 @@ const year = new Date().getFullYear();
   .social a { display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; color: var(--soft); border: 1px solid var(--line2); border-radius: 50%; transition: color 0.2s, border-color 0.2s, transform 0.2s; }
   .social a:hover { color: var(--gold); border-color: var(--gold); transform: translateY(-2px); }
 
-  .map { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.6rem 1.4rem; }
+  .map { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); gap: 1.6rem 1.4rem; }
+  .col { min-width: 0; }
+  .col li, .col a { overflow-wrap: anywhere; }
   .col h2 { font-family: var(--sans); font-size: 0.74rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin: 0 0 1rem; }
   .col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
   .col a { color: var(--soft); display: inline-flex; align-items: center; gap: 0.4em; }
@@ -93,4 +95,9 @@ const year = new Date().getFullYear();
   .top-link:hover { color: var(--gold); }
 
   @media (max-width: 800px) { .top { grid-template-columns: 1fr; } }
+  /* phones: navigation and follow sit side by side, the long e-mail addresses get a full-width row */
+  @media (max-width: 560px) {
+    .map { grid-template-columns: 1fr 1fr; }
+    .col.contact { grid-column: 1 / -1; order: 3; }
+  }
 </style>
