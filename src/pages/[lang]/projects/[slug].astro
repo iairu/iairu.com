@@ -1,6 +1,7 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import ProjectCard from '../../../components/ProjectCard.astro';
+import ProjectThumb from '../../../components/ProjectThumb.astro';
 import { LANGS, ui } from '../../../data/i18n.js';
 import { fields, interests } from '../../../data/site.js';
 import { projects, repoSnapshotDate } from '../../../data/projects.js';
@@ -32,11 +33,9 @@ const gallery = p.gallery ?? [];
             {links.map((l) => <a class={`btn ${l.primary || l === links[0] ? 'primary' : 'ghost'}`} href={l.href} {...(isExternal(l.href) ? { rel: 'noopener', target: '_blank' } : {})}>{l.label}{isExternal(l.href) && <Icon name="ext" />}</a>)}
           </div>
         </div>
-        {(p.image || p.logo) && (
-          <div class="hero-img" data-zoom-group style={p.bg ? `background-image:url(${p.bg})` : undefined}>
-            {p.logo ? <img class="logo" src={p.logo} alt={title} /> : <img src={p.image} alt={title} data-zoom />}
-          </div>
-        )}
+        <div class="hero-img" data-zoom-group={p.image || p.logo ? '' : undefined} style={p.bg ? `background-image:url(${p.bg})` : undefined}>
+          {p.logo ? <img class="logo" src={p.logo} alt={title} /> : p.image ? <img src={p.image} alt={title} data-zoom /> : <ProjectThumb p={p} lang={lang} />}
+        </div>
       </header>
 
       <dl class="facts">

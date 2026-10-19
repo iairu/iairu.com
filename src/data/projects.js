@@ -234,7 +234,8 @@ const raw = [
 const KNOWN_LANG = { 'Jupyter Notebook': 'Python (notebook)' };
 
 // Picture order: a hand-picked one, else one taken from the project's GitHub repository
-// (src/data/repo-images.json), else a generated one (npm run thumbs, scripts/make-thumbs.mjs).
+// (src/data/repo-images.json). With neither, image is null and the card/detail page draws a
+// simple SVG stand-in (components/ProjectThumb.astro) from the project's field and interest.
 export const projects = raw.map((p) => {
   const r = p.repo ? gh[p.repo] : null;
   if (p.repo && !r) throw new Error(`projects.js: repo ${p.repo} missing from repos.json (run npm run sync:repos)`);
@@ -242,7 +243,7 @@ export const projects = raw.map((p) => {
   const links = (p.links || []).map((l) => ({ ...l }));
   return {
     ...p,
-    image: p.image ?? p.thumbs?.[0] ?? (repoImages[p.id] ? `/img/repos/${p.id}.jpg` : `/img/thumbs/${p.id}.jpg`),
+    image: p.image ?? p.thumbs?.[0] ?? (repoImages[p.id] ? `/img/repos/${p.id}.jpg` : null),
     language,
     stars: r ? r.stars : 0,
     year: p.year ?? Number(r.created.slice(0, 4)),

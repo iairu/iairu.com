@@ -2,11 +2,11 @@
 import { fields } from '../data/site.js';
 import { tr, lhref, fmtStars } from '../data/util.js';
 import Icon from './Icon.astro';
+import ProjectThumb from './ProjectThumb.astro';
 const { p, lang, compact = false, filterable = false } = Astro.props;
 const title = tr(p.title, lang), tag = tr(p.tag, lang), desc = tr(p.desc, lang);
 const main = fields[p.fields[0]];
 const search = [title, tag, desc, p.language, ...(p.tools || []), ...p.fields.map((f) => tr(fields[f].label, lang))].join(' ').toLowerCase();
-const initials = String(title).replace(/[^\p{L}\p{N}]+/gu, ' ').trim().split(' ').slice(0, 2).map((w) => w[0]).join('').toUpperCase();
 const href = lhref(lang, `projects/${p.id}/`);
 const data = filterable ? {
   'data-id': p.id, 'data-fields': p.fields.join(' '), 'data-interests': p.interests.join(' '), 'data-lang': p.language ?? '',
@@ -17,7 +17,7 @@ const data = filterable ? {
   <a class="media" href={href} tabindex="-1" aria-hidden="true">
     {p.image
       ? <img src={p.image} alt="" loading="lazy" decoding="async" width="480" height="270" />
-      : <span class="ph" aria-hidden="true"><span>{initials}</span></span>}
+      : <ProjectThumb p={p} lang={lang} />}
   </a>
   <div class="body">
     <p class="meta">
@@ -43,10 +43,8 @@ const data = filterable ? {
   .media { display: block; aspect-ratio: 16 / 9; overflow: hidden; background: var(--bg3); border-bottom: 1px solid var(--line); }
   .media img { width: 100%; height: 100%; object-fit: cover; transition: transform .5s; }
   .card:hover .media img { transform: scale(1.04); }
-  .ph { display: grid; place-items: center; width: 100%; height: 100%;
-    background: linear-gradient(135deg, color-mix(in srgb, var(--c) 22%, var(--bg3)), var(--bg3)),
-      repeating-linear-gradient(45deg, transparent 0 11px, color-mix(in srgb, var(--c) 14%, transparent) 11px 12px); background-blend-mode: normal; }
-  .ph span { font: 700 clamp(2.4rem, 8vw, 3.4rem) var(--font); letter-spacing: -.04em; color: var(--c); opacity: .9; }
+  .media :global(svg.thumb) { transition: transform .5s; }
+  .card:hover .media :global(svg.thumb) { transform: scale(1.04); }
   .body { padding: 1rem 1.1rem 1.2rem; display: flex; flex-direction: column; gap: .35rem; flex: 1; }
   .meta { display: flex; gap: .8rem; margin: 0; font: 500 .72rem var(--mono); font-variant-numeric: tabular-nums; color: var(--soft); }
   .star { display: inline-flex; align-items: center; gap: .3em; }
