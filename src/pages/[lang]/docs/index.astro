@@ -1,6 +1,7 @@
 ---
 import Base from '../../../layouts/Base.astro';
 import Icon from '../../../components/Icon.astro';
+import DocList from '../../../components/DocList.astro';
 import { LANGS, ui } from '../../../data/i18n.js';
 import { docsFor, staticDocsFor, CATEGORIES } from '../../../data/docs.js';
 import { lhref, isExternal } from '../../../data/util.js';
@@ -9,6 +10,10 @@ export const getStaticPaths = () => LANGS.map((lang) => ({ params: { lang } }));
 const { lang } = Astro.params;
 const T = (en, sk) => (lang === 'sk' ? sk : en);
 const docs = docsFor(lang), staticDocs = staticDocsFor(lang);
+
+// Lighter collections that live on their own subpages, reached by a button below.
+const SUBPAGES = ['travel', 'recipes'];
+const collections = SUBPAGES.map((cat) => ({ cat, label: CATEGORIES[cat], count: docs.filter((d) => d.category === cat).length })).filter((c) => c.count);
 ---
 <Base lang={lang} path="docs/" title={ui[lang].nav.docs}
   description={T('Write-ups, tutorials and documentation that go beyond the portfolio cards.', 'Články, návody a dokumentácia, ktoré presahujú portfóliové karty.')}
@@ -18,21 +23,24 @@ const docs = docsFor(lang), staticDocs = staticDocsFor(lang);
       <h1>{T('Everything past the cards', 'Všetko za hranicou kariet')}</h1>
       <p class="lead">{T('Portfolio cards stay short. The longer story of how things were built lives here, or in the repositories linked from each project.', 'Karty v portfóliu ostávajú krátke. Dlhší príbeh o tom, ako veci vznikli, žije tu alebo v repozitároch, na ktoré odkazuje každý projekt.')}</p>
 
-      {Object.entries(CATEGORIES).map(([cat, label]) => docs.some((d) => d.category === cat) && (
+      {Object.entries(CATEGORIES).filter(([cat]) => !SUBPAGES.includes(cat)).map(([cat, label]) => docs.some((d) => d.category === cat) && (
         <>
           <h2 class="sub" id={cat}>{label[lang]}</h2>
-          <ul class="list">
-            {docs.filter((d) => d.category === cat).map((d) => (
-              <li><a href={lhref(lang, `docs/${d.slug}/`)}>
-                <span class="meta">{d.date}{d.translated && <span class="tag">{T('translated', 'preložené')}</span>}</span>
-                <h3>{d.title}</h3>
-                <p>{d.desc}</p>
-                <span class="tags">{d.tags.map((t) => <span class="tag">{t}</span>)}</span>
-              </a></li>
-            ))}
-          </ul>
+          <DocList docs={docs.filter((d) => d.category === cat)} lang={lang} />
         </>
       ))}
+
+      {collections.length > 0 && (
+        <>
+          <h2 class="sub">{T('More collections', 'Ďalšie zbierky')}</h2>
+          <p class="lead-sm">{T('Lighter reading that is not the main focus of the site, kept on their own pages.', 'Odľahčenejšie čítanie, ktoré nie je hlavným zameraním stránky, na vlastných podstránkach.')}</p>
+          <div class="collections">
+            {collections.map((c) => (
+              <a class="btn ghost" href={lhref(lang, `docs/${c.cat}/`)}>{c.label[lang]} · {c.count} <Icon name="next" /></a>
+            ))}
+          </div>
+        </>
+      )}
 
       <h2 class="sub">{T('Documentation and downloads', 'Dokumentácia a súbory na stiahnutie')}</h2>
       <ul class="list">
@@ -50,6 +58,8 @@ const docs = docsFor(lang), staticDocs = staticDocsFor(lang);
 </Base>
 <style>
   .sub { margin-top: 3rem; }
+  .lead-sm { color: var(--soft); margin: .4rem 0 0; max-width: 60ch; }
+  .collections { display: flex; flex-wrap: wrap; gap: .8rem; margin-top: 1.2rem; }
   .list { list-style: none; padding: 0; margin: 1rem 0 0; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 320px), 1fr)); }
   .list a { display: flex; flex-direction: column; gap: .3rem; height: 100%; padding: 1.2rem; border: 1px solid var(--line); background: var(--bg2); color: var(--ink); text-decoration: none; transition: border-color .2s; }
   .list a:hover { border-color: var(--blue); } .list a:hover h3 { color: var(--blue); }

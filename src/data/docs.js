@@ -13,7 +13,32 @@ function parse([path, raw]) {
     if (k) meta[k[1]] = k[2].trim();
   }
   const [, lang, slug] = file.match(/^([a-z]{2})_(.+)\.md$/);
-  return { slug, lang, category: meta.category || 'guides', title: meta.title, desc: meta.desc || '', date: (meta.date || '').slice(0, 10), tags: (meta.tags || '').split(/\s*,\s*/).filter(Boolean), html: marked.parse(m ? m[2] : src) };
+  const { html, toc } = withToc(marked.parse(m ? m[2] : src));
+  return { slug, lang, category: meta.category || 'guides', title: meta.title, desc: meta.desc || '', date: (meta.date || '').slice(0, 10), tags: (meta.tags || '').split(/\s*,\s*/).filter(Boolean), html, toc };
+}
+
+// Give every h1–h3 a stable id and collect a table of contents for the sidebar.
+const decodeEntities = (s) => s
+  .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)))
+  .replace(/&#(\d+);/g, (_, n) => String.fromCodePoint(+n))
+  .replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&quot;/g, '"').replace(/&#39;|&apos;/g, "'").replace(/&amp;/g, '&');
+
+function withToc(html) {
+  const toc = [], used = new Set();
+  const slugify = (text) => {
+    let base = text.toLowerCase().replace(/[^\p{L}\p{N}]+/gu, '-').replace(/^-+|-+$/g, '') || 'section';
+    let id = base, n = 1;
+    while (used.has(id)) id = `${base}-${++n}`;
+    used.add(id);
+    return id;
+  };
+  const out = html.replace(/<h([1-3])>([\s\S]*?)<\/h\1>/g, (_, level, inner) => {
+    const text = decodeEntities(inner.replace(/<[^>]+>/g, '')).trim();
+    const id = slugify(text);
+    toc.push({ level: Number(level), id, text });
+    return `<h${level} id="${id}">${inner}</h${level}>`;
+  });
+  return { html: out, toc };
 }
 
 // Original language per slug (default English). Every write-up exists in both languages.

@@ -1,0 +1,30 @@
+---
+import Base from '../../../layouts/Base.astro';
+import Icon from '../../../components/Icon.astro';
+import DocList from '../../../components/DocList.astro';
+import { LANGS, ui } from '../../../data/i18n.js';
+import { docsFor, CATEGORIES } from '../../../data/docs.js';
+import { lhref } from '../../../data/util.js';
+
+const CAT = 'recipes';
+export const getStaticPaths = () => LANGS.map((lang) => ({ params: { lang } }));
+const { lang } = Astro.params;
+const T = (en, sk) => (lang === 'sk' ? sk : en);
+const docs = docsFor(lang).filter((d) => d.category === CAT);
+const label = CATEGORIES[CAT][lang];
+---
+<Base lang={lang} path={`docs/${CAT}/`} title={label}
+  description={T('Recipes kept apart from the main documentation.', 'Recepty oddelené od hlavnej dokumentácie.')}
+  crumbs={[{ label: ui[lang].nav.docs, href: lhref(lang, 'docs/') }, { label }]}>
+  <section class="block">
+    <div class="wrap">
+      <h1>{label}</h1>
+      <p class="lead">{T('Food I cook and the recipes I keep coming back to: the lighter side of the site, kept off the main documentation page.', 'Jedlá, ktoré varím, a recepty, ku ktorým sa vraciam: odľahčenejšia časť stránky, mimo hlavnej dokumentácie.')}</p>
+      <DocList docs={docs} lang={lang} />
+      <p class="back"><a class="btn ghost" href={lhref(lang, 'docs/')}><Icon name="prev" /> {ui[lang].nav.docs}</a></p>
+    </div>
+  </section>
+</Base>
+<style>
+  .back { margin-top: 3rem; }
+</style>
