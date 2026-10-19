@@ -56,7 +56,7 @@ const ld = {
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..800;1,6..96,400..800&family=Hanken+Grotesk:wght@300..700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant:ital,wght@0,300..700;1,300..700&family=Manrope:wght@300..800&display=swap"
       rel="stylesheet"
     />
     <script type="application/ld+json" set:html={JSON.stringify(ld)} />
@@ -120,5 +120,8 @@ const ld = {
       lb?.addEventListener('click', (e) => { if (e.target === lb || (e.target as HTMLElement).classList.contains('lb-close')) closeLb(); });
       document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLb(); });
     </script>
-  </body>
+  <!-- impeccable-live-start -->
+<script is:inline src="http://localhost:8400/live.js?token=e37bc573-1bd9-4648-9293-8912f9b5a70b"></script>
+<!-- impeccable-live-end -->
+</body>
 </html>

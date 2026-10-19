@@ -22,9 +22,11 @@
   --gold-deep: #a07c2c;
   --on-gold: #0a0a0c;
   --tint: color-mix(in srgb, var(--gold) 12%, transparent);
+  /* the one non-gold signal: a warm muted coral for form error feedback, readable on dark */
+  --error: #e8a08f;
 
-  --serif: 'Bodoni Moda', 'Bodoni 72', Didot, 'Bodoni MT', Georgia, 'Times New Roman', serif;
-  --sans: 'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --serif: 'Cormorant', 'Cormorant Garamond', 'EB Garamond', Garamond, Georgia, 'Times New Roman', serif;
+  --sans: 'Manrope', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 
   --maxw: 1180px;
   --wide: 1360px;
@@ -94,15 +96,16 @@ img, svg, video, canvas { max-width: 100%; display: block; }
 h1, h2, h3, h4 {
   font-family: var(--serif);
   font-weight: 600;
-  line-height: 1.1;
-  letter-spacing: -0.005em;
+  line-height: 1.08;
+  letter-spacing: normal;
   margin: 0 0 0.4em;
   text-wrap: balance;
 }
-/* Bodoni Moda runs wider and larger on the body than a Garamond, so the scale is a notch smaller */
-h1 { font-size: clamp(2.5rem, 1.5rem + 5vw, 5.2rem); font-weight: 600; }
-h2 { font-size: clamp(1.8rem, 1.3rem + 2.3vw, 3rem); }
-h3 { font-size: clamp(1.3rem, 1.05rem + 1vw, 1.8rem); }
+/* Cormorant is a delicate, narrower Garamond-didone, so the display scale runs a notch larger
+   and holds 600 weight — thin cuts would lose their hairlines against the near-black surface. */
+h1 { font-size: clamp(2.75rem, 1.6rem + 5.4vw, 5.8rem); font-weight: 600; }
+h2 { font-size: clamp(1.9rem, 1.35rem + 2.5vw, 3.2rem); }
+h3 { font-size: clamp(1.35rem, 1.05rem + 1.1vw, 1.9rem); }
 p { margin: 0 0 1em; text-wrap: pretty; }
 strong, b { font-weight: 600; color: var(--ink); }
 em, i { font-style: italic; }

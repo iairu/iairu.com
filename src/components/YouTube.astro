@@ -23,7 +23,7 @@ const posterFallback = `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 </div>
 
 <style>
-  .yt { position: relative; aspect-ratio: var(--ratio); width: 100%; background: #000; overflow: hidden; border: 1px solid var(--line); }
+  .yt { position: relative; aspect-ratio: var(--ratio); width: 100%; background: var(--bg); overflow: hidden; border: 1px solid var(--line); }
   .yt.short { max-width: 360px; margin-inline: auto; }
   .yt-play { position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; border: 0; background: none; cursor: pointer; display: grid; place-items: center; }
   .yt-poster { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s, opacity 0.3s; }

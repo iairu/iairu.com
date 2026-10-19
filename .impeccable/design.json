@@ -1,751 +1,215 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-17T16:03:58.911Z",
-  "title": "Design System: iairu.com",
+  "generatedAt": "2026-10-19T00:00:00.000Z",
+  "title": "Design System: StrukShow",
   "extensions": {
     "colorMeta": {
-      "bench-black": {
-        "role": "neutral",
-        "displayName": "Bench Black",
-        "purpose": "Page background (dark).",
+      "gold": {
+        "role": "primary",
+        "displayName": "Gold",
+        "purpose": "The single accent: primary buttons, eyebrow labels, rail tint, focus ring, selection, card lift ring.",
         "theme": "dark",
-        "canonical": "oklch(16.6% 0.013 248.6)",
-        "tonalRamp": [
-          "oklch(15% 0.013 248.6)",
-          "oklch(26.4% 0.013 248.6)",
-          "oklch(37.9% 0.013 248.6)",
-          "oklch(49.3% 0.013 248.6)",
-          "oklch(60.7% 0.013 248.6)",
-          "oklch(72.1% 0.013 248.6)",
-          "oklch(83.6% 0.013 248.6)",
-          "oklch(95% 0.013 248.6)"
-        ]
+        "canonical": "oklch(74% 0.12 86)",
+        "tonalRamp": ["oklch(15% 0.12 86)", "oklch(26.4% 0.12 86)", "oklch(37.9% 0.12 86)", "oklch(49.3% 0.12 86)", "oklch(60.7% 0.12 86)", "oklch(72.1% 0.12 86)", "oklch(83.6% 0.12 86)", "oklch(95% 0.12 86)"]
+      },
+      "gold-bright": {
+        "role": "primary",
+        "displayName": "Gold Bright",
+        "purpose": "Link text at rest and the hover lift of gold surfaces.",
+        "theme": "dark",
+        "canonical": "oklch(83% 0.11 88)",
+        "tonalRamp": ["oklch(15% 0.11 88)", "oklch(26.4% 0.11 88)", "oklch(37.9% 0.11 88)", "oklch(49.3% 0.11 88)", "oklch(60.7% 0.11 88)", "oklch(72.1% 0.11 88)", "oklch(83.6% 0.11 88)", "oklch(95% 0.11 88)"]
+      },
+      "gold-deep": {
+        "role": "primary",
+        "displayName": "Gold Deep",
+        "purpose": "Low end of the gold ramp: gradients and pressed/recessed gold.",
+        "theme": "dark",
+        "canonical": "oklch(60% 0.1 83)",
+        "tonalRamp": ["oklch(15% 0.1 83)", "oklch(26.4% 0.1 83)", "oklch(37.9% 0.1 83)", "oklch(49.3% 0.1 83)", "oklch(60.7% 0.1 83)", "oklch(72.1% 0.1 83)", "oklch(83.6% 0.1 83)", "oklch(95% 0.1 83)"]
+      },
+      "error": {
+        "role": "secondary",
+        "displayName": "Error Coral",
+        "purpose": "The one non-gold signal: warm muted coral for form error feedback, readable on dark.",
+        "theme": "dark",
+        "canonical": "oklch(76% 0.08 30)",
+        "tonalRamp": ["oklch(15% 0.08 30)", "oklch(26.4% 0.08 30)", "oklch(37.9% 0.08 30)", "oklch(49.3% 0.08 30)", "oklch(60.7% 0.08 30)", "oklch(72.1% 0.08 30)", "oklch(83.6% 0.08 30)", "oklch(95% 0.08 30)"]
+      },
+      "bench-night": {
+        "role": "neutral",
+        "displayName": "Bench Night",
+        "purpose": "Page background / the room; also text color on gold.",
+        "theme": "dark",
+        "canonical": "oklch(15% 0.006 285)",
+        "tonalRamp": ["oklch(15% 0.006 285)", "oklch(26.4% 0.006 285)", "oklch(37.9% 0.006 285)", "oklch(49.3% 0.006 285)", "oklch(60.7% 0.006 285)", "oklch(72.1% 0.006 285)", "oklch(83.6% 0.006 285)", "oklch(95% 0.006 285)"]
       },
       "bench-panel": {
         "role": "neutral",
         "displayName": "Bench Panel",
-        "purpose": "Cards, panels, bands, footer (dark).",
+        "purpose": "Banded sections, panels, footer — first tonal lift off the page.",
         "theme": "dark",
-        "canonical": "oklch(20.1% 0.02 248.9)",
-        "tonalRamp": [
-          "oklch(15% 0.02 248.9)",
-          "oklch(26.4% 0.02 248.9)",
-          "oklch(37.9% 0.02 248.9)",
-          "oklch(49.3% 0.02 248.9)",
-          "oklch(60.7% 0.02 248.9)",
-          "oklch(72.1% 0.02 248.9)",
-          "oklch(83.6% 0.02 248.9)",
-          "oklch(95% 0.02 248.9)"
-        ]
+        "canonical": "oklch(18% 0.007 285)",
+        "tonalRamp": ["oklch(15% 0.007 285)", "oklch(26.4% 0.007 285)", "oklch(37.9% 0.007 285)", "oklch(49.3% 0.007 285)", "oklch(60.7% 0.007 285)", "oklch(72.1% 0.007 285)", "oklch(83.6% 0.007 285)", "oklch(95% 0.007 285)"]
       },
       "bench-inset": {
         "role": "neutral",
         "displayName": "Bench Inset",
-        "purpose": "Recessed wells, inline code, selected rows (dark).",
+        "purpose": "Recessed wells: form inputs and inset surfaces.",
         "theme": "dark",
-        "canonical": "oklch(24.1% 0.026 244.3)",
-        "tonalRamp": [
-          "oklch(15% 0.026 244.3)",
-          "oklch(26.4% 0.026 244.3)",
-          "oklch(37.9% 0.026 244.3)",
-          "oklch(49.3% 0.026 244.3)",
-          "oklch(60.7% 0.026 244.3)",
-          "oklch(72.1% 0.026 244.3)",
-          "oklch(83.6% 0.026 244.3)",
-          "oklch(95% 0.026 244.3)"
-        ]
+        "canonical": "oklch(21% 0.008 285)",
+        "tonalRamp": ["oklch(15% 0.008 285)", "oklch(26.4% 0.008 285)", "oklch(37.9% 0.008 285)", "oklch(49.3% 0.008 285)", "oklch(60.7% 0.008 285)", "oklch(72.1% 0.008 285)", "oklch(83.6% 0.008 285)", "oklch(95% 0.008 285)"]
       },
-      "chalk-ink": {
+      "bench-raise": {
         "role": "neutral",
-        "displayName": "Chalk Ink",
-        "purpose": "Headings and body text (dark).",
+        "displayName": "Bench Raise",
+        "purpose": "Highest resting surface: raised cards.",
         "theme": "dark",
-        "canonical": "oklch(94.9% 0.008 236.6)",
-        "tonalRamp": [
-          "oklch(15% 0.008 236.6)",
-          "oklch(26.4% 0.008 236.6)",
-          "oklch(37.9% 0.008 236.6)",
-          "oklch(49.3% 0.008 236.6)",
-          "oklch(60.7% 0.008 236.6)",
-          "oklch(72.1% 0.008 236.6)",
-          "oklch(83.6% 0.008 236.6)",
-          "oklch(95% 0.008 236.6)"
-        ]
+        "canonical": "oklch(25% 0.01 285)",
+        "tonalRamp": ["oklch(15% 0.01 285)", "oklch(26.4% 0.01 285)", "oklch(37.9% 0.01 285)", "oklch(49.3% 0.01 285)", "oklch(60.7% 0.01 285)", "oklch(72.1% 0.01 285)", "oklch(83.6% 0.01 285)", "oklch(95% 0.01 285)"]
       },
-      "pencil-grey": {
+      "ivory-ink": {
         "role": "neutral",
-        "displayName": "Pencil Grey",
-        "purpose": "Secondary text, meta, resting nav (dark).",
+        "displayName": "Ivory Ink",
+        "purpose": "Headings and primary body copy — warm cream, never pure white.",
         "theme": "dark",
-        "canonical": "oklch(75% 0.026 237)",
-        "tonalRamp": [
-          "oklch(15% 0.026 237)",
-          "oklch(26.4% 0.026 237)",
-          "oklch(37.9% 0.026 237)",
-          "oklch(49.3% 0.026 237)",
-          "oklch(60.7% 0.026 237)",
-          "oklch(72.1% 0.026 237)",
-          "oklch(83.6% 0.026 237)",
-          "oklch(95% 0.026 237)"
-        ]
+        "canonical": "oklch(95% 0.013 90)",
+        "tonalRamp": ["oklch(15% 0.013 90)", "oklch(26.4% 0.013 90)", "oklch(37.9% 0.013 90)", "oklch(49.3% 0.013 90)", "oklch(60.7% 0.013 90)", "oklch(72.1% 0.013 90)", "oklch(83.6% 0.013 90)", "oklch(95% 0.013 90)"]
       },
-      "grid-rule": {
+      "soft-ink": {
         "role": "neutral",
-        "displayName": "Grid Rule",
-        "purpose": "Hairline borders (dark).",
+        "displayName": "Soft Ink",
+        "purpose": "Leads, secondary copy, resting navigation.",
         "theme": "dark",
-        "canonical": "oklch(32% 0.032 241.9)",
-        "tonalRamp": [
-          "oklch(15% 0.032 241.9)",
-          "oklch(26.4% 0.032 241.9)",
-          "oklch(37.9% 0.032 241.9)",
-          "oklch(49.3% 0.032 241.9)",
-          "oklch(60.7% 0.032 241.9)",
-          "oklch(72.1% 0.032 241.9)",
-          "oklch(83.6% 0.032 241.9)",
-          "oklch(95% 0.032 241.9)"
-        ]
+        "canonical": "oklch(74% 0.012 85)",
+        "tonalRamp": ["oklch(15% 0.012 85)", "oklch(26.4% 0.012 85)", "oklch(37.9% 0.012 85)", "oklch(49.3% 0.012 85)", "oklch(60.7% 0.012 85)", "oklch(72.1% 0.012 85)", "oklch(83.6% 0.012 85)", "oklch(95% 0.012 85)"]
       },
-      "grid-rule-strong": {
+      "mute-ink": {
         "role": "neutral",
-        "displayName": "Grid Rule Strong",
-        "purpose": "Control outlines (dark).",
+        "displayName": "Mute Ink",
+        "purpose": "Placeholders, captions, faintest meta text.",
         "theme": "dark",
-        "canonical": "oklch(41.6% 0.041 233.4)",
-        "tonalRamp": [
-          "oklch(15% 0.041 233.4)",
-          "oklch(26.4% 0.041 233.4)",
-          "oklch(37.9% 0.041 233.4)",
-          "oklch(49.3% 0.041 233.4)",
-          "oklch(60.7% 0.041 233.4)",
-          "oklch(72.1% 0.041 233.4)",
-          "oklch(83.6% 0.041 233.4)",
-          "oklch(95% 0.041 233.4)"
-        ]
+        "canonical": "oklch(55% 0.01 85)",
+        "tonalRamp": ["oklch(15% 0.01 85)", "oklch(26.4% 0.01 85)", "oklch(37.9% 0.01 85)", "oklch(49.3% 0.01 85)", "oklch(60.7% 0.01 85)", "oklch(72.1% 0.01 85)", "oklch(83.6% 0.01 85)", "oklch(95% 0.01 85)"]
       },
-      "wireframe-cyan": {
-        "role": "primary",
-        "displayName": "Wireframe Cyan",
-        "purpose": "The drawn half: links, primary buttons, selection, Software field.",
+      "hairline": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "purpose": "Dividers and band edges.",
         "theme": "dark",
-        "canonical": "oklch(82.2% 0.131 185.1)",
-        "tonalRamp": [
-          "oklch(15% 0.131 185.1)",
-          "oklch(26.4% 0.131 185.1)",
-          "oklch(37.9% 0.131 185.1)",
-          "oklch(49.3% 0.131 185.1)",
-          "oklch(60.7% 0.131 185.1)",
-          "oklch(72.1% 0.131 185.1)",
-          "oklch(83.6% 0.131 185.1)",
-          "oklch(95% 0.131 185.1)"
-        ]
+        "canonical": "oklch(27% 0.01 285)",
+        "tonalRamp": ["oklch(15% 0.01 285)", "oklch(26.4% 0.01 285)", "oklch(37.9% 0.01 285)", "oklch(49.3% 0.01 285)", "oklch(60.7% 0.01 285)", "oklch(72.1% 0.01 285)", "oklch(83.6% 0.01 285)", "oklch(95% 0.01 285)"]
       },
-      "trace-copper": {
-        "role": "primary",
-        "displayName": "Trace Copper",
-        "purpose": "The wired half: eyebrows, active nav, hover shadow, Electronics field.",
+      "hairline-strong": {
+        "role": "neutral",
+        "displayName": "Hairline Strong",
+        "purpose": "Control outlines and stronger dividers.",
         "theme": "dark",
-        "canonical": "oklch(77.8% 0.149 54)",
-        "tonalRamp": [
-          "oklch(15% 0.149 54)",
-          "oklch(26.4% 0.149 54)",
-          "oklch(37.9% 0.149 54)",
-          "oklch(49.3% 0.149 54)",
-          "oklch(60.7% 0.149 54)",
-          "oklch(72.1% 0.149 54)",
-          "oklch(83.6% 0.149 54)",
-          "oklch(95% 0.149 54)"
-        ]
-      },
-      "render-pink": {
-        "role": "secondary",
-        "displayName": "Render Pink",
-        "purpose": "Field pencil: 3D & animation.",
-        "theme": "dark",
-        "canonical": "oklch(74.3% 0.183 351.9)",
-        "tonalRamp": [
-          "oklch(15% 0.183 351.9)",
-          "oklch(26.4% 0.183 351.9)",
-          "oklch(37.9% 0.183 351.9)",
-          "oklch(49.3% 0.183 351.9)",
-          "oklch(60.7% 0.183 351.9)",
-          "oklch(72.1% 0.183 351.9)",
-          "oklch(83.6% 0.183 351.9)",
-          "oklch(95% 0.183 351.9)"
-        ]
-      },
-      "prompt-violet": {
-        "role": "secondary",
-        "displayName": "Prompt Violet",
-        "purpose": "Field pencil: Prompt engineering & AI.",
-        "theme": "dark",
-        "canonical": "oklch(74.5% 0.145 293.4)",
-        "tonalRamp": [
-          "oklch(15% 0.145 293.4)",
-          "oklch(26.4% 0.145 293.4)",
-          "oklch(37.9% 0.145 293.4)",
-          "oklch(49.3% 0.145 293.4)",
-          "oklch(60.7% 0.145 293.4)",
-          "oklch(72.1% 0.145 293.4)",
-          "oklch(83.6% 0.145 293.4)",
-          "oklch(95% 0.145 293.4)"
-        ]
-      },
-      "ink-lime": {
-        "role": "secondary",
-        "displayName": "Ink Lime",
-        "purpose": "Field pencil: Graphic design & illustration.",
-        "theme": "dark",
-        "canonical": "oklch(87.1% 0.17 124.2)",
-        "tonalRamp": [
-          "oklch(15% 0.17 124.2)",
-          "oklch(26.4% 0.17 124.2)",
-          "oklch(37.9% 0.17 124.2)",
-          "oklch(49.3% 0.17 124.2)",
-          "oklch(60.7% 0.17 124.2)",
-          "oklch(72.1% 0.17 124.2)",
-          "oklch(83.6% 0.17 124.2)",
-          "oklch(95% 0.17 124.2)"
-        ]
-      },
-      "signal-amber": {
-        "role": "secondary",
-        "displayName": "Signal Amber",
-        "purpose": "Field pencil: Systems & security; GitHub stars.",
-        "theme": "dark",
-        "canonical": "oklch(87.5% 0.143 86.6)",
-        "tonalRamp": [
-          "oklch(15% 0.143 86.6)",
-          "oklch(26.4% 0.143 86.6)",
-          "oklch(37.9% 0.143 86.6)",
-          "oklch(49.3% 0.143 86.6)",
-          "oklch(60.7% 0.143 86.6)",
-          "oklch(72.1% 0.143 86.6)",
-          "oklch(83.6% 0.143 86.6)",
-          "oklch(95% 0.143 86.6)"
-        ]
-      },
-      "on-accent": {
-        "role": "neutral",
-        "displayName": "On-Accent",
-        "purpose": "Text on filled accents (dark).",
-        "theme": "dark",
-        "canonical": "oklch(16.2% 0.016 188.1)",
-        "tonalRamp": [
-          "oklch(15% 0.016 188.1)",
-          "oklch(26.4% 0.016 188.1)",
-          "oklch(37.9% 0.016 188.1)",
-          "oklch(49.3% 0.016 188.1)",
-          "oklch(60.7% 0.016 188.1)",
-          "oklch(72.1% 0.016 188.1)",
-          "oklch(83.6% 0.016 188.1)",
-          "oklch(95% 0.016 188.1)"
-        ]
-      },
-      "focus-blue": {
-        "role": "neutral",
-        "displayName": "Focus Blue",
-        "purpose": "Focus outline only (dark).",
-        "theme": "dark",
-        "canonical": "oklch(83.1% 0.094 240.7)",
-        "tonalRamp": [
-          "oklch(15% 0.094 240.7)",
-          "oklch(26.4% 0.094 240.7)",
-          "oklch(37.9% 0.094 240.7)",
-          "oklch(49.3% 0.094 240.7)",
-          "oklch(60.7% 0.094 240.7)",
-          "oklch(72.1% 0.094 240.7)",
-          "oklch(83.6% 0.094 240.7)",
-          "oklch(95% 0.094 240.7)"
-        ]
-      },
-      "paper-bench": {
-        "role": "neutral",
-        "displayName": "Paper Bench",
-        "purpose": "Page background (light).",
-        "theme": "light",
-        "canonical": "oklch(96% 0.011 95.2)",
-        "tonalRamp": [
-          "oklch(15% 0.011 95.2)",
-          "oklch(26.4% 0.011 95.2)",
-          "oklch(37.9% 0.011 95.2)",
-          "oklch(49.3% 0.011 95.2)",
-          "oklch(60.7% 0.011 95.2)",
-          "oklch(72.1% 0.011 95.2)",
-          "oklch(83.6% 0.011 95.2)",
-          "oklch(95% 0.011 95.2)"
-        ]
-      },
-      "paper-panel": {
-        "role": "neutral",
-        "displayName": "Paper Panel",
-        "purpose": "Cards, panels, bands (light).",
-        "theme": "light",
-        "canonical": "oklch(93% 0.016 95.2)",
-        "tonalRamp": [
-          "oklch(15% 0.016 95.2)",
-          "oklch(26.4% 0.016 95.2)",
-          "oklch(37.9% 0.016 95.2)",
-          "oklch(49.3% 0.016 95.2)",
-          "oklch(60.7% 0.016 95.2)",
-          "oklch(72.1% 0.016 95.2)",
-          "oklch(83.6% 0.016 95.2)",
-          "oklch(95% 0.016 95.2)"
-        ]
-      },
-      "paper-inset": {
-        "role": "neutral",
-        "displayName": "Paper Inset",
-        "purpose": "Recessed wells (light).",
-        "theme": "light",
-        "canonical": "oklch(89.4% 0.021 94.5)",
-        "tonalRamp": [
-          "oklch(15% 0.021 94.5)",
-          "oklch(26.4% 0.021 94.5)",
-          "oklch(37.9% 0.021 94.5)",
-          "oklch(49.3% 0.021 94.5)",
-          "oklch(60.7% 0.021 94.5)",
-          "oklch(72.1% 0.021 94.5)",
-          "oklch(83.6% 0.021 94.5)",
-          "oklch(95% 0.021 94.5)"
-        ]
-      },
-      "paper-ink": {
-        "role": "neutral",
-        "displayName": "Paper Ink",
-        "purpose": "Text (light).",
-        "theme": "light",
-        "canonical": "oklch(22.1% 0.021 243)",
-        "tonalRamp": [
-          "oklch(15% 0.021 243)",
-          "oklch(26.4% 0.021 243)",
-          "oklch(37.9% 0.021 243)",
-          "oklch(49.3% 0.021 243)",
-          "oklch(60.7% 0.021 243)",
-          "oklch(72.1% 0.021 243)",
-          "oklch(83.6% 0.021 243)",
-          "oklch(95% 0.021 243)"
-        ]
-      },
-      "paper-pencil": {
-        "role": "neutral",
-        "displayName": "Paper Pencil",
-        "purpose": "Secondary text (light).",
-        "theme": "light",
-        "canonical": "oklch(46.2% 0.027 238.2)",
-        "tonalRamp": [
-          "oklch(15% 0.027 238.2)",
-          "oklch(26.4% 0.027 238.2)",
-          "oklch(37.9% 0.027 238.2)",
-          "oklch(49.3% 0.027 238.2)",
-          "oklch(60.7% 0.027 238.2)",
-          "oklch(72.1% 0.027 238.2)",
-          "oklch(83.6% 0.027 238.2)",
-          "oklch(95% 0.027 238.2)"
-        ]
-      },
-      "paper-rule": {
-        "role": "neutral",
-        "displayName": "Paper Rule",
-        "purpose": "Hairlines (light).",
-        "theme": "light",
-        "canonical": "oklch(83.8% 0.025 94.1)",
-        "tonalRamp": [
-          "oklch(15% 0.025 94.1)",
-          "oklch(26.4% 0.025 94.1)",
-          "oklch(37.9% 0.025 94.1)",
-          "oklch(49.3% 0.025 94.1)",
-          "oklch(60.7% 0.025 94.1)",
-          "oklch(72.1% 0.025 94.1)",
-          "oklch(83.6% 0.025 94.1)",
-          "oklch(95% 0.025 94.1)"
-        ]
-      },
-      "paper-rule-strong": {
-        "role": "neutral",
-        "displayName": "Paper Rule Strong",
-        "purpose": "Control outlines (light).",
-        "theme": "light",
-        "canonical": "oklch(71.4% 0.033 95)",
-        "tonalRamp": [
-          "oklch(15% 0.033 95)",
-          "oklch(26.4% 0.033 95)",
-          "oklch(37.9% 0.033 95)",
-          "oklch(49.3% 0.033 95)",
-          "oklch(60.7% 0.033 95)",
-          "oklch(72.1% 0.033 95)",
-          "oklch(83.6% 0.033 95)",
-          "oklch(95% 0.033 95)"
-        ]
-      },
-      "wireframe-cyan-paper": {
-        "role": "primary",
-        "displayName": "Wireframe Cyan (paper)",
-        "purpose": "Light-theme twin of Wireframe Cyan.",
-        "theme": "light",
-        "canonical": "oklch(52.1% 0.092 184.9)",
-        "tonalRamp": [
-          "oklch(15% 0.092 184.9)",
-          "oklch(26.4% 0.092 184.9)",
-          "oklch(37.9% 0.092 184.9)",
-          "oklch(49.3% 0.092 184.9)",
-          "oklch(60.7% 0.092 184.9)",
-          "oklch(72.1% 0.092 184.9)",
-          "oklch(83.6% 0.092 184.9)",
-          "oklch(95% 0.092 184.9)"
-        ]
-      },
-      "trace-copper-paper": {
-        "role": "primary",
-        "displayName": "Trace Copper (paper)",
-        "purpose": "Light-theme twin of Trace Copper.",
-        "theme": "light",
-        "canonical": "oklch(54.8% 0.145 47.5)",
-        "tonalRamp": [
-          "oklch(15% 0.145 47.5)",
-          "oklch(26.4% 0.145 47.5)",
-          "oklch(37.9% 0.145 47.5)",
-          "oklch(49.3% 0.145 47.5)",
-          "oklch(60.7% 0.145 47.5)",
-          "oklch(72.1% 0.145 47.5)",
-          "oklch(83.6% 0.145 47.5)",
-          "oklch(95% 0.145 47.5)"
-        ]
-      },
-      "render-pink-paper": {
-        "role": "secondary",
-        "displayName": "Render Pink (paper)",
-        "purpose": "Light-theme twin of Render Pink.",
-        "theme": "light",
-        "canonical": "oklch(52.5% 0.194 355.4)",
-        "tonalRamp": [
-          "oklch(15% 0.194 355.4)",
-          "oklch(26.4% 0.194 355.4)",
-          "oklch(37.9% 0.194 355.4)",
-          "oklch(49.3% 0.194 355.4)",
-          "oklch(60.7% 0.194 355.4)",
-          "oklch(72.1% 0.194 355.4)",
-          "oklch(83.6% 0.194 355.4)",
-          "oklch(95% 0.194 355.4)"
-        ]
-      },
-      "prompt-violet-paper": {
-        "role": "secondary",
-        "displayName": "Prompt Violet (paper)",
-        "purpose": "Light-theme twin of Prompt Violet.",
-        "theme": "light",
-        "canonical": "oklch(48% 0.196 285.7)",
-        "tonalRamp": [
-          "oklch(15% 0.196 285.7)",
-          "oklch(26.4% 0.196 285.7)",
-          "oklch(37.9% 0.196 285.7)",
-          "oklch(49.3% 0.196 285.7)",
-          "oklch(60.7% 0.196 285.7)",
-          "oklch(72.1% 0.196 285.7)",
-          "oklch(83.6% 0.196 285.7)",
-          "oklch(95% 0.196 285.7)"
-        ]
-      },
-      "ink-lime-paper": {
-        "role": "secondary",
-        "displayName": "Ink Lime (paper)",
-        "purpose": "Light-theme twin of Ink Lime.",
-        "theme": "light",
-        "canonical": "oklch(49.3% 0.129 127.8)",
-        "tonalRamp": [
-          "oklch(15% 0.129 127.8)",
-          "oklch(26.4% 0.129 127.8)",
-          "oklch(37.9% 0.129 127.8)",
-          "oklch(49.3% 0.129 127.8)",
-          "oklch(60.7% 0.129 127.8)",
-          "oklch(72.1% 0.129 127.8)",
-          "oklch(83.6% 0.129 127.8)",
-          "oklch(95% 0.129 127.8)"
-        ]
-      },
-      "signal-amber-paper": {
-        "role": "secondary",
-        "displayName": "Signal Amber (paper)",
-        "purpose": "Light-theme twin of Signal Amber.",
-        "theme": "light",
-        "canonical": "oklch(52.4% 0.108 80.6)",
-        "tonalRamp": [
-          "oklch(15% 0.108 80.6)",
-          "oklch(26.4% 0.108 80.6)",
-          "oklch(37.9% 0.108 80.6)",
-          "oklch(49.3% 0.108 80.6)",
-          "oklch(60.7% 0.108 80.6)",
-          "oklch(72.1% 0.108 80.6)",
-          "oklch(83.6% 0.108 80.6)",
-          "oklch(95% 0.108 80.6)"
-        ]
-      },
-      "focus-blue-paper": {
-        "role": "neutral",
-        "displayName": "Focus Blue (paper)",
-        "purpose": "Light-theme twin of Focus Blue.",
-        "theme": "light",
-        "canonical": "oklch(47.5% 0.168 258)",
-        "tonalRamp": [
-          "oklch(15% 0.168 258)",
-          "oklch(26.4% 0.168 258)",
-          "oklch(37.9% 0.168 258)",
-          "oklch(49.3% 0.168 258)",
-          "oklch(60.7% 0.168 258)",
-          "oklch(72.1% 0.168 258)",
-          "oklch(83.6% 0.168 258)",
-          "oklch(95% 0.168 258)"
-        ]
+        "canonical": "oklch(32% 0.012 285)",
+        "tonalRamp": ["oklch(15% 0.012 285)", "oklch(26.4% 0.012 285)", "oklch(37.9% 0.012 285)", "oklch(49.3% 0.012 285)", "oklch(60.7% 0.012 285)", "oklch(72.1% 0.012 285)", "oklch(83.6% 0.012 285)", "oklch(95% 0.012 285)"]
       }
     },
     "typographyMeta": {
-      "display": {
-        "displayName": "Display",
-        "purpose": "h1: hero and page titles."
-      },
-      "headline": {
-        "displayName": "Headline",
-        "purpose": "h2: section heads under an eyebrow."
-      },
-      "title": {
-        "displayName": "Title",
-        "purpose": "h3: cards, steps, field tiles."
-      },
-      "lead": {
-        "displayName": "Lead",
-        "purpose": "Intro paragraphs, Pencil Grey, max 52ch."
-      },
-      "body": {
-        "displayName": "Body",
-        "purpose": "Running text; prose max 78ch."
-      },
-      "label": {
-        "displayName": "Eyebrow",
-        "purpose": "Uppercase copper section labels with leading rule."
-      },
-      "mono-ui": {
-        "displayName": "Mono UI",
-        "purpose": "Nav, buttons, chips, meta, breadcrumbs."
-      }
+      "display": { "displayName": "Display", "purpose": "Page H1 / hero titles in Cormorant 600; tight, tall, balanced wrap." },
+      "headline": { "displayName": "Headline", "purpose": "Section H2s in Cormorant 600." },
+      "title": { "displayName": "Title", "purpose": "Card / sub-section H3s in Cormorant 600." },
+      "lead": { "displayName": "Lead", "purpose": "Intro sentence under a heading; Manrope 300, soft ink, max 56ch." },
+      "body": { "displayName": "Body", "purpose": "Running copy in Manrope 400." },
+      "label": { "displayName": "Label / Eyebrow", "purpose": "Uppercase gold eyebrow and nav/button labels; wide tracking." }
     },
     "shadows": [
-      {
-        "name": "lift",
-        "value": "0 18px 40px -22px rgb(0 0 0 / .9)",
-        "purpose": "Card hover, search dialog, feature images (dark). Light: 0 16px 34px -22px rgb(20 30 40 / .45)."
-      },
-      {
-        "name": "hard-copper",
-        "value": "4px 4px 0 var(--copper)",
-        "purpose": "Button hover, paired with translate(-2px,-2px)."
-      }
+      { "name": "ambient-drop", "value": "0 30px 70px -40px rgb(0 0 0 / 0.9)", "purpose": "Large floated media and panels resting above the page." },
+      { "name": "gold-lift", "value": "0 0 0 1px color-mix(in srgb, #d1a645 30%, transparent), 0 24px 60px -30px rgb(0 0 0 / 0.8)", "purpose": "Signature feature-card hover: a thin gold ring plus a deep diffuse drop, as if a spotlight found the card." }
     ],
     "motion": [
-      {
-        "name": "button-jump",
-        "value": "transform .15s, box-shadow .15s",
-        "purpose": "Button hover lift."
-      },
-      {
-        "name": "card-lift",
-        "value": "transform .2s, border-color .2s, box-shadow .2s; bar width .25s; media scale .5s",
-        "purpose": "Card hover."
-      },
-      {
-        "name": "reveal",
-        "value": "opacity .6s, transform .6s from translateY(14px)",
-        "purpose": "Scroll reveal via [data-reveal]."
-      },
-      {
-        "name": "dialog-pop",
-        "value": ".16s ease-out from translateY(-8px), opacity 0",
-        "purpose": "Search dialog open."
-      },
-      {
-        "name": "reduced-motion",
-        "value": "animation/transition none",
-        "purpose": "Global under prefers-reduced-motion."
-      }
+      { "name": "ease-standard", "value": "ease (0.2s)", "purpose": "Default color/transform state transitions on links, buttons, inputs." },
+      { "name": "ease-reveal", "value": "cubic-bezier(0.16, 1, 0.3, 1) over 0.7s", "purpose": "Scroll-reveal: opacity + 18px rise, progressively enhanced behind .js." }
     ],
     "breakpoints": [
-      {
-        "name": "560",
-        "value": "560px"
-      },
-      {
-        "name": "640",
-        "value": "640px"
-      },
-      {
-        "name": "700",
-        "value": "700px"
-      },
-      {
-        "name": "800",
-        "value": "800px"
-      },
-      {
-        "name": "860",
-        "value": "860px"
-      },
-      {
-        "name": "900",
-        "value": "900px"
-      },
-      {
-        "name": "1060",
-        "value": "1060px"
-      }
-    ],
-    "themes": {
-      "default": "dark",
-      "light": "Paper: tokens suffixed -paper / prefixed paper-, applied via :root[data-theme=\"light\"]."
-    }
+      { "name": "mobile-nav", "value": "~780px (header collapses to menu panel)" }
+    ]
   },
   "components": [
     {
       "name": "Primary Button",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "Main call to action; cyan fill, jumps with a copper hard shadow on hover.",
-      "html": "<a class=\"ds-btn ds-btn-primary\" href=\"#\">See the challenges →</a>",
-      "css": ".ds-btn { display: inline-flex; align-items: center; justify-content: center; gap: .6em; min-height: 46px; padding: .85em 1.3em; font: 500 .88rem/1 'IBM Plex Mono', ui-monospace, monospace; letter-spacing: .03em; text-decoration: none; border-radius: 2px; cursor: pointer; transition: transform .15s, box-shadow .15s, background .15s; } .ds-btn:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--copper, #ff9a52); } .ds-btn:focus-visible { outline: 3px solid var(--focus, #8fd0ff); outline-offset: 3px; } .ds-btn-primary { background: var(--cyan, #3fe0d0); color: var(--on-accent, #06100f); border: 1px solid var(--cyan, #3fe0d0); }"
+      "description": "Solid gold CTA; the one loud element, used sparingly.",
+      "html": "<a class=\"ds-btn\" href=\"#\">Rezervovať show <span class=\"ds-ic\" aria-hidden=\"true\">&rarr;</span></a>",
+      "css": ".ds-btn { display:inline-flex; align-items:center; justify-content:center; gap:0.55em; min-height:52px; padding:0.85em 1.7em; font:600 0.82rem/1 'Manrope',system-ui,sans-serif; letter-spacing:0.14em; text-transform:uppercase; color:#0a0a0c; background:#d1a645; border:1px solid #d1a645; border-radius:2px; text-decoration:none; cursor:pointer; transition:background-color .2s,border-color .2s,transform .2s; } .ds-btn .ds-ic { transition:transform .25s; } .ds-btn:hover { background:#ecc677; border-color:#ecc677; transform:translateY(-2px); } .ds-btn:hover .ds-ic { transform:translateX(3px); } .ds-btn:focus-visible { outline:2px solid #d1a645; outline-offset:3px; }"
     },
     {
       "name": "Ghost Button",
       "kind": "button",
       "refersTo": "button-ghost",
-      "description": "Secondary action beside a primary; outline only.",
-      "html": "<a class=\"ds-btn-ghost\" href=\"#\">See the art & 3D</a>",
-      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; min-height: 46px; padding: .85em 1.3em; font: 500 .88rem/1 'IBM Plex Mono', ui-monospace, monospace; letter-spacing: .03em; text-decoration: none; background: transparent; color: var(--ink, #e9eff3); border: 1px solid var(--line2, #35505f); border-radius: 2px; transition: transform .15s, box-shadow .15s; } .ds-btn-ghost:hover { transform: translate(-2px, -2px); box-shadow: 4px 4px 0 var(--copper, #ff9a52); } .ds-btn-ghost:focus-visible { outline: 3px solid var(--focus, #8fd0ff); outline-offset: 3px; }"
+      "description": "Quiet secondary action; hairline border with a gold tint on hover.",
+      "html": "<a class=\"ds-btn-ghost\" href=\"#\">Pozrieť show</a>",
+      "css": ".ds-btn-ghost { display:inline-flex; align-items:center; justify-content:center; min-height:52px; padding:0.85em 1.7em; font:600 0.82rem/1 'Manrope',system-ui,sans-serif; letter-spacing:0.14em; text-transform:uppercase; color:#f4f0e7; background:transparent; border:1px solid #34343f; border-radius:2px; text-decoration:none; cursor:pointer; transition:background-color .2s,color .2s,border-color .2s,transform .2s; } .ds-btn-ghost:hover { background:color-mix(in srgb,#d1a645 12%,transparent); color:#ecc677; border-color:#d1a645; transform:translateY(-2px); }"
     },
     {
-      "name": "Filter Chip",
-      "kind": "chip",
-      "refersTo": "chip",
-      "description": "Toggle in the projects finder; fills with its field colour when selected.",
-      "html": "<div style=\"display:flex;gap:.4rem;flex-wrap:wrap\"><button class=\"ds-chip\" style=\"--c:#b199ff\">Prompt engineering & AI <i>7</i></button><button class=\"ds-chip ds-on\" style=\"--c:#ff9a52\">Electronics & making <i>9</i></button><button class=\"ds-chip ds-preset\">I want a real object built</button></div>",
-      "css": ".ds-chip { --c: var(--cyan, #3fe0d0); display: inline-flex; align-items: center; gap: .45em; min-height: 36px; padding: .4em .7em; border: 1px solid var(--line2, #35505f); background: var(--bg, #0a0f14); color: var(--ink, #e9eff3); font: 500 .8rem 'IBM Plex Mono', ui-monospace, monospace; border-radius: 2px; cursor: pointer; } .ds-chip i { font-style: normal; opacity: .6; font-size: .72rem; } .ds-chip:hover { border-color: var(--c); } .ds-chip:focus-visible { outline: 3px solid var(--focus, #8fd0ff); outline-offset: 2px; } .ds-chip.ds-on { background: var(--c); color: var(--on-accent, #06100f); border-color: var(--c); } .ds-chip.ds-preset { background: transparent; border-style: dashed; }"
-    },
-    {
-      "name": "Tag",
-      "kind": "chip",
-      "refersTo": "tag",
-      "description": "Read-only label on cards; outline and text in the field colour.",
-      "html": "<span class=\"ds-tag\" style=\"--c:#ff74b8\">3D & animation</span> <span class=\"ds-tag ds-lang\" style=\"--c:#ffcf5a\">Python</span>",
-      "css": ".ds-tag { display: inline-flex; align-items: center; gap: .4em; font: 500 .7rem/1 'IBM Plex Mono', ui-monospace, monospace; letter-spacing: .04em; padding: .42em .65em; border: 1px solid color-mix(in srgb, var(--c, #9fb1bd) 60%, transparent); color: var(--c, #9fb1bd); border-radius: 2px; } .ds-lang::before { content: ''; width: .6em; height: .6em; background: currentColor; border-radius: 50%; }"
-    },
-    {
-      "name": "Project Card",
-      "kind": "card",
-      "refersTo": "card",
-      "description": "Portfolio tile; field bar grows across the top on hover.",
-      "html": "<article class=\"ds-card\" style=\"--c:#ff9a52\"><div class=\"ds-media\"><span>N</span></div><div class=\"ds-body\"><p class=\"ds-meta\">2025 · ★ 12</p><h3><a href=\"#\">Nightjar</a></h3><p class=\"ds-line\">Knife-gift with electronics inside</p><p class=\"ds-desc\">Code, a circuit and a 3D model meet in one object.</p></div></article>",
-      "css": ".ds-card { --c: var(--cyan, #3fe0d0); position: relative; display: flex; flex-direction: column; max-width: 340px; background: var(--bg2, #0f171f); border: 1px solid var(--line, #243542); color: var(--ink, #e9eff3); transition: transform .2s, border-color .2s, box-shadow .2s; } .ds-card::before { content: ''; position: absolute; top: -1px; left: -1px; width: 28px; height: 3px; background: var(--c); transition: width .25s; z-index: 2; } .ds-card:hover { transform: translateY(-3px); border-color: var(--c); box-shadow: 0 18px 40px -22px rgb(0 0 0 / .9); } .ds-card:hover::before { width: calc(100% + 2px); } .ds-media { aspect-ratio: 16/9; display: grid; place-items: center; border-bottom: 1px solid var(--line, #243542); background: linear-gradient(135deg, color-mix(in srgb, var(--c) 22%, #15212b), #15212b), repeating-linear-gradient(45deg, transparent 0 11px, color-mix(in srgb, var(--c) 14%, transparent) 11px 12px); } .ds-media span { font: 700 3rem 'Bricolage Grotesque Variable', system-ui, sans-serif; letter-spacing: -.04em; color: var(--c); } .ds-body { padding: 1rem 1.1rem 1.2rem; display: grid; gap: .35rem; } .ds-body p, .ds-body h3 { margin: 0; } .ds-meta { font: 500 .72rem 'IBM Plex Mono', monospace; color: var(--soft, #9fb1bd); } .ds-body h3 { font: 640 1.25rem/1.2 'Bricolage Grotesque Variable', system-ui, sans-serif; } .ds-body h3 a { color: inherit; text-decoration: none; } .ds-body h3 a::after { content: ''; position: absolute; inset: 0; z-index: 1; } .ds-body h3 a:focus-visible { outline: 3px solid var(--focus, #8fd0ff); outline-offset: 3px; } .ds-line { font: 500 .8rem 'IBM Plex Mono', monospace; color: var(--c); } .ds-desc { font-size: .95rem; line-height: 1.5; color: var(--soft, #9fb1bd); }"
-    },
-    {
-      "name": "Search Field",
-      "kind": "input",
-      "refersTo": "input-field",
-      "description": "Filter panel text input.",
-      "html": "<input class=\"ds-input\" type=\"search\" placeholder=\"Search projects…\">",
-      "css": ".ds-input { width: 100%; max-width: 320px; min-height: 44px; background: var(--bg, #0a0f14); color: var(--ink, #e9eff3); border: 1px solid var(--line2, #35505f); padding: .6rem .8rem; font: 400 1rem 'Bricolage Grotesque Variable', system-ui, sans-serif; border-radius: 2px; } .ds-input::placeholder { color: var(--soft, #9fb1bd); } .ds-input:focus-visible { outline: 3px solid var(--focus, #8fd0ff); outline-offset: 1px; }"
-    },
-    {
-      "name": "Header Nav",
-      "kind": "nav",
-      "refersTo": "nav-link",
-      "description": "Mono nav links with copper underline on the active page, plus the EN/SK switch.",
-      "html": "<nav class=\"ds-nav\"><a href=\"#\" aria-current=\"page\">Projects</a><a href=\"#\">Art &amp; 3D</a><a href=\"#\">Docs</a><a href=\"#\">About</a><span class=\"ds-langs\"><a href=\"#\" class=\"ds-cur\">EN</a><a href=\"#\">SK</a></span></nav>",
-      "css": ".ds-nav { display: flex; align-items: center; gap: .1rem; } .ds-nav > a { position: relative; padding: .5rem .85rem; color: var(--soft, #9fb1bd); text-decoration: none; font: 500 .82rem 'IBM Plex Mono', monospace; letter-spacing: .03em; } .ds-nav > a:hover, .ds-nav > a[aria-current] { color: var(--ink, #e9eff3); } .ds-nav > a[aria-current]::after { content: ''; position: absolute; left: .85rem; right: .85rem; bottom: 2px; height: 2px; background: var(--copper, #ff9a52); } .ds-nav a:focus-visible { outline: 3px solid var(--focus, #8fd0ff); outline-offset: 3px; } .ds-langs { display: inline-flex; margin-left: .6rem; border: 1px solid var(--line2, #35505f); } .ds-langs a { font: 500 .72rem 'IBM Plex Mono', monospace; padding: .45rem .55rem; color: var(--soft, #9fb1bd); text-decoration: none; } .ds-langs a.ds-cur { background: var(--cyan, #3fe0d0); color: var(--on-accent, #06100f); }"
-    },
-    {
-      "name": "Eyebrow + Headline",
+      "name": "Section Eyebrow",
       "kind": "custom",
       "refersTo": "label",
-      "description": "Copper mono eyebrow with leading rule over every section headline.",
-      "html": "<div><p class=\"ds-eyebrow\">How I work</p><h2 class=\"ds-h2\">One method, whichever tools the problem needs</h2></div>",
-      "css": ".ds-eyebrow { display: inline-flex; align-items: center; gap: .7em; margin: 0 0 1rem; font: 500 .74rem 'IBM Plex Mono', monospace; letter-spacing: .16em; text-transform: uppercase; color: var(--copper, #ff9a52); } .ds-eyebrow::before { content: ''; width: 1.8em; height: 2px; background: currentColor; } .ds-h2 { margin: 0; font: 640 clamp(1.7rem, 1.3rem + 2vw, 2.8rem)/1.08 'Bricolage Grotesque Variable', system-ui, sans-serif; letter-spacing: -.02em; color: var(--ink, #e9eff3); text-wrap: balance; }"
+      "description": "Signature brand atom: uppercase gold label with a leading gold gradient tick, above every section heading.",
+      "html": "<span class=\"ds-eyebrow\">O kúzelníkovi</span>",
+      "css": ".ds-eyebrow { display:inline-flex; align-items:center; gap:0.6em; font:600 0.78rem/1 'Manrope',system-ui,sans-serif; letter-spacing:0.28em; text-transform:uppercase; color:#d1a645; } .ds-eyebrow::before { content:''; width:2.2em; height:1px; background:linear-gradient(90deg,transparent,#d1a645); }"
     },
     {
-      "name": "Pipeline Strip",
-      "kind": "custom",
+      "name": "Text Input",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "Inset field with micro-cap label; border goes gold and fill darkens on focus — no glow.",
+      "html": "<label class=\"ds-field\"><span>Meno</span><input type=\"text\" placeholder=\"Vaše meno\" /></label>",
+      "css": ".ds-field { display:grid; gap:0.4rem; } .ds-field span { font:600 0.72rem/1 'Manrope',system-ui,sans-serif; letter-spacing:0.12em; text-transform:uppercase; color:#b4afa3; } .ds-field input { font:400 1rem/1.4 'Manrope',system-ui,sans-serif; color:#f4f0e7; background:#17171d; border:1px solid #34343f; border-radius:3px; padding:0.8em 0.9em; width:100%; transition:border-color .2s,background-color .2s; } .ds-field input::placeholder { color:#7c776e; } .ds-field input:focus { outline:none; border-color:#d1a645; background:color-mix(in srgb,#17171d 70%,#000); }"
+    },
+    {
+      "name": "Nav Link",
+      "kind": "nav",
+      "refersTo": "nav-link",
+      "description": "Uppercase grotesque nav link; soft ink at rest, brightens to ivory on hover.",
+      "html": "<a class=\"ds-nav\" href=\"#\">Galéria</a>",
+      "css": ".ds-nav { color:#b4afa3; font:500 0.82rem/1 'Manrope',system-ui,sans-serif; letter-spacing:0.1em; text-transform:uppercase; text-decoration:none; transition:color .2s; } .ds-nav:hover { color:#f4f0e7; }"
+    },
+    {
+      "name": "Feature Card",
+      "kind": "card",
       "refersTo": "card",
-      "description": "Numbered method steps, each topped with its field colour.",
-      "html": "<ol class=\"ds-pipe\"><li style=\"--c:#b199ff\"><span>01</span><h3>Prompt</h3></li><li style=\"--c:#3fe0d0\"><span>02</span><h3>Code</h3></li><li style=\"--c:#ff74b8\"><span>03</span><h3>Model</h3></li><li style=\"--c:#ff9a52\"><span>04</span><h3>Circuit</h3></li><li style=\"--c:#bde75e\"><span>05</span><h3>Object</h3></li></ol>",
-      "css": ".ds-pipe { display: grid; grid-template-columns: repeat(5, 1fr); list-style: none; margin: 0; padding: 0; border: 1px solid var(--line, #243542); } .ds-pipe li { position: relative; padding: 1.2rem 1rem; background: var(--bg2, #0f171f); border-right: 1px solid var(--line, #243542); } .ds-pipe li:last-child { border-right: 0; } .ds-pipe li::before { content: ''; position: absolute; inset: 0 0 auto 0; height: 4px; background: var(--c); } .ds-pipe span { font: 500 .75rem 'IBM Plex Mono', monospace; color: var(--c); } .ds-pipe h3 { margin: .3rem 0 0; font: 640 1.15rem/1.2 'Bricolage Grotesque Variable', system-ui, sans-serif; color: var(--ink, #e9eff3); }"
+      "description": "Raised near-black card; flat at rest, gains the Gold Lift ring + diffuse drop on hover.",
+      "html": "<article class=\"ds-card\"><h3>Magic Show</h3><p>Podmanivé sólové vystúpenie modernej mágie pre prestížne podujatia.</p></article>",
+      "css": ".ds-card { background:#1f1f27; border:1px solid #26262e; border-radius:3px; padding:2rem; color:#f4f0e7; transition:box-shadow .3s,transform .3s,border-color .3s; } .ds-card h3 { font:600 clamp(1.3rem,1.05rem + 1vw,1.8rem)/1.1 'Cormorant','Cormorant Garamond',Georgia,serif; margin:0 0 0.4em; } .ds-card p { color:#b4afa3; margin:0; } .ds-card:hover { border-color:transparent; box-shadow:0 0 0 1px color-mix(in srgb,#d1a645 30%,transparent),0 24px 60px -30px rgb(0 0 0 / 0.8); transform:translateY(-3px); }"
     }
   ],
   "narrative": {
-    "northStar": "The Night Workbench",
-    "overview": "It's late, the room is dark, and everything is laid out on one bench: a 3D model's wireframe, a half-routed circuit board, a sketch, a terminal. The whole site is that bench. The page itself is a near-black surface ruled with a faint 48px drafting grid. Above it a star-field sky (one of six generated pictures, picked at random per visit) fades down into the work. Every discipline gets drawn on the same sheet, in the same squared, labelled hand, so a recipe, a PCB and a Blender render all read as parts of one practice rather than separate storefronts.\n\nThe character is **technical and playful**: blueprint rigour first (mono labels, exact rules, 2px corners, numbered steps), with small physical surprises on top. A button jumps up-left and leaves a copper shadow behind it, a card's colour bar runs across its whole top edge on hover, and the hero icosahedron is half wireframe, half PCB trace. Colour is functional: two signature accents name the two halves of the work (wireframe vs. wiring), and six field colours tag which discipline a thing belongs to. Density is moderate. Sections breathe (up to 6.5rem of block padding), but cards, filters and meta lines are compact and dense with mono detail, like labels on parts bins.\n\nDark is the native theme. Light is a full first-class counterpart: the bench becomes warm drafting paper, the sky turns sepia, and every accent drops to a deep ink tone that passes contrast on paper. Neither theme is an inversion of the other; both are tuned by hand.",
+    "northStar": "The Midnight Gala",
+    "overview": "StrukShow is a black-tie room after dark. The lights are down, the conversation is hushed, and a single source of gold — a glint of gilt on an invitation, candlelight caught on a glass — is the only warmth in the frame. This is a world of refined luxury and discretion, not spectacle: the restraint is the point. A premium modern magician performing for private, exclusive and corporate galas is credible here precisely because the design never shouts. The surfaces are near-black and tonally layered, so depth comes from quiet contrast rather than shadow. The ink is a warm ivory, never pure white. Type carries the drama: Cormorant, a delicate high-contrast Garamond-didone, sets every heading like engraved gala stationery, while Manrope keeps everything functional calm and legible underneath. A single gold accent does all the persuading. The site is dark only, by design. Twin gold-tinted vertical rails frame the content column like a proscenium.",
     "keyCharacteristics": [
-      "Near-black bench with a 48px drafting grid and a random star-field sky that fades out downwards.",
-      "Two signature accents, Wireframe Cyan and Trace Copper, plus six field colours applied through a single `--c` hook.",
-      "Bricolage Grotesque for voice, IBM Plex Mono for every label, meta line, control and number.",
-      "Squared parts: 2px corners on controls, 0 on cards and panels.",
-      "Hard offset shadows and growing accent bars instead of soft lifts.",
-      "Hand-tuned dark (default) and paper-light themes."
+      "Near-black tonal depth; no bright surfaces, no pure white, no light mode.",
+      "One gold accent, used rarely and always on purpose.",
+      "Theatrical didone headlines over a quiet grotesque body.",
+      "Framed composition: twin gold rails and darker margins as a proscenium.",
+      "Composed, luxurious, discreet — persuasion through restraint."
     ],
     "rules": [
-      {
-        "name": "The Two Halves Rule",
-        "body": "Cyan means drawn (code, links, selection); copper means wired (structure, labels, emphasis). Don't swap them, and don't add a third signature accent.",
-        "section": "colors"
-      },
-      {
-        "name": "The Pencil Hook Rule",
-        "body": "Field colour enters a component only through `--c`. Components read `var(--c, …)`; they never hard-code a field hex.",
-        "section": "colors"
-      },
-      {
-        "name": "The Paper Ink Rule",
-        "body": "Every dark-theme accent has a darker paper twin that clears contrast on `paper-bench`. Never reuse a dark-theme accent on the light theme.",
-        "section": "colors"
-      },
-      {
-        "name": "The Label Maker Rule",
-        "body": "If it's a number, a category, a control or a piece of metadata, set it in Plex Mono. Bricolage is for things a person would say.",
-        "section": "typography"
-      },
-      {
-        "name": "The Eyebrow-First Rule",
-        "body": "Every section headline sits under a copper mono eyebrow that names the section in a few words.",
-        "section": "typography"
-      },
-      {
-        "name": "The Drafting Grid Rule",
-        "body": "The 48px body grid is the sheet everything sits on. Opaque surfaces may cover it, but nothing re-draws a competing grid on top.",
-        "section": "layout"
-      },
-      {
-        "name": "The Flat-At-Rest Rule",
-        "body": "Nothing casts a shadow until the visitor touches it.",
-        "section": "elevation"
-      },
-      {
-        "name": "The Hard Shadow Rule",
-        "body": "Interactive lift is a solid offset block in copper, never a soft glow.",
-        "section": "elevation"
-      }
+      { "name": "The One Candle Rule", "body": "Gold is the only accent and appears on a small fraction of any screen — a label, a button, a hairline, a rail. If a second accent hue or a flood of gold shows up, the room stops reading as candlelit and the illusion breaks.", "section": "colors" },
+      { "name": "The No-White Rule", "body": "The brightest ink is warm ivory (#f4f0e7) and the darkest surface is near-black (#0a0a0c). Never introduce pure #ffffff or a light surface; there is no light theme.", "section": "colors" },
+      { "name": "The Marquee Rule", "body": "All display type is Cormorant; the grotesque never sizes up to headline scale. Drama lives in the serif, order lives in the sans.", "section": "typography" },
+      { "name": "The Gold Eyebrow Rule", "body": "Every section opens with the uppercase gold eyebrow label (0.28em tracking) before its didone heading.", "section": "typography" },
+      { "name": "The Flat-Room Rule", "body": "Surfaces are flat at rest; lift (the Gold Lift ring) appears only as a response to hover or focus. Never pre-emboss resting UI with shadow.", "section": "elevation" }
     ],
     "dos": [
-      "**Do** route every discipline colour through `--c` via the `.c-{field}` classes.",
-      "**Do** set numbers, labels, controls and metadata in IBM Plex Mono, and speech in Bricolage.",
-      "**Do** put a copper mono eyebrow above every section headline.",
-      "**Do** keep controls at a 2px corner and cards, panels and media fully square.",
-      "**Do** use the hard copper offset shadow for button hover and the growing `--c` top bar for card hover.",
-      "**Do** tune every new colour for both themes by hand, with a darker paper twin for light.",
-      "**Do** keep tap targets at 36px or more (chips), 40px or more (icon buttons) and 44px or more (inputs and primary controls).",
-      "**Do** respect `prefers-reduced-motion`. The global rule already kills animations and transitions."
+      "Do open sections with the gold eyebrow label before a Cormorant heading.",
+      "Do keep gold to a small fraction of any screen (The One Candle Rule).",
+      "Do build depth from the near-black tonal ramp and hairlines; reserve the two shadows for floated media and the Gold Lift hover.",
+      "Do keep headings in Cormorant and functional copy in Manrope.",
+      "Do keep corners near-square (2–3px) and draw structure with 1px hairlines.",
+      "Do honor dark-only: warm ivory is the brightest ink, near-black the darkest surface."
     ],
     "donts": [
-      "**Don't** round cards, panels, dialogs or images, or go past 2px on controls.",
-      "**Don't** use soft glows or resting shadows. Depth is tonal until interaction.",
-      "**Don't** introduce a third signature accent, or use field colours as large background fills.",
-      "**Don't** swap the meaning of cyan (drawn) and copper (wired).",
-      "**Don't** reuse dark-theme accent values on the paper theme.",
-      "**Don't** overlay a second grid or texture that competes with the 48px drafting grid."
+      "Don't introduce a second accent hue or flood the page with gold.",
+      "Don't use pure #ffffff or any light surface, and don't add a light theme.",
+      "Don't size the grotesque up to headline scale or set a heading in the sans.",
+      "Don't pre-emboss resting UI with shadow or add pill shapes, heavy rounding, or decorative blobs.",
+      "Don't let any element collide with or redraw the twin content rails."
     ]
   }
 }

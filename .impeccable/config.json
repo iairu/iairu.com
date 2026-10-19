@@ -17,6 +17,15 @@
         ],
         "createdAt": "2026-10-19T08:54:47.682Z",
         "reason": "false positive: matches an <img> string inside a URL-rewriting regex in a JS data module, not a real image tag (model decided)"
+      },
+      {
+        "rule": "broken-image",
+        "value": "*",
+        "files": [
+          "src/layouts/Base.astro"
+        ],
+        "createdAt": "2026-10-19T16:36:02.036Z",
+        "reason": "false positive: lightbox <img> gets its src injected by JS at zoom time; it is intentionally src-less at rest (model decided)"
       }
     ]
   }
