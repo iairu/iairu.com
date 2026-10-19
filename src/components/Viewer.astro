@@ -2,18 +2,21 @@
 import MeshCircuit from './MeshCircuit.astro';
 const { lang = 'en' } = Astro.props;
 const L = lang === 'sk'
-  ? { solid: 'Drevo', circuit: 'Výkres', spin: 'Otáčanie', load: 'Načítavam 3D model NightJar.Gift…', hint: 'Potiahni prstom alebo myšou a otoč lelka.', badge: 'Návrh v2', warn: 'Toto je aktuálny návrh (Nightjar v2), nie hotový vták: zatiaľ nič nebolo vyrezané, takže skutočný lelek sa ešte môže líšiť.', nogl: '3D zobrazenie vyžaduje WebGL.', fail: 'Model sa nepodarilo načítať.' }
-  : { solid: 'Wood', circuit: 'Blueprint', spin: 'Spin', load: 'Loading the NightJar.Gift 3D model…', hint: 'Drag to turn the bird.', badge: 'Design v2', warn: 'This is the current design (Nightjar v2), not a finished bird: nothing has been carved yet, so the real one may still differ.', nogl: '3D view needs WebGL.', fail: 'Could not load the model.' };
+  ? { solid: 'Drevo', circuit: 'Výkres', spin: 'Otáčanie', load: 'Načítavam 3D model NightJar.Gift…', hint: 'Potiahni a otoč lelka. Prejdi myšou po častiach výkresu.', badge: 'Návrh v2', warn: 'Toto je aktuálny návrh (Nightjar v2), nie hotový vták: zatiaľ nič nebolo vyrezané, takže skutočný lelek sa ešte môže líšiť.', nogl: '3D zobrazenie vyžaduje WebGL.', fail: 'Model sa nepodarilo načítať.',
+      parts: { shell: { t: 'Buková škrupina', d: 'Dve vyrezané polovice tela' }, button: { t: 'Tlačidlo', d: 'Stlač a vták spieva' }, electronics: { t: 'Elektronika', d: 'Obvod vnútri — bez mikrokontroléra' } } }
+  : { solid: 'Wood', circuit: 'Blueprint', spin: 'Spin', load: 'Loading the NightJar.Gift 3D model…', hint: 'Drag to turn the bird. Hover the blueprint parts to name them.', badge: 'Design v2', warn: 'This is the current design (Nightjar v2), not a finished bird: nothing has been carved yet, so the real one may still differ.', nogl: '3D view needs WebGL.', fail: 'Could not load the model.',
+      parts: { shell: { t: 'Beech shell', d: 'Two carved halves of the body' }, button: { t: 'Button', d: 'Press and the bird sings' }, electronics: { t: 'Electronics', d: 'The circuit inside — no microcontroller' } } };
 ---
-<div class="viewer" data-viewer data-model="/models/nightjar.stl" data-button="/models/nightjar_button.stl" data-internals="/models/nightjar_internals.stl" data-fail={L.fail} data-nogl={L.nogl}>
+<div class="viewer" data-viewer data-model="/models/nightjar.stl" data-button="/models/nightjar_button.stl" data-internals="/models/nightjar_internals.stl" data-fail={L.fail} data-nogl={L.nogl} data-parts={JSON.stringify(L.parts)}>
   <div class="poster" data-loading>
     <MeshCircuit class="poster-art" />
     <p class="load">{L.load}</p>
   </div>
   <canvas aria-label="3D model of the NightJar.Gift wooden nightjar" role="img"></canvas>
+  <div class="tip" data-tip hidden><b></b><span></span></div>
   <div class="ctrl" role="group" aria-label="3D view">
-    <button type="button" data-mode="solid" aria-pressed="true" class="on">{L.solid}</button>
-    <button type="button" data-mode="circuit" aria-pressed="false">{L.circuit}</button>
+    <button type="button" data-mode="solid" aria-pressed="false">{L.solid}</button>
+    <button type="button" data-mode="circuit" aria-pressed="true" class="on">{L.circuit}</button>
     <button type="button" data-spin aria-pressed="true" class="on">{L.spin}</button>
   </div>
   <p class="badge" role="note"><b>{L.badge}</b><span>{L.warn}</span></p>
@@ -60,14 +63,43 @@ const L = lang === 'sk'
     const innerMesh = new THREE.Mesh(inner, innerFill);
     const innerEdges = new THREE.LineSegments(new THREE.EdgesGeometry(inner, 30), new THREE.LineBasicMaterial({ color: 0xffc89a }));
     bodyMesh.renderOrder = btnMesh.renderOrder = 1;
-    innerMesh.visible = innerEdges.visible = false;
+    // default to the blueprint view: see-through shell, electronics visible inside
+    let mode = 'circuit';
+    bodyMesh.material = btnMesh.material = ghost;
+    innerMesh.visible = innerEdges.visible = true;
     group.add(innerMesh, innerEdges, bodyMesh, btnMesh);
     group.position.sub(c);
     scene.add(group);
 
+    // Blueprint tooltips: name the part under the pointer (button, electronics inside, or the shell).
+    const parts = JSON.parse(root.dataset.parts!);
+    const tip = root.querySelector<HTMLElement>('[data-tip]')!;
+    const tipT = tip.querySelector('b')!, tipD = tip.querySelector('span')!;
+    const ray = new THREE.Raycaster(), ptr = new THREE.Vector2();
+    let hovering = false;
+    const pick = () => {
+      if (mode !== 'circuit') { tip.hidden = true; return; }
+      ray.setFromCamera(ptr, camera);
+      const key = ray.intersectObject(btnMesh).length ? 'button'
+        : ray.intersectObject(innerMesh).length ? 'electronics'
+        : ray.intersectObject(bodyMesh).length ? 'shell' : null;
+      if (!key) { tip.hidden = true; return; }
+      tipT.textContent = parts[key].t; tipD.textContent = parts[key].d; tip.hidden = false;
+    };
+    if (matchMedia('(pointer: fine)').matches) {
+      canvas.addEventListener('pointermove', (e) => {
+        const r = canvas.getBoundingClientRect(), rr = root.getBoundingClientRect();
+        ptr.x = ((e.clientX - r.left) / r.width) * 2 - 1;
+        ptr.y = -((e.clientY - r.top) / r.height) * 2 + 1;
+        tip.style.left = `${e.clientX - rr.left}px`; tip.style.top = `${e.clientY - rr.top}px`;
+        hovering = true; pick();
+      }, { passive: true });
+      canvas.addEventListener('pointerleave', () => { hovering = false; tip.hidden = true; });
+    }
+
     let visible = false, raf = 0;
     const resize = () => { const w = root.clientWidth, h = root.clientHeight; renderer.setSize(w, h, false); camera.aspect = w / h; camera.updateProjectionMatrix(); };
-    const tick = () => { raf = 0; if (!visible) return; controls.update(); renderer.render(scene, camera); raf = requestAnimationFrame(tick); };
+    const tick = () => { raf = 0; if (!visible) return; controls.update(); if (hovering) pick(); renderer.render(scene, camera); raf = requestAnimationFrame(tick); };
     new ResizeObserver(resize).observe(root); resize();
     new IntersectionObserver((es) => { visible = es[0].isIntersecting; if (visible && !raf) raf = requestAnimationFrame(tick); }).observe(root);
     root.classList.add('ready'); loading.hidden = true;
@@ -76,9 +108,11 @@ const L = lang === 'sk'
     modes.forEach((b) => b.addEventListener('click', () => {
       const m = b.dataset.mode;
       const solid = m === 'solid';
+      mode = m!;
       bodyMesh.material = solid ? wood : ghost; btnMesh.material = solid ? woodBtn : ghost;
       innerMesh.visible = innerEdges.visible = !solid;
       modes.forEach((x) => { const on = x === b; x.classList.toggle('on', on); x.setAttribute('aria-pressed', String(on)); });
+      if (solid) tip.hidden = true; else if (hovering) pick();
     }));
     const spin = root.querySelector<HTMLButtonElement>('[data-spin]')!;
     const setSpin = (on: boolean) => { controls.autoRotate = on; spin.setAttribute('aria-pressed', String(on)); spin.classList.toggle('on', on); };
@@ -142,4 +176,9 @@ const L = lang === 'sk'
   .badge b { color: var(--cobalt); font-weight: 600; }
   @media (max-width: 560px) { .badge { max-width: none; right: 12px; top: auto; bottom: 34px; } .ctrl { top: 10px; left: 12px; justify-content: flex-start; } }
   .cap { position: absolute; bottom: 10px; left: 14px; right: 14px; z-index: 4; margin: 0; font-size: .8rem; color: var(--soft); pointer-events: none; }
+  .tip { position: absolute; z-index: 5; transform: translate(14px, 12px); pointer-events: none; max-width: 14rem; display: grid; gap: .1rem;
+    padding: .4rem .55rem; background: var(--bg); border: 1px dashed var(--cobalt); font-size: .78rem; line-height: 1.35; color: var(--soft);
+    box-shadow: 0 6px 20px -8px rgb(0 0 0 / .6); }
+  .tip[hidden] { display: none; }
+  .tip b { color: var(--cobalt); font-weight: 600; font-size: .82rem; }
 </style>
