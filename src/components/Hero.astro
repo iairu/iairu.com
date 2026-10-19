@@ -1,0 +1,53 @@
+---
+// Full-bleed hero: background photo, soft vignette, an optional lens flare,
+// a gold eyebrow and a two-part serif headline (second word in gold italic).
+const { eyebrow, heading = [], lead, bg, flare, align = 'left', minh = '92vh' } = Astro.props;
+---
+<section class="hero" style={`--bg:url('${bg}'); --minh:${minh}`} data-align={align}>
+  {flare && <img class="flare" src={flare} alt="" aria-hidden="true" />}
+  <div class="scrim"></div>
+  <div class="wrap-wide inner">
+    <div class="copy">
+      {eyebrow && <p class="eyebrow">{eyebrow}</p>}
+      <h1>
+        {heading[0]}{heading[1] && <> <span class="accent">{heading[1]}</span></>}
+      </h1>
+      {lead && <p class="lead">{lead}</p>}
+      <slot name="cta" />
+    </div>
+  </div>
+  <div class="fade"></div>
+</section>
+
+<style>
+  .hero { position: relative; min-height: var(--minh); display: flex; align-items: center; overflow: hidden; padding-top: var(--hdr); isolation: isolate; }
+  .hero::before {
+    content: ''; position: absolute; inset: 0; z-index: -2;
+    background: var(--bg) center / cover no-repeat;
+    transform: scale(1.04);
+  }
+  .scrim { position: absolute; inset: 0; z-index: -1;
+    background:
+      linear-gradient(90deg, rgb(10 10 12 / 0.92) 0%, rgb(10 10 12 / 0.62) 42%, rgb(10 10 12 / 0.25) 100%),
+      linear-gradient(0deg, var(--bg) 2%, transparent 40%); }
+  [data-align='center'] .scrim { background: radial-gradient(120% 90% at 50% 40%, rgb(10 10 12 / 0.5), rgb(10 10 12 / 0.86) 80%), linear-gradient(0deg, var(--bg) 2%, transparent 45%); }
+  .flare { position: absolute; z-index: -1; right: -6%; top: 8%; width: min(60vw, 720px); mix-blend-mode: screen; opacity: 0.8; pointer-events: none; }
+  .fade { position: absolute; left: 0; right: 0; bottom: 0; height: 160px; background: linear-gradient(0deg, var(--bg), transparent); z-index: -1; }
+
+  .inner { width: min(100% - 2 * var(--gutter), var(--wide)); }
+  .copy { max-width: 40ch; }
+  [data-align='center'] .inner { text-align: center; }
+  [data-align='center'] .copy { max-width: 56ch; margin-inline: auto; }
+
+  h1 { margin: 0.2em 0 0.4em; }
+  .accent { color: var(--gold); font-style: italic; font-weight: 600; }
+  .hero .lead { margin-bottom: 1.8rem; }
+  :global(.hero .cta) { margin-top: 0.4rem; }
+
+  @media (max-width: 700px) { .hero { min-height: 86vh; } .copy { max-width: 100%; } }
+  /* on phones stack the accent word on its own line so long headings never overflow */
+  @media (max-width: 560px) {
+    .hero h1 { font-size: clamp(2.3rem, 1.6rem + 7vw, 3.2rem); }
+    .accent { display: block; }
+  }
+</style>

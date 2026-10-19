@@ -1,0 +1,31 @@
+---
+import { tr } from '../data/util.js';
+const { data, lang } = Astro.props;
+---
+<section class="stats" style={`--bg:url('${data.bg}')`} aria-label="Numbers">
+  <div class="overlay"></div>
+  <div class="wrap-wide grid">
+    {data.items.map((s) => (
+      <div class="stat" data-reveal>
+        <span class="num">{s.value}</span>
+        <span class="lbl">{tr(s.label, lang)}</span>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .stats { position: relative; padding-block: clamp(3rem, 6vw, 5.5rem); border-block: 1px solid var(--line); isolation: isolate; }
+  .stats::before { content: ''; position: absolute; inset: 0; z-index: -2; background: var(--bg) center / cover no-repeat; opacity: 0.22; }
+  .overlay { position: absolute; inset: 0; z-index: -1; background: linear-gradient(0deg, var(--bg), color-mix(in srgb, var(--bg) 70%, transparent)); }
+  .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(1.5rem, 4vw, 3rem); }
+  .stat { text-align: center; display: grid; gap: 0.3rem; position: relative; }
+  .stat + .stat::before { content: ''; position: absolute; left: calc(-1 * clamp(0.75rem, 2vw, 1.5rem)); top: 15%; bottom: 15%; width: 1px; background: var(--line2); }
+  .num { font-family: var(--serif); font-weight: 700; font-size: clamp(2.6rem, 1.8rem + 3.5vw, 4.4rem); line-height: 1; color: var(--gold); }
+  .lbl { font-size: clamp(0.72rem, 0.68rem + 0.2vw, 0.84rem); letter-spacing: 0.14em; text-transform: uppercase; color: var(--soft); }
+  @media (max-width: 680px) {
+    .grid { grid-template-columns: repeat(2, 1fr); gap: 2rem 1.5rem; }
+    .stat:nth-child(odd)::before { display: none; }
+    .stat:nth-child(3)::before, .stat:nth-child(4)::before { display: none; }
+  }
+</style>

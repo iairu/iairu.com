@@ -1,7 +1,7 @@
 import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
-const site = process.env.SITE_URL || 'https://iairu.com';
+const site = process.env.SITE_URL || 'https://strukshow.com';
 
 export default defineConfig({
   site,
@@ -10,33 +10,13 @@ export default defineConfig({
   devToolbar: { enabled: false },
   integrations: [
     sitemap({
-      i18n: { defaultLocale: 'en', locales: { en: 'en', sk: 'sk' } },
+      i18n: { defaultLocale: 'sk', locales: { sk: 'sk', en: 'en' } },
     }),
   ],
-  // URLs of the previous Sapper site and the old static graphic-design portfolio
+  // Keep legacy flat URLs working after the Astro rewrite ('/' is handled by the
+  // language gateway in src/pages/index.astro).
   redirects: {
-    '/en/dev': '/en/projects/',
-    '/sk/dev': '/sk/projects/',
-    '/en/links': '/en/contact/',
-    '/sk/links': '/sk/contact/',
-    '/en/archive': '/en/projects/',
-    '/sk/archive': '/sk/projects/',
-    '/en/dev/iptables-portforward': '/en/docs/iptables-portforward/',
-    '/sk/dev/ahk': '/sk/docs/ahk/',
-    '/sk/dev/ipv4-calc': '/sk/docs/ipv4-calc/',
-    '/sk/dev/log': '/sk/docs/log/',
-    '/en/dev/save-the-princess': '/en/projects/save-the-princess/',
-    '/sk/dev/save-the-princess': '/sk/projects/save-the-princess/',
-    '/en/art/comics': '/en/projects/comics/',
-    '/sk/art/komixy': '/sk/projects/comics/',
-    '/en/projects/lelek': '/en/projects/nightjar-gift/',
-    '/sk/projects/lelek': '/sk/projects/nightjar-gift/',
-    '/en/projects/secret-animation': '/en/projects/layf-animation/',
-    '/sk/projects/secret-animation': '/sk/projects/layf-animation/',
-    '/gfx': '/sk/art/',
-    '/gfx/en': '/en/art/',
-    '/zrada': '/sk/projects/zrada/',
-    '/gfx/zrada': '/sk/projects/zrada/',
-    '/gfx/en/treason': '/en/projects/zrada/',
+    '/produkcia': '/sk/produkcia/',
+    '/ponuka': '/sk/ponuka/',
   },
 });

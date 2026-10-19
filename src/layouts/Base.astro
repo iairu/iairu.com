@@ -2,86 +2,123 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
-import Search from '../components/Search.astro';
-import Lightbox from '../components/Lightbox.astro';
-import Breadcrumbs from '../components/Breadcrumbs.astro';
-import { ui, LANGS } from '../data/i18n.js';
+import { LANGS } from '../data/i18n.js';
 import { SITE_DESCRIPTION, person } from '../data/site.js';
 
-// path: this page's path after /<lang>/ (used for the language switch and hreflang)
-const { lang = 'en', title, description = SITE_DESCRIPTION[lang], path = '', crumbs = [], image = '/img/nightjar-gift.png', noindex = false, type = 'website' } = Astro.props;
-const T = ui[lang];
-const full = title ? `${title} · ${person.nick}` : `${person.full}: ${lang === 'sk' ? 'prompt inžinier a 3D umelec' : 'prompt engineer & 3D artist'}`;
+const {
+  lang = 'sk',
+  title,
+  description = SITE_DESCRIPTION[lang],
+  path = '',
+  image = '/media/about-cover.jpg',
+  noindex = false,
+  type = 'website',
+  solidHeader = false,
+} = Astro.props;
+
+const brand = 'StrukShow';
+const full = title ? `${title} · ${brand}` : `${brand} — ${person.name}`;
 const origin = Astro.site?.origin ?? '';
 const canonical = origin + `/${lang}/${path}`;
-const ld = { '@context': 'https://schema.org', '@type': 'Person', name: person.name, alternateName: person.nick, url: origin + '/', email: person.email, jobTitle: 'Prompt engineer, 3D artist', sameAs: ['https://github.com/iairu', 'https://www.linkedin.com/in/iairu'] };
+const ld = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: person.altName,
+  alternateName: person.name,
+  jobTitle: lang === 'sk' ? 'Kúzelník, iluzionista' : 'Magician, illusionist',
+  url: origin + '/',
+  sameAs: ['https://www.youtube.com/@brianstruk', 'https://www.instagram.com/brianstruk'],
+};
 ---
 <!doctype html>
-<html lang={lang} data-theme="dark">
+<html lang={lang}>
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{full}</title>
     <meta name="description" content={description} />
-    <meta name="theme-color" content="#161616" />
-    <meta name="color-scheme" content="dark light" />
+    <meta name="theme-color" content="#0a0a0c" />
+    <meta name="color-scheme" content="dark" />
     <link rel="canonical" href={canonical} />
     {LANGS.map((l) => <link rel="alternate" hreflang={l} href={`${origin}/${l}/${path}`} />)}
-    <link rel="alternate" hreflang="x-default" href={`${origin}/en/${path}`} />
+    <link rel="alternate" hreflang="x-default" href={`${origin}/sk/${path}`} />
     <link rel="sitemap" href="/sitemap-index.xml" />
     {noindex && <meta name="robots" content="noindex" />}
-    <link rel="icon" href="/favicon.ico" sizes="any" />
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="apple-touch-icon" href="/media/logo-white.svg" />
     <meta property="og:type" content={type} />
-    <meta property="og:site_name" content={person.full} />
+    <meta property="og:site_name" content={brand} />
     <meta property="og:title" content={full} />
     <meta property="og:description" content={description} />
     <meta property="og:image" content={origin + image} />
     <meta property="og:locale" content={lang === 'sk' ? 'sk_SK' : 'en_US'} />
     <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+    />
     <script type="application/ld+json" set:html={JSON.stringify(ld)} />
-    <script is:inline>
-      (function () {
-        var d = document.documentElement; d.classList.add('js'); d.setAttribute('data-sky', String(1 + Math.floor(Math.random() * 6)));
-        var t = null; try { t = localStorage.getItem('iairu-theme'); } catch (e) {}
-        if (t !== 'light' && t !== 'dark') t = matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-        d.setAttribute('data-theme', t);
-      })();
-    </script>
+    <script is:inline>document.documentElement.classList.add('js');</script>
   </head>
   <body>
-    <div class="sky" aria-hidden="true"></div>
-    <a class="skip" href="#main">{T.skip}</a>
-    <Header lang={lang} path={path} />
-    <Breadcrumbs lang={lang} crumbs={crumbs} />
+    <a class="skip" href="#main">{lang === 'sk' ? 'Preskočiť na obsah' : 'Skip to content'}</a>
+    <Header lang={lang} path={path} solid={solidHeader} />
     <main id="main">
       <slot />
     </main>
     <Footer lang={lang} />
-    <Search lang={lang} />
-    <Lightbox lang={lang} />
+
+    <!-- shared lightbox for any [data-zoom] image -->
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+      <button class="lb-close" type="button" aria-label="Close">&times;</button>
+      <img class="lb-img" alt="" />
+    </div>
+
+    <style>
+      .lightbox { position: fixed; inset: 0; z-index: 200; display: none; place-items: center; padding: clamp(1rem, 5vw, 4rem); background: rgb(5 5 7 / 0.94); backdrop-filter: blur(6px); }
+      .lightbox.open { display: grid; animation: lb-in 0.25s ease; }
+      @keyframes lb-in { from { opacity: 0; } }
+      .lb-img { max-width: 100%; max-height: 90vh; width: auto; height: auto; box-shadow: var(--shadow); border: 1px solid var(--line2); }
+      .lb-close { position: absolute; top: clamp(0.8rem, 3vw, 2rem); right: clamp(0.8rem, 3vw, 2rem); width: 48px; height: 48px; font-size: 2rem; line-height: 1; color: var(--ink); background: transparent; border: 1px solid var(--line2); border-radius: 50%; cursor: pointer; transition: border-color 0.2s, color 0.2s; }
+      .lb-close:hover { color: var(--gold); border-color: var(--gold); }
+    </style>
+
     <script>
-      const root = document.documentElement;
-      const meta = document.querySelector('meta[name=theme-color]');
-      const paint = () => meta?.setAttribute('content', root.getAttribute('data-theme') === 'light' ? '#ffffff' : '#161616');
-      paint();
-      document.getElementById('theme-toggle')?.addEventListener('click', () => {
-        const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-        root.setAttribute('data-theme', next);
-        try { localStorage.setItem('iairu-theme', next); } catch {}
-        paint();
+      // Scroll reveal (progressive enhancement; a safety timeout guarantees visibility)
+      const reveal = document.querySelectorAll('[data-reveal]');
+      const showAll = () => reveal.forEach((el) => el.classList.add('in'));
+      if (reveal.length && 'IntersectionObserver' in window) {
+        const io = new IntersectionObserver(
+          (entries) => entries.forEach((e) => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }),
+          { rootMargin: '0px 0px -8% 0px', threshold: 0.08 }
+        );
+        reveal.forEach((el) => io.observe(el));
+        setTimeout(showAll, 2500);
+      } else {
+        showAll();
+      }
+
+      // Lightbox
+      const lb = document.getElementById('lightbox');
+      const lbImg = lb?.querySelector('.lb-img') as HTMLImageElement | null;
+      const openLb = (src: string, alt: string) => {
+        if (!lb || !lbImg) return;
+        lbImg.src = src; lbImg.alt = alt;
+        lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false');
+        document.documentElement.classList.add('modal-open');
+      };
+      const closeLb = () => {
+        if (!lb) return;
+        lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true');
+        document.documentElement.classList.remove('modal-open');
+      };
+      document.querySelectorAll<HTMLImageElement>('[data-zoom]').forEach((img) => {
+        img.addEventListener('click', () => openLb(img.dataset.full || img.currentSrc || img.src, img.alt));
       });
-      document.querySelectorAll<HTMLAnchorElement>('.langs a').forEach((a) => a.addEventListener('click', () => { try { localStorage.setItem('iairu-lang', a.hreflang); } catch {} }));
-      const btn = document.querySelector<HTMLButtonElement>('.menu-btn');
-      const nav = document.getElementById('primary-nav');
-      const setMenu = (open: boolean) => { btn?.setAttribute('aria-expanded', String(open)); nav?.classList.toggle('open', open); };
-      btn?.addEventListener('click', () => setMenu(btn.getAttribute('aria-expanded') !== 'true'));
-      nav?.addEventListener('click', (e) => { if ((e.target as HTMLElement).closest('a')) setMenu(false); });
-      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
+      lb?.addEventListener('click', (e) => { if (e.target === lb || (e.target as HTMLElement).classList.contains('lb-close')) closeLb(); });
+      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLb(); });
     </script>
-  <!-- impeccable-live-start -->
-<script is:inline src="http://localhost:8400/live.js?token=e498c88c-89db-4e28-8e5b-f75e507a4c35"></script>
-<!-- impeccable-live-end -->
-</body>
+  </body>
 </html>

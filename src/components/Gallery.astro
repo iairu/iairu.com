@@ -1,0 +1,32 @@
+---
+import { tr } from '../data/util.js';
+const { title, items = [], lang, hint } = Astro.props;
+---
+<section class="gallery section" id="gallery" aria-labelledby="gal-h">
+  <div class="wrap-wide">
+    <div class="sec-head center">
+      <p class="eyebrow">{hint}</p>
+      <h2 id="gal-h">{title}</h2>
+    </div>
+    <div class="masonry">
+      {items.map((img, i) => (
+        <figure class:list={['tile', { tall: i % 5 === 0, wide: i % 7 === 3 }]} data-reveal style={`transition-delay:${(i % 4) * 60}ms`}>
+          <img src={img.src} alt={tr(img.alt, lang)} loading="lazy" data-zoom />
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .masonry { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: clamp(140px, 16vw, 220px); gap: clamp(0.6rem, 1.4vw, 1rem); grid-auto-flow: dense; }
+  .tile { margin: 0; overflow: hidden; border: 1px solid var(--line); background: var(--bg3); position: relative; }
+  .tile.tall { grid-row: span 2; }
+  .tile.wide { grid-column: span 2; }
+  .tile img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); cursor: zoom-in; }
+  .tile::after { content: ''; position: absolute; inset: 0; box-shadow: inset 0 0 0 1px transparent; transition: box-shadow 0.3s; pointer-events: none; }
+  .tile:hover img { transform: scale(1.06); }
+  .tile:hover::after { box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--gold) 60%, transparent); }
+  @media (max-width: 860px) { .masonry { grid-template-columns: repeat(2, 1fr); } .tile.wide { grid-column: span 2; } }
+  @media (max-width: 480px) { .masonry { grid-template-columns: 1fr 1fr; grid-auto-rows: 130px; } .tile.wide { grid-column: span 2; } .tile.tall { grid-row: span 2; } }
+</style>

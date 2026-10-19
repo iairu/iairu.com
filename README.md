@@ -1,34 +1,46 @@
-## iairu.com v3
+## StrukShow (v3-astro-strukshow)
 
-Portfolio of Ondrej "iairu" Špánik, prompt engineer and 3D artist who bridges classic programming, electronics and 3D models into working objects.
-Built with [Astro](https://astro.build) (static output), English and Slovak, no tracking. It replaces the Svelte + Sapper site and merges the old graphic design portfolio (`/gfx`) into it.
+Website of **Braňo "Brian" Struk**, a modern magician — rewritten in [Astro](https://astro.build)
+(static output) on this branch of the repository. Bilingual (Slovak default, English),
+dark/luxury design with a single gold accent, no tracking. It replaces the previous
+Svelte + CockpitCMS single-page app; all content was carried over from the live site.
+
+> This branch builds the StrukShow site at the root. The iairu.com portfolio lives on the
+> `v3-astro` branch and is untouched there.
 
 ```bash
 npm install
-npm run dev          # dev server
-npm run build        # static site -> dist/
+npm run dev      # dev server
+npm run build    # static site -> dist/
 npm run preview
-npm run sync:repos   # refresh the GitHub snapshot (stars, languages) in src/data/repos.json
 ```
 
-Needs Node 20+. Set `SITE_URL` at build time for absolute canonical / sitemap URLs (default `https://iairu.com`).
+Needs Node 20+. Set `SITE_URL` at build time for absolute canonical / sitemap URLs
+(default `https://strukshow.com`).
 
 ### Where things live
 
 | What | Where |
 |---|---|
-| Every project (bilingual text, fields, interests, links) | `src/data/projects.js` |
-| GitHub numbers snapshot (stars decide the order) | `src/data/repos.json`, from `npm run sync:repos` |
-| Fields of expertise, areas of interest, quick-start presets, menu | `src/data/site.js` |
-| UI strings, 404 text | `src/data/i18n.js` |
-| Write-ups (markdown, one language each: `en_` / `sk_` prefix) | `src/content/docs/` |
-| Portfolio filters (client side, state kept in the URL) | `src/pages/[lang]/projects/index.astro`, `src/scripts/finder.ts` |
-| Pages | `src/pages/[lang]/*` (`/en/...` and `/sk/...`); `/` redirects by browser language |
-| Hero 3D viewer (three.js, lazy loaded) | `src/components/Viewer.astro`, models in `public/models` |
-| Old static content kept at its old URLs | `public/dl`, `public/gfx/dl`, `public/dbs`, `public/strukshow-docs`, `public/_dev` |
+| Person, contacts (booking + management), social links, menu | `src/data/site.js` |
+| All page content, bilingual (home / production / offer) | `src/data/content.js` |
+| UI strings, 404 text, language list | `src/data/i18n.js` |
+| Design tokens (colours, type, spacing) | `src/styles/global.css` |
+| Layout shell (head, fonts, lightbox, reveal) | `src/layouts/Base.astro` |
+| Section & UI components | `src/components/*` |
+| Pages (`/sk/...` and `/en/...`; `/` redirects by browser language) | `src/pages/*` |
+| Images, logos, icons, showreel video | `public/media/` |
 
-### Adding a project
+### Pages
 
-Add an entry to `raw` in `src/data/projects.js`. Give it `repo` (a name from `repos.json`) to inherit stars, language and date, or set `year` and `lang` by hand for work outside GitHub. Pick `fields` and `interests` keys from `site.js`. The portfolio, the detail page, the sitemap and the filters pick it up on the next build.
+- `/[lang]/` — home: hero, stats, references, about, two show formats, gallery,
+  video, testimonials, booking.
+- `/[lang]/produkcia/` — video production service, process and manager contact.
+- `/[lang]/ponuka/` — focused "premium show" campaign landing page.
 
-Old Sapper and `/gfx` URLs are redirected in `astro.config.mjs`.
+### Content & fonts
+
+Text is taken from the original CockpitCMS content and lightly cleaned up; the English for
+the `/ponuka` page was translated for this rewrite (the original was Slovak only). Headings
+use **Cormorant Garamond**, body copy **Inter**, both from Google Fonts. Videos are loaded as
+click-to-play YouTube facades; the production showreel is a self-hosted muted loop.

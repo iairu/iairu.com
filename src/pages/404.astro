@@ -1,15 +1,25 @@
 ---
 import Base from '../layouts/Base.astro';
+import Icon from '../components/Icon.astro';
 import { ui } from '../data/i18n.js';
 ---
-<Base lang="en" title="404" path="" noindex description="Page not found">
-  <section class="block">
-    <div class="wrap narrow">
-      <h1>{ui.en.notFound.title}<br /><span class="sk">{ui.sk.notFound.title}</span></h1>
-      <p class="lead">{ui.en.notFound.text}</p>
-      <p class="lead sk-l">{ui.sk.notFound.text}</p>
-      <p class="cta"><a class="btn primary" href="/en/projects/">{ui.en.notFound.projects}</a> <a class="btn ghost" href="/sk/projects/">{ui.sk.notFound.projects}</a> <a class="btn ghost" href="/">{ui.en.notFound.home}</a></p>
+<Base lang="sk" title="404" path="" noindex solidHeader description="Stránka sa nenašla / Page not found">
+  <section class="nf section">
+    <div class="narrow center">
+      <p class="code">404</p>
+      <h1>{ui.sk.notFound.title}</h1>
+      <p class="lead">{ui.sk.notFound.text}</p>
+      <p class="lead en">{ui.en.notFound.text}</p>
+      <p class="cta mid">
+        <a class="btn" href="/sk/">{ui.sk.notFound.home} <Icon name="next" /></a>
+        <a class="btn ghost" href="/en/">{ui.en.notFound.home}</a>
+      </p>
     </div>
   </section>
 </Base>
-<style> .sk { color: var(--cobalt); } .sk-l { font-size: 1rem; } .cta { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.6rem; } </style>
+<style>
+  .nf { padding-top: calc(var(--hdr) + 4rem); min-height: 70vh; display: grid; align-items: center; }
+  .code { font-family: var(--serif); font-size: clamp(5rem, 18vw, 11rem); line-height: 1; color: var(--gold); margin: 0 0 0.2rem; }
+  .en { font-size: 1rem; color: var(--mute); }
+  .cta.mid { display: flex; flex-wrap: wrap; gap: 0.7rem; justify-content: center; margin-top: 1.8rem; }
+</style>

@@ -1,0 +1,33 @@
+---
+import Icon from './Icon.astro';
+const { title, list = [] } = Astro.props;
+---
+<section class="testi section" aria-labelledby="testi-h">
+  <div class="wrap-wide">
+    <div class="sec-head center">
+      <p class="eyebrow">★★★★★</p>
+      <h2 id="testi-h">{title}</h2>
+    </div>
+    <div class="cols">
+      {list.map((t, i) => (
+        <figure class="card" data-reveal style={`transition-delay:${(i % 3) * 70}ms`}>
+          <div class="stars" aria-hidden="true">
+            {Array.from({ length: t.stars || 5 }).map(() => <Icon name="star" size="0.95rem" />)}
+          </div>
+          <blockquote>{t.text}</blockquote>
+          {t.author && <figcaption>— {t.author}</figcaption>}
+        </figure>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .testi { background: var(--bg2); border-block: 1px solid var(--line); }
+  .cols { columns: 3 300px; column-gap: clamp(1rem, 2vw, 1.6rem); }
+  .card { break-inside: avoid; margin: 0 0 clamp(1rem, 2vw, 1.6rem); padding: 1.6rem 1.7rem; background: var(--bg3); border: 1px solid var(--line); border-radius: 3px; position: relative; }
+  .card::before { content: '\201C'; position: absolute; top: 0.1em; right: 0.3em; font-family: var(--serif); font-size: 4rem; line-height: 1; color: var(--tint); }
+  .stars { display: flex; gap: 0.15rem; color: var(--gold); margin-bottom: 0.9rem; }
+  blockquote { margin: 0; font-size: 0.98rem; line-height: 1.6; color: var(--ink); font-weight: 300; }
+  figcaption { margin-top: 1rem; font-size: 0.82rem; letter-spacing: 0.06em; color: var(--gold); font-weight: 500; }
+</style>

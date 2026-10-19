@@ -1,16 +1,13 @@
 {
-  "name": "iairu-com",
+  "name": "strukshow",
   "version": "3.0.0",
   "private": true,
   "type": "module",
-  "description": "Portfolio of Ondrej \"iairu\" Špánik: prompt engineer and 3D artist bridging code, electronics and 3D models into working objects.",
+  "description": "StrukShow: the website of modern magician Braňo (Brian) Struk, rewritten in Astro.",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
-    "sync:repos": "node scripts/sync-repos.mjs",
-    "readmes": "node scripts/fetch-readmes.mjs",
-    "sky": "python3 scripts/make-sky.py"
+    "preview": "astro preview"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.0",

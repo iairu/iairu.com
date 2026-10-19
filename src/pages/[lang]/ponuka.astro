@@ -1,0 +1,75 @@
+---
+import Base from '../../layouts/Base.astro';
+import YouTube from '../../components/YouTube.astro';
+import Icon from '../../components/Icon.astro';
+import { LANGS, ui, tr } from '../../data/i18n.js';
+import { booking } from '../../data/site.js';
+import { offer as o } from '../../data/content.js';
+
+export const getStaticPaths = () => LANGS.map((lang) => ({ params: { lang } }));
+const { lang } = Astro.params;
+const T = ui[lang];
+const title = tr({ sk: 'Prémiová kúzelnícka show', en: 'Premium magic show' }, lang);
+---
+<Base lang={lang} path="ponuka/" title={title} description={tr({ sk: 'Prémiová kúzelnícka show pre firemné eventy, galavečery a hotely. Braňo Struk prináša elegantný interaktívny program.', en: 'A premium magic show for corporate events, galas and hotels. Brian Struk brings an elegant interactive program.' }, lang)} solidHeader>
+  <section class="offer">
+    <!-- Step 1: intro + video -->
+    <div class="section intro center">
+      <div class="narrow" data-reveal>
+        <p class="step-pill">{tr(o.intro.step, lang)}</p>
+        <h1 class="h-intro">{tr(o.intro.headline, lang)}</h1>
+        <p class="lead">{tr(o.intro.sub, lang)}</p>
+      </div>
+      <div class="wrap video-wrap" data-reveal>
+        <YouTube id={o.shortId} ratio="16 / 9" title={title} />
+      </div>
+    </div>
+
+    <!-- Table hopping -->
+    <div class="section band center">
+      <div class="narrow" data-reveal>
+        <h2>{tr(o.tableHopping.headline, lang)}</h2>
+        <div class="th-body" set:html={tr(o.tableHopping.body, lang)} />
+      </div>
+    </div>
+
+    <!-- Logos strip -->
+    <div class="logos-strip" style={`--img:url('${o.logosStrip}')`} aria-label="References"></div>
+
+    <!-- Benefits -->
+    <div class="section center benefits">
+      <div class="narrow" data-reveal>
+        <h2>{tr(o.benefits.heading, lang)}</h2>
+        <ul class="checks">
+          {tr(o.benefits.items, lang).map((it) => (
+            <li><span class="check">✓</span><span>{it}</span></li>
+          ))}
+        </ul>
+        <p class="cred">{tr(o.benefits.credibility, lang)}</p>
+        <div class="cta mid">
+          <a class="btn" href={`mailto:${booking.email}`}>{T.bookNow} <Icon name="next" /></a>
+          <a class="btn ghost" href={`tel:${booking.phoneHref}`}><Icon name="phone" /> {booking.phone}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .offer { --gold: rgb(209, 166, 69); }
+  .step-pill { display: inline-block; margin: 0 0 1.4rem; padding: 0.5em 1.2em; font: 600 0.74rem/1 var(--sans); letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); border: 1px solid color-mix(in srgb, var(--gold) 45%, transparent); border-radius: 100px; }
+  .intro { padding-top: calc(var(--hdr) + clamp(2rem, 5vw, 4rem)); background: radial-gradient(120% 80% at 50% 0%, color-mix(in srgb, var(--gold) 8%, transparent), transparent 55%); }
+  .h-intro { font-size: clamp(2rem, 1.3rem + 3.4vw, 3.6rem); margin-bottom: 0.6em; }
+  .video-wrap { max-width: 900px; margin-top: clamp(2rem, 4vw, 3rem); }
+
+  .th-body { color: var(--soft); font-weight: 300; max-width: 62ch; margin-inline: auto; }
+  .th-body :global(strong) { color: var(--ink); }
+
+  .logos-strip { height: clamp(90px, 14vw, 150px); background: var(--img) center / contain no-repeat; filter: grayscale(1) brightness(1.4); opacity: 0.8; }
+
+  .checks { list-style: none; margin: 1.8rem auto 0; padding: 0; display: grid; gap: 0.9rem; max-width: 36rem; text-align: left; }
+  .checks li { display: grid; grid-template-columns: auto 1fr; gap: 0.9rem; align-items: start; font-size: 1.08rem; }
+  .check { display: grid; place-items: center; width: 1.6em; height: 1.6em; border-radius: 50%; background: var(--tint); color: var(--gold); font-weight: 700; font-size: 0.85em; }
+  .cred { max-width: 52ch; margin: 2.2rem auto 0; color: var(--soft); font-weight: 500; }
+  .cta.mid { justify-content: center; margin-top: 2rem; }
+</style>

@@ -1,24 +1,36 @@
 ---
-import { ui } from '../data/i18n.js';
+// Language gateway: send visitors to /sk/ or /en/ based on a stored choice or
+// their browser languages (Slovak/Czech -> sk, otherwise en).
+const origin = Astro.site?.origin ?? '';
 ---
 <!doctype html>
-<html lang="en">
+<html lang="sk">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>iairu · Ondrej Špánik</title>
-    <meta name="description" content="Ondrej Špánik: prompt engineer and 3D artist. Choose English or Slovenčina." />
-    <link rel="canonical" href={`${Astro.site?.origin ?? ''}/en/`} />
-    <link rel="alternate" hreflang="en" href={`${Astro.site?.origin ?? ''}/en/`} />
-    <link rel="alternate" hreflang="sk" href={`${Astro.site?.origin ?? ''}/sk/`} />
-    <link rel="alternate" hreflang="x-default" href={`${Astro.site?.origin ?? ''}/en/`} />
-    <noscript><meta http-equiv="refresh" content="0; url=/en/" /></noscript>
+    <title>StrukShow — Braňo Struk</title>
+    <meta name="description" content="Moderný kúzelník Braňo Struk. Modern magician Brian Struk. Vyberte si jazyk / choose a language." />
+    <link rel="canonical" href={`${origin}/sk/`} />
+    <link rel="alternate" hreflang="sk" href={`${origin}/sk/`} />
+    <link rel="alternate" hreflang="en" href={`${origin}/en/`} />
+    <link rel="alternate" hreflang="x-default" href={`${origin}/sk/`} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <noscript><meta http-equiv="refresh" content="0; url=/sk/" /></noscript>
     <script is:inline>
-      var l = 'en';
-      try { l = localStorage.getItem('iairu-lang') || ((navigator.languages || [navigator.language]).some(function (x) { return /^(sk|cs)/i.test(x); }) ? 'sk' : 'en'); } catch (e) {}
+      var l = 'sk';
+      try {
+        l = localStorage.getItem('struk-lang') ||
+          ((navigator.languages || [navigator.language]).some(function (x) { return /^(sk|cs)/i.test(x); }) ? 'sk' : 'en');
+      } catch (e) {}
+      if (l !== 'sk' && l !== 'en') l = 'sk';
       location.replace('/' + l + '/' + location.search + location.hash);
     </script>
-    <style>body{font-family:'IBM Plex Sans','Segoe UI',system-ui,sans-serif;background:#161616;color:#f4f4f4;display:grid;place-items:center;min-height:100vh;margin:0}a{color:#78a9ff;font-size:1.4rem;margin:0 1rem}</style>
+    <style>
+      body { font-family: system-ui, 'Segoe UI', sans-serif; background: #0a0a0c; color: #f4f0e7; display: grid; place-items: center; min-height: 100vh; margin: 0; gap: 1.2rem; }
+      a { color: #d1a645; font-size: 1.3rem; letter-spacing: 0.1em; text-transform: uppercase; text-decoration: none; margin: 0 1rem; }
+    </style>
   </head>
-  <body><p><a href="/en/">English</a> <a href="/sk/">Slovenčina</a></p></body>
+  <body>
+    <p><a href="/sk/">Slovensky</a> <a href="/en/">English</a></p>
+  </body>
 </html>
