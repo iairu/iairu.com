@@ -8,7 +8,7 @@ colors:
   bench-raise: "#1f1f27"
   ivory-ink: "#f4f0e7"
   soft-ink: "#b4afa3"
-  mute-ink: "#7c776e"
+  mute-ink: "#938d82"
   hairline: "#26262e"
   hairline-strong: "#34343f"
   gold: "#d1a645"
@@ -142,7 +142,8 @@ ivory ink ramp, and a single gold family that carries every accent.
 - **Ivory Ink** (`#f4f0e7`): headings and primary body copy — warm cream, never
   `#fff`.
 - **Soft Ink** (`#b4afa3`): leads, secondary copy and resting navigation.
-- **Mute Ink** (`#7c776e`): placeholders, captions and the faintest meta text.
+- **Mute Ink** (`#938d82`): placeholders, captions and the faintest meta text —
+  lifted to clear a 4.5:1 contrast floor on near-black.
 - **Hairline** (`#26262e`) / **Hairline Strong** (`#34343f`): dividers, band edges
   and control outlines.
 
@@ -180,18 +181,20 @@ weight — thin Cormorant cuts would lose their hairlines on the near-black surf
   the intro sentence under a heading — light weight for an airy, spoken tone.
 - **Body** (Manrope 400, `clamp(1rem…1.12rem)`, lh 1.65, tracking 0.005em):
   running copy.
-- **Label / Eyebrow** (Manrope 600, 0.78rem, tracking 0.28em, UPPERCASE, gold):
-  the small-caps gold eyebrow above section headings, trailed by a short gold
-  gradient tick. Buttons and nav links share this uppercase, wide-tracked grotesque
-  treatment at 0.82rem with slightly tighter tracking (0.10–0.14em).
+- **Label** (Manrope 600, 0.78rem, tracking 0.28em, UPPERCASE, gold): the small-caps
+  gold label — used **standalone** to title a headingless section (e.g. the "Trusted
+  by" logo wall), never as a kicker above a heading. Buttons and nav links share this
+  uppercase, wide-tracked grotesque treatment at 0.82rem with slightly tighter
+  tracking (0.10–0.14em).
 
 ### Named Rules
 **The Marquee Rule.** All display type is Cormorant; the grotesque never sizes up to
 headline scale. Drama lives in the serif, order lives in the sans — don't blur the
 two.
 
-**The Gold Eyebrow Rule.** Every section opens with the uppercase gold eyebrow label
-(wide 0.28em tracking) before its didone heading; it is the programme's running head.
+**The Bare Heading Rule.** Headings stand on their own. No kicker or eyebrow label
+sits above a heading; the Cormorant heading carries its own weight. The gold label
+survives only to title a section that has no heading of its own.
 
 ## Layout
 
@@ -267,11 +270,11 @@ rounding, no decorative blobs — the geometry stays crisp and theatrical.
 - **Mobile:** a 48px menu button reveals a full-width near-black blurred panel that
   slides from under the header; each item is a full-width row divided by hairlines.
 
-### Signature — Section Eyebrow
-The recurring brand atom: an inline-flex uppercase gold label (0.78rem, 0.28em
-tracking) preceded by a 2.2em gold gradient tick that fades in from transparent. It
-sits above almost every section heading and is the single clearest carrier of the
-brand on an otherwise quiet page. (Centered sections drop the tick.)
+### Signature — Standalone Gold Label
+A small uppercase gold label (0.78rem, 0.28em tracking), optionally preceded by a
+2.2em gold gradient tick that fades in from transparent. It is used **standalone** to
+title a section that carries no heading — the "Trusted by" logo wall is the canonical
+case — and is never stacked as a kicker above a heading.
 
 ### Signature — Content Rails
 The twin fixed gold-tinted vertical rails + darker margins (see Layout) are a
@@ -281,7 +284,8 @@ them: nothing should visually collide with or redraw the rails.
 ## Do's and Don'ts
 
 ### Do:
-- **Do** open sections with the gold eyebrow label before a Bodoni Moda heading.
+- **Do** let each heading stand on its own, set in Cormorant, with no kicker or
+  eyebrow label above it (The Bare Heading Rule).
 - **Do** keep gold to a small fraction of any screen (The One Candle Rule) — a label,
   a button, a hairline, the rails.
 - **Do** build depth from the near-black tonal ramp and hairlines; reserve the two
@@ -299,3 +303,7 @@ them: nothing should visually collide with or redraw the rails.
 - **Don't** pre-emboss resting UI with shadow or add pill shapes, heavy rounding, or
   decorative blobs.
 - **Don't** let any element collide with or redraw the twin content rails.
+- **Don't** place a kicker or eyebrow label above a heading; the heading carries its
+  own weight.
+- **Don't** set display headings or hero accent words in italic; keep Cormorant
+  display roman (italic stays for inline emphasis and pull-quotes only).

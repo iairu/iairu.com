@@ -43,7 +43,6 @@ const h = home;
         <img src={h.about.image} alt={tr(h.about.heading, lang)} loading="lazy" width="900" height="1100" data-zoom />
       </figure>
       <div class="text" data-reveal>
-        <p class="eyebrow">{tr(h.about.label, lang)}</p>
         <h2 id="about-h">{tr(h.about.heading, lang)}</h2>
         {tr(h.about.body, lang).split('\n\n').map((p) => <p class="body" set:html={p} />)}
         <div class="cta">
@@ -58,7 +57,6 @@ const h = home;
   <section class="section band shows" aria-labelledby="shows-h">
     <div class="wrap-wide">
       <div class="sec-head center">
-        <p class="eyebrow">{tr(h.shows.label, lang)}</p>
         <h2 id="shows-h">{tr(h.shows.heading, lang)}</h2>
       </div>
       <div class="two">
@@ -86,7 +84,6 @@ const h = home;
   <section class="section band video" aria-labelledby="video-h">
     <div class="wrap">
       <div class="sec-head center">
-        <p class="eyebrow">{tr(h.video.label, lang)}</p>
         <h2 id="video-h">{tr(h.video.heading, lang)}</h2>
       </div>
       <div data-reveal>
@@ -101,7 +98,6 @@ const h = home;
   <section class="section booking" id="booking" aria-labelledby="book-h">
     <div class="wrap book-grid">
       <div class="book-intro" data-reveal>
-        <p class="eyebrow">{tr(h.booking.label, lang)}</p>
         <h2 id="book-h">{tr(h.booking.heading, lang)}</h2>
         <p class="lead">{tr(h.booking.lead, lang)}</p>
         <ul class="contacts">

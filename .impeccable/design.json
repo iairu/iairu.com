@@ -87,9 +87,9 @@
       "mute-ink": {
         "role": "neutral",
         "displayName": "Mute Ink",
-        "purpose": "Placeholders, captions, faintest meta text.",
+        "purpose": "Placeholders, captions, faintest meta text; lifted to clear 4.5:1 on near-black.",
         "theme": "dark",
-        "canonical": "oklch(55% 0.01 85)",
+        "canonical": "oklch(62% 0.012 85)",
         "tonalRamp": ["oklch(15% 0.01 85)", "oklch(26.4% 0.01 85)", "oklch(37.9% 0.01 85)", "oklch(49.3% 0.01 85)", "oklch(60.7% 0.01 85)", "oklch(72.1% 0.01 85)", "oklch(83.6% 0.01 85)", "oklch(95% 0.01 85)"]
       },
       "hairline": {
@@ -115,7 +115,7 @@
       "title": { "displayName": "Title", "purpose": "Card / sub-section H3s in Cormorant 600." },
       "lead": { "displayName": "Lead", "purpose": "Intro sentence under a heading; Manrope 300, soft ink, max 56ch." },
       "body": { "displayName": "Body", "purpose": "Running copy in Manrope 400." },
-      "label": { "displayName": "Label / Eyebrow", "purpose": "Uppercase gold eyebrow and nav/button labels; wide tracking." }
+      "label": { "displayName": "Label", "purpose": "Uppercase gold standalone section labels (e.g. logo wall) and nav/button labels; wide tracking. Never a kicker above a heading." }
     },
     "shadows": [
       { "name": "ambient-drop", "value": "0 30px 70px -40px rgb(0 0 0 / 0.9)", "purpose": "Large floated media and panels resting above the page." },
@@ -147,11 +147,11 @@
       "css": ".ds-btn-ghost { display:inline-flex; align-items:center; justify-content:center; min-height:52px; padding:0.85em 1.7em; font:600 0.82rem/1 'Manrope',system-ui,sans-serif; letter-spacing:0.14em; text-transform:uppercase; color:#f4f0e7; background:transparent; border:1px solid #34343f; border-radius:2px; text-decoration:none; cursor:pointer; transition:background-color .2s,color .2s,border-color .2s,transform .2s; } .ds-btn-ghost:hover { background:color-mix(in srgb,#d1a645 12%,transparent); color:#ecc677; border-color:#d1a645; transform:translateY(-2px); }"
     },
     {
-      "name": "Section Eyebrow",
+      "name": "Standalone Gold Label",
       "kind": "custom",
       "refersTo": "label",
-      "description": "Signature brand atom: uppercase gold label with a leading gold gradient tick, above every section heading.",
-      "html": "<span class=\"ds-eyebrow\">O kúzelníkovi</span>",
+      "description": "Uppercase gold label with an optional leading gold gradient tick. Used standalone to title a headingless section (e.g. the logo wall); never a kicker above a heading.",
+      "html": "<span class=\"ds-eyebrow\">Trusted by</span>",
       "css": ".ds-eyebrow { display:inline-flex; align-items:center; gap:0.6em; font:600 0.78rem/1 'Manrope',system-ui,sans-serif; letter-spacing:0.28em; text-transform:uppercase; color:#d1a645; } .ds-eyebrow::before { content:''; width:2.2em; height:1px; background:linear-gradient(90deg,transparent,#d1a645); }"
     },
     {
@@ -193,11 +193,11 @@
       { "name": "The One Candle Rule", "body": "Gold is the only accent and appears on a small fraction of any screen — a label, a button, a hairline, a rail. If a second accent hue or a flood of gold shows up, the room stops reading as candlelit and the illusion breaks.", "section": "colors" },
       { "name": "The No-White Rule", "body": "The brightest ink is warm ivory (#f4f0e7) and the darkest surface is near-black (#0a0a0c). Never introduce pure #ffffff or a light surface; there is no light theme.", "section": "colors" },
       { "name": "The Marquee Rule", "body": "All display type is Cormorant; the grotesque never sizes up to headline scale. Drama lives in the serif, order lives in the sans.", "section": "typography" },
-      { "name": "The Gold Eyebrow Rule", "body": "Every section opens with the uppercase gold eyebrow label (0.28em tracking) before its didone heading.", "section": "typography" },
+      { "name": "The Bare Heading Rule", "body": "Headings stand on their own; no kicker or eyebrow label sits above a heading. The gold label survives only to title a section that has no heading of its own.", "section": "typography" },
       { "name": "The Flat-Room Rule", "body": "Surfaces are flat at rest; lift (the Gold Lift ring) appears only as a response to hover or focus. Never pre-emboss resting UI with shadow.", "section": "elevation" }
     ],
     "dos": [
-      "Do open sections with the gold eyebrow label before a Cormorant heading.",
+      "Do let each heading stand on its own in Cormorant, with no kicker or eyebrow label above it.",
       "Do keep gold to a small fraction of any screen (The One Candle Rule).",
       "Do build depth from the near-black tonal ramp and hairlines; reserve the two shadows for floated media and the Gold Lift hover.",
       "Do keep headings in Cormorant and functional copy in Manrope.",
@@ -209,7 +209,9 @@
       "Don't use pure #ffffff or any light surface, and don't add a light theme.",
       "Don't size the grotesque up to headline scale or set a heading in the sans.",
       "Don't pre-emboss resting UI with shadow or add pill shapes, heavy rounding, or decorative blobs.",
-      "Don't let any element collide with or redraw the twin content rails."
+      "Don't let any element collide with or redraw the twin content rails.",
+      "Don't place a kicker or eyebrow label above a heading; the heading carries its own weight.",
+      "Don't set display headings or hero accent words in italic; keep Cormorant display roman (italic stays for inline emphasis and pull-quotes)."
     ]
   }
 }

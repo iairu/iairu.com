@@ -23,7 +23,8 @@ const { data, lang } = Astro.props;
   .stat + .stat::before { content: ''; position: absolute; left: calc(-1 * clamp(0.75rem, 2vw, 1.5rem)); top: 15%; bottom: 15%; width: 1px; background: var(--line2); }
   /* a lower optical size keeps Bodoni's hairlines (the "+" and "?") readable at display size */
   .num { font-variation-settings: 'opsz' 24; font-family: var(--serif); font-weight: 700; font-size: clamp(2.3rem, 1.6rem + 3vw, 3.8rem); line-height: 1; color: var(--gold); }
-  .lbl { font-size: clamp(0.72rem, 0.68rem + 0.2vw, 0.84rem); letter-spacing: 0.14em; text-transform: uppercase; color: var(--soft); }
+  /* labels sit over the stats photo: a warm ivory-gold tint, not flat gray */
+  .lbl { font-size: clamp(0.72rem, 0.68rem + 0.2vw, 0.84rem); letter-spacing: 0.14em; text-transform: uppercase; color: color-mix(in srgb, var(--ink) 68%, var(--gold)); }
   @media (max-width: 680px) {
     .grid { grid-template-columns: repeat(2, 1fr); gap: 2rem 1.5rem; }
     .stat:nth-child(odd)::before { display: none; }

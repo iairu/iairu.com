@@ -16,7 +16,6 @@ const title = tr({ sk: 'Prémiová kúzelnícka show', en: 'Premium magic show' 
     <!-- Step 1: intro + video -->
     <div class="section intro center">
       <div class="narrow" data-reveal>
-        <p class="step-pill">{tr(o.intro.step, lang)}</p>
         <h1 class="h-intro">{tr(o.intro.headline, lang)}</h1>
         <p class="lead">{tr(o.intro.sub, lang)}</p>
       </div>
@@ -57,7 +56,6 @@ const title = tr({ sk: 'Prémiová kúzelnícka show', en: 'Premium magic show' 
 
 <style>
   .offer { --gold: rgb(209, 166, 69); }
-  .step-pill { display: inline-block; margin: 0 0 1.4rem; padding: 0.5em 1.2em; font: 600 0.74rem/1 var(--sans); letter-spacing: 0.16em; text-transform: uppercase; color: var(--gold); border: 1px solid color-mix(in srgb, var(--gold) 45%, transparent); border-radius: 100px; }
   .intro { padding-top: calc(var(--hdr) + clamp(2rem, 5vw, 4rem)); background: radial-gradient(120% 80% at 50% 0%, color-mix(in srgb, var(--gold) 8%, transparent), transparent 55%); }
   .h-intro { font-size: clamp(2rem, 1.3rem + 3.4vw, 3.6rem); margin-bottom: 0.6em; }
   .video-wrap { max-width: 900px; margin-top: clamp(2rem, 4vw, 3rem); }
