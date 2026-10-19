@@ -132,6 +132,19 @@
    "topics": []
   },
   {
+   "name": "QUANTUM_GAME",
+   "url": "https://github.com/iairu/QUANTUM_GAME",
+   "stars": 1,
+   "language": "JavaScript",
+   "fork": false,
+   "archived": false,
+   "pushed": "2026-10-18",
+   "created": "2026-10-08",
+   "description": null,
+   "homepage": "https://quantum.iairu.com",
+   "topics": []
+  },
+  {
    "name": "twodolisty",
    "url": "https://github.com/iairu/twodolisty",
    "stars": 1,
