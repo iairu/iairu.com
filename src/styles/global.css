@@ -13,8 +13,8 @@
   --mute: #938d82;
   --line: #26262e;
   --line2: #34343f;
-  /* vertical content rails: a thin gold-tinted line each side, darker margins beyond */
-  --rail: color-mix(in srgb, var(--gold) 34%, var(--line2));
+  /* vertical content rails: a thin slightly-opaque white line each side, darker margins beyond */
+  --rail: rgb(255 255 255 / 0.18);
   --margin-shade: rgb(0 0 0 / 0.42);
 
   --gold: #d1a645;

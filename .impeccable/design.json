@@ -7,7 +7,7 @@
       "gold": {
         "role": "primary",
         "displayName": "Gold",
-        "purpose": "The single accent: primary buttons, eyebrow labels, rail tint, focus ring, selection, card lift ring.",
+        "purpose": "The single accent: primary buttons, standalone gold labels, focus ring, selection, card lift ring (the content rails are no longer gold).",
         "theme": "dark",
         "canonical": "oklch(74% 0.12 86)",
         "tonalRamp": ["oklch(15% 0.12 86)", "oklch(26.4% 0.12 86)", "oklch(37.9% 0.12 86)", "oklch(49.3% 0.12 86)", "oklch(60.7% 0.12 86)", "oklch(72.1% 0.12 86)", "oklch(83.6% 0.12 86)", "oklch(95% 0.12 86)"]
@@ -181,16 +181,16 @@
   ],
   "narrative": {
     "northStar": "The Midnight Gala",
-    "overview": "StrukShow is a black-tie room after dark. The lights are down, the conversation is hushed, and a single source of gold — a glint of gilt on an invitation, candlelight caught on a glass — is the only warmth in the frame. This is a world of refined luxury and discretion, not spectacle: the restraint is the point. A premium modern magician performing for private, exclusive and corporate galas is credible here precisely because the design never shouts. The surfaces are near-black and tonally layered, so depth comes from quiet contrast rather than shadow. The ink is a warm ivory, never pure white. Type carries the drama: Cormorant, a delicate high-contrast Garamond-didone, sets every heading like engraved gala stationery, while Manrope keeps everything functional calm and legible underneath. A single gold accent does all the persuading. The site is dark only, by design. Twin gold-tinted vertical rails frame the content column like a proscenium.",
+    "overview": "StrukShow is a black-tie room after dark. The lights are down, the conversation is hushed, and a single source of gold — a glint of gilt on an invitation, candlelight caught on a glass — is the only warmth in the frame. This is a world of refined luxury and discretion, not spectacle: the restraint is the point. A premium modern magician performing for private, exclusive and corporate galas is credible here precisely because the design never shouts. The surfaces are near-black and tonally layered, so depth comes from quiet contrast rather than shadow. The ink is a warm ivory, never pure white. Type carries the drama: Cormorant, a delicate high-contrast Garamond-didone, sets every heading like engraved gala stationery, while Manrope keeps everything functional calm and legible underneath. A single gold accent does all the persuading. The site is dark only, by design. Twin slightly-opaque white vertical rails frame the content column like a proscenium.",
     "keyCharacteristics": [
       "Near-black tonal depth; no bright surfaces, no pure white, no light mode.",
       "One gold accent, used rarely and always on purpose.",
       "Theatrical didone headlines over a quiet grotesque body.",
-      "Framed composition: twin gold rails and darker margins as a proscenium.",
+      "Framed composition: twin slightly-opaque white rails and darker margins as a proscenium.",
       "Composed, luxurious, discreet — persuasion through restraint."
     ],
     "rules": [
-      { "name": "The One Candle Rule", "body": "Gold is the only accent and appears on a small fraction of any screen — a label, a button, a hairline, a rail. If a second accent hue or a flood of gold shows up, the room stops reading as candlelit and the illusion breaks.", "section": "colors" },
+      { "name": "The One Candle Rule", "body": "Gold is the only accent and appears on a small fraction of any screen — a label, a button, a hairline. If a second accent hue or a flood of gold shows up, the room stops reading as candlelit and the illusion breaks.", "section": "colors" },
       { "name": "The No-White Rule", "body": "The brightest ink is warm ivory (#f4f0e7) and the darkest surface is near-black (#0a0a0c). Never introduce pure #ffffff or a light surface; there is no light theme.", "section": "colors" },
       { "name": "The Marquee Rule", "body": "All display type is Cormorant; the grotesque never sizes up to headline scale. Drama lives in the serif, order lives in the sans.", "section": "typography" },
       { "name": "The Bare Heading Rule", "body": "Headings stand on their own; no kicker or eyebrow label sits above a heading. The gold label survives only to title a section that has no heading of its own.", "section": "typography" },

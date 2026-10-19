@@ -2,11 +2,8 @@
 import Icon from './Icon.astro';
 const { title, list = [] } = Astro.props;
 ---
-<section class="testi section" aria-labelledby="testi-h">
+<section class="testi section" aria-label={title}>
   <div class="wrap-wide">
-    <div class="sec-head center">
-      <h2 id="testi-h">{title}</h2>
-    </div>
     <div class="cols">
       {list.map((t, i) => (
         <figure class="card" data-reveal style={`transition-delay:${(i % 3) * 70}ms`}>

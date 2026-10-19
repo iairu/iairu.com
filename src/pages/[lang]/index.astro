@@ -54,11 +54,8 @@ const h = home;
   </section>
 
   <!-- Two show formats -->
-  <section class="section band shows" aria-labelledby="shows-h">
+  <section class="section band shows" aria-label={tr(h.shows.heading, lang)}>
     <div class="wrap-wide">
-      <div class="sec-head center">
-        <h2 id="shows-h">{tr(h.shows.heading, lang)}</h2>
-      </div>
       <div class="two">
         {h.shows.items.map((s, i) => (
           <article class="show-card" data-reveal style={`transition-delay:${i * 90}ms`}>
@@ -81,11 +78,8 @@ const h = home;
   <Gallery title={tr(h.galleryTitle, lang)} items={h.gallery} lang={lang} hint={T.galleryHint} />
 
   <!-- Video -->
-  <section class="section band video" aria-labelledby="video-h">
+  <section class="section band video" aria-label={tr(h.video.heading, lang)}>
     <div class="wrap">
-      <div class="sec-head center">
-        <h2 id="video-h">{tr(h.video.heading, lang)}</h2>
-      </div>
       <div data-reveal>
         <YouTube id={h.video.youtubeId} title={tr(h.video.heading, lang)} />
       </div>

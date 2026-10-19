@@ -2,11 +2,8 @@
 import { tr } from '../data/util.js';
 const { title, items = [], lang, hint } = Astro.props;
 ---
-<section class="gallery section" id="gallery" aria-labelledby="gal-h">
+<section class="gallery section" id="gallery" aria-label={title}>
   <div class="wrap-wide">
-    <div class="sec-head center">
-      <h2 id="gal-h">{title}</h2>
-    </div>
     <div class="masonry">
       {items.map((img, i) => (
         <figure class:list={['tile', { tall: i % 5 === 0, wide: i % 7 === 3 }]} data-reveal style={`transition-delay:${(i % 4) * 60}ms`}>

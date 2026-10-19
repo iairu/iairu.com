@@ -8,51 +8,36 @@ const { lang = 'sk', path = '', solid = false } = Astro.props;
 const T = ui[lang];
 const other = LANGS.find((l) => l !== lang) ?? 'en';
 ---
-<!-- impeccable-carbonize-start 258a8994 -->
-<style is:inline data-impeccable-css="258a8994">
-@keyframes imp-hdr-1 { from { height: calc(var(--p-start-height, 88) * 1px); } to { height: var(--hdr); } }
-@keyframes imp-hdr-2 { from { height: calc(var(--p-start-height, 110) * 1px); } to { height: var(--hdr); } }
-@keyframes imp-hdr-3 { from { height: calc(var(--p-start-height, 98) * 1px); } to { height: var(--hdr); } }
-@supports (animation-timeline: scroll()) {
-@media (prefers-reduced-motion: no-preference) {
-[data-impeccable-variant="1"] .site-header { animation: imp-hdr-1 linear both; animation-timeline: scroll(root); animation-range: 0px calc(var(--p-shrink-distance, 480) * 1px); }
-[data-impeccable-variant="2"] .site-header { animation: imp-hdr-2 linear both; animation-timeline: scroll(root); animation-range: 0px calc(var(--p-shrink-distance, 480) * 1px); }
-[data-impeccable-variant="3"] .site-header { animation: imp-hdr-3 linear both; animation-timeline: scroll(root); animation-range: 0px calc(var(--p-shrink-distance, 480) * 1px); }
-}
-}
-</style>
-<!-- impeccable-param-values 258a8994: {"start-height":90,"shrink-distance":480} -->
-<!-- impeccable-carbonize-end 258a8994 -->
-<div data-impeccable-variant="1" style="display: contents">
-  <header class:list={['site-header', { solid }]} data-solid={solid ? 'true' : 'false'}>
-    <div class="wrap-wide bar">
-      <a class="brand" href={lhref(lang)} aria-label="StrukShow — home">
-        <img src="/media/logo-white.svg" alt="StrukShow" width="776" height="184" />
-      </a>
-      <nav class="nav" aria-label="Primary">
-        <ul>
-          {nav.map((item) => (
-            <li>
-              <a href={item.hash ? lhash(lang, item.path, item.hash) : lhref(lang, item.path)}>
-                {T.nav[item.key]}
-              </a>
-            </li>
-          ))}
-        </ul>
-        <div class="nav-extra">
-          <div class="langs" role="group" aria-label={T.language}>
-            <span aria-current="true">{lang.toUpperCase()}</span>
-            <a href={`/${other}/${path}`} hreflang={other}>{other.toUpperCase()}</a>
-          </div>
-          <a class="btn sm book" href={lhash(lang, '', 'booking')}>{T.bookNow}</a>
+<header class:list={['site-header', { solid }]} data-solid={solid ? 'true' : 'false'}>
+  <div class="wrap-wide bar">
+    <a class="brand" href={lhref(lang)} aria-label="StrukShow — home">
+      <img src="/media/logo-white.svg" alt="StrukShow" width="776" height="184" />
+    </a>
+
+    <nav id="primary-nav" class="nav" aria-label="Primary">
+      <ul>
+        {nav.map((item) => (
+          <li>
+            <a href={item.hash ? lhash(lang, item.path, item.hash) : lhref(lang, item.path)}>
+              {T.nav[item.key]}
+            </a>
+          </li>
+        ))}
+      </ul>
+      <div class="nav-extra">
+        <div class="langs" role="group" aria-label={T.language}>
+          <span aria-current="true">{lang.toUpperCase()}</span>
+          <a href={`/${other}/${path}`} hreflang={other}>{other.toUpperCase()}</a>
         </div>
-      </nav>
-      <button class="menu-btn" type="button" aria-expanded="false" aria-label={T.menu}>
-        <Icon name="menu" size="1.6rem" />
-      </button>
-    </div>
-  </header>
-</div>
+        <a class="btn sm book" href={lhash(lang, '', 'booking')}>{T.bookNow}</a>
+      </div>
+    </nav>
+
+    <button class="menu-btn" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label={T.menu}>
+      <Icon name="menu" size="1.6rem" />
+    </button>
+  </div>
+</header>
 
 <style>
   .site-header {
@@ -65,6 +50,14 @@ const other = LANGS.find((l) => l !== lang) ?? 'en';
     background: color-mix(in srgb, var(--bg) 82%, transparent);
     backdrop-filter: blur(14px) saturate(1.2);
     border-bottom-color: var(--line);
+  }
+  /* header stands taller at the top of the page and settles to --hdr as you scroll —
+     scroll-driven and enhancement-only (stays at --hdr without support or with reduced motion) */
+  @keyframes header-grow { from { height: 90px; } to { height: var(--hdr); } }
+  @supports (animation-timeline: scroll()) {
+    @media (prefers-reduced-motion: no-preference) {
+      .site-header { animation: header-grow linear both; animation-timeline: scroll(root); animation-range: 0px 480px; }
+    }
   }
   .bar { display: flex; align-items: center; gap: 1.5rem; }
   .brand { display: flex; align-items: center; margin-right: auto; }

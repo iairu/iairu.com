@@ -107,7 +107,7 @@ accent (`#d1a645`) does all the persuading — it is the invitation's gilt edge,
 sparingly so each appearance reads as deliberate.
 
 The site is **dark only, by design** — there is no light theme to serve. Two thin,
-gold-tinted vertical rails frame the content column across the whole page, with the
+slightly-opaque white vertical rails frame the content column across the whole page, with the
 margins beyond them a shade darker, so the eye is seated in the room like a stage
 framed by its proscenium.
 
@@ -115,7 +115,7 @@ framed by its proscenium.
 - Near-black tonal depth; no bright surfaces, no pure white, no light mode.
 - One gold accent, used rarely and always on purpose.
 - Theatrical didone headlines over a quiet grotesque body.
-- Framed composition: twin gold rails and darker margins as a proscenium.
+- Framed composition: twin slightly-opaque white rails and darker margins as a proscenium.
 - Composed, luxurious, discreet — persuasion through restraint.
 
 ## Colors
@@ -124,9 +124,10 @@ A near-monochrome evening palette: five near-black tonal surfaces, a three-step 
 ivory ink ramp, and a single gold family that carries every accent.
 
 ### Primary
-- **Gold** (`#d1a645`): the one accent. Primary buttons, eyebrow labels, the rail
-  tint, focus rings, selection, and the hairline glow on lifted cards. It is the
-  gilt edge of the invitation — the whole mood turns on using it sparingly.
+- **Gold** (`#d1a645`): the one accent. Primary buttons, standalone gold labels,
+  focus rings, selection, and the hairline glow on lifted cards. It is the gilt edge
+  of the invitation — the whole mood turns on using it sparingly. (The content rails
+  are no longer gold; see Layout.)
 - **Gold Bright** (`#ecc677`): link text at rest and the hover state of gold
   surfaces — a lift toward candlelight on interaction.
 - **Gold Deep** (`#a07c2c`): the low end of the gold ramp, for gradients and pressed
@@ -154,8 +155,8 @@ ivory ink ramp, and a single gold family that carries every accent.
 
 ### Named Rules
 **The One Candle Rule.** Gold is the only accent and appears on a small fraction of
-any screen — a label, a button, a hairline, a rail. If a second accent hue or a
-flood of gold shows up, the room stops reading as candlelit and the illusion breaks.
+any screen — a label, a button, a hairline. If a second accent hue or a flood of
+gold shows up, the room stops reading as candlelit and the illusion breaks.
 
 **The No-White Rule.** The brightest ink is warm ivory (`#f4f0e7`) and the darkest
 surface is near-black (`#0a0a0c`). Never introduce pure `#ffffff` or a light surface;
@@ -204,10 +205,10 @@ all gutter-clamped (`clamp(18px, 5vw, 56px)`). Sections breathe on a generous ve
 rhythm (`clamp(3.5rem, 8vw, 7.5rem)`, with a compact `section-sm` variant). Banded
 sections (`.band`) step up to Bench Panel with a hairline top and bottom.
 
-Two fixed gold-tinted **vertical rails** frame the content column across the entire
-page (drawn as a `body::after` overlay above content, below the header/dialogs), with
-the margins beyond them shaded darker (`rgb(0 0 0 / 0.42)`) — the proscenium that
-seats the whole site. The fixed header is 74px (`--hdr`), transparent at the top and
+Two fixed **vertical rails** in slightly-opaque white (`rgb(255 255 255 / 0.18)`)
+frame the content column across the entire page (drawn as a `body::after` overlay
+above content, below the header/dialogs), with the margins beyond them shaded darker
+(`rgb(0 0 0 / 0.42)`) — the proscenium that seats the whole site. The fixed header is 74px (`--hdr`), transparent at the top and
 resolving to an 82%-opaque near-black with `blur(14px) saturate(1.2)` once scrolled.
 The page never scrolls horizontally (`overflow-x: clip`), and long unbroken strings
 wrap rather than widen it.
@@ -277,7 +278,7 @@ title a section that carries no heading — the "Trusted by" logo wall is the ca
 case — and is never stacked as a kicker above a heading.
 
 ### Signature — Content Rails
-The twin fixed gold-tinted vertical rails + darker margins (see Layout) are a
+The twin fixed slightly-opaque white vertical rails + darker margins (see Layout) are a
 page-level signature, not a per-component one. New full-bleed surfaces must respect
 them: nothing should visually collide with or redraw the rails.
 
@@ -287,7 +288,7 @@ them: nothing should visually collide with or redraw the rails.
 - **Do** let each heading stand on its own, set in Cormorant, with no kicker or
   eyebrow label above it (The Bare Heading Rule).
 - **Do** keep gold to a small fraction of any screen (The One Candle Rule) — a label,
-  a button, a hairline, the rails.
+  a button, a hairline.
 - **Do** build depth from the near-black tonal ramp and hairlines; reserve the two
   shadows for floated media and the Gold Lift hover.
 - **Do** keep headings in Cormorant and functional copy in Manrope; let the serif

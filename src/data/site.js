@@ -52,6 +52,5 @@ export const nav = [
   { key: 'home', path: '' },
   { key: 'show', path: '', hash: 'show' },
   { key: 'gallery', path: '', hash: 'gallery' },
-  { key: 'production', path: 'produkcia/' },
   { key: 'booking', path: '', hash: 'booking' },
 ];
