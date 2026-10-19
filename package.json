@@ -9,6 +9,7 @@
     "build": "astro build",
     "preview": "astro preview",
     "sync:repos": "node scripts/sync-repos.mjs",
+    "readmes": "node scripts/fetch-readmes.mjs",
     "sky": "python3 scripts/make-sky.py"
   },
   "dependencies": {

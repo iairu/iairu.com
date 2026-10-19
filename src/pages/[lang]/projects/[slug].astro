@@ -5,6 +5,7 @@ import ProjectThumb from '../../../components/ProjectThumb.astro';
 import { LANGS, ui } from '../../../data/i18n.js';
 import { fields, interests } from '../../../data/site.js';
 import { projects, repoSnapshotDate } from '../../../data/projects.js';
+import { readmeFor, readmeSyncDate } from '../../../data/readmes.js';
 import { tr, lhref, resolveHref, isExternal } from '../../../data/util.js';
 import Icon from '../../../components/Icon.astro';
 
@@ -18,6 +19,7 @@ const related = projects.filter((o) => o.id !== p.id && o.fields.some((f) => p.f
 const idx = projects.findIndex((o) => o.id === p.id);
 const color = fields[p.fields[0]].color;
 const gallery = p.gallery ?? [];
+const readme = readmeFor(p.id);
 ---
 <Base lang={lang} path={`projects/${p.id}/`} title={title} description={tr(p.desc, lang)} image={p.image ?? '/img/nightjar-gift.png'}
   crumbs={[{ label: ui[lang].nav.projects, href: lhref(lang, 'projects/') }, { label: title }]}>
@@ -58,6 +60,16 @@ const gallery = p.gallery ?? [];
         </section>
       )}
 
+      {readme && (
+        <section class="readme">
+          <div class="rhead">
+            <h2>README</h2>
+            <p class="rnote">{T('Straight from the project’s GitHub repository.', 'Priamo z GitHub repozitára projektu.')} <small>({readmeSyncDate})</small>{p.repoUrl && <> · <a href={p.repoUrl} rel="noopener" target="_blank">GitHub <Icon name="ext" /></a></>}</p>
+          </div>
+          <div class="prose" set:html={readme} />
+        </section>
+      )}
+
       <nav class="pn" aria-label={T('Neighbouring projects', 'Susedné projekty')}>
         {idx > 0 ? <a href={lhref(lang, `projects/${projects[idx - 1].id}/`)}><Icon name="prev" /> {tr(projects[idx - 1].title, lang)}</a> : <span />}
         {idx < projects.length - 1 && <a href={lhref(lang, `projects/${projects[idx + 1].id}/`)}>{tr(projects[idx + 1].title, lang)} <Icon name="next" /></a>}
@@ -88,6 +100,12 @@ const gallery = p.gallery ?? [];
   .gal { list-style: none; margin: 1rem 0 0; padding: 0; display: grid; gap: 1rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 260px), 1fr)); }
   .gal a { display: block; border: 1px solid var(--line); background: var(--bg3); } .gal img { width: 100%; height: auto; transition: opacity .2s; } .gal a:hover img { opacity: .85; }
   .note { font-size: .85rem; color: var(--soft); margin-top: .8rem; }
+  .readme { margin-top: clamp(2.5rem, 6vw, 4rem); padding-top: clamp(2rem, 4vw, 2.5rem); border-top: 1px solid var(--line); }
+  .rhead { display: flex; flex-wrap: wrap; align-items: baseline; gap: .4rem 1rem; margin-bottom: 1rem; }
+  .rhead h2 { margin: 0; }
+  .rnote { margin: 0; font-size: .85rem; color: var(--soft); } .rnote small { font-family: var(--mono); }
+  .readme .prose { max-width: 78ch; }
+  .readme .prose :global(:is(h1, h2, h3, h4)) { scroll-margin-top: calc(var(--hdr) + 1rem); }
   .pn { display: flex; justify-content: space-between; gap: 1rem; margin-top: 3rem; font-weight: 500; flex-wrap: wrap; }
   .pn a { display: inline-flex; align-items: center; gap: .4em; }
   .more { margin-top: 1.6rem; }
