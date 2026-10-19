@@ -15,6 +15,22 @@ const fCount = facet(projects, (p) => p.fields);
 const iCount = facet(projects, (p) => p.interests);
 const lCount = facet(projects, (p) => p.language);
 const langs = [...lCount.entries()].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]));
+
+// Precomputed filter index, baked in at deploy time so the client filters by set lookups instead of
+// re-scanning every card. Membership per facet value, plus each sort order, as lists of project ids.
+const ids = (list) => list.map((p) => p.id);
+const finderIndex = {
+  order: {
+    stars: ids(projects), // server order: stars desc, then newest
+    new: ids([...projects].sort((a, b) => b.year - a.year || b.stars - a.stars)),
+    old: ids([...projects].sort((a, b) => a.year - b.year || b.stars - a.stars)),
+    name: ids([...projects].sort((a, b) => String(tr(a.title, lang)).toLowerCase().localeCompare(String(tr(b.title, lang)).toLowerCase()))),
+  },
+  field: Object.fromEntries(Object.keys(fields).map((k) => [k, ids(projects.filter((p) => p.fields.includes(k)))])),
+  interest: Object.fromEntries(Object.keys(interests).map((k) => [k, ids(projects.filter((p) => p.interests.includes(k)))])),
+  lang: Object.fromEntries(langs.map(([k]) => [k, ids(projects.filter((p) => p.language === k))])),
+  starred: ids(projects.filter((p) => p.stars > 0)),
+};
 const ui_ = {
   none: T('No project matches all of this.', 'Žiadny projekt nespĺňa všetko naraz.'),
   count: T('Showing {n} of {t} projects', 'Zobrazených {n} z {t} projektov'),
@@ -38,7 +54,7 @@ const ui_ = {
     </div>
   </section>
 
-  <section class="wrap finder" id="filters" data-finder data-all={projects.length}
+  <section class="wrap finder" id="filters" data-finder data-all={projects.length} data-index={JSON.stringify(finderIndex)}
     data-s-none={ui_.none} data-s-count={ui_.count} data-s-lang-hide={ui_.langHide} data-s-stars={ui_.starsNote} data-s-try={ui_.tryRemove} data-s-starred={T('Starred', 'S hviezdičkou')}>
     <form class="panel" aria-label={T('Filters', 'Filtre')} onsubmit="return false">
       <div class="row search">

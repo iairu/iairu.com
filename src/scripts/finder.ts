@@ -1,7 +1,11 @@
 // Client-side portfolio finder: facets are OR within a group and AND across groups.
+// Filtering runs against a precomputed index (membership per facet value and each sort order),
+// baked in at deploy time, so a click resolves by set lookup instead of re-scanning the DOM.
 // State lives in the query string so a filtered view can be shared or bookmarked.
 type Facet = 'field' | 'lang' | 'interest';
 const FACETS: Facet[] = ['field', 'lang', 'interest'];
+type IdList = Record<string, string[]>;
+interface FinderIndex { order: Record<string, string[]>; field: IdList; lang: IdList; interest: IdList; starred: string[]; }
 
 export function initFinder(root: HTMLElement) {
   const q = root.querySelector<HTMLInputElement>('[data-q]')!;
@@ -16,42 +20,62 @@ export function initFinder(root: HTMLElement) {
   const inputs = root.querySelectorAll<HTMLInputElement>('input[type=checkbox]');
   const starred = { on: false };
 
-  const selected = (f: Facet) => [...root.querySelectorAll<HTMLInputElement>(`input[name=${f}]:checked`)].map((i) => i.value);
-  const cardVals = (c: HTMLElement, f: Facet): string[] =>
-    f === 'field' ? (c.dataset.fields ?? '').split(' ') : f === 'interest' ? (c.dataset.interests ?? '').split(' ') : [c.dataset.lang ?? ''];
+  const index: FinderIndex = JSON.parse(root.dataset.index!);
+  const cardById = new Map<string, HTMLElement>(cards.map((c) => [c.dataset.id!, c]));
+  const allIds = index.order.stars;
+  const allSet = new Set(allIds);
 
-  const passes = (c: HTMLElement, sel: Record<Facet, string[]>, text: string, skip?: Facet) => {
+  const selected = (f: Facet) => [...root.querySelectorAll<HTMLInputElement>(`input[name=${f}]:checked`)].map((i) => i.value);
+  const intersect = (a: Set<string>, b: Set<string>) => {
+    const [small, large] = a.size < b.size ? [a, b] : [b, a];
+    const r = new Set<string>();
+    for (const x of small) if (large.has(x)) r.add(x);
+    return r;
+  };
+  const union = (f: Facet, vals: string[]) => {
+    const u = new Set<string>();
+    for (const v of vals) for (const id of index[f][v] ?? []) u.add(id);
+    return u;
+  };
+
+  // The set of project ids that pass every active filter, optionally ignoring one facet (for counts).
+  function matching(sel: Record<Facet, string[]>, text: string, skip?: Facet): Set<string> {
+    let set: Set<string> | null = null;
     for (const f of FACETS) {
       if (f === skip || !sel[f].length) continue;
-      const v = cardVals(c, f);
-      if (!sel[f].some((s) => v.includes(s))) return false;
+      set = set ? intersect(set, union(f, sel[f])) : union(f, sel[f]);
     }
-    if (starred.on && Number(c.dataset.stars) < 1) return false;
-    return !text || text.split(/\s+/).every((w) => (c.dataset.search ?? '').includes(w));
-  };
+    if (starred.on) set = set ? intersect(set, new Set(index.starred)) : new Set(index.starred);
+    if (text) {
+      const words = text.split(/\s+/);
+      const out = new Set<string>();
+      for (const id of set ?? allSet) { const s = cardById.get(id)?.dataset.search ?? ''; if (words.every((w) => s.includes(w))) out.add(id); }
+      set = out;
+    }
+    return set ?? allSet;
+  }
 
-  const sorters: Record<string, (a: HTMLElement, b: HTMLElement) => number> = {
-    stars: (a, b) => Number(b.dataset.stars) - Number(a.dataset.stars) || Number(b.dataset.year) - Number(a.dataset.year),
-    new: (a, b) => Number(b.dataset.year) - Number(a.dataset.year) || Number(b.dataset.stars) - Number(a.dataset.stars),
-    old: (a, b) => Number(a.dataset.year) - Number(b.dataset.year) || Number(b.dataset.stars) - Number(a.dataset.stars),
-    name: (a, b) => (a.dataset.name ?? '').localeCompare(b.dataset.name ?? ''),
-  };
-  const original = cards.map((c) => c); // server order = stars desc, then newest
+  // Grid order only changes when the sort does, so filtering never triggers a reflow from re-ordering.
+  let appliedSort = '';
+  function applyOrder(sort: string) {
+    if (sort === appliedSort) return;
+    (index.order[sort] ?? index.order.stars).forEach((id, i) => { const c = cardById.get(id); if (c) c.style.order = String(i); });
+    appliedSort = sort;
+  }
 
   function render(pushUrl = true) {
     const sel = { field: selected('field'), lang: selected('lang'), interest: selected('interest') };
     const text = q.value.trim().toLowerCase();
-    const order = sortEl.value === 'stars' ? original : [...cards].sort(sorters[sortEl.value]);
-    order.forEach((c, i) => { c.style.order = String(i); });
+    applyOrder(sortEl.value);
+    const show = matching(sel, text);
     let shown = 0;
-    for (const c of cards) { const ok = passes(c, sel, text); c.hidden = !ok; if (ok) shown++; }
+    for (const c of cards) { const ok = show.has(c.dataset.id!); c.hidden = !ok; if (ok) shown++; }
 
     // availability counts: how many results each option would give with the other groups applied
     for (const f of FACETS) {
-      const counts = new Map<string, number>();
-      for (const c of cards) if (passes(c, sel, text, f)) for (const v of cardVals(c, f)) if (v) counts.set(v, (counts.get(v) ?? 0) + 1);
+      const base = matching(sel, text, f);
       root.querySelectorAll<HTMLInputElement>(`input[name=${f}]`).forEach((i) => {
-        const n = counts.get(i.value) ?? 0;
+        let n = 0; for (const id of index[f][i.value] ?? []) if (base.has(id)) n++;
         const label = i.closest('.chip')!;
         label.querySelector('i')!.textContent = String(n);
         label.classList.toggle('dim', n === 0 && !i.checked);
@@ -104,7 +128,7 @@ export function initFinder(root: HTMLElement) {
   const init: any = { starred: url.get('starred') === '1' };
   for (const f of FACETS) init[f] = (url.get(f) ?? '').split(',').filter(Boolean);
   q.value = url.get('q') ?? '';
-  sortEl.value = sorters[url.get('sort') ?? ''] ? url.get('sort')! : 'stars';
+  sortEl.value = index.order[url.get('sort') ?? ''] ? url.get('sort')! : 'stars';
   apply(init);
 
   inputs.forEach((i) => i.addEventListener('change', () => render()));
