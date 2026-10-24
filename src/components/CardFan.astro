@@ -1,0 +1,323 @@
+---
+// Hero card fan. The pool is built here from the real project data; the browser draws a random handful
+// of it on every visit, and a click opens that project's details in a panel inside the hero.
+import { projects } from '../data/projects.js';
+import { fields } from '../data/site.js';
+import { tr, lhref, resolveHref } from '../data/util.js';
+
+const { lang } = Astro.props;
+const T = (en, sk) => (lang === 'sk' ? sk : en);
+
+const maxStars = Math.max(...projects.map((p) => p.stars));
+const maxDays = Math.max(...projects.map((p) => p.worked?.[2] ?? 0));
+const clip = (s, n) => (s.length <= n ? s : `${s.slice(0, s.lastIndexOf(' ', n)).replace(/[,.;:\s]+$/, '')}…`);
+
+// the one number each card is about: the strongest fact the data has for that project
+const stat = (p) => {
+  if (p.stars >= 5) return { k: 'stars', v: String(p.stars), l: T('GitHub stars', 'hviezdičiek na GitHube'), r: Math.max(0.1, p.stars / maxStars) };
+  if (p.worked) return { k: 'days', v: String(p.worked[2]), l: T('days of work', 'dní práce'), r: Math.max(0.1, p.worked[2] / maxDays) };
+  if (p.language) return { k: 'lang', v: p.language, l: T('written in', 'napísané v'), r: 0 };
+  return { k: 'year', v: String(p.year), l: T('first made', 'prvýkrát vytvorené'), r: 0 };
+};
+
+const pool = projects.map((p) => {
+  const main = fields[p.fields[0]];
+  const s = stat(p);
+  const extra = p.links[0];
+  return {
+    id: p.id,
+    t: tr(p.title, lang),
+    g: tr(p.tag, lang),
+    d: clip(tr(p.desc, lang), 250),
+    f: p.fields[0],
+    c: main.color,
+    fl: p.fields.map((f) => tr(fields[f].label, lang)),
+    sk: s.k, sv: s.v, sl: s.l, sr: s.r,
+    y: p.year,
+    lg: p.language,
+    st: p.stars,
+    dy: p.worked?.[2] ?? 0,
+    href: lhref(lang, `projects/${p.id}/`),
+    img: p.image,
+    repo: p.repoUrl,
+    x: extra ? { l: tr(extra.label, lang), h: resolveHref(extra.href, lang) } : null,
+  };
+});
+
+// art pieces: pictures from the galleries of design and 3D projects, a few per project
+const byPool = Object.fromEntries(pool.map((c) => [c.id, c]));
+const artPool = projects
+  .filter((p) => p.gallery?.length && p.fields.some((f) => f === 'design' || f === 'art3d'))
+  .flatMap((p) => (p.thumbs?.length ? p.thumbs : p.gallery).filter((u) => u.startsWith('/img/')).slice(0, 3)
+    .map((img, n) => ({ ...byPool[p.id], id: `${p.id}~${n}`, img, art: true, sr: 0 })));
+
+const ui = {
+  close: T('Close', 'Zavrieť'),
+  open: T('Open the project', 'Otvoriť projekt'),
+  repo: T('Repository', 'Repozitár'),
+  year: T('Year', 'Rok'),
+  lang: T('Language', 'Jazyk'),
+  stars: T('Stars', 'Hviezdičky'),
+  days: T('Days', 'Dni'),
+};
+const safe = (o) => JSON.stringify(o).replace(/</g, '\\u003c');
+---
+<div class="wrap fan-wrap">
+    <div class="fan" data-fan data-ui={safe(ui)} role="group" aria-label={T('Projects picked at random from this site. Choose one for details.', 'Projekty vybrané náhodne z tohto webu. Vyber si jeden pre podrobnosti.')}></div>
+  </div>
+<div class="fan-scrim" data-fan-scrim></div>
+<div class="fan-pop" data-fan-pop role="dialog" aria-modal="false" aria-labelledby="fp-title" aria-hidden="true" inert></div>
+<script is:inline type="application/json" data-fan-data set:html={safe({ cards: pool, art: artPool })} />
+
+<script>
+  type Card = {
+    id: string; t: string; g: string; d: string; f: string; c: string; fl: string[];
+    sk: string; sv: string; sl: string; sr: number; y: number; lg: string | null; st: number; dy: number;
+    art?: boolean; href: string; img: string | null; repo: string | null; x: { l: string; h: string } | null;
+  };
+
+  document.querySelectorAll<HTMLElement>('[data-fan]').forEach((root) => {
+  // the fan, its popup, scrim and data blob are siblings under the hero
+  const host = root.closest('section');
+  const pop = host?.querySelector<HTMLElement>('[data-fan-pop]');
+  const scrim = host?.querySelector<HTMLElement>('[data-fan-scrim]');
+  if (pop && scrim) document.body.append(scrim, pop);
+  const dataEl = host?.querySelector('[data-fan-data]');
+  if (pop && scrim && pop && scrim && dataEl?.textContent) {
+    const { cards: pool, art: artPool }: { cards: Card[]; art: Card[] } = JSON.parse(dataEl.textContent);
+    const ui = JSON.parse(root.dataset.ui || '{}');
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)');
+    const narrow = matchMedia('(max-width: 640px)');
+
+    const esc = (s: unknown) => String(s).replace(/[&<>"']/g, (m) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[m] as string));
+
+    // ---- card art: a chamfered frame, a dial medallion with 5-degree ticks, and a field glyph ----
+    const CX = 100, CY = 104;
+    const ticks = (() => {
+      let d = '';
+      for (let a = 0; a < 360; a += 5) {
+        const r2 = a % 30 === 0 ? 70 : 66;
+        const c = Math.cos((a * Math.PI) / 180), s = Math.sin((a * Math.PI) / 180);
+        d += `M${(CX + 62 * c).toFixed(2)} ${(CY + 62 * s).toFixed(2)}L${(CX + r2 * c).toFixed(2)} ${(CY + r2 * s).toFixed(2)}`;
+      }
+      return d;
+    })();
+    const glyphs: Record<string, string> = {
+      ai: '<path d="M0 -13V-4.5M-3.8 3.2L-13.2 9M3.8 3.2L13.2 9M-13 12H13"/><circle cy="-17" r="4"/><circle cx="-17" cy="12" r="4"/><circle cx="17" cy="12" r="4"/><circle r="4.5"/>',
+      software: '<path d="M-9 -14L-23 0L-9 14M9 -14L23 0L9 14M4 -18L-4 18"/>',
+      hardware: '<rect x="-12" y="-12" width="24" height="24" rx="2"/><rect x="-5" y="-5" width="10" height="10"/><path d="M-6 -12V-20M0 -12V-20M6 -12V-20M-6 12V20M0 12V20M6 12V20M-12 -6H-20M-12 0H-20M-12 6H-20M12 -6H20M12 0H20M12 6H20"/>',
+      art3d: '<path d="M0 -23L20 -11.5V11.5L0 23L-20 11.5V-11.5ZM-20 -11.5L0 0L20 -11.5M0 0V23"/>',
+      design: '<path d="M-20 12C-12 -20 12 -20 20 12M-20 12L-12 -20M20 12L12 -20"/><rect x="-23" y="9" width="6" height="6"/><rect x="17" y="9" width="6" height="6"/><circle cx="-12" cy="-20" r="2.6"/><circle cx="12" cy="-20" r="2.6"/>',
+      systems: '<rect x="-23" y="-17" width="46" height="34" rx="2"/><path d="M-23 -9H23M-14 -1L-7 5L-14 11M-1 11H11"/>',
+    };
+    const art = (c: Card) => `
+      <svg class="fc-art" viewBox="0 0 200 300" aria-hidden="true" focusable="false">
+        <path class="fr" d="M16 0H200V284L184 300H0V16Z"/>
+        <path class="fr2" d="M19.3 8H192V280.7L180.7 292H8V19.3Z"/>
+        <rect class="bar" x="16" y="0" width="36" height="3"/>
+        <circle class="ring" cx="${CX}" cy="${CY}" r="54"/>
+        <circle class="well" cx="${CX}" cy="${CY}" r="46"/>
+        <path class="tk" d="${ticks}"/>
+        ${c.sr ? `<circle class="arc" cx="${CX}" cy="${CY}" r="54" pathLength="100" stroke-dasharray="${(c.sr * 100).toFixed(1)} 100" transform="rotate(-90 ${CX} ${CY})"/>` : ''}
+        <g class="gl" transform="translate(${CX} ${CY})">${glyphs[c.f] || glyphs.software}</g>
+        <path class="fr2" d="M22 188H178"/>
+      </svg>`;
+
+    const pieceHTML = (c: Card, i: number, n: number) => `
+      <button type="button" class="fc piece c-${c.c}" data-id="${esc(c.id)}" style="--k:${(i - (n - 1) / 2).toFixed(1)};--i:${i}" aria-haspopup="dialog" aria-label="${esc(c.t)}, ${esc(c.y)}">
+        <svg class="fc-art" viewBox="0 0 200 300" aria-hidden="true" focusable="false">
+          <path class="fr" d="M16 0H200V284L184 300H0V16Z"/>
+          <rect class="bar" x="16" y="0" width="36" height="3"/>
+        </svg>
+        <img class="fc-img" src="${esc(c.img)}" alt="" loading="lazy" decoding="async" draggable="false" />
+        <span class="fc-y">${esc(c.y)}</span>
+      </button>`;
+    const cardHTML = (c: Card, i: number, n: number) => c.art ? pieceHTML(c, i, n) : `
+      <button type="button" class="fc c-${c.c}" data-id="${esc(c.id)}" style="--k:${(i - (n - 1) / 2).toFixed(1)};--i:${i}" aria-haspopup="dialog" aria-label="${esc(c.t)}: ${esc(c.sv)} ${esc(c.sl)}">
+        ${art(c)}
+        <span class="fc-y">${esc(c.y)}</span>
+      </button>`;
+
+    // a random handful, one per field first so the fan shows range before it repeats a discipline
+    const pickCards = (n: number) => {
+      const shuffled = [...pool].sort(() => Math.random() - 0.5);
+      const seen = new Set<string>();
+      const out: Card[] = [];
+      for (const c of shuffled) if (!seen.has(c.f)) { seen.add(c.f); out.push(c); }
+      for (const c of shuffled) if (out.length < n && !out.includes(c)) out.push(c);
+      return out.slice(0, n).sort(() => Math.random() - 0.5);
+    };
+    // art pieces from different projects, so no two neighbours are the same series
+    const pickArt = (n: number) => {
+      const seen = new Set<string>();
+      return [...artPool].sort(() => Math.random() - 0.5).filter((a) => !seen.has(a.t) && seen.add(a.t)).slice(0, n);
+    };
+    // project card, art piece, project card, ...
+    const pick = (n: number) => {
+      const arts = pickArt(Math.floor(n / 2));
+      const cards = pickCards(n - arts.length);
+      return Array.from({ length: n }, (_, i) => (i % 2 ? arts[(i - 1) / 2] : cards[i / 2])).filter(Boolean);
+    };
+
+    let current: Card[] = [];
+    let opener: HTMLElement | null = null;
+
+    const fact = (k: string, v: string | number) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`;
+    const popHTML = (c: Card) => `
+      <button type="button" class="fp-x" data-close aria-label="${esc(ui.close)}"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
+      <div class="fp-media c-${c.c}">${c.img ? `<img src="${esc(c.img)}" alt="" width="480" height="270" decoding="async" />` : art(c)}</div>
+      <div class="fp-body c-${c.c}">
+        <p class="fp-fields">${c.fl.slice(0, 2).map((f) => `<span>${esc(f)}</span>`).join('')}</p>
+        <h2 id="fp-title">${esc(c.t)}</h2>
+        <p class="fp-tag">${esc(c.g)}</p>
+        <p class="fp-desc">${esc(c.d)}</p>
+        <dl class="fp-facts">
+          ${fact(ui.year, c.y)}${c.lg ? fact(ui.lang, c.lg) : ''}${c.st > 0 ? fact(ui.stars, c.st) : ''}${c.dy ? fact(ui.days, c.dy) : ''}
+        </dl>
+        <div class="fp-actions">
+          <a class="btn primary" href="${esc(c.href)}">${esc(ui.open)}</a>
+          ${c.repo ? `<a class="btn ghost" href="${esc(c.repo)}" rel="noopener" target="_blank">${esc(ui.repo)}</a>` : ''}
+          ${c.x ? `<a class="btn ghost" href="${esc(c.x.h)}"${/^https?:/.test(c.x.h) ? ' rel="noopener" target="_blank"' : ''}>${esc(c.x.l)}</a>` : ''}
+        </div>
+      </div>`;
+
+    const close = (restore = true) => {
+      if (!pop.hasAttribute('data-open')) return;
+      pop.removeAttribute('data-open');
+      scrim.removeAttribute('data-open');
+      pop.setAttribute('aria-hidden', 'true');
+      pop.setAttribute('inert', '');
+      root.classList.remove('has-sel');
+      root.querySelectorAll('.fc.sel').forEach((el) => el.classList.remove('sel'));
+      if (restore) opener?.focus({ preventScroll: true });
+    };
+    const open = (c: Card, btn: HTMLElement) => {
+      opener = btn;
+      pop.innerHTML = popHTML(c);
+      pop.removeAttribute('inert');
+      pop.setAttribute('aria-hidden', 'false');
+      root.querySelectorAll('.fc.sel').forEach((el) => el.classList.remove('sel'));
+      btn.classList.add('sel');
+      root.classList.add('has-sel');
+      requestAnimationFrame(() => {
+        pop.setAttribute('data-open', '');
+        scrim.setAttribute('data-open', '');
+        pop.querySelector<HTMLElement>('[data-close]')?.focus({ preventScroll: true });
+      });
+    };
+
+    const render = () => {
+      close(false);
+      const n = narrow.matches ? 5 : 7;
+      current = pick(n);
+      root.style.setProperty('--n', String(n));
+      root.classList.remove('dealt');
+      root.innerHTML = current.map((c, i) => cardHTML(c, i, n)).join('');
+      // two frames so the cards are painted closed before they open into the fan
+      requestAnimationFrame(() => requestAnimationFrame(() => root.classList.add('dealt')));
+    };
+
+    root.addEventListener('click', (e) => {
+      const btn = (e.target as HTMLElement).closest<HTMLElement>('.fc');
+      if (!btn) return;
+      const c = current.find((x) => x.id === btn.dataset.id);
+      if (!c) return;
+      if (btn.classList.contains('sel')) close(); else open(c, btn);
+    });
+    pop.addEventListener('click', (e) => { if ((e.target as HTMLElement).closest('[data-close]')) close(); });
+    scrim.addEventListener('click', () => close());
+    document.addEventListener('keydown', (e) => { if (e.key === 'Escape') close(); });
+    narrow.addEventListener('change', render);
+    if (reduce.matches) root.classList.add('still');
+    render();
+  }
+  });
+</script>
+
+<style is:global>
+  .fan-wrap { position: relative; z-index: 1; width: 100%;
+    /* cut off at the right rail (see body::after), open above and below */ clip-path: inset(-100vh calc(-1 * clamp(8px, 2.5vw, 32px)) -100vh -100vw); }
+  .fan {
+    --cw: clamp(150px, 16vw, 200px); --ch: calc(var(--cw) * 1.5); --step: 9deg; --off: 9deg; /* the whole fan leans right of upright; the rail clips its tail */
+    position: relative; height: calc(var(--ch) * .8); margin-top: clamp(1.5rem, 4vw, 3rem);
+    font-size: calc(var(--cw) / 20);
+  }
+  @media (max-width: 640px) { .fan { --cw: 128px; --step: 10deg; --off: 8deg; } }
+
+  .fc {
+    --c: var(--blue); --a: 0deg; --lift: 16%;
+    position: absolute; left: calc(70% - var(--cw) / 2); bottom: calc(var(--ch) * -.36); /* lift and fan rotation never raise the card's bottom edge above the hero's clip line */ z-index: calc(var(--i) + 1);
+    width: var(--cw); height: var(--ch); padding: 0; border: 0; background: none; color: var(--ink); cursor: pointer; text-align: left;
+    transform-origin: 50% 190%; transform: rotate(var(--a)) translateY(var(--lift));
+    filter: drop-shadow(0 .6em 1.2em rgb(0 0 0 / .35));
+    font: inherit;
+  }
+  .dealt .fc { --a: calc(var(--k) * var(--step) + var(--off)); --lift: 0%; }
+  /* a picked card keeps its place in the stack and only rises a little */
+  .fc:hover, .fc:focus-visible { --lift: -4%; }
+  .fc.sel { --lift: -7%; }
+  .has-sel .fc:not(.sel) { opacity: .4; }
+  .fc:focus-visible { outline: none; }
+  .fc:focus-visible .fr { stroke: var(--focus); stroke-width: 2.5; }
+  @media (prefers-reduced-motion: no-preference) {
+    .fc { transition: transform .9s cubic-bezier(.16, 1, .3, 1) calc(var(--i) * 55ms), opacity .3s; }
+    .fc:hover, .fc:focus-visible, .fc.sel { transition: transform .45s cubic-bezier(.16, 1, .3, 1), opacity .3s; }
+  }
+
+  .fc-art { position: absolute; inset: 0; width: 100%; height: 100%; display: block; overflow: visible; }
+  .fc .fr { fill: var(--bg2); stroke: var(--line2); stroke-width: 1; transition: stroke .2s; }
+  .fc:hover .fr { stroke: var(--c); }
+  .fc-art .fr2 { fill: none; stroke: var(--line); stroke-width: 1; }
+  .fc-art .bar { fill: var(--c); }
+  .fc-art .ring { fill: none; stroke: var(--line); stroke-width: 3; }
+  .fc-art .well { fill: color-mix(in srgb, var(--c) 9%, var(--bg2)); stroke: none; }
+  .fc-art .tk { fill: none; stroke: var(--line2); stroke-width: 1; }
+  .fc-art .arc { fill: none; stroke: var(--c); stroke-width: 3; stroke-linecap: butt; }
+  .fc-art .gl { fill: none; stroke: var(--c); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+  .fc-art .gl rect, .fc-art .gl circle { fill: var(--bg2); }
+
+  .fc-img { position: absolute; left: 5.5%; top: 3.7%; width: 89%; height: 92.6%; object-fit: cover; background: var(--bg3); display: block;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - 1.4em), calc(100% - 1.4em) 100%, 0 100%); }
+  .piece .fc-y { top: 1.1em; left: 1.5em; right: auto; padding: .15em .45em; background: color-mix(in srgb, var(--bg) 78%, transparent); color: var(--ink); }
+  .fc-y { position: absolute; left: 2.4em; right: 2.4em; display: block; }
+  .fc-y { top: 1.45em; font: 500 .85em var(--mono); font-variant-numeric: tabular-nums; color: var(--soft); letter-spacing: .06em; }
+
+  /* the details panel lives in the hero, over a scrim that hides the fan's busy edge */
+  /* both live on <body> (moved there on init) so they cover the whole screen, above the header and page rails */
+  .fan-scrim { position: fixed; inset: 0; z-index: 100; background: color-mix(in srgb, var(--bg) 78%, transparent); opacity: 0; visibility: hidden; }
+  .fan-scrim[data-open] { opacity: 1; visibility: visible; }
+  .fan-pop {
+    position: fixed; z-index: 101; left: 50%; top: 50%; width: min(780px, calc(100vw - 2 * var(--gutter)));
+    max-height: calc(100dvh - 2rem); overflow: auto; display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    background: var(--bg2); border: 1px solid var(--line2); box-shadow: var(--shadow);
+    opacity: 0; visibility: hidden; translate: -50% calc(-50% + 24px);
+  }
+  .fan-pop[data-open] { opacity: 1; visibility: visible; translate: -50% -50%; }
+  @media (prefers-reduced-motion: no-preference) {
+    .fan-scrim { transition: opacity .3s, visibility .3s; }
+    .fan-pop { transition: opacity .3s, translate .55s cubic-bezier(.16, 1, .3, 1), visibility .3s; }
+  }
+  .fp-x { position: absolute; top: .5rem; right: .5rem; z-index: 2; display: grid; place-items: center; width: 40px; height: 40px; background: var(--bg2); border: 1px solid var(--line2); color: var(--ink); cursor: pointer; border-radius: 2px; }
+  .fp-x:hover { border-color: var(--blue); }
+  .fp-media { --c: var(--blue); position: relative; min-height: 220px; background: color-mix(in srgb, var(--c) 7%, var(--bg)); border-right: 1px solid var(--line); display: grid; place-items: center; overflow: hidden; }
+  .fp-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .fp-media .fc-art { position: relative; width: auto; height: 100%; max-height: 300px; padding: 1rem; }
+  .fp-media .fr { fill: var(--bg2); stroke: var(--line2); }
+  .fp-body { --c: var(--blue); padding: 1.4rem 1.5rem 1.5rem; min-width: 0; }
+  .fp-fields { display: flex; flex-wrap: wrap; gap: .4rem; margin: 0 2.6rem .8rem 0; }
+  .fp-fields span { font: 500 .74rem var(--mono); color: var(--c); border: 1px solid color-mix(in srgb, var(--c) 45%, var(--line)); padding: .2em .55em; }
+  .fp-body h2 { margin: 0; font-size: clamp(1.4rem, 3vw, 1.9rem); line-height: 1.15; text-wrap: balance; }
+  .fp-tag { margin: .35rem 0 0; color: var(--c); font-weight: 600; }
+  .fp-desc { margin: .8rem 0 0; color: var(--soft); line-height: 1.55; max-width: 62ch; }
+  .fp-facts { display: flex; flex-wrap: wrap; gap: .5rem 1.6rem; margin: 1.1rem 0 0; padding: .8rem 0 0; border-top: 1px solid var(--line); }
+  .fp-facts div { min-width: 0; }
+  .fp-facts dt { font: 500 .7rem var(--mono); color: var(--soft); text-transform: uppercase; letter-spacing: .08em; }
+  .fp-facts dd { margin: .1rem 0 0; font: 600 1rem var(--mono); font-variant-numeric: tabular-nums; }
+  .fp-actions { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1.2rem; }
+  @media (max-width: 640px) {
+    .fan-pop { grid-template-columns: 1fr; }
+    .fp-media { min-height: 0; height: 130px; border-right: 0; border-bottom: 1px solid var(--line); }
+    .fp-media .fc-art { display: none; }
+    .fp-body { padding: 1.1rem; }
+  }
+</style>
