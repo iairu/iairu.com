@@ -11,7 +11,8 @@
   --shadow: 0 18px 40px -22px rgb(0 0 0 / .9);
   --font: 'IBM Plex Sans Variable', 'IBM Plex Sans', 'Segoe UI', system-ui, sans-serif;
   --mono: 'IBM Plex Mono', ui-monospace, 'SF Mono', Menlo, monospace;
-  --maxw: 1200px; --gutter: clamp(16px, 4vw, 40px); --hdr: 64px;
+  --maxw: 1200px; --gutter: clamp(16px, 4vw, 40px);
+  --hdr1: 52px; --hdr2: 2.75rem; --hdr: calc(var(--hdr1) + var(--hdr2));
   color-scheme: dark;
 }
 :root[data-theme='light'] {

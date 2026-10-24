@@ -73,12 +73,6 @@ const ld = { '@context': 'https://schema.org', '@type': 'Person', name: person.n
         paint();
       });
       document.querySelectorAll<HTMLAnchorElement>('.langs a').forEach((a) => a.addEventListener('click', () => { try { localStorage.setItem('iairu-lang', a.hreflang); } catch {} }));
-      const btn = document.querySelector<HTMLButtonElement>('.menu-btn');
-      const nav = document.getElementById('primary-nav');
-      const setMenu = (open: boolean) => { btn?.setAttribute('aria-expanded', String(open)); nav?.classList.toggle('open', open); };
-      btn?.addEventListener('click', () => setMenu(btn.getAttribute('aria-expanded') !== 'true'));
-      nav?.addEventListener('click', (e) => { if ((e.target as HTMLElement).closest('a')) setMenu(false); });
-      document.addEventListener('keydown', (e) => { if (e.key === 'Escape') setMenu(false); });
     </script>
   <!-- impeccable-live-start -->
 <script is:inline src="http://localhost:8400/live.js?token=e498c88c-89db-4e28-8e5b-f75e507a4c35"></script>

@@ -1,5 +1,5 @@
 ---
-import Base from '../../../layouts/Base.astro';
+import DocsLayout from '../../../layouts/DocsLayout.astro';
 import Icon from '../../../components/Icon.astro';
 import DocList from '../../../components/DocList.astro';
 import { LANGS, ui } from '../../../data/i18n.js';
@@ -15,11 +15,9 @@ const docs = docsFor(lang), staticDocs = staticDocsFor(lang);
 const SUBPAGES = ['travel', 'recipes'];
 const collections = SUBPAGES.map((cat) => ({ cat, label: CATEGORIES[cat], count: docs.filter((d) => d.category === cat).length })).filter((c) => c.count);
 ---
-<Base lang={lang} path="docs/" title={ui[lang].nav.docs}
+<DocsLayout lang={lang} path="docs/" title={ui[lang].nav.docs}
   description={T('Write-ups, tutorials and documentation that go beyond the portfolio cards.', 'Články, návody a dokumentácia, ktoré presahujú portfóliové karty.')}
   crumbs={[{ label: ui[lang].nav.docs }]}>
-  <section class="block">
-    <div class="wrap">
       <h1>{T('Everything past the cards', 'Všetko za hranicou kariet')}</h1>
       <p class="lead">{T('Portfolio cards stay short. The longer story of how things were built lives here, or in the repositories linked from each project.', 'Karty v portfóliu ostávajú krátke. Dlhší príbeh o tom, ako veci vznikli, žije tu alebo v repozitároch, na ktoré odkazuje každý projekt.')}</p>
 
@@ -53,9 +51,7 @@ const collections = SUBPAGES.map((cat) => ({ cat, label: CATEGORIES[cat], count:
         ))}
       </ul>
       <p class="more">{T('Source code and issues of every project: ', 'Zdrojové kódy a issues každého projektu: ')}<a href="https://github.com/iairu?tab=repositories" rel="noopener">github.com/iairu <Icon name="ext" /></a></p>
-    </div>
-  </section>
-</Base>
+</DocsLayout>
 <style>
   .sub { margin-top: 3rem; }
   .lead-sm { color: var(--soft); margin: .4rem 0 0; max-width: 60ch; }

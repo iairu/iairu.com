@@ -67,3 +67,26 @@ export const CATEGORIES = {
   recipes: { en: 'Recipes', sk: 'Recepty' },
 };
 export const staticDocsFor = (lang) => S.filter((d) => d.lang === lang);
+
+// Left sidebar for the docs section: the write-ups in this language, grouped by category.
+// Pass `category` to show only that one category (the common case: the page you're on belongs
+// to a single category); omit it to list every category (used internally for prev/next ordering).
+// `activeSlug` (optional) marks the current page so the sidebar can highlight it.
+export const sidebarFor = (lang, { category, activeSlug } = {}) => {
+  const docs = docsFor(lang);
+  return Object.entries(CATEGORIES)
+    .filter(([cat]) => !category || cat === category)
+    .map(([cat, label]) => ({
+      key: cat,
+      label: label[lang],
+      items: docs.filter((d) => d.category === cat).map((d) => ({ slug: d.slug, title: d.title, href: `docs/${d.slug}/`, active: d.slug === activeSlug })),
+    }))
+    .filter((g) => g.items.length > 0);
+};
+
+// Previous/next doc across every category, for a footer navigation on the doc detail page.
+export const neighborsFor = (lang, slug) => {
+  const flat = sidebarFor(lang).flatMap((g) => g.items);
+  const i = flat.findIndex((item) => item.slug === slug);
+  return { prev: i > 0 ? flat[i - 1] : undefined, next: i >= 0 && i < flat.length - 1 ? flat[i + 1] : undefined };
+};
