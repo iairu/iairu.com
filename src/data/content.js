@@ -9,10 +9,11 @@ const M = '/media';
 export const home = {
   hero: {
     eyebrow: { sk: 'StrukShow', en: 'StrukShow' },
+    badge: { sk: 'Posledná sezóna · do 31.\u00a012.\u00a02026', en: 'Final season · until 31\u00a0Dec\u00a02026' },
     heading: { sk: ['Moderný', 'Kúzelník'], en: ['Elite', 'Magic'] },
     lead: {
-      sk: 'Prémiová kúzelnícka show, pri ktorej sa zastaví čas — pre firemné eventy, galavečery a exkluzívnu klientelu.',
-      en: 'A refined magic show that stops time — for corporate events, galas and exclusive audiences.',
+      sk: 'Posledná sezóna prémiovej kúzelníckej show, pri ktorej sa zastaví čas — pre firemné eventy, galavečery a exkluzívnu klientelu. Len do konca roka 2026.',
+      en: 'The final season of a refined magic show that stops time — for corporate events, galas and exclusive audiences. Only until the end of 2026.',
     },
     bg: `${M}/hero-title-bg.jpg`,
     flare: `${M}/lens-flare.png`,
@@ -90,9 +91,10 @@ Diváci sú svedkami unikátnych trikov s <strong>Rubikovou kockou, levitácie d
     ],
   },
 
+  // [before, underlined words, after]
   quote: {
-    sk: '„Kúzelnícka show, pri ktorej sa zastaví čas.“',
-    en: '“Beyond illusion, into presence.”',
+    sk: ['„Kúzelnícka show, pri ktorej sa ', 'zastaví čas', '.“'],
+    en: ['“Beyond illusion, ', 'into presence', '.”'],
   },
 
   galleryTitle: { sk: 'Zo šou', en: 'From the show' },
@@ -139,10 +141,33 @@ Diváci sú svedkami unikátnych trikov s <strong>Rubikovou kockou, levitácie d
     label: { sk: 'Booking', en: 'Booking' },
     heading: { sk: 'Rezervujte show', en: 'Book the show' },
     lead: {
-      sk: 'Nezabudnuteľný program na váš event. Napíšte alebo zavolajte — ozveme sa s termínom aj ponukou.',
-      en: 'An unforgettable program for your event. Write or call — we will reply with availability and an offer.',
+      sk: 'Posledné voľné termíny sezóny 2026. Napíšte alebo zavolajte — ozveme sa s termínom aj ponukou.',
+      en: 'The last open dates of the 2026 season. Write or call — we will reply with availability and an offer.',
     },
   },
+};
+
+/* -------------------------------------------------------------- farewell ---- */
+// The final season: shows run only until the end of 2026. Used by the bottom bar
+// (every page) and the thank-you section on the home page.
+
+export const farewell = {
+  end: '2026-12-31T23:59:59+01:00',
+  bar: {
+    text: { sk: 'Posledná sezóna: kúzelnícka show len do 31.\u00a012.\u00a02026', en: 'Final season: the magic show runs only until 31\u00a0Dec\u00a02026' },
+    cta: { sk: 'Rezervovať termín', en: 'Book a date' },
+    close: { sk: 'Zavrieť oznámenie', en: 'Dismiss notice' },
+  },
+  label: { sk: 'Posledná sezóna 2026', en: 'Final season 2026' },
+  // [before, underlined word]
+  heading: { sk: ['Ďakujem za každé ', 'kúzlo'], en: ['Thank you for every bit of ', 'magic'] },
+  body: {
+    sk: 'Po rokoch na pódiách, galavečeroch a firemných eventoch koncom roka 2026 uzatváram svoju kúzelnícku kariéru. Ďakujem každému divákovi, klientovi a partnerovi, ktorý bol pri tom.\n\nAk ste moju show ešte nezažili — alebo ju chcete zažiť ešte raz — posledné termíny sú voľné do 31. decembra.',
+    en: 'After years of stages, galas and corporate events, I am closing my career as a magician at the end of 2026. Thank you to every guest, client and partner who was part of it.\n\nIf you have not seen the show yet — or want to see it one last time — the final dates are open until 31 December.',
+  },
+  sign: { sk: '— Braňo', en: '— Brian' },
+  countLabel: { sk: 'dní do konca poslednej sezóny', en: 'days left in the final season' },
+  cta: { sk: 'Rezervovať posledný termín', en: 'Book a final date' },
 };
 
 /* ------------------------------------------------------------ production ---- */

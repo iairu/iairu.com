@@ -1,0 +1,159 @@
+---
+// Farewell fireworks: gold and sky-blue bursts behind the hero headline, launched every
+// couple of seconds while the hero is on screen, plus a burst at the pointer whenever a
+// booking link is clicked. Pure 2D canvas, additive blending, no dependencies.
+// The canvas sits beneath the hero photo, which blends over it with `lighten` (see Hero.astro),
+// so the bright face and silhouette always cover the sparks. With prefers-reduced-motion it turns calm: no rising rockets, no click bursts, and only
+// an occasional slow-fading bloom.
+---
+<canvas class="fireworks" aria-hidden="true"></canvas>
+
+<style>
+  .fireworks { position: absolute; inset: 0; z-index: -3; width: 100%; height: 100%; pointer-events: none; }
+</style>
+
+<script>
+  type Spark = { x: number; y: number; vx: number; vy: number; life: number; max: number; color: string; size: number };
+  type Rocket = { x: number; y: number; vx: number; vy: number; ty: number };
+
+  const PALETTES = [
+    ['#fff3c4', '#f6d47a', '#e0aa45', '#ffffff'], // gold
+    ['#d6f4ff', '#8fdcff', '#4ea6ff', '#ffffff'], // sky
+    ['#f6d47a', '#8fdcff', '#ffffff'], // both
+  ];
+  const pick = <T,>(a: T[]) => a[Math.floor(Math.random() * a.length)];
+
+  class Show {
+    ctx: CanvasRenderingContext2D;
+    w = 0;
+    h = 0;
+    sparks: Spark[] = [];
+    rockets: Rocket[] = [];
+    running = false;
+
+    constructor(public cvs: HTMLCanvasElement, public calm = false) {
+      this.ctx = cvs.getContext('2d')!;
+      this.resize();
+      new ResizeObserver(() => this.resize()).observe(cvs);
+    }
+
+    resize() {
+      const r = this.cvs.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      this.w = r.width;
+      this.h = r.height;
+      this.cvs.width = Math.round(r.width * dpr);
+      this.cvs.height = Math.round(r.height * dpr);
+      this.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    // a rocket rising from the bottom edge; on wide screens it stays right of the headline
+    launch() {
+      const wide = this.w > 760;
+      const x = this.w * (wide ? 0.48 + Math.random() * 0.46 : 0.1 + Math.random() * 0.8);
+      const ty = this.h * (0.14 + Math.random() * 0.34);
+      if (this.calm) return this.burst(x, ty, 80);
+      const frames = 55 + Math.random() * 20;
+      this.rockets.push({ x, y: this.h, vx: (Math.random() - 0.5) * 0.8, vy: -(this.h - ty) / frames, ty });
+      this.start();
+    }
+
+    burst(x: number, y: number, n = 110) {
+      const pal = pick(PALETTES);
+      const power = (2.9 + Math.random() * 2.2) * (this.calm ? 0.5 : 1);
+      for (let i = 0; i < n; i++) {
+        const a = (Math.PI * 2 * i) / n + Math.random() * 0.2;
+        const s = power * (0.35 + Math.random() * 0.75);
+        this.sparks.push({ x, y, vx: Math.cos(a) * s, vy: Math.sin(a) * s, life: 0, max: (55 + Math.random() * 45) * (this.calm ? 2 : 1), color: pick(pal), size: 1.5 + Math.random() * 1.9 });
+      }
+      this.start();
+    }
+
+    start() {
+      if (this.running) return;
+      this.running = true;
+      requestAnimationFrame(this.tick);
+    }
+
+    tick = () => {
+      const { ctx } = this;
+      ctx.clearRect(0, 0, this.w, this.h);
+      ctx.globalCompositeOperation = 'lighter';
+      ctx.lineCap = 'round';
+
+      this.rockets = this.rockets.filter((r) => {
+        r.x += r.vx;
+        r.y += r.vy;
+        ctx.globalAlpha = 0.9;
+        ctx.strokeStyle = '#fff3c4';
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(r.x - r.vx * 5, r.y - r.vy * 5);
+        ctx.lineTo(r.x, r.y);
+        ctx.stroke();
+        if (r.y > r.ty) return true;
+        this.burst(r.x, r.y);
+        return false;
+      });
+
+      this.sparks = this.sparks.filter((p) => {
+        p.vx *= 0.975;
+        p.vy = p.vy * 0.975 + 0.045;
+        p.x += p.vx;
+        p.y += p.vy;
+        p.life++;
+        const k = 1 - p.life / p.max;
+        if (k <= 0) return false;
+        // late in life the sparks twinkle
+        ctx.globalAlpha = k < 0.35 && Math.random() < 0.3 ? 0 : k;
+        ctx.strokeStyle = p.color;
+        ctx.lineWidth = p.size;
+        ctx.beginPath();
+        ctx.moveTo(p.x - p.vx * 3, p.y - p.vy * 3);
+        ctx.lineTo(p.x, p.y);
+        ctx.stroke();
+        return true;
+      });
+
+      ctx.globalAlpha = 1;
+      if (this.sparks.length || this.rockets.length) requestAnimationFrame(this.tick);
+      else {
+        ctx.clearRect(0, 0, this.w, this.h);
+        this.running = false;
+      }
+    };
+  }
+
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ambient show in each hero canvas, only while it is on screen and the tab is visible
+  document.querySelectorAll<HTMLCanvasElement>('canvas.fireworks').forEach((cvs) => {
+    const show = new Show(cvs, reduce);
+    let visible = true;
+    new IntersectionObserver(([e]) => (visible = e.isIntersecting)).observe(cvs);
+    const loop = () => {
+      if (visible && !document.hidden) show.launch();
+      setTimeout(loop, reduce ? 3500 + Math.random() * 2500 : 1100 + Math.random() * 1500);
+    };
+    // an opening salvo, then the steady rhythm
+    (reduce ? [400] : [250, 650, 1000]).forEach((t) => setTimeout(() => show.launch(), t));
+    setTimeout(loop, 2200);
+  });
+
+  if (!reduce) {
+
+    // a burst at the pointer whenever a booking link is clicked, on a page-wide overlay
+    let overlay: Show | null = null;
+    document.addEventListener('click', (e) => {
+      if (!(e.target as HTMLElement).closest?.('a[href*="#booking"]')) return;
+      if (!overlay) {
+        const cvs = document.createElement('canvas');
+        cvs.setAttribute('aria-hidden', 'true');
+        cvs.style.cssText = 'position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:150';
+        document.body.append(cvs);
+        overlay = new Show(cvs);
+      }
+      overlay.burst(e.clientX, e.clientY, 90);
+    });
+  }
+</script>

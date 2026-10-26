@@ -1,8 +1,9 @@
-/* StrukShow — high-voltage evening. Pure black and pure white, an acid-lime signal for
-   every action (after event.monetise.com), and the original gold kept only for small
-   "magic" details: stats, stars, numerals, ornaments. Anton (tall condensed poster caps)
-   for display, Mona Sans for everything functional. Dark by default, with a lime-cream
-   inverted band used sparingly for rhythm. */
+/* StrukShow — the final season. Pure black and pure white, a light-blue gradient ("sky")
+   for every action and a gold gradient for the "magic" details: stats, stars, numerals,
+   ornaments. Gradients are the point — they lift colored surfaces off the black like
+   stage light. Anton (tall condensed poster caps) for display, Mona Sans for everything
+   functional. Dark by default, with a few saturated sky/gold bands for rhythm, and a
+   farewell layer (bottom bar, hero badge, fireworks) for the last months of shows. */
 
 :root {
   --bg: #000000;
@@ -19,26 +20,28 @@
   --margin-shade: rgb(255 255 255 / 0.015);
 
   /* the action color: every button, link, focus ring and highlighted word */
-  --lime: #d0fe16;
-  --lime-bright: #e4ff70;
-  --lime-deep: #8db000;
-  --on-lime: #000000;
-  --lime-tint: color-mix(in srgb, var(--lime) 12%, transparent);
-  --lime-dark: #151a00;
+  --sky: #7fd4ff;
+  --sky-bright: #bfeeff;
+  --sky-deep: #3a8dff;
+  --on-sky: #000000;
+  --sky-tint: color-mix(in srgb, var(--sky) 14%, transparent);
+  --sky-dark: #04182c;
+  --sky-grad: linear-gradient(120deg, #d6f4ff 0%, #8fdcff 38%, #4ea6ff 75%, #3a8dff 100%);
 
   /* the magic detail color: numerals, stars, ornaments — never on a control */
-  --gold: #e0b450;
-  --gold-bright: #f2cd78;
-  --gold-deep: #a07c2c;
+  --gold: #f0c35a;
+  --gold-bright: #ffe39a;
+  --gold-deep: #a8741f;
+  --on-gold: #000000;
   --tint: color-mix(in srgb, var(--gold) 14%, transparent);
+  --gold-grad: linear-gradient(120deg, #fff3c4 0%, #f6d47a 32%, #e0aa45 68%, #b07f24 100%);
 
-  /* the inverted light band */
-  --cream: #faffe8;
-  --cream2: #eef7cc;
+  /* the inverted light band: a cool, slightly blue white */
+  --cream: #f2f8ff;
   --on-cream: #000000;
-  --cream-soft: #2f3a10;
+  --cream-soft: #1b2a40;
 
-  /* the one off-palette signal: a warm coral for form error feedback, readable on black */
+  /* the one off-palette signal: a soft coral for form error feedback, readable on black */
   --error: #ff9b85;
 
   --display: 'Anton', 'Bebas Neue', 'Oswald', Impact, 'Arial Narrow', sans-serif;
@@ -66,6 +69,8 @@ html {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
+  /* a colour cross-fade isn't motion, so the sky-to-gold button blend stays */
+  .btn::before, .ig-bar::before { transition-duration: 0.6s !important; }
 }
 
 body {
@@ -85,6 +90,7 @@ body {
   overflow-wrap: break-word;
 }
 main { flex: 1; }
+/* room for the fixed farewell bar so it never covers the footer */
 
 /* Two vertical rails framing the content column across the whole page (over every
    band and the hero), with the margins beyond them a shade darker. Drawn once as a
@@ -126,11 +132,11 @@ p { margin: 0 0 1em; text-wrap: pretty; }
 strong, b { font-weight: 650; color: var(--ink); }
 em, i { font-style: italic; }
 
-a { color: var(--lime); text-decoration: none; text-underline-offset: 0.2em; transition: color 0.2s; }
-a:hover { color: var(--lime-bright); }
+a { color: var(--sky); text-decoration: none; text-underline-offset: 0.2em; transition: color 0.2s; }
+a:hover { color: var(--gold-bright); }
 
-:focus-visible { outline: 2px solid var(--lime); outline-offset: 3px; border-radius: 4px; }
-::selection { background: var(--lime); color: var(--on-lime); }
+:focus-visible { outline: 2px solid var(--sky); outline-offset: 3px; border-radius: 4px; }
+::selection { background: var(--sky); color: var(--on-sky); }
 html { scrollbar-color: var(--line2) var(--bg); }
 
 /* ---- layout helpers ---- */
@@ -142,13 +148,13 @@ html { scrollbar-color: var(--line2) var(--bg); }
 .band { background: var(--bg2); border-block: 1px solid var(--line); }
 .center { text-align: center; }
 
-/* inverted light band: lime-cream ground, black ink; controls flip to black */
+/* inverted light band: cool-white ground, black ink; controls flip to black */
 .light {
   --ink: #000000;
   --soft: var(--cream-soft);
-  --mute: #4a5530;
-  --line: #d9e3b0;
-  --line2: #b8c58a;
+  --mute: #3c4a60;
+  --line: #d3e2f2;
+  --line2: #a9c0da;
   --bg3: #ffffff;
   background: var(--cream);
   color: var(--ink);
@@ -156,7 +162,7 @@ html { scrollbar-color: var(--line2) var(--bg); }
 }
 .light a { color: var(--ink); text-decoration: underline; }
 
-/* eyebrow label used above section headings: a small lime pill */
+/* eyebrow label used above section headings: a small sky pill with a glowing dot */
 .eyebrow {
   display: inline-flex;
   align-items: center;
@@ -166,9 +172,9 @@ html { scrollbar-color: var(--line2) var(--bg); }
   font: 650 0.74rem/1 var(--sans);
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--lime);
-  background: var(--lime-dark);
-  border: 1px solid color-mix(in srgb, var(--lime) 35%, transparent);
+  color: var(--sky);
+  background: var(--sky-dark);
+  border: 1px solid color-mix(in srgb, var(--sky) 35%, transparent);
   border-radius: 999px;
 }
 .eyebrow::before {
@@ -176,9 +182,14 @@ html { scrollbar-color: var(--line2) var(--bg); }
   width: 0.5em;
   height: 0.5em;
   border-radius: 50%;
-  background: var(--lime);
-  box-shadow: 0 0 10px var(--lime);
+  background: var(--sky-grad);
+  box-shadow: 0 0 10px var(--sky);
 }
+
+/* gradient ink: for display numerals and highlighted words */
+.grad-sky, .grad-gold { -webkit-background-clip: text; background-clip: text; color: transparent; -webkit-text-fill-color: transparent; }
+.grad-sky { background-image: var(--sky-grad); }
+.grad-gold { background-image: var(--gold-grad); }
 
 .lead {
   font-size: clamp(1.12rem, 1.02rem + 0.5vw, 1.4rem);
@@ -192,12 +203,14 @@ html { scrollbar-color: var(--line2) var(--bg); }
 .sec-head { max-width: 46rem; margin-bottom: clamp(2rem, 4vw, 3.4rem); }
 .center .sec-head { margin-inline: auto; }
 
-/* ---- buttons: lime pills ---- */
+/* ---- buttons: sky-gradient pills that melt into gold on hover ----
+   gradients can't be transitioned, so the gold one sits on ::before and fades in */
 .btn {
-  --b-bg: var(--lime);
-  --b-fg: var(--on-lime);
-  --b-bd: var(--lime);
-  --b-hover: #ffffff;
+  --b-bg: var(--sky-grad);
+  --b-fg: var(--on-sky);
+  --b-bd: transparent;
+  --b-hover: var(--gold-grad);
+  --b-glow: var(--gold);
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -213,14 +226,24 @@ html { scrollbar-color: var(--line2) var(--bg); }
   background: var(--b-bg);
   border: 1.5px solid var(--b-bd);
   border-radius: 999px;
-  transition: background-color 0.2s, color 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  position: relative;
+  isolation: isolate;
+  box-shadow: 0 8px 28px -14px color-mix(in srgb, var(--sky) 70%, transparent), inset 0 1px 0 rgb(255 255 255 / 0.45);
+  transition: color 0.3s, border-color 0.3s, transform 0.3s, box-shadow 0.6s;
 }
-.btn:hover { color: var(--b-fg); background: var(--b-hover); border-color: var(--b-hover); transform: translateY(-2px); box-shadow: 0 10px 30px -10px color-mix(in srgb, var(--lime) 55%, transparent); }
+.btn::before {
+  content: ''; position: absolute; inset: -1.5px; z-index: -1; border-radius: inherit; pointer-events: none;
+  background: var(--b-hover); box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.5);
+  opacity: 0; transition: opacity 0.6s ease;
+}
+.btn:hover::before { opacity: 1; }
+.btn:hover { color: var(--b-fg); transform: translateY(-2px); box-shadow: 0 12px 34px -10px color-mix(in srgb, var(--b-glow) 70%, transparent), inset 0 1px 0 rgb(255 255 255 / 0.5); }
 .btn .icon { transition: transform 0.25s; }
 .btn:hover .icon { transform: translateX(3px); }
-.btn.ghost { --b-bg: transparent; --b-fg: var(--ink); --b-bd: color-mix(in srgb, var(--ink) 35%, transparent); }
-.btn.ghost:hover { background: transparent; color: var(--lime); border-color: var(--lime); box-shadow: none; }
-.light .btn { --b-bg: #000; --b-fg: var(--lime); --b-bd: #000; --b-hover: #000; text-decoration: none; }
+.btn.ghost { --b-bg: transparent; --b-fg: var(--ink); --b-bd: color-mix(in srgb, var(--ink) 40%, transparent); box-shadow: none; }
+.btn.ghost::before { content: none; }
+.btn.ghost:hover { background: transparent; color: var(--gold-bright); border-color: var(--gold); box-shadow: none; }
+.light .btn { --b-bg: #000; --b-fg: #fff; --b-bd: #000; --b-hover: #000; --b-glow: var(--sky-deep); text-decoration: none; box-shadow: none; }
 .light .btn.ghost { --b-bg: transparent; --b-fg: #000; --b-bd: #000; }
 .light .btn.ghost:hover { color: #000; border-color: #000; }
 .btn.sm { min-height: 42px; padding: 0.6em 1.2em; font-size: 0.74rem; }
@@ -229,7 +252,7 @@ html { scrollbar-color: var(--line2) var(--bg); }
 .center .cta { justify-content: center; }
 
 /* ---- accessibility ---- */
-.skip { position: absolute; left: -999px; top: 10px; z-index: 300; background: var(--lime); color: var(--on-lime); padding: 0.7rem 1.1rem; font-weight: 700; border-radius: 999px; }
+.skip { position: absolute; left: -999px; top: 10px; z-index: 300; background: var(--sky-grad); color: var(--on-sky); padding: 0.7rem 1.1rem; font-weight: 700; border-radius: 999px; }
 .skip:focus { left: 12px; }
 .sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 

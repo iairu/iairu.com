@@ -1,15 +1,33 @@
 ---
 // Full-bleed hero: background photo, soft vignette, an optional lens flare,
-// and a two-part poster headline (second word in lime, with a gold sparkle).
-const { heading = [], lead, bg, flare, align = 'left', minh = '92vh' } = Astro.props;
+// and a two-part poster headline (second word in the sky gradient, with a gold sparkle).
+// `punch` lifts the photo's midtones (a true gamma curve) and contrast.
+// `badge` adds a small gold pill above the headline; `fireworks` launches the farewell bursts.
+// `shift` (e.g. '22%') slides the photo right on wide screens so the headline sits on empty
+// backdrop; on phones the photo recentres and is heavily darkened under the text instead.
+import Fireworks from './Fireworks.astro';
+const { heading = [], lead, bg, flare, align = 'left', minh = '92vh', punch = false, badge, fireworks = false, shift } = Astro.props;
 ---
-<section class="hero" style={`--bg:url('${bg}'); --minh:${minh}`} data-align={align}>
+<section class="hero" style={`--bg:url('${bg}'); --minh:${minh}${shift ? `; --shift:${shift}` : ''}`} data-align={align} data-punch={punch ? 'true' : undefined} data-shift={shift ? 'true' : undefined} data-fx={fireworks ? 'true' : undefined}>
+  {punch && (
+    <svg class="fx" aria-hidden="true" focusable="false">
+      <filter id="hero-gamma" color-interpolation-filters="sRGB">
+        <feComponentTransfer>
+          <feFuncR type="gamma" amplitude="1.08" exponent="0.72" offset="0" />
+          <feFuncG type="gamma" amplitude="1.08" exponent="0.72" offset="0" />
+          <feFuncB type="gamma" amplitude="1.08" exponent="0.72" offset="0" />
+        </feComponentTransfer>
+      </filter>
+    </svg>
+  )}
   {flare && <img class="flare" src={flare} alt="" aria-hidden="true" />}
   <div class="scrim"></div>
+  {fireworks && <Fireworks />}
   <div class="wrap-wide inner">
     <div class="copy">
+      {badge && <p class="badge"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z" /></svg>{badge}</p>}
       <h1 class="mm2">
-        {heading[0]}{heading[1] && <> <span class="acc">{heading[1]}<svg class="flourish" viewBox="0 0 200 18" preserveAspectRatio="none" fill="none" aria-hidden="true"><path d="M2 11 C 46 3, 74 3, 100 9 S 158 15, 198 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke" /></svg><svg class="spark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z" /></svg></span></>}
+        {heading[0]}{heading[1] && <> <span class="acc"><span class="word grad-sky">{heading[1]}</span><svg class="flourish" viewBox="0 0 200 18" preserveAspectRatio="none" fill="none" aria-hidden="true"><path d="M2 11 C 46 3, 74 3, 100 9 S 158 15, 198 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke" /></svg><svg class="spark" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z" /></svg></span></>}
       </h1>
       {lead && <p class="lead">{lead}</p>}
       <slot name="cta" />
@@ -25,11 +43,32 @@ const { heading = [], lead, bg, flare, align = 'left', minh = '92vh' } = Astro.p
     background: var(--bg) center / cover no-repeat;
     transform: scale(1.04);
   }
+  /* with fireworks the photo lightens over the canvas beneath it: the dark backdrop lets sparks
+     through, the bright face and shoulders hide them */
+  [data-fx]::before { mix-blend-mode: lighten; }
+  .fx { position: absolute; width: 0; height: 0; }
+  [data-punch] { --punch: url(#hero-gamma) contrast(1.35) saturate(1.15); }
+  [data-punch]::before { filter: var(--punch); }
   .scrim { position: absolute; inset: 0; z-index: -1;
     background:
       linear-gradient(90deg, rgb(0 0 0 / 0.9) 0%, rgb(0 0 0 / 0.6) 45%, rgb(0 0 0 / 0.2) 100%),
       linear-gradient(0deg, var(--bg) 2%, transparent 40%); }
   [data-align='center'] .scrim { background: radial-gradient(120% 90% at 50% 40%, rgb(0 0 0 / 0.5), rgb(0 0 0 / 0.88) 80%), linear-gradient(0deg, var(--bg) 2%, transparent 45%); }
+  /* shifted photo: the left edge melts into black so no seam shows where it starts */
+  @media (min-width: 701px) {
+    [data-shift]::before {
+      left: var(--shift);
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 28%);
+      mask-image: linear-gradient(90deg, transparent, #000 28%);
+    }
+    [data-shift] .scrim { background:
+      linear-gradient(90deg, rgb(0 0 0 / 0.85) 0%, rgb(0 0 0 / 0.45) 40%, transparent 70%),
+      linear-gradient(0deg, #000 2%, transparent 40%); }
+  }
+  @media (max-width: 700px) {
+    [data-shift] .scrim { background:
+      linear-gradient(180deg, rgb(0 0 0 / 0.72), rgb(0 0 0 / 0.8) 55%, #000 100%); }
+  }
   .flare { position: absolute; z-index: -1; right: -6%; top: 8%; width: min(60vw, 720px); mix-blend-mode: screen; opacity: 0.8; pointer-events: none; }
   .fade { position: absolute; left: 0; right: 0; bottom: 0; height: 160px; background: linear-gradient(0deg, var(--bg), transparent); z-index: -1; }
 
@@ -38,19 +77,32 @@ const { heading = [], lead, bg, flare, align = 'left', minh = '92vh' } = Astro.p
   [data-align='center'] .inner { text-align: center; }
   [data-align='center'] .copy { max-width: 56ch; margin-inline: auto; }
 
+  /* farewell badge: a gold-gradient pill with a sparkle */
+  .badge {
+    display: inline-flex; align-items: center; gap: 0.55em; margin: 0 0 1.2rem;
+    padding: 0.6em 1.1em; border-radius: 999px;
+    font: 700 0.76rem/1 var(--sans); letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--on-gold); background: var(--gold-grad);
+    box-shadow: 0 8px 30px -10px color-mix(in srgb, var(--gold) 70%, transparent), inset 0 1px 0 rgb(255 255 255 / 0.5);
+  }
+  .badge svg { width: 0.95em; height: 0.95em; }
+
   h1 { margin: 0.2em 0 0.4em; }
-  h1.mm2 { line-height: 0.9; font-size: clamp(3.4rem, 1.6rem + 8.4vw, 9rem); }
-  /* the magic word: acid lime with a soft glow, a gold flourish swash beneath and a small gold sparkle — stage-magic ornament */
-  .acc { position: relative; color: var(--lime); display: inline-block; text-shadow: 0 0 40px color-mix(in srgb, var(--lime) 35%, transparent); }
+  /* leading opened up enough that the accents of the second line (Ú, Í) clear the first */
+  h1.mm2 { line-height: 1.04; font-size: clamp(3.4rem, 1.6rem + 8.4vw, 9rem); }
+  /* the magic word: sky-gradient ink with a soft glow, a gold flourish swash beneath and a small gold sparkle */
+  .acc { position: relative; display: inline-block; }
+  .acc .word { filter: drop-shadow(0 0 28px color-mix(in srgb, var(--sky) 45%, transparent)); }
   .acc .flourish { position: absolute; left: -1%; width: 102%; bottom: -0.12em; height: 0.16em; color: var(--gold); }
   .acc .spark { position: absolute; right: -0.5em; top: -0.04em; width: 0.32em; height: 0.32em; color: var(--gold-bright); }
-  .hero .lead { margin-bottom: 2rem; color: var(--ink); opacity: 0.88; }
+  .hero .lead { margin-bottom: 2rem; color: var(--ink); opacity: 0.9; }
   :global(.hero .cta) { margin-top: 0.4rem; }
 
   @media (max-width: 700px) { .hero { min-height: 86vh; } .copy { max-width: 100%; } }
   /* on phones stack the accent word on its own line so long headings never overflow */
   @media (max-width: 560px) {
     .hero h1.mm2 { font-size: clamp(3rem, 1.8rem + 11vw, 4.6rem); }
-    .acc { display: block; }
+    .acc { display: block; width: fit-content; margin-top: 0.1em; }
+    [data-align='center'] .acc { margin-inline: auto; }
   }
 </style>

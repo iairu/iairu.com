@@ -11,7 +11,7 @@ import ContactForm from '../../components/ContactForm.astro';
 import { LANGS, ui, tr } from '../../data/i18n.js';
 import { booking, links, person } from '../../data/site.js';
 import { lhref } from '../../data/util.js';
-import { home } from '../../data/content.js';
+import { home, farewell as fw } from '../../data/content.js';
 
 export const getStaticPaths = () => LANGS.map((lang) => ({ params: { lang } }));
 const { lang } = Astro.params;
@@ -25,12 +25,32 @@ const h = home;
     lead={tr(h.hero.lead, lang)}
     bg={h.hero.bg}
     flare={h.hero.flare}
+    badge={tr(h.hero.badge, lang)}
+    punch
+    shift="30%"
+    fireworks
   >
     <div class="cta" slot="cta">
       <a class="btn" href="#booking">{T.bookNow} <Icon name="next" /></a>
       <a class="btn ghost" href="#show">{tr({ sk: 'Pozrieť show', en: 'See the show' }, lang)}</a>
     </div>
   </Hero>
+
+  <!-- Farewell: thank-you note and countdown to the end of the final season -->
+  <section class="section farewell" aria-labelledby="farewell-h">
+    <div class="wrap fw-grid">
+      <div class="fw-text" data-reveal>
+        <h2 id="farewell-h">{tr(fw.heading, lang)[0]}<span class="mark grad-gold">{tr(fw.heading, lang)[1]}</span></h2>
+        {tr(fw.body, lang).split('\n\n').map((para) => <p class="body">{para}</p>)}
+        <p class="sign">{tr(fw.sign, lang)}</p>
+      </div>
+      <div class="fw-count" data-reveal>
+        <p class="days grad-gold" data-end={fw.end}>31.12.</p>
+        <p class="count-lbl">{tr(fw.countLabel, lang)}</p>
+        <a class="btn" href="#booking">{tr(fw.cta, lang)} <Icon name="next" /></a>
+      </div>
+    </div>
+  </section>
 
   <Stats data={h.stats} lang={lang} />
 
@@ -59,7 +79,7 @@ const h = home;
       <div class="two">
         {h.shows.items.map((s, i) => (
           <article class="show-card" data-reveal style={`transition-delay:${i * 90}ms`}>
-            <span class="idx">{String(i + 1).padStart(2, '0')}</span>
+            <span class="idx grad-gold">{String(i + 1).padStart(2, '0')}</span>
             <h3>{tr(s.name, lang)}</h3>
             {tr(s.body, lang).split('\n\n').map((p) => <p set:html={p} />)}
           </article>
@@ -71,7 +91,7 @@ const h = home;
   <!-- Quote -->
   <section class="quote-band">
     <div class="narrow center">
-      <p class="quote">{tr(h.quote, lang)}</p>
+      <p class="quote">{tr(h.quote, lang)[0]}<span class="mark">{tr(h.quote, lang)[1]}<svg class="flourish" viewBox="0 0 200 18" preserveAspectRatio="none" fill="none" aria-hidden="true"><path d="M2 11 C 46 3, 74 3, 100 9 S 158 15, 198 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke" /></svg></span>{tr(h.quote, lang)[2]}</p>
     </div>
   </section>
 
@@ -121,30 +141,53 @@ const h = home;
 
   .two { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1rem, 2.5vw, 2rem); }
   .show-card { padding: clamp(1.8rem, 3vw, 2.6rem); background: var(--bg3); border: 1px solid var(--line); border-radius: var(--radius); position: relative; transition: border-color 0.3s, transform 0.3s; }
-  .show-card:hover { border-color: color-mix(in srgb, var(--lime) 50%, transparent); transform: translateY(-4px); }
-  .show-card .idx { font-family: var(--display); font-size: 2.6rem; line-height: 1; color: var(--gold); }
+  .show-card:hover { border-color: color-mix(in srgb, var(--sky) 50%, transparent); transform: translateY(-4px); }
+  .show-card .idx { font-family: var(--display); font-size: 2.6rem; line-height: 1; }
   .show-card h3 { margin: 0.8rem 0 0.8rem; }
   .show-card p { color: var(--soft); font-size: 0.98rem; }
 
-  /* the second inverted band: a full lime slab with the quote set as a black poster line */
-  .quote-band { padding-block: clamp(3.5rem, 8vw, 7rem); background: var(--lime); }
+  /* the farewell note: a soft gold glow behind a two-column thank-you and a day countdown */
+  .farewell { background: radial-gradient(90% 70% at 85% 50%, color-mix(in srgb, var(--gold) 12%, transparent), transparent 70%), var(--bg); border-bottom: 1px solid var(--line); }
+  .fw-grid { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
+  .farewell .body { color: var(--soft); max-width: 58ch; }
+  .farewell .mark { padding-right: 0.04em; }
+  .sign { font-family: var(--display); text-transform: uppercase; font-size: 1.6rem; letter-spacing: 0.02em; color: var(--gold); margin: 1.4rem 0 0; }
+  .fw-count { text-align: center; padding: clamp(1.8rem, 4vw, 2.8rem); border-radius: var(--radius); background: linear-gradient(160deg, #15110a, #050505 70%); border: 1px solid color-mix(in srgb, var(--gold) 35%, transparent); box-shadow: 0 30px 80px -40px color-mix(in srgb, var(--gold) 60%, transparent); }
+  .days { font-family: var(--display); font-size: clamp(5rem, 3rem + 9vw, 9.5rem); line-height: 0.9; margin: 0; }
+  .fw-count .btn { white-space: nowrap; padding-inline: 1.4em; letter-spacing: 0.05em; }
+  .count-lbl { margin: 0.6rem 0 1.6rem; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); }
+
+  /* the second band: a full gold-gradient slab with the quote set as a black poster line */
+  .quote-band { padding-block: clamp(3.5rem, 8vw, 7rem); background: var(--gold-grad); }
   .quote-band .narrow { width: min(100% - 2 * var(--gutter), 1100px); }
-  .quote { font-family: var(--display); text-transform: uppercase; font-size: clamp(2.2rem, 1.2rem + 4.6vw, 5.4rem); line-height: 0.95; color: var(--on-lime); margin: 0; text-wrap: balance; }
+  /* italic (slanted Anton) with looser leading than other headlines so the Slovak diacritics and quote marks clear the line above */
+  .quote { font-family: var(--display); font-style: italic; text-transform: uppercase; font-size: clamp(2.2rem, 1.2rem + 4.6vw, 5.4rem); line-height: 1.14; color: var(--on-gold); margin: 0; text-wrap: balance; }
+  /* the key words get the hero's hand-drawn flourish beneath, in the quote's black ink */
+  .quote .mark { position: relative; display: inline-block; }
+  .quote .flourish { position: absolute; left: -1%; width: 102%; bottom: -0.1em; height: 0.16em; color: currentColor; }
 
   .video .wrap { max-width: 980px; }
 
-  .booking { background: radial-gradient(110% 80% at 50% 0%, color-mix(in srgb, var(--lime) 9%, transparent), transparent 60%), var(--bg); border-top: 1px solid var(--line); }
+  .booking { background: radial-gradient(110% 80% at 50% 0%, color-mix(in srgb, var(--sky) 9%, transparent), transparent 60%), var(--bg); border-top: 1px solid var(--line); }
   .book-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
   .book-intro .lead { margin-bottom: 1.6rem; }
   .contacts { list-style: none; margin: 1.6rem 0 0; padding: 0; display: grid; gap: 0.8rem; }
   .contacts a, .contacts .loc { display: inline-flex; align-items: center; gap: 0.7rem; color: var(--ink); font-size: 1.05rem; }
-  .contacts a:hover { color: var(--lime); }
-  .contacts .icon { color: var(--lime); }
+  .contacts a:hover { color: var(--sky); }
+  .contacts .icon { color: var(--sky); }
   .contacts .loc { color: var(--soft); padding-left: calc(1.2rem + 0.7rem); }
   .book-intro .social { display: flex; gap: 0.8rem; margin-top: 1.6rem; }
   .book-intro .social a { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; color: var(--soft); border: 1px solid var(--line2); border-radius: 50%; transition: color 0.2s, border-color 0.2s, transform 0.2s; }
-  .book-intro .social a:hover { color: var(--on-lime); background: var(--lime); border-color: var(--lime); transform: translateY(-2px); }
+  .book-intro .social a:hover { color: var(--on-sky); background: var(--sky-grad); border-color: var(--sky); transform: translateY(-2px); }
   .book-form { border: 1px solid var(--line2); background: var(--bg2); padding: clamp(1.4rem, 3vw, 2.4rem); border-radius: var(--radius); }
 
-  @media (max-width: 860px) { .split { grid-template-columns: 1fr; } .two { grid-template-columns: 1fr; } .book-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 860px) { .fw-grid { grid-template-columns: 1fr; } .split { grid-template-columns: 1fr; } .two { grid-template-columns: 1fr; } .book-grid { grid-template-columns: 1fr; } }
 </style>
+
+<script>
+  // whole days until the end of the final season (static "31.12." without JS)
+  document.querySelectorAll<HTMLElement>('.days[data-end]').forEach((el) => {
+    const left = Math.ceil((Date.parse(el.dataset.end!) - Date.now()) / 86400000);
+    el.textContent = String(Math.max(0, left));
+  });
+</script>
