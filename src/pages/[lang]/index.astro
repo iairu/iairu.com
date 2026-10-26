@@ -25,6 +25,7 @@ const h = home;
     lead={tr(h.hero.lead, lang)}
     bg={h.hero.bg}
     flare={h.hero.flare}
+    punch
   >
     <div class="cta" slot="cta">
       <a class="btn" href="#booking">{T.bookNow} <Icon name="next" /></a>
@@ -71,7 +72,7 @@ const h = home;
   <!-- Quote -->
   <section class="quote-band">
     <div class="narrow center">
-      <p class="quote">{tr(h.quote, lang)}</p>
+      <p class="quote">{tr(h.quote, lang)[0]}<span class="mark">{tr(h.quote, lang)[1]}<svg class="flourish" viewBox="0 0 200 18" preserveAspectRatio="none" fill="none" aria-hidden="true"><path d="M2 11 C 46 3, 74 3, 100 9 S 158 15, 198 7" stroke="currentColor" stroke-width="2" stroke-linecap="round" vector-effect="non-scaling-stroke" /></svg></span>{tr(h.quote, lang)[2]}</p>
     </div>
   </section>
 
@@ -121,29 +122,33 @@ const h = home;
 
   .two { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1rem, 2.5vw, 2rem); }
   .show-card { padding: clamp(1.8rem, 3vw, 2.6rem); background: var(--bg3); border: 1px solid var(--line); border-radius: var(--radius); position: relative; transition: border-color 0.3s, transform 0.3s; }
-  .show-card:hover { border-color: color-mix(in srgb, var(--lime) 50%, transparent); transform: translateY(-4px); }
-  .show-card .idx { font-family: var(--display); font-size: 2.6rem; line-height: 1; color: var(--gold); }
+  .show-card:hover { border-color: color-mix(in srgb, var(--blue) 50%, transparent); transform: translateY(-4px); }
+  .show-card .idx { font-family: var(--display); font-size: 2.6rem; line-height: 1; color: var(--blue); }
   .show-card h3 { margin: 0.8rem 0 0.8rem; }
   .show-card p { color: var(--soft); font-size: 0.98rem; }
 
-  /* the second inverted band: a full lime slab with the quote set as a black poster line */
-  .quote-band { padding-block: clamp(3.5rem, 8vw, 7rem); background: var(--lime); }
+  /* the second inverted band: a full neon-red slab with the quote set as a black poster line */
+  .quote-band { padding-block: clamp(3.5rem, 8vw, 7rem); background: var(--red); }
   .quote-band .narrow { width: min(100% - 2 * var(--gutter), 1100px); }
-  .quote { font-family: var(--display); text-transform: uppercase; font-size: clamp(2.2rem, 1.2rem + 4.6vw, 5.4rem); line-height: 0.95; color: var(--on-lime); margin: 0; text-wrap: balance; }
+  /* italic (slanted Anton) with looser leading than other headlines so the Slovak diacritics and quote marks clear the line above */
+  .quote { font-family: var(--display); font-style: italic; text-transform: uppercase; font-size: clamp(2.2rem, 1.2rem + 4.6vw, 5.4rem); line-height: 1.14; color: var(--on-red); margin: 0; text-wrap: balance; }
+  /* the key words get the hero's hand-drawn flourish beneath, in the quote's black ink */
+  .quote .mark { position: relative; display: inline-block; }
+  .quote .flourish { position: absolute; left: -1%; width: 102%; bottom: -0.1em; height: 0.16em; color: currentColor; }
 
   .video .wrap { max-width: 980px; }
 
-  .booking { background: radial-gradient(110% 80% at 50% 0%, color-mix(in srgb, var(--lime) 9%, transparent), transparent 60%), var(--bg); border-top: 1px solid var(--line); }
+  .booking { background: radial-gradient(110% 80% at 50% 0%, color-mix(in srgb, var(--red) 9%, transparent), transparent 60%), var(--bg); border-top: 1px solid var(--line); }
   .book-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
   .book-intro .lead { margin-bottom: 1.6rem; }
   .contacts { list-style: none; margin: 1.6rem 0 0; padding: 0; display: grid; gap: 0.8rem; }
   .contacts a, .contacts .loc { display: inline-flex; align-items: center; gap: 0.7rem; color: var(--ink); font-size: 1.05rem; }
-  .contacts a:hover { color: var(--lime); }
-  .contacts .icon { color: var(--lime); }
+  .contacts a:hover { color: var(--blue); }
+  .contacts .icon { color: var(--red); }
   .contacts .loc { color: var(--soft); padding-left: calc(1.2rem + 0.7rem); }
   .book-intro .social { display: flex; gap: 0.8rem; margin-top: 1.6rem; }
   .book-intro .social a { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; color: var(--soft); border: 1px solid var(--line2); border-radius: 50%; transition: color 0.2s, border-color 0.2s, transform 0.2s; }
-  .book-intro .social a:hover { color: var(--on-lime); background: var(--lime); border-color: var(--lime); transform: translateY(-2px); }
+  .book-intro .social a:hover { color: var(--on-blue); background: var(--blue); border-color: var(--blue); transform: translateY(-2px); }
   .book-form { border: 1px solid var(--line2); background: var(--bg2); padding: clamp(1.4rem, 3vw, 2.4rem); border-radius: var(--radius); }
 
   @media (max-width: 860px) { .split { grid-template-columns: 1fr; } .two { grid-template-columns: 1fr; } .book-grid { grid-template-columns: 1fr; } }

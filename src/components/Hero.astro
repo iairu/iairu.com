@@ -1,9 +1,21 @@
 ---
 // Full-bleed hero: background photo, soft vignette, an optional lens flare,
-// and a two-part poster headline (second word in lime, with a gold sparkle).
-const { heading = [], lead, bg, flare, align = 'left', minh = '92vh' } = Astro.props;
+// and a two-part poster headline (second word in neon red, with a blue sparkle).
+// `punch` lifts the photo's midtones (a true gamma curve) and contrast.
+const { heading = [], lead, bg, flare, align = 'left', minh = '92vh', punch = false } = Astro.props;
 ---
-<section class="hero" style={`--bg:url('${bg}'); --minh:${minh}`} data-align={align}>
+<section class="hero" style={`--bg:url('${bg}'); --minh:${minh}`} data-align={align} data-punch={punch ? 'true' : undefined}>
+  {punch && (
+    <svg class="fx" aria-hidden="true" focusable="false">
+      <filter id="hero-gamma" color-interpolation-filters="sRGB">
+        <feComponentTransfer>
+          <feFuncR type="gamma" amplitude="1.08" exponent="0.72" offset="0" />
+          <feFuncG type="gamma" amplitude="1.08" exponent="0.72" offset="0" />
+          <feFuncB type="gamma" amplitude="1.08" exponent="0.72" offset="0" />
+        </feComponentTransfer>
+      </filter>
+    </svg>
+  )}
   {flare && <img class="flare" src={flare} alt="" aria-hidden="true" />}
   <div class="scrim"></div>
   <div class="wrap-wide inner">
@@ -25,6 +37,9 @@ const { heading = [], lead, bg, flare, align = 'left', minh = '92vh' } = Astro.p
     background: var(--bg) center / cover no-repeat;
     transform: scale(1.04);
   }
+  .fx { position: absolute; width: 0; height: 0; }
+  [data-punch] { --punch: url(#hero-gamma) contrast(1.35) saturate(1.15); }
+  [data-punch]::before { filter: var(--punch); }
   .scrim { position: absolute; inset: 0; z-index: -1;
     background:
       linear-gradient(90deg, rgb(0 0 0 / 0.9) 0%, rgb(0 0 0 / 0.6) 45%, rgb(0 0 0 / 0.2) 100%),
@@ -40,10 +55,10 @@ const { heading = [], lead, bg, flare, align = 'left', minh = '92vh' } = Astro.p
 
   h1 { margin: 0.2em 0 0.4em; }
   h1.mm2 { line-height: 0.9; font-size: clamp(3.4rem, 1.6rem + 8.4vw, 9rem); }
-  /* the magic word: acid lime with a soft glow, a gold flourish swash beneath and a small gold sparkle — stage-magic ornament */
-  .acc { position: relative; color: var(--lime); display: inline-block; text-shadow: 0 0 40px color-mix(in srgb, var(--lime) 35%, transparent); }
-  .acc .flourish { position: absolute; left: -1%; width: 102%; bottom: -0.12em; height: 0.16em; color: var(--gold); }
-  .acc .spark { position: absolute; right: -0.5em; top: -0.04em; width: 0.32em; height: 0.32em; color: var(--gold-bright); }
+  /* the magic word: neon red with a red-and-blue siren glow, a blue flourish swash beneath and a small blue sparkle */
+  .acc { position: relative; color: var(--red); display: inline-block; text-shadow: -0.06em 0 40px color-mix(in srgb, var(--red) 55%, transparent), 0.12em 0 60px color-mix(in srgb, var(--blue) 45%, transparent); }
+  .acc .flourish { position: absolute; left: -1%; width: 102%; bottom: -0.12em; height: 0.16em; color: var(--blue); }
+  .acc .spark { position: absolute; right: -0.5em; top: -0.04em; width: 0.32em; height: 0.32em; color: var(--blue-bright); }
   .hero .lead { margin-bottom: 2rem; color: var(--ink); opacity: 0.88; }
   :global(.hero .cta) { margin-top: 0.4rem; }
 
