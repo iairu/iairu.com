@@ -90,10 +90,9 @@ Diváci sú svedkami unikátnych trikov s <strong>Rubikovou kockou, levitácie d
     ],
   },
 
-  // [before, underlined words, after]
   quote: {
-    sk: ['„Kúzelnícka show, pri ktorej sa ', 'zastaví čas', '.“'],
-    en: ['“Beyond illusion, ', 'into presence', '.”'],
+    sk: '„Kúzelnícka show, pri ktorej sa zastaví čas.“',
+    en: '“Beyond illusion, into presence.”',
   },
 
   galleryTitle: { sk: 'Zo šou', en: 'From the show' },

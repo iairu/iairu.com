@@ -21,8 +21,8 @@ const { data, lang } = Astro.props;
   .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: clamp(1.5rem, 4vw, 3rem); }
   .stat { text-align: center; display: grid; gap: 0.3rem; position: relative; }
   .stat + .stat::before { content: ''; position: absolute; left: calc(-1 * clamp(0.75rem, 2vw, 1.5rem)); top: 15%; bottom: 15%; width: 1px; background: var(--line2); }
-  /* the numbers are set in the blue siren: big poster numerals */
-  .num { font-family: var(--display); font-size: clamp(2.8rem, 1.8rem + 4.2vw, 5.2rem); line-height: 0.95; color: var(--blue); }
+  /* the numbers are the one place gold carries weight: big poster numerals */
+  .num { font-family: var(--display); font-size: clamp(2.8rem, 1.8rem + 4.2vw, 5.2rem); line-height: 0.95; color: var(--gold); }
   .lbl { font-size: clamp(0.72rem, 0.68rem + 0.2vw, 0.84rem); font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink); }
   @media (max-width: 680px) {
     .grid { grid-template-columns: repeat(2, 1fr); gap: 2rem 1.5rem; }

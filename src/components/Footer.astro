@@ -73,11 +73,11 @@ const year = new Date().getFullYear();
   .brand { display: inline-block; }
   .brand img { height: 26px; width: auto; display: block; }
   .who { font-family: var(--display); text-transform: uppercase; font-size: 1.7rem; line-height: 1; color: var(--ink); margin: 1.1rem 0 0.1rem; }
-  .role { color: var(--red); font-size: 0.82rem; letter-spacing: 0.04em; margin: 0 0 0.9rem; }
+  .role { color: var(--lime); font-size: 0.82rem; letter-spacing: 0.04em; margin: 0 0 0.9rem; }
   .small { color: var(--soft); max-width: 36ch; font-size: 0.92rem; }
   .social { display: flex; gap: 0.8rem; margin-top: 1.4rem; }
   .social a { display: inline-flex; align-items: center; justify-content: center; width: 42px; height: 42px; color: var(--soft); border: 1px solid var(--line2); border-radius: 50%; transition: color 0.2s, border-color 0.2s, transform 0.2s; }
-  .social a:hover { color: var(--on-blue); background: var(--blue); border-color: var(--blue); transform: translateY(-2px); }
+  .social a:hover { color: var(--on-lime); background: var(--lime); border-color: var(--lime); transform: translateY(-2px); }
 
   .map { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 150px), 1fr)); gap: 1.6rem 1.4rem; }
   .col { min-width: 0; }
@@ -85,14 +85,14 @@ const year = new Date().getFullYear();
   .col h2 { font-family: var(--sans); font-size: 0.74rem; font-weight: 700; line-height: 1.2; letter-spacing: 0.16em; text-transform: uppercase; color: var(--mute); margin: 0 0 1rem; }
   .col ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.6rem; }
   .col a { color: var(--soft); display: inline-flex; align-items: center; gap: 0.4em; }
-  .col a:hover { color: var(--blue); }
+  .col a:hover { color: var(--lime); }
   .col .loc { color: var(--mute); }
 
   .bottom { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 0.6rem 2rem; padding-block: 1.5rem; border-top: 1px solid var(--line); font-size: 0.8rem; color: var(--mute); }
   .bottom p { margin: 0; max-width: 70ch; }
   .meta { display: inline-flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
   .top-link { display: inline-flex; align-items: center; gap: 0.4em; color: var(--soft); letter-spacing: 0.06em; text-transform: uppercase; font-size: 0.72rem; }
-  .top-link:hover { color: var(--blue); }
+  .top-link:hover { color: var(--lime); }
 
   @media (max-width: 800px) { .top { grid-template-columns: 1fr; } }
   /* phones: navigation and follow sit side by side, the long e-mail addresses get a full-width row */
