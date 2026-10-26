@@ -69,7 +69,7 @@ const h = home;
   </section>
 
   <!-- Quote -->
-  <section class="quote-band" aria-hidden="false">
+  <section class="quote-band">
     <div class="narrow center">
       <p class="quote">{tr(h.quote, lang)}</p>
     </div>
@@ -113,35 +113,38 @@ const h = home;
 
 <style>
   .split { display: grid; grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: center; }
-  .photo { margin: 0; overflow: hidden; border: 1px solid var(--line); }
+  .photo { margin: 0; overflow: hidden; border-radius: var(--radius); }
   .photo img { width: 100%; height: auto; aspect-ratio: 4 / 5; object-fit: cover; cursor: zoom-in; transition: transform 0.6s; }
   .photo:hover img { transform: scale(1.04); }
-  .about .body { color: var(--soft); font-weight: 300; }
+  .about .body { color: var(--soft); }
   .about .cta { margin-top: 1.6rem; }
 
   .two { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1rem, 2.5vw, 2rem); }
-  .show-card { padding: clamp(1.6rem, 3vw, 2.4rem); background: var(--bg3); border: 1px solid var(--line); border-top: 2px solid var(--gold); position: relative; }
-  .show-card .idx { font-family: var(--serif); font-size: 1rem; color: var(--gold); letter-spacing: 0.1em; }
-  .show-card h3 { margin: 0.2rem 0 0.8rem; }
-  .show-card p { color: var(--soft); font-weight: 300; font-size: 0.98rem; }
+  .show-card { padding: clamp(1.8rem, 3vw, 2.6rem); background: var(--bg3); border: 1px solid var(--line); border-radius: var(--radius); position: relative; transition: border-color 0.3s, transform 0.3s; }
+  .show-card:hover { border-color: color-mix(in srgb, var(--lime) 50%, transparent); transform: translateY(-4px); }
+  .show-card .idx { font-family: var(--display); font-size: 2.6rem; line-height: 1; color: var(--gold); }
+  .show-card h3 { margin: 0.8rem 0 0.8rem; }
+  .show-card p { color: var(--soft); font-size: 0.98rem; }
 
-  .quote-band { padding-block: clamp(3.5rem, 8vw, 7rem); background: linear-gradient(180deg, var(--bg), var(--bg2)); border-bottom: 1px solid var(--line); }
-  .quote { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: clamp(1.6rem, 1.1rem + 2.6vw, 3rem); line-height: 1.25; color: var(--ink); margin: 0; }
+  /* the second inverted band: a full lime slab with the quote set as a black poster line */
+  .quote-band { padding-block: clamp(3.5rem, 8vw, 7rem); background: var(--lime); }
+  .quote-band .narrow { width: min(100% - 2 * var(--gutter), 1100px); }
+  .quote { font-family: var(--display); text-transform: uppercase; font-size: clamp(2.2rem, 1.2rem + 4.6vw, 5.4rem); line-height: 0.95; color: var(--on-lime); margin: 0; text-wrap: balance; }
 
   .video .wrap { max-width: 980px; }
 
-  .booking { background: radial-gradient(130% 100% at 50% 0%, color-mix(in srgb, var(--gold) 7%, transparent), transparent 60%), var(--bg); border-top: 1px solid var(--line); }
+  .booking { background: radial-gradient(110% 80% at 50% 0%, color-mix(in srgb, var(--lime) 9%, transparent), transparent 60%), var(--bg); border-top: 1px solid var(--line); }
   .book-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(2rem, 5vw, 4.5rem); align-items: start; }
   .book-intro .lead { margin-bottom: 1.6rem; }
   .contacts { list-style: none; margin: 1.6rem 0 0; padding: 0; display: grid; gap: 0.8rem; }
   .contacts a, .contacts .loc { display: inline-flex; align-items: center; gap: 0.7rem; color: var(--ink); font-size: 1.05rem; }
-  .contacts a:hover { color: var(--gold); }
-  .contacts .icon { color: var(--gold); }
+  .contacts a:hover { color: var(--lime); }
+  .contacts .icon { color: var(--lime); }
   .contacts .loc { color: var(--soft); padding-left: calc(1.2rem + 0.7rem); }
   .book-intro .social { display: flex; gap: 0.8rem; margin-top: 1.6rem; }
   .book-intro .social a { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; color: var(--soft); border: 1px solid var(--line2); border-radius: 50%; transition: color 0.2s, border-color 0.2s, transform 0.2s; }
-  .book-intro .social a:hover { color: var(--gold); border-color: var(--gold); transform: translateY(-2px); }
-  .book-form { border: 1px solid var(--line); background: color-mix(in srgb, var(--bg2) 70%, transparent); padding: clamp(1.4rem, 3vw, 2.2rem); border-radius: 3px; }
+  .book-intro .social a:hover { color: var(--on-lime); background: var(--lime); border-color: var(--lime); transform: translateY(-2px); }
+  .book-form { border: 1px solid var(--line2); background: var(--bg2); padding: clamp(1.4rem, 3vw, 2.4rem); border-radius: var(--radius); }
 
   @media (max-width: 860px) { .split { grid-template-columns: 1fr; } .two { grid-template-columns: 1fr; } .book-grid { grid-template-columns: 1fr; } }
 </style>

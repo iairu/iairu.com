@@ -61,20 +61,20 @@ const next = `${origin}/${lang}/?sent=1#booking`;
   .cform { display: grid; gap: 1rem; text-align: left; }
   .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
   label { display: grid; gap: 0.4rem; }
-  label span { font: 600 0.72rem/1 var(--sans); letter-spacing: 0.12em; text-transform: uppercase; color: var(--soft); }
+  label span { font: 700 0.72rem/1.2 var(--sans); letter-spacing: 0.12em; text-transform: uppercase; color: var(--soft); }
   input, textarea {
     font: 400 1rem/1.5 var(--sans); color: var(--ink);
-    background: var(--bg3); border: 1px solid var(--line2); border-radius: 3px;
+    background: var(--bg3); border: 1px solid var(--line2); border-radius: 10px;
     padding: 0.8em 0.9em; width: 100%; transition: border-color 0.2s, background-color 0.2s;
   }
   input::placeholder, textarea::placeholder { color: var(--mute); }
-  input:focus, textarea:focus { outline: none; border-color: var(--gold); background: color-mix(in srgb, var(--bg3) 70%, var(--bg)); }
+  input:focus, textarea:focus { outline: none; border-color: var(--lime); box-shadow: 0 0 0 3px var(--lime-tint); background: var(--bg); }
   textarea { resize: vertical; min-height: 120px; }
   .hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
   .actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem 1.4rem; margin-top: 0.3rem; }
   .cform.sending .btn { opacity: 0.7; pointer-events: none; }
   .status { margin: 0; font-size: 0.92rem; color: var(--soft); }
-  .status.ok { color: var(--gold-bright); }
+  .status.ok { color: var(--lime); }
   .status.err { color: var(--error); }
   .status a { color: inherit; text-decoration: underline; }
   @media (max-width: 560px) { .row { grid-template-columns: 1fr; } }

@@ -73,18 +73,18 @@ const other = LANGS.find((l) => l !== lang) ?? 'en';
 
   .nav { display: flex; align-items: center; gap: clamp(1rem, 2.5vw, 2.4rem); }
   .nav ul { display: flex; align-items: center; gap: clamp(1rem, 2.2vw, 2.1rem); list-style: none; margin: 0; padding: 0; }
-  .nav a { color: var(--soft); font: 500 0.82rem/1 var(--sans); letter-spacing: 0.1em; text-transform: uppercase; }
-  .nav a:hover { color: var(--ink); }
+  .nav a { color: var(--soft); font: 600 0.8rem/1 var(--sans); letter-spacing: 0.1em; text-transform: uppercase; }
+  .nav a:hover { color: var(--lime); }
   .nav-extra { display: flex; align-items: center; gap: 1.2rem; }
-  .langs { display: inline-flex; align-items: center; gap: 0.5em; font: 600 0.78rem/1 var(--sans); letter-spacing: 0.08em; }
-  .langs span { color: var(--gold); }
+  .langs { display: inline-flex; align-items: center; gap: 0.5em; font: 700 0.78rem/1 var(--sans); letter-spacing: 0.08em; }
+  .langs span { color: var(--lime); }
   .langs a { color: var(--mute); }
   .langs a::before { content: '/'; margin-right: 0.5em; color: var(--line2); }
   .langs a:hover { color: var(--ink); }
   .book { white-space: nowrap; }
   /* the book CTA lives inside .nav, whose link color would otherwise override the
-     button's dark ink — force the on-gold ink so text stays dark on the gold fill */
-  .nav a.book, .nav a.book:hover { color: var(--on-gold); }
+     button's black ink — force it so text stays black on the lime fill */
+  .nav a.book, .nav a.book:hover { color: var(--on-lime); }
 
   .menu-btn { display: none; align-items: center; justify-content: center; width: 48px; height: 48px; margin-right: -12px; color: var(--ink); background: transparent; border: 0; cursor: pointer; }
 
