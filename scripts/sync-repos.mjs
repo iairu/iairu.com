@@ -6,9 +6,18 @@ const user = process.env.GH_USER || 'iairu';
 const headers = { 'User-Agent': 'iairu-com-sync', Accept: 'application/vnd.github+json' };
 if (process.env.GITHUB_TOKEN) headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
 
+// repos owned by someone else, keyed by their full owner/name
+const extra = ['presshaven/presshaven'];
+
 const res = await fetch(`https://api.github.com/users/${user}/repos?per_page=100&type=owner`, { headers });
 if (!res.ok) throw new Error(`GitHub API ${res.status}`);
-const repos = (await res.json()).map((r) => ({
+const own = await res.json();
+for (const full of extra) {
+  const r = await fetch(`https://api.github.com/repos/${full}`, { headers });
+  if (!r.ok) throw new Error(`GitHub API ${r.status} for ${full}`);
+  own.push({ ...(await r.json()), name: full });
+}
+const repos = own.map((r) => ({
   name: r.name, url: r.html_url, stars: r.stargazers_count, language: r.language,
   fork: r.fork, archived: r.archived, pushed: r.pushed_at.slice(0, 10), created: r.created_at.slice(0, 10),
   description: r.description, homepage: r.homepage || null, topics: r.topics || [],

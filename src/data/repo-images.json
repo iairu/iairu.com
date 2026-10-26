@@ -8,6 +8,6 @@
   "usb-caps": { "repo": "smvit-usbcaps-project-website", "path": "img/smvit-brand-header.png" },
   "castlecall": { "repo": "castlecall", "path": "logo.png" },
   "privateshare": { "repo": "PrivateShare", "path": "readme_images/gui.png" },
-  "honeypot-ids": { "repo": "honeypot-ids", "path": "ids/eshop_seed/site/hero.jpg" },
+  "honeypot-ids": { "repo": "presshaven/presshaven", "path": "ids/eshop_seed/site/hero.jpg" },
   "llm-rag-dspy": { "repo": "llm-rag-dspy-playground", "path": "1_AI-POSTUP.drawio.png", "crop": [0, 0, 1001, 563] }
 }

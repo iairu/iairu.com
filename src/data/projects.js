@@ -17,7 +17,7 @@ const alts = (k) => G(k).map((g) => g.alt);
 const A = '/img/art';
 const P = '/img/projects';
 
-// repo: GitHub repository name (gives stars, language, url, year)
+// repo: GitHub repository name, or owner/name when not mine (gives stars, language, url, year)
 // lang: programming language override (null = none, e.g. art)   tools: non-code tools
 const raw = [
   // ---------------- on GitHub ----------------
@@ -40,7 +40,7 @@ const raw = [
   { id: 'findacat', repo: 'findacat', lang: 'PHP', fields: ['software'], interests: ['web', 'data'],
     title: 'findacat.eu', tag: { en: 'Cat pedigrees and inbreeding calculator', sk: 'Rodokmene mačiek a kalkulačka inbreedingu' },
     desc: { en: 'Helps people find and manage cats and their pedigrees, and calculates the inbreeding coefficient of a pair to judge whether mating is a good idea. Built with Laravel.', sk: 'Pomáha nájsť a spravovať mačky a ich rodokmene a vypočíta koeficient inbreedingu páru, aby bolo jasné, či je párenie dobrý nápad. Postavené na Laraveli.' },
-    links: [{ label: 'findacat.eu', href: 'http://findacat.eu' }] },
+    links: [{ label: 'findacat.iairu.com', href: 'https://findacat.iairu.com' }] },
   { id: 'notesort', repo: 'notesort', fields: ['ai', 'software'], interests: ['data', 'automation'],
     title: 'notesort', tag: { en: 'DistilBERT paragraph sorting', sk: 'Triedenie odstavcov pomocou DistilBERT' },
     desc: { en: 'A complete workflow to train and run a DistilBERT model that sorts paragraphs, with a labelling interface for creating the training data.', sk: 'Kompletný postup na trénovanie a spúšťanie modelu DistilBERT, ktorý triedi odstavce, vrátane rozhrania na značkovanie trénovacích dát.' } },
@@ -63,9 +63,10 @@ const raw = [
   { id: 'twodolisty', repo: 'twodolisty', fields: ['software'], interests: ['web', 'automation'],
     title: 'twodolisty', tag: { en: 'To-do list for macOS and web', sk: 'To-do zoznam pre macOS a web' },
     desc: { en: 'A to-do list application for macOS and the web built with Svelte and Tauri.', sk: 'Aplikácia na zoznam úloh pre macOS a web postavená na Svelte a Tauri.' } },
-  { id: 'honeypot-ids', repo: 'honeypot-ids', fields: ['systems', 'software'], interests: ['infra'],
-    title: 'Honeypot IDS', tag: { en: 'Honeypot digital twin', sk: 'Digitálne dvojča honeypotu' },
-    desc: { en: 'A honeypot digital-twin environment for more than just WooCommerce: bait services that record what attackers try.', sk: 'Prostredie digitálneho dvojčaťa honeypotu nielen pre WooCommerce: návnadové služby, ktoré zaznamenajú, čo útočníci skúšajú.' } },
+  { id: 'honeypot-ids', repo: 'presshaven/presshaven', lang: 'Lua', fields: ['systems', 'software'], interests: ['infra'],
+    title: 'presshaven.io', tag: { en: 'Honeypot digital twin', sk: 'Digitálne dvojča honeypotu' },
+    desc: { en: 'A honeypot digital-twin environment for more than just WooCommerce: bait services that record what attackers try.', sk: 'Prostredie digitálneho dvojčaťa honeypotu nielen pre WooCommerce: návnadové služby, ktoré zaznamenajú, čo útočníci skúšajú.' },
+    links: [{ label: 'presshaven.io', href: 'https://presshaven.io' }] },
   { id: 'glagolitic', repo: 'glagolitic', fields: ['software', 'design'], interests: ['web', 'visual'],
     title: 'Glagolitic converter', tag: { en: 'Latin to Glagolitic script', sk: 'Latinka na hlaholiku' },
     desc: { en: 'A converter between Latin and Glagolitic script, the oldest Slavic alphabet, built with Svelte.', sk: 'Prevodník medzi latinkou a hlaholikou, najstarším slovanským písmom, postavený na Svelte.' } },
@@ -151,7 +152,7 @@ const raw = [
   { id: 'launchrentals', year: 2025, fields: ['software', 'systems'], interests: ['web', 'data', 'infra'], image: `${P}/launchrentals.jpg`, tools: ['Auth0', 'Swagger', 'Scrum'],
     title: 'Launch.Rentals', tag: { en: 'Team project: SaaS for rental shops, FIIT STU', sk: 'Tímový projekt: SaaS pre požičovne, FIIT STU' },
     desc: { en: 'All-in-one SaaS for managing rental shops, built by a team of seven engineering students at FIIT STU for TPCup\'25: reservations, inventory, staff and CRM in one system. My part was backend, DevOps and the Scrum master role.', sk: 'All-in-one SaaS na správu požičovní, ktorý vytvoril tím siedmich študentov inžinierskeho štúdia na FIIT STU pre TPCup\'25: rezervácie, inventár, zamestnanci a CRM v jednom systéme. Mojou časťou bol backend, DevOps a rola Scrum mastra.' },
-    links: [{ label: { en: 'Team website', sk: 'Tímový web' }, href: '/_dev/launchrentals/index.html' }],
+    links: [{ label: 'rentals.iairu.com', href: 'https://rentals.iairu.com' }, { label: { en: 'Team website', sk: 'Tímový web' }, href: '/_dev/launchrentals/index.html' }],
     gallery: ['/_dev/launchrentals/systems.jpg', '/_dev/launchrentals/stretnutie.jpg'] },
   { id: 'ahk-scripts', lang: 'AutoHotkey', year: 2018, fields: ['software'], interests: ['automation'], image: `${P}/service.jpg`,
     title: 'AutoHotkey scripts', tag: { en: '26+ daily automations', sk: '26+ každodenných automatizácií' },

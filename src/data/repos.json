@@ -93,6 +93,19 @@
    "topics": []
   },
   {
+   "name": "presshaven/presshaven",
+   "url": "https://github.com/presshaven/presshaven",
+   "stars": 2,
+   "language": "PHP",
+   "fork": false,
+   "archived": false,
+   "pushed": "2026-10-25",
+   "created": "2026-10-25",
+   "description": "Security platform for WordPress and WooCommerce. It transparently moves attackers into cloned, high-interaction honeypot shops, detects attacks with Lua and Suricata, and gives security teams and editors one dashboard for the site.",
+   "homepage": "https://presshaven.io",
+   "topics": []
+  },
+  {
    "name": "popclip-gemini",
    "url": "https://github.com/iairu/popclip-gemini",
    "stars": 2,
@@ -193,19 +206,6 @@
    "pushed": "2024-11-19",
    "created": "2024-11-19",
    "description": "Compilation of utilities to help adjust SIP or csr-active-config to a correct value for your use-case without leaving your system exposed.",
-   "homepage": null,
-   "topics": []
-  },
-  {
-   "name": "honeypot-ids",
-   "url": "https://github.com/iairu/honeypot-ids",
-   "stars": 0,
-   "language": "PHP",
-   "fork": false,
-   "archived": false,
-   "pushed": "2026-10-05",
-   "created": "2026-08-07",
-   "description": "Honeypot digital twin environment for more than just Woocommerce",
    "homepage": null,
    "topics": []
   },

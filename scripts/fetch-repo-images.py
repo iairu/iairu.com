@@ -13,7 +13,8 @@ os.makedirs(out, exist_ok=True)
 for pid, m in mapping.items():
     if pid.startswith('_'):
         continue
-    url = f"https://raw.githubusercontent.com/iairu/{m['repo']}/HEAD/{urllib.request.quote(m['path'])}"
+    repo = m['repo'] if '/' in m['repo'] else f"iairu/{m['repo']}"
+    url = f"https://raw.githubusercontent.com/{repo}/HEAD/{urllib.request.quote(m['path'])}"
     im = Image.open(io.BytesIO(urllib.request.urlopen(urllib.request.Request(url, headers={'User-Agent': 'iairu-com'}), timeout=30).read()))
     im = im.convert('RGBA')
     bg = Image.new('RGBA', im.size, (255, 255, 255, 255))

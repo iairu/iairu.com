@@ -11,7 +11,6 @@ writeFileSync(tmp, readFileSync(new URL('src/data/projects.js', root), 'utf8')
 const { projects } = await import(tmp.href);
 rmSync(tmp);
 
-const owner = process.env.GH_USER || 'iairu';
 const headers = { 'User-Agent': 'iairu-com-sync', Accept: 'application/vnd.github.raw+json' };
 if (process.env.GITHUB_TOKEN) headers.Authorization = `Bearer ${process.env.GITHUB_TOKEN}`;
 
@@ -21,8 +20,8 @@ mkdirSync(dir, { recursive: true });
 const kept = new Set();
 let ok = 0, missing = 0;
 for (const p of projects.filter((x) => x.repoUrl)) {
-  const repo = p.repoUrl.split('/').pop();
-  const res = await fetch(`https://api.github.com/repos/${owner}/${repo}/readme`, { headers });
+  const repo = p.repoUrl.split('/').slice(-2).join('/');
+  const res = await fetch(`https://api.github.com/repos/${repo}/readme`, { headers });
   if (res.status === 404) { console.log('no readme', p.id); missing++; continue; }
   if (!res.ok) throw new Error(`GitHub API ${res.status} for ${repo} (rate limit? set GITHUB_TOKEN)`);
   const md = (await res.text()).replace(/\r\n/g, '\n').trim();
