@@ -83,6 +83,9 @@ const raw = [
   { id: 'gtts-gui', repo: 'gTTSgui', fields: ['software', 'ai'], interests: ['audio', 'automation'],
     title: 'gTTS GUI', tag: { en: 'Text-to-speech export', sk: 'Export textu na reč' },
     desc: { en: 'A text area and a save button over gTTS: type text, get a spoken audio file.', sk: 'Textové pole a tlačidlo uložiť nad gTTS: napíšeš text, dostaneš zvukový súbor.' } },
+  { id: 'coqui-tts-gui', repo: 'Coqui-TTS-GUI', fields: ['software', 'ai'], interests: ['audio', 'data'],
+    title: 'Coqui TTS GUI', tag: { en: 'Interface for using TTS and vocoder models', sk: 'Rozhranie na používanie TTS a vocoder modelov' },
+    desc: { en: 'A text editor that interfaces with TTS and vocoder models: type the text, pick a voice and a vocoder, get the audio file. The interface for using Coqui\'s text-to-speech models and neural vocoders.', sk: 'Textový editor, ktorý obsluhuje TTS a vocoder modely: napíšeš text, vybereš hlas a vocoder a dostaneš zvukový súbor. Prostredie na tvorbu hlasu z textu cez TTS a vocodery od Coqui.' } },
   { id: 'usb-caps', repo: 'smvit-usbcaps-project-website', fields: ['hardware', 'systems'], interests: ['maker', 'infra'],
     title: 'USB-caps', tag: { en: 'Smart USB-TTL serial converter', sk: 'Inteligentný USB-TTL prevodník' },
     desc: { en: 'Advanced USB-TTL serial converter with automatic detection, BLE-based protection against USB Killers and a wireless terminal. Documentation site of the hardware project.', sk: 'Pokročilý USB-TTL sériový prevodník s automatickou detekciou, ochranou pred USB Killerom cez BLE a bezdrôtovým terminálom. Dokumentačný web hardvérového projektu.' } },
@@ -158,6 +161,10 @@ const raw = [
     title: 'AutoHotkey scripts', tag: { en: '26+ daily automations', sk: '26+ každodenných automatizácií' },
     desc: { en: 'More than 26 AutoHotkey scripts for repetitive digital chores: window layout, keybinds for animation and video software, bulk export, ticket buying and more.', sk: 'Viac ako 26 AutoHotkey skriptov pre opakované digitálne činnosti: rozloženie okien, skratky pre animačný a video softvér, hromadný export, kupovanie lístkov a ďalšie.' },
     links: [{ label: { en: 'Write-up', sk: 'Popis' }, href: 'doc:ahk' }] },
+  { id: 'quiz', year: 2026, lang: 'Astro', fields: ['software'], interests: ['learning'],
+    title: 'Quiz', tag: { en: 'University quizzes', sk: 'Univerzitné kvízy' },
+    desc: { en: 'Quizzes for university courses behind a Google sign-in with a @stuba.sk account, with an account area and a leaderboard at quiz.iairu.com.', sk: 'Kvízy pre univerzitné kurzy za Google prihlášením s účtom @stuba.sk, počasie aj sekciu účtov a leaderboard na quiz.iairu.com.' },
+    links: [{ label: 'quiz.iairu.com', href: 'https://quiz.iairu.com' }] },
 
   // ---------------- art and design ----------------
   { id: 'zrada', year: 2019, fields: ['art3d', 'design'], interests: ['visual'], image: `${P}/zrada.jpg`, tools: ['Blender'],

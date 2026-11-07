@@ -1,5 +1,5 @@
 {
- "synced": "2026-10-06",
+ "synced": "2026-11-07",
  "repos": [
   {
    "name": "ProcExp",
@@ -143,6 +143,27 @@
    "description": "YouTube First Comment API Script",
    "homepage": null,
    "topics": []
+  },
+  {
+   "name": "Coqui-TTS-GUI",
+   "url": "https://github.com/iairu/Coqui-TTS-GUI",
+   "stars": 1,
+   "language": "Python",
+   "fork": true,
+   "archived": false,
+   "pushed": "2026-11-06",
+   "created": "2026-11-06",
+   "description": "Interface for using TTS and vocoder models in the form of a text editor",
+   "homepage": null,
+   "topics": [
+    "coqui",
+    "coqui-ai",
+    "coqui-tts",
+    "speech-synthesis",
+    "text-processing",
+    "text-to-speech",
+    "tts"
+   ]
   },
   {
    "name": "QUANTUM_GAME",
