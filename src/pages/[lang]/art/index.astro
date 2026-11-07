@@ -20,8 +20,6 @@ const groups = [
   crumbs={[{ label: ui[lang].nav.art }]}>
   <section class="block head">
     <div class="wrap">
-      <h1>{T('When the problem is how it looks', 'Keď je problémom, ako to vyzerá')}</h1>
-      <p class="lead">{T('Graphic design school (SUPTN Trenčín, 2015–2019) came before the code, and it taught me to treat form as a problem to solve, not decoration. Here the challenge is how something should look, move or be recognised: a logo that has to hold up, a world made of letters, a comic page, a character. Every card opens the whole piece.', 'Škola grafického dizajnu (SUPTN Trenčín, 2015–2019) prišla pred kódom a naučila ma brať tvar ako problém na vyriešenie, nie ako dekoráciu. Tu je výzvou, ako má niečo vyzerať, pohybovať sa alebo byť spoznané: logo, ktoré musí obstáť, svet z písmen, komiksová strana, postava. Každá karta otvorí celé dielo.')}</p>
       <ul class="jump" aria-label={T('Sections', 'Sekcie')}>
         <li><a href="#branding">{T('Branding', 'Branding')}</a></li>
         {groups.map((g) => <li><a href={`#${g.id}`}>{g.title}</a></li>)}

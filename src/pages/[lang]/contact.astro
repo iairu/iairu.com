@@ -12,9 +12,7 @@ const rows = [
   { k: 'GitHub', v: 'github.com/iairu', href: links.github, note: T('All code, with issues open.', 'Všetok kód, issues sú otvorené.') },
   { k: 'Messenger', v: 'm.me/iairu', href: links.messenger, note: T('Quick questions.', 'Rýchle otázky.') },
   { k: 'LinkedIn', v: 'linkedin.com/in/iairu', href: links.linkedin, note: T('Work history.', 'Pracovná história.') },
-  { k: 'Instagram', v: '@spanik11', href: links.instagram, note: T('Personal. Animation and sketches live on @ayu_animations.', 'Osobný. Animácie a skice sú na @ayu_animations.') },
-  { k: 'Instagram', v: '@ayu_animations', href: links.animationInstagram, note: T('Art and animation updates.', 'Novinky o umení a animácii.') },
-  { k: 'NightJar.Gift', v: 'nightjar.gift', href: links.nightjar, note: T('The wooden nightjar project.', 'Projekt dreveného leleka.') },
+  { k: 'Instagram', v: '@i_air_u', href: links.instagram, note: T('Personal.', 'Osobný.') },
   { k: T('CV', 'Životopis'), v: 'PDF', href: lang === 'sk' ? '/dl/resume-sk.pdf' : '/dl/resume-en.pdf', note: T('Front-end developer / IT technician.', 'Front-end developer / IT technik.') },
 ];
 ---
@@ -24,7 +22,6 @@ const rows = [
   <section class="block">
     <div class="wrap">
       <h1>{T('Say hello', 'Ozvi sa')}</h1>
-      <p class="lead">{T('Tell me what the thing should do, who it is for and by when. A few sentences are enough to start.', 'Napíš, čo má vec robiť, pre koho je a dokedy. Na začiatok stačí pár viet.')}</p>
       <dl class="rows">
         {rows.map((r) => (
           <div><dt>{r.k}</dt><dd><a href={r.href} {...(r.href.startsWith('http') ? { rel: 'me noopener' } : {})}>{r.v}</a><small>{r.note}</small></dd></div>
